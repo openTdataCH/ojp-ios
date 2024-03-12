@@ -14,6 +14,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         parseXML_StripNS()
+        // parseXML_NS()
     }
 
 
@@ -51,6 +52,20 @@ extension ViewController {
         } catch {
             print("ERRORS during parsing: \(error.localizedDescription)")
         }
+    }
+    
+    func parseXML_NS() {
+        let xmlData = loadXML()
+        
+        // without namespaces
+        let decoder2 = XMLDecoder()
+        decoder2.keyDecodingStrategy = .convertFromCapitalized
+        decoder2.keyDecodingStrategy = .useDefaultKeys
+        
+        let response2 = try! decoder2.decode(OJP_NS.self, from: xmlData)
+        print("2) Response with XML namespaces")
+        print(response2)
+        print()
     }
 }
 
