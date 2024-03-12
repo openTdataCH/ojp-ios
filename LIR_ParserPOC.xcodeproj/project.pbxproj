@@ -14,6 +14,7 @@
 		E10F8DBF2BA0FCBB00BD8AA3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E10F8DBE2BA0FCBB00BD8AA3 /* Assets.xcassets */; };
 		E10F8DC22BA0FCBB00BD8AA3 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = E10F8DC12BA0FCBB00BD8AA3 /* Base */; };
 		E10F8DCB2BA0FFD200BD8AA3 /* XMLCoder in Frameworks */ = {isa = PBXBuildFile; productRef = E10F8DCA2BA0FFD200BD8AA3 /* XMLCoder */; };
+		E10F8DCE2BA1002C00BD8AA3 /* ojp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10F8DCD2BA1002C00BD8AA3 /* ojp.swift */; };
 		E10F8DD12BA1038B00BD8AA3 /* lir-be-bbox.xml in Resources */ = {isa = PBXBuildFile; fileRef = E10F8DD02BA1038B00BD8AA3 /* lir-be-bbox.xml */; };
 /* End PBXBuildFile section */
 
@@ -26,6 +27,7 @@
 		E10F8DBE2BA0FCBB00BD8AA3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E10F8DC12BA0FCBB00BD8AA3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E10F8DC32BA0FCBB00BD8AA3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E10F8DCD2BA1002C00BD8AA3 /* ojp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ojp.swift; sourceTree = "<group>"; };
 		E10F8DD02BA1038B00BD8AA3 /* lir-be-bbox.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "lir-be-bbox.xml"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -61,6 +63,7 @@
 			isa = PBXGroup;
 			children = (
 				E10F8DCF2BA1036B00BD8AA3 /* mocks */,
+				E10F8DCC2BA1001A00BD8AA3 /* models */,
 				E10F8DB52BA0FCBA00BD8AA3 /* AppDelegate.swift */,
 				E10F8DB72BA0FCBA00BD8AA3 /* SceneDelegate.swift */,
 				E10F8DB92BA0FCBA00BD8AA3 /* ViewController.swift */,
@@ -70,6 +73,14 @@
 				E10F8DC32BA0FCBB00BD8AA3 /* Info.plist */,
 			);
 			path = LIR_ParserPOC;
+			sourceTree = "<group>";
+		};
+		E10F8DCC2BA1001A00BD8AA3 /* models */ = {
+			isa = PBXGroup;
+			children = (
+				E10F8DCD2BA1002C00BD8AA3 /* ojp.swift */,
+			);
+			path = models;
 			sourceTree = "<group>";
 		};
 		E10F8DCF2BA1036B00BD8AA3 /* mocks */ = {
@@ -159,6 +170,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E10F8DBA2BA0FCBA00BD8AA3 /* ViewController.swift in Sources */,
+				E10F8DCE2BA1002C00BD8AA3 /* ojp.swift in Sources */,
 				E10F8DB62BA0FCBA00BD8AA3 /* AppDelegate.swift in Sources */,
 				E10F8DB82BA0FCBA00BD8AA3 /* SceneDelegate.swift in Sources */,
 			);
