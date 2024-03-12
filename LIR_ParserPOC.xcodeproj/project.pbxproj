@@ -13,6 +13,7 @@
 		E10F8DBD2BA0FCBA00BD8AA3 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = E10F8DBC2BA0FCBA00BD8AA3 /* Base */; };
 		E10F8DBF2BA0FCBB00BD8AA3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E10F8DBE2BA0FCBB00BD8AA3 /* Assets.xcassets */; };
 		E10F8DC22BA0FCBB00BD8AA3 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = E10F8DC12BA0FCBB00BD8AA3 /* Base */; };
+		E10F8DCB2BA0FFD200BD8AA3 /* XMLCoder in Frameworks */ = {isa = PBXBuildFile; productRef = E10F8DCA2BA0FFD200BD8AA3 /* XMLCoder */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E10F8DCB2BA0FFD200BD8AA3 /* XMLCoder in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,6 +85,9 @@
 			dependencies = (
 			);
 			name = LIR_ParserPOC;
+			packageProductDependencies = (
+				E10F8DCA2BA0FFD200BD8AA3 /* XMLCoder */,
+			);
 			productName = LIR_ParserPOC;
 			productReference = E10F8DB22BA0FCBA00BD8AA3 /* LIR_ParserPOC.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +116,9 @@
 				Base,
 			);
 			mainGroup = E10F8DA92BA0FCBA00BD8AA3;
+			packageReferences = (
+				E10F8DC92BA0FFD200BD8AA3 /* XCRemoteSwiftPackageReference "XMLCoder" */,
+			);
 			productRefGroup = E10F8DB32BA0FCBA00BD8AA3 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -361,6 +369,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		E10F8DC92BA0FFD200BD8AA3 /* XCRemoteSwiftPackageReference "XMLCoder" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/CoreOffice/XMLCoder.git";
+			requirement = {
+				kind = exactVersion;
+				version = 0.17.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E10F8DCA2BA0FFD200BD8AA3 /* XMLCoder */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E10F8DC92BA0FFD200BD8AA3 /* XCRemoteSwiftPackageReference "XMLCoder" */;
+			productName = XMLCoder;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = E10F8DAA2BA0FCBA00BD8AA3 /* Project object */;
 }
