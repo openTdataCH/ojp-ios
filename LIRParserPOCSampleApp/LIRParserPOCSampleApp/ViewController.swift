@@ -7,18 +7,31 @@
 
 import UIKit
 import XMLCoder
-import OjpSDK
 
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        parseXML_StripNS()
+        buildXMLRequest()
+        // parseXML_StripNS()
         // parseXML_NS()
     }
 
 
+}
+
+extension ViewController {
+    func buildXMLRequest() {
+        // BE/Köniz area
+        let bbox = Geo.Bbox(minLongitude: 7.372097, minLatitude: 46.904860, maxLongitude: 7.479042, maxLatitude: 46.942787)
+        let ojp = OJPHelpers.LocationInformationRequest.initWithBBOX(bbox: bbox)
+        
+        let ojpXMLData = try! XMLEncoder().encode(ojp, withRootKey: "ojp")
+        let ojpXML = String.init(data: ojpXMLData, encoding: .utf8)!
+        
+        print(ojpXML)
+    }
 }
 
 extension ViewController {
@@ -55,10 +68,12 @@ extension ViewController {
         print()
         
         do {
-            let response = try decoder.decode(OJP.self, from: xmlData)
-            for placeResult in response.response.serviceDelivery.locationInformationDelivery.placeResults {
-                print(placeResult)
-                print()
+            let ojp = try decoder.decode(OJP.self, from: xmlData)
+            if let response = ojp.response {
+                for placeResult in response.serviceDelivery.locationInformationDelivery.placeResults {
+                    print(placeResult)
+                    print()
+                }
             }
             
             print("parse OK")

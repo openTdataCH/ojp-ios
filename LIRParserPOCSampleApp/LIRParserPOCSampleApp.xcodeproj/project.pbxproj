@@ -8,31 +8,35 @@
 
 /* Begin PBXBuildFile section */
 		922CA9FB2BA2EE04004ED602 /* OjpSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 922CA9FA2BA2EE04004ED602 /* OjpSDK */; };
+		CF07E2E32BA34A3B00C39DE4 /* ojp_ns.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF07E2DF2BA34A3B00C39DE4 /* ojp_ns.swift */; };
+		CF07E2E42BA34A3B00C39DE4 /* geo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF07E2E02BA34A3B00C39DE4 /* geo.swift */; };
+		CF07E2E52BA34A3B00C39DE4 /* ojp_helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF07E2E12BA34A3B00C39DE4 /* ojp_helpers.swift */; };
+		CF07E2E62BA34A3B00C39DE4 /* ojp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF07E2E22BA34A3B00C39DE4 /* ojp.swift */; };
+		CF07E2E82BA34A6200C39DE4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF07E2E72BA34A6200C39DE4 /* ViewController.swift */; };
 		E10F8DB62BA0FCBA00BD8AA3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10F8DB52BA0FCBA00BD8AA3 /* AppDelegate.swift */; };
 		E10F8DB82BA0FCBA00BD8AA3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10F8DB72BA0FCBA00BD8AA3 /* SceneDelegate.swift */; };
-		E10F8DBA2BA0FCBA00BD8AA3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10F8DB92BA0FCBA00BD8AA3 /* ViewController.swift */; };
 		E10F8DBD2BA0FCBA00BD8AA3 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = E10F8DBC2BA0FCBA00BD8AA3 /* Base */; };
 		E10F8DBF2BA0FCBB00BD8AA3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E10F8DBE2BA0FCBB00BD8AA3 /* Assets.xcassets */; };
 		E10F8DC22BA0FCBB00BD8AA3 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = E10F8DC12BA0FCBB00BD8AA3 /* Base */; };
 		E10F8DCB2BA0FFD200BD8AA3 /* XMLCoder in Frameworks */ = {isa = PBXBuildFile; productRef = E10F8DCA2BA0FFD200BD8AA3 /* XMLCoder */; };
-		E10F8DCE2BA1002C00BD8AA3 /* ojp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10F8DCD2BA1002C00BD8AA3 /* ojp.swift */; };
 		E10F8DD12BA1038B00BD8AA3 /* lir-be-bbox.xml in Resources */ = {isa = PBXBuildFile; fileRef = E10F8DD02BA1038B00BD8AA3 /* lir-be-bbox.xml */; };
-		E10F8DD32BA1053400BD8AA3 /* ojp_ns.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10F8DD22BA1053400BD8AA3 /* ojp_ns.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		CF07E2DD2BA33C3100C39DE4 /* ojp-ios-lir-package */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = "ojp-ios-lir-package"; path = ..; sourceTree = "<group>"; };
+		CF07E2DF2BA34A3B00C39DE4 /* ojp_ns.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ojp_ns.swift; sourceTree = "<group>"; };
+		CF07E2E02BA34A3B00C39DE4 /* geo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = geo.swift; sourceTree = "<group>"; };
+		CF07E2E12BA34A3B00C39DE4 /* ojp_helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ojp_helpers.swift; sourceTree = "<group>"; };
+		CF07E2E22BA34A3B00C39DE4 /* ojp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ojp.swift; sourceTree = "<group>"; };
+		CF07E2E72BA34A6200C39DE4 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		E10F8DB22BA0FCBA00BD8AA3 /* LIRParserPOCSampleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LIRParserPOCSampleApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E10F8DB52BA0FCBA00BD8AA3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E10F8DB72BA0FCBA00BD8AA3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		E10F8DB92BA0FCBA00BD8AA3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		E10F8DBC2BA0FCBA00BD8AA3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E10F8DBE2BA0FCBB00BD8AA3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E10F8DC12BA0FCBB00BD8AA3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E10F8DC32BA0FCBB00BD8AA3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E10F8DCD2BA1002C00BD8AA3 /* ojp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ojp.swift; sourceTree = "<group>"; };
 		E10F8DD02BA1038B00BD8AA3 /* lir-be-bbox.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "lir-be-bbox.xml"; sourceTree = "<group>"; };
-		E10F8DD22BA1053400BD8AA3 /* ojp_ns.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ojp_ns.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,8 +83,8 @@
 				E10F8DCF2BA1036B00BD8AA3 /* mocks */,
 				E10F8DCC2BA1001A00BD8AA3 /* models */,
 				E10F8DB52BA0FCBA00BD8AA3 /* AppDelegate.swift */,
+				CF07E2E72BA34A6200C39DE4 /* ViewController.swift */,
 				E10F8DB72BA0FCBA00BD8AA3 /* SceneDelegate.swift */,
-				E10F8DB92BA0FCBA00BD8AA3 /* ViewController.swift */,
 				E10F8DBB2BA0FCBA00BD8AA3 /* Main.storyboard */,
 				E10F8DBE2BA0FCBB00BD8AA3 /* Assets.xcassets */,
 				E10F8DC02BA0FCBB00BD8AA3 /* LaunchScreen.storyboard */,
@@ -92,8 +96,10 @@
 		E10F8DCC2BA1001A00BD8AA3 /* models */ = {
 			isa = PBXGroup;
 			children = (
-				E10F8DCD2BA1002C00BD8AA3 /* ojp.swift */,
-				E10F8DD22BA1053400BD8AA3 /* ojp_ns.swift */,
+				CF07E2E02BA34A3B00C39DE4 /* geo.swift */,
+				CF07E2E12BA34A3B00C39DE4 /* ojp_helpers.swift */,
+				CF07E2DF2BA34A3B00C39DE4 /* ojp_ns.swift */,
+				CF07E2E22BA34A3B00C39DE4 /* ojp.swift */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -185,9 +191,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E10F8DD32BA1053400BD8AA3 /* ojp_ns.swift in Sources */,
-				E10F8DBA2BA0FCBA00BD8AA3 /* ViewController.swift in Sources */,
-				E10F8DCE2BA1002C00BD8AA3 /* ojp.swift in Sources */,
+				CF07E2E62BA34A3B00C39DE4 /* ojp.swift in Sources */,
+				CF07E2E32BA34A3B00C39DE4 /* ojp_ns.swift in Sources */,
+				CF07E2E42BA34A3B00C39DE4 /* geo.swift in Sources */,
+				CF07E2E52BA34A3B00C39DE4 /* ojp_helpers.swift in Sources */,
+				CF07E2E82BA34A6200C39DE4 /* ViewController.swift in Sources */,
 				E10F8DB62BA0FCBA00BD8AA3 /* AppDelegate.swift in Sources */,
 				E10F8DB82BA0FCBA00BD8AA3 /* SceneDelegate.swift in Sources */,
 			);

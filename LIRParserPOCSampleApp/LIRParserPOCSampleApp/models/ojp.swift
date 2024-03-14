@@ -8,10 +8,14 @@
 import Foundation
 import XMLCoder
 
+let OJP_SDK_Version = "0.9.1"
+
 struct OJP: Codable {
-    let response: Response
+    let request: Request?
+    let response: Response?
     
     public enum CodingKeys: String, CodingKey {
+        case request = "OJPRequest"
         case response = "OJPResponse"
     }
     
@@ -114,6 +118,71 @@ struct OJP: Codable {
         public enum CodingKeys: String, CodingKey {
             case longitude = "Longitude"
             case latitude = "Latitude"
+        }
+    }
+    
+    struct Request: Codable {
+        let serviceRequest: ServiceRequest
+        
+        public enum CodingKeys: String, CodingKey {
+            case serviceRequest = "ServiceRequest"
+        }
+    }
+    
+    struct ServiceRequest: Codable {
+        let locationInformationRequest: LocationInformationRequest
+        let requestTimestamp: String
+        let requestorRef: String
+        
+        public enum CodingKeys: String, CodingKey {
+            case locationInformationRequest = "LocationInformationRequest"
+            case requestTimestamp = "RequestTimestamp"
+            case requestorRef = "RequestorRef"
+        }
+    }
+    
+    struct LocationInformationRequest: Codable {
+        let initialInput: InitialInput
+        
+        public enum CodingKeys: String, CodingKey {
+            case initialInput = "InitialInput"
+        }
+        
+    }
+    
+    struct InitialInput: Codable {
+        let geoRestriction: GeoRestriction?
+        
+        public enum CodingKeys: String, CodingKey {
+            case geoRestriction = "GeoRestriction"
+        }
+    }
+    
+    struct GeoRestriction: Codable {
+        let rectangle: Rectangle?
+        
+        public enum CodingKeys: String, CodingKey {
+            case rectangle = "Rectangle"
+        }
+    }
+    
+    struct Rectangle: Codable {
+        let upperLeft: GeoPosition
+        let lowerRight: GeoPosition
+        
+        public enum CodingKeys: String, CodingKey {
+            case upperLeft = "UpperLeft"
+            case lowerRight = "LowerRight"
+        }
+    }
+    
+    struct Restrictions: Codable {
+        let numberOfResults: Int
+        let type: String? // TODO - add enum
+        
+        public enum CodingKeys: String, CodingKey {
+            case numberOfResults = "NumberOfResults"
+            case type = "Type"
         }
     }
 }
