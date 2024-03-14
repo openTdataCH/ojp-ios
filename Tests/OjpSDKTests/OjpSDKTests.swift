@@ -1,5 +1,5 @@
-import XCTest
 @testable import OjpSDK
+import XCTest
 
 final class OjpSDKTests: XCTestCase {
     func testExample() throws {
