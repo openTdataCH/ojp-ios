@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 enum TestHelpers {
     static func loadXML(xmlFilename: String = "lir-be-bbox") throws -> Data {
         guard let path = Bundle.module.path(forResource: xmlFilename, ofType: "xml") else {

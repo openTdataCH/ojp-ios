@@ -29,6 +29,7 @@
 		CF07E2E12BA34A3B00C39DE4 /* ojp_helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ojp_helpers.swift; sourceTree = "<group>"; };
 		CF07E2E22BA34A3B00C39DE4 /* ojp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ojp.swift; sourceTree = "<group>"; };
 		CF07E2E72BA34A6200C39DE4 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		CF07E2E92BA3568B00C39DE4 /* format-code.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; name = "format-code.sh"; path = "../format-code.sh"; sourceTree = "<group>"; };
 		E10F8DB22BA0FCBA00BD8AA3 /* LIRParserPOCSampleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LIRParserPOCSampleApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E10F8DB52BA0FCBA00BD8AA3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E10F8DB72BA0FCBA00BD8AA3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -62,6 +63,7 @@
 		E10F8DA92BA0FCBA00BD8AA3 = {
 			isa = PBXGroup;
 			children = (
+				CF07E2E92BA3568B00C39DE4 /* format-code.sh */,
 				CF07E2DD2BA33C3100C39DE4 /* ojp-ios-lir-package */,
 				E10F8DB42BA0FCBA00BD8AA3 /* LIRParserPOCSampleApp */,
 				E10F8DB32BA0FCBA00BD8AA3 /* Products */,

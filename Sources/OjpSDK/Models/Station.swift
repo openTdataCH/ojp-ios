@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  Station.swift
 //
 //
 //  Created by Terence Alberti on 13.03.2024.

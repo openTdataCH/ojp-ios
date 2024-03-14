@@ -13,7 +13,8 @@ let package = Package(
             targets: ["OjpSDK"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/CoreOffice/XMLCoder.git", from: "0.17.1")
+        .package(url: "https://github.com/CoreOffice/XMLCoder.git", from: "0.17.1"),
+        .package(url: "https://github.com/nicklockwood/SwiftFormat", from: "0.50.4"),
     ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
