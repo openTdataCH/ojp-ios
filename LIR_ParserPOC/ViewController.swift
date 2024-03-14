@@ -42,10 +42,12 @@ extension ViewController {
         print()
         
         do {
-            let response = try decoder.decode(OJP.self, from: xmlData)
-            for placeResult in response.response.serviceDelivery.locationInformationDelivery.placeResults {
-                print(placeResult)
-                print()
+            let ojp = try decoder.decode(OJP.self, from: xmlData)
+            if let response = ojp.response {
+                for placeResult in response.serviceDelivery.locationInformationDelivery.placeResults {
+                    print(placeResult)
+                    print()
+                }
             }
             
             print("parse OK")
