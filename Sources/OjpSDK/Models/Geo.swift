@@ -7,21 +7,21 @@
 
 import Foundation
 
-struct Geo {
-    struct Bbox {
-        let minX: Double
-        let minY: Double
-        let maxX: Double
-        let maxY: Double
+public struct Geo {
+    public struct Bbox {
+        public let minX: Double
+        public let minY: Double
+        public let maxX: Double
+        public let maxY: Double
 
-        init(minX: Double, minY: Double, maxX: Double, maxY: Double) {
+        public init(minX: Double, minY: Double, maxX: Double, maxY: Double) {
             self.minX = minX
             self.minY = minY
             self.maxX = maxX
             self.maxY = maxY
         }
 
-        init(minLongitude: Double, minLatitude: Double, maxLongitude: Double, maxLatitude: Double) {
+        public init(minLongitude: Double, minLatitude: Double, maxLongitude: Double, maxLatitude: Double) {
             self.init(minX: minLongitude, minY: minLatitude, maxX: maxLongitude, maxY: maxLatitude)
         }
     }

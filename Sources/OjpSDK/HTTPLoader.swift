@@ -1,0 +1,38 @@
+//
+//  HTTPLoader.swift
+//
+//
+//  Created by Lehnherr Reto on 14.03.2024.
+//
+
+import Foundation
+
+class HTTPLoader {
+    let configuration: OjpSDKConfiguration
+
+    init(configuration: OjpSDKConfiguration) {
+        self.configuration = configuration
+    }
+
+    func load(request: Data) async throws -> (Data, URLResponse) {
+        let session = URLSession.shared
+        var urlRequest = baseRequest
+        urlRequest.httpBody = request
+        return try await session.data(for: urlRequest)
+    }
+
+    private var baseRequest: URLRequest {
+        let url = URL(string: configuration.baseURL)!
+        var urlRequest = URLRequest(url: url)
+        urlRequest.httpMethod = "POST"
+        urlRequest.addValue("Bearer \(configuration.APIToken)", forHTTPHeaderField: "Authorization")
+        urlRequest.addValue("application/xml", forHTTPHeaderField: "Content-Type")
+
+        if let headers = configuration.additionalHeaders {
+            for (key, value) in headers {
+                urlRequest.addValue(value, forHTTPHeaderField: key)
+            }
+        }
+        return urlRequest
+    }
+}

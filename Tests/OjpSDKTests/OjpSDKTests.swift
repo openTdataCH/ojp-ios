@@ -29,4 +29,19 @@ final class OjpSDKTests: XCTestCase {
         dump(locationInformation)
         XCTAssertTrue(true)
     }
+
+    func testLoader() async throws {
+        let body = try OJPHelpers.buildXMLRequest().data(using: .utf8)!
+        let configuration = OjpSDKConfiguration(APIToken: "", baseURL: "https://api.opentransportdata.swiss/ojp2020")
+        let (data, response) = try await HTTPLoader(configuration: configuration).load(request: body)
+        dump(response)
+
+        if let xmlString = String(data: data, encoding: .utf8) {
+            print(xmlString)
+        }
+
+        let httpResponse = response as? HTTPURLResponse
+        XCTAssertNotNil(httpResponse)
+        XCTAssert(httpResponse?.statusCode == 200)
+    }
 }

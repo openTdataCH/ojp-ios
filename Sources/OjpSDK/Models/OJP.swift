@@ -10,27 +10,27 @@ import XMLCoder
 
 let OJP_SDK_Version = "0.9.1"
 
-struct OJP: Codable {
-    let request: Request?
-    let response: Response?
+public struct OJP: Codable {
+    public let request: Request?
+    public let response: Response?
 
     public enum CodingKeys: String, CodingKey {
         case request = "OJPRequest"
         case response = "OJPResponse"
     }
 
-    struct Response: Codable {
-        let serviceDelivery: ServiceDelivery
+    public struct Response: Codable {
+        public let serviceDelivery: ServiceDelivery
 
         public enum CodingKeys: String, CodingKey {
             case serviceDelivery = "ServiceDelivery"
         }
     }
 
-    struct ServiceDelivery: Codable {
-        let responseTimestamp: String
-        let producerRef: String
-        let locationInformationDelivery: LocationInformationDelivery
+    public struct ServiceDelivery: Codable {
+        public let responseTimestamp: String
+        public let producerRef: String
+        public let locationInformationDelivery: LocationInformationDelivery
 
         public enum CodingKeys: String, CodingKey {
             case responseTimestamp = "ResponseTimestamp"
@@ -39,12 +39,12 @@ struct OJP: Codable {
         }
     }
 
-    struct LocationInformationDelivery: Codable {
-        let responseTimestamp: String
-        let requestMessageRef: String
-        let defaultLanguage: String
-        let calcTime: String
-        let placeResults: [PlaceResult]
+    public struct LocationInformationDelivery: Codable {
+        public let responseTimestamp: String
+        public let requestMessageRef: String
+        public let defaultLanguage: String
+        public let calcTime: String
+        public let placeResults: [PlaceResult]
 
         public enum CodingKeys: String, CodingKey {
             case responseTimestamp = "ResponseTimestamp"
@@ -55,10 +55,10 @@ struct OJP: Codable {
         }
     }
 
-    struct PlaceResult: Codable {
-        let place: Place
-        let complete: Bool
-        let probability: Float
+    public struct PlaceResult: Codable {
+        public let place: Place
+        public let complete: Bool
+        public let probability: Float
 
         public enum CodingKeys: String, CodingKey {
             case place = "Place"
@@ -67,10 +67,10 @@ struct OJP: Codable {
         }
     }
 
-    struct Place: Codable {
-        let stopPlace: StopPlace
-        let name: Name
-        let geoPosition: GeoPosition
+    public struct Place: Codable {
+        public let stopPlace: StopPlace
+        public let name: Name
+        public let geoPosition: GeoPosition
 
         public enum CodingKeys: String, CodingKey {
             case stopPlace = "StopPlace"
@@ -79,11 +79,11 @@ struct OJP: Codable {
         }
     }
 
-    struct StopPlace: Codable {
-        let stopPlaceRef: String
-        let stopPlaceName: Name
-        let privateCode: PrivateCode
-        let topographicPlaceRef: String
+    public struct StopPlace: Codable {
+        public let stopPlaceRef: String
+        public let stopPlaceName: Name
+        public let privateCode: PrivateCode
+        public let topographicPlaceRef: String
 
         public enum CodingKeys: String, CodingKey {
             case stopPlaceRef = "StopPlaceRef"
@@ -93,17 +93,17 @@ struct OJP: Codable {
         }
     }
 
-    struct Name: Codable {
-        let text: String
+    public struct Name: Codable {
+        public let text: String
 
         public enum CodingKeys: String, CodingKey {
             case text = "Text"
         }
     }
 
-    struct PrivateCode: Codable {
-        let system: String
-        let value: String
+    public struct PrivateCode: Codable {
+        public let system: String
+        public let value: String
 
         public enum CodingKeys: String, CodingKey {
             case system = "System"
@@ -111,9 +111,9 @@ struct OJP: Codable {
         }
     }
 
-    struct GeoPosition: Codable {
-        let longitude: Double
-        let latitude: Double
+    public struct GeoPosition: Codable {
+        public let longitude: Double
+        public let latitude: Double
 
         public enum CodingKeys: String, CodingKey {
             case longitude = "Longitude"
@@ -121,18 +121,18 @@ struct OJP: Codable {
         }
     }
 
-    struct Request: Codable {
-        let serviceRequest: ServiceRequest
+    public struct Request: Codable {
+        public let serviceRequest: ServiceRequest
 
         public enum CodingKeys: String, CodingKey {
             case serviceRequest = "ServiceRequest"
         }
     }
 
-    struct ServiceRequest: Codable {
-        let locationInformationRequest: LocationInformationRequest
-        let requestTimestamp: String
-        let requestorRef: String
+    public struct ServiceRequest: Codable {
+        public let locationInformationRequest: LocationInformationRequest
+        public let requestTimestamp: String
+        public let requestorRef: String
 
         public enum CodingKeys: String, CodingKey {
             case locationInformationRequest = "LocationInformationRequest"
@@ -141,33 +141,33 @@ struct OJP: Codable {
         }
     }
 
-    struct LocationInformationRequest: Codable {
-        let initialInput: InitialInput
+    public struct LocationInformationRequest: Codable {
+        public let initialInput: InitialInput
 
         public enum CodingKeys: String, CodingKey {
             case initialInput = "InitialInput"
         }
     }
 
-    struct InitialInput: Codable {
-        let geoRestriction: GeoRestriction?
+    public struct InitialInput: Codable {
+        public let geoRestriction: GeoRestriction?
 
         public enum CodingKeys: String, CodingKey {
             case geoRestriction = "GeoRestriction"
         }
     }
 
-    struct GeoRestriction: Codable {
-        let rectangle: Rectangle?
+    public struct GeoRestriction: Codable {
+        public let rectangle: Rectangle?
 
         public enum CodingKeys: String, CodingKey {
             case rectangle = "Rectangle"
         }
     }
 
-    struct Rectangle: Codable {
-        let upperLeft: GeoPosition
-        let lowerRight: GeoPosition
+    public struct Rectangle: Codable {
+        public let upperLeft: GeoPosition
+        public let lowerRight: GeoPosition
 
         public enum CodingKeys: String, CodingKey {
             case upperLeft = "UpperLeft"
@@ -175,9 +175,9 @@ struct OJP: Codable {
         }
     }
 
-    struct Restrictions: Codable {
-        let numberOfResults: Int
-        let type: String? // TODO: - add enum
+    public struct Restrictions: Codable {
+        public let numberOfResults: Int
+        public let type: String? // TODO: - add enum
 
         public enum CodingKeys: String, CodingKey {
             case numberOfResults = "NumberOfResults"
