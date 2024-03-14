@@ -7,6 +7,7 @@
 
 import UIKit
 import XMLCoder
+import OjpSDK
 
 class ViewController: UIViewController {
 
@@ -29,6 +30,18 @@ extension ViewController {
     }
     
     func parseXML_StripNS() {
+        
+        // test
+        
+        let ojpSDK = OjpSDK()
+        
+        Task {
+            
+            let stations = try? await ojpSDK.stations(from: "Bern", count: 2)
+            
+        }
+        
+        
         let xmlData = loadXML()
         
         let decoder = XMLDecoder()

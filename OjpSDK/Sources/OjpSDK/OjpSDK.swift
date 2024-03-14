@@ -13,7 +13,7 @@ public class OjpSDK {
     let baseUrl: String
     let customHttpHeaders: [String: String]?
     
-    public init(baseUrl: String = OjpSDK.ojpBaseUrl, customHttpHeaders: [String: String]?) {
+    public init(baseUrl: String = OjpSDK.ojpBaseUrl, customHttpHeaders: [String: String]? = nil) {
         self.baseUrl = baseUrl
         self.customHttpHeaders = customHttpHeaders
     }
