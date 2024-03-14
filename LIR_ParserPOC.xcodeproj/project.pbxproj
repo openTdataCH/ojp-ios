@@ -17,6 +17,7 @@
 		E10F8DCE2BA1002C00BD8AA3 /* ojp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10F8DCD2BA1002C00BD8AA3 /* ojp.swift */; };
 		E10F8DD12BA1038B00BD8AA3 /* lir-be-bbox.xml in Resources */ = {isa = PBXBuildFile; fileRef = E10F8DD02BA1038B00BD8AA3 /* lir-be-bbox.xml */; };
 		E10F8DD32BA1053400BD8AA3 /* ojp_ns.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10F8DD22BA1053400BD8AA3 /* ojp_ns.swift */; };
+		E1A12D732BA2DE48005B2968 /* geo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A12D722BA2DE48005B2968 /* geo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,7 @@
 		E10F8DCD2BA1002C00BD8AA3 /* ojp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ojp.swift; sourceTree = "<group>"; };
 		E10F8DD02BA1038B00BD8AA3 /* lir-be-bbox.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "lir-be-bbox.xml"; sourceTree = "<group>"; };
 		E10F8DD22BA1053400BD8AA3 /* ojp_ns.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ojp_ns.swift; sourceTree = "<group>"; };
+		E1A12D722BA2DE48005B2968 /* geo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = geo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +84,7 @@
 			children = (
 				E10F8DCD2BA1002C00BD8AA3 /* ojp.swift */,
 				E10F8DD22BA1053400BD8AA3 /* ojp_ns.swift */,
+				E1A12D722BA2DE48005B2968 /* geo.swift */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -173,6 +176,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E10F8DD32BA1053400BD8AA3 /* ojp_ns.swift in Sources */,
+				E1A12D732BA2DE48005B2968 /* geo.swift in Sources */,
 				E10F8DBA2BA0FCBA00BD8AA3 /* ViewController.swift in Sources */,
 				E10F8DCE2BA1002C00BD8AA3 /* ojp.swift in Sources */,
 				E10F8DB62BA0FCBA00BD8AA3 /* AppDelegate.swift in Sources */,
