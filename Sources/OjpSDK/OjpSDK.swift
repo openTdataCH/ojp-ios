@@ -6,16 +6,21 @@
 import Foundation
 
 
+public struct OjpSDKConfiguration {
+    let baseUrl: String
+    let additionalHeaders: [String: String]?
+    
+    public static var defaultConfig: OjpSDKConfiguration {
+        return OjpSDKConfiguration(baseUrl: "https://api.opentransportdata.swiss/ojp2020", additionalHeaders: nil)
+    }
+}
+
 public class OjpSDK {
     
-    public static let ojpBaseUrl = "https://api.opentransportdata.swiss/ojp2020"
+    let configuration: OjpSDKConfiguration
     
-    let baseUrl: String
-    let customHttpHeaders: [String: String]?
-    
-    public init(baseUrl: String = OjpSDK.ojpBaseUrl, customHttpHeaders: [String: String]? = nil) {
-        self.baseUrl = baseUrl
-        self.customHttpHeaders = customHttpHeaders
+    public init(configuration: OjpSDKConfiguration = OjpSDKConfiguration.defaultConfig) {
+        self.configuration = configuration
     }
     
     public func nearbyStation(from coordinates: (long: Double, lat: Double)) async throws -> Station {
