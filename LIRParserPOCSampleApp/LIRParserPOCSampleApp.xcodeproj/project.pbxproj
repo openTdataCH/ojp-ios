@@ -21,8 +21,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		922CA9F92BA2EDE9004ED602 /* ojp-ios-lir-parser-poc */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = "ojp-ios-lir-parser-poc"; sourceTree = "<group>"; };
-		E10F8DB22BA0FCBA00BD8AA3 /* LIR_ParserPOC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LIR_ParserPOC.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CF07E2DD2BA33C3100C39DE4 /* ojp-ios-lir-package */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = "ojp-ios-lir-package"; path = ..; sourceTree = "<group>"; };
+		E10F8DB22BA0FCBA00BD8AA3 /* LIRParserPOCSampleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LIRParserPOCSampleApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E10F8DB52BA0FCBA00BD8AA3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E10F8DB72BA0FCBA00BD8AA3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		E10F8DB92BA0FCBA00BD8AA3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -58,8 +58,8 @@
 		E10F8DA92BA0FCBA00BD8AA3 = {
 			isa = PBXGroup;
 			children = (
-				922CA9F92BA2EDE9004ED602 /* ojp-ios-lir-parser-poc */,
-				E10F8DB42BA0FCBA00BD8AA3 /* LIR_ParserPOC */,
+				CF07E2DD2BA33C3100C39DE4 /* ojp-ios-lir-package */,
+				E10F8DB42BA0FCBA00BD8AA3 /* LIRParserPOCSampleApp */,
 				E10F8DB32BA0FCBA00BD8AA3 /* Products */,
 				927D32632BA2E1F500421BB7 /* Frameworks */,
 			);
@@ -68,12 +68,12 @@
 		E10F8DB32BA0FCBA00BD8AA3 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				E10F8DB22BA0FCBA00BD8AA3 /* LIR_ParserPOC.app */,
+				E10F8DB22BA0FCBA00BD8AA3 /* LIRParserPOCSampleApp.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		E10F8DB42BA0FCBA00BD8AA3 /* LIR_ParserPOC */ = {
+		E10F8DB42BA0FCBA00BD8AA3 /* LIRParserPOCSampleApp */ = {
 			isa = PBXGroup;
 			children = (
 				E10F8DCF2BA1036B00BD8AA3 /* mocks */,
@@ -86,7 +86,7 @@
 				E10F8DC02BA0FCBB00BD8AA3 /* LaunchScreen.storyboard */,
 				E10F8DC32BA0FCBB00BD8AA3 /* Info.plist */,
 			);
-			path = LIR_ParserPOC;
+			path = LIRParserPOCSampleApp;
 			sourceTree = "<group>";
 		};
 		E10F8DCC2BA1001A00BD8AA3 /* models */ = {
@@ -109,9 +109,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		E10F8DB12BA0FCBA00BD8AA3 /* LIR_ParserPOC */ = {
+		E10F8DB12BA0FCBA00BD8AA3 /* LIRParserPOCSampleApp */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E10F8DC62BA0FCBB00BD8AA3 /* Build configuration list for PBXNativeTarget "LIR_ParserPOC" */;
+			buildConfigurationList = E10F8DC62BA0FCBB00BD8AA3 /* Build configuration list for PBXNativeTarget "LIRParserPOCSampleApp" */;
 			buildPhases = (
 				E10F8DAE2BA0FCBA00BD8AA3 /* Sources */,
 				E10F8DAF2BA0FCBA00BD8AA3 /* Frameworks */,
@@ -121,13 +121,13 @@
 			);
 			dependencies = (
 			);
-			name = LIR_ParserPOC;
+			name = LIRParserPOCSampleApp;
 			packageProductDependencies = (
 				E10F8DCA2BA0FFD200BD8AA3 /* XMLCoder */,
 				922CA9FA2BA2EE04004ED602 /* OjpSDK */,
 			);
 			productName = LIR_ParserPOC;
-			productReference = E10F8DB22BA0FCBA00BD8AA3 /* LIR_ParserPOC.app */;
+			productReference = E10F8DB22BA0FCBA00BD8AA3 /* LIRParserPOCSampleApp.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -145,7 +145,7 @@
 					};
 				};
 			};
-			buildConfigurationList = E10F8DAD2BA0FCBA00BD8AA3 /* Build configuration list for PBXProject "LIR_ParserPOC" */;
+			buildConfigurationList = E10F8DAD2BA0FCBA00BD8AA3 /* Build configuration list for PBXProject "LIRParserPOCSampleApp" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -161,7 +161,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				E10F8DB12BA0FCBA00BD8AA3 /* LIR_ParserPOC */,
+				E10F8DB12BA0FCBA00BD8AA3 /* LIRParserPOCSampleApp */,
 			);
 		};
 /* End PBXProject section */
@@ -341,8 +341,9 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = LIR_ParserPOC/Info.plist;
+				INFOPLIST_FILE = LIRParserPOCSampleApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -368,8 +369,9 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = LIR_ParserPOC/Info.plist;
+				INFOPLIST_FILE = LIRParserPOCSampleApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -391,7 +393,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		E10F8DAD2BA0FCBA00BD8AA3 /* Build configuration list for PBXProject "LIR_ParserPOC" */ = {
+		E10F8DAD2BA0FCBA00BD8AA3 /* Build configuration list for PBXProject "LIRParserPOCSampleApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E10F8DC42BA0FCBB00BD8AA3 /* Debug */,
@@ -400,7 +402,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E10F8DC62BA0FCBB00BD8AA3 /* Build configuration list for PBXNativeTarget "LIR_ParserPOC" */ = {
+		E10F8DC62BA0FCBB00BD8AA3 /* Build configuration list for PBXNativeTarget "LIRParserPOCSampleApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E10F8DC72BA0FCBB00BD8AA3 /* Debug */,
