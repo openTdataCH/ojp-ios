@@ -5,7 +5,7 @@ import PackageDescription
 
 let package = Package(
     name: "OjpSDK",
-    platforms: [.iOS(.v13)],
+    platforms: [.iOS(.v15)],
     products: [
         // Products define the executables and libraries a package produces, making them visible to other packages.
         .library(
@@ -19,6 +19,8 @@ let package = Package(
             name: "OjpSDK"),
         .testTarget(
             name: "OjpSDKTests",
-            dependencies: ["OjpSDK"]),
+            dependencies: ["OjpSDK"],
+            resources: [.copy("MockFiles/lir-be-bbox.xml")]
+        ),
     ]
 )
