@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		927D32652BA2E1F600421BB7 /* OjpSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 927D32642BA2E1F600421BB7 /* OjpSDK */; };
+		922CA9FB2BA2EE04004ED602 /* OjpSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 922CA9FA2BA2EE04004ED602 /* OjpSDK */; };
 		E10F8DB62BA0FCBA00BD8AA3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10F8DB52BA0FCBA00BD8AA3 /* AppDelegate.swift */; };
 		E10F8DB82BA0FCBA00BD8AA3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10F8DB72BA0FCBA00BD8AA3 /* SceneDelegate.swift */; };
 		E10F8DBA2BA0FCBA00BD8AA3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10F8DB92BA0FCBA00BD8AA3 /* ViewController.swift */; };
@@ -21,7 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		927D32622BA2E1D700421BB7 /* OjpSDK */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = OjpSDK; sourceTree = "<group>"; };
+		922CA9F92BA2EDE9004ED602 /* ojp-ios-lir-parser-poc */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = "ojp-ios-lir-parser-poc"; sourceTree = "<group>"; };
 		E10F8DB22BA0FCBA00BD8AA3 /* LIR_ParserPOC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LIR_ParserPOC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E10F8DB52BA0FCBA00BD8AA3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E10F8DB72BA0FCBA00BD8AA3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -41,7 +41,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E10F8DCB2BA0FFD200BD8AA3 /* XMLCoder in Frameworks */,
-				927D32652BA2E1F600421BB7 /* OjpSDK in Frameworks */,
+				922CA9FB2BA2EE04004ED602 /* OjpSDK in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -58,7 +58,7 @@
 		E10F8DA92BA0FCBA00BD8AA3 = {
 			isa = PBXGroup;
 			children = (
-				927D32622BA2E1D700421BB7 /* OjpSDK */,
+				922CA9F92BA2EDE9004ED602 /* ojp-ios-lir-parser-poc */,
 				E10F8DB42BA0FCBA00BD8AA3 /* LIR_ParserPOC */,
 				E10F8DB32BA0FCBA00BD8AA3 /* Products */,
 				927D32632BA2E1F500421BB7 /* Frameworks */,
@@ -124,7 +124,7 @@
 			name = LIR_ParserPOC;
 			packageProductDependencies = (
 				E10F8DCA2BA0FFD200BD8AA3 /* XMLCoder */,
-				927D32642BA2E1F600421BB7 /* OjpSDK */,
+				922CA9FA2BA2EE04004ED602 /* OjpSDK */,
 			);
 			productName = LIR_ParserPOC;
 			productReference = E10F8DB22BA0FCBA00BD8AA3 /* LIR_ParserPOC.app */;
@@ -423,7 +423,7 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		927D32642BA2E1F600421BB7 /* OjpSDK */ = {
+		922CA9FA2BA2EE04004ED602 /* OjpSDK */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = OjpSDK;
 		};
