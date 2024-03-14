@@ -8,6 +8,8 @@
 import Foundation
 import XMLCoder
 
+let OJP_SDK_Version = "0.9.1"
+
 struct OJP: Codable {
     let request: Request?
     let response: Response?
