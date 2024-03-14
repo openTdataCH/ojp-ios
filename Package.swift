@@ -12,11 +12,17 @@ let package = Package(
             name: "OjpSDK",
             targets: ["OjpSDK"]),
     ],
+    dependencies: [
+        .package(url: "https://github.com/CoreOffice/XMLCoder.git", from: "0.17.1")
+    ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
         // Targets can depend on other targets in this package and products from dependencies.
         .target(
-            name: "OjpSDK"),
+            name: "OjpSDK",
+            dependencies: [
+                .product(name: "XMLCoder", package: "xmlcoder")
+            ]),
         .testTarget(
             name: "OjpSDKTests",
             dependencies: ["OjpSDK"],
