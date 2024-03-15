@@ -180,12 +180,14 @@ public struct OJPv2: Codable {
     }
 
     public struct Restrictions: Codable {
+        public let type: String
         public let numberOfResults: Int
-        public let type: String? // TODO: - add enum
+        let includePtModes: Bool
 
         public enum CodingKeys: String, CodingKey {
-            case numberOfResults = "NumberOfResults"
             case type = "Type"
+            case numberOfResults = "NumberOfResults"
+            case includePtModes = "IncludePtModes"
         }
     }
 }
