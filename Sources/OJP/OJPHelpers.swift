@@ -66,7 +66,8 @@ enum OJPHelpers {
         let decoder = XMLDecoder()
         decoder.keyDecodingStrategy = .convertFromCapitalized
         decoder.dateDecodingStrategy = .iso8601
-        decoder.shouldProcessNamespaces = true
+        // disable namespace stripping until we have a working solution
+        // decoder.shouldProcessNamespaces = true
         decoder.keyDecodingStrategy = .useDefaultKeys
 
         print("1) Response with XML - no namespaces")
