@@ -20,15 +20,18 @@ enum OJPHelpers {
 
     class LocationInformationRequest {
         public static func initWithBBOX(bbox: Geo.Bbox) -> OJPv2 {
+            let requestTimestamp = OJPHelpers.FormattedDate()
+            
             let upperLeft = OJPv2.GeoPosition(longitude: bbox.minX, latitude: bbox.maxY)
             let lowerRight = OJPv2.GeoPosition(longitude: bbox.maxX, latitude: bbox.minY)
             let rectangle = OJPv2.Rectangle(upperLeft: upperLeft, lowerRight: lowerRight)
             let geoRestriction = OJPv2.GeoRestriction(rectangle: rectangle)
-            let locationInformationRequest = OJPv2.LocationInformationRequest(initialInput: OJPv2.InitialInput(geoRestriction: geoRestriction))
+            let restrictions = OJPv2.Restrictions(type: "stop", numberOfResults: 10, includePtModes: true)
+            
+            let locationInformationRequest = OJPv2.LocationInformationRequest(requestTimestamp: requestTimestamp, initialInput: OJPv2.InitialInput(geoRestriction: geoRestriction), restrictions: restrictions)
 
-            let requestTimestamp = OJPHelpers.FormattedDate()
             let requestorRef = "OJP_Demo_iOS_\(OJP_SDK_Version)"
-            let ojp = OJPv2(request: OJPv2.Request(serviceRequest: OJPv2.ServiceRequest(locationInformationRequest: locationInformationRequest, requestTimestamp: requestTimestamp, requestorRef: requestorRef)), response: nil)
+            let ojp = OJPv2(request: OJPv2.Request(serviceRequest: OJPv2.ServiceRequest(requestTimestamp: requestTimestamp, requestorRef: requestorRef, locationInformationRequest: locationInformationRequest)), response: nil)
 
             return ojp
         }
