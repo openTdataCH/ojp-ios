@@ -33,12 +33,19 @@ final class OjpSDKTests: XCTestCase {
     func testLoader() async throws {
         let body = try OJPHelpers.buildXMLRequest().data(using: .utf8)!
 
-        let ojp = OJP(loadingStrategy: .http(.test))
+        let ojp = OJP(loadingStrategy: .http(.int))
         let (data, response) = try await ojp.loader(body)
         dump(response)
 
         if let xmlString = String(data: data, encoding: .utf8) {
             print(xmlString)
+            if let utf16Data = xmlString.data(using: .utf16) {
+                let lir = try OJPHelpers.parseXMLStrippingNamespace(utf16Data)
+                print("places:")
+                for placeResult in lir.placeResults {
+                    print(placeResult.place.name.text)
+                }
+            }
         }
 
         let httpResponse = response as? HTTPURLResponse
