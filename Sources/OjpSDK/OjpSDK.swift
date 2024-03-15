@@ -7,21 +7,38 @@ public struct OjpSDKConfiguration {
     public let APIToken: String
     public let baseURL: String
     public let additionalHeaders: [(key: String, value: String)]?
+    public let loadingStragegy: LoadingStrategy
 
-    public init(APIToken: String, baseURL: String, additionalHeaders: [(key: String, value: String)]? = nil) {
+    public init(APIToken: String, baseURL: String, additionalHeaders: [(key: String, value: String)]? = nil, loadingStragegy: LoadingStrategy) {
         self.APIToken = APIToken
         self.baseURL = baseURL
         self.additionalHeaders = additionalHeaders
+        self.loadingStragegy = loadingStragegy
     }
+}
+
+
+public typealias Loader = (Data) async throws -> (Data, URLResponse)
+
+public enum LoadingStrategy {
+    case http
+    case mock(Loader)
 }
 
 public class OjpSDK {
     let configuration: OjpSDKConfiguration
-    let loader: HTTPLoader
+    let loader: Loader
 
     public init(configuration: OjpSDKConfiguration) {
         self.configuration = configuration
-        self.loader = HTTPLoader(configuration: configuration)
+
+        switch configuration.loadingStragegy {
+        case .http:
+            let httpLoader = HTTPLoader(configuration: configuration)
+            loader = httpLoader.load(request:)
+        case .mock(let loader):
+            self.loader = loader
+        }
     }
 
     public func nearbyStation(from _: (long: Double, lat: Double)) async throws -> Station {

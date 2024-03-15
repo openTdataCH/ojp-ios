@@ -32,8 +32,35 @@ final class OjpSDKTests: XCTestCase {
 
     func testLoader() async throws {
         let body = try OJPHelpers.buildXMLRequest().data(using: .utf8)!
-        let configuration = OjpSDKConfiguration(APIToken: "", baseURL: "https://api.opentransportdata.swiss/ojp2020")
-        let (data, response) = try await HTTPLoader(configuration: configuration).load(request: body)
+        let configuration = OjpSDKConfiguration(APIToken: "XXXXXXX", baseURL: "XXXX", loadingStragegy: .http)
+        let ojp = OjpSDK(configuration: configuration)
+        let (data, response) = try await ojp.loader(body)
+        dump(response)
+
+        if let xmlString = String(data: data, encoding: .utf8) {
+            print(xmlString)
+        }
+
+        let httpResponse = response as? HTTPURLResponse
+        XCTAssertNotNil(httpResponse)
+        XCTAssert(httpResponse?.statusCode == 200)
+    }
+
+    func testMockLoader() async throws {
+        let body = try OJPHelpers.buildXMLRequest().data(using: .utf8)!
+        
+        let configuration = OjpSDKConfiguration(APIToken: "XXXXXXX", baseURL: "XXXX", loadingStragegy: .mock({ _ in
+            (try TestHelpers.loadXML(),
+             HTTPURLResponse(
+                url: URL(string: "localhost")!,
+                statusCode: 200,
+                httpVersion: nil,
+                headerFields: [:])!
+            )
+        }))
+
+        let ojp = OjpSDK(configuration: configuration)
+        let (data, response) = try await ojp.loader(body)
         dump(response)
 
         if let xmlString = String(data: data, encoding: .utf8) {
