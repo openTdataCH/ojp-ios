@@ -135,9 +135,9 @@ public struct OJPv2: Codable {
         public let locationInformationRequest: LocationInformationRequest
 
         public enum CodingKeys: String, CodingKey {
-            case locationInformationRequest = "LocationInformationRequest"
             case requestTimestamp = "siri:RequestTimestamp"
             case requestorRef = "siri:RequestorRef"
+            case locationInformationRequest = "OJPLocationInformationRequest"
         }
     }
 
