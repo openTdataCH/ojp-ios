@@ -142,10 +142,14 @@ public struct OJPv2: Codable {
     }
 
     public struct LocationInformationRequest: Codable {
+        public let requestTimestamp: String
         public let initialInput: InitialInput
+        public let restrictions: Restrictions
 
         public enum CodingKeys: String, CodingKey {
+            case requestTimestamp = "siri:RequestTimestamp"
             case initialInput = "InitialInput"
+            case restrictions = "Restrictions"
         }
     }
 
