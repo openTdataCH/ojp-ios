@@ -1,2 +1,7 @@
-# ojp-ios-lir-parser-poc
-OJP LIR Parser PoC (iOS)
+# OJP LocationInformationRequest PoC for iOS
+
+WIP
+
+## Scripts
+
+Run `format-code.sh` to execute swiftformat on the library.
