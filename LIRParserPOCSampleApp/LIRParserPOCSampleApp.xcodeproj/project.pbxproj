@@ -7,27 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		922CA9FB2BA2EE04004ED602 /* OjpSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 922CA9FA2BA2EE04004ED602 /* OjpSDK */; };
-		CF07E2E32BA34A3B00C39DE4 /* ojp_ns.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF07E2DF2BA34A3B00C39DE4 /* ojp_ns.swift */; };
-		CF07E2E42BA34A3B00C39DE4 /* geo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF07E2E02BA34A3B00C39DE4 /* geo.swift */; };
-		CF07E2E52BA34A3B00C39DE4 /* ojp_helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF07E2E12BA34A3B00C39DE4 /* ojp_helpers.swift */; };
-		CF07E2E62BA34A3B00C39DE4 /* ojp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF07E2E22BA34A3B00C39DE4 /* ojp.swift */; };
 		CF07E2E82BA34A6200C39DE4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF07E2E72BA34A6200C39DE4 /* ViewController.swift */; };
+		CF07E2EB2BA446A600C39DE4 /* OJP in Frameworks */ = {isa = PBXBuildFile; productRef = CF07E2EA2BA446A600C39DE4 /* OJP */; };
 		E10F8DB62BA0FCBA00BD8AA3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10F8DB52BA0FCBA00BD8AA3 /* AppDelegate.swift */; };
 		E10F8DB82BA0FCBA00BD8AA3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10F8DB72BA0FCBA00BD8AA3 /* SceneDelegate.swift */; };
 		E10F8DBD2BA0FCBA00BD8AA3 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = E10F8DBC2BA0FCBA00BD8AA3 /* Base */; };
 		E10F8DBF2BA0FCBB00BD8AA3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E10F8DBE2BA0FCBB00BD8AA3 /* Assets.xcassets */; };
 		E10F8DC22BA0FCBB00BD8AA3 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = E10F8DC12BA0FCBB00BD8AA3 /* Base */; };
 		E10F8DCB2BA0FFD200BD8AA3 /* XMLCoder in Frameworks */ = {isa = PBXBuildFile; productRef = E10F8DCA2BA0FFD200BD8AA3 /* XMLCoder */; };
-		E10F8DD12BA1038B00BD8AA3 /* lir-be-bbox.xml in Resources */ = {isa = PBXBuildFile; fileRef = E10F8DD02BA1038B00BD8AA3 /* lir-be-bbox.xml */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		CF07E2DD2BA33C3100C39DE4 /* ojp-ios-lir-package */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = "ojp-ios-lir-package"; path = ..; sourceTree = "<group>"; };
-		CF07E2DF2BA34A3B00C39DE4 /* ojp_ns.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ojp_ns.swift; sourceTree = "<group>"; };
-		CF07E2E02BA34A3B00C39DE4 /* geo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = geo.swift; sourceTree = "<group>"; };
-		CF07E2E12BA34A3B00C39DE4 /* ojp_helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ojp_helpers.swift; sourceTree = "<group>"; };
-		CF07E2E22BA34A3B00C39DE4 /* ojp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ojp.swift; sourceTree = "<group>"; };
 		CF07E2E72BA34A6200C39DE4 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		CF07E2E92BA3568B00C39DE4 /* format-code.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; name = "format-code.sh"; path = "../format-code.sh"; sourceTree = "<group>"; };
 		E10F8DB22BA0FCBA00BD8AA3 /* LIRParserPOCSampleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LIRParserPOCSampleApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -37,7 +28,6 @@
 		E10F8DBE2BA0FCBB00BD8AA3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E10F8DC12BA0FCBB00BD8AA3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E10F8DC32BA0FCBB00BD8AA3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E10F8DD02BA1038B00BD8AA3 /* lir-be-bbox.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "lir-be-bbox.xml"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,8 +35,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF07E2EB2BA446A600C39DE4 /* OJP in Frameworks */,
 				E10F8DCB2BA0FFD200BD8AA3 /* XMLCoder in Frameworks */,
-				922CA9FB2BA2EE04004ED602 /* OjpSDK in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,8 +72,6 @@
 		E10F8DB42BA0FCBA00BD8AA3 /* LIRParserPOCSampleApp */ = {
 			isa = PBXGroup;
 			children = (
-				E10F8DCF2BA1036B00BD8AA3 /* mocks */,
-				E10F8DCC2BA1001A00BD8AA3 /* models */,
 				E10F8DB52BA0FCBA00BD8AA3 /* AppDelegate.swift */,
 				CF07E2E72BA34A6200C39DE4 /* ViewController.swift */,
 				E10F8DB72BA0FCBA00BD8AA3 /* SceneDelegate.swift */,
@@ -93,25 +81,6 @@
 				E10F8DC32BA0FCBB00BD8AA3 /* Info.plist */,
 			);
 			path = LIRParserPOCSampleApp;
-			sourceTree = "<group>";
-		};
-		E10F8DCC2BA1001A00BD8AA3 /* models */ = {
-			isa = PBXGroup;
-			children = (
-				CF07E2E02BA34A3B00C39DE4 /* geo.swift */,
-				CF07E2E12BA34A3B00C39DE4 /* ojp_helpers.swift */,
-				CF07E2DF2BA34A3B00C39DE4 /* ojp_ns.swift */,
-				CF07E2E22BA34A3B00C39DE4 /* ojp.swift */,
-			);
-			path = models;
-			sourceTree = "<group>";
-		};
-		E10F8DCF2BA1036B00BD8AA3 /* mocks */ = {
-			isa = PBXGroup;
-			children = (
-				E10F8DD02BA1038B00BD8AA3 /* lir-be-bbox.xml */,
-			);
-			path = mocks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -132,7 +101,7 @@
 			name = LIRParserPOCSampleApp;
 			packageProductDependencies = (
 				E10F8DCA2BA0FFD200BD8AA3 /* XMLCoder */,
-				922CA9FA2BA2EE04004ED602 /* OjpSDK */,
+				CF07E2EA2BA446A600C39DE4 /* OJP */,
 			);
 			productName = LIR_ParserPOC;
 			productReference = E10F8DB22BA0FCBA00BD8AA3 /* LIRParserPOCSampleApp.app */;
@@ -180,7 +149,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E10F8DBF2BA0FCBB00BD8AA3 /* Assets.xcassets in Resources */,
-				E10F8DD12BA1038B00BD8AA3 /* lir-be-bbox.xml in Resources */,
 				E10F8DC22BA0FCBB00BD8AA3 /* Base in Resources */,
 				E10F8DBD2BA0FCBA00BD8AA3 /* Base in Resources */,
 			);
@@ -193,10 +161,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CF07E2E62BA34A3B00C39DE4 /* ojp.swift in Sources */,
-				CF07E2E32BA34A3B00C39DE4 /* ojp_ns.swift in Sources */,
-				CF07E2E42BA34A3B00C39DE4 /* geo.swift in Sources */,
-				CF07E2E52BA34A3B00C39DE4 /* ojp_helpers.swift in Sources */,
 				CF07E2E82BA34A6200C39DE4 /* ViewController.swift in Sources */,
 				E10F8DB62BA0FCBA00BD8AA3 /* AppDelegate.swift in Sources */,
 				E10F8DB82BA0FCBA00BD8AA3 /* SceneDelegate.swift in Sources */,
@@ -277,7 +241,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -334,7 +298,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -437,9 +401,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		922CA9FA2BA2EE04004ED602 /* OjpSDK */ = {
+		CF07E2EA2BA446A600C39DE4 /* OJP */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = OjpSDK;
+			productName = OJP;
 		};
 		E10F8DCA2BA0FFD200BD8AA3 /* XMLCoder */ = {
 			isa = XCSwiftPackageProductDependency;
