@@ -38,8 +38,19 @@ enum OJPHelpers {
         // BE/Köniz area
         let bbox = Geo.Bbox(minLongitude: 7.372097, minLatitude: 46.904860, maxLongitude: 7.479042, maxLatitude: 46.942787)
         let ojp = OJPHelpers.LocationInformationRequest.initWithBBOX(bbox: bbox)
+        
+        // TODO - move them in SDK?
+        let requestXMLRootAttributes = [
+            "xmlns": "http://www.vdv.de/ojp",
+            "xmlns:siri": "http://www.siri.org.uk/siri",
+            "xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance",
+            "version": "2.0",
+        ]
+        
+        let encoder = XMLEncoder()
+        encoder.outputFormatting = .prettyPrinted
 
-        let ojpXMLData = try XMLEncoder().encode(ojp, withRootKey: "ojp")
+        let ojpXMLData = try encoder.encode(ojp, withRootKey: "OJP", rootAttributes: requestXMLRootAttributes)
         guard let ojpXML = String(data: ojpXMLData, encoding: .utf8) else {
             throw NSError(domain: "can't encode String", code: 1)
         }
