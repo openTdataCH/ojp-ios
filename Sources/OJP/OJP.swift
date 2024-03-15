@@ -25,7 +25,7 @@ public enum LoadingStrategy {
     case mock(Loader)
 }
 
-public class OjpSDK {
+public class OJP {
     let configuration: OjpSDKConfiguration
     let loader: Loader
 

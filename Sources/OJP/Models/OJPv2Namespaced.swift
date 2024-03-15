@@ -1,5 +1,5 @@
 //
-//  OJPNamespaced.swift
+//  OJPv2Namespaced.swift
 //  LIR_ParserPOC
 //
 //  Created by Vasile Cotovanu on 12.03.2024.
@@ -8,8 +8,8 @@
 import Foundation
 import XMLCoder
 
-// Same as OJP but with namespaces
-struct OJPNamespaced: Codable {
+// Same as OJPv2 but with namespaces
+struct OJPv2Namespaced: Codable {
     let response: Response
 
     public enum CodingKeys: String, CodingKey {

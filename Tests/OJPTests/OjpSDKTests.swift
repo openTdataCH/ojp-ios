@@ -1,4 +1,4 @@
-@testable import OjpSDK
+@testable import OJP
 import XCTest
 
 final class OjpSDKTests: XCTestCase {
@@ -33,7 +33,7 @@ final class OjpSDKTests: XCTestCase {
     func testLoader() async throws {
         let body = try OJPHelpers.buildXMLRequest().data(using: .utf8)!
         let configuration = OjpSDKConfiguration(APIToken: "XXXXXXX", baseURL: "XXXX", loadingStragegy: .http)
-        let ojp = OjpSDK(configuration: configuration)
+        let ojp = OJP(configuration: configuration)
         let (data, response) = try await ojp.loader(body)
         dump(response)
 
@@ -59,7 +59,7 @@ final class OjpSDKTests: XCTestCase {
             )
         }))
 
-        let ojp = OjpSDK(configuration: configuration)
+        let ojp = OJP(configuration: configuration)
         let (data, response) = try await ojp.loader(body)
         dump(response)
 

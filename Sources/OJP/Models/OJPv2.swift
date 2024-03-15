@@ -1,5 +1,5 @@
 //
-//  OJP.swift
+//  OJPv2.swift
 //  LIR_ParserPOC
 //
 //  Created by Vasile Cotovanu on 12.03.2024.
@@ -10,7 +10,7 @@ import XMLCoder
 
 let OJP_SDK_Version = "0.9.1"
 
-public struct OJP: Codable {
+public struct OJPv2: Codable {
     public let request: Request?
     public let response: Response?
 

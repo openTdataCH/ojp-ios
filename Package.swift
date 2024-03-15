@@ -4,13 +4,13 @@
 import PackageDescription
 
 let package = Package(
-    name: "OjpSDK",
+    name: "OJP",
     platforms: [.iOS(.v15)],
     products: [
         // Products define the executables and libraries a package produces, making them visible to other packages.
         .library(
-            name: "OjpSDK",
-            targets: ["OjpSDK"]),
+            name: "OJP",
+            targets: ["OJP"]),
     ],
     dependencies: [
         .package(url: "https://github.com/CoreOffice/XMLCoder.git", from: "0.17.1"),
@@ -20,14 +20,14 @@ let package = Package(
         // Targets are the basic building blocks of a package, defining a module or a test suite.
         // Targets can depend on other targets in this package and products from dependencies.
         .target(
-            name: "OjpSDK",
+            name: "OJP",
             dependencies: [
                 .product(name: "XMLCoder", package: "xmlcoder")
             ]),
         .testTarget(
-            name: "OjpSDKTests",
-            dependencies: ["OjpSDK"],
-            resources: [.copy("MockFiles/lir-be-bbox.xml")]
+            name: "OJPTests",
+            dependencies: ["OJP"],
+            resources: [.process("Resources")]
         ),
     ]
 )

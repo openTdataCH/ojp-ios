@@ -19,16 +19,16 @@ enum OJPHelpers {
     }
 
     class LocationInformationRequest {
-        public static func initWithBBOX(bbox: Geo.Bbox) -> OJP {
-            let upperLeft = OJP.GeoPosition(longitude: bbox.minX, latitude: bbox.maxY)
-            let lowerRight = OJP.GeoPosition(longitude: bbox.maxX, latitude: bbox.minY)
-            let rectangle = OJP.Rectangle(upperLeft: upperLeft, lowerRight: lowerRight)
-            let geoRestriction = OJP.GeoRestriction(rectangle: rectangle)
-            let locationInformationRequest = OJP.LocationInformationRequest(initialInput: OJP.InitialInput(geoRestriction: geoRestriction))
+        public static func initWithBBOX(bbox: Geo.Bbox) -> OJPv2 {
+            let upperLeft = OJPv2.GeoPosition(longitude: bbox.minX, latitude: bbox.maxY)
+            let lowerRight = OJPv2.GeoPosition(longitude: bbox.maxX, latitude: bbox.minY)
+            let rectangle = OJPv2.Rectangle(upperLeft: upperLeft, lowerRight: lowerRight)
+            let geoRestriction = OJPv2.GeoRestriction(rectangle: rectangle)
+            let locationInformationRequest = OJPv2.LocationInformationRequest(initialInput: OJPv2.InitialInput(geoRestriction: geoRestriction))
 
             let requestTimestamp = OJPHelpers.FormattedDate()
             let requestorRef = "OJP_Demo_iOS_\(OJP_SDK_Version)"
-            let ojp = OJP(request: OJP.Request(serviceRequest: OJP.ServiceRequest(locationInformationRequest: locationInformationRequest, requestTimestamp: requestTimestamp, requestorRef: requestorRef)), response: nil)
+            let ojp = OJPv2(request: OJPv2.Request(serviceRequest: OJPv2.ServiceRequest(locationInformationRequest: locationInformationRequest, requestTimestamp: requestTimestamp, requestorRef: requestorRef)), response: nil)
 
             return ojp
         }
@@ -48,7 +48,7 @@ enum OJPHelpers {
         return ojpXML
     }
 
-    static func parseXMLStrippingNamespace(_ xmlData: Data) throws -> OJP.LocationInformationDelivery {
+    static func parseXMLStrippingNamespace(_ xmlData: Data) throws -> OJPv2.LocationInformationDelivery {
         let decoder = XMLDecoder()
         decoder.keyDecodingStrategy = .convertFromCapitalized
         decoder.dateDecodingStrategy = .iso8601
@@ -59,7 +59,7 @@ enum OJPHelpers {
         print("Decoder keyDecodingStrategy: \(decoder.keyDecodingStrategy)")
         print()
 
-        let ojp = try decoder.decode(OJP.self, from: xmlData)
+        let ojp = try decoder.decode(OJPv2.self, from: xmlData)
         if let response = ojp.response {
             for placeResult in response.serviceDelivery.locationInformationDelivery.placeResults {
                 print(placeResult)
@@ -74,13 +74,13 @@ enum OJPHelpers {
         return lir
     }
 
-    static func parseXMLKeepingNamespace(_ xmlData: Data) throws -> OJPNamespaced {
+    static func parseXMLKeepingNamespace(_ xmlData: Data) throws -> OJPv2Namespaced {
         // without namespaces
         let decoder2 = XMLDecoder()
         decoder2.keyDecodingStrategy = .convertFromCapitalized
         decoder2.keyDecodingStrategy = .useDefaultKeys
 
-        let response2 = try decoder2.decode(OJPNamespaced.self, from: xmlData)
+        let response2 = try decoder2.decode(OJPv2Namespaced.self, from: xmlData)
         print("2) Response with XML namespaces")
         print(response2)
         print()
