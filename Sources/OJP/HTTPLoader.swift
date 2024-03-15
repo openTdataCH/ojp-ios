@@ -8,9 +8,9 @@
 import Foundation
 
 class HTTPLoader {
-    let configuration: OjpSDKConfiguration
+    let configuration: APIConfiguration
 
-    init(configuration: OjpSDKConfiguration) {
+    init(configuration: APIConfiguration) {
         self.configuration = configuration
     }
 
@@ -22,10 +22,10 @@ class HTTPLoader {
     }
 
     private var baseRequest: URLRequest {
-        let url = URL(string: configuration.baseURL)!
+        let url = URL(string: configuration.apiEndPoint)!
         var urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = "POST"
-        urlRequest.addValue("Bearer \(configuration.APIToken)", forHTTPHeaderField: "Authorization")
+        urlRequest.addValue("Bearer \(configuration.authBearerKey)", forHTTPHeaderField: "Authorization")
         urlRequest.addValue("application/xml", forHTTPHeaderField: "Content-Type")
 
         if let headers = configuration.additionalHeaders {

@@ -32,8 +32,8 @@ final class OjpSDKTests: XCTestCase {
 
     func testLoader() async throws {
         let body = try OJPHelpers.buildXMLRequest().data(using: .utf8)!
-        let configuration = OjpSDKConfiguration(APIToken: "XXXXXXX", baseURL: "XXXX", loadingStragegy: .http)
-        let ojp = OJP(configuration: configuration)
+
+        let ojp = OJP(loadingStrategy: .http(.test))
         let (data, response) = try await ojp.loader(body)
         dump(response)
 
@@ -48,27 +48,25 @@ final class OjpSDKTests: XCTestCase {
 
     func testMockLoader() async throws {
         let body = try OJPHelpers.buildXMLRequest().data(using: .utf8)!
-        
-        let configuration = OjpSDKConfiguration(APIToken: "XXXXXXX", baseURL: "XXXX", loadingStragegy: .mock({ _ in
-            (try TestHelpers.loadXML(),
-             HTTPURLResponse(
-                url: URL(string: "localhost")!,
-                statusCode: 200,
-                httpVersion: nil,
-                headerFields: [:])!
-            )
-        }))
 
-        let ojp = OJP(configuration: configuration)
+        let mock = LoadingStrategy.mock { _ in
+            try (TestHelpers.loadXML(),
+                 HTTPURLResponse(
+                     url: URL(string: "localhost")!,
+                     statusCode: 200,
+                     httpVersion: nil,
+                     headerFields: [:]
+                 )!)
+        }
+
+        let ojp = OJP(loadingStrategy: mock)
         let (data, response) = try await ojp.loader(body)
         dump(response)
 
         if let xmlString = String(data: data, encoding: .utf8) {
             print(xmlString)
         }
-
-        let httpResponse = response as? HTTPURLResponse
-        XCTAssertNotNil(httpResponse)
-        XCTAssert(httpResponse?.statusCode == 200)
+        let lir = try OJPHelpers.parseXMLStrippingNamespace(data)
+        XCTAssert(lir.placeResults.count == 26)
     }
 }
