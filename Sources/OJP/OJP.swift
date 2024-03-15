@@ -30,7 +30,7 @@ public class OJP {
 
         // give back the response
 
-        return Station(name: "Test", latitude: 3.4, longitude: 7.6)
+        Station(name: "Test", latitude: 3.4, longitude: 7.6)
     }
 
     public func stations(from _: String, count _: Int) async throws -> [Station] {
@@ -40,6 +40,6 @@ public class OJP {
 
         // give back the response
 
-        return [Station(name: "Test", latitude: 3.4, longitude: 7.6)]
+        [Station(name: "Test", latitude: 3.4, longitude: 7.6)]
     }
 }

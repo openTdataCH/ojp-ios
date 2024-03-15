@@ -21,13 +21,13 @@ enum OJPHelpers {
     class LocationInformationRequest {
         public static func initWithBBOX(bbox: Geo.Bbox) -> OJPv2 {
             let requestTimestamp = OJPHelpers.FormattedDate()
-            
+
             let upperLeft = OJPv2.GeoPosition(longitude: bbox.minX, latitude: bbox.maxY)
             let lowerRight = OJPv2.GeoPosition(longitude: bbox.maxX, latitude: bbox.minY)
             let rectangle = OJPv2.Rectangle(upperLeft: upperLeft, lowerRight: lowerRight)
             let geoRestriction = OJPv2.GeoRestriction(rectangle: rectangle)
             let restrictions = OJPv2.Restrictions(type: "stop", numberOfResults: 10, includePtModes: true)
-            
+
             let locationInformationRequest = OJPv2.LocationInformationRequest(requestTimestamp: requestTimestamp, initialInput: OJPv2.InitialInput(geoRestriction: geoRestriction), restrictions: restrictions)
 
             let requestorRef = "OJP_Demo_iOS_\(OJP_SDK_Version)"
@@ -41,15 +41,15 @@ enum OJPHelpers {
         // BE/Köniz area
         let bbox = Geo.Bbox(minLongitude: 7.372097, minLatitude: 46.904860, maxLongitude: 7.479042, maxLatitude: 46.942787)
         let ojp = OJPHelpers.LocationInformationRequest.initWithBBOX(bbox: bbox)
-        
-        // TODO - move them in SDK?
+
+        // TODO: - move them in SDK?
         let requestXMLRootAttributes = [
             "xmlns": "http://www.vdv.de/ojp",
             "xmlns:siri": "http://www.siri.org.uk/siri",
             "xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance",
             "version": "2.0",
         ]
-        
+
         let encoder = XMLEncoder()
         encoder.outputFormatting = .prettyPrinted
 
