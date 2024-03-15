@@ -116,8 +116,8 @@ public struct OJPv2: Codable {
         public let latitude: Double
 
         public enum CodingKeys: String, CodingKey {
-            case longitude = "Longitude"
-            case latitude = "Latitude"
+            case longitude = "siri:Longitude"
+            case latitude = "siri:Latitude"
         }
     }
 
@@ -125,7 +125,7 @@ public struct OJPv2: Codable {
         public let serviceRequest: ServiceRequest
 
         public enum CodingKeys: String, CodingKey {
-            case serviceRequest = "ServiceRequest"
+            case serviceRequest = "siri:ServiceRequest"
         }
     }
 
@@ -136,8 +136,8 @@ public struct OJPv2: Codable {
 
         public enum CodingKeys: String, CodingKey {
             case locationInformationRequest = "LocationInformationRequest"
-            case requestTimestamp = "RequestTimestamp"
-            case requestorRef = "RequestorRef"
+            case requestTimestamp = "siri:RequestTimestamp"
+            case requestorRef = "siri:RequestorRef"
         }
     }
 
