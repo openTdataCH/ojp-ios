@@ -130,9 +130,9 @@ public struct OJPv2: Codable {
     }
 
     public struct ServiceRequest: Codable {
-        public let locationInformationRequest: LocationInformationRequest
         public let requestTimestamp: String
         public let requestorRef: String
+        public let locationInformationRequest: LocationInformationRequest
 
         public enum CodingKeys: String, CodingKey {
             case locationInformationRequest = "LocationInformationRequest"
