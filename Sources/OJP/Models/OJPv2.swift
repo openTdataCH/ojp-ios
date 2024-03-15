@@ -23,7 +23,7 @@ public struct OJPv2: Codable {
         public let serviceDelivery: ServiceDelivery
 
         public enum CodingKeys: String, CodingKey {
-            case serviceDelivery = "ServiceDelivery"
+            case serviceDelivery = "siri:ServiceDelivery"
         }
     }
 
@@ -33,8 +33,8 @@ public struct OJPv2: Codable {
         public let locationInformationDelivery: LocationInformationDelivery
 
         public enum CodingKeys: String, CodingKey {
-            case responseTimestamp = "ResponseTimestamp"
-            case producerRef = "ProducerRef"
+            case responseTimestamp = "siri:ResponseTimestamp"
+            case producerRef = "siri:ProducerRef"
             case locationInformationDelivery = "OJPLocationInformationDelivery"
         }
     }
@@ -47,9 +47,9 @@ public struct OJPv2: Codable {
         public let placeResults: [PlaceResult]
 
         public enum CodingKeys: String, CodingKey {
-            case responseTimestamp = "ResponseTimestamp"
-            case requestMessageRef = "RequestMessageRef"
-            case defaultLanguage = "DefaultLanguage"
+            case responseTimestamp = "siri:ResponseTimestamp"
+            case requestMessageRef = "siri:RequestMessageRef"
+            case defaultLanguage = "siri:DefaultLanguage"
             case calcTime = "CalcTime"
             case placeResults = "PlaceResult"
         }
