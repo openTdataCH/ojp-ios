@@ -16,7 +16,7 @@ final class OjpSDKTests: XCTestCase {
         XCTAssert(!xmlString.isEmpty)
     }
 
-    func testParseXMLStrippingNamespace() throws {
+    func testParseXML() throws {
         let xmlData = try TestHelpers.loadXML()
         let locationInformation = try OJPHelpers.parseXMLStrippingNamespace(xmlData)
         dump(locationInformation)
