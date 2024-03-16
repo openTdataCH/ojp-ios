@@ -88,17 +88,4 @@ enum OJPHelpers {
         }
         return lir
     }
-
-    static func parseXMLKeepingNamespace(_ xmlData: Data) throws -> OJPv2Namespaced {
-        // without namespaces
-        let decoder2 = XMLDecoder()
-        decoder2.keyDecodingStrategy = .convertFromCapitalized
-        decoder2.keyDecodingStrategy = .useDefaultKeys
-
-        let response2 = try decoder2.decode(OJPv2Namespaced.self, from: xmlData)
-        print("2) Response with XML namespaces")
-        print(response2)
-        print()
-        return response2
-    }
 }

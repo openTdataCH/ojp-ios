@@ -23,13 +23,6 @@ final class OjpSDKTests: XCTestCase {
         XCTAssertTrue(true)
     }
 
-    func testParseXMLKeepingNamespace() throws {
-        let xmlData = try TestHelpers.loadXML()
-        let locationInformation = try OJPHelpers.parseXMLKeepingNamespace(xmlData)
-        dump(locationInformation)
-        XCTAssertTrue(true)
-    }
-
     func testLoader() async throws {
         let body = try OJPHelpers.buildXMLRequest().data(using: .utf8)!
 
