@@ -22,6 +22,20 @@ final class OjpSDKTests: XCTestCase {
         dump(locationInformation)
         XCTAssertTrue(true)
     }
+    
+    func testParseXMLWithSiriDefaultNamespace() throws {
+        let xmlData = try TestHelpers.loadXML(xmlFilename: "lir-be-bbox-ns")
+        let locationInformation = try OJPHelpers.parseXMLStrippingNamespace(xmlData)
+        dump(locationInformation)
+        XCTAssertTrue(true)
+    }
+    
+    func testParseXMLWithCustomOjpSiriNamespaces() throws {
+        let xmlData = try TestHelpers.loadXML(xmlFilename: "lir-be-bbox-ns-both")
+        let locationInformation = try OJPHelpers.parseXMLStrippingNamespace(xmlData)
+        dump(locationInformation)
+        XCTAssertTrue(true)
+    }
 
     func testLoader() async throws {
         let body = try OJPHelpers.buildXMLRequest().data(using: .utf8)!
