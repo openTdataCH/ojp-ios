@@ -10,6 +10,26 @@ import XMLCoder
 
 let OJP_SDK_Version = "0.9.1"
 
+struct StrippedPrefixCodingKey: CodingKey {
+    var stringValue: String
+    var intValue: Int?
+    
+    init?(stringValue: String) {
+        self.stringValue = stringValue
+        self.intValue = nil
+    }
+    
+    init?(intValue: Int) {
+        self.stringValue = String(intValue)
+        self.intValue = intValue
+    }
+    
+    static func stripPrefix(fromKey key: CodingKey) -> StrippedPrefixCodingKey {
+        let newKey = key.stringValue.replacingOccurrences(of: "siri:", with: "")
+        return StrippedPrefixCodingKey(stringValue: newKey)!
+    }
+}
+
 public struct OJPv2: Codable {
     public let request: Request?
     public let response: Response?
@@ -18,12 +38,36 @@ public struct OJPv2: Codable {
         case request = "OJPRequest"
         case response = "OJPResponse"
     }
-
+    
+    // version 1
     public struct Response: Codable {
         public let serviceDelivery: ServiceDelivery
 
         public enum CodingKeys: String, CodingKey {
             case serviceDelivery = "siri:ServiceDelivery"
+        }
+        
+        public init(from decoder: any Decoder) throws {
+            let container = try decoder.container(keyedBy: StrippedPrefixCodingKey.self)
+            self.serviceDelivery = try container.decode(OJPv2.ServiceDelivery.self, forKey: StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.serviceDelivery))
+        }
+    }
+    
+    // version 2
+    public struct ResponseV2: Codable {
+        public let serviceDelivery: ServiceDelivery
+
+        public enum CodingKeys: String, CodingKey {
+            case serviceDelivery = "siri:ServiceDelivery"
+        }
+        
+        public enum CodingKeysStrippedNS: String, CodingKey {
+            case serviceDelivery = "ServiceDelivery"
+        }
+        
+        public init(from decoder: any Decoder) throws {
+            let container = try decoder.container(keyedBy: CodingKeysStrippedNS.self)
+            self.serviceDelivery = try container.decode(OJPv2.ServiceDelivery.self, forKey: CodingKeysStrippedNS.serviceDelivery)
         }
     }
 
@@ -36,6 +80,14 @@ public struct OJPv2: Codable {
             case responseTimestamp = "siri:ResponseTimestamp"
             case producerRef = "siri:ProducerRef"
             case locationInformationDelivery = "OJPLocationInformationDelivery"
+        }
+        
+        public init(from decoder: any Decoder) throws {
+            let container = try decoder.container(keyedBy: StrippedPrefixCodingKey.self)
+            
+            self.responseTimestamp = try container.decode(String.self, forKey: StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.responseTimestamp))
+            self.producerRef = try container.decode(String.self, forKey: StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.producerRef))
+            self.locationInformationDelivery = try container.decode(OJPv2.LocationInformationDelivery.self, forKey: StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.locationInformationDelivery))
         }
     }
 
@@ -52,6 +104,16 @@ public struct OJPv2: Codable {
             case defaultLanguage = "siri:DefaultLanguage"
             case calcTime = "CalcTime"
             case placeResults = "PlaceResult"
+        }
+        
+        public init(from decoder: any Decoder) throws {
+            let container = try decoder.container(keyedBy: StrippedPrefixCodingKey.self)
+            
+            self.responseTimestamp = try container.decode(String.self, forKey: StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.responseTimestamp))
+            self.requestMessageRef = try container.decode(String.self, forKey: StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.requestMessageRef))
+            self.defaultLanguage = try container.decode(String.self, forKey: StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.defaultLanguage))
+            self.calcTime = try container.decode(String.self, forKey: StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.calcTime))
+            self.placeResults = try container.decode([OJPv2.PlaceResult].self, forKey: StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.placeResults))
         }
     }
 
@@ -118,6 +180,18 @@ public struct OJPv2: Codable {
         public enum CodingKeys: String, CodingKey {
             case longitude = "siri:Longitude"
             case latitude = "siri:Latitude"
+        }
+        
+        public init(longitude: Double, latitude: Double) {
+            self.longitude = longitude
+            self.latitude = latitude
+        }
+        
+        public init(from decoder: any Decoder) throws {
+            let container = try decoder.container(keyedBy: StrippedPrefixCodingKey.self)
+            
+            self.longitude = try container.decode(Double.self, forKey: StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.longitude))
+            self.latitude = try container.decode(Double.self, forKey: StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.latitude))
         }
     }
 
