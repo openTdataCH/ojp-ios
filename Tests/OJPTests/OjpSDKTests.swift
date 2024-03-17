@@ -10,6 +10,25 @@ final class OjpSDKTests: XCTestCase {
             XCTFail(error.localizedDescription)
         }
     }
+    
+    func testGeoRestrictionHelpers() throws {
+        // BBOX with Kleine Schanze as center + width / height of 1km
+        let ojp = OJPHelpers.LocationInformationRequest.initWithBoxCoordsWidthHeight(centerLongitude: 7.44029, centerLatitude: 46.94578, boxWidth: 1000.0)
+        
+        if let rectangle = ojp.request?.serviceRequest.locationInformationRequest.initialInput.geoRestriction?.rectangle {
+            XCTAssertTrue(rectangle.lowerRight.longitude > rectangle.upperLeft.longitude)
+            XCTAssertTrue(rectangle.upperLeft.latitude > rectangle.lowerRight.latitude)
+            
+            XCTAssertTrue(rectangle.upperLeft.longitude == 7.433703, "Unexpected upperLeft.longitude \(rectangle.upperLeft.longitude)")
+            XCTAssertTrue(rectangle.upperLeft.latitude == 46.950277, "Unexpected upperLeft.latitude \(rectangle.upperLeft.latitude)")
+            XCTAssertTrue(rectangle.lowerRight.longitude == 7.446877, "Unexpected lowerRight.longitude \(rectangle.lowerRight.longitude)")
+            XCTAssertTrue(rectangle.lowerRight.latitude == 46.941283, "Unexpected lowerRight.latitude \(rectangle.lowerRight.latitude)")
+        } else {
+            XCTFail("Cant compute geoRestriction rectangle")
+            print(ojp)
+        }
+    }
+
 
     func testBuildRequest() throws {
         let xmlString = try OJPHelpers.buildXMLRequest()
