@@ -39,7 +39,6 @@ public struct OJPv2: Codable {
         case response = "OJPResponse"
     }
     
-    // version 1
     public struct Response: Codable {
         public let serviceDelivery: ServiceDelivery
 
@@ -50,24 +49,6 @@ public struct OJPv2: Codable {
         public init(from decoder: any Decoder) throws {
             let container = try decoder.container(keyedBy: StrippedPrefixCodingKey.self)
             self.serviceDelivery = try container.decode(OJPv2.ServiceDelivery.self, forKey: StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.serviceDelivery))
-        }
-    }
-    
-    // version 2
-    public struct ResponseV2: Codable {
-        public let serviceDelivery: ServiceDelivery
-
-        public enum CodingKeys: String, CodingKey {
-            case serviceDelivery = "siri:ServiceDelivery"
-        }
-        
-        public enum CodingKeysStrippedNS: String, CodingKey {
-            case serviceDelivery = "ServiceDelivery"
-        }
-        
-        public init(from decoder: any Decoder) throws {
-            let container = try decoder.container(keyedBy: CodingKeysStrippedNS.self)
-            self.serviceDelivery = try container.decode(OJPv2.ServiceDelivery.self, forKey: CodingKeysStrippedNS.serviceDelivery)
         }
     }
 
