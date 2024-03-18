@@ -10,15 +10,15 @@ final class OjpSDKTests: XCTestCase {
             XCTFail(error.localizedDescription)
         }
     }
-    
+
     func testGeoRestrictionHelpers() throws {
         // BBOX with Kleine Schanze as center + width / height of 1km
         let ojp = OJPHelpers.LocationInformationRequest.initWithBoxCoordsWidthHeight(centerLongitude: 7.44029, centerLatitude: 46.94578, boxWidth: 1000.0)
-        
+
         if let rectangle = ojp.request?.serviceRequest.locationInformationRequest.initialInput.geoRestriction?.rectangle {
             XCTAssertTrue(rectangle.lowerRight.longitude > rectangle.upperLeft.longitude)
             XCTAssertTrue(rectangle.upperLeft.latitude > rectangle.lowerRight.latitude)
-            
+
             XCTAssertTrue(rectangle.upperLeft.longitude == 7.433703, "Unexpected upperLeft.longitude \(rectangle.upperLeft.longitude)")
             XCTAssertTrue(rectangle.upperLeft.latitude == 46.950277, "Unexpected upperLeft.latitude \(rectangle.upperLeft.latitude)")
             XCTAssertTrue(rectangle.lowerRight.longitude == 7.446877, "Unexpected lowerRight.longitude \(rectangle.lowerRight.longitude)")
@@ -28,7 +28,6 @@ final class OjpSDKTests: XCTestCase {
             print(ojp)
         }
     }
-
 
     func testBuildRequest() throws {
         let xmlString = try OJPHelpers.buildXMLRequest()
@@ -41,14 +40,14 @@ final class OjpSDKTests: XCTestCase {
         dump(locationInformation)
         XCTAssertTrue(true)
     }
-    
+
     func testParseXMLWithSiriDefaultNamespace() throws {
         let xmlData = try TestHelpers.loadXML(xmlFilename: "lir-be-bbox-ns")
         let locationInformation = try OJPHelpers.parseXMLStrippingNamespace(xmlData)
         dump(locationInformation)
         XCTAssertTrue(true)
     }
-    
+
     func testParseXMLWithCustomOjpSiriNamespaces() throws {
         let xmlData = try TestHelpers.loadXML(xmlFilename: "lir-be-bbox-ns-both")
         let locationInformation = try OJPHelpers.parseXMLStrippingNamespace(xmlData)
@@ -101,5 +100,13 @@ final class OjpSDKTests: XCTestCase {
         }
         let lir = try OJPHelpers.parseXMLStrippingNamespace(data)
         XCTAssert(lir.placeResults.count == 26)
+    }
+
+    func testFetchNearbyStations() async throws {
+        let ojpSdk = OJP(loadingStrategy: .http(.int))
+
+        let nearbyStations = try await ojpSdk.nearbyStations(from: (long: 7.452178, lat: 46.948474))
+
+        XCTAssert(nearbyStations.first!.place.name.text == "Rathaus")
     }
 }
