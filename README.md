@@ -1,4 +1,4 @@
-# OJP LocationInformationRequest PoC for iOS
+# Open Journey Planner SDK for iOS
 
 WIP
 
