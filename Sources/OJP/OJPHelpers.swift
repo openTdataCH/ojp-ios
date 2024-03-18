@@ -97,38 +97,10 @@ enum OJPHelpers {
 
         let ojpXMLData = try encoder.encode(ojp, withRootKey: "OJP", rootAttributes: requestXMLRootAttributes)
         guard let ojpXML = String(data: ojpXMLData, encoding: .utf8) else {
-            throw NSError(domain: "can't encode String", code: 1)
+            throw OJPError.encodingFailed
         }
 
         print(ojpXML)
         return ojpXML
-    }
-
-    // TODO: remove this method ?
-    static func parseXMLStrippingNamespace(_ xmlData: Data) throws -> OJPv2.LocationInformationDelivery {
-        let decoder = XMLDecoder()
-        decoder.keyDecodingStrategy = .convertFromCapitalized
-        decoder.dateDecodingStrategy = .iso8601
-        // strips out namespaces from the response XML nodes
-        decoder.shouldProcessNamespaces = true
-        decoder.keyDecodingStrategy = .useDefaultKeys
-
-        print("1) Response with XML - no namespaces")
-        print("Decoder keyDecodingStrategy: \(decoder.keyDecodingStrategy)")
-        print()
-
-        let ojp = try decoder.decode(OJPv2.self, from: xmlData)
-        if let response = ojp.response {
-            for placeResult in response.serviceDelivery.locationInformationDelivery.placeResults {
-                print(placeResult)
-                print()
-            }
-        }
-
-        print("parse OK")
-        guard let lir = ojp.response?.serviceDelivery.locationInformationDelivery else {
-            throw NSError(domain: "Unexpected Empty", code: 1)
-        }
-        return lir
     }
 }

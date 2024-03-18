@@ -9,4 +9,10 @@ import Foundation
 
 enum OJPError: Error {
     case notImplemented
+    case noResponseFoundInXML
+
+    case unexpectedHTTPStatus(Int)
+    case unexpectedEmpty
+
+    case encodingFailed
 }

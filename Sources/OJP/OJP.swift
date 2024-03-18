@@ -61,39 +61,24 @@ public class OJP {
 
         // give back the response
 
-        throw NSError(domain: "not implemented", code: 1)
+        throw OJPError.notImplemented
     }
 
     private func request(with ojp: OJPv2) async throws -> OJPv2.Response {
         let ojpXMLData = try encoder.encode(ojp, withRootKey: "OJP", rootAttributes: requestXMLRootAttributes)
         guard String(data: ojpXMLData, encoding: .utf8) != nil else {
-            throw NSError(domain: "can't encode String", code: 1)
+            throw OJPError.encodingFailed
         }
 
         let (data, response) = try await loader(ojpXMLData)
 
         if let httpResponse = response as? HTTPURLResponse {
-            if httpResponse.statusCode == 200 {
-                return try parseXMLStrippingNamespace(data)
-            } else {
-                throw NSError(domain: "status code \(httpResponse.statusCode)", code: 1)
+            guard httpResponse.statusCode == 200 else {
+                throw OJPError.unexpectedHTTPStatus(httpResponse.statusCode)
             }
+            return try OJPDecoder.response(data)
         } else {
-            throw NSError(domain: "no httpResponse", code: 1)
+            throw OJPError.unexpectedEmpty
         }
-    }
-
-    private func parseXMLStrippingNamespace(_ xmlData: Data) throws -> OJPv2.Response {
-        if let xmlString = String(data: xmlData, encoding: .utf8) {
-            if let utf16Data = xmlString.data(using: .utf16) { // TODO: remove this after utf16
-                let ojp = try decoder.decode(OJPv2.self, from: utf16Data)
-                if let response = ojp.response {
-                    return response
-                } else {
-                    throw NSError(domain: "response object not found", code: 1)
-                }
-            }
-        }
-        throw NSError(domain: "parsing error", code: 1)
     }
 }

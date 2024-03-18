@@ -36,21 +36,21 @@ final class OjpSDKTests: XCTestCase {
 
     func testParseXML() throws {
         let xmlData = try TestHelpers.loadXML()
-        let locationInformation = try OJPHelpers.parseXMLStrippingNamespace(xmlData)
+        let locationInformation: OJPv2 = try OJPDecoder.parseXML(xmlData)
         dump(locationInformation)
         XCTAssertTrue(true)
     }
 
     func testParseXMLWithSiriDefaultNamespace() throws {
         let xmlData = try TestHelpers.loadXML(xmlFilename: "lir-be-bbox-ns")
-        let locationInformation = try OJPHelpers.parseXMLStrippingNamespace(xmlData)
+        let locationInformation = try OJPDecoder.parseXML(xmlData)
         dump(locationInformation)
         XCTAssertTrue(true)
     }
 
     func testParseXMLWithCustomOjpSiriNamespaces() throws {
         let xmlData = try TestHelpers.loadXML(xmlFilename: "lir-be-bbox-ns-both")
-        let locationInformation = try OJPHelpers.parseXMLStrippingNamespace(xmlData)
+        let locationInformation = try OJPDecoder.parseXML(xmlData)
         dump(locationInformation)
         XCTAssertTrue(true)
     }
@@ -64,12 +64,10 @@ final class OjpSDKTests: XCTestCase {
 
         if let xmlString = String(data: data, encoding: .utf8) {
             print(xmlString)
-            if let utf16Data = xmlString.data(using: .utf16) {
-                let lir = try OJPHelpers.parseXMLStrippingNamespace(utf16Data)
-                print("places:")
-                for placeResult in lir.placeResults {
-                    print(placeResult.place.name.text)
-                }
+            let lir = try OJPDecoder.response(data).serviceDelivery.locationInformationDelivery
+            print("places:")
+            for placeResult in lir.placeResults {
+                print(placeResult.place.name.text)
             }
         }
 
@@ -98,7 +96,7 @@ final class OjpSDKTests: XCTestCase {
         if let xmlString = String(data: data, encoding: .utf8) {
             print(xmlString)
         }
-        let lir = try OJPHelpers.parseXMLStrippingNamespace(data)
+        let lir = try OJPDecoder.response(data).serviceDelivery.locationInformationDelivery
         XCTAssert(lir.placeResults.count == 26)
     }
 
