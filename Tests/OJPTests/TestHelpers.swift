@@ -1,7 +1,7 @@
 //
 //  TestHelpers.swift
 //
-//  Temporary Testhelpers
+//  Temporary Test Helpers
 //  Created by Lehnherr Reto on 14.03.2024.
 //
 
