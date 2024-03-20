@@ -64,9 +64,13 @@ final class OjpSDKTests: XCTestCase {
 
         if let xmlString = String(data: data, encoding: .utf8) {
             print(xmlString)
-            let lir = try OJPDecoder.response(data).serviceDelivery.locationInformationDelivery
+            let serivceDelivery = try OJPDecoder.response(data).serviceDelivery
+            guard case let .locationInformation(locationInformation) = serivceDelivery.delivery else {
+                XCTFail()
+                return
+            }
             print("places:")
-            for placeResult in lir.placeResults {
+            for placeResult in locationInformation.placeResults {
                 print(placeResult.place.name.text)
             }
         }
@@ -96,8 +100,11 @@ final class OjpSDKTests: XCTestCase {
         if let xmlString = String(data: data, encoding: .utf8) {
             print(xmlString)
         }
-        let lir = try OJPDecoder.response(data).serviceDelivery.locationInformationDelivery
-        XCTAssert(lir.placeResults.count == 26)
+        guard case let .locationInformation(locationInformation) = try OJPDecoder.response(data).serviceDelivery.delivery else {
+            XCTFail()
+            return
+        }
+        XCTAssert(locationInformation.placeResults.count == 26)
     }
 
     func testFetchNearbyStations() async throws {
