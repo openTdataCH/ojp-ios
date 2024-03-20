@@ -28,3 +28,8 @@ enum GeoHelpers {
         return distanceMeters
     }
 }
+
+struct NearbyObject<T> {
+    var object: T
+    var distance: Double
+}

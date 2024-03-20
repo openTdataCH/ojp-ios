@@ -29,9 +29,20 @@ enum OJPHelpers {
     }
 
     class LocationInformationRequest {
-        public static func placeResultsSorted(from _: (long: Double, lat: Double), placeResults: [OJPv2.PlaceResult]) -> [OJPv2.PlaceResult] {
-            // TODO: implement the logic
-            placeResults
+        public static func placeResultsSorted(from point: (long: Double, lat: Double), placeResults: [OJPv2.PlaceResult]) -> [OJPv2.PlaceResult] {
+            var nearbyObjects: [NearbyObject<OJPv2.PlaceResult>] = []
+            for placeResult in placeResults {
+                let placeResultsGeoPosition = placeResult.place.geoPosition
+                let distance = GeoHelpers.calculateDistance(lon1: point.long, lat1: point.lat, lon2: placeResultsGeoPosition.longitude, lat2: placeResultsGeoPosition.latitude)
+                let nearbyObject = NearbyObject(object: placeResult, distance: distance)
+                nearbyObjects.append(nearbyObject)
+            }
+            
+            nearbyObjects.sort{ $0.distance < $1.distance }
+            
+            let sortedPlaceResults = nearbyObjects.map { $0.object }
+            
+            return sortedPlaceResults
         }
 
         public static func initWithBBOX(bbox: Geo.Bbox) -> OJPv2 {
