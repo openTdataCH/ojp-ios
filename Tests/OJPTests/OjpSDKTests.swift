@@ -28,6 +28,21 @@ final class OjpSDKTests: XCTestCase {
             print(ojp)
         }
     }
+    
+    func testStationsSortingByDistance() async throws {
+        let mockLoader: Loader = { _ in
+            let data = try TestHelpers.loadXML(xmlFilename: "lir-be-bbox-sorting")
+            let response = HTTPURLResponse(url: URL(string: "https://localhost")!, statusCode: 200, httpVersion: "1.0", headerFields: [:])
+            return (data, response!)
+        }
+        
+        let ojpSdk = OJP(loadingStrategy: .mock(mockLoader))
+        let nearbyStations = try await ojpSdk.nearbyStations(from: (long: 7.452178, lat: 46.948474))
+        
+        let nearbyStopName = nearbyStations.first!.place.name.text
+        let expectedStopName = "Bern (Bern)"
+        XCTAssert(nearbyStopName == expectedStopName, "Expected '\(expectedStopName)' got '\(nearbyStopName)' instead")
+    }
 
     func testBuildRequest() throws {
         let xmlString = try OJPHelpers.buildXMLRequest()
