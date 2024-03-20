@@ -13,7 +13,7 @@ public struct APIConfiguration {
     public let authBearerKey: String
     public let additionalHeaders: [(key: String, value: String)]?
 
-    init(apiEndPoint: String, authBearerKey: String, additionalHeaders: [(key: String, value: String)]? = nil) {
+    public init(apiEndPoint: String, authBearerKey: String, additionalHeaders: [(key: String, value: String)]? = nil) {
         self.apiEndPoint = apiEndPoint
         self.authBearerKey = authBearerKey
         self.additionalHeaders = additionalHeaders
