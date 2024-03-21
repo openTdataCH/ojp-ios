@@ -39,7 +39,7 @@ final class OjpSDKTests: XCTestCase {
         let ojpSdk = OJP(loadingStrategy: .mock(mockLoader))
         let nearbyStations = try await ojpSdk.nearbyStations(from: (long: 7.452178, lat: 46.948474))
         
-        let nearbyStopName = nearbyStations.first!.place.name.text
+        let nearbyStopName = nearbyStations.first!.object.place.name.text
         let expectedStopName = "Bern (Bern)"
         XCTAssert(nearbyStopName == expectedStopName, "Expected '\(expectedStopName)' got '\(nearbyStopName)' instead")
     }
@@ -120,6 +120,6 @@ final class OjpSDKTests: XCTestCase {
 
         let nearbyStations = try await ojpSdk.nearbyStations(from: (long: 7.452178, lat: 46.948474))
 
-        XCTAssert(nearbyStations.first!.place.name.text == "Rathaus")
+        XCTAssert(nearbyStations.first!.object.place.name.text == "Rathaus")
     }
 }
