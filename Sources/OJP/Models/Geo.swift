@@ -26,3 +26,13 @@ public struct Geo {
         }
     }
 }
+
+public struct NearbyObject<T> {
+    var object: T
+    var distance: Double
+}
+
+public protocol GeoAware {
+    var coords: (longitude: Double, latitude: Double) { get }
+}
+
