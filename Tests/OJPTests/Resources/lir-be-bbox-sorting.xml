@@ -20,10 +20,10 @@
                 <System>EFA</System>
                 <Value>119491</Value>
               </PrivateCode>
-              <TopographicPlaceRef>23006351:1</TopographicPlaceRef>
+              <TopographicPlaceRef>xxxxxx:1</TopographicPlaceRef>
             </StopPlace>
             <Name>
-              <Text xml:lang="de">Bern, Zent (Bern)</Text>
+              <Text xml:lang="de">Some dummy station in a galaxy far, far away</Text>
             </Name>
             <GeoPosition>
               <siri:Longitude>27.47534</siri:Longitude>
