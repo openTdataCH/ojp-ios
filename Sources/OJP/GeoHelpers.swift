@@ -25,6 +25,6 @@ enum GeoHelpers {
         let c = 2 * atan2(sqrt(a), sqrt(1 - a))
         let distanceMeters = earthRadius * c * 1000
 
-        return distanceMeters
+        return distanceMeters.rounded(to: 1)
     }
 }
