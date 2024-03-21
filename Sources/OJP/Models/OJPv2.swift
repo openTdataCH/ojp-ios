@@ -55,6 +55,65 @@ public struct OJPv2: Codable {
     public struct ServiceDelivery: Codable {
         public let responseTimestamp: String
         public let producerRef: String
+        public let delivery: ServiceDeliveryType
+
+        public enum CodingKeys: String, CodingKey {
+            case responseTimestamp = "siri:ResponseTimestamp"
+            case producerRef = "siri:ProducerRef"
+        }
+
+        public init(from decoder: any Decoder) throws {
+            delivery = try ServiceDeliveryType(from: decoder)
+
+            let container = try decoder.container(keyedBy: StrippedPrefixCodingKey.self)
+            responseTimestamp = try container.decode(String.self, forKey: StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.responseTimestamp))
+            producerRef = try container.decode(String.self, forKey: StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.producerRef))
+        }
+    }
+
+    public enum ServiceDeliveryType: Codable {
+        case stopEvent(OJPv2.StopEventServiceDelivery)
+        case locationInformation(OJPv2.LocationInformationDelivery)
+
+        enum CodingKeys: String, CodingKey {
+            case locationInformation = "OJPLocationInformationDelivery"
+            case stopEvent = "OJPStopEventRequest"
+        }
+
+        public init(from decoder: any Decoder) throws {
+            let container = try decoder.container(keyedBy: StrippedPrefixCodingKey.self)
+            if container.contains(StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.locationInformation)) {
+                self = try .locationInformation(
+                    container.decode(
+                        LocationInformationDelivery.self,
+                        forKey: StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.locationInformation)
+                    )
+                )
+            } else {
+                throw OJPError.notImplemented
+            }
+        }
+    }
+
+    public struct StopEventServiceDelivery: Codable {
+        public let responseTimestamp: String
+        public let producerRef: String
+        public let stopEventDelivery: StopEventDelivery
+
+        public enum CodingKeys: String, CodingKey {
+            case responseTimestamp = "siri:ResponseTimestamp"
+            case producerRef = "siri:ProducerRef"
+            case stopEventDelivery = "OJPStopEventDelivery"
+        }
+    }
+
+    public struct StopEventDelivery: Codable {
+        let places: [Place]
+    }
+
+    public struct LocationInformationServiceDelivery: Codable {
+        public let responseTimestamp: String
+        public let producerRef: String
         public let locationInformationDelivery: LocationInformationDelivery
 
         public enum CodingKeys: String, CodingKey {
@@ -89,7 +148,6 @@ public struct OJPv2: Codable {
 
         public init(from decoder: any Decoder) throws {
             let container = try decoder.container(keyedBy: StrippedPrefixCodingKey.self)
-
             responseTimestamp = try container.decode(String.self, forKey: StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.responseTimestamp))
             requestMessageRef = try container.decode(String.self, forKey: StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.requestMessageRef))
             defaultLanguage = try container.decode(String.self, forKey: StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.defaultLanguage))

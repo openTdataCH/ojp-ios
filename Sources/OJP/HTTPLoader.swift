@@ -7,7 +7,7 @@
 
 import Foundation
 
-class HTTPLoader {
+public class HTTPLoader {
     let configuration: APIConfiguration
 
     init(configuration: APIConfiguration) {

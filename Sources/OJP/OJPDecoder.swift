@@ -11,16 +11,12 @@ import XMLCoder
 enum OJPDecoder {
     static func parseXML<T: Decodable>(_: T.Type, _ xmlData: Data) throws -> T {
         let decoder = XMLDecoder()
-
-        // UGLY WORKAROUND FOR UTF-16 BUG
-        let utf16Data = String(data: xmlData, encoding: .utf8)!.data(using: .utf16)!
-
         decoder.keyDecodingStrategy = .convertFromCapitalized
         decoder.dateDecodingStrategy = .iso8601
         // strips out namespaces from the response XML nodes
         decoder.shouldProcessNamespaces = true
         decoder.keyDecodingStrategy = .useDefaultKeys
-        return try decoder.decode(T.self, from: utf16Data)
+        return try decoder.decode(T.self, from: xmlData)
     }
 
     static func parseXML(_ xmlData: Data) throws -> OJPv2 {
