@@ -39,9 +39,15 @@ final class OjpSDKTests: XCTestCase {
         let ojpSdk = OJP(loadingStrategy: .mock(mockLoader))
         let nearbyStations = try await ojpSdk.nearbyStations(from: (long: 7.452178, lat: 46.948474))
         
-        let nearbyStopName = nearbyStations.first!.object.place.name.text
+        let nearbyPlaceResult = nearbyStations.first!.object
+        
+        let nearbyStopName = nearbyPlaceResult.place.name.text
         let expectedStopName = "Bern (Bern)"
         XCTAssert(nearbyStopName == expectedStopName, "Expected '\(expectedStopName)' got '\(nearbyStopName)' instead")
+        
+        let distance = nearbyStations.first!.distance
+        let expectedDistance = 991.2
+        XCTAssert(distance == expectedDistance, "Expected '\(expectedDistance)' got '\(distance)' instead")
     }
 
     func testBuildRequest() throws {

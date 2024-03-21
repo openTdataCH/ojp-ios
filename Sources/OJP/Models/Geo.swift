@@ -28,8 +28,8 @@ public struct Geo {
 }
 
 public struct NearbyObject<T> {
-    var object: T
-    var distance: Double
+    public var object: T
+    public var distance: Double
 }
 
 public protocol GeoAware {
