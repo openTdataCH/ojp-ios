@@ -13,7 +13,7 @@ final class OjpSDKTests: XCTestCase {
 
     func testGeoRestrictionHelpers() throws {
         // BBOX with Kleine Schanze as center + width / height of 1km
-        let ojp = OJPHelpers.LocationInformationRequest.initWithBoxCoordsWidthHeight(centerLongitude: 7.44029, centerLatitude: 46.94578, boxWidth: 1000.0)
+        let ojp = OJPHelpers.LocationInformationRequest.requestWithBox(centerLongitude: 7.44029, centerLatitude: 46.94578, boxWidth: 1000.0)
 
         if let rectangle = ojp.request?.serviceRequest.locationInformationRequest.initialInput.geoRestriction?.rectangle {
             XCTAssertTrue(rectangle.lowerRight.longitude > rectangle.upperLeft.longitude)
@@ -27,6 +27,27 @@ final class OjpSDKTests: XCTestCase {
             XCTFail("Cant compute geoRestriction rectangle")
             print(ojp)
         }
+    }
+
+    func testStationsSortingByDistance() async throws {
+        let mockLoader: Loader = { _ in
+            let data = try TestHelpers.loadXML(xmlFilename: "lir-be-bbox-sorting")
+            let response = HTTPURLResponse(url: URL(string: "https://localhost")!, statusCode: 200, httpVersion: "1.0", headerFields: [:])
+            return (data, response!)
+        }
+
+        let ojpSdk = OJP(loadingStrategy: .mock(mockLoader))
+        let nearbyStations = try await ojpSdk.nearbyStations(from: (long: 7.452178, lat: 46.948474))
+
+        let nearbyPlaceResult = nearbyStations.first!.object
+
+        let nearbyStopName = nearbyPlaceResult.place.name.text
+        let expectedStopName = "Bern (Bern)"
+        XCTAssert(nearbyStopName == expectedStopName, "Expected '\(expectedStopName)' got '\(nearbyStopName)' instead")
+
+        let distance = nearbyStations.first!.distance
+        let expectedDistance = 991.2
+        XCTAssert(distance == expectedDistance, "Expected '\(expectedDistance)' got '\(distance)' instead")
     }
 
     func testBuildRequest() throws {
@@ -112,6 +133,6 @@ final class OjpSDKTests: XCTestCase {
 
         let nearbyStations = try await ojpSdk.nearbyStations(from: (long: 7.452178, lat: 46.948474))
 
-        XCTAssert(nearbyStations.first!.place.name.text == "Rathaus")
+        XCTAssert(nearbyStations.first!.object.place.name.text == "Rathaus")
     }
 }
