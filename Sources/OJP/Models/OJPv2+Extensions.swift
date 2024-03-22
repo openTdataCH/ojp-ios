@@ -8,7 +8,7 @@
 import Foundation
 
 extension OJPv2.PlaceResult: GeoAware {
-    public var coords: (longitude: Double, latitude: Double) {
-        (self.place.geoPosition.longitude, self.place.geoPosition.latitude)
+    public var coords: Point {
+        (long: place.geoPosition.longitude, lat: place.geoPosition.latitude)
     }
 }

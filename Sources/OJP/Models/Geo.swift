@@ -7,6 +7,8 @@
 
 import Foundation
 
+public typealias Point = (long: Double, lat: Double)
+
 public struct Geo {
     public struct Bbox {
         public let minX: Double
@@ -33,5 +35,5 @@ public struct NearbyObject<T> {
 }
 
 public protocol GeoAware {
-    var coords: (longitude: Double, latitude: Double) { get }
+    var coords: Point { get }
 }
