@@ -35,4 +35,3 @@ public struct NearbyObject<T> {
 public protocol GeoAware {
     var coords: (longitude: Double, latitude: Double) { get }
 }
-

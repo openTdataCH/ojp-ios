@@ -9,6 +9,6 @@ import Foundation
 
 extension OJPv2.PlaceResult: GeoAware {
     public var coords: (longitude: Double, latitude: Double) {
-        return (self.place.geoPosition.longitude, self.place.geoPosition.latitude)
+        (self.place.geoPosition.longitude, self.place.geoPosition.latitude)
     }
 }

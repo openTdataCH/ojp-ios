@@ -48,15 +48,15 @@ public class OJP {
 
     public func nearbyStations(from point: (long: Double, lat: Double)) async throws -> [NearbyObject<OJPv2.PlaceResult>] {
         let ojp = OJPHelpers.LocationInformationRequest.initWithBoxCoordsWidthHeight(centerLongitude: point.long, centerLatitude: point.lat, boxWidth: 500.0)
-        
+
         let serviceDelivery = try await request(with: ojp).serviceDelivery
 
         guard case let .locationInformation(locationInformationDelivery) = serviceDelivery.delivery else {
             throw OJPError.unexpectedEmpty
         }
-        
+
         let nearbyObjects = GeoHelpers.sortGeoAwareObjects(geoAwareObjects: locationInformationDelivery.placeResults, from: point)
-        
+
         return nearbyObjects
     }
 
