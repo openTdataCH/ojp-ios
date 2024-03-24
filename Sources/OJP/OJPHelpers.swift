@@ -30,18 +30,20 @@ enum OJPHelpers {
 
     class LocationInformationRequest {
         /// Creates a new OJP LocationInformationRequest with bounding box
-        /// - Parameter bbox: Bounding box used as ``OJPv2/GeoRestriction``
+        /// - Parameters
+        ///   - bbox: Bounding box used as ``OJPv2/GeoRestriction``
+        ///   - limit: results limit
         /// - Returns: OJPv2 containing a request
-        public static func requestWith(bbox: Geo.Bbox) -> OJPv2 {
+        public static func requestWith(bbox: Geo.Bbox, numberOfResults: Int = 10) -> OJPv2 {
             let requestTimestamp = OJPHelpers.FormattedDate()
 
             let upperLeft = OJPv2.GeoPosition(longitude: bbox.minX, latitude: bbox.maxY)
             let lowerRight = OJPv2.GeoPosition(longitude: bbox.maxX, latitude: bbox.minY)
             let rectangle = OJPv2.Rectangle(upperLeft: upperLeft, lowerRight: lowerRight)
             let geoRestriction = OJPv2.GeoRestriction(rectangle: rectangle)
-            let restrictions = OJPv2.Restrictions(type: "stop", numberOfResults: 10, includePtModes: true)
+            let restrictions = OJPv2.Restrictions(type: "stop", numberOfResults: numberOfResults, includePtModes: true)
 
-            let locationInformationRequest = OJPv2.LocationInformationRequest(requestTimestamp: requestTimestamp, initialInput: OJPv2.InitialInput(geoRestriction: geoRestriction), restrictions: restrictions)
+            let locationInformationRequest = OJPv2.LocationInformationRequest(requestTimestamp: requestTimestamp, initialInput: OJPv2.InitialInput(geoRestriction: geoRestriction, name: nil), restrictions: restrictions)
 
             let requestorRef = "OJP_Demo_iOS_\(OJP_SDK_Version)"
             let ojp = OJPv2(request: OJPv2.Request(serviceRequest: OJPv2.ServiceRequest(requestTimestamp: requestTimestamp, requestorRef: requestorRef, locationInformationRequest: locationInformationRequest)), response: nil)
@@ -55,8 +57,9 @@ enum OJPHelpers {
         ///   - centerLatitude: center of the bounding box
         ///   - boxWidth: bounding box width in meters
         ///   - boxHeight: bounding box  height in meters
+        ///   - limit: results limit
         /// - Returns: OJPv2 containing a request
-        public static func requestWithBox(centerLongitude: Double, centerLatitude: Double, boxWidth: Double, boxHeight: Double? = nil) -> OJPv2 {
+        public static func requestWithBox(centerLongitude: Double, centerLatitude: Double, boxWidth: Double, boxHeight: Double? = nil, numberOfResults: Int = 10) -> OJPv2 {
             let boxHeight = boxHeight ?? boxWidth
 
             let point2Longitude = centerLongitude + 1
@@ -77,7 +80,25 @@ enum OJPHelpers {
 
             let bbox = Geo.Bbox(minLongitude: minLongitude, minLatitude: minLatitude, maxLongitude: maxLongitude, maxLatitude: maxLatitude)
 
-            let ojp = LocationInformationRequest.requestWith(bbox: bbox)
+            let ojp = LocationInformationRequest.requestWith(bbox: bbox, numberOfResults: numberOfResults)
+
+            return ojp
+        }
+        
+        /// Creates a new OJP LocationInformationRequest with stop name
+        /// - Parameters:
+        ///   - name: stop name
+        ///   - limit: results limit
+        /// - Returns: OJPv2 containing a request
+        public static func requestWithStopName(_ name: String, numberOfResults: Int = 10) -> OJPv2 {
+            let requestTimestamp = OJPHelpers.FormattedDate()
+            let restrictions = OJPv2.Restrictions(type: "stop", numberOfResults: numberOfResults, includePtModes: true)
+            
+            let locationInformationRequest = OJPv2.LocationInformationRequest(requestTimestamp: requestTimestamp, initialInput: OJPv2.InitialInput(geoRestriction: nil, name: name), restrictions: restrictions)
+            
+            // TODO - avoid duplication (share this block with "requestWith(bbox: Geo.Bbox")
+            let requestorRef = "OJP_Demo_iOS_\(OJP_SDK_Version)"
+            let ojp = OJPv2(request: OJPv2.Request(serviceRequest: OJPv2.ServiceRequest(requestTimestamp: requestTimestamp, requestorRef: requestorRef, locationInformationRequest: locationInformationRequest)), response: nil)
 
             return ojp
         }

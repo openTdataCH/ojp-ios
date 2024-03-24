@@ -60,14 +60,16 @@ public class OJP {
         return nearbyObjects
     }
 
-    public func stations(from _: String, count _: Int) async throws -> [OJPv2.PlaceResult] {
-        // create xml for the request
+    public func stations(by stopName: String, limit: Int = 10) async throws -> [OJPv2.PlaceResult] {
+        let ojp = OJPHelpers.LocationInformationRequest.requestWithStopName(stopName);
+        
+        let serviceDelivery = try await request(with: ojp).serviceDelivery
 
-        // make the http request
-
-        // give back the response
-
-        throw OJPError.notImplemented
+        guard case let .locationInformation(locationInformationDelivery) = serviceDelivery.delivery else {
+            throw OJPError.unexpectedEmpty
+        }
+        
+        return locationInformationDelivery.placeResults
     }
 
     private func request(with ojp: OJPv2) async throws -> OJPv2.Response {

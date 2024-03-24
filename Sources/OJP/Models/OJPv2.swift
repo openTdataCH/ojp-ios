@@ -268,9 +268,11 @@ public struct OJPv2: Codable {
 
     public struct InitialInput: Codable {
         public let geoRestriction: GeoRestriction?
+        public let name: String?
 
         public enum CodingKeys: String, CodingKey {
             case geoRestriction = "GeoRestriction"
+            case name = "Name"
         }
     }
 
