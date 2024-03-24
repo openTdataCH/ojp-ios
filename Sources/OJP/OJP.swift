@@ -24,7 +24,7 @@ public class OJP {
         }
     }
 
-    private var requestXMLRootAttributes = [
+    public static var requestXMLRootAttributes = [
         "xmlns": "http://www.vdv.de/ojp",
         "xmlns:siri": "http://www.siri.org.uk/siri",
         "xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance",
@@ -73,7 +73,7 @@ public class OJP {
     }
 
     private func request(with ojp: OJPv2) async throws -> OJPv2.Response {
-        let ojpXMLData = try encoder.encode(ojp, withRootKey: "OJP", rootAttributes: requestXMLRootAttributes)
+        let ojpXMLData = try encoder.encode(ojp, withRootKey: "OJP", rootAttributes: OJP.requestXMLRootAttributes)
         guard String(data: ojpXMLData, encoding: .utf8) != nil else {
             throw OJPError.encodingFailed
         }

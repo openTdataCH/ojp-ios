@@ -105,23 +105,11 @@ enum OJPHelpers {
     }
 
     // TODO: remove this method ?
-    static func buildXMLRequest() throws -> String {
-        // BE/Köniz area
-        let bbox = Geo.Bbox(minLongitude: 7.372097, minLatitude: 46.904860, maxLongitude: 7.479042, maxLatitude: 46.942787)
-        let ojp = OJPHelpers.LocationInformationRequest.requestWith(bbox: bbox)
-
-        // TODO: - move them in SDK?
-        let requestXMLRootAttributes = [
-            "xmlns": "http://www.vdv.de/ojp",
-            "xmlns:siri": "http://www.siri.org.uk/siri",
-            "xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance",
-            "version": "2.0",
-        ]
-
+    static func buildXMLRequest(ojpRequest: OJPv2) throws -> String {
         let encoder = XMLEncoder()
         encoder.outputFormatting = .prettyPrinted
 
-        let ojpXMLData = try encoder.encode(ojp, withRootKey: "OJP", rootAttributes: requestXMLRootAttributes)
+        let ojpXMLData = try encoder.encode(ojpRequest, withRootKey: "OJP", rootAttributes: OJP.requestXMLRootAttributes)
         guard let ojpXML = String(data: ojpXMLData, encoding: .utf8) else {
             throw OJPError.encodingFailed
         }
