@@ -19,7 +19,7 @@ extension Double {
 }
 
 enum OJPHelpers {
-    public static func FormattedDate(date: Date = Date()) -> String {
+    static func formattedDate(date: Date = Date()) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss'Z'" // ISO 8601 format
         dateFormatter.timeZone = TimeZone(secondsFromGMT: 0) // Set timezone to UTC
@@ -35,7 +35,7 @@ enum OJPHelpers {
         ///   - limit: results limit
         /// - Returns: OJPv2 containing a request
         public static func requestWith(bbox: Geo.Bbox, numberOfResults: Int = 10) -> OJPv2 {
-            let requestTimestamp = OJPHelpers.FormattedDate()
+            let requestTimestamp = OJPHelpers.formattedDate()
 
             let upperLeft = OJPv2.GeoPosition(longitude: bbox.minX, latitude: bbox.maxY)
             let lowerRight = OJPv2.GeoPosition(longitude: bbox.maxX, latitude: bbox.minY)
@@ -91,7 +91,7 @@ enum OJPHelpers {
         ///   - limit: results limit
         /// - Returns: OJPv2 containing a request
         public static func requestWithStopName(_ name: String, numberOfResults: Int = 10) -> OJPv2 {
-            let requestTimestamp = OJPHelpers.FormattedDate()
+            let requestTimestamp = OJPHelpers.formattedDate()
             let restrictions = OJPv2.Restrictions(type: "stop", numberOfResults: numberOfResults, includePtModes: true)
             
             let locationInformationRequest = OJPv2.LocationInformationRequest(requestTimestamp: requestTimestamp, initialInput: OJPv2.InitialInput(geoRestriction: nil, name: name), restrictions: restrictions)
