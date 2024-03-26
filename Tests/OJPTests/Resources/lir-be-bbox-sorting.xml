@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<OJP xmlns:siri="http://www.siri.org.uk/siri" version="2.0" xmlns="http://www.vdv.de/ojp">
+  <OJPResponse>
+    <siri:ServiceDelivery>
+      <siri:ResponseTimestamp>2024-01-15T10:11:20.6667894+01:00</siri:ResponseTimestamp>
+      <siri:ProducerRef>MENTZ</siri:ProducerRef>
+      <OJPLocationInformationDelivery>
+        <siri:ResponseTimestamp>2024-01-15T10:11:21.0229425+01:00</siri:ResponseTimestamp>
+        <siri:RequestMessageRef>a4537b5a-de4e-4217-b6ec-08c4377003b4</siri:RequestMessageRef>
+        <siri:DefaultLanguage>de</siri:DefaultLanguage>
+        <CalcTime>897</CalcTime>
+        <PlaceResult>
+          <Place>
+            <StopPlace>
+              <StopPlaceRef>xxxxx</StopPlaceRef>
+              <StopPlaceName>
+                <Text xml:lang="de">Some dummy station in a galaxy far, far away</Text>
+              </StopPlaceName>
+              <PrivateCode>
+                <System>EFA</System>
+                <Value>119491</Value>
+              </PrivateCode>
+              <TopographicPlaceRef>xxxxxx:1</TopographicPlaceRef>
+            </StopPlace>
+            <Name>
+              <Text xml:lang="de">Some dummy station in a galaxy far, far away</Text>
+            </Name>
+            <GeoPosition>
+              <siri:Longitude>27.47534</siri:Longitude>
+              <siri:Latitude>6.95745</siri:Latitude>
+            </GeoPosition>
+          </Place>
+          <Complete>true</Complete>
+          <Probability>0.95</Probability>
+        </PlaceResult>
+        <!-- this PlaceResult should come first when using testStationsSortingByDistance testcase  -->
+        <PlaceResult>
+          <Place>
+            <StopPlace>
+              <StopPlaceRef>8507000</StopPlaceRef>
+              <StopPlaceName>
+                <Text xml:lang="de">Bern</Text>
+              </StopPlaceName>
+              <PrivateCode>
+                <System>EFA</System>
+                <Value>111055</Value>
+              </PrivateCode>
+              <TopographicPlaceRef>23006351:1</TopographicPlaceRef>
+            </StopPlace>
+            <Name>
+              <Text xml:lang="de">Bern (Bern)</Text>
+            </Name>
+            <GeoPosition>
+              <siri:Longitude>7.43913</siri:Longitude>
+              <siri:Latitude>46.94883</siri:Latitude>
+            </GeoPosition>
+          </Place>
+          <Complete>true</Complete>
+          <Probability>1</Probability>
+        </PlaceResult>
+      </OJPLocationInformationDelivery>
+    </siri:ServiceDelivery>
+  </OJPResponse>
+</OJP>

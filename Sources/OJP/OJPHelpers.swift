@@ -19,7 +19,7 @@ extension Double {
 }
 
 enum OJPHelpers {
-    public static func FormattedDate(date: Date = Date()) -> String {
+    static func formattedDate(date: Date = Date()) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss'Z'" // ISO 8601 format
         dateFormatter.timeZone = TimeZone(secondsFromGMT: 0) // Set timezone to UTC
@@ -29,21 +29,21 @@ enum OJPHelpers {
     }
 
     class LocationInformationRequest {
-        public static func placeResultsSorted(from _: (long: Double, lat: Double), placeResults: [OJPv2.PlaceResult]) -> [OJPv2.PlaceResult] {
-            // TODO: implement the logic
-            placeResults
-        }
-
-        public static func initWithBBOX(bbox: Geo.Bbox) -> OJPv2 {
-            let requestTimestamp = OJPHelpers.FormattedDate()
+        /// Creates a new OJP LocationInformationRequest with bounding box
+        /// - Parameters
+        ///   - bbox: Bounding box used as ``OJPv2/GeoRestriction``
+        ///   - limit: results limit
+        /// - Returns: OJPv2 containing a request
+        public static func requestWith(bbox: Geo.Bbox, numberOfResults: Int = 10) -> OJPv2 {
+            let requestTimestamp = OJPHelpers.formattedDate()
 
             let upperLeft = OJPv2.GeoPosition(longitude: bbox.minX, latitude: bbox.maxY)
             let lowerRight = OJPv2.GeoPosition(longitude: bbox.maxX, latitude: bbox.minY)
             let rectangle = OJPv2.Rectangle(upperLeft: upperLeft, lowerRight: lowerRight)
             let geoRestriction = OJPv2.GeoRestriction(rectangle: rectangle)
-            let restrictions = OJPv2.Restrictions(type: "stop", numberOfResults: 10, includePtModes: true)
+            let restrictions = OJPv2.Restrictions(type: "stop", numberOfResults: numberOfResults, includePtModes: true)
 
-            let locationInformationRequest = OJPv2.LocationInformationRequest(requestTimestamp: requestTimestamp, initialInput: OJPv2.InitialInput(geoRestriction: geoRestriction), restrictions: restrictions)
+            let locationInformationRequest = OJPv2.LocationInformationRequest(requestTimestamp: requestTimestamp, initialInput: OJPv2.InitialInput(geoRestriction: geoRestriction, name: nil), restrictions: restrictions)
 
             let requestorRef = "OJP_Demo_iOS_\(OJP_SDK_Version)"
             let ojp = OJPv2(request: OJPv2.Request(serviceRequest: OJPv2.ServiceRequest(requestTimestamp: requestTimestamp, requestorRef: requestorRef, locationInformationRequest: locationInformationRequest)), response: nil)
@@ -51,8 +51,16 @@ enum OJPHelpers {
             return ojp
         }
 
-        public static func initWithBoxCoordsWidthHeight(centerLongitude: Double, centerLatitude: Double, boxWidth: Double, boxHeightP: Double? = nil) -> OJPv2 {
-            let boxHeight = boxHeightP ?? boxWidth
+        /// Creates a new OJP LocationInformationRequest with bounding box around a center coordinate.
+        /// - Parameters:
+        ///   - centerLongitude: center of the bounding box
+        ///   - centerLatitude: center of the bounding box
+        ///   - boxWidth: bounding box width in meters
+        ///   - boxHeight: bounding box  height in meters
+        ///   - limit: results limit
+        /// - Returns: OJPv2 containing a request
+        public static func requestWithBox(centerLongitude: Double, centerLatitude: Double, boxWidth: Double, boxHeight: Double? = nil, numberOfResults: Int = 10) -> OJPv2 {
+            let boxHeight = boxHeight ?? boxWidth
 
             let point2Longitude = centerLongitude + 1
             let point2Latitude = centerLatitude + 1
@@ -72,30 +80,36 @@ enum OJPHelpers {
 
             let bbox = Geo.Bbox(minLongitude: minLongitude, minLatitude: minLatitude, maxLongitude: maxLongitude, maxLatitude: maxLatitude)
 
-            let ojp = LocationInformationRequest.initWithBBOX(bbox: bbox)
+            let ojp = LocationInformationRequest.requestWith(bbox: bbox, numberOfResults: numberOfResults)
+
+            return ojp
+        }
+        
+        /// Creates a new OJP LocationInformationRequest with stop name
+        /// - Parameters:
+        ///   - name: stop name
+        ///   - limit: results limit
+        /// - Returns: OJPv2 containing a request
+        public static func requestWithStopName(_ name: String, numberOfResults: Int = 10) -> OJPv2 {
+            let requestTimestamp = OJPHelpers.formattedDate()
+            let restrictions = OJPv2.Restrictions(type: "stop", numberOfResults: numberOfResults, includePtModes: true)
+            
+            let locationInformationRequest = OJPv2.LocationInformationRequest(requestTimestamp: requestTimestamp, initialInput: OJPv2.InitialInput(geoRestriction: nil, name: name), restrictions: restrictions)
+            
+            // TODO - avoid duplication (share this block with "requestWith(bbox: Geo.Bbox")
+            let requestorRef = "OJP_Demo_iOS_\(OJP_SDK_Version)"
+            let ojp = OJPv2(request: OJPv2.Request(serviceRequest: OJPv2.ServiceRequest(requestTimestamp: requestTimestamp, requestorRef: requestorRef, locationInformationRequest: locationInformationRequest)), response: nil)
 
             return ojp
         }
     }
 
     // TODO: remove this method ?
-    static func buildXMLRequest() throws -> String {
-        // BE/Köniz area
-        let bbox = Geo.Bbox(minLongitude: 7.372097, minLatitude: 46.904860, maxLongitude: 7.479042, maxLatitude: 46.942787)
-        let ojp = OJPHelpers.LocationInformationRequest.initWithBBOX(bbox: bbox)
-
-        // TODO: - move them in SDK?
-        let requestXMLRootAttributes = [
-            "xmlns": "http://www.vdv.de/ojp",
-            "xmlns:siri": "http://www.siri.org.uk/siri",
-            "xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance",
-            "version": "2.0",
-        ]
-
+    static func buildXMLRequest(ojpRequest: OJPv2) throws -> String {
         let encoder = XMLEncoder()
         encoder.outputFormatting = .prettyPrinted
 
-        let ojpXMLData = try encoder.encode(ojp, withRootKey: "OJP", rootAttributes: requestXMLRootAttributes)
+        let ojpXMLData = try encoder.encode(ojpRequest, withRootKey: "OJP", rootAttributes: OJP.requestXMLRootAttributes)
         guard let ojpXML = String(data: ojpXMLData, encoding: .utf8) else {
             throw OJPError.encodingFailed
         }
