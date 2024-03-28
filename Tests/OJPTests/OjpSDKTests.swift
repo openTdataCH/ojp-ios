@@ -50,8 +50,18 @@ final class OjpSDKTests: XCTestCase {
         XCTAssert(distance == expectedDistance, "Expected '\(expectedDistance)' got '\(distance)' instead")
     }
 
-    func testBuildRequest() throws {
-        let xmlString = try OJPHelpers.buildXMLRequest()
+    func testBuildRequestBBOX() throws {
+        // BE/Köniz area
+        let bbox = Geo.Bbox(minLongitude: 7.372097, minLatitude: 46.904860, maxLongitude: 7.479042, maxLatitude: 46.942787)
+        let ojpRequest = OJPHelpers.LocationInformationRequest.requestWith(bbox: bbox)
+        
+        let xmlString = try OJPHelpers.buildXMLRequest(ojpRequest: ojpRequest)
+        XCTAssert(!xmlString.isEmpty)
+    }
+    
+    func testBuildRequestName() throws {
+        let ojpRequest = OJPHelpers.LocationInformationRequest.requestWithStopName("Be")
+        let xmlString = try OJPHelpers.buildXMLRequest(ojpRequest: ojpRequest)
         XCTAssert(!xmlString.isEmpty)
     }
 
@@ -77,7 +87,11 @@ final class OjpSDKTests: XCTestCase {
     }
 
     func testLoader() async throws {
-        let body = try OJPHelpers.buildXMLRequest().data(using: .utf8)!
+        // BE/Köniz area
+        let bbox = Geo.Bbox(minLongitude: 7.372097, minLatitude: 46.904860, maxLongitude: 7.479042, maxLatitude: 46.942787)
+        let ojpRequest = OJPHelpers.LocationInformationRequest.requestWith(bbox: bbox)
+
+        let body = try OJPHelpers.buildXMLRequest(ojpRequest: ojpRequest).data(using: .utf8)!
 
         let ojp = OJP(loadingStrategy: .http(.int))
         let (data, response) = try await ojp.loader(body)
@@ -102,7 +116,11 @@ final class OjpSDKTests: XCTestCase {
     }
 
     func testMockLoader() async throws {
-        let body = try OJPHelpers.buildXMLRequest().data(using: .utf8)!
+        // BE/Köniz area
+        let bbox = Geo.Bbox(minLongitude: 7.372097, minLatitude: 46.904860, maxLongitude: 7.479042, maxLatitude: 46.942787)
+        let ojpRequest = OJPHelpers.LocationInformationRequest.requestWith(bbox: bbox)
+
+        let body = try OJPHelpers.buildXMLRequest(ojpRequest: ojpRequest).data(using: .utf8)!
 
         let mock = LoadingStrategy.mock { _ in
             try (TestHelpers.loadXML(),
