@@ -29,12 +29,10 @@ enum OJPHelpers {
     }
 
     class LocationInformationRequest {
-        public static func placeResultsSorted(from _: (long: Double, lat: Double), placeResults: [OJPv2.PlaceResult]) -> [OJPv2.PlaceResult] {
-            // TODO: implement the logic
-            placeResults
-        }
-
-        public static func initWithBBOX(bbox: Geo.Bbox) -> OJPv2 {
+        /// Creates a new OJP LocationInformationRequest with bounding box
+        /// - Parameter bbox: Bounding box used as ``OJPv2/GeoRestriction``
+        /// - Returns: OJPv2 containing a request
+        public static func requestWith(bbox: Geo.Bbox) -> OJPv2 {
             let requestTimestamp = OJPHelpers.FormattedDate()
 
             let upperLeft = OJPv2.GeoPosition(longitude: bbox.minX, latitude: bbox.maxY)
@@ -51,8 +49,15 @@ enum OJPHelpers {
             return ojp
         }
 
-        public static func initWithBoxCoordsWidthHeight(centerLongitude: Double, centerLatitude: Double, boxWidth: Double, boxHeightP: Double? = nil) -> OJPv2 {
-            let boxHeight = boxHeightP ?? boxWidth
+        /// Creates a new OJP LocationInformationRequest with bounding box around a center coordinate.
+        /// - Parameters:
+        ///   - centerLongitude: center of the bounding box
+        ///   - centerLatitude: center of the bounding box
+        ///   - boxWidth: bounding box width in meters
+        ///   - boxHeight: bounding box  height in meters
+        /// - Returns: OJPv2 containing a request
+        public static func requestWithBox(centerLongitude: Double, centerLatitude: Double, boxWidth: Double, boxHeight: Double? = nil) -> OJPv2 {
+            let boxHeight = boxHeight ?? boxWidth
 
             let point2Longitude = centerLongitude + 1
             let point2Latitude = centerLatitude + 1
@@ -72,7 +77,7 @@ enum OJPHelpers {
 
             let bbox = Geo.Bbox(minLongitude: minLongitude, minLatitude: minLatitude, maxLongitude: maxLongitude, maxLatitude: maxLatitude)
 
-            let ojp = LocationInformationRequest.initWithBBOX(bbox: bbox)
+            let ojp = LocationInformationRequest.requestWith(bbox: bbox)
 
             return ojp
         }
@@ -82,7 +87,7 @@ enum OJPHelpers {
     static func buildXMLRequest() throws -> String {
         // BE/Köniz area
         let bbox = Geo.Bbox(minLongitude: 7.372097, minLatitude: 46.904860, maxLongitude: 7.479042, maxLatitude: 46.942787)
-        let ojp = OJPHelpers.LocationInformationRequest.initWithBBOX(bbox: bbox)
+        let ojp = OJPHelpers.LocationInformationRequest.requestWith(bbox: bbox)
 
         // TODO: - move them in SDK?
         let requestXMLRootAttributes = [
