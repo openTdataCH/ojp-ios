@@ -2,7 +2,7 @@ name: Build Documentation
 
 on:
   push:
-    branches: [ "main", "11-setup-docc" ]
+    branches: [ "main" ]
 
 permissions:
   contents: read
