@@ -1,0 +1,45 @@
+name: Build Documentation
+
+on:
+  push:
+    branches: [ "main", "11-setup-docc" ]
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: macos-14
+    steps:
+    - name: Setup Xcode
+      uses: actions/checkout@v3
+    - name: Setup Xcode version
+      uses: maxim-lobanov/setup-xcode@v1 # Xcode
+      with:
+        xcode-version: '15.3'
+    - name: Build DocC
+      run: |
+        xcodebuild docbuild -scheme OJP \
+          -derivedDataPath /tmp/docbuild \
+          -destination 'generic/platform=iOS';
+        $(xcrun --find docc) process-archive \
+          transform-for-static-hosting /tmp/docbuild/Build/Products/Debug-iphoneos/OJP.doccarchive \
+          --hosting-base-path ojp-ios \
+          --output-path docs;
+        echo "<script>window.location.href += \"/documentation/OJP\"</script>" > docs/index.html
+    - name: artifact
+      uses: actions/upload-pages-artifact@v1
+      with:
+        path: 'docs'
+    - name: GitHub Pages
+      id: deployment
+      uses: actions/deploy-pages@v1
