@@ -6,11 +6,14 @@ import XMLCoder
 
 public typealias Loader = (Data) async throws -> (Data, URLResponse)
 
+
+/// Defines the loading strategy. Basically used to switch between HTTP and Mocked-Requests
 public enum LoadingStrategy {
     case http(APIConfiguration)
     case mock(Loader)
 }
 
+/// Entry point to OJP
 public class OJP {
     let loader: Loader
 
