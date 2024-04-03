@@ -1,0 +1,23 @@
+{
+  "pins" : [
+    {
+      "identity" : "swiftformat",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/nicklockwood/SwiftFormat",
+      "state" : {
+        "revision" : "9e5d0d588ab6e271fe9887ec3dde21d544d4b080",
+        "version" : "0.53.5"
+      }
+    },
+    {
+      "identity" : "xmlcoder",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/CoreOffice/XMLCoder.git",
+      "state" : {
+        "revision" : "b1e944cbd0ef33787b13f639a5418d55b3bed501",
+        "version" : "0.17.1"
+      }
+    }
+  ],
+  "version" : 2
+}

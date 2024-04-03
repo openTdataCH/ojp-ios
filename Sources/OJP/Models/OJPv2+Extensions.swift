@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CoreLocation
 
 public extension OJPv2.Mode {
     enum PtMode: String {
@@ -33,3 +34,10 @@ extension OJPv2.PlaceResult: GeoAware {
         return (long: geoPosition.longitude, lat: geoPosition.latitude)
     }
 }
+
+extension OJPv2.GeoPosition {
+    public var coordinates: CLLocationCoordinate2D {
+        CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+    }
+}
+
