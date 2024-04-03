@@ -35,7 +35,7 @@ jobs:
           transform-for-static-hosting /tmp/docbuild/Build/Products/Debug-iphoneos/OJP.doccarchive \
           --hosting-base-path ojp-ios \
           --output-path docs;
-        echo "<script>window.location.href += \"/documentation/OJP\"</script>" > docs/index.html
+        echo "<script>window.location.href += \"/documentation/ojp\"</script>" > docs/index.html
     - name: artifact
       uses: actions/upload-pages-artifact@v1
       with:
