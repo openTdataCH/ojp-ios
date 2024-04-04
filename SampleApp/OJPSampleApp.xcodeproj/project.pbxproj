@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CF06B9F32BBE7DD000B60917 /* Pulse in Frameworks */ = {isa = PBXBuildFile; productRef = CF06B9F22BBE7DD000B60917 /* Pulse */; };
+		CF06B9F52BBE7DD000B60917 /* PulseUI in Frameworks */ = {isa = PBXBuildFile; productRef = CF06B9F42BBE7DD000B60917 /* PulseUI */; };
 		CFBA60BB2BBD6106000FF2ED /* OJPSampleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBA60BA2BBD6106000FF2ED /* OJPSampleApp.swift */; };
 		CFBA60BF2BBD610C000FF2ED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CFBA60BE2BBD610C000FF2ED /* Assets.xcassets */; };
 		CFBA60C32BBD610C000FF2ED /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CFBA60C22BBD610C000FF2ED /* Preview Assets.xcassets */; };
@@ -56,6 +58,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF06B9F52BBE7DD000B60917 /* PulseUI in Frameworks */,
+				CF06B9F32BBE7DD000B60917 /* Pulse in Frameworks */,
 				CFF227B32BBD63AC00D3EADF /* OJP in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -162,6 +166,8 @@
 			name = OJPSampleApp;
 			packageProductDependencies = (
 				CFF227B22BBD63AC00D3EADF /* OJP */,
+				CF06B9F22BBE7DD000B60917 /* Pulse */,
+				CF06B9F42BBE7DD000B60917 /* PulseUI */,
 			);
 			productName = SampleApp;
 			productReference = CFBA60B72BBD6106000FF2ED /* OJPSampleApp.app */;
@@ -235,6 +241,9 @@
 				Base,
 			);
 			mainGroup = CFBA60AE2BBD6106000FF2ED;
+			packageReferences = (
+				CF06B9F12BBE7DD000B60917 /* XCRemoteSwiftPackageReference "Pulse" */,
+			);
 			productRefGroup = CFBA60B82BBD6106000FF2ED /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -629,7 +638,28 @@
 		};
 /* End XCConfigurationList section */
 
+/* Begin XCRemoteSwiftPackageReference section */
+		CF06B9F12BBE7DD000B60917 /* XCRemoteSwiftPackageReference "Pulse" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kean/Pulse";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.5;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
 /* Begin XCSwiftPackageProductDependency section */
+		CF06B9F22BBE7DD000B60917 /* Pulse */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CF06B9F12BBE7DD000B60917 /* XCRemoteSwiftPackageReference "Pulse" */;
+			productName = Pulse;
+		};
+		CF06B9F42BBE7DD000B60917 /* PulseUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CF06B9F12BBE7DD000B60917 /* XCRemoteSwiftPackageReference "Pulse" */;
+			productName = PulseUI;
+		};
 		CFF227B22BBD63AC00D3EADF /* OJP */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = OJP;

@@ -7,8 +7,16 @@
 
 import SwiftUI
 import OJP
+import Pulse
+import PulseUI
+
 @main
 struct OJPSampleApp: App {
+
+    init() {
+        Experimental.URLSessionProxy.shared.isEnabled = true
+    }
+
     var body: some Scene {
         WindowGroup {
             NavigationView(content: {
@@ -16,6 +24,9 @@ struct OJPSampleApp: App {
                     NavigationLink {
                         LocationSearchByNameView()
                     } label: { Text("Station Search") }
+                    NavigationLink {
+                        ConsoleView()
+                    } label: { Text("Network Console") }
                 }
                 VStack {
                     ZStack(alignment: .topLeading) {
@@ -33,5 +44,13 @@ struct OJPSampleApp: App {
                 }
             })
         }
+//        .onChange(of: scenePhase) { oldValue, newValue in
+//            switch newValue {
+//            case .active:
+//                URLSessionProxyDelegate.enableAutomaticRegistration()
+//            default:
+//                break
+//            }
+//        }
     }
 }
