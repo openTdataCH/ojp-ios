@@ -172,11 +172,21 @@ public struct OJPv2: Codable {
         public let stopPlace: StopPlace
         public let name: Name
         public let geoPosition: GeoPosition
+        public let mode: [Mode]
 
         public enum CodingKeys: String, CodingKey {
             case stopPlace = "StopPlace"
             case name = "Name"
             case geoPosition = "GeoPosition"
+            case mode = "Mode"
+        }
+    }
+    
+    public struct Mode: Codable {
+        public let ptMode: String
+        
+        public enum CodingKeys: String, CodingKey {
+            case ptMode = "PtMode"
         }
     }
 
@@ -268,9 +278,11 @@ public struct OJPv2: Codable {
 
     public struct InitialInput: Codable {
         public let geoRestriction: GeoRestriction?
+        public let name: String?
 
         public enum CodingKeys: String, CodingKey {
             case geoRestriction = "GeoRestriction"
+            case name = "Name"
         }
     }
 
