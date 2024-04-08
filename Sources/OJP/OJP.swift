@@ -27,7 +27,7 @@ public class OJP {
         }
     }
 
-    public static var requestXMLRootAttributes = [
+    internal static var requestXMLRootAttributes = [
         "xmlns": "http://www.vdv.de/ojp",
         "xmlns:siri": "http://www.siri.org.uk/siri",
         "xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance",
