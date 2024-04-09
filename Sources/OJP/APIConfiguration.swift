@@ -10,14 +10,14 @@ import Foundation
 /// Defines the access to OJP Service
 public struct APIConfiguration {
     public let apiEndPoint: String
-    public let requestorRef: String
-    public let authBearerKey: String?
+    public let requestReference: String
+    public let accessToken: String?
     public let additionalHeaders: [(key: String, value: String)]?
 
     public init(apiEndPoint: String, requestorRef: String, authBearerKey: String? = nil, additionalHeaders: [(key: String, value: String)]? = nil) {
         self.apiEndPoint = apiEndPoint
-        self.requestorRef = "\(requestorRef)_\(OJP_SDK_Version)"
-        self.authBearerKey = authBearerKey
+        self.requestReference = "\(requestorRef)_\(OJP_SDK_Version)"
+        self.accessToken = authBearerKey
         self.additionalHeaders = additionalHeaders
     }
 

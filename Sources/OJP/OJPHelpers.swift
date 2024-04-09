@@ -91,12 +91,12 @@ enum OJPHelpers {
             return ojp
         }
         
-        /// Creates a new OJP LocationInformationRequest with stop name
+        /// Creates a new OJP LocationInformationRequest with a search term
         /// - Parameters:
-        ///   - name: stop name
+        ///   - name: search term (the name of a stop)
         ///   - limit: results limit
         /// - Returns: OJPv2 containing a request
-        public func requestWithStopName(_ name: String, numberOfResults: Int = 10) -> OJPv2 {
+        public func requestWithSearchTerm(_ name: String, numberOfResults: Int = 10) -> OJPv2 {
             let requestTimestamp = OJPHelpers.formattedDate()
             let restrictions = OJPv2.Restrictions(type: "stop", numberOfResults: numberOfResults, includePtModes: true)
             

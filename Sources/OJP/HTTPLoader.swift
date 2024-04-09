@@ -25,7 +25,7 @@ public class HTTPLoader {
         let url = URL(string: configuration.apiEndPoint)!
         var urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = "POST"
-        if let authBearerKey = configuration.authBearerKey {
+        if let authBearerKey = configuration.accessToken {
             urlRequest.addValue("Bearer \(authBearerKey)", forHTTPHeaderField: "Authorization")
         }
         urlRequest.addValue("application/xml", forHTTPHeaderField: "Content-Type")

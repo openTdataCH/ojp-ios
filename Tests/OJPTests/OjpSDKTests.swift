@@ -40,7 +40,7 @@ final class OjpSDKTests: XCTestCase {
         }
         
         let ojpSdk = OJP(loadingStrategy: .mock(mockLoader))
-        let nearbyStations = try await ojpSdk.nearbyStations(from: (long: 7.452178, lat: 46.948474))
+        let nearbyStations = try await ojpSdk.requestPlaceResults(from: (long: 7.452178, lat: 46.948474))
 
         let nearbyPlaceResult = nearbyStations.first!.object
 
@@ -63,7 +63,7 @@ final class OjpSDKTests: XCTestCase {
     }
     
     func testBuildRequestName() throws {
-        let ojpRequest = locationInformationRequest.requestWithStopName("Be")
+        let ojpRequest = locationInformationRequest.requestWithSearchTerm("Be")
         let xmlString = try OJPHelpers.buildXMLRequest(ojpRequest: ojpRequest)
         XCTAssert(!xmlString.isEmpty)
     }
@@ -152,7 +152,7 @@ final class OjpSDKTests: XCTestCase {
     func testFetchNearbyStations() async throws {
         let ojpSdk = OJP(loadingStrategy: .http(.int))
 
-        let nearbyStations = try await ojpSdk.nearbyStations(from: (long: 7.452178, lat: 46.948474))
+        let nearbyStations = try await ojpSdk.requestPlaceResults(from: (long: 7.452178, lat: 46.948474))
 
         XCTAssert(nearbyStations.first!.object.place.name.text == "Rathaus")
     }

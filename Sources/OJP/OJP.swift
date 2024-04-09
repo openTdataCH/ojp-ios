@@ -23,7 +23,7 @@ public class OJP {
         case let .http(apiConfiguration):
             let httpLoader = HTTPLoader(configuration: apiConfiguration)
             loader = httpLoader.load(request:)
-            locationInformationRequest = OJPHelpers.LocationInformationRequest(requestorRef: apiConfiguration.requestorRef)
+            locationInformationRequest = OJPHelpers.LocationInformationRequest(requestorRef: apiConfiguration.requestReference)
         case let .mock(loader):
             self.loader = loader
             locationInformationRequest = OJPHelpers.LocationInformationRequest(requestorRef: "Mock_Requestor_Ref")
@@ -51,9 +51,9 @@ public class OJP {
         decoder.keyDecodingStrategy = .useDefaultKeys
         return decoder
     }
-
-    public func nearbyStations(from point: Point) async throws -> [NearbyObject<OJPv2.PlaceResult>] {
-        let ojp = locationInformationRequest.requestWithBox(centerLongitude: point.long, centerLatitude: point.lat, boxWidth: 500.0)
+    
+    public func requestPlaceResults(from coordinates: Point) async throws -> [NearbyObject<OJPv2.PlaceResult>] {
+        let ojp = locationInformationRequest.requestWithBox(centerLongitude: coordinates.long, centerLatitude: coordinates.lat, boxWidth: 1000.0)
 
         let serviceDelivery = try await request(with: ojp).serviceDelivery
 
@@ -61,13 +61,13 @@ public class OJP {
             throw OJPError.unexpectedEmpty
         }
 
-        let nearbyObjects = GeoHelpers.sort(geoAwareObjects: locationInformationDelivery.placeResults, from: point)
+        let nearbyObjects = GeoHelpers.sort(geoAwareObjects: locationInformationDelivery.placeResults, from: coordinates)
 
         return nearbyObjects
     }
 
-    public func stations(by stopName: String, limit: Int = 10) async throws -> [OJPv2.PlaceResult] {
-        let ojp = locationInformationRequest.requestWithStopName(stopName);
+    public func requestPlaceResults(from searchTerm: String) async throws -> [OJPv2.PlaceResult] {
+        let ojp = locationInformationRequest.requestWithSearchTerm(searchTerm);
         
         let serviceDelivery = try await request(with: ojp).serviceDelivery
 
