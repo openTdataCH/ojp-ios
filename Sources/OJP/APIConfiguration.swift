@@ -10,20 +10,22 @@ import Foundation
 /// Defines the access to OJP Service
 public struct APIConfiguration {
     public let apiEndPoint: String
-    public let authBearerKey: String
+    public let requestorRef: String
+    public let authBearerKey: String?
     public let additionalHeaders: [(key: String, value: String)]?
 
-    public init(apiEndPoint: String, authBearerKey: String, additionalHeaders: [(key: String, value: String)]? = nil) {
+    public init(apiEndPoint: String, requestorRef: String, authBearerKey: String? = nil, additionalHeaders: [(key: String, value: String)]? = nil) {
         self.apiEndPoint = apiEndPoint
+        self.requestorRef = "\(requestorRef)_\(OJP_SDK_Version)"
         self.authBearerKey = authBearerKey
         self.additionalHeaders = additionalHeaders
     }
 
     /// TEST environment.
     /// - Note: this configuration should only be used for demo / testing purposes. It can change frequently
-    public static let test = Self(apiEndPoint: "https://odpch-api.clients.liip.ch/ojp20-test", authBearerKey: "eyJvcmciOiI2M2Q4ODhiMDNmZmRmODAwMDEzMDIwODkiLCJpZCI6IjUzYzAyNWI2ZTRhNjQyOTM4NzMxMDRjNTg2ODEzNTYyIiwiaCI6Im11cm11cjEyOCJ9")
+    internal static let test = Self(apiEndPoint: "https://odpch-api.clients.liip.ch/ojp20-test", requestorRef: "OJP_Demo_iOS_\(OJP_SDK_Version)", authBearerKey: "eyJvcmciOiI2M2Q4ODhiMDNmZmRmODAwMDEzMDIwODkiLCJpZCI6IjUzYzAyNWI2ZTRhNjQyOTM4NzMxMDRjNTg2ODEzNTYyIiwiaCI6Im11cm11cjEyOCJ9")
 
     /// INT environment.
     /// - Note: this configuration should only be used for demo / testing purposes. It can change frequently
-    public static let int = Self(apiEndPoint: "https://odpch-api.clients.liip.ch/ojp20-beta", authBearerKey: "eyJvcmciOiI2M2Q4ODhiMDNmZmRmODAwMDEzMDIwODkiLCJpZCI6IjUzYzAyNWI2ZTRhNjQyOTM4NzMxMDRjNTg2ODEzNTYyIiwiaCI6Im11cm11cjEyOCJ9")
+    internal static let int = Self(apiEndPoint: "https://odpch-api.clients.liip.ch/ojp20-beta", requestorRef: "OJP_Demo_iOS_\(OJP_SDK_Version)", authBearerKey: "eyJvcmciOiI2M2Q4ODhiMDNmZmRmODAwMDEzMDIwODkiLCJpZCI6IjUzYzAyNWI2ZTRhNjQyOTM4NzMxMDRjNTg2ODEzNTYyIiwiaCI6Im11cm11cjEyOCJ9")
 }

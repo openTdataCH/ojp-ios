@@ -17,25 +17,54 @@ Event Request](https://opentransportdata.swiss/en/cookbook/ojp-stopeventservice/
 
 ## Requirements
 
-TBA 
-- iOS versions supported
-- any other dependencies
+- Compatible with: iOS 15+ or macOS 14+
 
 ## Installation
 
-TBA 
-- screenshot with Swift PackageManager ?
+- The SDK can be integrated into your Xcode project using the Swift Package Manager. To do so, just add the package by using the following url
+```
+https://github.com/openTdataCH/ojp-ios.git
+```
 
 ## Usage
 
-TBA
-
 ### Initializing
 - endpoints configuration
-- token - where to get it from
+- requestor Ref
+- authBearerKey - where to get it from
+
+```
+import OJP
+
+let ojpSdk = OJP(loadingStrategy: .http(.init(apiEndPoint: "your endpoint", requestorRef: "your Ref", authBearerKey: "your bearer key")))        
+
+```
 
 ### Basic Usage
-- code sample to be used
+
+Get a list of Stations from a keyword.
+
+```
+import OJP
+
+
+let stations = try await ojpSdk.stations(by: "Bern", limit: 10)
+                   
+
+```
+
+
+Get a list of Stations around a place with longitude and latitude
+
+```
+import OJP
+
+
+let nearbyStations = try await ojpSdk.nearbyStations(from: Point(long: 9.44, lat: 5.66))                   
+
+```
+
+
 - link to a sample app repo (later)
 
 ## Documentation
