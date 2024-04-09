@@ -31,15 +31,15 @@ struct StrippedPrefixCodingKey: CodingKey {
 }
 
 public struct OJPv2: Codable {
-    public let request: Request?
-    public let response: Response?
+    internal let request: Request?
+    internal let response: Response?
 
     public enum CodingKeys: String, CodingKey {
         case request = "OJPRequest"
         case response = "OJPResponse"
     }
 
-    public struct Response: Codable {
+    internal struct Response: Codable {
         public let serviceDelivery: ServiceDelivery
 
         public enum CodingKeys: String, CodingKey {
@@ -52,7 +52,7 @@ public struct OJPv2: Codable {
         }
     }
 
-    public struct ServiceDelivery: Codable {
+    internal struct ServiceDelivery: Codable {
         public let responseTimestamp: String
         public let producerRef: String
         public let delivery: ServiceDeliveryType
@@ -71,7 +71,7 @@ public struct OJPv2: Codable {
         }
     }
 
-    public enum ServiceDeliveryType: Codable {
+    internal enum ServiceDeliveryType: Codable {
         case stopEvent(OJPv2.StopEventServiceDelivery)
         case locationInformation(OJPv2.LocationInformationDelivery)
 
@@ -95,10 +95,10 @@ public struct OJPv2: Codable {
         }
     }
 
-    public struct StopEventServiceDelivery: Codable {
-        public let responseTimestamp: String
-        public let producerRef: String
-        public let stopEventDelivery: StopEventDelivery
+    internal struct StopEventServiceDelivery: Codable {
+        internal let responseTimestamp: String
+        internal let producerRef: String
+        internal let stopEventDelivery: StopEventDelivery
 
         public enum CodingKeys: String, CodingKey {
             case responseTimestamp = "siri:ResponseTimestamp"
@@ -107,11 +107,11 @@ public struct OJPv2: Codable {
         }
     }
 
-    public struct StopEventDelivery: Codable {
+    internal struct StopEventDelivery: Codable {
         let places: [Place]
     }
 
-    public struct LocationInformationServiceDelivery: Codable {
+    internal struct LocationInformationServiceDelivery: Codable {
         public let responseTimestamp: String
         public let producerRef: String
         public let locationInformationDelivery: LocationInformationDelivery
@@ -131,7 +131,7 @@ public struct OJPv2: Codable {
         }
     }
 
-    public struct LocationInformationDelivery: Codable {
+    internal struct LocationInformationDelivery: Codable {
         public let responseTimestamp: String
         public let requestMessageRef: String
         public let defaultLanguage: String
@@ -234,7 +234,7 @@ public struct OJPv2: Codable {
         }
     }
 
-    public struct Request: Codable {
+    internal struct Request: Codable {
         public let serviceRequest: ServiceRequest
 
         public enum CodingKeys: String, CodingKey {
@@ -242,7 +242,7 @@ public struct OJPv2: Codable {
         }
     }
 
-    public struct ServiceRequest: Codable {
+    internal struct ServiceRequest: Codable {
         public let requestTimestamp: String
         public let requestorRef: String
         public let locationInformationRequest: LocationInformationRequest
@@ -254,7 +254,7 @@ public struct OJPv2: Codable {
         }
     }
 
-    public struct LocationInformationRequest: Codable {
+    internal struct LocationInformationRequest: Codable {
         public let requestTimestamp: String
         public let initialInput: InitialInput
         public let restrictions: Restrictions
@@ -266,7 +266,7 @@ public struct OJPv2: Codable {
         }
     }
 
-    public struct InitialInput: Codable {
+    internal struct InitialInput: Codable {
         public let geoRestriction: GeoRestriction?
         public let name: String?
 
@@ -276,7 +276,7 @@ public struct OJPv2: Codable {
         }
     }
 
-    public struct GeoRestriction: Codable {
+    internal struct GeoRestriction: Codable {
         public let rectangle: Rectangle?
 
         public enum CodingKeys: String, CodingKey {
