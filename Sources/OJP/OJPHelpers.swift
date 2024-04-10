@@ -29,13 +29,12 @@ enum OJPHelpers {
     }
 
     class LocationInformationRequest {
-        
         init(requestorRef: String) {
             self.requestorRef = requestorRef
         }
-        
+
         let requestorRef: String
-        
+
         /// Creates a new OJP LocationInformationRequest with bounding box
         /// - Parameters
         ///   - bbox: Bounding box used as ``OJPv2/GeoRestriction``
@@ -90,7 +89,7 @@ enum OJPHelpers {
 
             return ojp
         }
-        
+
         /// Creates a new OJP LocationInformationRequest with a search term
         /// - Parameters:
         ///   - name: search term (the name of a stop)
@@ -99,10 +98,10 @@ enum OJPHelpers {
         public func requestWithSearchTerm(_ name: String, numberOfResults: Int = 10) -> OJPv2 {
             let requestTimestamp = OJPHelpers.formattedDate()
             let restrictions = OJPv2.Restrictions(type: "stop", numberOfResults: numberOfResults, includePtModes: true)
-            
+
             let locationInformationRequest = OJPv2.LocationInformationRequest(requestTimestamp: requestTimestamp, initialInput: OJPv2.InitialInput(geoRestriction: nil, name: name), restrictions: restrictions)
-            
-            // TODO - avoid duplication (share this block with "requestWith(bbox: Geo.Bbox")
+
+            // TODO: - avoid duplication (share this block with "requestWith(bbox: Geo.Bbox")
             let ojp = OJPv2(request: OJPv2.Request(serviceRequest: OJPv2.ServiceRequest(requestTimestamp: requestTimestamp, requestorRef: requestorRef, locationInformationRequest: locationInformationRequest)), response: nil)
 
             return ojp

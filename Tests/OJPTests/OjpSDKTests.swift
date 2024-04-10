@@ -2,9 +2,8 @@
 import XCTest
 
 final class OjpSDKTests: XCTestCase {
-    
     let locationInformationRequest = OJPHelpers.LocationInformationRequest(requestorRef: "")
-    
+
     func testLoadFromBundle() throws {
         do {
             let data = try TestHelpers.loadXML()
@@ -38,9 +37,9 @@ final class OjpSDKTests: XCTestCase {
             let response = HTTPURLResponse(url: URL(string: "https://localhost")!, statusCode: 200, httpVersion: "1.0", headerFields: [:])
             return (data, response!)
         }
-        
+
         let ojpSdk = OJP(loadingStrategy: .mock(mockLoader))
-        let nearbyStations = try await ojpSdk.requestPlaceResults(from: (long: 7.452178, lat: 46.948474))
+        let nearbyStations = try await ojpSdk.requestLocations(from: (long: 7.452178, lat: 46.948474))
 
         let nearbyPlaceResult = nearbyStations.first!.object
 
@@ -57,11 +56,11 @@ final class OjpSDKTests: XCTestCase {
         // BE/Köniz area
         let bbox = Geo.Bbox(minLongitude: 7.372097, minLatitude: 46.904860, maxLongitude: 7.479042, maxLatitude: 46.942787)
         let ojpRequest = locationInformationRequest.requestWith(bbox: bbox)
-        
+
         let xmlString = try OJPHelpers.buildXMLRequest(ojpRequest: ojpRequest)
         XCTAssert(!xmlString.isEmpty)
     }
-    
+
     func testBuildRequestName() throws {
         let ojpRequest = locationInformationRequest.requestWithSearchTerm("Be")
         let xmlString = try OJPHelpers.buildXMLRequest(ojpRequest: ojpRequest)
@@ -152,7 +151,7 @@ final class OjpSDKTests: XCTestCase {
     func testFetchNearbyStations() async throws {
         let ojpSdk = OJP(loadingStrategy: .http(.int))
 
-        let nearbyStations = try await ojpSdk.requestPlaceResults(from: (long: 7.452178, lat: 46.948474))
+        let nearbyStations = try await ojpSdk.requestLocations(from: (long: 7.452178, lat: 46.948474))
 
         XCTAssert(nearbyStations.first!.object.place.name.text == "Rathaus")
     }
