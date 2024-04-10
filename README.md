@@ -36,31 +36,32 @@ https://github.com/openTdataCH/ojp-ios.git
 ```
 import OJP
 
-let ojpSdk = OJP(loadingStrategy: .http(.init(apiEndPoint: "your endpoint", requestorRef: "your Ref", authBearerKey: "your bearer key")))        
+let ojpSdk = OJP(loadingStrategy: .http(.init(apiEndPoint: "your end_point", requestReference: "your request reference", authBearerKey:"your token")))
+        
 
 ```
 
 ### Basic Usage
 
-Get a list of Stations from a keyword.
+Get a list of Locations from a keyword.
 
 ```
 import OJP
 
 
-let stations = try await ojpSdk.stations(by: "Bern", limit: 10)
+let searchedLocations = try await ojpSdk.requestLocations(from: "Bern")
                    
 
 ```
 
 
-Get a list of Stations around a place with longitude and latitude
+Get a list of Locations around a place with longitude and latitude
 
 ```
 import OJP
 
-
-let nearbyStations = try await ojpSdk.nearbyStations(from: Point(long: 9.44, lat: 5.66))                   
+let nearbyLocations = try await ojpSdk.requestLocations(from: Point(long: 5.6, lat: 2.3))
+                           
 
 ```
 
