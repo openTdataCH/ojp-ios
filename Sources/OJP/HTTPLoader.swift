@@ -22,8 +22,7 @@ public class HTTPLoader {
     }
 
     private var baseRequest: URLRequest {
-        let url = URL(string: configuration.apiEndPoint)!
-        var urlRequest = URLRequest(url: url)
+        var urlRequest = URLRequest(url: configuration.apiEndPoint)
         urlRequest.httpMethod = "POST"
         if let authBearerKey = configuration.accessToken {
             urlRequest.addValue("Bearer \(authBearerKey)", forHTTPHeaderField: "Authorization")
