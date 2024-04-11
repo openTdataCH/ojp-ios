@@ -35,7 +35,7 @@ public struct OJPv2: Codable {
     let request: Request?
     let response: Response?
 
-    public enum CodingKeys: String, CodingKey {
+    enum CodingKeys: String, CodingKey {
         case request = "OJPRequest"
         case response = "OJPResponse"
     }
