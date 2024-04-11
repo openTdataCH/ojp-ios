@@ -29,12 +29,18 @@ enum OJPHelpers {
     }
 
     class LocationInformationRequest {
+        init(requesterReference: String) {
+            self.requesterReference = requesterReference
+        }
+
+        let requesterReference: String
+
         /// Creates a new OJP LocationInformationRequest with bounding box
         /// - Parameters
         ///   - bbox: Bounding box used as ``OJPv2/GeoRestriction``
         ///   - limit: results limit
         /// - Returns: OJPv2 containing a request
-        public static func requestWith(bbox: Geo.Bbox, numberOfResults: Int = 10) -> OJPv2 {
+        public func requestWith(bbox: Geo.Bbox, numberOfResults: Int = 10) -> OJPv2 {
             let requestTimestamp = OJPHelpers.formattedDate()
 
             let upperLeft = OJPv2.GeoPosition(longitude: bbox.minX, latitude: bbox.maxY)
@@ -45,8 +51,7 @@ enum OJPHelpers {
 
             let locationInformationRequest = OJPv2.LocationInformationRequest(requestTimestamp: requestTimestamp, initialInput: OJPv2.InitialInput(geoRestriction: geoRestriction, name: nil), restrictions: restrictions)
 
-            let requestorRef = "OJP_Demo_iOS_\(OJP_SDK_Version)"
-            let ojp = OJPv2(request: OJPv2.Request(serviceRequest: OJPv2.ServiceRequest(requestTimestamp: requestTimestamp, requestorRef: requestorRef, locationInformationRequest: locationInformationRequest)), response: nil)
+            let ojp = OJPv2(request: OJPv2.Request(serviceRequest: OJPv2.ServiceRequest(requestTimestamp: requestTimestamp, requestorRef: requesterReference, locationInformationRequest: locationInformationRequest)), response: nil)
 
             return ojp
         }
@@ -59,7 +64,7 @@ enum OJPHelpers {
         ///   - boxHeight: bounding box  height in meters
         ///   - limit: results limit
         /// - Returns: OJPv2 containing a request
-        public static func requestWithBox(centerLongitude: Double, centerLatitude: Double, boxWidth: Double, boxHeight: Double? = nil, numberOfResults: Int = 10) -> OJPv2 {
+        public func requestWithBox(centerLongitude: Double, centerLatitude: Double, boxWidth: Double, boxHeight: Double? = nil, numberOfResults: Int = 10) -> OJPv2 {
             let boxHeight = boxHeight ?? boxWidth
 
             let point2Longitude = centerLongitude + 1
@@ -80,25 +85,24 @@ enum OJPHelpers {
 
             let bbox = Geo.Bbox(minLongitude: minLongitude, minLatitude: minLatitude, maxLongitude: maxLongitude, maxLatitude: maxLatitude)
 
-            let ojp = LocationInformationRequest.requestWith(bbox: bbox, numberOfResults: numberOfResults)
+            let ojp = requestWith(bbox: bbox, numberOfResults: numberOfResults)
 
             return ojp
         }
-        
-        /// Creates a new OJP LocationInformationRequest with stop name
+
+        /// Creates a new OJP LocationInformationRequest with a search term
         /// - Parameters:
-        ///   - name: stop name
+        ///   - name: search term (the name of a stop)
         ///   - limit: results limit
         /// - Returns: OJPv2 containing a request
-        public static func requestWithStopName(_ name: String, numberOfResults: Int = 10) -> OJPv2 {
+        public func requestWithSearchTerm(_ name: String, numberOfResults: Int = 10) -> OJPv2 {
             let requestTimestamp = OJPHelpers.formattedDate()
             let restrictions = OJPv2.Restrictions(type: "stop", numberOfResults: numberOfResults, includePtModes: true)
-            
+
             let locationInformationRequest = OJPv2.LocationInformationRequest(requestTimestamp: requestTimestamp, initialInput: OJPv2.InitialInput(geoRestriction: nil, name: name), restrictions: restrictions)
-            
-            // TODO - avoid duplication (share this block with "requestWith(bbox: Geo.Bbox")
-            let requestorRef = "OJP_Demo_iOS_\(OJP_SDK_Version)"
-            let ojp = OJPv2(request: OJPv2.Request(serviceRequest: OJPv2.ServiceRequest(requestTimestamp: requestTimestamp, requestorRef: requestorRef, locationInformationRequest: locationInformationRequest)), response: nil)
+
+            // TODO: - avoid duplication (share this block with "requestWith(bbox: Geo.Bbox")
+            let ojp = OJPv2(request: OJPv2.Request(serviceRequest: OJPv2.ServiceRequest(requestTimestamp: requestTimestamp, requestorRef: requesterReference, locationInformationRequest: locationInformationRequest)), response: nil)
 
             return ojp
         }

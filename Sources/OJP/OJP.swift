@@ -6,7 +6,6 @@ import XMLCoder
 
 public typealias Loader = (Data) async throws -> (Data, URLResponse)
 
-
 /// Defines the loading strategy. Basically used to switch between HTTP and Mocked-Requests
 public enum LoadingStrategy {
     case http(APIConfiguration)
@@ -16,18 +15,23 @@ public enum LoadingStrategy {
 /// Entry point to OJP
 public class OJP {
     let loader: Loader
+    let locationInformationRequest: OJPHelpers.LocationInformationRequest
 
+    /// Constructor of the OJP class
+    /// - Parameter loadingStrategy: Pass a real loader with an API Configuration or a Mock for test purpuse
     public init(loadingStrategy: LoadingStrategy) {
         switch loadingStrategy {
         case let .http(apiConfiguration):
             let httpLoader = HTTPLoader(configuration: apiConfiguration)
             loader = httpLoader.load(request:)
+            locationInformationRequest = OJPHelpers.LocationInformationRequest(requesterReference: apiConfiguration.requesterReference)
         case let .mock(loader):
             self.loader = loader
+            locationInformationRequest = OJPHelpers.LocationInformationRequest(requesterReference: "Mock_Requestor_Ref")
         }
     }
 
-    internal static var requestXMLRootAttributes = [
+    static var requestXMLRootAttributes = [
         "xmlns": "http://www.vdv.de/ojp",
         "xmlns:siri": "http://www.siri.org.uk/siri",
         "xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance",
@@ -49,8 +53,11 @@ public class OJP {
         return decoder
     }
 
-    public func nearbyStations(from point: Point) async throws -> [NearbyObject<OJPv2.PlaceResult>] {
-        let ojp = OJPHelpers.LocationInformationRequest.requestWithBox(centerLongitude: point.long, centerLatitude: point.lat, boxWidth: 500.0)
+    /// Request a list of Locations based on the given geographical point
+    /// - Parameter coordinates: a geo point with longitude and latitude
+    /// - Returns: List of Locations sorted by the nearest point
+    public func requestLocations(from coordinates: Point) async throws -> [NearbyObject<OJPv2.PlaceResult>] {
+        let ojp = locationInformationRequest.requestWithBox(centerLongitude: coordinates.long, centerLatitude: coordinates.lat, boxWidth: 1000.0)
 
         let serviceDelivery = try await request(with: ojp).serviceDelivery
 
@@ -58,20 +65,23 @@ public class OJP {
             throw OJPError.unexpectedEmpty
         }
 
-        let nearbyObjects = GeoHelpers.sort(geoAwareObjects: locationInformationDelivery.placeResults, from: point)
+        let nearbyObjects = GeoHelpers.sort(geoAwareObjects: locationInformationDelivery.placeResults, from: coordinates)
 
         return nearbyObjects
     }
 
-    public func stations(by stopName: String, limit: Int = 10) async throws -> [OJPv2.PlaceResult] {
-        let ojp = OJPHelpers.LocationInformationRequest.requestWithStopName(stopName);
-        
+    /// Request a list of Locations based on the given search term
+    /// - Parameter searchTerm: The given term
+    /// - Returns: List of Locations that contains the search term
+    public func requestLocations(from searchTerm: String) async throws -> [OJPv2.PlaceResult] {
+        let ojp = locationInformationRequest.requestWithSearchTerm(searchTerm)
+
         let serviceDelivery = try await request(with: ojp).serviceDelivery
 
         guard case let .locationInformation(locationInformationDelivery) = serviceDelivery.delivery else {
             throw OJPError.unexpectedEmpty
         }
-        
+
         return locationInformationDelivery.placeResults
     }
 

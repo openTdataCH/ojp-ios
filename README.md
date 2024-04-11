@@ -3,6 +3,7 @@
 ## Overview
 
 This SDK is targeting iOS applications seeking to integrate [Open Journey Planner(OJP) APIs](https://opentdatach.github.io/ojp-ios/documentation/ojp/) to support distributed journey planning according to the European (CEN) Technical Specification entitled “Intelligent transport systems – Public transport – Open API for distributed journey planning”
+Currently the SDK is under construction, so there is not yet a stable version and the APIs may change.
 
 ### Features
 
@@ -17,25 +18,56 @@ Event Request](https://opentransportdata.swiss/en/cookbook/ojp-stopeventservice/
 
 ## Requirements
 
-TBA 
-- iOS versions supported
-- any other dependencies
+- Compatible with: iOS 15+ or macOS 14+
 
 ## Installation
 
-TBA 
-- screenshot with Swift PackageManager ?
+- The SDK can be integrated into your Xcode project using the Swift Package Manager. To do so, just add the package by using the following url
+```
+https://github.com/openTdataCH/ojp-ios.git
+```
 
 ## Usage
 
-TBA
-
 ### Initializing
+TBA
 - endpoints configuration
-- token - where to get it from
+- requesterReference
+- authBearerToken - where to get it from
+
+```
+import OJP
+
+let ojpSdk = OJP(loadingStrategy: .http(.init(apiEndPoint: URL(string: "your api endpoint")!, requesterReference: "your request reference", authBearerToken: "your token")))
+        
+
+```
 
 ### Basic Usage
-- code sample to be used
+
+Get a list of Locations from a keyword.
+
+```
+import OJP
+
+
+let searchedLocations = try await ojpSdk.requestLocations(from: "Bern")
+                   
+
+```
+
+
+Get a list of Locations around a place with longitude and latitude
+
+```
+import OJP
+
+let nearbyLocations = try await ojpSdk.requestLocations(from: Point(long: 5.6, lat: 2.3))
+                           
+
+```
+
+
 - link to a sample app repo (later)
 
 ## Documentation
