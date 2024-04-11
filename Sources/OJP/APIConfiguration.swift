@@ -13,7 +13,7 @@ public struct APIConfiguration {
     public let requestReference: String
     public let authBearerToken: String?
     public let additionalHeaders: [(key: String, value: String)]?
-    
+
     /// Configuration for the API
     /// - Parameters:
     ///   - apiEndPoint: the URL that points to the backend API
