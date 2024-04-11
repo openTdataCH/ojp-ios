@@ -3,6 +3,7 @@
 ## Overview
 
 This SDK is targeting iOS applications seeking to integrate [Open Journey Planner(OJP) APIs](https://opentdatach.github.io/ojp-ios/documentation/ojp/) to support distributed journey planning according to the European (CEN) Technical Specification entitled “Intelligent transport systems – Public transport – Open API for distributed journey planning”
+Currently the SDK is under construction, so there is not yet a stable version and the APIs may change.
 
 ### Features
 
@@ -36,7 +37,7 @@ https://github.com/openTdataCH/ojp-ios.git
 ```
 import OJP
 
-let ojpSdk = OJP(loadingStrategy: .http(.init(apiEndPoint: "your end_point", requestReference: "your request reference", authBearerKey:"your token")))
+let ojpSdk = OJP(loadingStrategy: .http(.init(apiEndPoint: URL(string: "your api endpoint")!, requestReference: "your request reference", authBearerToken: "your token")))
         
 
 ```

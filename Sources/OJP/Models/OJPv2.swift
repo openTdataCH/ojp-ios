@@ -8,7 +8,8 @@
 import Foundation
 import XMLCoder
 
-let OJP_SDK_Version = "0.9.1"
+internal let OJP_SDK_Name = "IOS_SDK"
+internal let OJP_SDK_Version = "0.0.1"
 
 struct StrippedPrefixCodingKey: CodingKey {
     var stringValue: String
