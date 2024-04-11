@@ -2,7 +2,7 @@
 import XCTest
 
 final class OjpSDKTests: XCTestCase {
-    let locationInformationRequest = OJPHelpers.LocationInformationRequest(requestorRef: "")
+    let locationInformationRequest = OJPHelpers.LocationInformationRequest(requesterReference: "")
 
     func testLoadFromBundle() throws {
         do {

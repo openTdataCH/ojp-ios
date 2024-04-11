@@ -30,14 +30,15 @@ https://github.com/openTdataCH/ojp-ios.git
 ## Usage
 
 ### Initializing
+TBA
 - endpoints configuration
-- requestor Ref
-- authBearerKey - where to get it from
+- requesterReference
+- authBearerToken - where to get it from
 
 ```
 import OJP
 
-let ojpSdk = OJP(loadingStrategy: .http(.init(apiEndPoint: URL(string: "your api endpoint")!, requestReference: "your request reference", authBearerToken: "your token")))
+let ojpSdk = OJP(loadingStrategy: .http(.init(apiEndPoint: URL(string: "your api endpoint")!, requesterReference: "your request reference", authBearerToken: "your token")))
         
 
 ```

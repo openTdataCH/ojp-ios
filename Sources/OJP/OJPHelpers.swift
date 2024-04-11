@@ -29,11 +29,11 @@ enum OJPHelpers {
     }
 
     class LocationInformationRequest {
-        init(requestorRef: String) {
-            self.requestorRef = requestorRef
+        init(requesterReference: String) {
+            self.requesterReference = requesterReference
         }
 
-        let requestorRef: String
+        let requesterReference: String
 
         /// Creates a new OJP LocationInformationRequest with bounding box
         /// - Parameters
@@ -51,7 +51,7 @@ enum OJPHelpers {
 
             let locationInformationRequest = OJPv2.LocationInformationRequest(requestTimestamp: requestTimestamp, initialInput: OJPv2.InitialInput(geoRestriction: geoRestriction, name: nil), restrictions: restrictions)
 
-            let ojp = OJPv2(request: OJPv2.Request(serviceRequest: OJPv2.ServiceRequest(requestTimestamp: requestTimestamp, requestorRef: requestorRef, locationInformationRequest: locationInformationRequest)), response: nil)
+            let ojp = OJPv2(request: OJPv2.Request(serviceRequest: OJPv2.ServiceRequest(requestTimestamp: requestTimestamp, requestorRef: requesterReference, locationInformationRequest: locationInformationRequest)), response: nil)
 
             return ojp
         }
@@ -102,7 +102,7 @@ enum OJPHelpers {
             let locationInformationRequest = OJPv2.LocationInformationRequest(requestTimestamp: requestTimestamp, initialInput: OJPv2.InitialInput(geoRestriction: nil, name: name), restrictions: restrictions)
 
             // TODO: - avoid duplication (share this block with "requestWith(bbox: Geo.Bbox")
-            let ojp = OJPv2(request: OJPv2.Request(serviceRequest: OJPv2.ServiceRequest(requestTimestamp: requestTimestamp, requestorRef: requestorRef, locationInformationRequest: locationInformationRequest)), response: nil)
+            let ojp = OJPv2(request: OJPv2.Request(serviceRequest: OJPv2.ServiceRequest(requestTimestamp: requestTimestamp, requestorRef: requesterReference, locationInformationRequest: locationInformationRequest)), response: nil)
 
             return ojp
         }

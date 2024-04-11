@@ -24,10 +24,10 @@ public class OJP {
         case let .http(apiConfiguration):
             let httpLoader = HTTPLoader(configuration: apiConfiguration)
             loader = httpLoader.load(request:)
-            locationInformationRequest = OJPHelpers.LocationInformationRequest(requestorRef: apiConfiguration.requestReference)
+            locationInformationRequest = OJPHelpers.LocationInformationRequest(requesterReference: apiConfiguration.requesterReference)
         case let .mock(loader):
             self.loader = loader
-            locationInformationRequest = OJPHelpers.LocationInformationRequest(requestorRef: "Mock_Requestor_Ref")
+            locationInformationRequest = OJPHelpers.LocationInformationRequest(requesterReference: "Mock_Requestor_Ref")
         }
     }
 
