@@ -155,4 +155,19 @@ final class OjpSDKTests: XCTestCase {
 
         XCTAssert(nearbyStations.first!.object.place.name.text == "Rathaus")
     }
+
+    func testParseRailBusAndUndergroundPtModes() throws {
+        let xmlData = try TestHelpers.loadXML(xmlFilename: "lir-lausanne")
+
+        let locationInformation = try OJPDecoder.parseXML(xmlData).response!.serviceDelivery.delivery
+
+        switch locationInformation {
+        case .stopEvent:
+            XCTFail()
+        case let .locationInformation(lir):
+            XCTAssert(lir.placeResults.first?.place.mode.first?.ptModeType == .rail)
+            XCTAssert(lir.placeResults[1].place.mode.first?.ptModeType == .bus)
+            XCTAssert(lir.placeResults[2].place.mode.first?.ptModeType == .underground)
+        }
+    }
 }
