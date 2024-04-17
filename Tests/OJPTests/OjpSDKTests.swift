@@ -62,7 +62,7 @@ final class OjpSDKTests: XCTestCase {
     }
 
     func testBuildRequestName() throws {
-        let ojpRequest = locationInformationRequest.requestWithSearchTerm("Be")
+        let ojpRequest = locationInformationRequest.requestWithSearchTerm("Be", filter: [.stop])
         let xmlString = try OJPHelpers.buildXMLRequest(ojpRequest: ojpRequest)
         XCTAssert(!xmlString.isEmpty)
     }
@@ -154,6 +154,28 @@ final class OjpSDKTests: XCTestCase {
         let nearbyStations = try await ojpSdk.requestLocations(from: (long: 7.452178, lat: 46.948474))
 
         XCTAssert(nearbyStations.first!.object.place.name.text == "Rathaus")
+    }
+    
+    func testAddress() async throws {
+        let xmlData = try TestHelpers.loadXML(xmlFilename: "lir-address")
+        
+        let locationInformation = try OJPDecoder.parseXML(xmlData).response!.serviceDelivery.delivery
+        
+        switch locationInformation {
+        case .stopEvent(_):
+            XCTFail()
+        case .locationInformation(let locationInformation):
+            for location in locationInformation.placeResults {
+                switch location.place.placeType {
+                case .stopPlace(let stopPlace):
+                    XCTFail()
+                case .address(let address):
+                    XCTAssert(address.houseNumber == "48")
+                    XCTAssert(address.topographicPlaceName == "Le Mouret")
+                    XCTAssert(address.street == "Route des Russilles")
+                }
+            }
+        }
     }
 
     func testParseRailBusAndUndergroundPtModes() throws {

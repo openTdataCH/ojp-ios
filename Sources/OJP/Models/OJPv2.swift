@@ -170,16 +170,24 @@ public struct OJPv2: Codable {
     }
 
     public struct Place: Codable {
-        public let stopPlace: StopPlace
+        public let placeType: PlaceType
         public let name: Name
         public let geoPosition: GeoPosition
         public let mode: [Mode]
 
         public enum CodingKeys: String, CodingKey {
-            case stopPlace = "StopPlace"
             case name = "Name"
             case geoPosition = "GeoPosition"
             case mode = "Mode"
+        }
+        
+        public init(from decoder: any Decoder) throws {
+            placeType = try PlaceType(from: decoder)
+
+            let container = try decoder.container(keyedBy: StrippedPrefixCodingKey.self)
+            name = try container.decode(Name.self, forKey: StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.name))
+            geoPosition = try container.decode(GeoPosition.self, forKey: StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.geoPosition))
+            mode = try container.decode([Mode].self, forKey: StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.mode))
         }
     }
 
@@ -188,6 +196,37 @@ public struct OJPv2: Codable {
 
         public enum CodingKeys: String, CodingKey {
             case ptMode = "PtMode"
+        }
+    }
+    
+    public enum PlaceType: Codable {
+        case stopPlace(OJPv2.StopPlace)
+        case address(OJPv2.Address)
+
+        enum CodingKeys: String, CodingKey {
+            case stopPlace = "StopPlace"
+            case address = "Address"
+        }
+
+        public init(from decoder: any Decoder) throws {
+            let container = try decoder.container(keyedBy: StrippedPrefixCodingKey.self)
+            if container.contains(StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.stopPlace)) {
+                self = try .stopPlace(
+                    container.decode(
+                        StopPlace.self,
+                        forKey: StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.stopPlace)
+                    )
+                )
+            } else if container.contains(StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.address)) {
+                self = try .address(
+                    container.decode(
+                        Address.self,
+                        forKey: StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.address)
+                    )
+                )
+            } else {
+                throw OJPError.notImplemented
+            }
         }
     }
 
@@ -202,6 +241,24 @@ public struct OJPv2: Codable {
             case stopPlaceName = "StopPlaceName"
             case privateCode = "PrivateCode"
             case topographicPlaceRef = "TopographicPlaceRef"
+        }
+    }
+    
+    public struct Address: Codable {
+        public let topographicPlaceCode: String?
+        public let topographicPlaceName: String
+        public let postCode: String?
+        public let name: Name
+        public let street: String
+        public let houseNumber: String?
+
+        public enum CodingKeys: String, CodingKey {
+            case topographicPlaceCode = "TopographicPlaceCode"
+            case topographicPlaceName = "TopographicPlaceName"
+            case postCode = "PostCode"
+            case name = "Name"
+            case street = "Street"
+            case houseNumber = "HouseNumber"
         }
     }
 
@@ -306,7 +363,7 @@ public struct OJPv2: Codable {
     }
 
     public struct Restrictions: Codable {
-        public let type: String
+        public let type: [String]
         public let numberOfResults: Int
         let includePtModes: Bool
 

@@ -12,6 +12,11 @@ public enum LoadingStrategy {
     case mock(Loader)
 }
 
+public enum LocationsFilter: String {
+    case stop
+    case address
+}
+
 /// Entry point to OJP
 public class OJP {
     let loader: Loader
@@ -65,16 +70,15 @@ public class OJP {
             throw OJPError.unexpectedEmpty
         }
 
-        let nearbyObjects = GeoHelpers.sort(geoAwareObjects: locationInformationDelivery.placeResults, from: coordinates)
-
+        let nearbyObjects = GeoHelpers.sort(geoAwareObjects: locationInformationDelivery.placeResults, from: coordinates)        
         return nearbyObjects
     }
 
     /// Request a list of Locations based on the given search term
     /// - Parameter searchTerm: The given term
     /// - Returns: List of Locations that contains the search term
-    public func requestLocations(from searchTerm: String) async throws -> [OJPv2.PlaceResult] {
-        let ojp = locationInformationRequest.requestWithSearchTerm(searchTerm)
+    public func requestLocations(from searchTerm: String, filter: [LocationsFilter]) async throws -> [OJPv2.PlaceResult] {
+        let ojp = locationInformationRequest.requestWithSearchTerm(searchTerm, filter: filter)
 
         let serviceDelivery = try await request(with: ojp).serviceDelivery
 
@@ -90,8 +94,19 @@ public class OJP {
         guard String(data: ojpXMLData, encoding: .utf8) != nil else {
             throw OJPError.encodingFailed
         }
-
+        
+        
+        if let ojpXMLRequest = String(data: ojpXMLData, encoding: .utf8) {
+            debugPrint("Request Body:")
+            debugPrint(ojpXMLRequest)
+        }
+        
         let (data, response) = try await loader(ojpXMLData)
+        
+        if let ojpXMLResponse = String(data: data, encoding: .utf8) {
+            debugPrint("Response Body:")
+            debugPrint(ojpXMLResponse)
+        }
 
         if let httpResponse = response as? HTTPURLResponse {
             guard httpResponse.statusCode == 200 else {
