@@ -173,13 +173,13 @@ public struct OJPv2: Codable {
         public let stopPlace: StopPlace?
         public let name: Name
         public let geoPosition: GeoPosition
-        public let mode: [Mode]
+        public let modes: [Mode]
 
         public enum CodingKeys: String, CodingKey {
             case stopPlace = "StopPlace"
             case name = "Name"
             case geoPosition = "GeoPosition"
-            case mode = "Mode"
+            case modes = "Mode"
         }
     }
 
