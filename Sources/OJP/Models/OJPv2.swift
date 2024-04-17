@@ -134,9 +134,9 @@ public struct OJPv2: Codable {
 
     struct LocationInformationDelivery: Codable {
         public let responseTimestamp: String
-        public let calcTime: String
         public let requestMessageRef: String?
         public let defaultLanguage: String?
+        public let calcTime: Int?
         public let placeResults: [PlaceResult]
 
         public enum CodingKeys: String, CodingKey {
@@ -152,7 +152,7 @@ public struct OJPv2: Codable {
             responseTimestamp = try container.decode(String.self, forKey: StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.responseTimestamp))
             requestMessageRef = try container.decode(String.self, forKey: StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.requestMessageRef))
             defaultLanguage = try container.decode(String.self, forKey: StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.defaultLanguage))
-            calcTime = try container.decode(String.self, forKey: StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.calcTime))
+            calcTime = try container.decode(Int.self, forKey: StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.calcTime))
             placeResults = try container.decode([OJPv2.PlaceResult].self, forKey: StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.placeResults))
         }
     }
