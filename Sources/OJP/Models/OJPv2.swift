@@ -134,9 +134,9 @@ public struct OJPv2: Codable {
 
     struct LocationInformationDelivery: Codable {
         public let responseTimestamp: String
-        public let requestMessageRef: String
-        public let defaultLanguage: String
         public let calcTime: String
+        public let requestMessageRef: String?
+        public let defaultLanguage: String?
         public let placeResults: [PlaceResult]
 
         public enum CodingKeys: String, CodingKey {
@@ -160,7 +160,7 @@ public struct OJPv2: Codable {
     public struct PlaceResult: Codable {
         public let place: Place
         public let complete: Bool
-        public let probability: Float
+        public let probability: Float?
 
         public enum CodingKeys: String, CodingKey {
             case place = "Place"
@@ -170,7 +170,7 @@ public struct OJPv2: Codable {
     }
 
     public struct Place: Codable {
-        public let stopPlace: StopPlace
+        public let stopPlace: StopPlace?
         public let name: Name
         public let geoPosition: GeoPosition
         public let mode: [Mode]
@@ -194,8 +194,8 @@ public struct OJPv2: Codable {
     public struct StopPlace: Codable {
         public let stopPlaceRef: String
         public let stopPlaceName: Name
-        public let privateCode: PrivateCode
-        public let topographicPlaceRef: String
+        public let privateCode: PrivateCode?
+        public let topographicPlaceRef: String?
 
         public enum CodingKeys: String, CodingKey {
             case stopPlaceRef = "StopPlaceRef"
