@@ -194,13 +194,13 @@ public struct OJPv2: Codable {
     public struct StopPlace: Codable {
         public let stopPlaceRef: String
         public let stopPlaceName: Name
-        public let privateCode: PrivateCode?
+        public let privateCodes: [PrivateCode]
         public let topographicPlaceRef: String?
 
         public enum CodingKeys: String, CodingKey {
             case stopPlaceRef = "StopPlaceRef"
             case stopPlaceName = "StopPlaceName"
-            case privateCode = "PrivateCode"
+            case privateCodes = "PrivateCode"
             case topographicPlaceRef = "TopographicPlaceRef"
         }
     }
