@@ -76,6 +76,7 @@ public class OJP {
 
     /// Request a list of Locations based on the given search term
     /// - Parameter searchTerm: The given term
+    /// - Parameter filter: filter by the type (stops, addresses, ...)
     /// - Returns: List of Locations that contains the search term
     public func requestLocations(from searchTerm: String, filter: [LocationsFilter]) async throws -> [OJPv2.PlaceResult] {
         let ojp = locationInformationRequest.requestWithSearchTerm(searchTerm, filter: filter)
