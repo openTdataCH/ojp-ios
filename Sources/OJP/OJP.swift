@@ -70,7 +70,7 @@ public class OJP {
             throw OJPError.unexpectedEmpty
         }
 
-        let nearbyObjects = GeoHelpers.sort(geoAwareObjects: locationInformationDelivery.placeResults, from: coordinates)        
+        let nearbyObjects = GeoHelpers.sort(geoAwareObjects: locationInformationDelivery.placeResults, from: coordinates)
         return nearbyObjects
     }
 
@@ -94,15 +94,14 @@ public class OJP {
         guard String(data: ojpXMLData, encoding: .utf8) != nil else {
             throw OJPError.encodingFailed
         }
-        
-        
+
         if let ojpXMLRequest = String(data: ojpXMLData, encoding: .utf8) {
             debugPrint("Request Body:")
             debugPrint(ojpXMLRequest)
         }
-        
+
         let (data, response) = try await loader(ojpXMLData)
-        
+
         if let ojpXMLResponse = String(data: data, encoding: .utf8) {
             debugPrint("Response Body:")
             debugPrint(ojpXMLResponse)

@@ -180,7 +180,7 @@ public struct OJPv2: Codable {
             case geoPosition = "GeoPosition"
             case mode = "Mode"
         }
-        
+
         public init(from decoder: any Decoder) throws {
             placeType = try PlaceType(from: decoder)
 
@@ -198,7 +198,7 @@ public struct OJPv2: Codable {
             case ptMode = "PtMode"
         }
     }
-    
+
     public enum PlaceType: Codable {
         case stopPlace(OJPv2.StopPlace)
         case address(OJPv2.Address)
@@ -243,7 +243,7 @@ public struct OJPv2: Codable {
             case topographicPlaceRef = "TopographicPlaceRef"
         }
     }
-    
+
     public struct Address: Codable {
         public let topographicPlaceCode: String?
         public let topographicPlaceName: String

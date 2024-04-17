@@ -155,21 +155,21 @@ final class OjpSDKTests: XCTestCase {
 
         XCTAssert(nearbyStations.first!.object.place.name.text == "Rathaus")
     }
-    
+
     func testAddress() async throws {
         let xmlData = try TestHelpers.loadXML(xmlFilename: "lir-address")
-        
+
         let locationInformation = try OJPDecoder.parseXML(xmlData).response!.serviceDelivery.delivery
-        
+
         switch locationInformation {
-        case .stopEvent(_):
+        case .stopEvent:
             XCTFail()
-        case .locationInformation(let locationInformation):
+        case let .locationInformation(locationInformation):
             for location in locationInformation.placeResults {
                 switch location.place.placeType {
-                case .stopPlace(let stopPlace):
+                case let .stopPlace(stopPlace):
                     XCTFail()
-                case .address(let address):
+                case let .address(address):
                     XCTAssert(address.houseNumber == "48")
                     XCTAssert(address.topographicPlaceName == "Le Mouret")
                     XCTAssert(address.street == "Route des Russilles")
