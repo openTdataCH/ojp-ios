@@ -170,4 +170,17 @@ final class OjpSDKTests: XCTestCase {
             XCTAssert(lir.placeResults[2].place.modes.first?.ptModeType == .underground)
         }
     }
+    
+    func testParseOnlyMandatoryMembers() throws {
+        let xmlData = try TestHelpers.loadXML(xmlFilename: "lir-lausanne-optional")
+
+        let locationInformation = try OJPDecoder.parseXML(xmlData).response!.serviceDelivery.delivery
+
+        switch locationInformation {
+        case .stopEvent:
+            XCTFail()
+        case let .locationInformation(lir):
+            XCTAssert(!lir.placeResults.isEmpty)
+        }
+    }
 }
