@@ -166,8 +166,8 @@ final class OjpSDKTests: XCTestCase {
             XCTFail()
         case let .locationInformation(locationInformation):
             for location in locationInformation.placeResults {
-                switch location.place.placeType {
-                case let .stopPlace(stopPlace):
+                switch location.place.placeType! {
+                case .stopPlace:
                     XCTFail()
                 case let .address(address):
                     XCTAssert(address.houseNumber == "48")

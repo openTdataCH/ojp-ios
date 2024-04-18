@@ -170,7 +170,7 @@ public struct OJPv2: Codable {
     }
 
     public struct Place: Codable {
-        public let placeType: PlaceType
+        public let placeType: PlaceType?
         public let name: Name
         public let geoPosition: GeoPosition
         public let mode: [Mode]
@@ -182,7 +182,11 @@ public struct OJPv2: Codable {
         }
 
         public init(from decoder: any Decoder) throws {
-            placeType = try PlaceType(from: decoder)
+            do {
+                placeType = try PlaceType(from: decoder)
+            } catch {
+                placeType = nil
+            }
 
             let container = try decoder.container(keyedBy: StrippedPrefixCodingKey.self)
             name = try container.decode(Name.self, forKey: StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.name))
