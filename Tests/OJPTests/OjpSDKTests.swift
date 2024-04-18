@@ -179,7 +179,7 @@ final class OjpSDKTests: XCTestCase {
     }
 
     func testParseOnlyMandatoryMembers() throws {
-        let xmlData = try TestHelpers.loadXML(xmlFilename: "lir-lausanne-optional")
+        let xmlData = try TestHelpers.loadXML(xmlFilename: "lir-minimum-response")
 
         let locationInformation = try OJPDecoder.parseXML(xmlData).response!.serviceDelivery.delivery
 
