@@ -87,6 +87,28 @@ final class OjpSDKTests: XCTestCase {
         dump(locationInformation)
         XCTAssertTrue(true)
     }
+    
+    func testParseMinimumRequiredLIRResponse() throws {
+        let xmlData = try TestHelpers.loadXML(xmlFilename: "lir-minimum-response")
+        let locationInformation = try OJPDecoder.parseXML(xmlData)
+        dump(locationInformation)
+        XCTAssertTrue(true)
+    }
+    
+    func testParseRailBusAndUndergroundPtModes() throws {
+        let xmlData = try TestHelpers.loadXML(xmlFilename: "lir-lausanne")
+
+        let locationInformation = try OJPDecoder.parseXML(xmlData).response!.serviceDelivery.delivery
+
+        switch locationInformation {
+        case .stopEvent:
+            XCTFail()
+        case let .locationInformation(lir):
+            XCTAssert(lir.placeResults.first?.place.modes.first?.ptModeType == .rail)
+            XCTAssert(lir.placeResults[1].place.modes.first?.ptModeType == .bus)
+            XCTAssert(lir.placeResults[2].place.modes.first?.ptModeType == .underground)
+        }
+    }
 
     func testLoader() async throws {
         // BE/Köniz area
@@ -154,20 +176,5 @@ final class OjpSDKTests: XCTestCase {
         let nearbyStations = try await ojpSdk.requestLocations(from: (long: 7.452178, lat: 46.948474))
 
         XCTAssert(nearbyStations.first!.object.place.name.text == "Rathaus")
-    }
-
-    func testParseRailBusAndUndergroundPtModes() throws {
-        let xmlData = try TestHelpers.loadXML(xmlFilename: "lir-lausanne")
-
-        let locationInformation = try OJPDecoder.parseXML(xmlData).response!.serviceDelivery.delivery
-
-        switch locationInformation {
-        case .stopEvent:
-            XCTFail()
-        case let .locationInformation(lir):
-            XCTAssert(lir.placeResults.first?.place.mode.first?.ptModeType == .rail)
-            XCTAssert(lir.placeResults[1].place.mode.first?.ptModeType == .bus)
-            XCTAssert(lir.placeResults[2].place.mode.first?.ptModeType == .underground)
-        }
     }
 }
