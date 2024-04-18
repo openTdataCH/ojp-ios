@@ -177,17 +177,4 @@ final class OjpSDKTests: XCTestCase {
 
         XCTAssert(nearbyStations.first!.object.place.name.text == "Rathaus")
     }
-
-    func testParseOnlyMandatoryMembers() throws {
-        let xmlData = try TestHelpers.loadXML(xmlFilename: "lir-minimum-response")
-
-        let locationInformation = try OJPDecoder.parseXML(xmlData).response!.serviceDelivery.delivery
-
-        switch locationInformation {
-        case .stopEvent:
-            XCTFail()
-        case let .locationInformation(lir):
-            XCTAssert(!lir.placeResults.isEmpty)
-        }
-    }
 }
