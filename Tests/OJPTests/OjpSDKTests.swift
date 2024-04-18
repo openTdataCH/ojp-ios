@@ -87,6 +87,13 @@ final class OjpSDKTests: XCTestCase {
         dump(locationInformation)
         XCTAssertTrue(true)
     }
+    
+    func testParseMinimumRequiredLIRResponse() throws {
+        let xmlData = try TestHelpers.loadXML(xmlFilename: "lir-minimum-response")
+        let locationInformation = try OJPDecoder.parseXML(xmlData)
+        dump(locationInformation)
+        XCTAssertTrue(true)
+    }
 
     func testLoader() async throws {
         // BE/Köniz area
