@@ -55,7 +55,7 @@ public struct OJPv2: Codable {
 
     struct ServiceDelivery: Codable {
         public let responseTimestamp: String
-        public let producerRef: String
+        public let producerRef: String?
         public let delivery: ServiceDeliveryType
 
         public enum CodingKeys: String, CodingKey {
@@ -68,7 +68,7 @@ public struct OJPv2: Codable {
 
             let container = try decoder.container(keyedBy: StrippedPrefixCodingKey.self)
             responseTimestamp = try container.decode(String.self, forKey: StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.responseTimestamp))
-            producerRef = try container.decode(String.self, forKey: StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.producerRef))
+            producerRef = try? container.decode(String.self, forKey: StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.producerRef))
         }
     }
 
