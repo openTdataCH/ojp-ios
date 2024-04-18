@@ -165,9 +165,9 @@ final class OjpSDKTests: XCTestCase {
         case .stopEvent:
             XCTFail()
         case let .locationInformation(lir):
-            XCTAssert(lir.placeResults.first?.place.mode.first?.ptModeType == .rail)
-            XCTAssert(lir.placeResults[1].place.mode.first?.ptModeType == .bus)
-            XCTAssert(lir.placeResults[2].place.mode.first?.ptModeType == .underground)
+            XCTAssert(lir.placeResults.first?.place.modes.first?.ptModeType == .rail)
+            XCTAssert(lir.placeResults[1].place.modes.first?.ptModeType == .bus)
+            XCTAssert(lir.placeResults[2].place.modes.first?.ptModeType == .underground)
         }
     }
 }
