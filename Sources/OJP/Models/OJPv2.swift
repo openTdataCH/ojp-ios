@@ -171,8 +171,8 @@ public struct OJPv2: Codable {
 
     public struct Place: Codable {
         public let stopPlace: StopPlace?
-        public let name: Name
-        public let geoPosition: GeoPosition
+        public let name: Name?
+        public let geoPosition: GeoPosition?
         public let modes: [Mode]
 
         public enum CodingKeys: String, CodingKey {

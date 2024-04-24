@@ -35,5 +35,5 @@ public struct NearbyObject<T> {
 }
 
 public protocol GeoAware {
-    var coords: Point { get }
+    var coords: Point? { get }
 }
