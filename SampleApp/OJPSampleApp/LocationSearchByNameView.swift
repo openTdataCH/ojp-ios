@@ -33,7 +33,7 @@ struct LocationSearchByNameView: View {
     let availableRange: [Int] = [5, 10, 20, 50, 100]
 
     var body: some View {
-        VStack {
+        NavigationSplitView {
             Text("Search Stations by Name")
             Form {
                 TextField("Search Name", text: $inputName)
@@ -45,42 +45,47 @@ struct LocationSearchByNameView: View {
                     Text("Limit")
                 }
             }
-
-            List($results) { $stop in
-                Text(stop.place.stopPlace.stopPlaceName.text)
-            }
-            Map {
-                ForEach($results) { $stop in
-                    Annotation(stop.place.stopPlace.stopPlaceName.text,
-                               coordinate: stop.place.geoPosition.coordinates) {
-                        Circle().onTapGesture {
-                            self.selectetedPlace = stop
+        } content: {
+            VStack {
+                List($results) { $stop in
+                    Text(stop.place.stopPlace.stopPlaceName.text) .onTapGesture {
+                        self.selectetedPlace = stop
+                    }
+                }
+                Map {
+                    ForEach($results) { $stop in
+                        Annotation(stop.place.stopPlace.stopPlaceName.text,
+                                   coordinate: stop.place.geoPosition.coordinates) {
+                            Circle().onTapGesture {
+                                self.selectetedPlace = stop
+                            }
                         }
                     }
                 }
-            }
-            if !inputName.isEmpty {
-                Text("Found \(results.count) Results (Limit: \(limit))")
+                if !inputName.isEmpty {
+                    Text("Found \(results.count) Results (Limit: \(limit))")
                 }
-        }
-        .overlay {
-            PlaceDetailView(place: $selectetedPlace)
-        }
-        .padding()
-        .onChange(of: inputName) { oldValue, newValue in
-            guard oldValue != newValue else { return }
-            self.currentTask?.cancel()
+            }
+            .padding()
+            .onChange(of: inputName) { oldValue, newValue in
+                guard oldValue != newValue else { return }
+                self.currentTask?.cancel()
 
-            let ojp = OJP(loadingStrategy: .http(.int))
-            let t = Task {
-                do {
-                    results = try await ojp.stations(by: newValue, limit: limit)
-                    print(results)
-                } catch {
-                    print(error)
+                let ojp = OJP(loadingStrategy: .http(.int))
+                let t = Task {
+                    do {
+                        results = try await ojp.stations(by: newValue, limit: limit)
+                        print(results)
+                    } catch {
+                        print(error)
+                    }
                 }
+                self.currentTask = t
             }
-            self.currentTask = t
+        } detail: {
+            if selectetedPlace != nil {
+                PlaceDetailView(place: $selectetedPlace)
+            }
         }
     }
 }
