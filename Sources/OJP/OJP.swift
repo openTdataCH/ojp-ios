@@ -64,10 +64,9 @@ public class OJP {
         guard case let .locationInformation(locationInformationDelivery) = serviceDelivery.delivery else {
             throw OJPError.unexpectedEmpty
         }
+        let geoAwareObjects = locationInformationDelivery.placeResults.compactMap { $0.geoAware }
 
-        let nearbyObjects = GeoHelpers.sort(geoAwareObjects: locationInformationDelivery.placeResults, from: coordinates)
-
-        return nearbyObjects
+        return GeoHelpers.sort(geoAwareObjects: geoAwareObjects, from: coordinates)
     }
 
     /// Request a list of Locations based on the given search term

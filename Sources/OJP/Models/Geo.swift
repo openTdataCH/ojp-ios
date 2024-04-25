@@ -31,9 +31,17 @@ public struct Geo {
 
 public struct NearbyObject<T> {
     public var object: T
+    public internal(set) var coords: Point
     public var distance: Double
+
+    init(geoAware: GeoAware<T>, point: Point) {
+        object = geoAware.object
+        coords = geoAware.coords
+        distance = GeoHelpers.calculateDistance(lon1: point.long, lat1: point.lat, lon2: coords.long, lat2: coords.lat)
+    }
 }
 
-public protocol GeoAware {
-    var coords: Point { get }
+public struct GeoAware<T> {
+    var object: T
+    var coords: Point
 }

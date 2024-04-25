@@ -28,14 +28,14 @@ enum GeoHelpers {
         return distanceMeters.rounded(to: 1)
     }
 
-    public static func sort<T: GeoAware>(geoAwareObjects: [T], from point: Point) -> [NearbyObject<T>] {
-        var nearbyObjects = geoAwareObjects.map { geoAwareObject in
-            let distance = GeoHelpers.calculateDistance(lon1: point.long, lat1: point.lat, lon2: geoAwareObject.coords.long, lat2: geoAwareObject.coords.lat)
-            return NearbyObject(object: geoAwareObject, distance: distance)
+    static func sort<T>(geoAwareObjects: [GeoAware<T>], from point: Point) -> [NearbyObject<T>] {
+        var nearbyObjects = geoAwareObjects.map {
+            return NearbyObject(
+                geoAware: $0,
+                point: point
+            )
         }
-
         nearbyObjects.sort { $0.distance < $1.distance }
-
         return nearbyObjects
     }
 }
