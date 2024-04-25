@@ -22,13 +22,13 @@
 <!--              </PrivateCode>-->
 <!--              <TopographicPlaceRef>23006351:1</TopographicPlaceRef>-->
             </StopPlace>
-            <Name>
+<!--            <Name>
               <Text xml:lang="de">Bern (Bern)</Text>
-            </Name>
-            <GeoPosition>
+            </Name>-->
+<!--            <GeoPosition>
               <siri:Longitude>7.43913</siri:Longitude>
               <siri:Latitude>46.94883</siri:Latitude>
-            </GeoPosition>
+            </GeoPosition>-->
           </Place>
           <Complete>true</Complete>
 <!--          <Probability>1</Probability>-->

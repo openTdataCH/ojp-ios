@@ -10,6 +10,7 @@ import XMLCoder
 
 let OJP_SDK_Name = "IOS_SDK"
 let OJP_SDK_Version = "0.0.1"
+let COORDINATE_FALLBACK = -1.0
 
 struct StrippedPrefixCodingKey: CodingKey {
     var stringValue: String
@@ -171,8 +172,8 @@ public struct OJPv2: Codable {
 
     public struct Place: Codable {
         public let stopPlace: StopPlace?
-        public let name: Name
-        public let geoPosition: GeoPosition
+        public let name: Name?
+        public let geoPosition: GeoPosition?
         public let modes: [Mode]
 
         public enum CodingKeys: String, CodingKey {
