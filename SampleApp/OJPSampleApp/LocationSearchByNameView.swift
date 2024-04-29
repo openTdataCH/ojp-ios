@@ -29,24 +29,22 @@ struct LocationSearchByNameView: View {
     @State var limit: Int = 10
     @State var currentTask: Task<Void, Never>?
 
-
     let availableRange: [Int] = [5, 10, 20, 50, 100]
 
     var body: some View {
-        NavigationSplitView {
-            Text("Search Stations by Name")
-            Form {
-                TextField("Search Name", text: $inputName)
-                Picker(selection: $limit) {
-                    ForEach(availableRange, id: \.self) {
-                        Text("\($0)").tag($0)
-                    }
-                } label: {
-                    Text("Limit")
-                }
-            }
-        } content: {
+        HStack {
             VStack {
+                Text("Search Stations by Name")
+                Form {
+                    TextField("Search Name", text: $inputName)
+                    Picker(selection: $limit) {
+                        ForEach(availableRange, id: \.self) {
+                            Text("\($0)").tag($0)
+                        }
+                    } label: {
+                        Text("Limit")
+                    }
+                }
                 List($results) { $stop in
                     Text(stop.place.stopPlace.stopPlaceName.text) .onTapGesture {
                         self.selectetedPlace = stop
@@ -66,7 +64,7 @@ struct LocationSearchByNameView: View {
                     Text("Found \(results.count) Results (Limit: \(limit))")
                 }
             }
-            .padding()
+
             .onChange(of: inputName) { oldValue, newValue in
                 guard oldValue != newValue else { return }
                 self.currentTask?.cancel()
@@ -82,11 +80,12 @@ struct LocationSearchByNameView: View {
                 }
                 self.currentTask = t
             }
-        } detail: {
+
             if selectetedPlace != nil {
                 PlaceDetailView(place: $selectetedPlace)
+                    .frame(maxWidth: 200)
             }
-        }
+        }.padding()
     }
 }
 
