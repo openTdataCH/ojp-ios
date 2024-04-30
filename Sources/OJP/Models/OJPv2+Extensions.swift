@@ -5,8 +5,8 @@
 //  Created by Vasile Cotovanu on 20.03.2024.
 //
 
-import Foundation
 import CoreLocation
+import Foundation
 
 public extension OJPv2.Mode {
     enum PtMode: String {
@@ -35,9 +35,8 @@ extension OJPv2.PlaceResult: GeoAware {
     }
 }
 
-extension OJPv2.GeoPosition {
-    public var coordinates: CLLocationCoordinate2D {
+public extension OJPv2.GeoPosition {
+    var coordinates: CLLocationCoordinate2D {
         CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
     }
 }
-

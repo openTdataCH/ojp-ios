@@ -16,12 +16,6 @@ struct LocationResult: Identifiable {
     var coordinates: CLLocationCoordinate2D
 }
 
-extension OJPv2.PlaceResult: Identifiable {
-    public var id: String {
-        self.place.stopPlace.privateCode.value
-    }
-}
-
 struct LocationSearchByNameView: View {
     @State var inputName: String = ""
     @State var results: [OJPv2.PlaceResult] = []
@@ -37,23 +31,24 @@ struct LocationSearchByNameView: View {
                 Text("Search Stations by Name")
                 Form {
                     TextField("Search Name", text: $inputName)
-                    Picker(selection: $limit) {
-                        ForEach(availableRange, id: \.self) {
-                            Text("\($0)").tag($0)
-                        }
-                    } label: {
-                        Text("Limit")
-                    }
+                    // can't define number of results any more
+//                    Picker(selection: $limit) {
+//                        ForEach(availableRange, id: \.self) {
+//                            Text("\($0)").tag($0)
+//                        }
+//                    } label: {
+//                        Text("Limit")
+//                    }
                 }
                 List($results) { $stop in
-                    Text(stop.place.stopPlace.stopPlaceName.text) .onTapGesture {
+                    Text(stop.place.stopPlace?.stopPlaceName.text ?? "No Stop Place") .onTapGesture {
                         self.selectetedPlace = stop
                     }
                 }
                 Map {
                     ForEach($results) { $stop in
-                        Annotation(stop.place.stopPlace.stopPlaceName.text,
-                                   coordinate: stop.place.geoPosition.coordinates) {
+                        Annotation(stop.place.stopPlace?.stopPlaceName.text ?? "No Stop Place",
+                                   coordinate: stop.place.geoPosition?.coordinates ?? CLLocationCoordinate2D(latitude: 0, longitude: 0)) {
                             Circle().onTapGesture {
                                 self.selectetedPlace = stop
                             }
@@ -72,7 +67,7 @@ struct LocationSearchByNameView: View {
                 let ojp = OJP(loadingStrategy: .http(.int))
                 let t = Task {
                     do {
-                        results = try await ojp.stations(by: newValue, limit: limit)
+                        results = try await ojp.requestLocations(from: inputName)
                         print(results)
                     } catch {
                         print(error)

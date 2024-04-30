@@ -16,9 +16,12 @@ struct PlaceDetailView: View {
             if let place {
                 List {
                     Text("Place").font(.headline)
-                    Text("Name: \(place.place.name.text)")
-                    Text("GeoPosition: (\(place.place.geoPosition.latitude), \(place.place.geoPosition.longitude))")
-                    
+                    Text("Name: \(place.place.name?.text ?? "<nil>")")
+                    if let geoPosition = place.place.geoPosition {
+                        Text("GeoPosition: (\(geoPosition.latitude), \(geoPosition.longitude))")
+                    } else {
+                        Text("⚠️ No Geopostion")
+                    }
                 }
                 .cornerRadius(10.0)
             }
