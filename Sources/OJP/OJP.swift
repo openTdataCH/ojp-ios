@@ -90,8 +90,13 @@ public class OJP {
         guard String(data: ojpXMLData, encoding: .utf8) != nil else {
             throw OJPSDKError.encodingFailed
         }
-
-        let (data, response) = try await loader(ojpXMLData)
+        
+        let (data, response): (Data, URLResponse)
+        do {
+            (data, response) = try await loader(ojpXMLData)
+        } catch let error as URLError {
+            throw OJPSDKError.loadingFailed(error)
+        }
 
         if let httpResponse = response as? HTTPURLResponse {
             guard httpResponse.statusCode == 200 else {

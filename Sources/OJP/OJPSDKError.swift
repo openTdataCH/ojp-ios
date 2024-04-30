@@ -11,6 +11,8 @@ import Foundation
 enum OJPSDKError: Error {
     /// Used as a placeholder for features, that are not finished implementing
     case notImplemented
+    /// A failure occured, while trying to access the resource
+    case loadingFailed(URLError)
     /// When a response status code is not `200` this error is thrown
     case unexpectedHTTPStatus(Int)
     /// A response is missing a required element. Eg. no `serviceDelivery` is present
