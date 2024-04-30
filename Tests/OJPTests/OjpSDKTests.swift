@@ -109,6 +109,18 @@ final class OjpSDKTests: XCTestCase {
             XCTAssert(lir.placeResults[2].place.modes.first?.ptModeType == .underground)
         }
     }
+    
+    func testParseStopPlaceWithSloid() async throws {
+        let xmlData = try TestHelpers.loadXML(xmlFilename: "lir-emmenmatt-sloid")
+        let locationInformation = try OJPDecoder.parseXML(xmlData)
+
+        switch locationInformation.response!.serviceDelivery.delivery {
+        case .stopEvent:
+            XCTFail()
+        case let .locationInformation(lir):
+            XCTAssert(lir.placeResults.first?.place.stopPlace?.stopPlaceRef == "ch:1:sloid:8206")
+        }
+    }
 
     func testLoader() async throws {
         // BE/Köniz area
