@@ -62,7 +62,7 @@ public class OJP {
         let serviceDelivery = try await request(with: ojp).serviceDelivery
 
         guard case let .locationInformation(locationInformationDelivery) = serviceDelivery.delivery else {
-            throw OJPError.unexpectedEmpty
+            throw OJPSDKError.unexpectedEmpty
         }
 
         let nearbyObjects = GeoHelpers.sort(geoAwareObjects: locationInformationDelivery.placeResults, from: coordinates)
@@ -79,7 +79,7 @@ public class OJP {
         let serviceDelivery = try await request(with: ojp).serviceDelivery
 
         guard case let .locationInformation(locationInformationDelivery) = serviceDelivery.delivery else {
-            throw OJPError.unexpectedEmpty
+            throw OJPSDKError.unexpectedEmpty
         }
 
         return locationInformationDelivery.placeResults
@@ -88,18 +88,22 @@ public class OJP {
     private func request(with ojp: OJPv2) async throws -> OJPv2.Response {
         let ojpXMLData = try encoder.encode(ojp, withRootKey: "OJP", rootAttributes: OJP.requestXMLRootAttributes)
         guard String(data: ojpXMLData, encoding: .utf8) != nil else {
-            throw OJPError.encodingFailed
+            throw OJPSDKError.encodingFailed
         }
 
         let (data, response) = try await loader(ojpXMLData)
 
         if let httpResponse = response as? HTTPURLResponse {
             guard httpResponse.statusCode == 200 else {
-                throw OJPError.unexpectedHTTPStatus(httpResponse.statusCode)
+                throw OJPSDKError.unexpectedHTTPStatus(httpResponse.statusCode)
             }
-            return try OJPDecoder.response(data)
+            do {
+                return try OJPDecoder.response(data)
+            } catch {
+                throw OJPSDKError.decodingFailed(error)
+            }
         } else {
-            throw OJPError.unexpectedEmpty
+            throw OJPSDKError.unexpectedEmpty
         }
     }
 }

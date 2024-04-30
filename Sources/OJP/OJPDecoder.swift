@@ -27,7 +27,7 @@ enum OJPDecoder {
         let xml = try parseXML(xmlData)
 
         guard let response = xml.response else {
-            throw OJPError.unexpectedEmpty
+            throw OJPSDKError.unexpectedEmpty
         }
         return response
     }
