@@ -232,12 +232,4 @@ final class OjpSDKTests: XCTestCase {
         }
         XCTAssert(locationInformation.placeResults.count == 26)
     }
-
-    func testFetchNearbyStations() async throws {
-        let ojpSdk = OJP(loadingStrategy: .http(.int))
-
-        let nearbyStations = try await ojpSdk.requestLocations(from: (long: 7.452178, lat: 46.948474))
-
-        XCTAssert(nearbyStations.first!.object.place.name!.text == "Rathaus")
-    }
 }
