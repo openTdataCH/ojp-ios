@@ -43,7 +43,7 @@ final class OjpSDKTests: XCTestCase {
 
         let nearbyPlaceResult = nearbyStations.first!.object
 
-        let nearbyStopName = nearbyPlaceResult.place.name.text
+        let nearbyStopName = nearbyPlaceResult.place.name!.text
         let expectedStopName = "Bern (Bern)"
         XCTAssert(nearbyStopName == expectedStopName, "Expected '\(expectedStopName)' got '\(nearbyStopName)' instead")
 
@@ -88,6 +88,67 @@ final class OjpSDKTests: XCTestCase {
         XCTAssertTrue(true)
     }
 
+    func testParseMinimumRequiredLIRResponse() throws {
+        let xmlData = try TestHelpers.loadXML(xmlFilename: "lir-minimum-response")
+        let locationInformation = try OJPDecoder.parseXML(xmlData)
+        dump(locationInformation)
+        XCTAssertTrue(true)
+    }
+
+    func testParseRailBusAndUndergroundPtModes() throws {
+        let xmlData = try TestHelpers.loadXML(xmlFilename: "lir-lausanne")
+
+        let locationInformation = try OJPDecoder.parseXML(xmlData).response!.serviceDelivery.delivery
+
+        switch locationInformation {
+        case .stopEvent:
+            XCTFail()
+        case let .locationInformation(lir):
+            XCTAssert(lir.placeResults.first?.place.modes.first?.ptModeType == .rail)
+            XCTAssert(lir.placeResults[1].place.modes.first?.ptModeType == .bus)
+            XCTAssert(lir.placeResults[2].place.modes.first?.ptModeType == .underground)
+        }
+    }
+
+    func testParseStopPlaceWithSloid() async throws {
+        let xmlData = try TestHelpers.loadXML(xmlFilename: "lir-emmenmatt-sloid")
+        let locationInformation = try OJPDecoder.parseXML(xmlData)
+
+        switch locationInformation.response!.serviceDelivery.delivery {
+        case .stopEvent:
+            XCTFail()
+        case let .locationInformation(lir):
+            switch lir.placeResults.first!.place.placeType {
+            case let .stopPlace(stopPlace):
+                XCTAssert(stopPlace.stopPlaceRef == "ch:1:sloid:8206")
+            case .address:
+                XCTFail()
+            }
+        }
+    }
+
+    func testAddress() async throws {
+        let xmlData = try TestHelpers.loadXML(xmlFilename: "lir-address")
+
+        let locationInformation = try OJPDecoder.parseXML(xmlData).response!.serviceDelivery.delivery
+
+        switch locationInformation {
+        case .stopEvent:
+            XCTFail()
+        case let .locationInformation(locationInformation):
+            for location in locationInformation.placeResults {
+                switch location.place.placeType {
+                case .stopPlace:
+                    XCTFail()
+                case let .address(address):
+                    XCTAssert(address.houseNumber == "48")
+                    XCTAssert(address.topographicPlaceName == "Le Mouret")
+                    XCTAssert(address.street == "Route des Russilles")
+                }
+            }
+        }
+    }
+
     func testLoader() async throws {
         // BE/Köniz area
         let bbox = Geo.Bbox(minLongitude: 7.372097, minLatitude: 46.904860, maxLongitude: 7.479042, maxLatitude: 46.942787)
@@ -108,7 +169,7 @@ final class OjpSDKTests: XCTestCase {
             }
             print("places:")
             for placeResult in locationInformation.placeResults {
-                print(placeResult.place.name.text)
+                print(placeResult.place.name!.text)
             }
         }
 
@@ -153,43 +214,6 @@ final class OjpSDKTests: XCTestCase {
 
         let nearbyStations = try await ojpSdk.requestLocations(from: (long: 7.452178, lat: 46.948474))
 
-        XCTAssert(nearbyStations.first!.object.place.name.text == "Rathaus")
-    }
-
-    func testAddress() async throws {
-        let xmlData = try TestHelpers.loadXML(xmlFilename: "lir-address")
-
-        let locationInformation = try OJPDecoder.parseXML(xmlData).response!.serviceDelivery.delivery
-
-        switch locationInformation {
-        case .stopEvent:
-            XCTFail()
-        case let .locationInformation(locationInformation):
-            for location in locationInformation.placeResults {
-                switch location.place.placeType! {
-                case .stopPlace:
-                    XCTFail()
-                case let .address(address):
-                    XCTAssert(address.houseNumber == "48")
-                    XCTAssert(address.topographicPlaceName == "Le Mouret")
-                    XCTAssert(address.street == "Route des Russilles")
-                }
-            }
-        }
-    }
-
-    func testParseRailBusAndUndergroundPtModes() throws {
-        let xmlData = try TestHelpers.loadXML(xmlFilename: "lir-lausanne")
-
-        let locationInformation = try OJPDecoder.parseXML(xmlData).response!.serviceDelivery.delivery
-
-        switch locationInformation {
-        case .stopEvent:
-            XCTFail()
-        case let .locationInformation(lir):
-            XCTAssert(lir.placeResults.first?.place.mode.first?.ptModeType == .rail)
-            XCTAssert(lir.placeResults[1].place.mode.first?.ptModeType == .bus)
-            XCTAssert(lir.placeResults[2].place.mode.first?.ptModeType == .underground)
-        }
+        XCTAssert(nearbyStations.first!.object.place.name!.text == "Rathaus")
     }
 }

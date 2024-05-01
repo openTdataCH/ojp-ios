@@ -10,6 +10,7 @@ import XMLCoder
 
 let OJP_SDK_Name = "IOS_SDK"
 let OJP_SDK_Version = "0.0.1"
+let COORDINATE_FALLBACK = -1.0
 
 struct StrippedPrefixCodingKey: CodingKey {
     var stringValue: String
@@ -55,7 +56,7 @@ public struct OJPv2: Codable {
 
     struct ServiceDelivery: Codable {
         public let responseTimestamp: String
-        public let producerRef: String
+        public let producerRef: String?
         public let delivery: ServiceDeliveryType
 
         public enum CodingKeys: String, CodingKey {
@@ -68,7 +69,7 @@ public struct OJPv2: Codable {
 
             let container = try decoder.container(keyedBy: StrippedPrefixCodingKey.self)
             responseTimestamp = try container.decode(String.self, forKey: StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.responseTimestamp))
-            producerRef = try container.decode(String.self, forKey: StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.producerRef))
+            producerRef = try? container.decode(String.self, forKey: StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.producerRef))
         }
     }
 
@@ -134,9 +135,9 @@ public struct OJPv2: Codable {
 
     struct LocationInformationDelivery: Codable {
         public let responseTimestamp: String
-        public let requestMessageRef: String
-        public let defaultLanguage: String
-        public let calcTime: String
+        public let requestMessageRef: String?
+        public let defaultLanguage: String?
+        public let calcTime: Int?
         public let placeResults: [PlaceResult]
 
         public enum CodingKeys: String, CodingKey {
@@ -150,9 +151,9 @@ public struct OJPv2: Codable {
         public init(from decoder: any Decoder) throws {
             let container = try decoder.container(keyedBy: StrippedPrefixCodingKey.self)
             responseTimestamp = try container.decode(String.self, forKey: StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.responseTimestamp))
-            requestMessageRef = try container.decode(String.self, forKey: StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.requestMessageRef))
-            defaultLanguage = try container.decode(String.self, forKey: StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.defaultLanguage))
-            calcTime = try container.decode(String.self, forKey: StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.calcTime))
+            requestMessageRef = try? container.decode(String.self, forKey: StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.requestMessageRef))
+            defaultLanguage = try? container.decode(String.self, forKey: StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.defaultLanguage))
+            calcTime = try? container.decode(Int.self, forKey: StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.calcTime))
             placeResults = try container.decode([OJPv2.PlaceResult].self, forKey: StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.placeResults))
         }
     }
@@ -160,7 +161,7 @@ public struct OJPv2: Codable {
     public struct PlaceResult: Codable {
         public let place: Place
         public let complete: Bool
-        public let probability: Float
+        public let probability: Float?
 
         public enum CodingKeys: String, CodingKey {
             case place = "Place"
@@ -170,28 +171,23 @@ public struct OJPv2: Codable {
     }
 
     public struct Place: Codable {
-        public let placeType: PlaceType?
-        public let name: Name
-        public let geoPosition: GeoPosition
-        public let mode: [Mode]
+        public let placeType: PlaceType
+        public let name: Name?
+        public let geoPosition: GeoPosition?
+        public let modes: [Mode]
 
         public enum CodingKeys: String, CodingKey {
             case name = "Name"
             case geoPosition = "GeoPosition"
-            case mode = "Mode"
+            case modes = "Mode"
         }
 
         public init(from decoder: any Decoder) throws {
-            do {
-                placeType = try PlaceType(from: decoder)
-            } catch {
-                placeType = nil
-            }
-
+            placeType = try PlaceType(from: decoder)
             let container = try decoder.container(keyedBy: StrippedPrefixCodingKey.self)
-            name = try container.decode(Name.self, forKey: StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.name))
-            geoPosition = try container.decode(GeoPosition.self, forKey: StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.geoPosition))
-            mode = try container.decode([Mode].self, forKey: StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.mode))
+            name = try? container.decode(Name.self, forKey: StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.name))
+            geoPosition = try? container.decode(GeoPosition.self, forKey: StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.geoPosition))
+            modes = try container.decode([Mode].self, forKey: StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.modes))
         }
     }
 
@@ -237,32 +233,38 @@ public struct OJPv2: Codable {
     public struct StopPlace: Codable {
         public let stopPlaceRef: String
         public let stopPlaceName: Name
-        public let privateCode: PrivateCode
-        public let topographicPlaceRef: String
+        public let privateCodes: [PrivateCode]
+        public let topographicPlaceRef: String?
 
         public enum CodingKeys: String, CodingKey {
             case stopPlaceRef = "StopPlaceRef"
             case stopPlaceName = "StopPlaceName"
-            case privateCode = "PrivateCode"
+            case privateCodes = "PrivateCode"
             case topographicPlaceRef = "TopographicPlaceRef"
         }
     }
 
     public struct Address: Codable {
-        public let topographicPlaceCode: String?
-        public let topographicPlaceName: String
+        public let publicCode: String
+        public let topographicPlaceRef: String?
+        public let topographicPlaceName: String?
+        public let countryName: String?
         public let postCode: String?
         public let name: Name
-        public let street: String
+        public let street: String?
         public let houseNumber: String?
+        public let crossRoad: String?
 
         public enum CodingKeys: String, CodingKey {
-            case topographicPlaceCode = "TopographicPlaceCode"
+            case publicCode = "PublicCode"
             case topographicPlaceName = "TopographicPlaceName"
+            case topographicPlaceRef = "TopographicPlaceRef"
             case postCode = "PostCode"
             case name = "Name"
             case street = "Street"
             case houseNumber = "HouseNumber"
+            case crossRoad = "CrossRoad"
+            case countryName = "CountryName"
         }
     }
 
