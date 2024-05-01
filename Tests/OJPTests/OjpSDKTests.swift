@@ -87,14 +87,14 @@ final class OjpSDKTests: XCTestCase {
         dump(locationInformation)
         XCTAssertTrue(true)
     }
-    
+
     func testParseMinimumRequiredLIRResponse() throws {
         let xmlData = try TestHelpers.loadXML(xmlFilename: "lir-minimum-response")
         let locationInformation = try OJPDecoder.parseXML(xmlData)
         dump(locationInformation)
         XCTAssertTrue(true)
     }
-    
+
     func testParseRailBusAndUndergroundPtModes() throws {
         let xmlData = try TestHelpers.loadXML(xmlFilename: "lir-lausanne")
 
@@ -119,6 +119,57 @@ final class OjpSDKTests: XCTestCase {
             XCTFail()
         case let .locationInformation(lir):
             XCTAssert(lir.placeResults.first?.place.stopPlace?.stopPlaceRef == "ch:1:sloid:8206")
+        }
+    }
+
+    func testDecodingFailedError() throws {
+        let invalidXmlData = "I'm not a valid xml".data(using: .utf8)!
+
+        do {
+            _ = try OJPDecoder.parseXML(invalidXmlData)
+            XCTFail()
+        } catch OJPSDKError.decodingFailed {
+            XCTAssertTrue(true)
+        } catch {
+            XCTFail()
+        }
+    }
+
+    func testUnexpectedHTTPStatusError() async throws {
+        let mock = LoadingStrategy.mock { _ in
+            try (TestHelpers.loadXML(),
+                 HTTPURLResponse(
+                     url: URL(string: "localhost")!,
+                     statusCode: 400,
+                     httpVersion: nil,
+                     headerFields: [:]
+                 )!)
+        }
+        let ojpSDK = OJP(loadingStrategy: mock)
+
+        do {
+            _ = try await ojpSDK.requestLocations(from: "bla")
+            XCTFail()
+        } catch let OJPSDKError.unexpectedHTTPStatus(statusCode) {
+            XCTAssert(statusCode == 400)
+        } catch {
+            XCTFail()
+        }
+    }
+
+    func testLoadingFailedError() async throws {
+        let mock = LoadingStrategy.mock { _ in
+            throw URLError(.badServerResponse)
+        }
+        let ojpSDK = OJP(loadingStrategy: mock)
+
+        do {
+            _ = try await ojpSDK.requestLocations(from: "bla")
+            XCTFail()
+        } catch OJPSDKError.loadingFailed {
+            XCTAssertTrue(true)
+        } catch {
+            XCTFail()
         }
     }
 

@@ -115,10 +115,10 @@ enum OJPHelpers {
 
         let ojpXMLData = try encoder.encode(ojpRequest, withRootKey: "OJP", rootAttributes: OJP.requestXMLRootAttributes)
         guard let ojpXML = String(data: ojpXMLData, encoding: .utf8) else {
-            throw OJPError.encodingFailed
+            throw OJPSDKError.encodingFailed
         }
 
-        print(ojpXML)
+        debugPrint(ojpXML)
         return ojpXML
     }
 }

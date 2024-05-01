@@ -28,7 +28,6 @@ public extension OJPv2.Mode {
 }
 
 extension OJPv2.PlaceResult: GeoAware {
-    
     public var coords: Point {
         guard let geoPosition = place.geoPosition else { return (long: COORDINATE_FALLBACK, lat: COORDINATE_FALLBACK) }
         return (long: geoPosition.longitude, lat: geoPosition.latitude)

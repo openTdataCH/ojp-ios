@@ -92,7 +92,7 @@ public struct OJPv2: Codable {
                     )
                 )
             } else {
-                throw OJPError.notImplemented
+                throw OJPSDKError.notImplemented
             }
         }
     }

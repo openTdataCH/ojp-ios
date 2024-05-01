@@ -16,7 +16,11 @@ enum OJPDecoder {
         // strips out namespaces from the response XML nodes
         decoder.shouldProcessNamespaces = true
         decoder.keyDecodingStrategy = .useDefaultKeys
-        return try decoder.decode(T.self, from: xmlData)
+        do {
+            return try decoder.decode(T.self, from: xmlData)
+        } catch {
+            throw OJPSDKError.decodingFailed(error)
+        }
     }
 
     static func parseXML(_ xmlData: Data) throws -> OJPv2 {
@@ -25,9 +29,8 @@ enum OJPDecoder {
 
     static func response(_ xmlData: Data) throws -> OJPv2.Response {
         let xml = try parseXML(xmlData)
-
         guard let response = xml.response else {
-            throw OJPError.noResponseFoundInXML
+            throw OJPSDKError.unexpectedEmpty
         }
         return response
     }
