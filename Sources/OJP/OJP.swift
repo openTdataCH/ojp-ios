@@ -67,7 +67,7 @@ public class OJP {
         let serviceDelivery = try await request(with: ojp).serviceDelivery
 
         guard case let .locationInformation(locationInformationDelivery) = serviceDelivery.delivery else {
-            throw OJPError.unexpectedEmpty
+            throw OJPSDKError.unexpectedEmpty
         }
 
         let nearbyObjects = GeoHelpers.sort(geoAwareObjects: locationInformationDelivery.placeResults, from: coordinates)
@@ -84,7 +84,7 @@ public class OJP {
         let serviceDelivery = try await request(with: ojp).serviceDelivery
 
         guard case let .locationInformation(locationInformationDelivery) = serviceDelivery.delivery else {
-            throw OJPError.unexpectedEmpty
+            throw OJPSDKError.unexpectedEmpty
         }
 
         return locationInformationDelivery.placeResults
@@ -93,15 +93,15 @@ public class OJP {
     private func request(with ojp: OJPv2) async throws -> OJPv2.Response {
         let ojpXMLData = try encoder.encode(ojp, withRootKey: "OJP", rootAttributes: OJP.requestXMLRootAttributes)
         guard String(data: ojpXMLData, encoding: .utf8) != nil else {
-            throw OJPError.encodingFailed
+            throw OJPSDKError.encodingFailed
         }
 
-        if let ojpXMLRequest = String(data: ojpXMLData, encoding: .utf8) {
-            debugPrint("Request Body:")
-            debugPrint(ojpXMLRequest)
+        let (data, response): (Data, URLResponse)
+        do {
+            (data, response) = try await loader(ojpXMLData)
+        } catch let error as URLError {
+            throw OJPSDKError.loadingFailed(error)
         }
-
-        let (data, response) = try await loader(ojpXMLData)
 
         if let ojpXMLResponse = String(data: data, encoding: .utf8) {
             debugPrint("Response Body:")
@@ -110,11 +110,11 @@ public class OJP {
 
         if let httpResponse = response as? HTTPURLResponse {
             guard httpResponse.statusCode == 200 else {
-                throw OJPError.unexpectedHTTPStatus(httpResponse.statusCode)
+                throw OJPSDKError.unexpectedHTTPStatus(httpResponse.statusCode)
             }
             return try OJPDecoder.response(data)
         } else {
-            throw OJPError.unexpectedEmpty
+            throw OJPSDKError.unexpectedEmpty
         }
     }
 }
