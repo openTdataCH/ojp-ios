@@ -99,7 +99,7 @@ public class OJP {
         }
 
         if let httpResponse = response as? HTTPURLResponse {
-            guard httpResponse.statusCode < 400 else {
+            guard httpResponse.statusCode == 200 else {
                 throw OJPSDKError.unexpectedHTTPStatus(httpResponse.statusCode)
             }
             return try OJPDecoder.response(data)
