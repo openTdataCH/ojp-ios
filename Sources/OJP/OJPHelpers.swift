@@ -118,7 +118,7 @@ enum OJPHelpers {
             throw OJPSDKError.encodingFailed
         }
 
-        print(ojpXML)
+        debugPrint(ojpXML)
         return ojpXML
     }
 }

@@ -110,6 +110,57 @@ final class OjpSDKTests: XCTestCase {
         }
     }
 
+    func testDecodingFailedError() throws {
+        let invalidXmlData = "I'm not a valid xml".data(using: .utf8)!
+
+        do {
+            _ = try OJPDecoder.parseXML(invalidXmlData)
+            XCTFail()
+        } catch OJPSDKError.decodingFailed {
+            XCTAssertTrue(true)
+        } catch {
+            XCTFail()
+        }
+    }
+
+    func testUnexpectedHTTPStatusError() async throws {
+        let mock = LoadingStrategy.mock { _ in
+            try (TestHelpers.loadXML(),
+                 HTTPURLResponse(
+                     url: URL(string: "localhost")!,
+                     statusCode: 400,
+                     httpVersion: nil,
+                     headerFields: [:]
+                 )!)
+        }
+        let ojpSDK = OJP(loadingStrategy: mock)
+
+        do {
+            _ = try await ojpSDK.requestLocations(from: "bla")
+            XCTFail()
+        } catch let OJPSDKError.unexpectedHTTPStatus(statusCode) {
+            XCTAssert(statusCode == 400)
+        } catch {
+            XCTFail()
+        }
+    }
+
+    func testLoadingFailedError() async throws {
+        let mock = LoadingStrategy.mock { _ in
+            throw URLError(.badServerResponse)
+        }
+        let ojpSDK = OJP(loadingStrategy: mock)
+
+        do {
+            _ = try await ojpSDK.requestLocations(from: "bla")
+            XCTFail()
+        } catch OJPSDKError.loadingFailed {
+            XCTAssertTrue(true)
+        } catch {
+            XCTFail()
+        }
+    }
+
     func testLoader() async throws {
         // BE/Köniz area
         let bbox = Geo.Bbox(minLongitude: 7.372097, minLatitude: 46.904860, maxLongitude: 7.479042, maxLatitude: 46.942787)

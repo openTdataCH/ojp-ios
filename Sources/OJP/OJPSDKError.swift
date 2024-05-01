@@ -13,7 +13,7 @@ enum OJPSDKError: Error {
     case notImplemented
     /// A failure occured, while trying to access the resource
     case loadingFailed(URLError)
-    /// When a response status code is not `200` this error is thrown
+    /// When a response status code is >= `400` this error is thrown
     case unexpectedHTTPStatus(Int)
     /// A response is missing a required element. Eg. no `serviceDelivery` is present
     case unexpectedEmpty
