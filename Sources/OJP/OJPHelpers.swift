@@ -95,9 +95,9 @@ enum OJPHelpers {
         ///   - name: search term (the name of a stop)
         ///   - limit: results limit
         /// - Returns: OJPv2 containing a request
-        public func requestWithSearchTerm(_ name: String, filter: [LocationsFilter], numberOfResults: Int = 10) -> OJPv2 {
+        public func requestWithSearchTerm(_ name: String, restrictions: [LocationTypeRestriction], numberOfResults: Int = 10) -> OJPv2 {
             let requestTimestamp = OJPHelpers.formattedDate()
-            let restrictions = OJPv2.Restrictions(type: filter.map(\.rawValue), numberOfResults: numberOfResults, includePtModes: true)
+            let restrictions = OJPv2.Restrictions(type: restrictions.map(\.rawValue), numberOfResults: numberOfResults, includePtModes: true)
 
             let locationInformationRequest = OJPv2.LocationInformationRequest(requestTimestamp: requestTimestamp, initialInput: OJPv2.InitialInput(geoRestriction: nil, name: name), restrictions: restrictions)
 

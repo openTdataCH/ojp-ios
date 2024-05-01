@@ -62,7 +62,7 @@ final class OjpSDKTests: XCTestCase {
     }
 
     func testBuildRequestName() throws {
-        let ojpRequest = locationInformationRequest.requestWithSearchTerm("Be", filter: [.stop])
+        let ojpRequest = locationInformationRequest.requestWithSearchTerm("Be", restrictions: [.stop])
         let xmlString = try OJPHelpers.buildXMLRequest(ojpRequest: ojpRequest)
         XCTAssert(!xmlString.isEmpty)
     }

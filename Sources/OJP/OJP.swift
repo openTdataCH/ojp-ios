@@ -12,7 +12,7 @@ public enum LoadingStrategy {
     case mock(Loader)
 }
 
-public enum LocationsFilter: String {
+public enum LocationTypeRestriction: String {
     case stop
     case address
 }
@@ -76,10 +76,10 @@ public class OJP {
 
     /// Request a list of Locations based on the given search term
     /// - Parameter searchTerm: The given term
-    /// - Parameter filter: filter by the type (stops, addresses, ...)
+    /// - Parameter restrictions: filter by the type of a location (stop, address)
     /// - Returns: List of Locations that contains the search term
-    public func requestLocations(from searchTerm: String, filter: [LocationsFilter]) async throws -> [OJPv2.PlaceResult] {
-        let ojp = locationInformationRequest.requestWithSearchTerm(searchTerm, filter: filter)
+    public func requestLocations(from searchTerm: String, restrictions: [LocationTypeRestriction]) async throws -> [OJPv2.PlaceResult] {
+        let ojp = locationInformationRequest.requestWithSearchTerm(searchTerm, restrictions: restrictions)
 
         let serviceDelivery = try await request(with: ojp).serviceDelivery
 
