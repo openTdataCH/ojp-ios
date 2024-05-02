@@ -109,7 +109,7 @@ final class OjpSDKTests: XCTestCase {
             XCTAssert(lir.placeResults[2].place.modes.first?.ptModeType == .underground)
         }
     }
-    
+
     func testParseStopPlaceWithSloid() async throws {
         let xmlData = try TestHelpers.loadXML(xmlFilename: "lir-emmenmatt-sloid")
         let locationInformation = try OJPDecoder.parseXML(xmlData)

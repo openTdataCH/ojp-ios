@@ -1,12 +1,12 @@
 //
 //  SystemTests.swift
-//  
+//
 //
 //  Created by Terence Alberti on 01.05.2024.
 //
 
-import XCTest
 @testable import OJP
+import XCTest
 
 // the goal is to check if also the requests done on the backend are correctly parsed by the sdk,
 // in order to ensure that backend changes will not break the SDK.
@@ -14,7 +14,6 @@ import XCTest
 // I know that this is an anti-pattern but it's an easy solution in order to have quick results
 // without making a big effort.
 final class SystemTests: XCTestCase {
-    
     func testFetchStations() async throws {
         let ojpSdk = OJP(loadingStrategy: .http(.int))
 
@@ -30,5 +29,4 @@ final class SystemTests: XCTestCase {
 
         XCTAssert(!nearbyStations.isEmpty)
     }
-
 }
