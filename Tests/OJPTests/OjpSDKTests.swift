@@ -161,16 +161,15 @@ final class OjpSDKTests: XCTestCase {
         let mock = LoadingStrategy.mock { _ in
             throw URLError(.badServerResponse)
         }
-        let ojpSDK = OJP(loadingStrategy: mock)
-
         do {
+            let ojpSDK = OJP(loadingStrategy: mock)
             _ = try await ojpSDK.requestLocations(from: "bla")
-            XCTFail()
         } catch OJPSDKError.loadingFailed {
-            XCTAssertTrue(true)
-        } catch {
-            XCTFail()
+            XCTAssert(true)
+            return
         }
+
+        XCTFail()
     }
 
     func testLoader() async throws {
