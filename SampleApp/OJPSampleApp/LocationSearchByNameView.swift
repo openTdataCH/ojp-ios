@@ -5,10 +5,9 @@
 //  Created by Lehnherr Reto on 03.04.2024.
 //
 
-import SwiftUI
-import OJP
 import MapKit
-
+import OJP
+import SwiftUI
 
 struct LocationResult: Identifiable {
     var id: String
@@ -41,16 +40,17 @@ struct LocationSearchByNameView: View {
 //                    }
                 }
                 List($results) { $stop in
-                    Text(stop.place.stopPlace?.stopPlaceName.text ?? "No Stop Place") .onTapGesture {
-                        self.selectetedPlace = stop
+                    Text(stop.place.stopPlace?.stopPlaceName.text ?? "No Stop Place").onTapGesture {
+                        selectetedPlace = stop
                     }
                 }
                 Map {
                     ForEach($results) { $stop in
                         Annotation(stop.place.stopPlace?.stopPlaceName.text ?? "No Stop Place",
-                                   coordinate: stop.place.geoPosition?.coordinates ?? CLLocationCoordinate2D(latitude: 0, longitude: 0)) {
+                                   coordinate: stop.place.geoPosition?.coordinates ?? CLLocationCoordinate2D(latitude: 0, longitude: 0))
+                        {
                             Circle().onTapGesture {
-                                self.selectetedPlace = stop
+                                selectetedPlace = stop
                             }
                         }
                     }
@@ -62,7 +62,7 @@ struct LocationSearchByNameView: View {
 
             .onChange(of: inputName) { oldValue, newValue in
                 guard oldValue != newValue else { return }
-                self.currentTask?.cancel()
+                currentTask?.cancel()
 
                 let ojp = OJP(loadingStrategy: .http(.int))
                 let t = Task {
@@ -73,7 +73,7 @@ struct LocationSearchByNameView: View {
                         print(error)
                     }
                 }
-                self.currentTask = t
+                currentTask = t
             }
 
             if selectetedPlace != nil {

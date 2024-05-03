@@ -5,17 +5,17 @@
 //  Created by Lehnherr Reto on 03.04.2024.
 //
 
-import SwiftUI
 import OJP
 import Pulse
 import PulseUI
+import SwiftUI
 
 @main
 struct OJPSampleApp: App {
-
     init() {
         Experimental.URLSessionProxy.shared.isEnabled = true
     }
+
     @Environment(\.openWindow) private var openWindow
     @State var isShowingConsole: Bool = false
 
@@ -54,16 +54,15 @@ struct OJPSampleApp: App {
     }
 }
 
-    struct DebuggerView: View {
-        let isShown: Bool
-
-        @Environment(\.dismiss) private var dismiss
-        var body: some View {
-            ConsoleView()
-                .onChange(of: isShown) {
-                    if !isShown {
-                        dismiss()
-                    }
+struct DebuggerView: View {
+    let isShown: Bool
+    @Environment(\.dismiss) private var dismiss
+    var body: some View {
+        ConsoleView()
+            .onChange(of: isShown) {
+                if !isShown {
+                    dismiss()
                 }
-        }
+            }
     }
+}

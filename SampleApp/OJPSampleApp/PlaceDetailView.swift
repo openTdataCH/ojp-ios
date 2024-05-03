@@ -5,8 +5,8 @@
 //  Created by Lehnherr Reto on 03.04.2024.
 //
 
-import SwiftUI
 import OJP
+import SwiftUI
 
 struct PlaceDetailView: View {
     // quick and dirty data flow, just for hacking purpose
