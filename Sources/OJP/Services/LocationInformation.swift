@@ -21,6 +21,6 @@ class LocationInformation {
 
         // sort and return
 
-        throw OJPSDKError.notImplemented
+        throw OJPSDKError.notImplemented()
     }
 }
