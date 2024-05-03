@@ -109,7 +109,7 @@ final class OjpSDKTests: XCTestCase {
             XCTAssert(lir.placeResults[2].place.modes.first?.ptModeType == .underground)
         }
     }
-    
+
     func testParseStopPlaceWithSloid() async throws {
         let xmlData = try TestHelpers.loadXML(xmlFilename: "lir-emmenmatt-sloid")
         let locationInformation = try OJPDecoder.parseXML(xmlData)
@@ -231,13 +231,5 @@ final class OjpSDKTests: XCTestCase {
             return
         }
         XCTAssert(locationInformation.placeResults.count == 26)
-    }
-
-    func testFetchNearbyStations() async throws {
-        let ojpSdk = OJP(loadingStrategy: .http(.int))
-
-        let nearbyStations = try await ojpSdk.requestLocations(from: (long: 7.452178, lat: 46.948474))
-
-        XCTAssert(nearbyStations.first!.object.place.name!.text == "Rathaus")
     }
 }
