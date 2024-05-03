@@ -16,18 +16,12 @@ struct OJPSampleApp: App {
     init() {
         Experimental.URLSessionProxy.shared.isEnabled = true
     }
+    @Environment(\.openWindow) private var openWindow
+    @State var isShowingConsole: Bool = false
 
     var body: some Scene {
         WindowGroup {
-            NavigationView(content: {
-                List {
-                    NavigationLink {
-                        LocationSearchByNameView()
-                    } label: { Text("Station Search") }
-                    NavigationLink {
-                        ConsoleView()
-                    } label: { Text("Network Console") }
-                }
+            NavigationStack {
                 VStack {
                     ZStack(alignment: .topLeading) {
                         Image("OpenTransportDataIcons")
@@ -38,19 +32,38 @@ struct OJPSampleApp: App {
                         alignment: .topLeading
                     )
                     .background(.tint)
-                    Spacer()
-                    Text("Hello OJP!").font(.title)
-                    Spacer()
+                    LocationSearchByNameView()
                 }
-            })
+            }.toolbar {
+                ToolbarItemGroup {
+                    Button {
+                        if !isShowingConsole {
+                            openWindow(id: "Console")
+                        }
+                        isShowingConsole.toggle()
+                    } label: {
+                        Image(systemName: "network")
+                    }
+                }
+            }
         }
-//        .onChange(of: scenePhase) { oldValue, newValue in
-//            switch newValue {
-//            case .active:
-//                URLSessionProxyDelegate.enableAutomaticRegistration()
-//            default:
-//                break
-//            }
-//        }
+
+        WindowGroup(id: "Console") {
+            DebuggerView(isShown: isShowingConsole)
+        }
     }
 }
+
+    struct DebuggerView: View {
+        let isShown: Bool
+
+        @Environment(\.dismiss) private var dismiss
+        var body: some View {
+            ConsoleView()
+                .onChange(of: isShown) {
+                    if !isShown {
+                        dismiss()
+                    }
+                }
+        }
+    }
