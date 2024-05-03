@@ -26,9 +26,9 @@ public struct APIConfiguration {
 
     /// TEST environment.
     /// - Note: this configuration should only be used for demo / testing purposes. It can change frequently
-    static let test = Self(apiEndPoint: URL(string: "https://odpch-api.clients.liip.ch/ojp20-test")!, requesterReference: "OJP_Demo_iOS", additionalHeaders: ["Authorization": "Bearer eyJvcmciOiI2M2Q4ODhiMDNmZmRmODAwMDEzMDIwODkiLCJpZCI6IjUzYzAyNWI2ZTRhNjQyOTM4NzMxMDRjNTg2ODEzNTYyIiwiaCI6Im11cm11cjEyOCJ9"])
+    public static let test = Self(apiEndPoint: URL(string: "https://odpch-api.clients.liip.ch/ojp20-test")!, requesterReference: "OJP_Demo_iOS", additionalHeaders: ["Authorization": "Bearer eyJvcmciOiI2M2Q4ODhiMDNmZmRmODAwMDEzMDIwODkiLCJpZCI6IjUzYzAyNWI2ZTRhNjQyOTM4NzMxMDRjNTg2ODEzNTYyIiwiaCI6Im11cm11cjEyOCJ9"])
 
     /// INT environment.
     /// - Note: this configuration should only be used for demo / testing purposes. It can change frequently
-    static let int = Self(apiEndPoint: URL(string: "https://odpch-api.clients.liip.ch/ojp20-beta")!, requesterReference: "OJP_Demo_iOS", additionalHeaders: ["Authorization": "Bearer eyJvcmciOiI2M2Q4ODhiMDNmZmRmODAwMDEzMDIwODkiLCJpZCI6IjUzYzAyNWI2ZTRhNjQyOTM4NzMxMDRjNTg2ODEzNTYyIiwiaCI6Im11cm11cjEyOCJ9"])
+    public static let int = Self(apiEndPoint: URL(string: "https://odpch-api.clients.liip.ch/ojp20-beta")!, requesterReference: "OJP_Demo_iOS", additionalHeaders: ["Authorization": "Bearer eyJvcmciOiI2M2Q4ODhiMDNmZmRmODAwMDEzMDIwODkiLCJpZCI6IjUzYzAyNWI2ZTRhNjQyOTM4NzMxMDRjNTg2ODEzNTYyIiwiaCI6Im11cm11cjEyOCJ9"])
 }

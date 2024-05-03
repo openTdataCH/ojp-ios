@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		CF06B9F32BBE7DD000B60917 /* Pulse in Frameworks */ = {isa = PBXBuildFile; productRef = CF06B9F22BBE7DD000B60917 /* Pulse */; };
 		CF06B9F52BBE7DD000B60917 /* PulseUI in Frameworks */ = {isa = PBXBuildFile; productRef = CF06B9F42BBE7DD000B60917 /* PulseUI */; };
+		CF71377A2BE5398200D2411E /* DemoEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7137792BE5398200D2411E /* DemoEnvironment.swift */; };
 		CFBA60BB2BBD6106000FF2ED /* OJPSampleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBA60BA2BBD6106000FF2ED /* OJPSampleApp.swift */; };
 		CFBA60BF2BBD610C000FF2ED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CFBA60BE2BBD610C000FF2ED /* Assets.xcassets */; };
 		CFBA60C32BBD610C000FF2ED /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CFBA60C22BBD610C000FF2ED /* Preview Assets.xcassets */; };
@@ -38,6 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CF7137792BE5398200D2411E /* DemoEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoEnvironment.swift; sourceTree = "<group>"; };
 		CFBA60B72BBD6106000FF2ED /* OJPSampleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OJPSampleApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFBA60BA2BBD6106000FF2ED /* OJPSampleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OJPSampleApp.swift; sourceTree = "<group>"; };
 		CFBA60BE2BBD610C000FF2ED /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -81,6 +83,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CF7137782BE5396600D2411E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				CF7137792BE5398200D2411E /* DemoEnvironment.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		CFBA60AE2BBD6106000FF2ED = {
 			isa = PBXGroup;
 			children = (
@@ -106,6 +116,7 @@
 		CFBA60B92BBD6106000FF2ED /* OJPSampleApp */ = {
 			isa = PBXGroup;
 			children = (
+				CF7137782BE5396600D2411E /* Models */,
 				CFBA60BA2BBD6106000FF2ED /* OJPSampleApp.swift */,
 				CFF227B42BBD95CF00D3EADF /* LocationSearchByNameView.swift */,
 				CFF227B72BBDA10800D3EADF /* PlaceDetailView.swift */,
@@ -288,6 +299,7 @@
 			files = (
 				CFF227B52BBD95CF00D3EADF /* LocationSearchByNameView.swift in Sources */,
 				CFF227B82BBDA10800D3EADF /* PlaceDetailView.swift in Sources */,
+				CF71377A2BE5398200D2411E /* DemoEnvironment.swift in Sources */,
 				CFBA60BB2BBD6106000FF2ED /* OJPSampleApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -18,6 +18,7 @@ struct OJPSampleApp: App {
 
     @Environment(\.openWindow) private var openWindow
     @State var isShowingConsole: Bool = false
+    @AppStorage("DemoEnvironment") var environment: String = DemoEnvironment.int.rawValue
 
     var body: some Scene {
         WindowGroup {
@@ -36,6 +37,12 @@ struct OJPSampleApp: App {
                 }
             }.toolbar {
                 ToolbarItemGroup {
+                    Picker("Environment", selection: $environment) {
+                        ForEach(DemoEnvironment.allCases) { env in
+                            Text(env.title).tag(env.id)
+                        }
+                    }.pickerStyle(.segmented)
+
                     Button {
                         if !isShowingConsole {
                             openWindow(id: "Console")

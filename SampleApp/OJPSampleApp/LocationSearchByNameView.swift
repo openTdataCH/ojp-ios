@@ -64,7 +64,7 @@ struct LocationSearchByNameView: View {
                 guard oldValue != newValue else { return }
                 currentTask?.cancel()
 
-                let ojp = OJP(loadingStrategy: .http(.int))
+                let ojp = OJP.configured
                 let t = Task {
                     do {
                         results = try await ojp.requestLocations(from: inputName)
