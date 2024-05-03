@@ -5,11 +5,11 @@ name: "Run Swift Package tests (Platform: macOS)"
 
 on:
   push:
-    branches: [ "demo-app" ]
+    branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
   schedule:
-    -  cron: '30 17 * * *'
+    -  cron: '0 12 * * 1-5'
 
 jobs:
   build:
