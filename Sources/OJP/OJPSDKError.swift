@@ -7,8 +7,8 @@
 
 import Foundation
 
-/// ``OJPError`` describes errors that can occur when using the SDK. It is not equivalent to [OJPError](https://vdvde.github.io/OJP/develop/index.html#OJPError) that defines a sequence of OJP related problems.
-enum OJPSDKError: LocalizedError {
+/// ``OJPSDKError`` describes errors that can occur when using the SDK. It is not equivalent to [OJPError](https://vdvde.github.io/OJP/develop/index.html#OJPError) that defines a sequence of OJP related problems.
+public enum OJPSDKError: LocalizedError {
     /// Used as a placeholder for features, that are not finished implementing
     case notImplemented(_ file: StaticString = #file, _ line: UInt = #line)
     /// A failure occured, while trying to access the resource
@@ -22,7 +22,7 @@ enum OJPSDKError: LocalizedError {
     /// Can't correctly decode a XML response
     case decodingFailed(Error)
 
-    var errorDescription: String? {
+    public var errorDescription: String? {
         switch self {
         case let .notImplemented(file, line):
             "Method not Implemented in File \(file):\(line)"
