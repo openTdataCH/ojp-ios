@@ -225,7 +225,7 @@ public struct OJPv2: Codable {
                     )
                 )
             } else {
-                throw OJPSDKError.notImplemented
+                throw OJPSDKError.notImplemented()
             }
         }
     }
@@ -381,8 +381,17 @@ public struct OJPv2: Codable {
     }
 }
 
-extension OJPv2.PlaceResult: Identifiable {
+extension OJPv2.PlaceType: Identifiable {
     public var id: String {
-        place.stopPlace!.stopPlaceRef // stopPlace be renamed in https://github.com/openTdataCH/ojp-ios/tree/feature/address
+        switch self {
+        case let .stopPlace(stopPlace):
+            stopPlace.stopPlaceRef
+        case let .address(address):
+            address.publicCode
+        }
     }
+}
+
+extension OJPv2.PlaceResult: Identifiable {
+    public var id: String { place.placeType.id }
 }

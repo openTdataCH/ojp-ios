@@ -40,18 +40,26 @@ struct LocationSearchByNameView: View {
 //                    }
                 }
                 List($results) { $stop in
-                    Text(stop.place.stopPlace?.stopPlaceName.text ?? "No Stop Place").onTapGesture {
-                        selectetedPlace = stop
+                    if case let .stopPlace(stopPlace) = stop.place.placeType {
+                        Text(stopPlace.stopPlaceName.text).onTapGesture {
+                            selectetedPlace = stop
+                        }
+                    } else {
+                        Text("Currently Unsupported PlaceType") // TODO: implment
                     }
                 }
                 Map {
                     ForEach($results) { $stop in
-                        Annotation(stop.place.stopPlace?.stopPlaceName.text ?? "No Stop Place",
-                                   coordinate: stop.place.geoPosition?.coordinates ?? CLLocationCoordinate2D(latitude: 0, longitude: 0))
-                        {
-                            Circle().onTapGesture {
-                                selectetedPlace = stop
+                        if case let .stopPlace(stopPlace) = stop.place.placeType {
+                            Annotation(stopPlace.stopPlaceName.text,
+                                       coordinate: stop.place.geoPosition?.coordinates ?? CLLocationCoordinate2D(latitude: 0, longitude: 0))
+                            {
+                                Circle().onTapGesture {
+                                    selectetedPlace = stop
+                                }
                             }
+                        } else {
+                            Annotation("Currently Unssupported", coordinate: CLLocationCoordinate2D(latitude: 0, longitude: 0)) { Circle().fill(.red) } // TODO: implment
                         }
                     }
                 }
@@ -67,7 +75,7 @@ struct LocationSearchByNameView: View {
                 let ojp = OJP.configured
                 let t = Task {
                     do {
-                        results = try await ojp.requestLocations(from: inputName)
+                        results = try await ojp.requestLocations(from: inputName, restrictions: [.stop]) // TODO: make restrictinos configruable
                         print(results)
                     } catch {
                         print(error)
