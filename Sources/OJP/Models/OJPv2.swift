@@ -92,7 +92,7 @@ public struct OJPv2: Codable {
                     )
                 )
             } else {
-                throw OJPSDKError.notImplemented
+                throw OJPSDKError.notImplemented()
             }
         }
     }
@@ -378,5 +378,11 @@ public struct OJPv2: Codable {
             case numberOfResults = "NumberOfResults"
             case includePtModes = "IncludePtModes"
         }
+    }
+}
+
+extension OJPv2.PlaceResult: Identifiable {
+    public var id: String {
+        place.stopPlace!.stopPlaceRef // stopPlace be renamed in https://github.com/openTdataCH/ojp-ios/tree/feature/address
     }
 }

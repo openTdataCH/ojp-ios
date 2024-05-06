@@ -11,27 +11,24 @@ import Foundation
 public struct APIConfiguration {
     public let apiEndPoint: URL
     public let requesterReference: String
-    public let authBearerToken: String?
-    public let additionalHeaders: [(key: String, value: String)]?
+    public let additionalHeaders: [String: String]?
 
     /// Configuration for the API
     /// - Parameters:
     ///   - apiEndPoint: the URL that points to the backend API
     ///   - requesterReference: a reference that will be added to the XML repreresenting your client
-    ///   - authBearerToken: a Bearer token, it's send in this manner: Authorization: Bearer <your token>
-    ///   - additionalHeaders: some HTTP custom headers
-    public init(apiEndPoint: URL, requesterReference: String, authBearerToken: String? = nil, additionalHeaders: [(key: String, value: String)]? = nil) {
+    ///   - additionalHeaders: some HTTP custom headers. For example to be used for custom authentication when using an API gateway . Example: `["Authorization": "Bearer someToken"]`
+    public init(apiEndPoint: URL, requesterReference: String, additionalHeaders: [String: String]? = nil) {
         self.apiEndPoint = apiEndPoint
         self.requesterReference = "\(requesterReference)_\(OJP_SDK_Name)_\(OJP_SDK_Version)"
-        self.authBearerToken = authBearerToken
         self.additionalHeaders = additionalHeaders
     }
 
     /// TEST environment.
     /// - Note: this configuration should only be used for demo / testing purposes. It can change frequently
-    static let test = Self(apiEndPoint: URL(string: "https://odpch-api.clients.liip.ch/ojp20-test")!, requesterReference: "OJP_Demo_iOS", authBearerToken: "eyJvcmciOiI2M2Q4ODhiMDNmZmRmODAwMDEzMDIwODkiLCJpZCI6IjUzYzAyNWI2ZTRhNjQyOTM4NzMxMDRjNTg2ODEzNTYyIiwiaCI6Im11cm11cjEyOCJ9")
+    public static let test = Self(apiEndPoint: URL(string: "https://odpch-api.clients.liip.ch/ojp20-test")!, requesterReference: "OJP_Demo_iOS", additionalHeaders: ["Authorization": "Bearer eyJvcmciOiI2M2Q4ODhiMDNmZmRmODAwMDEzMDIwODkiLCJpZCI6IjUzYzAyNWI2ZTRhNjQyOTM4NzMxMDRjNTg2ODEzNTYyIiwiaCI6Im11cm11cjEyOCJ9"])
 
     /// INT environment.
     /// - Note: this configuration should only be used for demo / testing purposes. It can change frequently
-    static let int = Self(apiEndPoint: URL(string: "https://odpch-api.clients.liip.ch/ojp20-beta")!, requesterReference: "OJP_Demo_iOS", authBearerToken: "eyJvcmciOiI2M2Q4ODhiMDNmZmRmODAwMDEzMDIwODkiLCJpZCI6IjUzYzAyNWI2ZTRhNjQyOTM4NzMxMDRjNTg2ODEzNTYyIiwiaCI6Im11cm11cjEyOCJ9")
+    public static let int = Self(apiEndPoint: URL(string: "https://odpch-api.clients.liip.ch/ojp20-beta")!, requesterReference: "OJP_Demo_iOS", additionalHeaders: ["Authorization": "Bearer eyJvcmciOiI2M2Q4ODhiMDNmZmRmODAwMDEzMDIwODkiLCJpZCI6IjUzYzAyNWI2ZTRhNjQyOTM4NzMxMDRjNTg2ODEzNTYyIiwiaCI6Im11cm11cjEyOCJ9"])
 }

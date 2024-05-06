@@ -1,12 +1,21 @@
 {
   "pins" : [
     {
+      "identity" : "pulse",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/kean/Pulse",
+      "state" : {
+        "revision" : "d647e99f06abc94d63579e335ad4ce368195c149",
+        "version" : "4.0.5"
+      }
+    },
+    {
       "identity" : "swiftformat",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/nicklockwood/SwiftFormat",
       "state" : {
-        "revision" : "a03119407c4773322d9e3c6cb5279bb597b68317",
-        "version" : "0.53.4"
+        "revision" : "9e5d0d588ab6e271fe9887ec3dde21d544d4b080",
+        "version" : "0.53.5"
       }
     },
     {

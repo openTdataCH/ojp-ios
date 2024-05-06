@@ -90,7 +90,7 @@ public class OJP {
         return locationInformationDelivery.placeResults
     }
 
-    private func request(with ojp: OJPv2) async throws -> OJPv2.Response {
+    func request(with ojp: OJPv2) async throws -> OJPv2.Response {
         let ojpXMLData = try encoder.encode(ojp, withRootKey: "OJP", rootAttributes: OJP.requestXMLRootAttributes)
         guard String(data: ojpXMLData, encoding: .utf8) != nil else {
             throw OJPSDKError.encodingFailed

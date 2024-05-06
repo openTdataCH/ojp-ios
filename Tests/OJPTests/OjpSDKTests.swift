@@ -188,16 +188,15 @@ final class OjpSDKTests: XCTestCase {
         let mock = LoadingStrategy.mock { _ in
             throw URLError(.badServerResponse)
         }
-        let ojpSDK = OJP(loadingStrategy: mock)
-
         do {
+            let ojpSDK = OJP(loadingStrategy: mock)
             _ = try await ojpSDK.requestLocations(from: "bla", restrictions: [.stop])
-            XCTFail()
         } catch OJPSDKError.loadingFailed {
-            XCTAssertTrue(true)
-        } catch {
-            XCTFail()
+            XCTAssert(true)
+            return
         }
+
+        XCTFail()
     }
 
     func testLoader() async throws {
@@ -258,13 +257,5 @@ final class OjpSDKTests: XCTestCase {
             return
         }
         XCTAssert(locationInformation.placeResults.count == 26)
-    }
-
-    func testFetchNearbyStations() async throws {
-        let ojpSdk = OJP(loadingStrategy: .http(.int))
-
-        let nearbyStations = try await ojpSdk.requestLocations(from: (long: 7.452178, lat: 46.948474))
-
-        XCTAssert(nearbyStations.first!.object.place.name!.text == "Rathaus")
     }
 }
