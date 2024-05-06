@@ -318,3 +318,9 @@ public struct OJPv2: Codable {
         }
     }
 }
+
+extension OJPv2.PlaceResult: Identifiable {
+    public var id: String {
+        place.stopPlace!.stopPlaceRef // stopPlace be renamed in https://github.com/openTdataCH/ojp-ios/tree/feature/address
+    }
+}

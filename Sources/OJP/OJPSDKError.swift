@@ -24,17 +24,17 @@ enum OJPSDKError: LocalizedError {
 
     var errorDescription: String? {
         switch self {
-        case .notImplemented(let file, let line):
+        case let .notImplemented(file, line):
             "Method not Implemented in File \(file):\(line)"
-        case .unexpectedHTTPStatus(let int):
+        case let .unexpectedHTTPStatus(int):
             "Unexpected HTTP status code: \(int)"
         case .unexpectedEmpty:
             "Unexpeced Empty"
         case .encodingFailed:
             "Encoding Failed"
-        case .loadingFailed(let error):
+        case let .loadingFailed(error):
             "Loading Failed due to URLError: \(error.localizedDescription)"
-        case .decodingFailed(let error):
+        case let .decodingFailed(error):
             "Decoding Failed due to: \(error.localizedDescription)"
         }
     }

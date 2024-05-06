@@ -5,6 +5,7 @@
 //  Created by Vasile Cotovanu on 20.03.2024.
 //
 
+import CoreLocation
 import Foundation
 
 public extension OJPv2.Mode {
@@ -31,5 +32,11 @@ extension OJPv2.PlaceResult: GeoAware {
     public var coords: Point {
         guard let geoPosition = place.geoPosition else { return (long: COORDINATE_FALLBACK, lat: COORDINATE_FALLBACK) }
         return (long: geoPosition.longitude, lat: geoPosition.latitude)
+    }
+}
+
+public extension OJPv2.GeoPosition {
+    var coordinates: CLLocationCoordinate2D {
+        CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
     }
 }
