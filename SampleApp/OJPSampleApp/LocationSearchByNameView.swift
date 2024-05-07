@@ -21,8 +21,22 @@ struct LocationSearchByNameView: View {
     @State var selectetedPlace: OJPv2.PlaceResult?
     @State var limit: Int = 10
     @State var currentTask: Task<Void, Never>?
+    @State var addressRestriction = false
+    @State var stopRestriction = true
 
     let availableRange: [Int] = [5, 10, 20, 50, 100]
+    
+    private var placeParam: OJPv2.PlaceParam {
+        if addressRestriction && stopRestriction {
+            return OJPv2.PlaceParam(type: [.stop])
+        } else if addressRestriction {
+            return OJPv2.PlaceParam(type: [.address])
+        } else if stopRestriction {
+            return OJPv2.PlaceParam(type: [.stop])
+        } else {
+            return OJPv2.PlaceParam(type: [])   // not really supported
+        }
+    }
 
     var body: some View {
         HStack {
@@ -30,6 +44,14 @@ struct LocationSearchByNameView: View {
                 Text("Search Stations by Name")
                 Form {
                     TextField("Search Name", text: $inputName)
+                    Toggle(isOn: $addressRestriction) {
+                                Text("Addresses")
+                            }
+                            .toggleStyle(.checkbox)
+                    Toggle(isOn: $stopRestriction) {
+                                Text("Stops")
+                            }
+                            .toggleStyle(.checkbox)
                     // can't define number of results any more
 //                    Picker(selection: $limit) {
 //                        ForEach(availableRange, id: \.self) {
@@ -41,7 +63,19 @@ struct LocationSearchByNameView: View {
                 }
                 List($results) { $stop in
                     if case let .stopPlace(stopPlace) = stop.place.placeType {
-                        Text(stopPlace.stopPlaceName.text).onTapGesture {
+                        HStack {
+                            Image(systemName: "tram")
+                            Text(stopPlace.stopPlaceName.text)
+                        }
+                        .onTapGesture {
+                            selectetedPlace = stop
+                        }
+                    } else if case let .address(address) = stop.place.placeType {
+                        HStack {
+                            Image(systemName: "location")
+                            Text(address.name.text)
+                        }
+                        .onTapGesture {
                             selectetedPlace = stop
                         }
                     } else {
@@ -49,17 +83,25 @@ struct LocationSearchByNameView: View {
                     }
                 }
                 Map {
-                    ForEach($results) { $stop in
-                        if case let .stopPlace(stopPlace) = stop.place.placeType {
+                    ForEach($results) { $result in
+                        
+                        switch result.place.placeType {
+                        case .stopPlace(let stopPlace):
                             Annotation(stopPlace.stopPlaceName.text,
-                                       coordinate: stop.place.geoPosition?.coordinates ?? CLLocationCoordinate2D(latitude: 0, longitude: 0))
+                                       coordinate: result.place.geoPosition?.coordinates ?? CLLocationCoordinate2D(latitude: 0, longitude: 0))
                             {
                                 Circle().onTapGesture {
-                                    selectetedPlace = stop
+                                    selectetedPlace = result
                                 }
                             }
-                        } else {
-                            Annotation("Currently Unssupported", coordinate: CLLocationCoordinate2D(latitude: 0, longitude: 0)) { Circle().fill(.red) } // TODO: implment
+                        case .address(let address):
+                            Annotation(address.name.text,
+                                       coordinate: result.place.geoPosition?.coordinates ?? CLLocationCoordinate2D(latitude: 0, longitude: 0))
+                            {
+                                Circle().onTapGesture {
+                                    selectetedPlace = result
+                                }
+                            }
                         }
                     }
                 }
@@ -75,7 +117,7 @@ struct LocationSearchByNameView: View {
                 let ojp = OJP.configured
                 let t = Task {
                     do {
-                        results = try await ojp.requestLocations(from: inputName, restrictions: .init(type: [.stop])) // TODO: make restrictinos configruable
+                        results = try await ojp.requestLocations(from: inputName, restrictions: placeParam)
                         print(results)
                     } catch {
                         print(error)
