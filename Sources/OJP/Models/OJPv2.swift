@@ -171,7 +171,6 @@ public struct OJPv2: Codable {
     }
 
     public struct Place: Codable {
-        
         public enum PlaceType: Codable {
             case stopPlace(OJPv2.StopPlace)
             case address(OJPv2.Address)
@@ -202,7 +201,7 @@ public struct OJPv2: Codable {
                 }
             }
         }
-        
+
         public let placeType: PlaceType
         public let name: Name?
         public let geoPosition: GeoPosition?
@@ -370,13 +369,12 @@ public struct OJPv2: Codable {
     }
 
     public struct PlaceParam: Codable {
-        
-        init(type: [PlaceType], numberOfResults: Int = 10, includePtModes: Bool = true) {
+        public init(type: [PlaceType], numberOfResults: Int = 10, includePtModes: Bool = true) {
             self.type = type
             self.numberOfResults = numberOfResults
             self.includePtModes = includePtModes
         }
-        
+
         public let type: [PlaceType]
         public let numberOfResults: Int
         let includePtModes: Bool

@@ -75,7 +75,7 @@ struct LocationSearchByNameView: View {
                 let ojp = OJP.configured
                 let t = Task {
                     do {
-                        results = try await ojp.requestLocations(from: inputName, restrictions: [.stop]) // TODO: make restrictinos configruable
+                        results = try await ojp.requestLocations(from: inputName, restrictions: .init(type: [.stop])) // TODO: make restrictinos configruable
                         print(results)
                     } catch {
                         print(error)
