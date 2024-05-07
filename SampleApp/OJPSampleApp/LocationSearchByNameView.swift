@@ -28,7 +28,7 @@ struct LocationSearchByNameView: View {
     
     private var placeParam: OJPv2.PlaceParam {
         if addressRestriction && stopRestriction {
-            return OJPv2.PlaceParam(type: [.stop])
+            return OJPv2.PlaceParam(type: [.stop, .address])
         } else if addressRestriction {
             return OJPv2.PlaceParam(type: [.address])
         } else if stopRestriction {
