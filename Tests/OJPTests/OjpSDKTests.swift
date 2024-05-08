@@ -17,7 +17,7 @@ final class OjpSDKTests: XCTestCase {
         // BBOX with Kleine Schanze as center + width / height of 1km
         let ojp = locationInformationRequest.requestWithBox(centerLongitude: 7.44029, centerLatitude: 46.94578, boxWidth: 1000.0)
 
-        if let rectangle = ojp.request?.serviceRequest.locationInformationRequest.initialInput.geoRestriction?.rectangle {
+        if let rectangle = ojp.request?.serviceRequest.locationInformationRequest!.initialInput.geoRestriction?.rectangle {
             XCTAssertTrue(rectangle.lowerRight.longitude > rectangle.upperLeft.longitude)
             XCTAssertTrue(rectangle.upperLeft.latitude > rectangle.lowerRight.latitude)
 
@@ -101,12 +101,12 @@ final class OjpSDKTests: XCTestCase {
         let locationInformation = try OJPDecoder.parseXML(xmlData).response!.serviceDelivery.delivery
 
         switch locationInformation {
-        case .stopEvent:
-            XCTFail()
         case let .locationInformation(lir):
             XCTAssert(lir.placeResults.first?.place.modes.first?.ptModeType == .rail)
             XCTAssert(lir.placeResults[1].place.modes.first?.ptModeType == .bus)
             XCTAssert(lir.placeResults[2].place.modes.first?.ptModeType == .underground)
+        default:
+            XCTFail()
         }
     }
 
@@ -115,8 +115,6 @@ final class OjpSDKTests: XCTestCase {
         let locationInformation = try OJPDecoder.parseXML(xmlData)
 
         switch locationInformation.response!.serviceDelivery.delivery {
-        case .stopEvent:
-            XCTFail()
         case let .locationInformation(lir):
             switch lir.placeResults.first!.place.placeType {
             case let .stopPlace(stopPlace):
@@ -124,6 +122,8 @@ final class OjpSDKTests: XCTestCase {
             case .address:
                 XCTFail()
             }
+        default:
+            XCTFail()
         }
     }
 
@@ -133,8 +133,6 @@ final class OjpSDKTests: XCTestCase {
         let locationInformation = try OJPDecoder.parseXML(xmlData).response!.serviceDelivery.delivery
 
         switch locationInformation {
-        case .stopEvent:
-            XCTFail()
         case let .locationInformation(locationInformation):
             for location in locationInformation.placeResults {
                 switch location.place.placeType {
@@ -146,6 +144,24 @@ final class OjpSDKTests: XCTestCase {
                     XCTAssert(address.street == "Route des Russilles")
                 }
             }
+        default:
+            XCTFail()
+        }
+    }
+    
+    
+    func testParseTrip() async throws {
+        
+        let xmlData = try TestHelpers.loadXML(xmlFilename: "trip-zh-bern-response")
+
+        let trip = try OJPDecoder.parseXML(xmlData).response!.serviceDelivery.delivery
+
+        switch trip {
+        case let .trip(trip):
+            debugPrint("\(trip.calcTime!)")
+            XCTAssert(true)
+        default:
+            XCTFail()
         }
     }
 

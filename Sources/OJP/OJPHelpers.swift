@@ -27,6 +27,39 @@ enum OJPHelpers {
         let dateF = dateFormatter.string(from: date)
         return dateF
     }
+    
+    
+    class TripRequest {
+        
+        init(requesterReference: String) {
+            self.requesterReference = requesterReference
+        }
+        
+        let requesterReference: String
+        
+        public func requestTrips(from originRef: String, destinationRef: String, viaRef: String?) -> OJPv2 {
+            let requestTimestamp = OJPHelpers.formattedDate()
+            
+            let origin = OJPv2.Origin(placeRef: OJPv2.PlaceRef(stopPlaceRef: originRef), depArrTime: requestTimestamp)
+            
+            let destination = OJPv2.Destination(placeRef: OJPv2.PlaceRef(stopPlaceRef: destinationRef))
+            
+            // todo: via
+            
+            // todo: departure time
+            
+            let params = OJPv2.Params(numberOfResults: 6, transferLimit: 0, optimisationMethod: "fastest")
+
+            let tripRequest = OJPv2.TripRequest(requestTimestamp: requestTimestamp, origin: origin, destination: destination, via: [], params: params)
+
+            // TODO: - avoid duplication (share this block with "requestWith(bbox: Geo.Bbox")
+            let ojp = OJPv2(request: OJPv2.Request(serviceRequest: OJPv2.ServiceRequest(requestTimestamp: requestTimestamp, requestorRef: requesterReference, locationInformationRequest: nil, tripRequest: tripRequest)), response: nil)
+
+            return ojp
+        }
+        
+    }
+    
 
     class LocationInformationRequest {
         init(requesterReference: String) {
@@ -51,7 +84,7 @@ enum OJPHelpers {
 
             let locationInformationRequest = OJPv2.LocationInformationRequest(requestTimestamp: requestTimestamp, initialInput: OJPv2.InitialInput(geoRestriction: geoRestriction, name: nil), restrictions: restrictions)
 
-            let ojp = OJPv2(request: OJPv2.Request(serviceRequest: OJPv2.ServiceRequest(requestTimestamp: requestTimestamp, requestorRef: requesterReference, locationInformationRequest: locationInformationRequest)), response: nil)
+            let ojp = OJPv2(request: OJPv2.Request(serviceRequest: OJPv2.ServiceRequest(requestTimestamp: requestTimestamp, requestorRef: requesterReference, locationInformationRequest: locationInformationRequest, tripRequest: nil)), response: nil)
 
             return ojp
         }
@@ -102,7 +135,7 @@ enum OJPHelpers {
             let locationInformationRequest = OJPv2.LocationInformationRequest(requestTimestamp: requestTimestamp, initialInput: OJPv2.InitialInput(geoRestriction: nil, name: name), restrictions: restrictions)
 
             // TODO: - avoid duplication (share this block with "requestWith(bbox: Geo.Bbox")
-            let ojp = OJPv2(request: OJPv2.Request(serviceRequest: OJPv2.ServiceRequest(requestTimestamp: requestTimestamp, requestorRef: requesterReference, locationInformationRequest: locationInformationRequest)), response: nil)
+            let ojp = OJPv2(request: OJPv2.Request(serviceRequest: OJPv2.ServiceRequest(requestTimestamp: requestTimestamp, requestorRef: requesterReference, locationInformationRequest: locationInformationRequest, tripRequest: nil)), response: nil)
 
             return ojp
         }
