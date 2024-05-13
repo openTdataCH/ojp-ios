@@ -148,10 +148,8 @@ final class OjpSDKTests: XCTestCase {
             XCTFail()
         }
     }
-    
-    
+
     func testParseTrip() async throws {
-        
         let xmlData = try TestHelpers.loadXML(xmlFilename: "trip-zh-bern-response")
 
         let trip = try OJPDecoder.parseXML(xmlData).response!.serviceDelivery.delivery

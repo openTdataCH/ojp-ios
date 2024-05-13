@@ -27,27 +27,25 @@ enum OJPHelpers {
         let dateF = dateFormatter.string(from: date)
         return dateF
     }
-    
-    
+
     class TripRequest {
-        
         init(requesterReference: String) {
             self.requesterReference = requesterReference
         }
-        
+
         let requesterReference: String
-        
-        public func requestTrips(from originRef: String, destinationRef: String, viaRef: String?) -> OJPv2 {
+
+        public func requestTrips(from originRef: String, destinationRef: String, viaRef _: String?) -> OJPv2 {
             let requestTimestamp = OJPHelpers.formattedDate()
-            
+
             let origin = OJPv2.Origin(placeRef: OJPv2.PlaceRef(stopPlaceRef: originRef), depArrTime: requestTimestamp)
-            
+
             let destination = OJPv2.Destination(placeRef: OJPv2.PlaceRef(stopPlaceRef: destinationRef))
-            
-            // todo: via
-            
-            // todo: departure time
-            
+
+            // TODO: via
+
+            // TODO: departure time
+
             let params = OJPv2.Params(numberOfResults: 6, transferLimit: 0, optimisationMethod: "fastest")
 
             let tripRequest = OJPv2.TripRequest(requestTimestamp: requestTimestamp, origin: origin, destination: destination, via: [], params: params)
@@ -57,9 +55,7 @@ enum OJPHelpers {
 
             return ojp
         }
-        
     }
-    
 
     class LocationInformationRequest {
         init(requesterReference: String) {

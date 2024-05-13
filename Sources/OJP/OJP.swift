@@ -92,7 +92,7 @@ public class OJP {
 
         return locationInformationDelivery.placeResults
     }
-    
+
     public func requestTrips(from originRef: String, destinationRef: String, viaRef: String? = nil) async throws -> [OJPv2.TripResult] {
         let ojp = tripRequest.requestTrips(from: originRef, destinationRef: destinationRef, viaRef: viaRef)
 
@@ -104,14 +104,13 @@ public class OJP {
 
         return tripDelivery.tripResults
     }
-    
 
     func request(with ojp: OJPv2) async throws -> OJPv2.Response {
         let ojpXMLData = try encoder.encode(ojp, withRootKey: "OJP", rootAttributes: OJP.requestXMLRootAttributes)
         guard let xmlString = String(data: ojpXMLData, encoding: .utf8) else {
             throw OJPSDKError.encodingFailed
         }
-        
+
         debugPrint(xmlString)
 
         let (data, response): (Data, URLResponse)

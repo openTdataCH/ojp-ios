@@ -1,6 +1,6 @@
 //
-//  File.swift
-//  
+//  OJPv2.swift
+//
 //
 //  Created by Terence Alberti on 08.05.2024.
 //
@@ -34,25 +34,25 @@ struct StrippedPrefixCodingKey: CodingKey {
 public struct OJPv2: Codable {
     let request: Request?
     let response: Response?
-    
+
     enum CodingKeys: String, CodingKey {
         case request = "OJPRequest"
         case response = "OJPResponse"
     }
-    
+
     struct Response: Codable {
         public let serviceDelivery: ServiceDelivery
-        
+
         public enum CodingKeys: String, CodingKey {
             case serviceDelivery = "siri:ServiceDelivery"
         }
-        
+
         public init(from decoder: any Decoder) throws {
             let container = try decoder.container(keyedBy: StrippedPrefixCodingKey.self)
             serviceDelivery = try container.decode(OJPv2.ServiceDelivery.self, forKey: StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.serviceDelivery))
         }
     }
-    
+
     struct ServiceDelivery: Codable {
         public let responseTimestamp: String
         public let producerRef: String?
@@ -104,5 +104,4 @@ public struct OJPv2: Codable {
             }
         }
     }
-
 }

@@ -1,5 +1,5 @@
 //
-//  OJPv2.swift
+//  OJPv2+LocationInformation.swift
 //  LIR_ParserPOC
 //
 //  Created by Vasile Cotovanu on 12.03.2024.
@@ -8,10 +8,8 @@
 import Foundation
 import XMLCoder
 
-
-extension OJPv2 {
-    
-    struct StopEventServiceDelivery: Codable {
+public extension OJPv2 {
+    internal struct StopEventServiceDelivery: Codable {
         let responseTimestamp: String
         let producerRef: String
         let stopEventDelivery: StopEventDelivery
@@ -23,11 +21,11 @@ extension OJPv2 {
         }
     }
 
-    struct StopEventDelivery: Codable {
+    internal struct StopEventDelivery: Codable {
         let places: [Place]
     }
 
-    struct LocationInformationServiceDelivery: Codable {
+    internal struct LocationInformationServiceDelivery: Codable {
         public let responseTimestamp: String
         public let producerRef: String
         public let locationInformationDelivery: LocationInformationDelivery
@@ -47,7 +45,7 @@ extension OJPv2 {
         }
     }
 
-    struct LocationInformationDelivery: Codable {
+    internal struct LocationInformationDelivery: Codable {
         public let responseTimestamp: String
         public let requestMessageRef: String?
         public let defaultLanguage: String?
@@ -72,7 +70,7 @@ extension OJPv2 {
         }
     }
 
-    public struct PlaceResult: Codable {
+    struct PlaceResult: Codable {
         public let place: Place
         public let complete: Bool
         public let probability: Float?
@@ -84,7 +82,7 @@ extension OJPv2 {
         }
     }
 
-    public struct Place: Codable {
+    struct Place: Codable {
         public let placeType: PlaceType
         public let name: Name?
         public let geoPosition: GeoPosition?
@@ -105,7 +103,7 @@ extension OJPv2 {
         }
     }
 
-    public struct Mode: Codable {
+    struct Mode: Codable {
         public let ptMode: String
 
         public enum CodingKeys: String, CodingKey {
@@ -113,7 +111,7 @@ extension OJPv2 {
         }
     }
 
-    public enum PlaceType: Codable {
+    enum PlaceType: Codable {
         case stopPlace(OJPv2.StopPlace)
         case address(OJPv2.Address)
 
@@ -144,7 +142,7 @@ extension OJPv2 {
         }
     }
 
-    public struct StopPlace: Codable {
+    struct StopPlace: Codable {
         public let stopPlaceRef: String
         public let stopPlaceName: Name
         public let privateCodes: [PrivateCode]
@@ -158,7 +156,7 @@ extension OJPv2 {
         }
     }
 
-    public struct Address: Codable {
+    struct Address: Codable {
         public let publicCode: String
         public let topographicPlaceRef: String?
         public let topographicPlaceName: String?
@@ -182,7 +180,7 @@ extension OJPv2 {
         }
     }
 
-    public struct Name: Codable {
+    struct Name: Codable {
         public let text: String
 
         public enum CodingKeys: String, CodingKey {
@@ -190,7 +188,7 @@ extension OJPv2 {
         }
     }
 
-    public struct PrivateCode: Codable {
+    struct PrivateCode: Codable {
         public let system: String
         public let value: String
 
@@ -200,7 +198,7 @@ extension OJPv2 {
         }
     }
 
-    public struct GeoPosition: Codable {
+    struct GeoPosition: Codable {
         public let longitude: Double
         public let latitude: Double
 
@@ -222,7 +220,7 @@ extension OJPv2 {
         }
     }
 
-    struct Request: Codable {
+    internal struct Request: Codable {
         public let serviceRequest: ServiceRequest
 
         public enum CodingKeys: String, CodingKey {
@@ -230,7 +228,7 @@ extension OJPv2 {
         }
     }
 
-    struct ServiceRequest: Codable {
+    internal struct ServiceRequest: Codable {
         public let requestTimestamp: String
         public let requestorRef: String
         public let locationInformationRequest: LocationInformationRequest?
@@ -244,7 +242,7 @@ extension OJPv2 {
         }
     }
 
-    struct LocationInformationRequest: Codable {
+    internal struct LocationInformationRequest: Codable {
         public let requestTimestamp: String
         public let initialInput: InitialInput
         public let restrictions: Restrictions
@@ -256,7 +254,7 @@ extension OJPv2 {
         }
     }
 
-    struct InitialInput: Codable {
+    internal struct InitialInput: Codable {
         public let geoRestriction: GeoRestriction?
         public let name: String?
 
@@ -266,7 +264,7 @@ extension OJPv2 {
         }
     }
 
-    struct GeoRestriction: Codable {
+    internal struct GeoRestriction: Codable {
         public let rectangle: Rectangle?
 
         public enum CodingKeys: String, CodingKey {
@@ -274,7 +272,7 @@ extension OJPv2 {
         }
     }
 
-    public struct Rectangle: Codable {
+    struct Rectangle: Codable {
         public let upperLeft: GeoPosition
         public let lowerRight: GeoPosition
 
@@ -284,7 +282,7 @@ extension OJPv2 {
         }
     }
 
-    public struct Restrictions: Codable {
+    struct Restrictions: Codable {
         public let type: [String]
         public let numberOfResults: Int
         let includePtModes: Bool
@@ -294,7 +292,7 @@ extension OJPv2 {
             case numberOfResults = "NumberOfResults"
             case includePtModes = "IncludePtModes"
         }
-    }    
+    }
 }
 
 extension OJPv2.PlaceType: Identifiable {
