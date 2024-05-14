@@ -23,19 +23,20 @@ struct LocationSearchByNameView: View {
     @State var currentTask: Task<Void, Never>?
     @State var addressRestriction = false
     @State var stopRestriction = true
+    @State var includePTModes = false
 
     let availableRange: [Int] = [5, 10, 20, 50, 100]
-    
+
     private var placeParam: OJPv2.PlaceParam {
-        if addressRestriction && stopRestriction {
-            return OJPv2.PlaceParam(type: [.stop, .address])
-        } else if addressRestriction {
-            return OJPv2.PlaceParam(type: [.address])
-        } else if stopRestriction {
-            return OJPv2.PlaceParam(type: [.stop])
-        } else {
-            return OJPv2.PlaceParam(type: [])   // not really supported
+        var placeType: [PlaceType] = []
+        if addressRestriction {
+            placeType.append(.address)
         }
+        if stopRestriction {
+            placeType.append(.stop)
+        }
+
+        return OJPv2.PlaceParam(type: placeType, numberOfResults: limit, includePtModes: includePTModes)
     }
 
     var body: some View {
@@ -44,22 +45,20 @@ struct LocationSearchByNameView: View {
                 Text("Search Stations by Name")
                 Form {
                     TextField("Search Name", text: $inputName)
-                    Toggle(isOn: $addressRestriction) {
-                                Text("Addresses")
+                    Section {
+                        ControlGroup {
+                            Toggle("Addresses", isOn: $addressRestriction)
+                            Toggle("Stops", isOn: $stopRestriction)
+                        }
+                        Toggle("Include PT Modes", isOn: $includePTModes)
+                        Picker("Limit", selection: $limit) {
+                            ForEach(availableRange, id: \.self) {
+                                Text("\($0)").tag($0)
                             }
-                            .toggleStyle(.checkbox)
-                    Toggle(isOn: $stopRestriction) {
-                                Text("Stops")
-                            }
-                            .toggleStyle(.checkbox)
-                    // can't define number of results any more
-//                    Picker(selection: $limit) {
-//                        ForEach(availableRange, id: \.self) {
-//                            Text("\($0)").tag($0)
-//                        }
-//                    } label: {
-//                        Text("Limit")
-//                    }
+                        }
+                    } header: {
+                        Text("Restrictions")
+                    }
                 }
                 List($results) { $stop in
                     if case let .stopPlace(stopPlace) = stop.place.placeType {
@@ -84,9 +83,8 @@ struct LocationSearchByNameView: View {
                 }
                 Map {
                     ForEach($results) { $result in
-                        
                         switch result.place.placeType {
-                        case .stopPlace(let stopPlace):
+                        case let .stopPlace(stopPlace):
                             Annotation(stopPlace.stopPlaceName.text,
                                        coordinate: result.place.geoPosition?.coordinates ?? CLLocationCoordinate2D(latitude: 0, longitude: 0))
                             {
@@ -94,7 +92,7 @@ struct LocationSearchByNameView: View {
                                     selectetedPlace = result
                                 }
                             }
-                        case .address(let address):
+                        case let .address(address):
                             Annotation(address.name.text,
                                        coordinate: result.place.geoPosition?.coordinates ?? CLLocationCoordinate2D(latitude: 0, longitude: 0))
                             {
