@@ -258,4 +258,11 @@ final class OjpSDKTests: XCTestCase {
         }
         XCTAssert(locationInformation.placeResults.count == 26)
     }
+    
+    func testDifferentLocationTypes() async throws {
+        let xmlData = try TestHelpers.loadXML(xmlFilename: "lir-location-all-types")
+        let locationInformation = try OJPDecoder.parseXML(xmlData)
+        dump(locationInformation)
+        XCTAssertTrue(true)
+    }
 }
