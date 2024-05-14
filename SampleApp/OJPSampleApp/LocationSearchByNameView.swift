@@ -48,7 +48,7 @@ struct LocationSearchByNameView: View {
                     Section {
                         ControlGroup {
                             Toggle("Addresses", isOn: $addressRestriction)
-                            Toggle("stops", isOn: $stopRestriction)
+                            Toggle("Stops", isOn: $stopRestriction)
                         }
                         Toggle("Include PT Modes", isOn: $includePTModes)
                         Picker("Limit", selection: $limit) {
