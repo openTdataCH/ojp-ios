@@ -62,7 +62,7 @@ final class OjpSDKTests: XCTestCase {
     }
 
     func testBuildRequestName() throws {
-        let ojpRequest = locationInformationRequest.requestWithSearchTerm("Be")
+        let ojpRequest = locationInformationRequest.requestWithSearchTerm("Be", restrictions: .init(type: [.stop]))
         let xmlString = try OJPHelpers.buildXMLRequest(ojpRequest: ojpRequest)
         XCTAssert(!xmlString.isEmpty)
     }
@@ -118,7 +118,34 @@ final class OjpSDKTests: XCTestCase {
         case .stopEvent:
             XCTFail()
         case let .locationInformation(lir):
-            XCTAssert(lir.placeResults.first?.place.stopPlace?.stopPlaceRef == "ch:1:sloid:8206")
+            switch lir.placeResults.first!.place.placeType {
+            case let .stopPlace(stopPlace):
+                XCTAssert(stopPlace.stopPlaceRef == "ch:1:sloid:8206")
+            case .address:
+                XCTFail()
+            }
+        }
+    }
+
+    func testAddress() async throws {
+        let xmlData = try TestHelpers.loadXML(xmlFilename: "lir-address")
+
+        let locationInformation = try OJPDecoder.parseXML(xmlData).response!.serviceDelivery.delivery
+
+        switch locationInformation {
+        case .stopEvent:
+            XCTFail()
+        case let .locationInformation(locationInformation):
+            for location in locationInformation.placeResults {
+                switch location.place.placeType {
+                case .stopPlace:
+                    XCTFail()
+                case let .address(address):
+                    XCTAssert(address.houseNumber == "48")
+                    XCTAssert(address.topographicPlaceName == "Le Mouret")
+                    XCTAssert(address.street == "Route des Russilles")
+                }
+            }
         }
     }
 
@@ -148,7 +175,7 @@ final class OjpSDKTests: XCTestCase {
         let ojpSDK = OJP(loadingStrategy: mock)
 
         do {
-            _ = try await ojpSDK.requestLocations(from: "bla")
+            _ = try await ojpSDK.requestLocations(from: "bla", restrictions: .init(type: [.stop]))
             XCTFail()
         } catch let OJPSDKError.unexpectedHTTPStatus(statusCode) {
             XCTAssert(statusCode == 400)
@@ -163,7 +190,7 @@ final class OjpSDKTests: XCTestCase {
         }
         do {
             let ojpSDK = OJP(loadingStrategy: mock)
-            _ = try await ojpSDK.requestLocations(from: "bla")
+            _ = try await ojpSDK.requestLocations(from: "bla", restrictions: .init(type: [.stop]))
         } catch OJPSDKError.loadingFailed {
             XCTAssert(true)
             return

@@ -171,16 +171,54 @@ public struct OJPv2: Codable {
     }
 
     public struct Place: Codable {
-        public let stopPlace: StopPlace?
+        public enum PlaceType: Codable {
+            case stopPlace(OJPv2.StopPlace)
+            case address(OJPv2.Address)
+
+            enum CodingKeys: String, CodingKey {
+                case stopPlace = "StopPlace"
+                case address = "Address"
+            }
+
+            public init(from decoder: any Decoder) throws {
+                let container = try decoder.container(keyedBy: StrippedPrefixCodingKey.self)
+                if container.contains(StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.stopPlace)) {
+                    self = try .stopPlace(
+                        container.decode(
+                            StopPlace.self,
+                            forKey: StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.stopPlace)
+                        )
+                    )
+                } else if container.contains(StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.address)) {
+                    self = try .address(
+                        container.decode(
+                            Address.self,
+                            forKey: StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.address)
+                        )
+                    )
+                } else {
+                    throw OJPSDKError.notImplemented()
+                }
+            }
+        }
+
+        public let placeType: PlaceType
         public let name: Name?
         public let geoPosition: GeoPosition?
         public let modes: [Mode]
 
         public enum CodingKeys: String, CodingKey {
-            case stopPlace = "StopPlace"
             case name = "Name"
             case geoPosition = "GeoPosition"
             case modes = "Mode"
+        }
+
+        public init(from decoder: any Decoder) throws {
+            placeType = try PlaceType(from: decoder)
+            let container = try decoder.container(keyedBy: StrippedPrefixCodingKey.self)
+            name = try? container.decode(Name.self, forKey: StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.name))
+            geoPosition = try? container.decode(GeoPosition.self, forKey: StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.geoPosition))
+            modes = try container.decode([Mode].self, forKey: StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.modes))
         }
     }
 
@@ -203,6 +241,30 @@ public struct OJPv2: Codable {
             case stopPlaceName = "StopPlaceName"
             case privateCodes = "PrivateCode"
             case topographicPlaceRef = "TopographicPlaceRef"
+        }
+    }
+
+    public struct Address: Codable {
+        public let publicCode: String
+        public let topographicPlaceRef: String?
+        public let topographicPlaceName: String?
+        public let countryName: String?
+        public let postCode: String?
+        public let name: Name
+        public let street: String?
+        public let houseNumber: String?
+        public let crossRoad: String?
+
+        public enum CodingKeys: String, CodingKey {
+            case publicCode = "PublicCode"
+            case topographicPlaceName = "TopographicPlaceName"
+            case topographicPlaceRef = "TopographicPlaceRef"
+            case postCode = "PostCode"
+            case name = "Name"
+            case street = "Street"
+            case houseNumber = "HouseNumber"
+            case crossRoad = "CrossRoad"
+            case countryName = "CountryName"
         }
     }
 
@@ -269,7 +331,7 @@ public struct OJPv2: Codable {
     struct LocationInformationRequest: Codable {
         public let requestTimestamp: String
         public let initialInput: InitialInput
-        public let restrictions: Restrictions
+        public let restrictions: PlaceParam
 
         public enum CodingKeys: String, CodingKey {
             case requestTimestamp = "siri:RequestTimestamp"
@@ -306,8 +368,14 @@ public struct OJPv2: Codable {
         }
     }
 
-    public struct Restrictions: Codable {
-        public let type: String
+    public struct PlaceParam: Codable {
+        public init(type: [PlaceType], numberOfResults: Int = 10, includePtModes: Bool = true) {
+            self.type = type
+            self.numberOfResults = numberOfResults
+            self.includePtModes = includePtModes
+        }
+
+        public let type: [PlaceType]
         public let numberOfResults: Int
         let includePtModes: Bool
 
@@ -319,8 +387,17 @@ public struct OJPv2: Codable {
     }
 }
 
-extension OJPv2.PlaceResult: Identifiable {
+extension OJPv2.Place.PlaceType: Identifiable {
     public var id: String {
-        place.stopPlace!.stopPlaceRef // stopPlace be renamed in https://github.com/openTdataCH/ojp-ios/tree/feature/address
+        switch self {
+        case let .stopPlace(stopPlace):
+            stopPlace.stopPlaceRef
+        case let .address(address):
+            address.publicCode
+        }
     }
+}
+
+extension OJPv2.PlaceResult: Identifiable {
+    public var id: String { place.placeType.id }
 }

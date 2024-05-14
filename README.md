@@ -55,8 +55,13 @@ Get a list of Locations from a keyword.
 
 ``` swift
 import OJP
+        
+// get only stops
+let stops = try await ojpSdk.requestLocations(from: "Bern", restrictions: [.stop])
 
-let searchedLocations = try await ojpSdk.requestLocations(from: "Bern")
+        
+// get stops and addresses
+let addresses = try await ojpSdk.requestLocations(from: "Bern", restrictions: [.address, .stop])
 ```
 
 Get a list of Locations around a place with longitude and latitude

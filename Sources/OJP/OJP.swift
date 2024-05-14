@@ -12,6 +12,11 @@ public enum LoadingStrategy {
     case mock(Loader)
 }
 
+public enum PlaceType: String, Codable {
+    case stop
+    case address
+}
+
 /// Entry point to OJP
 public class OJP {
     let loader: Loader
@@ -66,15 +71,15 @@ public class OJP {
         }
 
         let nearbyObjects = GeoHelpers.sort(geoAwareObjects: locationInformationDelivery.placeResults, from: coordinates)
-
         return nearbyObjects
     }
 
     /// Request a list of Locations based on the given search term
     /// - Parameter searchTerm: The given term
+    /// - Parameter restrictions: filter with a place param
     /// - Returns: List of Locations that contains the search term
-    public func requestLocations(from searchTerm: String) async throws -> [OJPv2.PlaceResult] {
-        let ojp = locationInformationRequest.requestWithSearchTerm(searchTerm)
+    public func requestLocations(from searchTerm: String, restrictions: OJPv2.PlaceParam) async throws -> [OJPv2.PlaceResult] {
+        let ojp = locationInformationRequest.requestWithSearchTerm(searchTerm, restrictions: restrictions)
 
         let serviceDelivery = try await request(with: ojp).serviceDelivery
 
@@ -96,6 +101,11 @@ public class OJP {
             (data, response) = try await loader(ojpXMLData)
         } catch let error as URLError {
             throw OJPSDKError.loadingFailed(error)
+        }
+
+        if let ojpXMLResponse = String(data: data, encoding: .utf8) {
+            debugPrint("Response Body:")
+            debugPrint(ojpXMLResponse)
         }
 
         if let httpResponse = response as? HTTPURLResponse {

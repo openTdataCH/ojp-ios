@@ -17,7 +17,7 @@ final class SystemTests: XCTestCase {
     func testFetchStations() async throws {
         let ojpSdk = OJP(loadingStrategy: .http(.int))
 
-        let stations = try await ojpSdk.requestLocations(from: "Bern")
+        let stations = try await ojpSdk.requestLocations(from: "Bern", restrictions: .init(type: [.stop]))
 
         XCTAssert(!stations.isEmpty)
     }
