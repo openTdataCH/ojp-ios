@@ -176,6 +176,8 @@ public extension OJPv2 {
 
     internal struct TripRequest: Codable {
         public let requestTimestamp: String
+        public let requestorRef: String
+            
         public let origin: Origin
         public let destination: Destination
         public let via: [TripVia]?
@@ -183,6 +185,7 @@ public extension OJPv2 {
 
         public enum CodingKeys: String, CodingKey {
             case requestTimestamp = "siri:RequestTimestamp"
+            case requestorRef = "siri:RequestorRef"
             case origin = "Origin"
             case destination = "Destination"
             case via = "Via"
