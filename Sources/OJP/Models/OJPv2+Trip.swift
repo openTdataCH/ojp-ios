@@ -307,6 +307,30 @@ public extension OJPv2 {
 
     struct Service: Codable {}
     
+    // https://vdvde.github.io/OJP/develop/index.html#ProductCategoryStructure
+    struct ProductCategory: Codable {
+        public let name: Name?
+        public let shortName: Name?
+        public let productCategoryRef: String?
+        
+        public enum CodingKeys: String, CodingKey {
+            case name = "Name"
+            case shortName = "ShortName"
+            case productCategoryRef = "ProductCategoryRef"
+        }
+    }
+    
+    // https://vdvde.github.io/OJP/develop/index.html#GeneralAttributeStructure
+    struct Attribute: Codable {
+        public let userText: Name
+        public let code: String
+        
+        public enum CodingKeys: String, CodingKey {
+            case userText = "UserText"
+            case code = "Code"
+        }
+    }
+    
     struct LegTrack: Codable {}
 
     struct ContinuousLeg: Codable {}
