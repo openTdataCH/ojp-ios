@@ -158,12 +158,14 @@ public extension OJPv2 {
 
     struct TimedLeg: Codable {
         public let legBoard: LegBoard
+        public let legsIntermediate: [LegIntermediate]
         public let legAlight: LegAlight
         public let service: Service
         public let legTrack: LegTrack?
 
         enum CodingKeys: String, CodingKey {
             case legBoard = "LegBoard"
+            case legsIntermediate = "LegIntermediate"
             case legAlight = "LegAlight"
             case service = "Service"
             case legTrack = "LegTrack"
@@ -228,7 +230,44 @@ public extension OJPv2 {
             case noAlightingAtStop = "NoAlightingAtStop"
         }
     }
-
+    
+    // https://vdvde.github.io/OJP/develop/index.html#LegIntermediateStructure
+    struct LegIntermediate: Codable {
+        // https://vdvde.github.io/OJP/develop/index.html#StopPointGroup
+        public let stopPointRef: String
+        public let stopPointName: Name
+        public let nameSuffix: Name?
+        public let plannedQuai: Name?
+        public let estimatedQuay: Name?
+        
+        public let serviceArrival: ServiceArrival?
+        public let serviceDeparture: ServiceDeparture?
+        
+        // https://vdvde.github.io/OJP/develop/index.html#StopCallStatusGroup
+        public let order: Int?
+        public let requestStop: Bool?
+        public let unplannedStop: Bool?
+        public let notServicedStop: Bool?
+        public let noBoardingAtStop: Bool?
+        public let noAlightingAtStop: Bool?
+        
+        enum CodingKeys: String, CodingKey {
+            case stopPointRef = "siri:StopPointRef"
+            case stopPointName = "StopPointName"
+            case nameSuffix = "NameSuffix"
+            case plannedQuai = "PlannedQuay"
+            case estimatedQuay = "EstimatedQuay"
+            case serviceArrival = "ServiceArrival"
+            case serviceDeparture = "ServiceDeparture"
+            case order = "Order"
+            case requestStop = "RequestStop"
+            case unplannedStop = "UnplannedStop"
+            case notServicedStop = "NotServicedStop"
+            case noBoardingAtStop = "NoBoardingAtStop"
+            case noAlightingAtStop = "NoAlightingAtStop"
+        }
+    }
+    
     // https://vdvde.github.io/OJP/develop/index.html#LegAlightStructure
     struct LegAlight: Codable {
         // https://vdvde.github.io/OJP/develop/index.html#StopPointGroup
