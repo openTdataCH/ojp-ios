@@ -160,11 +160,13 @@ public extension OJPv2 {
         public let legBoard: LegBoard
         public let legAlight: LegAlight
         public let service: Service
+        public let legTrack: LegTrack?
 
         enum CodingKeys: String, CodingKey {
             case legBoard = "LegBoard"
             case legAlight = "LegAlight"
             case service = "Service"
+            case legTrack = "LegTrack"
         }
     }
 
@@ -173,6 +175,8 @@ public extension OJPv2 {
     struct LegAlight: Codable {}
 
     struct Service: Codable {}
+    
+    struct LegTrack: Codable {}
 
     struct ContinuousLeg: Codable {}
 
