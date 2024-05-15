@@ -43,7 +43,7 @@ final class OjpSDKTests: XCTestCase {
 
         let nearbyPlaceResult = nearbyStations.first!.object
 
-        let nearbyStopName = nearbyPlaceResult.place.name!.text
+        let nearbyStopName = nearbyPlaceResult.place.name.text
         let expectedStopName = "Bern (Bern)"
         XCTAssert(nearbyStopName == expectedStopName, "Expected '\(expectedStopName)' got '\(nearbyStopName)' instead")
 
@@ -233,7 +233,7 @@ final class OjpSDKTests: XCTestCase {
             }
             print("places:")
             for placeResult in locationInformation.placeResults {
-                print(placeResult.place.name!.text)
+                print(placeResult.place.name.text)
             }
         }
 

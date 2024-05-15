@@ -45,21 +45,20 @@ struct LocationSearchByNameView: View {
                             selectetedPlace = stop
                         }
                     } else {
-                        Text("Currently Unsupported PlaceType") // TODO: implment
+                        Text("Currently Unsupported PlaceType") // TODO: implement
                     }
                 }
                 Map {
                     ForEach($results) { $stop in
                         if case let .stopPlace(stopPlace) = stop.place.placeType {
                             Annotation(stopPlace.stopPlaceName.text,
-                                       coordinate: stop.place.geoPosition?.coordinates ?? CLLocationCoordinate2D(latitude: 0, longitude: 0))
-                            {
+                                       coordinate: stop.place.geoPosition.coordinates) {
                                 Circle().onTapGesture {
                                     selectetedPlace = stop
                                 }
                             }
                         } else {
-                            Annotation("Currently Unssupported", coordinate: CLLocationCoordinate2D(latitude: 0, longitude: 0)) { Circle().fill(.red) } // TODO: implment
+                            Annotation("Currently Unssupported", coordinate: CLLocationCoordinate2D(latitude: 0, longitude: 0)) { Circle().fill(.red) } // TODO: implement
                         }
                     }
                 }

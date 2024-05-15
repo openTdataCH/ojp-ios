@@ -84,8 +84,8 @@ public extension OJPv2 {
 
     struct Place: Codable {
         public let placeType: PlaceType
-        public let name: Name?
-        public let geoPosition: GeoPosition?
+        public let name: Name
+        public let geoPosition: GeoPosition
         public let modes: [Mode]
 
         public enum CodingKeys: String, CodingKey {
@@ -97,8 +97,8 @@ public extension OJPv2 {
         public init(from decoder: any Decoder) throws {
             placeType = try PlaceType(from: decoder)
             let container = try decoder.container(keyedBy: StrippedPrefixCodingKey.self)
-            name = try? container.decode(Name.self, forKey: StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.name))
-            geoPosition = try? container.decode(GeoPosition.self, forKey: StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.geoPosition))
+            name = try container.decode(Name.self, forKey: StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.name))
+            geoPosition = try container.decode(GeoPosition.self, forKey: StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.geoPosition))
             modes = try container.decode([Mode].self, forKey: StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.modes))
         }
     }

@@ -8,8 +8,7 @@
 import Foundation
 
 let OJP_SDK_Name = "IOS_SDK"
-let OJP_SDK_Version = "0.0.1"
-let COORDINATE_FALLBACK = -1.0
+let OJP_SDK_Version = "0.0.4"
 
 struct StrippedPrefixCodingKey: CodingKey {
     var stringValue: String
