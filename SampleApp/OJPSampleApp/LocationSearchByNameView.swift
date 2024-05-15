@@ -115,7 +115,7 @@ struct LocationSearchByNameView: View {
                 let ojp = OJP.configured
                 let t = Task {
                     do {
-                        results = try await ojp.requestLocations(from: inputName, restrictions: placeParam)
+                        results = try await ojp.requestPlaceResults(from: inputName, restrictions: placeParam)
                         print(results)
                     } catch {
                         print(error)

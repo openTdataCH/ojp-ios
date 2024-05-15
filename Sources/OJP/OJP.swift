@@ -58,10 +58,10 @@ public class OJP {
         return decoder
     }
 
-    /// Request a list of Locations based on the given geographical point
+    /// Request a list of PlaceResults based on the given geographical point
     /// - Parameter coordinates: a geo point with longitude and latitude
-    /// - Returns: List of Locations sorted by the nearest point
-    public func requestLocations(from coordinates: Point) async throws -> [NearbyObject<OJPv2.PlaceResult>] {
+    /// - Returns: List of PlaceResults sorted by the nearest point
+    public func requestPlaceResults(from coordinates: Point) async throws -> [NearbyObject<OJPv2.PlaceResult>] {
         let ojp = locationInformationRequest.requestWithBox(centerLongitude: coordinates.long, centerLatitude: coordinates.lat, boxWidth: 1000.0)
 
         let serviceDelivery = try await request(with: ojp).serviceDelivery
@@ -74,11 +74,11 @@ public class OJP {
         return nearbyObjects
     }
 
-    /// Request a list of Locations based on the given search term
+    /// Request a list of PlaceResults based on the given search term
     /// - Parameter searchTerm: The given term
     /// - Parameter restrictions: filter with a place param
-    /// - Returns: List of Locations that contains the search term
-    public func requestLocations(from searchTerm: String, restrictions: OJPv2.PlaceParam) async throws -> [OJPv2.PlaceResult] {
+    /// - Returns: List of PlaceResults that contains the search term
+    public func requestPlaceResults(from searchTerm: String, restrictions: OJPv2.PlaceParam) async throws -> [OJPv2.PlaceResult] {
         let ojp = locationInformationRequest.requestWithSearchTerm(searchTerm, restrictions: restrictions)
 
         let serviceDelivery = try await request(with: ojp).serviceDelivery
