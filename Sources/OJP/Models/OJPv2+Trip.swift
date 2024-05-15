@@ -191,10 +191,80 @@ public extension OJPv2 {
             case estimatedTime = "EstimatedTime"
         }
     }
+    
+    // https://vdvde.github.io/OJP/develop/index.html#LegBoardStructure
+    struct LegBoard: Codable {
+        // https://vdvde.github.io/OJP/develop/index.html#StopPointGroup
+        public let stopPointRef: String
+        public let stopPointName: Name
+        public let nameSuffix: Name?
+        public let plannedQuai: Name?
+        public let estimatedQuay: Name?
+        
+        public let serviceArrival: ServiceArrival?
+        public let serviceDeparture: ServiceDeparture
+        
+        // https://vdvde.github.io/OJP/develop/index.html#StopCallStatusGroup
+        public let order: Int?
+        public let requestStop: Bool?
+        public let unplannedStop: Bool?
+        public let notServicedStop: Bool?
+        public let noBoardingAtStop: Bool?
+        public let noAlightingAtStop: Bool?
+        
+        enum CodingKeys: String, CodingKey {
+            case stopPointRef = "siri:StopPointRef"
+            case stopPointName = "StopPointName"
+            case nameSuffix = "NameSuffix"
+            case plannedQuai = "PlannedQuay"
+            case estimatedQuay = "EstimatedQuay"
+            case serviceArrival = "ServiceArrival"
+            case serviceDeparture = "ServiceDeparture"
+            case order = "Order"
+            case requestStop = "RequestStop"
+            case unplannedStop = "UnplannedStop"
+            case notServicedStop = "NotServicedStop"
+            case noBoardingAtStop = "NoBoardingAtStop"
+            case noAlightingAtStop = "NoAlightingAtStop"
+        }
+    }
 
-    struct LegBoard: Codable {}
-
-    struct LegAlight: Codable {}
+    // https://vdvde.github.io/OJP/develop/index.html#LegAlightStructure
+    struct LegAlight: Codable {
+        // https://vdvde.github.io/OJP/develop/index.html#StopPointGroup
+        public let stopPointRef: String
+        public let stopPointName: Name
+        public let nameSuffix: Name?
+        public let plannedQuai: Name?
+        public let estimatedQuay: Name?
+        
+        public let serviceArrival: ServiceArrival
+        public let serviceDeparture: ServiceDeparture?
+        
+        // https://vdvde.github.io/OJP/develop/index.html#StopCallStatusGroup
+        public let order: Int?
+        public let requestStop: Bool?
+        public let unplannedStop: Bool?
+        public let notServicedStop: Bool?
+        public let noBoardingAtStop: Bool?
+        public let noAlightingAtStop: Bool?
+        
+        enum CodingKeys: String, CodingKey {
+            case stopPointRef = "siri:StopPointRef"
+            case stopPointName = "StopPointName"
+            case nameSuffix = "NameSuffix"
+            case plannedQuai = "PlannedQuay"
+            case estimatedQuay = "EstimatedQuay"
+            case serviceArrival = "ServiceArrival"
+            case serviceDeparture = "ServiceDeparture"
+            case order = "Order"
+            case requestStop = "RequestStop"
+            case unplannedStop = "UnplannedStop"
+            case notServicedStop = "NotServicedStop"
+            case noBoardingAtStop = "NoBoardingAtStop"
+            case noAlightingAtStop = "NoAlightingAtStop"
+        }
+    }
 
     struct Service: Codable {}
     
