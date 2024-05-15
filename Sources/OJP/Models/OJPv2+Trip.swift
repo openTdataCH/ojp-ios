@@ -169,6 +169,28 @@ public extension OJPv2 {
             case legTrack = "LegTrack"
         }
     }
+    
+    // https://vdvde.github.io/OJP/develop/index.html#ServiceArrivalStructure
+    struct ServiceArrival: Codable {
+        public let timetabledTime: String
+        public let estimatedTime: String?
+        
+        enum CodingKeys: String, CodingKey {
+            case timetabledTime = "TimetabledTime"
+            case estimatedTime = "EstimatedTime"
+        }
+    }
+    
+    // https://vdvde.github.io/OJP/develop/index.html#ServiceDepartureStructure
+    struct ServiceDeparture: Codable {
+        public let timetabledTime: String
+        public let estimatedTime: String?
+        
+        enum CodingKeys: String, CodingKey {
+            case timetabledTime = "TimetabledTime"
+            case estimatedTime = "EstimatedTime"
+        }
+    }
 
     struct LegBoard: Codable {}
 
