@@ -103,6 +103,7 @@ public extension OJPv2 {
         }
     }
 
+    // TODO - move this outside of LIR, it belongs also to TR
     struct Mode: Codable {
         public let ptMode: String
 
@@ -180,6 +181,7 @@ public extension OJPv2 {
         }
     }
     
+    // TODO - move out from LIR, belongs also to TR
     // https://vdvde.github.io/OJP/develop/index.html#InternationalTextStructure
     struct Name: Codable {
         public let text: String
