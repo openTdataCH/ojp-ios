@@ -179,7 +179,8 @@ public extension OJPv2 {
             case countryName = "CountryName"
         }
     }
-
+    
+    // https://vdvde.github.io/OJP/develop/index.html#InternationalTextStructure
     struct Name: Codable {
         public let text: String
 
