@@ -225,14 +225,20 @@ public extension OJPv2 {
     }
 
     internal struct Params: Codable {
-        public let numberOfResults: Int
-        public let transferLimit: Int
-        public let optimisationMethod: String
+        public let numberOfResultsBefore: Int
+        public let numberOfResultsAfter: Int
+        public let includeTrackSections: Bool
+        public let includeLegProjection: Bool
+        public let includeTurnDescription: Bool
+        public let includeIntermediateStops: Bool
 
         public enum CodingKeys: String, CodingKey {
-            case numberOfResults = "NumberOfResults"
-            case transferLimit = "TransferLimit"
-            case optimisationMethod = "OptimisationMethod"
+            case numberOfResultsBefore = "NumberOfResultsBefore"
+            case numberOfResultsAfter = "NumberOfResultsAfter"
+            case includeTrackSections = "IncludeTrackSections"
+            case includeLegProjection = "IncludeLegProjection"
+            case includeTurnDescription = "IncludeTurnDescription"
+            case includeIntermediateStops = "IncludeIntermediateStops"
         }
     }
 }
