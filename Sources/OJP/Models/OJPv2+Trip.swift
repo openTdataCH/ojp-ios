@@ -9,10 +9,14 @@ import Foundation
 
 public extension OJPv2 {
     internal struct TripDelivery: Codable {
+        public let responseTimestamp: String
+        public let requestMessageRef: String
         public let calcTime: Int?
         public let tripResults: [TripResult]
 
         public enum CodingKeys: String, CodingKey {
+            case responseTimestamp = "siri:ResponseTimestamp"
+            case requestMessageRef = "siri:RequestMessageRef"
             case calcTime = "CalcTime"
             case tripResults = "TripResult"
         }
@@ -77,6 +81,7 @@ public extension OJPv2 {
         public let startTime: Date
         public let endTime: Date
         public let transfers: Int
+        public let distance: Double?
         public let legs: [Leg]
 
         enum CodingKeys: String, CodingKey {
@@ -85,6 +90,7 @@ public extension OJPv2 {
             case startTime = "StartTime"
             case endTime = "EndTime"
             case transfers = "Transfers"
+            case distance = "Distance"
             case legs = "Leg"
         }
     }
