@@ -102,13 +102,28 @@ public extension OJPv2 {
             modes = try container.decode([Mode].self, forKey: StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.modes))
         }
     }
-
+    
     // TODO - move this outside of LIR, it belongs also to TR
+    // https://vdvde.github.io/OJP/develop/index.html#ModeStructure
     struct Mode: Codable {
         public let ptMode: String
+        
+        // https://laidig.github.io/siri-20-java/doc/schemas/siri_modes-v1_1_xsd/schema-overview.html
+        // siri:PtModeChoiceGroup
+        // keep busSubmode, railSubmode for now
+        public let busSubmode: String?
+        // https://laidig.github.io/siri-20-java/doc/schemas/siri_modes-v1_1_xsd/elements/RailSubmode.html
+        public let railSubmode: String?
+        
+        public let name: Name?
+        public let shortName: Name?
 
         public enum CodingKeys: String, CodingKey {
             case ptMode = "PtMode"
+            case busSubmode = "siri:BusSubmode"
+            case railSubmode = "siri:RailSubmode"
+            case name = "Name"
+            case shortName = "ShortName"
         }
     }
 
