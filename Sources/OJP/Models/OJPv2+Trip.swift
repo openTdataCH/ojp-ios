@@ -179,7 +179,7 @@ public extension OJPv2 {
         public let origin: Origin
         public let destination: Destination
         public let via: [TripVia]?
-        public let params: Params
+        public let params: Params?
 
         public enum CodingKeys: String, CodingKey {
             case requestTimestamp = "siri:RequestTimestamp"
