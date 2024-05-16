@@ -73,7 +73,7 @@ public extension OJPv2 {
             case probability = "Probability"
         }
     }
-    
+
     enum PlaceTypeChoice: Codable {
         case stopPlace(OJPv2.StopPlace)
         case address(OJPv2.Address)
@@ -125,19 +125,19 @@ public extension OJPv2 {
             modes = try container.decode([Mode].self, forKey: StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.modes))
         }
     }
-    
-    // TODO - move this outside of LIR, it belongs also to TR
+
+    // TODO: - move this outside of LIR, it belongs also to TR
     // https://vdvde.github.io/OJP/develop/index.html#ModeStructure
     struct Mode: Codable {
-        public let ptMode: String
-        
+        public let ptMode: PtMode
+
         // https://laidig.github.io/siri-20-java/doc/schemas/siri_modes-v1_1_xsd/schema-overview.html
         // siri:PtModeChoiceGroup
         // keep busSubmode, railSubmode for now
         public let busSubmode: String?
         // https://laidig.github.io/siri-20-java/doc/schemas/siri_modes-v1_1_xsd/elements/RailSubmode.html
         public let railSubmode: String?
-        
+
         public let name: Name?
         public let shortName: Name?
 
@@ -147,6 +147,20 @@ public extension OJPv2 {
             case railSubmode = "siri:RailSubmode"
             case name = "Name"
             case shortName = "ShortName"
+        }
+
+        public enum PtMode: String, Codable {
+            case rail
+            case bus
+            case tram
+            case water
+            case telecabin
+            case underground
+            case unknown
+            
+            public init(from decoder: Decoder) throws {
+                self = try PtMode(rawValue: decoder.singleValueContainer().decode(RawValue.self)) ?? .unknown
+            }
         }
     }
 
@@ -187,8 +201,8 @@ public extension OJPv2 {
             case countryName = "CountryName"
         }
     }
-    
-    // TODO - move out from LIR, belongs also to TR
+
+    // TODO: - move out from LIR, belongs also to TR
     // https://vdvde.github.io/OJP/develop/index.html#InternationalTextStructure
     struct Name: Codable {
         public let text: String

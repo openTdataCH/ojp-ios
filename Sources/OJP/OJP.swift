@@ -12,7 +12,7 @@ public enum LoadingStrategy {
     case mock(Loader)
 }
 
-// TODO - find me a better place
+// TODO: - find me a better place
 public enum PlaceType: String, Codable {
     case stop
     case address

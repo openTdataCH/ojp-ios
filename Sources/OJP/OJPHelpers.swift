@@ -48,7 +48,6 @@ enum OJPHelpers {
 
             let params = OJPv2.Params(numberOfResultsBefore: 6, numberOfResultsAfter: 0, includeTrackSections: false, includeLegProjection: false, includeTurnDescription: false, includeIntermediateStops: false)
 
-
             let tripRequest = OJPv2.TripRequest(requestTimestamp: requestTimestamp, requestorRef: requesterReference, origin: origin, destination: destination, via: [], params: params)
 
             // TODO: - avoid duplication (share this block with "requestWith(bbox: Geo.Bbox")

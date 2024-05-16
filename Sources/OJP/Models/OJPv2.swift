@@ -70,7 +70,7 @@ public struct OJPv2: Codable {
             producerRef = try? container.decode(String.self, forKey: StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.producerRef))
         }
     }
-    
+
     enum ServiceDeliveryTypeChoice: Codable {
         case stopEvent(OJPv2.StopEventServiceDelivery)
         case locationInformation(OJPv2.LocationInformationDelivery)

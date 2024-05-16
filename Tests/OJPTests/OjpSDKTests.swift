@@ -102,9 +102,9 @@ final class OjpSDKTests: XCTestCase {
 
         switch locationInformation {
         case let .locationInformation(lir):
-            XCTAssert(lir.placeResults.first?.place.modes.first?.ptModeType == .rail)
-            XCTAssert(lir.placeResults[1].place.modes.first?.ptModeType == .bus)
-            XCTAssert(lir.placeResults[2].place.modes.first?.ptModeType == .underground)
+            XCTAssert(lir.placeResults.first?.place.modes.first?.ptMode == .rail)
+            XCTAssert(lir.placeResults[1].place.modes.first?.ptMode == .bus)
+            XCTAssert(lir.placeResults[2].place.modes.first?.ptMode == .underground)
         default:
             XCTFail()
         }
@@ -136,9 +136,9 @@ final class OjpSDKTests: XCTestCase {
         case let .locationInformation(locationInformation):
             for location in locationInformation.placeResults {
                 switch location.place.place {
-                case .stopPlace(_):
+                case .stopPlace:
                     XCTFail()
-                case .address(let address):
+                case let .address(address):
                     XCTAssert(address.houseNumber == "48")
                     XCTAssert(address.topographicPlaceName == "Le Mouret")
                     XCTAssert(address.street == "Route des Russilles")

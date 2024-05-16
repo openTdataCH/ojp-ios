@@ -172,29 +172,29 @@ public extension OJPv2 {
             case legTrack = "LegTrack"
         }
     }
-    
+
     // https://vdvde.github.io/OJP/develop/index.html#ServiceArrivalStructure
     struct ServiceArrival: Codable {
         public let timetabledTime: String
         public let estimatedTime: String?
-        
+
         enum CodingKeys: String, CodingKey {
             case timetabledTime = "TimetabledTime"
             case estimatedTime = "EstimatedTime"
         }
     }
-    
+
     // https://vdvde.github.io/OJP/develop/index.html#ServiceDepartureStructure
     struct ServiceDeparture: Codable {
         public let timetabledTime: String
         public let estimatedTime: String?
-        
+
         enum CodingKeys: String, CodingKey {
             case timetabledTime = "TimetabledTime"
             case estimatedTime = "EstimatedTime"
         }
     }
-    
+
     // https://vdvde.github.io/OJP/develop/index.html#LegBoardStructure
     struct LegBoard: Codable {
         // https://vdvde.github.io/OJP/develop/index.html#StopPointGroup
@@ -203,10 +203,10 @@ public extension OJPv2 {
         public let nameSuffix: Name?
         public let plannedQuai: Name?
         public let estimatedQuay: Name?
-        
+
         public let serviceArrival: ServiceArrival?
         public let serviceDeparture: ServiceDeparture
-        
+
         // https://vdvde.github.io/OJP/develop/index.html#StopCallStatusGroup
         public let order: Int?
         public let requestStop: Bool?
@@ -214,7 +214,7 @@ public extension OJPv2 {
         public let notServicedStop: Bool?
         public let noBoardingAtStop: Bool?
         public let noAlightingAtStop: Bool?
-        
+
         enum CodingKeys: String, CodingKey {
             case stopPointRef = "StopPointRef"
             case stopPointName = "StopPointName"
@@ -231,7 +231,7 @@ public extension OJPv2 {
             case noAlightingAtStop = "NoAlightingAtStop"
         }
     }
-    
+
     // https://vdvde.github.io/OJP/develop/index.html#LegIntermediateStructure
     struct LegIntermediate: Codable {
         // https://vdvde.github.io/OJP/develop/index.html#StopPointGroup
@@ -240,10 +240,10 @@ public extension OJPv2 {
         public let nameSuffix: Name?
         public let plannedQuai: Name?
         public let estimatedQuay: Name?
-        
+
         public let serviceArrival: ServiceArrival
         public let serviceDeparture: ServiceDeparture
-        
+
         // https://vdvde.github.io/OJP/develop/index.html#StopCallStatusGroup
         public let order: Int?
         public let requestStop: Bool?
@@ -251,7 +251,7 @@ public extension OJPv2 {
         public let notServicedStop: Bool?
         public let noBoardingAtStop: Bool?
         public let noAlightingAtStop: Bool?
-        
+
         enum CodingKeys: String, CodingKey {
             case stopPointRef = "StopPointRef"
             case stopPointName = "StopPointName"
@@ -268,7 +268,7 @@ public extension OJPv2 {
             case noAlightingAtStop = "NoAlightingAtStop"
         }
     }
-    
+
     // https://vdvde.github.io/OJP/develop/index.html#LegAlightStructure
     struct LegAlight: Codable {
         // https://vdvde.github.io/OJP/develop/index.html#StopPointGroup
@@ -277,10 +277,10 @@ public extension OJPv2 {
         public let nameSuffix: Name?
         public let plannedQuai: Name?
         public let estimatedQuay: Name?
-        
+
         public let serviceArrival: ServiceArrival
         public let serviceDeparture: ServiceDeparture?
-        
+
         // https://vdvde.github.io/OJP/develop/index.html#StopCallStatusGroup
         public let order: Int?
         public let requestStop: Bool?
@@ -288,7 +288,7 @@ public extension OJPv2 {
         public let notServicedStop: Bool?
         public let noBoardingAtStop: Bool?
         public let noAlightingAtStop: Bool?
-        
+
         enum CodingKeys: String, CodingKey {
             case stopPointRef = "StopPointRef"
             case stopPointName = "StopPointName"
@@ -305,54 +305,54 @@ public extension OJPv2 {
             case noAlightingAtStop = "NoAlightingAtStop"
         }
     }
-    
+
     // https://vdvde.github.io/OJP/develop/index.html#ProductCategoryStructure
     struct ProductCategory: Codable {
         public let name: Name?
         public let shortName: Name?
         public let productCategoryRef: String?
-        
+
         public enum CodingKeys: String, CodingKey {
             case name = "Name"
             case shortName = "ShortName"
             case productCategoryRef = "ProductCategoryRef"
         }
     }
-    
+
     // https://vdvde.github.io/OJP/develop/index.html#GeneralAttributeStructure
     struct Attribute: Codable {
         public let userText: Name
         public let code: String
-        
+
         public enum CodingKeys: String, CodingKey {
             case userText = "UserText"
             case code = "Code"
         }
     }
-    
+
     // https://vdvde.github.io/OJP/develop/index.html#ContinuousServiceStructure
     struct Service: Codable {
         // https://vdvde.github.io/OJP/develop/index.html#ConventionalModesOfOperationEnumeration
-        // TODO - build enum
+        // TODO: - build enum
         public let conventionalModeOfOperation: String?
-        
+
         public let operatingDayRef: String
         public let journeyRef: String
         public let publicCode: String?
-        
+
         // siri:LineDirectionGroup
         public let lineRef: String
         public let directionRef: String?
-        
+
         public let mode: Mode
         public let productCategory: ProductCategory?
         public let publishedServiceName: Name
-        
+
         public let trainNumber: String?
         public let vehicleRef: String?
         public let attributes: [Attribute]
         public let operatorRef: String?
-        
+
         public enum CodingKeys: String, CodingKey {
             case conventionalModeOfOperation = "ConventionalModeOfOperation"
             case operatingDayRef = "OperatingDayRef"
@@ -369,7 +369,7 @@ public extension OJPv2 {
             case operatorRef = "OperatorRef" // siri:
         }
     }
-    
+
     struct LegTrack: Codable {}
 
     struct ContinuousLeg: Codable {}
@@ -381,7 +381,7 @@ public extension OJPv2 {
     internal struct TripRequest: Codable {
         public let requestTimestamp: String
         public let requestorRef: String
-            
+
         public let origin: Origin
         public let destination: Destination
         public let via: [TripVia]?
