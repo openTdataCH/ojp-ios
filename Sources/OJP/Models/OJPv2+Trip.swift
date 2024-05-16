@@ -98,7 +98,7 @@ public extension OJPv2 {
     struct Leg: Codable {
         public let id: Int
         public let duration: String?
-        public let legType: LegType
+        public let legType: LegTypeChoice
 
         enum CodingKeys: String, CodingKey {
             case id = "Id"
@@ -106,14 +106,14 @@ public extension OJPv2 {
         }
 
         public init(from decoder: any Decoder) throws {
-            legType = try LegType(from: decoder)
+            legType = try LegTypeChoice(from: decoder)
 
             let container = try decoder.container(keyedBy: StrippedPrefixCodingKey.self)
             id = try container.decode(Int.self, forKey: StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.id))
             duration = try? container.decode(String.self, forKey: StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.duration))
         }
 
-        public enum LegType: Codable {
+        public enum LegTypeChoice: Codable {
             case continous(OJPv2.ContinuousLeg)
             case timed(OJPv2.TimedLeg)
             case transfer(OJPv2.TransferLeg)
