@@ -40,15 +40,16 @@ enum OJPHelpers {
 
             let origin = OJPv2.Origin(placeRef: OJPv2.PlaceRef(stopPlaceRef: originRef), depArrTime: requestTimestamp)
 
-            let destination = OJPv2.Destination(placeRef: OJPv2.PlaceRef(stopPlaceRef: destinationRef))
+            let destination = OJPv2.Destination(placeRef: OJPv2.PlaceRef(stopPlaceRef: destinationRef), depArrTime: nil)
 
             // TODO: via
 
             // TODO: departure time
 
-            let params = OJPv2.Params(numberOfResults: 6, transferLimit: 0, optimisationMethod: "fastest")
+            let params = OJPv2.Params(numberOfResultsBefore: 6, numberOfResultsAfter: 0, includeTrackSections: false, includeLegProjection: false, includeTurnDescription: false, includeIntermediateStops: false)
 
-            let tripRequest = OJPv2.TripRequest(requestTimestamp: requestTimestamp, origin: origin, destination: destination, via: [], params: params)
+
+            let tripRequest = OJPv2.TripRequest(requestTimestamp: requestTimestamp, requestorRef: requesterReference, origin: origin, destination: destination, via: [], params: params)
 
             // TODO: - avoid duplication (share this block with "requestWith(bbox: Geo.Bbox")
             let ojp = OJPv2(request: OJPv2.Request(serviceRequest: OJPv2.ServiceRequest(requestTimestamp: requestTimestamp, requestorRef: requesterReference, locationInformationRequest: nil, tripRequest: tripRequest)), response: nil)
