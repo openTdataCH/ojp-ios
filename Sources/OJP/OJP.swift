@@ -50,16 +50,8 @@ public class OJP {
     private var encoder: XMLEncoder {
         let encoder = XMLEncoder()
         encoder.outputFormatting = .prettyPrinted
+        encoder.keyEncodingStrategy = .capitalized
         return encoder
-    }
-
-    private var decoder: XMLDecoder {
-        let decoder = XMLDecoder()
-        decoder.keyDecodingStrategy = .convertFromCapitalized
-        decoder.dateDecodingStrategy = .iso8601
-        decoder.shouldProcessNamespaces = true
-        decoder.keyDecodingStrategy = .useDefaultKeys
-        return decoder
     }
 
     /// Request a list of PlaceResults based on the given geographical point

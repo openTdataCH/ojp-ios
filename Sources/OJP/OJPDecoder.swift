@@ -13,8 +13,6 @@ enum OJPDecoder {
         let decoder = XMLDecoder()
         decoder.keyDecodingStrategy = .convertFromCapitalized
         decoder.dateDecodingStrategy = .iso8601
-        // strips out namespaces from the response XML nodes
-        decoder.shouldProcessNamespaces = true
         decoder.keyDecodingStrategy = .useDefaultKeys
         do {
             return try decoder.decode(T.self, from: xmlData)
