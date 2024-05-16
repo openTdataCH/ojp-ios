@@ -39,7 +39,7 @@ final class OjpSDKTests: XCTestCase {
         }
 
         let ojpSdk = OJP(loadingStrategy: .mock(mockLoader))
-        let nearbyStations = try await ojpSdk.requestLocations(from: (long: 7.452178, lat: 46.948474))
+        let nearbyStations = try await ojpSdk.requestPlaceResults(from: (long: 7.452178, lat: 46.948474))
 
         let nearbyPlaceResult = nearbyStations.first!.object
 
@@ -62,7 +62,7 @@ final class OjpSDKTests: XCTestCase {
     }
 
     func testBuildRequestName() throws {
-        let ojpRequest = locationInformationRequest.requestWithSearchTerm("Be", restrictions: [.stop])
+        let ojpRequest = locationInformationRequest.requestWithSearchTerm("Be", restrictions: .init(type: [.stop]))
         let xmlString = try OJPHelpers.buildXMLRequest(ojpRequest: ojpRequest)
         XCTAssert(!xmlString.isEmpty)
     }
@@ -189,7 +189,7 @@ final class OjpSDKTests: XCTestCase {
         let ojpSDK = OJP(loadingStrategy: mock)
 
         do {
-            _ = try await ojpSDK.requestLocations(from: "bla", restrictions: [.stop])
+            _ = try await ojpSDK.requestPlaceResults(from: "bla", restrictions: .init(type: [.stop]))
             XCTFail()
         } catch let OJPSDKError.unexpectedHTTPStatus(statusCode) {
             XCTAssert(statusCode == 400)
@@ -204,7 +204,7 @@ final class OjpSDKTests: XCTestCase {
         }
         do {
             let ojpSDK = OJP(loadingStrategy: mock)
-            _ = try await ojpSDK.requestLocations(from: "bla", restrictions: [.stop])
+            _ = try await ojpSDK.requestPlaceResults(from: "bla", restrictions: .init(type: [.stop]))
         } catch OJPSDKError.loadingFailed {
             XCTAssert(true)
             return

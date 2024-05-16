@@ -51,25 +51,26 @@ let ojpSdk = OJP(loadingStrategy: .http(apiConfiguration))
 
 ### Basic Usage
 
-Get a list of Locations from a keyword.
+Get a list of PlaceResults from a keyword.
 
 ``` swift
 import OJP
         
 // get only stops
-let stops = try await ojpSdk.requestLocations(from: "Bern", restrictions: [.stop])
+let stops = try await ojpSdk.requestPlaceResults(from: "Bern", restrictions: .init(type: [.stop]))
+
 
         
 // get stops and addresses
-let addresses = try await ojpSdk.requestLocations(from: "Bern", restrictions: [.address, .stop])
+let addresses = try await ojpSdk.requestPlaceResults(from: "Bern", restrictions: .init(type: [.stop, .address]))
 ```
 
-Get a list of Locations around a place with longitude and latitude
+Get a list of PlaceResults around a place with longitude and latitude
 
 ``` swift
 import OJP
 
-let nearbyLocations = try await ojpSdk.requestLocations(from: Point(long: 5.6, lat: 2.3))
+let nearbyStops = try await ojpSdk.requestPlaceResults(from: Point(long: 5.6, lat: 2.3), restrictions: .init(type: [.stop])
 ```
 
 ## Sample App

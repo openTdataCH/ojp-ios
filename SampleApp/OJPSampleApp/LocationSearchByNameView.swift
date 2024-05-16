@@ -21,8 +21,23 @@ struct LocationSearchByNameView: View {
     @State var selectetedPlace: OJPv2.PlaceResult?
     @State var limit: Int = 10
     @State var currentTask: Task<Void, Never>?
+    @State var addressRestriction = false
+    @State var stopRestriction = true
+    @State var includePTModes = false
 
     let availableRange: [Int] = [5, 10, 20, 50, 100]
+
+    private var placeParam: OJPv2.PlaceParam {
+        var placeType: [PlaceType] = []
+        if addressRestriction {
+            placeType.append(.address)
+        }
+        if stopRestriction {
+            placeType.append(.stop)
+        }
+
+        return OJPv2.PlaceParam(type: placeType, numberOfResults: limit, includePtModes: includePTModes)
+    }
 
     var body: some View {
         HStack {
@@ -30,18 +45,36 @@ struct LocationSearchByNameView: View {
                 Text("Search Stations by Name")
                 Form {
                     TextField("Search Name", text: $inputName)
-                    // can't define number of results any more
-//                    Picker(selection: $limit) {
-//                        ForEach(availableRange, id: \.self) {
-//                            Text("\($0)").tag($0)
-//                        }
-//                    } label: {
-//                        Text("Limit")
-//                    }
+                    Section {
+                        ControlGroup {
+                            Toggle("Addresses", isOn: $addressRestriction)
+                            Toggle("Stops", isOn: $stopRestriction)
+                        }
+                        Toggle("Include PT Modes", isOn: $includePTModes)
+                        Picker("Limit", selection: $limit) {
+                            ForEach(availableRange, id: \.self) {
+                                Text("\($0)").tag($0)
+                            }
+                        }
+                    } header: {
+                        Text("Restrictions")
+                    }
                 }
                 List($results) { $stop in
                     if case let .stopPlace(stopPlace) = stop.place.placeType {
-                        Text(stopPlace.stopPlaceName.text).onTapGesture {
+                        HStack {
+                            Image(systemName: "tram")
+                            Text(stopPlace.stopPlaceName.text)
+                        }
+                        .onTapGesture {
+                            selectetedPlace = stop
+                        }
+                    } else if case let .address(address) = stop.place.placeType {
+                        HStack {
+                            Image(systemName: "location")
+                            Text(address.name.text)
+                        }
+                        .onTapGesture {
                             selectetedPlace = stop
                         }
                     } else {
@@ -49,12 +82,21 @@ struct LocationSearchByNameView: View {
                     }
                 }
                 Map {
-                    ForEach($results) { $stop in
-                        if case let .stopPlace(stopPlace) = stop.place.placeType {
+                    ForEach($results) { $result in
+                        switch result.place.placeType {
+                        case let .stopPlace(stopPlace):
                             Annotation(stopPlace.stopPlaceName.text,
                                        coordinate: stop.place.geoPosition.coordinates) {
                                 Circle().onTapGesture {
-                                    selectetedPlace = stop
+                                    selectetedPlace = result
+                                }
+                            }
+                        case let .address(address):
+                            Annotation(address.name.text,
+                                       coordinate: result.place.geoPosition?.coordinates ?? CLLocationCoordinate2D(latitude: 0, longitude: 0))
+                            {
+                                Circle().onTapGesture {
+                                    selectetedPlace = result
                                 }
                             }
                         } else {
@@ -74,7 +116,7 @@ struct LocationSearchByNameView: View {
                 let ojp = OJP.configured
                 let t = Task {
                     do {
-                        results = try await ojp.requestLocations(from: inputName, restrictions: [.stop]) // TODO: make restrictinos configruable
+                        results = try await ojp.requestPlaceResults(from: inputName, restrictions: placeParam)
                         print(results)
                     } catch {
                         print(error)

@@ -17,7 +17,7 @@ final class SystemTests: XCTestCase {
     func testFetchStations() async throws {
         let ojpSdk = OJP(loadingStrategy: .http(.int))
 
-        let stations = try await ojpSdk.requestLocations(from: "Bern", restrictions: [.stop])
+        let stations = try await ojpSdk.requestPlaceResults(from: "Bern", restrictions: .init(type: [.stop]))
 
         XCTAssert(!stations.isEmpty)
     }
@@ -25,7 +25,7 @@ final class SystemTests: XCTestCase {
     func testFetchNearbyStations() async throws {
         let ojpSdk = OJP(loadingStrategy: .http(.int))
 
-        let nearbyStations = try await ojpSdk.requestLocations(from: (long: 7.452178, lat: 46.948474))
+        let nearbyStations = try await ojpSdk.requestPlaceResults(from: (long: 7.452178, lat: 46.948474))
 
         XCTAssert(!nearbyStations.isEmpty)
     }
