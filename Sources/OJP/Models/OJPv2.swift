@@ -55,7 +55,7 @@ public struct OJPv2: Codable {
     struct ServiceDelivery: Codable {
         public let responseTimestamp: String
         public let producerRef: String?
-        public let delivery: ServiceDeliveryType
+        public let delivery: ServiceDeliveryTypeChoice
 
         public enum CodingKeys: String, CodingKey {
             case responseTimestamp = "siri:ResponseTimestamp"
@@ -63,15 +63,15 @@ public struct OJPv2: Codable {
         }
 
         public init(from decoder: any Decoder) throws {
-            delivery = try ServiceDeliveryType(from: decoder)
+            delivery = try ServiceDeliveryTypeChoice(from: decoder)
 
             let container = try decoder.container(keyedBy: StrippedPrefixCodingKey.self)
             responseTimestamp = try container.decode(String.self, forKey: StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.responseTimestamp))
             producerRef = try? container.decode(String.self, forKey: StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.producerRef))
         }
     }
-
-    enum ServiceDeliveryType: Codable {
+    
+    enum ServiceDeliveryTypeChoice: Codable {
         case stopEvent(OJPv2.StopEventServiceDelivery)
         case locationInformation(OJPv2.LocationInformationDelivery)
         case trip(OJPv2.TripDelivery)
