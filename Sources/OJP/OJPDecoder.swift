@@ -11,9 +11,7 @@ import XMLCoder
 enum OJPDecoder {
     static func parseXML<T: Decodable>(_: T.Type, _ xmlData: Data) throws -> T {
         let decoder = XMLDecoder()
-        decoder.keyDecodingStrategy = .convertFromCapitalized
         decoder.dateDecodingStrategy = .iso8601
-        decoder.keyDecodingStrategy = .useDefaultKeys
         do {
             return try decoder.decode(T.self, from: xmlData)
         } catch {
