@@ -149,7 +149,18 @@ final class OjpSDKTests: XCTestCase {
         }
     }
 
-    func testParseTrip() async throws {
+    func testParseMinimalTripResponse() async throws {
+        let xmlData = try TestHelpers.loadXML(xmlFilename: "tr-gurten-rigi-trip1-minimal-response")
+        let trip = try OJPDecoder.parseXML(xmlData).response!.serviceDelivery.delivery
+
+        if case .trip(let trip) = trip {
+            XCTAssert(trip.tripResults.count == 1)
+            return
+        }
+        XCTFail()
+    }
+
+    func testParseTrip_ZH_BE() async throws {
         let xmlData = try TestHelpers.loadXML(xmlFilename: "trip-zh-bern-response")
 
         let trip = try OJPDecoder.parseXML(xmlData).response!.serviceDelivery.delivery

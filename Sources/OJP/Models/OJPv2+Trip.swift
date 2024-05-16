@@ -8,18 +8,19 @@
 import Foundation
 
 public extension OJPv2 {
-    internal struct TripDelivery: Codable {
+    struct TripDelivery: Codable {
         public let responseTimestamp: String
         public let requestMessageRef: String
         public let calcTime: Int?
         public let tripResults: [TripResult]
 
         public enum CodingKeys: String, CodingKey {
-            case responseTimestamp = "siri:ResponseTimestamp"
-            case requestMessageRef = "siri:RequestMessageRef"
+            case responseTimestamp = "ResponseTimestamp" // siri:
+            case requestMessageRef = "RequestMessageRef" // siri:
             case calcTime = "CalcTime"
             case tripResults = "TripResult"
         }
+
     }
 
     struct TripResult: Codable {
@@ -215,7 +216,7 @@ public extension OJPv2 {
         public let noAlightingAtStop: Bool?
         
         enum CodingKeys: String, CodingKey {
-            case stopPointRef = "siri:StopPointRef"
+            case stopPointRef = "StopPointRef"
             case stopPointName = "StopPointName"
             case nameSuffix = "NameSuffix"
             case plannedQuai = "PlannedQuay"
@@ -252,7 +253,7 @@ public extension OJPv2 {
         public let noAlightingAtStop: Bool?
         
         enum CodingKeys: String, CodingKey {
-            case stopPointRef = "siri:StopPointRef"
+            case stopPointRef = "StopPointRef"
             case stopPointName = "StopPointName"
             case nameSuffix = "NameSuffix"
             case plannedQuai = "PlannedQuay"
@@ -289,7 +290,7 @@ public extension OJPv2 {
         public let noAlightingAtStop: Bool?
         
         enum CodingKeys: String, CodingKey {
-            case stopPointRef = "siri:StopPointRef"
+            case stopPointRef = "StopPointRef"
             case stopPointName = "StopPointName"
             case nameSuffix = "NameSuffix"
             case plannedQuai = "PlannedQuay"
@@ -357,15 +358,15 @@ public extension OJPv2 {
             case operatingDayRef = "OperatingDayRef"
             case journeyRef = "JourneyRef"
             case publicCode = "PublicCode"
-            case lineRef = "siri:LineRef"
-            case directionRef = "siri:DirectionRef"
+            case lineRef = "LineRef" // siri:
+            case directionRef = "DirectionRef"
             case mode = "Mode"
             case productCategory = "ProductCategory"
             case publishedServiceName = "PublishedServiceName"
             case trainNumber = "TrainNumber"
-            case vehicleRef = "siri:VehicleRef"
+            case vehicleRef = "siri:VehicleRef" // siri:
             case attributes = "Attribute"
-            case operatorRef = "siri:OperatorRef"
+            case operatorRef = "OperatorRef" // siri:
         }
     }
     

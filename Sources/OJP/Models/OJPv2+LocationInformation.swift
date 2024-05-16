@@ -35,14 +35,6 @@ public extension OJPv2 {
             case producerRef = "siri:ProducerRef"
             case locationInformationDelivery = "OJPLocationInformationDelivery"
         }
-
-        public init(from decoder: any Decoder) throws {
-            let container = try decoder.container(keyedBy: StrippedPrefixCodingKey.self)
-
-            responseTimestamp = try container.decode(String.self, forKey: StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.responseTimestamp))
-            producerRef = try container.decode(String.self, forKey: StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.producerRef))
-            locationInformationDelivery = try container.decode(OJPv2.LocationInformationDelivery.self, forKey: StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.locationInformationDelivery))
-        }
     }
 
     internal struct LocationInformationDelivery: Codable {
