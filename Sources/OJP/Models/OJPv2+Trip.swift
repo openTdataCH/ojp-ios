@@ -240,8 +240,8 @@ public extension OJPv2 {
         public let plannedQuai: Name?
         public let estimatedQuay: Name?
         
-        public let serviceArrival: ServiceArrival?
-        public let serviceDeparture: ServiceDeparture?
+        public let serviceArrival: ServiceArrival
+        public let serviceDeparture: ServiceDeparture
         
         // https://vdvde.github.io/OJP/develop/index.html#StopCallStatusGroup
         public let order: Int?
