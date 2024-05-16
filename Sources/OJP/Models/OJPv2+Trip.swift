@@ -398,7 +398,7 @@ public extension OJPv2 {
 
     internal struct Origin: Codable {
         public let placeRef: PlaceRef
-        public let depArrTime: String
+        public let depArrTime: String?
 
         public enum CodingKeys: String, CodingKey {
             case placeRef = "PlaceRef"
@@ -408,9 +408,11 @@ public extension OJPv2 {
 
     internal struct Destination: Codable {
         public let placeRef: PlaceRef
+        public let depArrTime: String?
 
         public enum CodingKeys: String, CodingKey {
             case placeRef = "PlaceRef"
+            case depArrTime = "DepArrTime"
         }
     }
 
