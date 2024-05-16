@@ -12,6 +12,10 @@ enum OJPDecoder {
     static func parseXML<T: Decodable>(_: T.Type, _ xmlData: Data) throws -> T {
         let decoder = XMLDecoder()
         decoder.dateDecodingStrategy = .iso8601
+        decoder.keyDecodingStrategy = .custom({ codingPath in
+            guard let codingPath = codingPath.last else { fatalError() }
+            return StrippedPrefixCodingKey.stripPrefix(fromKey: codingPath)
+        })
         do {
             return try decoder.decode(T.self, from: xmlData)
         } catch {
