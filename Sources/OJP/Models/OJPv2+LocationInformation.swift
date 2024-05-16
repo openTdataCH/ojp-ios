@@ -263,7 +263,7 @@ public extension OJPv2 {
     internal struct LocationInformationRequest: Codable {
         public let requestTimestamp: String
         public let initialInput: InitialInput
-        public let restrictions: Restrictions
+        public let restrictions: PlaceParam
 
         public enum CodingKeys: String, CodingKey {
             case requestTimestamp = "siri:RequestTimestamp"
@@ -300,8 +300,14 @@ public extension OJPv2 {
         }
     }
 
-    struct Restrictions: Codable {
-        public let type: [String]
+    struct PlaceParam: Codable {
+        public init(type: [PlaceType], numberOfResults: Int = 10, includePtModes: Bool = true) {
+            self.type = type
+            self.numberOfResults = numberOfResults
+            self.includePtModes = includePtModes
+        }
+
+        public let type: [PlaceType]
         public let numberOfResults: Int
         let includePtModes: Bool
 
