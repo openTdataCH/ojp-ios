@@ -81,9 +81,40 @@ public extension OJPv2 {
             case probability = "Probability"
         }
     }
+    
+    enum PlaceTypeChoice: Codable {
+        case stopPlace(OJPv2.StopPlace)
+        case address(OJPv2.Address)
+
+        enum CodingKeys: String, CodingKey {
+            case stopPlace = "StopPlace"
+            case address = "Address"
+        }
+
+        public init(from decoder: any Decoder) throws {
+            let container = try decoder.container(keyedBy: StrippedPrefixCodingKey.self)
+            if container.contains(StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.stopPlace)) {
+                self = try .stopPlace(
+                    container.decode(
+                        StopPlace.self,
+                        forKey: StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.stopPlace)
+                    )
+                )
+            } else if container.contains(StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.address)) {
+                self = try .address(
+                    container.decode(
+                        Address.self,
+                        forKey: StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.address)
+                    )
+                )
+            } else {
+                throw OJPSDKError.notImplemented()
+            }
+        }
+    }
 
     struct Place: Codable {
-        public let placeType: PlaceType
+        public let place: PlaceTypeChoice
         public let name: Name
         public let geoPosition: GeoPosition
         public let modes: [Mode]
@@ -95,7 +126,7 @@ public extension OJPv2 {
         }
 
         public init(from decoder: any Decoder) throws {
-            placeType = try PlaceType(from: decoder)
+            place = try PlaceTypeChoice(from: decoder)
             let container = try decoder.container(keyedBy: StrippedPrefixCodingKey.self)
             name = try container.decode(Name.self, forKey: StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.name))
             geoPosition = try container.decode(GeoPosition.self, forKey: StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.geoPosition))
@@ -124,37 +155,6 @@ public extension OJPv2 {
             case railSubmode = "siri:RailSubmode"
             case name = "Name"
             case shortName = "ShortName"
-        }
-    }
-
-    enum PlaceType: Codable {
-        case stopPlace(OJPv2.StopPlace)
-        case address(OJPv2.Address)
-
-        enum CodingKeys: String, CodingKey {
-            case stopPlace = "StopPlace"
-            case address = "Address"
-        }
-
-        public init(from decoder: any Decoder) throws {
-            let container = try decoder.container(keyedBy: StrippedPrefixCodingKey.self)
-            if container.contains(StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.stopPlace)) {
-                self = try .stopPlace(
-                    container.decode(
-                        StopPlace.self,
-                        forKey: StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.stopPlace)
-                    )
-                )
-            } else if container.contains(StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.address)) {
-                self = try .address(
-                    container.decode(
-                        Address.self,
-                        forKey: StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.address)
-                    )
-                )
-            } else {
-                throw OJPSDKError.notImplemented()
-            }
         }
     }
 
@@ -319,7 +319,7 @@ public extension OJPv2 {
     }
 }
 
-extension OJPv2.PlaceType: Identifiable {
+extension OJPv2.PlaceTypeChoice: Identifiable {
     public var id: String {
         switch self {
         case let .stopPlace(stopPlace):
@@ -331,5 +331,5 @@ extension OJPv2.PlaceType: Identifiable {
 }
 
 extension OJPv2.PlaceResult: Identifiable {
-    public var id: String { place.placeType.id }
+    public var id: String { place.place.id }
 }

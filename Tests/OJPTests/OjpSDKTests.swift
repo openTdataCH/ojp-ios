@@ -116,7 +116,7 @@ final class OjpSDKTests: XCTestCase {
 
         switch locationInformation.response!.serviceDelivery.delivery {
         case let .locationInformation(lir):
-            switch lir.placeResults.first!.place.placeType {
+            switch lir.placeResults.first!.place.place {
             case let .stopPlace(stopPlace):
                 XCTAssert(stopPlace.stopPlaceRef == "ch:1:sloid:8206")
             case .address:
@@ -135,10 +135,10 @@ final class OjpSDKTests: XCTestCase {
         switch locationInformation {
         case let .locationInformation(locationInformation):
             for location in locationInformation.placeResults {
-                switch location.place.placeType {
-                case .stopPlace:
+                switch location.place.place {
+                case .stopPlace(_):
                     XCTFail()
-                case let .address(address):
+                case .address(let address):
                     XCTAssert(address.houseNumber == "48")
                     XCTAssert(address.topographicPlaceName == "Le Mouret")
                     XCTAssert(address.street == "Route des Russilles")
