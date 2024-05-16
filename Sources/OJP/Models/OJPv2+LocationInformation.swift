@@ -25,6 +25,7 @@ public extension OJPv2 {
         let places: [Place]
     }
 
+    // TODO: where is that used?
     internal struct LocationInformationServiceDelivery: Codable {
         public let responseTimestamp: String
         public let producerRef: String
