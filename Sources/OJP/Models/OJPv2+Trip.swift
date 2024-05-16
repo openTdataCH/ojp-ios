@@ -333,8 +333,7 @@ public extension OJPv2 {
     // https://vdvde.github.io/OJP/develop/index.html#ContinuousServiceStructure
     struct Service: Codable {
         // https://vdvde.github.io/OJP/develop/index.html#ConventionalModesOfOperationEnumeration
-        // TODO: - build enum
-        public let conventionalModeOfOperation: String?
+        public let conventionalModeOfOperation: ConventionalModesOfOperation?
 
         public let operatingDayRef: String
         public let journeyRef: String
@@ -367,6 +366,18 @@ public extension OJPv2 {
             case vehicleRef = "siri:VehicleRef" // siri:
             case attributes = "Attribute"
             case operatorRef = "OperatorRef" // siri:
+        }
+        
+        public enum ConventionalModesOfOperation: String, Codable {
+            case scheduled
+            case demandResponsive
+            case flexibleRoute
+            case flexibleArea
+            case shuttle
+            case pooling
+            case replacement
+            case school
+            case pRM
         }
     }
 
