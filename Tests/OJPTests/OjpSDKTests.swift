@@ -98,9 +98,11 @@ final class OjpSDKTests: XCTestCase {
     func testParseRailBusAndUndergroundPtModes() throws {
         let xmlData = try TestHelpers.loadXML(xmlFilename: "lir-lausanne")
 
-        let locationInformation = try OJPDecoder.parseXML(xmlData).response!.serviceDelivery.delivery
+        guard let locationInformationDelivery = try OJPDecoder.parseXML(xmlData).response?.serviceDelivery.delivery else {
+            return XCTFail("unexpected empty")
+        }
 
-        switch locationInformation {
+        switch locationInformationDelivery {
         case let .locationInformation(lir):
             XCTAssert(lir.placeResults.first?.place.modes.first?.ptMode == .rail)
             XCTAssert(lir.placeResults[1].place.modes.first?.ptMode == .bus)
@@ -113,8 +115,12 @@ final class OjpSDKTests: XCTestCase {
     func testParseStopPlaceWithSloid() async throws {
         let xmlData = try TestHelpers.loadXML(xmlFilename: "lir-emmenmatt-sloid")
         let locationInformation = try OJPDecoder.parseXML(xmlData)
+        
+        guard let locationInformationDelivery = locationInformation.response?.serviceDelivery.delivery else {
+            return XCTFail("unexpected empty")
+        }
 
-        switch locationInformation.response!.serviceDelivery.delivery {
+        switch locationInformationDelivery {
         case let .locationInformation(lir):
             switch lir.placeResults.first!.place.place {
             case let .stopPlace(stopPlace):
@@ -130,9 +136,13 @@ final class OjpSDKTests: XCTestCase {
     func testAddress() async throws {
         let xmlData = try TestHelpers.loadXML(xmlFilename: "lir-address")
 
-        let locationInformation = try OJPDecoder.parseXML(xmlData).response!.serviceDelivery.delivery
+        let locationInformation = try OJPDecoder.parseXML(xmlData)
+        guard let delivery = locationInformation.response?.serviceDelivery.delivery else {
+            XCTFail("unexpected empty delivery")
+            return
+        }
 
-        switch locationInformation {
+        switch delivery {
         case let .locationInformation(locationInformation):
             for location in locationInformation.placeResults {
                 switch location.place.place {
@@ -151,9 +161,11 @@ final class OjpSDKTests: XCTestCase {
 
     func testParseMinimalTripResponse() async throws {
         let xmlData = try TestHelpers.loadXML(xmlFilename: "tr-gurten-rigi-trip1-minimal-response")
-        let trip = try OJPDecoder.parseXML(xmlData).response!.serviceDelivery.delivery
+        guard let tripDelivery = try OJPDecoder.parseXML(xmlData).response?.serviceDelivery.delivery else {
+            return XCTFail("unexpected empty")
+        }
 
-        if case .trip(let trip) = trip {
+        if case .trip(let trip) = tripDelivery {
             XCTAssert(trip.tripResults.count == 1)
             return
         }
@@ -163,9 +175,11 @@ final class OjpSDKTests: XCTestCase {
     func testParseTrip_ZH_BE() async throws {
         let xmlData = try TestHelpers.loadXML(xmlFilename: "trip-zh-bern-response")
 
-        let trip = try OJPDecoder.parseXML(xmlData).response!.serviceDelivery.delivery
+        guard let tripDelivery = try OJPDecoder.parseXML(xmlData).response?.serviceDelivery.delivery else {
+            return XCTFail("unexpected empty")
+        }
 
-        switch trip {
+        switch tripDelivery {
         case let .trip(trip):
             debugPrint("\(trip.calcTime!)")
             XCTAssert(true)
