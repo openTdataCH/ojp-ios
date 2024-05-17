@@ -366,7 +366,7 @@ public extension OJPv2 {
             case attributes = "Attribute"
             case operatorRef = "OperatorRef" // siri:
         }
-        
+
         public enum ConventionalModesOfOperation: String, Codable {
             case scheduled
             case demandResponsive
