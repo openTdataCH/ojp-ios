@@ -61,7 +61,8 @@ struct LocationSearchByNameView: View {
                     }
                 }
                 List($results) { $stop in
-                    if case let .stopPlace(stopPlace) = stop.place.placeType {
+                    switch stop.place.place {
+                    case let .stopPlace(stopPlace):
                         HStack {
                             Image(systemName: "tram")
                             Text(stopPlace.stopPlaceName.text)
@@ -69,7 +70,7 @@ struct LocationSearchByNameView: View {
                         .onTapGesture {
                             selectetedPlace = stop
                         }
-                    } else if case let .address(address) = stop.place.placeType {
+                    case let .address(address):
                         HStack {
                             Image(systemName: "location")
                             Text(address.name.text)
@@ -77,31 +78,11 @@ struct LocationSearchByNameView: View {
                         .onTapGesture {
                             selectetedPlace = stop
                         }
-                    } else {
-                        Text("Currently Unsupported PlaceType") // TODO: implement
                     }
                 }
                 Map {
                     ForEach($results) { $result in
-                        switch result.place.placeType {
-                        case let .stopPlace(stopPlace):
-                            Annotation(stopPlace.stopPlaceName.text,
-                                       coordinate: stop.place.geoPosition.coordinates) {
-                                Circle().onTapGesture {
-                                    selectetedPlace = result
-                                }
-                            }
-                        case let .address(address):
-                            Annotation(address.name.text,
-                                       coordinate: result.place.geoPosition?.coordinates ?? CLLocationCoordinate2D(latitude: 0, longitude: 0))
-                            {
-                                Circle().onTapGesture {
-                                    selectetedPlace = result
-                                }
-                            }
-                        } else {
-                            Annotation("Currently Unssupported", coordinate: CLLocationCoordinate2D(latitude: 0, longitude: 0)) { Circle().fill(.red) } // TODO: implement
-                        }
+                        annotation(for: result)
                     }
                 }
                 if !inputName.isEmpty {
@@ -130,6 +111,27 @@ struct LocationSearchByNameView: View {
                     .frame(maxWidth: 200)
             }
         }.padding()
+    }
+
+    func annotation(for result: OJPv2.PlaceResult) -> Annotation<some View, some View> {
+        switch result.place.place {
+        case let .stopPlace(stopPlace):
+            Annotation(stopPlace.stopPlaceName.text,
+                       coordinate: result.place.geoPosition.coordinates)
+            {
+                Circle().onTapGesture {
+                    selectetedPlace = result
+                }
+            }
+        case let .address(address):
+            Annotation(address.name.text,
+                       coordinate: result.place.geoPosition.coordinates)
+            {
+                Circle().onTapGesture {
+                    selectetedPlace = result
+                }
+            }
+        }
     }
 }
 
