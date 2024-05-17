@@ -25,8 +25,10 @@ struct StrippedPrefixCodingKey: CodingKey {
     }
 
     static func stripPrefix(fromKey key: CodingKey) -> StrippedPrefixCodingKey {
-        let newKey = key.stringValue.replacingOccurrences(of: "siri:", with: "")
-        return StrippedPrefixCodingKey(stringValue: newKey)!
+        if let tail = key.stringValue.split(separator: ":").last {
+            return StrippedPrefixCodingKey(stringValue: String(tail))!
+        }
+        return StrippedPrefixCodingKey(stringValue: key.stringValue)!
     }
 }
 

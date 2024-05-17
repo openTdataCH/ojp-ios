@@ -69,29 +69,37 @@ final class OjpSDKTests: XCTestCase {
 
     func testParseXML() throws {
         let xmlData = try TestHelpers.loadXML()
-        let locationInformation: OJPv2 = try OJPDecoder.parseXML(xmlData)
-        dump(locationInformation)
+        guard let locationInformationDelivery = try OJPDecoder.parseXML(xmlData).response?.serviceDelivery.delivery else {
+            return XCTFail("unexpected empty")
+        }
+        dump(locationInformationDelivery)
         XCTAssertTrue(true)
     }
 
     func testParseXMLWithSiriDefaultNamespace() throws {
         let xmlData = try TestHelpers.loadXML(xmlFilename: "lir-be-bbox-ns")
-        let locationInformation = try OJPDecoder.parseXML(xmlData)
-        dump(locationInformation)
+        guard let locationInformationDelivery = try OJPDecoder.parseXML(xmlData).response?.serviceDelivery.delivery else {
+            return XCTFail("unexpected empty")
+        }
+        dump(locationInformationDelivery)
         XCTAssertTrue(true)
     }
 
     func testParseXMLWithCustomOjpSiriNamespaces() throws {
         let xmlData = try TestHelpers.loadXML(xmlFilename: "lir-be-bbox-ns-both")
-        let locationInformation = try OJPDecoder.parseXML(xmlData)
-        dump(locationInformation)
+        guard let locationInformationDelivery = try OJPDecoder.parseXML(xmlData).response?.serviceDelivery.delivery else {
+            return XCTFail("unexpected empty")
+        }
+        dump(locationInformationDelivery)
         XCTAssertTrue(true)
     }
 
     func testParseMinimumRequiredLIRResponse() throws {
         let xmlData = try TestHelpers.loadXML(xmlFilename: "lir-minimum-response")
-        let locationInformation = try OJPDecoder.parseXML(xmlData)
-        dump(locationInformation)
+        guard let locationInformationDelivery = try OJPDecoder.parseXML(xmlData).response?.serviceDelivery.delivery else {
+            return XCTFail("unexpected empty")
+        }
+        dump(locationInformationDelivery)
         XCTAssertTrue(true)
     }
 
