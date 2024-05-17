@@ -24,7 +24,7 @@ public extension OJPv2 {
 
     struct TripResult: Codable {
         public let id: String
-        public let tripType: TripType
+        public let tripType: TripTypeChoice
         public let tripFares: [TripFare]
         public let isAlternativeOption: Bool?
 
@@ -35,7 +35,7 @@ public extension OJPv2 {
         }
 
         public init(from decoder: any Decoder) throws {
-            tripType = try TripType(from: decoder)
+            tripType = try TripTypeChoice(from: decoder)
 
             let container = try decoder.container(keyedBy: StrippedPrefixCodingKey.self)
             id = try container.decode(String.self, forKey: StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.id))
@@ -43,7 +43,7 @@ public extension OJPv2 {
             isAlternativeOption = try? container.decode(Bool.self, forKey: StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.isAlternativeOption))
         }
 
-        public enum TripType: Codable {
+        public enum TripTypeChoice: Codable {
             case trip(OJPv2.Trip)
             case tripSummary(OJPv2.TripSummary)
 
