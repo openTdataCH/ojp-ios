@@ -158,7 +158,7 @@ public extension OJPv2 {
             case telecabin
             case underground
             case unknown
-            
+
             public init(from decoder: Decoder) throws {
                 self = try PtMode(rawValue: decoder.singleValueContainer().decode(RawValue.self)) ?? .unknown
             }

@@ -20,7 +20,6 @@ public extension OJPv2 {
             case calcTime = "CalcTime"
             case tripResults = "TripResult"
         }
-
     }
 
     struct TripResult: Codable {

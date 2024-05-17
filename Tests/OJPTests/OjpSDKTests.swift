@@ -173,7 +173,7 @@ final class OjpSDKTests: XCTestCase {
             return XCTFail("unexpected empty")
         }
 
-        if case .trip(let trip) = tripDelivery {
+        if case let .trip(trip) = tripDelivery {
             XCTAssert(trip.tripResults.count == 1)
             return
         }
