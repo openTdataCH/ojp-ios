@@ -20,7 +20,7 @@ public struct APIConfiguration {
     ///   - additionalHeaders: some HTTP custom headers. For example to be used for custom authentication when using an API gateway . Example: `["Authorization": "Bearer someToken"]`
     public init(apiEndPoint: URL, requesterReference: String, additionalHeaders: [String: String]? = nil) {
         self.apiEndPoint = apiEndPoint
-        self.requesterReference = "\(requesterReference)_\(OJP_SDK_Name)_\(OJP_SDK_Version)"
+        self.requesterReference = "\(requesterReference)_\(OJP_SDK_Name)_\(OJP.version)"
         self.additionalHeaders = additionalHeaders
     }
 
