@@ -9,7 +9,6 @@ import Foundation
 import XMLCoder
 
 let OJP_SDK_Name = "IOS_SDK"
-let OJP_SDK_Version = "0.0.4"
 let COORDINATE_FALLBACK = -1.0
 
 struct StrippedPrefixCodingKey: CodingKey {
