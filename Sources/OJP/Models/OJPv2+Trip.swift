@@ -379,8 +379,50 @@ public extension OJPv2 {
             case pRM
         }
     }
+    
+    // https://vdvde.github.io/OJP/develop/index.html#LinearShapeStructure
+    struct LinearShape: Codable {
+        // in XSD min 2 <GeoPosition> elements are required
+        public let positions: [GeoPosition]
+        
+        public enum CodingKeys: String, CodingKey {
+            case positions = "Position"
+        }
+    }
+    
+    // Variation of https://vdvde.github.io/OJP/develop/index.html#PlaceRefStructure
+    // in the future we might get other elements, i.e. GeoPosition
+    struct TrackSectionStopPlaceRef: Codable {
+        public let stopPointRef: String
+        public let stopPointName: Name
+        
+        enum CodingKeys: String, CodingKey {
+            case stopPointRef = "siri:StopPointRef"
+            case stopPointName = "StopPointName"
+        }
+    }
 
-    struct LegTrack: Codable {}
+    // https://vdvde.github.io/OJP/develop/index.html#TrackSectionStructure
+    struct TrackSection: Codable {
+        public let trackSectionStart: TrackSectionStopPlaceRef?
+        public let trackSectionEnd: TrackSectionStopPlaceRef?
+        public let linkProjection: LinearShape?
+        
+        public enum CodingKeys: String, CodingKey {
+            case trackSectionStart = "TrackSectionStart"
+            case trackSectionEnd = "TrackSectionEnd"
+            case linkProjection = "LinkProjection"
+        }
+    }
+    
+    // https://vdvde.github.io/OJP/develop/index.html#LegTrackStructure
+    struct LegTrack: Codable {
+        public let trackSections: [TrackSection]
+        
+        public enum CodingKeys: String, CodingKey {
+            case trackSections = "TrackSection"
+        }
+    }
 
     struct ContinuousLeg: Codable {}
 
