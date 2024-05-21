@@ -18,6 +18,11 @@ extension Double {
     }
 }
 
+public enum DepArrTime {
+    case departure(Date)
+    case arrival(Date)
+}
+
 enum OJPHelpers {
     static func formattedDate(date: Date = Date()) -> String {
         let dateFormatter = DateFormatter()
@@ -35,22 +40,28 @@ enum OJPHelpers {
 
         let requesterReference: String
 
-        public func requestTrips(from originRef: String, destinationRef: String, viaRef _: String?) -> OJPv2 {
+        public func requestTrips(from originPlaceRef: OJPv2.PlaceRefChoice, destinationPlaceRef: OJPv2.PlaceRefChoice, depArrTime: DepArrTime, params: OJPv2.Params, viaPlaceRef: OJPv2.PlaceRefChoice?) -> OJPv2 {
+            
             let requestTimestamp = Date()
+            let origin: OJPv2.PlaceContext
+            let destination: OJPv2.PlaceContext
+            var via: [OJPv2.TripVia] = []
+            
+            switch depArrTime {
+            case .departure(let date):
+                origin = OJPv2.PlaceContext(placeRef: originPlaceRef, depArrTime: date)
+                destination = OJPv2.PlaceContext(placeRef: destinationPlaceRef, depArrTime: nil)
+            case .arrival(let date):
+                origin = OJPv2.PlaceContext(placeRef: originPlaceRef, depArrTime: nil)
+                destination = OJPv2.PlaceContext(placeRef: destinationPlaceRef, depArrTime: date)
+            }
+            
+            if let viaPlaceRef = viaPlaceRef {
+                via.append(OJPv2.TripVia(viaPoint: viaPlaceRef))
+            }
 
-            let origin = OJPv2.Origin(placeRef: OJPv2.PlaceRef(stopPlaceRef: originRef), depArrTime: requestTimestamp)
+            let tripRequest = OJPv2.TripRequest(requestTimestamp: requestTimestamp, origin: origin, destination: destination, via: via, params: params)
 
-            let destination = OJPv2.Destination(placeRef: OJPv2.PlaceRef(stopPlaceRef: destinationRef), depArrTime: nil)
-
-            // TODO: via
-
-            // TODO: departure time
-
-            let params = OJPv2.Params(numberOfResultsBefore: 6, numberOfResultsAfter: 0, includeTrackSections: false, includeLegProjection: false, includeTurnDescription: false, includeIntermediateStops: false)
-
-            let tripRequest = OJPv2.TripRequest(requestTimestamp: requestTimestamp, requestorRef: requesterReference, origin: origin, destination: destination, via: [], params: params)
-
-            // TODO: - avoid duplication (share this block with "requestWith(bbox: Geo.Bbox")
             let ojp = OJPv2(request: OJPv2.Request(serviceRequest: OJPv2.ServiceRequest(requestTimestamp: requestTimestamp, requestorRef: requesterReference, locationInformationRequest: nil, tripRequest: tripRequest)), response: nil)
 
             return ojp

@@ -390,16 +390,14 @@ public extension OJPv2 {
 
     internal struct TripRequest: Codable {
         public let requestTimestamp: Date
-        public let requestorRef: String
 
-        public let origin: Origin
-        public let destination: Destination
+        public let origin: PlaceContext
+        public let destination: PlaceContext
         public let via: [TripVia]?
         public let params: Params?
 
         public enum CodingKeys: String, CodingKey {
             case requestTimestamp = "siri:RequestTimestamp"
-            case requestorRef = "siri:RequestorRef"
             case origin = "Origin"
             case destination = "Destination"
             case via = "Via"
@@ -407,18 +405,8 @@ public extension OJPv2 {
         }
     }
 
-    internal struct Origin: Codable {
-        public let placeRef: PlaceRef
-        public let depArrTime: Date?
-
-        public enum CodingKeys: String, CodingKey {
-            case placeRef = "PlaceRef"
-            case depArrTime = "DepArrTime"
-        }
-    }
-
-    internal struct Destination: Codable {
-        public let placeRef: PlaceRef
+    internal struct PlaceContext: Codable {
+        public let placeRef: PlaceRefChoice
         public let depArrTime: Date?
 
         public enum CodingKeys: String, CodingKey {
@@ -428,22 +416,56 @@ public extension OJPv2 {
     }
 
     internal struct TripVia: Codable {
-        public let viaPoint: PlaceRef
+        public let viaPoint: PlaceRefChoice
 
         public enum CodingKeys: String, CodingKey {
             case viaPoint = "ViaPoint"
         }
     }
 
-    internal struct PlaceRef: Codable {
-        public let stopPlaceRef: String
-
-        public enum CodingKeys: String, CodingKey {
+    enum PlaceRefChoice: Codable {
+        case stopPlaceRef(String)
+        case geoPosition(OJPv2.GeoPosition)
+        
+        enum CodingKeys: String, CodingKey {
             case stopPlaceRef = "StopPlaceRef"
+            case geoPosition = "siri:LocationStructure"
+        }
+        
+        public func encode(to encoder: Encoder) throws {
+            var container = encoder.container(keyedBy: CodingKeys.self)
+            switch self {
+            case .stopPlaceRef(let stopPlace):
+                try container.encode(stopPlace, forKey: CodingKeys.stopPlaceRef)
+            case .geoPosition(let geoPosition):
+                try container.encode(geoPosition, forKey: CodingKeys.geoPosition)
+            }
+        }
+        
+        public init(from decoder: any Decoder) throws {
+            let container = try decoder.container(keyedBy: StrippedPrefixCodingKey.self)
+            if container.contains(StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.stopPlaceRef)) {
+                self = try .stopPlaceRef(
+                    container.decode(
+                        String.self,
+                        forKey: StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.stopPlaceRef)
+                    )
+                )
+            } else if container.contains(StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.geoPosition)) {
+                self = try .geoPosition(
+                    container.decode(
+                        GeoPosition.self,
+                        forKey: StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.geoPosition)
+                    )
+                )
+            } else {
+                throw OJPSDKError.notImplemented()
+            }
         }
     }
 
-    internal struct Params: Codable {
+    struct Params: Codable {
+        
         public let numberOfResultsBefore: Int?
         public let numberOfResultsAfter: Int?
         public let includeTrackSections: Bool?

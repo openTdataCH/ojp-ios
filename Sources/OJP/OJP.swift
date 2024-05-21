@@ -86,8 +86,8 @@ public class OJP {
         return locationInformationDelivery.placeResults
     }
 
-    public func requestTrips(from originRef: String, destinationRef: String, viaRef: String? = nil) async throws -> [OJPv2.TripResult] {
-        let ojp = tripRequest.requestTrips(from: originRef, destinationRef: destinationRef, viaRef: viaRef)
+    public func requestTrips(from originPlaceRef: OJPv2.PlaceRefChoice, destinationPlaceRef: OJPv2.PlaceRefChoice, viaPlaceRef: OJPv2.PlaceRefChoice? = nil, depArrTime: DepArrTime = .departure(Date()), params: OJPv2.Params) async throws -> [OJPv2.TripResult] {
+        let ojp = tripRequest.requestTrips(from: originPlaceRef, destinationPlaceRef: destinationPlaceRef, depArrTime: depArrTime, params: params, viaPlaceRef: viaPlaceRef)
 
         let serviceDelivery = try await request(with: ojp).serviceDelivery
 
