@@ -215,7 +215,7 @@ public extension OJPv2 {
         public let noAlightingAtStop: Bool?
 
         enum CodingKeys: String, CodingKey {
-            case stopPointRef = "StopPointRef"
+            case stopPointRef = "siri:StopPointRef"
             case stopPointName = "StopPointName"
             case nameSuffix = "NameSuffix"
             case plannedQuai = "PlannedQuay"
@@ -252,7 +252,7 @@ public extension OJPv2 {
         public let noAlightingAtStop: Bool?
 
         enum CodingKeys: String, CodingKey {
-            case stopPointRef = "StopPointRef"
+            case stopPointRef = "siri:StopPointRef"
             case stopPointName = "StopPointName"
             case nameSuffix = "NameSuffix"
             case plannedQuai = "PlannedQuay"
@@ -289,7 +289,7 @@ public extension OJPv2 {
         public let noAlightingAtStop: Bool?
 
         enum CodingKeys: String, CodingKey {
-            case stopPointRef = "StopPointRef"
+            case stopPointRef = "siri:StopPointRef"
             case stopPointName = "StopPointName"
             case nameSuffix = "NameSuffix"
             case plannedQuai = "PlannedQuay"
