@@ -36,7 +36,7 @@ enum OJPHelpers {
         let requesterReference: String
 
         public func requestTrips(from originRef: String, destinationRef: String, viaRef _: String?) -> OJPv2 {
-            let requestTimestamp = OJPHelpers.formattedDate()
+            let requestTimestamp = Date()
 
             let origin = OJPv2.Origin(placeRef: OJPv2.PlaceRef(stopPlaceRef: originRef), depArrTime: requestTimestamp)
 
@@ -70,7 +70,7 @@ enum OJPHelpers {
         ///   - limit: results limit
         /// - Returns: OJPv2 containing a request
         public func requestWith(bbox: Geo.Bbox, numberOfResults: Int = 10) -> OJPv2 {
-            let requestTimestamp = OJPHelpers.formattedDate()
+            let requestTimestamp = Date()
 
             let upperLeft = OJPv2.GeoPosition(longitude: bbox.minX, latitude: bbox.maxY)
             let lowerRight = OJPv2.GeoPosition(longitude: bbox.maxX, latitude: bbox.minY)
@@ -125,7 +125,7 @@ enum OJPHelpers {
         ///   - limit: results limit
         /// - Returns: OJPv2 containing a request
         public func requestWithSearchTerm(_ name: String, restrictions: OJPv2.PlaceParam) -> OJPv2 {
-            let requestTimestamp = OJPHelpers.formattedDate()
+            let requestTimestamp = Date()
 
             let locationInformationRequest = OJPv2.LocationInformationRequest(requestTimestamp: requestTimestamp, initialInput: OJPv2.InitialInput(geoRestriction: nil, name: name), restrictions: restrictions)
 
@@ -140,6 +140,7 @@ enum OJPHelpers {
     static func buildXMLRequest(ojpRequest: OJPv2) throws -> String {
         let encoder = XMLEncoder()
         encoder.outputFormatting = .prettyPrinted
+        encoder.dateEncodingStrategy = .iso8601
 
         let ojpXMLData = try encoder.encode(ojpRequest, withRootKey: "OJP", rootAttributes: OJP.requestXMLRootAttributes)
         guard let ojpXML = String(data: ojpXMLData, encoding: .utf8) else {

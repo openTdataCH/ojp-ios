@@ -174,8 +174,8 @@ public extension OJPv2 {
 
     // https://vdvde.github.io/OJP/develop/index.html#ServiceArrivalStructure
     struct ServiceArrival: Codable {
-        public let timetabledTime: String
-        public let estimatedTime: String?
+        public let timetabledTime: Date
+        public let estimatedTime: Date?
 
         enum CodingKeys: String, CodingKey {
             case timetabledTime = "TimetabledTime"
@@ -185,8 +185,8 @@ public extension OJPv2 {
 
     // https://vdvde.github.io/OJP/develop/index.html#ServiceDepartureStructure
     struct ServiceDeparture: Codable {
-        public let timetabledTime: String
-        public let estimatedTime: String?
+        public let timetabledTime: Date
+        public let estimatedTime: Date?
 
         enum CodingKeys: String, CodingKey {
             case timetabledTime = "TimetabledTime"
@@ -389,7 +389,7 @@ public extension OJPv2 {
     struct TripFare: Codable {}
 
     internal struct TripRequest: Codable {
-        public let requestTimestamp: String
+        public let requestTimestamp: Date
         public let requestorRef: String
 
         public let origin: Origin
@@ -409,7 +409,7 @@ public extension OJPv2 {
 
     internal struct Origin: Codable {
         public let placeRef: PlaceRef
-        public let depArrTime: String?
+        public let depArrTime: Date?
 
         public enum CodingKeys: String, CodingKey {
             case placeRef = "PlaceRef"
@@ -419,7 +419,7 @@ public extension OJPv2 {
 
     internal struct Destination: Codable {
         public let placeRef: PlaceRef
-        public let depArrTime: String?
+        public let depArrTime: Date?
 
         public enum CodingKeys: String, CodingKey {
             case placeRef = "PlaceRef"

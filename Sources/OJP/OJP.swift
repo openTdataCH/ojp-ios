@@ -50,6 +50,7 @@ public class OJP {
     private var encoder: XMLEncoder {
         let encoder = XMLEncoder()
         encoder.outputFormatting = .prettyPrinted
+        encoder.dateEncodingStrategy = .iso8601
         return encoder
     }
 

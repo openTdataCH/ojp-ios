@@ -254,7 +254,7 @@ public extension OJPv2 {
     }
 
     internal struct ServiceRequest: Codable {
-        public let requestTimestamp: String
+        public let requestTimestamp: Date
         public let requestorRef: String
         public let locationInformationRequest: LocationInformationRequest?
         public let tripRequest: TripRequest?
@@ -268,7 +268,7 @@ public extension OJPv2 {
     }
 
     internal struct LocationInformationRequest: Codable {
-        public let requestTimestamp: String
+        public let requestTimestamp: Date
         public let initialInput: InitialInput
         public let restrictions: PlaceParam
 
