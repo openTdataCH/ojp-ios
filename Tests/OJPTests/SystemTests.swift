@@ -36,7 +36,7 @@ final class SystemTests: XCTestCase {
 //        let originDidok = OJPv2.PlaceRefChoice.stopPlaceRef("8507110")
 //        let destinationDidok = OJPv2.PlaceRefChoice.stopPlaceRef("8508052")
 //        
-//        let trips = try await ojpSdk.requestTrips(from: originDidok, destinationPlaceRef: destinationDidok, params: .init(numberOfResultsBefore: nil, numberOfResultsAfter: 6, includeTrackSections: nil, includeLegProjection: nil, includeTurnDescription: nil, includeIntermediateStops: true))
+//        let trips = try await ojpSdk.requestTrips(from: originDidok, destinationPlaceRef: destinationDidok, params: .init(includeIntermediateStops: true))
 //        
 //        XCTAssert(!trips.isEmpty)
 //    }

@@ -466,12 +466,12 @@ public extension OJPv2 {
 
     struct Params: Codable {
         
-        public let numberOfResultsBefore: Int?
-        public let numberOfResultsAfter: Int?
-        public let includeTrackSections: Bool?
-        public let includeLegProjection: Bool?
-        public let includeTurnDescription: Bool?
-        public let includeIntermediateStops: Bool?
+        public var numberOfResultsBefore: Int? = nil
+        public var numberOfResultsAfter: Int? = nil
+        public var includeTrackSections: Bool? = nil
+        public var includeLegProjection: Bool? = nil
+        public var includeTurnDescription: Bool? = nil
+        public var includeIntermediateStops: Bool? = nil
 
         public enum CodingKeys: String, CodingKey {
             case numberOfResultsBefore = "NumberOfResultsBefore"
