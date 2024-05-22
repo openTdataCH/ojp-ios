@@ -29,26 +29,26 @@ final class SystemTests: XCTestCase {
 
         XCTAssert(!nearbyStations.isEmpty)
     }
-    
+
     func testFetchTripWithDidoks() async throws {
         let ojpSdk = OJP(loadingStrategy: .http(.int))
-        
+
         let originDidok = OJPv2.PlaceRefChoice.stopPlaceRef("8507110")
         let destinationDidok = OJPv2.PlaceRefChoice.stopPlaceRef("8508052")
-        
-        let trips = try await ojpSdk.requestTrips(from: originDidok, destinationPlaceRef: destinationDidok, params: .init(includeIntermediateStops: true))
-        
+
+        let trips = try await ojpSdk.requestTrips(from: originDidok, to: destinationDidok, params: .init(includeIntermediateStops: true))
+
         XCTAssert(!trips.isEmpty)
     }
-//    
+//
 //    func testFetchTripWithCoordinates() async throws {
 //        let ojpSdk = OJP(loadingStrategy: .http(.int))
-//        
+//
 //        let originDidok = OJPv2.PlaceRefChoice.geoPosition(.init(longitude: 47.54741205505015, latitude: 7.589562790156526))
 //        let destinationDidok = OJPv2.PlaceRefChoice.geoPosition(.init(longitude: 47.570306321253796, latitude: 7.572529383710242))
 //
 //        let trips = try await ojpSdk.requestTrips(from: originDidok, destinationPlaceRef: destinationDidok, params: .init(numberOfResultsBefore: nil, numberOfResultsAfter: 6, includeTrackSections: nil, includeLegProjection: nil, includeTurnDescription: nil, includeIntermediateStops: true))
-//        
+//
 //        XCTAssert(!trips.isEmpty)
 //    }
 }

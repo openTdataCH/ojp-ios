@@ -222,7 +222,7 @@ public extension OJPv2 {
             case value = "Value"
         }
     }
-    
+
     // TODO: - move out from LIR, belongs also to TR
     struct GeoPosition: Codable {
         public let longitude: Double

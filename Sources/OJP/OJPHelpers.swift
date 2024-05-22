@@ -40,27 +40,26 @@ enum OJPHelpers {
 
         let requesterReference: String
 
-        public func requestTrips(from originPlaceRef: OJPv2.PlaceRefChoice, destinationPlaceRef: OJPv2.PlaceRefChoice, depArrTime: DepArrTime, params: OJPv2.Params, viaPlaceRef: OJPv2.PlaceRefChoice?) -> OJPv2 {
-            
+        public func requestTrips(from: OJPv2.PlaceRefChoice, to: OJPv2.PlaceRefChoice, at: DepArrTime, params: OJPv2.Params, via: OJPv2.PlaceRefChoice?) -> OJPv2 {
             let requestTimestamp = Date()
             let origin: OJPv2.PlaceContext
             let destination: OJPv2.PlaceContext
-            var via: [OJPv2.TripVia] = []
-            
-            switch depArrTime {
-            case .departure(let date):
-                origin = OJPv2.PlaceContext(placeRef: originPlaceRef, depArrTime: date)
-                destination = OJPv2.PlaceContext(placeRef: destinationPlaceRef, depArrTime: nil)
-            case .arrival(let date):
-                origin = OJPv2.PlaceContext(placeRef: originPlaceRef, depArrTime: nil)
-                destination = OJPv2.PlaceContext(placeRef: destinationPlaceRef, depArrTime: date)
-            }
-            
-            if let viaPlaceRef = viaPlaceRef {
-                via.append(OJPv2.TripVia(viaPoint: viaPlaceRef))
+            var vias: [OJPv2.TripVia] = []
+
+            switch at {
+            case let .departure(date):
+                origin = OJPv2.PlaceContext(placeRef: from, depArrTime: date)
+                destination = OJPv2.PlaceContext(placeRef: to, depArrTime: nil)
+            case let .arrival(date):
+                origin = OJPv2.PlaceContext(placeRef: from, depArrTime: nil)
+                destination = OJPv2.PlaceContext(placeRef: to, depArrTime: date)
             }
 
-            let tripRequest = OJPv2.TripRequest(requestTimestamp: requestTimestamp, origin: origin, destination: destination, via: via, params: params)
+            if let via {
+                vias.append(OJPv2.TripVia(viaPoint: via))
+            }
+
+            let tripRequest = OJPv2.TripRequest(requestTimestamp: requestTimestamp, origin: origin, destination: destination, via: vias, params: params)
 
             let ojp = OJPv2(request: OJPv2.Request(serviceRequest: OJPv2.ServiceRequest(requestTimestamp: requestTimestamp, requestorRef: requesterReference, locationInformationRequest: nil, tripRequest: tripRequest)), response: nil)
 

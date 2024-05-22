@@ -344,7 +344,7 @@ public extension OJPv2 {
 
         public let mode: Mode
         public let productCategory: ProductCategory?
-        public let publishedServiceName: Name?  // todo: https://github.com/openTdataCH/ojp-sdk/issues/23
+        public let publishedServiceName: Name? // TODO: https://github.com/openTdataCH/ojp-sdk/issues/23
 
         public let trainNumber: String?
         public let vehicleRef: String?
@@ -379,23 +379,23 @@ public extension OJPv2 {
             case pRM
         }
     }
-    
+
     // https://vdvde.github.io/OJP/develop/index.html#LinearShapeStructure
     struct LinearShape: Codable {
         // in XSD min 2 <GeoPosition> elements are required
         public let positions: [GeoPosition]
-        
+
         public enum CodingKeys: String, CodingKey {
             case positions = "Position"
         }
     }
-    
+
     // Variation of https://vdvde.github.io/OJP/develop/index.html#PlaceRefStructure
     // in the future we might get other elements, i.e. GeoPosition
     struct TrackSectionStopPlaceRef: Codable {
         public let stopPointRef: String
         public let stopPointName: Name
-        
+
         enum CodingKeys: String, CodingKey {
             case stopPointRef = "siri:StopPointRef"
             case stopPointName = "StopPointName"
@@ -407,18 +407,18 @@ public extension OJPv2 {
         public let trackSectionStart: TrackSectionStopPlaceRef?
         public let trackSectionEnd: TrackSectionStopPlaceRef?
         public let linkProjection: LinearShape?
-        
+
         public enum CodingKeys: String, CodingKey {
             case trackSectionStart = "TrackSectionStart"
             case trackSectionEnd = "TrackSectionEnd"
             case linkProjection = "LinkProjection"
         }
     }
-    
+
     // https://vdvde.github.io/OJP/develop/index.html#LegTrackStructure
     struct LegTrack: Codable {
         public let trackSections: [TrackSection]
-        
+
         public enum CodingKeys: String, CodingKey {
             case trackSections = "TrackSection"
         }
@@ -468,22 +468,22 @@ public extension OJPv2 {
     enum PlaceRefChoice: Codable {
         case stopPlaceRef(String)
         case geoPosition(OJPv2.GeoPosition)
-        
+
         enum CodingKeys: String, CodingKey {
             case stopPlaceRef = "StopPlaceRef"
             case geoPosition = "siri:LocationStructure"
         }
-        
+
         public func encode(to encoder: Encoder) throws {
             var container = encoder.container(keyedBy: CodingKeys.self)
             switch self {
-            case .stopPlaceRef(let stopPlace):
+            case let .stopPlaceRef(stopPlace):
                 try container.encode(stopPlace, forKey: CodingKeys.stopPlaceRef)
-            case .geoPosition(let geoPosition):
+            case let .geoPosition(geoPosition):
                 try container.encode(geoPosition, forKey: CodingKeys.geoPosition)
             }
         }
-        
+
         public init(from decoder: any Decoder) throws {
             let container = try decoder.container(keyedBy: StrippedPrefixCodingKey.self)
             if container.contains(StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.stopPlaceRef)) {
@@ -507,7 +507,6 @@ public extension OJPv2 {
     }
 
     struct Params: Codable {
-        
         public var numberOfResultsBefore: Int? = nil
         public var numberOfResultsAfter: Int? = nil
         public var includeTrackSections: Bool? = nil
