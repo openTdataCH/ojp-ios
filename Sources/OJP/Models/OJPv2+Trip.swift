@@ -508,7 +508,7 @@ public extension OJPv2 {
 
     struct Params: Codable {
 
-        init(numberOfResultsBefore: Int? = nil, numberOfResultsAfter: Int? = nil, includeTrackSections: Bool? = nil, includeLegProjection: Bool? = nil, includeTurnDescription: Bool? = nil, includeIntermediateStops: Bool? = nil) {
+        public init(numberOfResultsBefore: Int? = nil, numberOfResultsAfter: Int? = nil, includeTrackSections: Bool? = nil, includeLegProjection: Bool? = nil, includeTurnDescription: Bool? = nil, includeIntermediateStops: Bool? = nil) {
             self.numberOfResultsBefore = numberOfResultsBefore
             self.numberOfResultsAfter = numberOfResultsAfter
             self.includeTrackSections = includeTrackSections
