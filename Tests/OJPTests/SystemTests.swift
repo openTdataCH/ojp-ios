@@ -30,16 +30,16 @@ final class SystemTests: XCTestCase {
         XCTAssert(!nearbyStations.isEmpty)
     }
     
-//    func testFetchTripWithDidoks() async throws {
-//        let ojpSdk = OJP(loadingStrategy: .http(.int))
-//        
-//        let originDidok = OJPv2.PlaceRefChoice.stopPlaceRef("8507110")
-//        let destinationDidok = OJPv2.PlaceRefChoice.stopPlaceRef("8508052")
-//        
-//        let trips = try await ojpSdk.requestTrips(from: originDidok, destinationPlaceRef: destinationDidok, params: .init(includeIntermediateStops: true))
-//        
-//        XCTAssert(!trips.isEmpty)
-//    }
+    func testFetchTripWithDidoks() async throws {
+        let ojpSdk = OJP(loadingStrategy: .http(.int))
+        
+        let originDidok = OJPv2.PlaceRefChoice.stopPlaceRef("8507110")
+        let destinationDidok = OJPv2.PlaceRefChoice.stopPlaceRef("8508052")
+        
+        let trips = try await ojpSdk.requestTrips(from: originDidok, destinationPlaceRef: destinationDidok, params: .init(includeIntermediateStops: true))
+        
+        XCTAssert(!trips.isEmpty)
+    }
 //    
 //    func testFetchTripWithCoordinates() async throws {
 //        let ojpSdk = OJP(loadingStrategy: .http(.int))

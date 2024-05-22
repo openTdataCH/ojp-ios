@@ -197,7 +197,7 @@ public extension OJPv2 {
     // https://vdvde.github.io/OJP/develop/index.html#LegBoardStructure
     struct LegBoard: Codable {
         // https://vdvde.github.io/OJP/develop/index.html#StopPointGroup
-        public let stopPointRef: String
+        public let stopPointRef: String?
         public let stopPointName: Name
         public let nameSuffix: Name?
         public let plannedQuai: Name?
@@ -234,7 +234,7 @@ public extension OJPv2 {
     // https://vdvde.github.io/OJP/develop/index.html#LegIntermediateStructure
     struct LegIntermediate: Codable {
         // https://vdvde.github.io/OJP/develop/index.html#StopPointGroup
-        public let stopPointRef: String
+        public let stopPointRef: String?
         public let stopPointName: Name
         public let nameSuffix: Name?
         public let plannedQuai: Name?
@@ -271,7 +271,7 @@ public extension OJPv2 {
     // https://vdvde.github.io/OJP/develop/index.html#LegAlightStructure
     struct LegAlight: Codable {
         // https://vdvde.github.io/OJP/develop/index.html#StopPointGroup
-        public let stopPointRef: String
+        public let stopPointRef: String?
         public let stopPointName: Name
         public let nameSuffix: Name?
         public let plannedQuai: Name?
@@ -344,7 +344,7 @@ public extension OJPv2 {
 
         public let mode: Mode
         public let productCategory: ProductCategory?
-        public let publishedServiceName: Name
+        public let publishedServiceName: Name?  // todo: https://github.com/openTdataCH/ojp-sdk/issues/23
 
         public let trainNumber: String?
         public let vehicleRef: String?
