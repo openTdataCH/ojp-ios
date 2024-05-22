@@ -197,7 +197,7 @@ public extension OJPv2 {
     // https://vdvde.github.io/OJP/develop/index.html#LegBoardStructure
     struct LegBoard: Codable {
         // https://vdvde.github.io/OJP/develop/index.html#StopPointGroup
-        public let stopPointRef: String?
+        public let stopPointRef: String
         public let stopPointName: Name
         public let nameSuffix: Name?
         public let plannedQuai: Name?
@@ -215,7 +215,7 @@ public extension OJPv2 {
         public let noAlightingAtStop: Bool?
 
         enum CodingKeys: String, CodingKey {
-            case stopPointRef = "siri:StopPointRef"
+            case stopPointRef = "StopPointRef" // siri:
             case stopPointName = "StopPointName"
             case nameSuffix = "NameSuffix"
             case plannedQuai = "PlannedQuay"
@@ -234,7 +234,7 @@ public extension OJPv2 {
     // https://vdvde.github.io/OJP/develop/index.html#LegIntermediateStructure
     struct LegIntermediate: Codable {
         // https://vdvde.github.io/OJP/develop/index.html#StopPointGroup
-        public let stopPointRef: String?
+        public let stopPointRef: String
         public let stopPointName: Name
         public let nameSuffix: Name?
         public let plannedQuai: Name?
@@ -252,7 +252,7 @@ public extension OJPv2 {
         public let noAlightingAtStop: Bool?
 
         enum CodingKeys: String, CodingKey {
-            case stopPointRef = "siri:StopPointRef"
+            case stopPointRef = "StopPointRef" // siri:
             case stopPointName = "StopPointName"
             case nameSuffix = "NameSuffix"
             case plannedQuai = "PlannedQuay"
@@ -271,7 +271,7 @@ public extension OJPv2 {
     // https://vdvde.github.io/OJP/develop/index.html#LegAlightStructure
     struct LegAlight: Codable {
         // https://vdvde.github.io/OJP/develop/index.html#StopPointGroup
-        public let stopPointRef: String?
+        public let stopPointRef: String
         public let stopPointName: Name
         public let nameSuffix: Name?
         public let plannedQuai: Name?
@@ -289,7 +289,7 @@ public extension OJPv2 {
         public let noAlightingAtStop: Bool?
 
         enum CodingKeys: String, CodingKey {
-            case stopPointRef = "siri:StopPointRef"
+            case stopPointRef = "StopPointRef" // siri:
             case stopPointName = "StopPointName"
             case nameSuffix = "NameSuffix"
             case plannedQuai = "PlannedQuay"
