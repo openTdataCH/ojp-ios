@@ -108,7 +108,7 @@ public extension OJPv2 {
 
     struct Place: Codable {
         public let place: PlaceTypeChoice
-        public let name: Name
+        public let name: InternationalText
         public let geoPosition: GeoPosition
         public let modes: [Mode]
 
@@ -121,53 +121,15 @@ public extension OJPv2 {
         public init(from decoder: any Decoder) throws {
             place = try PlaceTypeChoice(from: decoder)
             let container = try decoder.container(keyedBy: StrippedPrefixCodingKey.self)
-            name = try container.decode(Name.self, forKey: StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.name))
+            name = try container.decode(InternationalText.self, forKey: StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.name))
             geoPosition = try container.decode(GeoPosition.self, forKey: StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.geoPosition))
             modes = try container.decode([Mode].self, forKey: StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.modes))
         }
     }
 
-    // TODO: - move this outside of LIR, it belongs also to TR
-    // https://vdvde.github.io/OJP/develop/index.html#ModeStructure
-    struct Mode: Codable {
-        public let ptMode: PtMode
-
-        // https://laidig.github.io/siri-20-java/doc/schemas/siri_modes-v1_1_xsd/schema-overview.html
-        // siri:PtModeChoiceGroup
-        // keep busSubmode, railSubmode for now
-        public let busSubmode: String?
-        // https://laidig.github.io/siri-20-java/doc/schemas/siri_modes-v1_1_xsd/elements/RailSubmode.html
-        public let railSubmode: String?
-
-        public let name: Name?
-        public let shortName: Name?
-
-        public enum CodingKeys: String, CodingKey {
-            case ptMode = "PtMode"
-            case busSubmode = "siri:BusSubmode"
-            case railSubmode = "siri:RailSubmode"
-            case name = "Name"
-            case shortName = "ShortName"
-        }
-
-        public enum PtMode: String, Codable {
-            case rail
-            case bus
-            case tram
-            case water
-            case telecabin
-            case underground
-            case unknown
-
-            public init(from decoder: Decoder) throws {
-                self = try PtMode(rawValue: decoder.singleValueContainer().decode(RawValue.self)) ?? .unknown
-            }
-        }
-    }
-
     struct StopPlace: Codable {
         public let stopPlaceRef: String
-        public let stopPlaceName: Name
+        public let stopPlaceName: InternationalText
         public let privateCodes: [PrivateCode]
         public let topographicPlaceRef: String?
 
@@ -185,7 +147,7 @@ public extension OJPv2 {
         public let topographicPlaceName: String?
         public let countryName: String?
         public let postCode: String?
-        public let name: Name
+        public let name: InternationalText
         public let street: String?
         public let houseNumber: String?
         public let crossRoad: String?
@@ -200,16 +162,6 @@ public extension OJPv2 {
             case houseNumber = "HouseNumber"
             case crossRoad = "CrossRoad"
             case countryName = "CountryName"
-        }
-    }
-
-    // TODO: - move out from LIR, belongs also to TR
-    // https://vdvde.github.io/OJP/develop/index.html#InternationalTextStructure
-    struct Name: Codable {
-        public let text: String
-
-        public enum CodingKeys: String, CodingKey {
-            case text = "Text"
         }
     }
 

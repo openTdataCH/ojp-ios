@@ -198,10 +198,10 @@ public extension OJPv2 {
     struct LegBoard: Codable {
         // https://vdvde.github.io/OJP/develop/index.html#StopPointGroup
         public let stopPointRef: String
-        public let stopPointName: Name
-        public let nameSuffix: Name?
-        public let plannedQuay: Name?
-        public let estimatedQuay: Name?
+        public let stopPointName: InternationalText
+        public let nameSuffix: InternationalText?
+        public let plannedQuay: InternationalText?
+        public let estimatedQuay: InternationalText?
 
         public let serviceArrival: ServiceArrival?
         public let serviceDeparture: ServiceDeparture
@@ -235,10 +235,10 @@ public extension OJPv2 {
     struct LegIntermediate: Codable {
         // https://vdvde.github.io/OJP/develop/index.html#StopPointGroup
         public let stopPointRef: String
-        public let stopPointName: Name
-        public let nameSuffix: Name?
-        public let plannedQuai: Name?
-        public let estimatedQuay: Name?
+        public let stopPointName: InternationalText
+        public let nameSuffix: InternationalText?
+        public let plannedQuai: InternationalText?
+        public let estimatedQuay: InternationalText?
 
         public let serviceArrival: ServiceArrival
         public let serviceDeparture: ServiceDeparture
@@ -272,10 +272,10 @@ public extension OJPv2 {
     struct LegAlight: Codable {
         // https://vdvde.github.io/OJP/develop/index.html#StopPointGroup
         public let stopPointRef: String
-        public let stopPointName: Name
-        public let nameSuffix: Name?
-        public let plannedQuai: Name?
-        public let estimatedQuay: Name?
+        public let stopPointName: InternationalText
+        public let nameSuffix: InternationalText?
+        public let plannedQuai: InternationalText?
+        public let estimatedQuay: InternationalText?
 
         public let serviceArrival: ServiceArrival
         public let serviceDeparture: ServiceDeparture?
@@ -307,8 +307,8 @@ public extension OJPv2 {
 
     // https://vdvde.github.io/OJP/develop/index.html#ProductCategoryStructure
     struct ProductCategory: Codable {
-        public let name: Name?
-        public let shortName: Name?
+        public let name: InternationalText?
+        public let shortName: InternationalText?
         public let productCategoryRef: String?
 
         public enum CodingKeys: String, CodingKey {
@@ -320,7 +320,7 @@ public extension OJPv2 {
 
     // https://vdvde.github.io/OJP/develop/index.html#GeneralAttributeStructure
     struct Attribute: Codable {
-        public let userText: Name
+        public let userText: InternationalText
         public let code: String
 
         public enum CodingKeys: String, CodingKey {
@@ -344,7 +344,7 @@ public extension OJPv2 {
 
         public let mode: Mode
         public let productCategory: ProductCategory?
-        public let publishedServiceName: Name? // TODO: https://github.com/openTdataCH/ojp-sdk/issues/23
+        public let publishedServiceName: InternationalText? // TODO: https://github.com/openTdataCH/ojp-sdk/issues/23
 
         public let trainNumber: String?
         public let vehicleRef: String?
@@ -394,7 +394,7 @@ public extension OJPv2 {
     // in the future we might get other elements, i.e. GeoPosition
     struct TrackSectionStopPlaceRef: Codable {
         public let stopPointRef: String
-        public let stopPointName: Name
+        public let stopPointName: InternationalText
 
         enum CodingKeys: String, CodingKey {
             case stopPointRef = "siri:StopPointRef"
