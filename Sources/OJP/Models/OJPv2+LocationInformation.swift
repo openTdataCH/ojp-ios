@@ -9,7 +9,7 @@ import Foundation
 import XMLCoder
 
 public extension OJPv2 {
-    internal struct StopEventServiceDelivery: Codable {
+    struct StopEventServiceDelivery: Codable {
         let responseTimestamp: String
         let producerRef: String
         let stopEventDelivery: StopEventDelivery
@@ -21,12 +21,12 @@ public extension OJPv2 {
         }
     }
 
-    internal struct StopEventDelivery: Codable {
+    struct StopEventDelivery: Codable {
         let places: [Place]
     }
 
     // TODO: where is that used?
-    internal struct LocationInformationServiceDelivery: Codable {
+    struct LocationInformationServiceDelivery: Codable {
         public let responseTimestamp: String
         public let producerRef: String
         public let locationInformationDelivery: LocationInformationDelivery
@@ -38,7 +38,7 @@ public extension OJPv2 {
         }
     }
 
-    internal struct LocationInformationDelivery: Codable {
+    struct LocationInformationDelivery: Codable {
         public let responseTimestamp: String
         public let requestMessageRef: String?
         public let defaultLanguage: String?
@@ -268,7 +268,7 @@ public extension OJPv2 {
         }
     }
 
-    internal struct LocationInformationRequest: Codable {
+    struct LocationInformationRequest: Codable {
         public let requestTimestamp: Date
         public let initialInput: InitialInput
         public let restrictions: PlaceParam
@@ -280,7 +280,7 @@ public extension OJPv2 {
         }
     }
 
-    internal struct InitialInput: Codable {
+    struct InitialInput: Codable {
         public let geoRestriction: GeoRestriction?
         public let name: String?
 
@@ -290,7 +290,7 @@ public extension OJPv2 {
         }
     }
 
-    internal struct GeoRestriction: Codable {
+    struct GeoRestriction: Codable {
         public let rectangle: Rectangle?
 
         public enum CodingKeys: String, CodingKey {

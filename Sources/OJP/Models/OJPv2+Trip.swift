@@ -430,7 +430,7 @@ public extension OJPv2 {
 
     struct TripFare: Codable {}
 
-    internal struct TripRequest: Codable {
+    struct TripRequest: Codable {
         public let requestTimestamp: Date
 
         public let origin: PlaceContext
@@ -447,7 +447,7 @@ public extension OJPv2 {
         }
     }
 
-    internal struct PlaceContext: Codable {
+    struct PlaceContext: Codable {
         public let placeRef: PlaceRefChoice
         public let depArrTime: Date?
 
@@ -457,7 +457,7 @@ public extension OJPv2 {
         }
     }
 
-    internal struct TripVia: Codable {
+    struct TripVia: Codable {
         public let viaPoint: PlaceRefChoice
 
         public enum CodingKeys: String, CodingKey {
