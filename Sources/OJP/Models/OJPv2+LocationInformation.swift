@@ -223,51 +223,6 @@ public extension OJPv2 {
         }
     }
 
-    // TODO: - move out from LIR, belongs also to TR
-    struct GeoPosition: Codable {
-        public let longitude: Double
-        public let latitude: Double
-
-        public enum CodingKeys: String, CodingKey {
-            case longitude = "siri:Longitude"
-            case latitude = "siri:Latitude"
-        }
-
-        public init(longitude: Double, latitude: Double) {
-            self.longitude = longitude
-            self.latitude = latitude
-        }
-
-        public init(from decoder: any Decoder) throws {
-            let container = try decoder.container(keyedBy: StrippedPrefixCodingKey.self)
-
-            longitude = try container.decode(Double.self, forKey: StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.longitude))
-            latitude = try container.decode(Double.self, forKey: StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.latitude))
-        }
-    }
-
-    internal struct Request: Codable {
-        public let serviceRequest: ServiceRequest
-
-        public enum CodingKeys: String, CodingKey {
-            case serviceRequest = "siri:ServiceRequest"
-        }
-    }
-
-    internal struct ServiceRequest: Codable {
-        public let requestTimestamp: Date
-        public let requestorRef: String
-        public let locationInformationRequest: LocationInformationRequest?
-        public let tripRequest: TripRequest?
-
-        public enum CodingKeys: String, CodingKey {
-            case requestTimestamp = "siri:RequestTimestamp"
-            case requestorRef = "siri:RequestorRef"
-            case locationInformationRequest = "OJPLocationInformationRequest"
-            case tripRequest = "OJPTripRequest"
-        }
-    }
-
     struct LocationInformationRequest: Codable {
         public let requestTimestamp: Date
         public let initialInput: InitialInput
