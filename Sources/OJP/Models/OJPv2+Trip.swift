@@ -200,7 +200,7 @@ public extension OJPv2 {
         public let stopPointRef: String
         public let stopPointName: Name
         public let nameSuffix: Name?
-        public let plannedQuai: Name?
+        public let plannedQuay: Name?
         public let estimatedQuay: Name?
 
         public let serviceArrival: ServiceArrival?
@@ -218,7 +218,7 @@ public extension OJPv2 {
             case stopPointRef = "StopPointRef" // siri:
             case stopPointName = "StopPointName"
             case nameSuffix = "NameSuffix"
-            case plannedQuai = "PlannedQuay"
+            case plannedQuay = "PlannedQuay"
             case estimatedQuay = "EstimatedQuay"
             case serviceArrival = "ServiceArrival"
             case serviceDeparture = "ServiceDeparture"
