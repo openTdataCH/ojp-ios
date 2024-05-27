@@ -20,3 +20,4 @@ Namespace handling is very basic. We currently require `ojp` to be the default (
 
 `wip`
 
+For types that only occur in responses and , we can keep the codable structs very simple
