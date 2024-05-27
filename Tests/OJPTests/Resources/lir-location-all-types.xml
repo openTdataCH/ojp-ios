@@ -1,0 +1,110 @@
+<OJP xmlns:siri="http://www.siri.org.uk/siri" xmlns="http://www.vdv.de/ojp" version="2.0">
+    <OJPResponse>
+      <siri:ServiceDelivery>
+        <siri:ResponseTimestamp>2024-05-14T15:59:29.5859331+02:00</siri:ResponseTimestamp>
+        <siri:ProducerRef>MENTZ</siri:ProducerRef>
+        <OJPLocationInformationDelivery>
+          <siri:ResponseTimestamp>2024-05-14T15:59:29.5861017+02:00</siri:ResponseTimestamp>
+          <siri:RequestMessageRef>0987c7f0-4d64-40ac-ac09-4a0a5fc7924e</siri:RequestMessageRef>
+          <siri:DefaultLanguage>de</siri:DefaultLanguage>
+          <CalcTime>85</CalcTime>
+          
+          <!-- 1. StopPlace -->
+          <PlaceResult>
+            <Place>
+              <StopPlace>
+                <StopPlaceRef>8503000</StopPlaceRef>
+                <StopPlaceName>
+                  <Text xml:lang="de">Zürich</Text>
+                </StopPlaceName>
+                <PrivateCode>
+                  <System>EFA</System>
+                  <Value>108276</Value>
+                </PrivateCode>
+                <TopographicPlaceRef>23026261:27</TopographicPlaceRef>
+              </StopPlace>
+              <Name>
+                <Text xml:lang="de">Zürich (Zürich)</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>8.54021</siri:Longitude>
+                <siri:Latitude>47.37818</siri:Latitude>
+              </GeoPosition>
+              <Mode>
+                <PtMode>rail</PtMode>
+              </Mode>
+            </Place>
+            <Complete>true</Complete>
+            <Probability>1</Probability>
+          </PlaceResult>
+          
+          <!-- 2. TopographicPlace -->
+          <PlaceResult>
+            <Place>
+              <TopographicPlace>
+                <TopographicPlaceCode>23026192:1</TopographicPlaceCode>
+                <TopographicPlaceName>
+                  <Text xml:lang="de">Egg b. Zürich</Text>
+                </TopographicPlaceName>
+              </TopographicPlace>
+              <Name>
+                <Text xml:lang="de">Egg b. Zürich</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>8.69123</siri:Longitude>
+                <siri:Latitude>47.29962</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Complete>true</Complete>
+            <Probability>0.963</Probability>
+          </PlaceResult>
+
+          <!-- 3. POI -->
+          <PlaceResult>
+            <Place>
+              <PointOfInterest>
+                <PublicCode>30535</PublicCode>
+                <PointOfInterestCategory>
+                  <OsmTag>
+                    <Tag>catering</Tag>
+                    <Value>restaurant</Value>
+                  </OsmTag>
+                </PointOfInterestCategory>
+                <TopographicPlaceRef>23026261:-1</TopographicPlaceRef>
+              </PointOfInterest>
+              <Name>
+                <Text xml:lang="de">Beetnut (Zürich)</Text>
+              </Name>
+            </Place>
+            <Complete>true</Complete>
+            <Probability>1</Probability>
+          </PlaceResult>
+
+          <!-- 4. Address -->
+          <PlaceResult>
+            <Place>
+              <Address>
+                <PublicCode>streetID:1500000332::23026261:-1:Beethovenstrasse:Zürich:Beethovenstrasse::Beethovenstrasse: 8002:ANY:DIVA_STREET:950246:5997773:MRCV</PublicCode>
+                <Name>
+                  <Text xml:lang="de">Zürich, Beethovenstrasse</Text>
+                </Name>
+                <PostCode> 8002</PostCode>
+                <TopographicPlaceName>Zürich</TopographicPlaceName>
+                <TopographicPlaceRef>23026261:-1</TopographicPlaceRef>
+                <Street>Beethovenstrasse</Street>
+              </Address>
+              <Name>
+                <Text xml:lang="de">Beethovenstrasse (Zürich)</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>8.53621</siri:Longitude>
+                <siri:Latitude>47.36726</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Complete>true</Complete>
+            <Probability>0.776</Probability>
+          </PlaceResult>
+        </OJPLocationInformationDelivery>
+      </siri:ServiceDelivery>
+    </OJPResponse>
+  </OJP>
