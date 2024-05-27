@@ -12,6 +12,7 @@ public enum LoadingStrategy {
     case mock(Loader)
 }
 
+// TODO: - find me a better place
 public enum PlaceType: String, Codable {
     case stop
     case address
@@ -21,6 +22,7 @@ public enum PlaceType: String, Codable {
 public class OJP {
     let loader: Loader
     let locationInformationRequest: OJPHelpers.LocationInformationRequest
+    let tripRequest: OJPHelpers.TripRequest
 
     /// Constructor of the OJP class
     /// - Parameter loadingStrategy: Pass a real loader with an API Configuration or a Mock for test purpuse
@@ -30,9 +32,11 @@ public class OJP {
             let httpLoader = HTTPLoader(configuration: apiConfiguration)
             loader = httpLoader.load(request:)
             locationInformationRequest = OJPHelpers.LocationInformationRequest(requesterReference: apiConfiguration.requesterReference)
+            tripRequest = OJPHelpers.TripRequest(requesterReference: apiConfiguration.requesterReference)
         case let .mock(loader):
             self.loader = loader
             locationInformationRequest = OJPHelpers.LocationInformationRequest(requesterReference: "Mock_Requestor_Ref")
+            tripRequest = OJPHelpers.TripRequest(requesterReference: "Mock_Requestor_Ref")
         }
     }
 
@@ -46,16 +50,8 @@ public class OJP {
     private var encoder: XMLEncoder {
         let encoder = XMLEncoder()
         encoder.outputFormatting = .prettyPrinted
+        encoder.dateEncodingStrategy = .iso8601
         return encoder
-    }
-
-    private var decoder: XMLDecoder {
-        let decoder = XMLDecoder()
-        decoder.keyDecodingStrategy = .convertFromCapitalized
-        decoder.dateDecodingStrategy = .iso8601
-        decoder.shouldProcessNamespaces = true
-        decoder.keyDecodingStrategy = .useDefaultKeys
-        return decoder
     }
 
     /// Request a list of PlaceResults based on the given geographical point
@@ -90,11 +86,25 @@ public class OJP {
         return locationInformationDelivery.placeResults
     }
 
+    public func requestTrips(from: OJPv2.PlaceRefChoice, to: OJPv2.PlaceRefChoice, via: [OJPv2.PlaceRefChoice]? = nil, at: DepArrTime = .departure(Date()), params: OJPv2.Params) async throws -> [OJPv2.TripResult] {
+        let ojp = tripRequest.requestTrips(from: from, to: to, via: via, at: at, params: params)
+
+        let serviceDelivery = try await request(with: ojp).serviceDelivery
+
+        guard case let .trip(tripDelivery) = serviceDelivery.delivery else {
+            throw OJPSDKError.unexpectedEmpty
+        }
+
+        return tripDelivery.tripResults
+    }
+
     func request(with ojp: OJPv2) async throws -> OJPv2.Response {
         let ojpXMLData = try encoder.encode(ojp, withRootKey: "OJP", rootAttributes: OJP.requestXMLRootAttributes)
-        guard String(data: ojpXMLData, encoding: .utf8) != nil else {
+        guard let xmlString = String(data: ojpXMLData, encoding: .utf8) else {
             throw OJPSDKError.encodingFailed
         }
+
+        debugPrint(xmlString)
 
         let (data, response): (Data, URLResponse)
         do {

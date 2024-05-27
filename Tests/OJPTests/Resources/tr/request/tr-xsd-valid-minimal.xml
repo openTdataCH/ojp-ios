@@ -1,0 +1,38 @@
+<OJP xmlns:siri="http://www.siri.org.uk/siri" version="2.0"
+  xmlns="http://www.vdv.de/ojp"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <OJPRequest>
+    <siri:ServiceRequest>
+      <siri:RequestTimestamp>2024-01-16T11:26:01.697Z</siri:RequestTimestamp>
+      <siri:RequestorRef>OJP_SDK_v0.9.24</siri:RequestorRef>
+      <OJPTripRequest>
+        <siri:RequestTimestamp>2024-01-16T11:26:01.697Z</siri:RequestTimestamp>
+        <Origin>
+          <PlaceRef>
+            <StopPlaceRef>8507099</StopPlaceRef>
+            <Name>
+              <Text>Gurten</Text>
+            </Name>
+          </PlaceRef>
+          <DepArrTime>2024-05-14T16:10:00.373Z</DepArrTime>
+        </Origin>
+        <Destination>
+          <PlaceRef>
+            <StopPlaceRef>8505069</StopPlaceRef>
+            <Name>
+              <Text>Rigi Kulm</Text>
+            </Name>
+          </PlaceRef>
+        </Destination>
+<!--        <Params>-->
+<!--          <NumberOfResultsBefore>0</NumberOfResultsBefore>-->
+<!--          <NumberOfResultsAfter>5</NumberOfResultsAfter>-->
+<!--          <IncludeTrackSections>true</IncludeTrackSections>-->
+<!--          <IncludeLegProjection>true</IncludeLegProjection>-->
+<!--          <IncludeTurnDescription>true</IncludeTurnDescription>-->
+<!--          <IncludeIntermediateStops>true</IncludeIntermediateStops>-->
+<!--        </Params>-->
+      </OJPTripRequest>
+    </siri:ServiceRequest>
+  </OJPRequest>
+</OJP>

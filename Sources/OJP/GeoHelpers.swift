@@ -30,7 +30,7 @@ enum GeoHelpers {
 
     public static func sort<T: GeoAware>(geoAwareObjects: [T], from point: Point) -> [NearbyObject<T>] {
         var nearbyObjects = geoAwareObjects.map { geoAwareObject in
-            let distance = GeoHelpers.calculateDistance(lon1: point.long, lat1: point.lat, lon2: geoAwareObject.coords.long, lat2: geoAwareObject.coords.lat)
+            let distance = GeoHelpers.calculateDistance(lon1: point.long, lat1: point.lat, lon2: geoAwareObject.geoPosition.longitude, lat2: geoAwareObject.geoPosition.latitude)
             return NearbyObject(object: geoAwareObject, distance: distance)
         }
 
