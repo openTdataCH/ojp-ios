@@ -24,14 +24,6 @@ public enum DepArrTime {
 }
 
 enum OJPHelpers {
-    static func formattedDate(date: Date = Date()) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss'Z'" // ISO 8601 format
-        dateFormatter.timeZone = TimeZone(secondsFromGMT: 0) // Set timezone to UTC
-
-        let dateF = dateFormatter.string(from: date)
-        return dateF
-    }
 
     class TripRequest {
         init(requesterReference: String) {
