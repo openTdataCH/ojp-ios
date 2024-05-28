@@ -153,8 +153,56 @@ public extension OJPv2 {
             }
         }
     }
+    enum TransferType: String, Codable {
+        case walk
+        case shuttle
+        case taxi
+        case protectedConnection
+        case guaranteedConnection
+        case remainInVehicle
+        case changeWithinVehicle
+        case checkIn
+        case checkOut
+        case parkAndRide
+        case bikeAndRide
+        case carHire
+        case bikeHire
+        case other
+    }
 
-    struct TransferLeg: Codable {}
+    struct TransferLeg: Codable {
+        public let transferTypes: [TransferType]
+        public let legStart: LegStart
+        public let legEnd: LegEnd
+        public let duration: String
+        
+        enum CodingKeys: String, CodingKey {
+            case transferTypes = "TransferType"
+            case duration = "Duration"
+            case legStart = "LegStart"
+            case legEnd = "LegEnd"
+        }
+    }
+    
+    struct LegStart: Codable {
+        public let stopPointRef: String
+        public let name: InternationalText
+        
+        enum CodingKeys: String, CodingKey {
+            case stopPointRef = "StopPointRef"
+            case name = "Name"
+        }
+    }
+    
+    struct LegEnd: Codable {
+        public let stopPointRef: String
+        public let name: InternationalText
+        
+        enum CodingKeys: String, CodingKey {
+            case stopPointRef = "StopPointRef"
+            case name = "Name"
+        }
+    }
 
     struct TimedLeg: Codable {
         public let legBoard: LegBoard

@@ -75,4 +75,20 @@ final class TripRequestTests: XCTestCase {
             XCTFail()
         }
     }
+    
+    func testParseTrip_With_Tranfer_Legs() async throws {
+        let xmlData = try TestHelpers.loadXML(xmlFilename: "tr-with-transfer-legs")
+
+        guard let tripDelivery = try OJPDecoder.parseXML(xmlData).response?.serviceDelivery.delivery else {
+            return XCTFail("unexpected empty")
+        }
+
+        switch tripDelivery {
+        case let .trip(trip):
+            debugPrint("\(trip.calcTime!)")
+            XCTAssert(true)
+        default:
+            XCTFail()
+        }
+    }
 }
