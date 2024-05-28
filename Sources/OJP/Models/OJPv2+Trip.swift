@@ -175,8 +175,8 @@ public extension OJPv2 {
     // https://vdvde.github.io/OJP/develop/index.html#TransferLegStructure
     struct TransferLeg: Codable {
         public let transferTypes: [TransferType]
-        public let legStart: LegStart
-        public let legEnd: LegEnd
+        public let legStart: PlaceRefChoice
+        public let legEnd: PlaceRefChoice
         public let duration: String
         
         enum CodingKeys: String, CodingKey {
@@ -184,26 +184,6 @@ public extension OJPv2 {
             case duration = "Duration"
             case legStart = "LegStart"
             case legEnd = "LegEnd"
-        }
-    }
-    
-    struct LegStart: Codable {
-        public let stopPointRef: String
-        public let name: InternationalText
-        
-        enum CodingKeys: String, CodingKey {
-            case stopPointRef = "StopPointRef" // siri:
-            case name = "Name"
-        }
-    }
-    
-    struct LegEnd: Codable {
-        public let stopPointRef: String
-        public let name: InternationalText
-        
-        enum CodingKeys: String, CodingKey {
-            case stopPointRef = "StopPointRef" // siri:
-            case name = "Name"
         }
     }
 
@@ -520,9 +500,11 @@ public extension OJPv2 {
     enum PlaceRefChoice: Codable {
         case stopPlaceRef(String)
         case geoPosition(OJPv2.GeoPosition)
+        case stopPointRef(String)
 
         enum CodingKeys: String, CodingKey {
             case stopPlaceRef = "StopPlaceRef"
+            case stopPointRef = "StopPointRef" // siri:
             case geoPosition = "siri:LocationStructure"
         }
 
@@ -531,6 +513,8 @@ public extension OJPv2 {
             switch self {
             case let .stopPlaceRef(stopPlace):
                 try container.encode(stopPlace, forKey: CodingKeys.stopPlaceRef)
+            case let .stopPointRef(stopPoint):
+                try container.encode(stopPoint, forKey: CodingKeys.stopPointRef)
             case let .geoPosition(geoPosition):
                 try container.encode(geoPosition, forKey: CodingKeys.geoPosition)
             }
@@ -550,6 +534,13 @@ public extension OJPv2 {
                     container.decode(
                         GeoPosition.self,
                         forKey: StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.geoPosition)
+                    )
+                )
+            } else if container.contains(StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.stopPointRef)) {
+                self = try .stopPointRef(
+                    container.decode(
+                        String.self,
+                        forKey: StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.stopPointRef)
                     )
                 )
             } else {
