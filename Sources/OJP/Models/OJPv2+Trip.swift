@@ -153,6 +153,8 @@ public extension OJPv2 {
             }
         }
     }
+
+    // https://vdvde.github.io/OJP/develop/index.html#TransferTypeEnumeration
     enum TransferType: String, Codable {
         case walk
         case shuttle
@@ -170,6 +172,7 @@ public extension OJPv2 {
         case other
     }
 
+    // https://vdvde.github.io/OJP/develop/index.html#TransferLegStructure
     struct TransferLeg: Codable {
         public let transferTypes: [TransferType]
         public let legStart: LegStart
@@ -189,7 +192,7 @@ public extension OJPv2 {
         public let name: InternationalText
         
         enum CodingKeys: String, CodingKey {
-            case stopPointRef = "StopPointRef"
+            case stopPointRef = "StopPointRef" // siri:
             case name = "Name"
         }
     }
@@ -199,11 +202,12 @@ public extension OJPv2 {
         public let name: InternationalText
         
         enum CodingKeys: String, CodingKey {
-            case stopPointRef = "StopPointRef"
+            case stopPointRef = "StopPointRef" // siri:
             case name = "Name"
         }
     }
 
+    // https://vdvde.github.io/OJP/develop/index.html#TimedLegStructure
     struct TimedLeg: Codable {
         public let legBoard: LegBoard
         public let legsIntermediate: [LegIntermediate]
