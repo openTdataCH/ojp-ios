@@ -154,8 +154,40 @@ public extension OJPv2 {
         }
     }
 
-    struct TransferLeg: Codable {}
+    // https://vdvde.github.io/OJP/develop/index.html#TransferTypeEnumeration
+    enum TransferType: String, Codable {
+        case walk
+        case shuttle
+        case taxi
+        case protectedConnection
+        case guaranteedConnection
+        case remainInVehicle
+        case changeWithinVehicle
+        case checkIn
+        case checkOut
+        case parkAndRide
+        case bikeAndRide
+        case carHire
+        case bikeHire
+        case other
+    }
 
+    // https://vdvde.github.io/OJP/develop/index.html#TransferLegStructure
+    struct TransferLeg: Codable {
+        public let transferTypes: [TransferType]
+        public let legStart: PlaceRefChoice
+        public let legEnd: PlaceRefChoice
+        public let duration: String
+        
+        enum CodingKeys: String, CodingKey {
+            case transferTypes = "TransferType"
+            case duration = "Duration"
+            case legStart = "LegStart"
+            case legEnd = "LegEnd"
+        }
+    }
+
+    // https://vdvde.github.io/OJP/develop/index.html#TimedLegStructure
     struct TimedLeg: Codable {
         public let legBoard: LegBoard
         public let legsIntermediate: [LegIntermediate]
@@ -468,9 +500,11 @@ public extension OJPv2 {
     enum PlaceRefChoice: Codable {
         case stopPlaceRef(String)
         case geoPosition(OJPv2.GeoPosition)
+        case stopPointRef(String)
 
         enum CodingKeys: String, CodingKey {
             case stopPlaceRef = "StopPlaceRef"
+            case stopPointRef = "StopPointRef" // siri:
             case geoPosition = "siri:LocationStructure"
         }
 
@@ -479,6 +513,8 @@ public extension OJPv2 {
             switch self {
             case let .stopPlaceRef(stopPlace):
                 try container.encode(stopPlace, forKey: CodingKeys.stopPlaceRef)
+            case let .stopPointRef(stopPoint):
+                try container.encode(stopPoint, forKey: CodingKeys.stopPointRef)
             case let .geoPosition(geoPosition):
                 try container.encode(geoPosition, forKey: CodingKeys.geoPosition)
             }
@@ -498,6 +534,13 @@ public extension OJPv2 {
                     container.decode(
                         GeoPosition.self,
                         forKey: StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.geoPosition)
+                    )
+                )
+            } else if container.contains(StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.stopPointRef)) {
+                self = try .stopPointRef(
+                    container.decode(
+                        String.self,
+                        forKey: StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.stopPointRef)
                     )
                 )
             } else {
