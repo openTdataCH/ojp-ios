@@ -14,9 +14,36 @@ OJP is XML based, a format that hasn't seen much enthousiasm in the mobile devel
 
 #### Limitations of XMLCoder
 
-Namespace handling is very basic. We currently require `ojp` to be the default (unprefixed) namespace for the OJP XSD and `siri:` to be the namespace for SIRI XSD. Maybe we could leverage using a custom `keyDecodingStrategy` to be a bit more flexible there. [https://github.com/openTdataCH/ojp-ios/issues/41](https://github.com/openTdataCH/ojp-ios/issues/41)
+Namespace handling is very basic. We currently require `ojp` to be the default (unprefixed) namespace for the OJP XSD and `siri:` to be the namespace for SIRI XSD. We use custom `keyDecodingStrategy` and some logic to see, if `siri:` or `ojp:` namespaces occur in the response, in order to map the xml to our codable structs.
 
-#### How to define CodingKeys
+### How to define CodingKeys
 
-`wip`
+An element in the XSD maps to a nested Codable struct in ``OJPv2``. We have to define CodingKeys that map to the element's name according to the XSD. For `siri` elements, we include `siri:` as a value in the coding key.
 
+``` swift
+public struct ServiceRequest: Codable {
+    public let requestTimestamp: Date
+    public let requestorRef: String
+    public let locationInformationRequest: LocationInformationRequest?
+    public let tripRequest: TripRequest?
+
+    public enum CodingKeys: String, CodingKey {
+        case requestTimestamp = "siri:RequestTimestamp"
+        case requestorRef = "siri:RequestorRef"
+        case locationInformationRequest = "OJPLocationInformationRequest"
+        case tripRequest = "OJPTripRequest"
+    }
+}
+```
+
+Under the hood our custom `keyDecodingStrategy` and `NamespaceAwareCodingKey` will do the mapping.
+
+
+### Handling XML Choice Types
+
+XML supports choice types which translate best to Swift enums with associated types. Parsing those types requires some adaptation and conventions.
+
+As an example, a [Leg](https://vdvde.github.io/OJP/develop/index.html#LegStructure) contains a choice of either [ContinuousLegStructure](https://vdvde.github.io/OJP/develop/index.html#ContinuousLegStructure), [TimedLegStructure](https://vdvde.github.io/OJP/develop/index.html#TimedLegStructure) or 
+[TransferLegStructure](https://vdvde.github.io/OJP/develop/index.html#TransferLegStructure).
+
+To support this, we introduce a ``LegTypeChoice`` enum that containes those three cases. The value is added as a ``OJPv2/Leg/legType`` property.

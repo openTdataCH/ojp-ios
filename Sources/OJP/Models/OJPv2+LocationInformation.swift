@@ -52,15 +52,6 @@ public extension OJPv2 {
             case calcTime = "CalcTime"
             case placeResults = "PlaceResult"
         }
-
-        public init(from decoder: any Decoder) throws {
-            let container = try decoder.container(keyedBy: StrippedPrefixCodingKey.self)
-            responseTimestamp = try container.decode(String.self, forKey: StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.responseTimestamp))
-            requestMessageRef = try? container.decode(String.self, forKey: StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.requestMessageRef))
-            defaultLanguage = try? container.decode(String.self, forKey: StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.defaultLanguage))
-            calcTime = try? container.decode(Int.self, forKey: StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.calcTime))
-            placeResults = try container.decode([OJPv2.PlaceResult].self, forKey: StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.placeResults))
-        }
     }
 
     struct PlaceResult: Codable {
@@ -85,29 +76,39 @@ public extension OJPv2 {
         }
 
         public init(from decoder: any Decoder) throws {
-            let container = try decoder.container(keyedBy: StrippedPrefixCodingKey.self)
-            if container.contains(StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.stopPlace)) {
-                self = try .stopPlace(
-                    container.decode(
-                        StopPlace.self,
-                        forKey: StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.stopPlace)
-                    )
-                )
-            } else if container.contains(StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.address)) {
-                self = try .address(
-                    container.decode(
-                        Address.self,
-                        forKey: StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.address)
-                    )
-                )
-            } else {
-                throw OJPSDKError.notImplemented()
+            let container = try decoder.container(keyedBy: CodingKeys.self)
+            do {
+                self = try .address(container.decode(Address.self, forKey: .address))
+            } catch {
+                self = try .stopPlace(container.decode(StopPlace.self, forKey: .stopPlace))
             }
         }
+
+//        public init(from decoder: any Decoder) throws {
+//            let container = try decoder.container(keyedBy: CodingKeys.self)
+//            if container.contains(.stopPlace) {
+//                self = try .stopPlace(
+//                    container.decode(
+//                        StopPlace.self,
+//                        forKey: .stopPlace
+//                    )
+//                )
+//            } else if container.contains(.address) {
+//                self = try .address(
+//                    container.decode(
+//                        Address.self,
+//                        forKey: .address
+//                    )
+//                )
+//            } else {
+//                throw OJPSDKError.notImplemented()
+//            }
+//        }
     }
 
     struct Place: Codable {
         public let place: PlaceTypeChoice
+
         public let name: InternationalText
         public let geoPosition: GeoPosition
         public let modes: [Mode]
@@ -119,11 +120,13 @@ public extension OJPv2 {
         }
 
         public init(from decoder: any Decoder) throws {
+//            let singleValueContainer = try decoder.singleValueContainer()
+//            self.place = try singleValueContainer.decode(OJPv2.PlaceTypeChoice.self)
             place = try PlaceTypeChoice(from: decoder)
-            let container = try decoder.container(keyedBy: StrippedPrefixCodingKey.self)
-            name = try container.decode(InternationalText.self, forKey: StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.name))
-            geoPosition = try container.decode(GeoPosition.self, forKey: StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.geoPosition))
-            modes = try container.decode([Mode].self, forKey: StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.modes))
+            let container = try decoder.container(keyedBy: CodingKeys.self)
+            name = try container.decode(InternationalText.self, forKey: .name)
+            geoPosition = try container.decode(GeoPosition.self, forKey: .geoPosition)
+            modes = try container.decode([Mode].self, forKey: .modes)
         }
     }
 

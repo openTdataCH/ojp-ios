@@ -8,13 +8,77 @@
 import Foundation
 import XMLCoder
 
+private var ojpNameSpace = ""
+private var siriNameSpace = ""
+
+private var keyMapping: [String: String] = [:] // ["no-namespace" : "resolved according to CodingKeys"]
+
+struct NamespaceAwareCodingKey: CodingKey {
+    var stringValue: String
+    var intValue: Int?
+
+    init?(stringValue: String) {
+        self.stringValue = stringValue
+        intValue = nil
+    }
+
+    init?(intValue: Int) {
+        stringValue = String(intValue)
+        self.intValue = intValue
+    }
+
+    static func create(from key: CodingKey, ojpNS: String, siriNS: String, mapping: inout [String: String]) -> NamespaceAwareCodingKey {
+        let strippedKey = removeNameSpace(key.stringValue)
+        // the mapping is needed, as the keyDecodingStrategy could be performed on a already converted key, leading to an invalid new key
+        if let existing = mapping[strippedKey] {
+            return NamespaceAwareCodingKey(stringValue: existing)!
+        }
+
+        if ojpNS.isEmpty && siriNS.isEmpty || key.stringValue.contains("xmlns") {
+            // ignore root elements
+            return NamespaceAwareCodingKey(stringValue: strippedKey)!
+        }
+
+        if !ojpNS.isEmpty, key.stringValue.contains(ojpNS) {
+            // removes a potential "ojp" namespace to match the the type's CodingKeys
+            mapping[strippedKey] = strippedKey
+            return NamespaceAwareCodingKey(stringValue: removeNameSpace(key.stringValue))!
+        }
+        if siriNS.isEmpty, !key.stringValue.contains(ojpNS) {
+            // adds 'siri:' if it isn't present in the source to match the type's CodingKeys
+            mapping[strippedKey] = "siri:\(key.stringValue)"
+            return NamespaceAwareCodingKey(stringValue: "siri:\(key.stringValue)")!
+        }
+
+        // keep stringValue as it is
+        mapping[strippedKey] = "\(key.stringValue)"
+        return NamespaceAwareCodingKey(stringValue: key.stringValue)!
+    }
+
+    static func removeNameSpace(_ string: String) -> String {
+        String(string.split(separator: ":").last!)
+    }
+}
+
 enum OJPDecoder {
     static func parseXML<T: Decodable>(_: T.Type, _ xmlData: Data) throws -> T {
         let decoder = XMLDecoder()
+
+        siriNameSpace = ""
+        ojpNameSpace = ""
+        keyMapping = [:]
+
         decoder.dateDecodingStrategy = .iso8601
         decoder.keyDecodingStrategy = .custom { codingPath in
             guard let codingPath = codingPath.last else { fatalError() }
-            return StrippedPrefixCodingKey.stripPrefix(fromKey: codingPath)
+            // This is a very naive approach to check the used namespaces. Maybe implement a more robust one in the future.
+            if codingPath.stringValue.contains("xmlns:ojp") {
+                ojpNameSpace = "ojp:"
+            } else if codingPath.stringValue.contains("xmlns:siri") {
+                siriNameSpace = "siri:"
+            }
+
+            return NamespaceAwareCodingKey.create(from: codingPath, ojpNS: ojpNameSpace, siriNS: siriNameSpace, mapping: &keyMapping)
         }
         do {
             return try decoder.decode(T.self, from: xmlData)

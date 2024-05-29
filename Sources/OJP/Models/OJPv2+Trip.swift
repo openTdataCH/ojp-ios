@@ -15,8 +15,8 @@ public extension OJPv2 {
         public let tripResults: [TripResult]
 
         public enum CodingKeys: String, CodingKey {
-            case responseTimestamp = "ResponseTimestamp" // siri:
-            case requestMessageRef = "RequestMessageRef" // siri:
+            case responseTimestamp = "siri:ResponseTimestamp"
+            case requestMessageRef = "siri:RequestMessageRef"
             case calcTime = "CalcTime"
             case tripResults = "TripResult"
         }
@@ -37,10 +37,10 @@ public extension OJPv2 {
         public init(from decoder: any Decoder) throws {
             tripType = try TripTypeChoice(from: decoder)
 
-            let container = try decoder.container(keyedBy: StrippedPrefixCodingKey.self)
-            id = try container.decode(String.self, forKey: StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.id))
-            tripFares = try container.decode([TripFare].self, forKey: StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.tripFares))
-            isAlternativeOption = try? container.decode(Bool.self, forKey: StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.isAlternativeOption))
+            let container = try decoder.container(keyedBy: CodingKeys.self)
+            id = try container.decode(String.self, forKey: .id)
+            tripFares = try container.decode([TripFare].self, forKey: .tripFares)
+            isAlternativeOption = try? container.decode(Bool.self, forKey: .isAlternativeOption)
         }
 
         public enum TripTypeChoice: Codable {
@@ -53,19 +53,19 @@ public extension OJPv2 {
             }
 
             public init(from decoder: any Decoder) throws {
-                let container = try decoder.container(keyedBy: StrippedPrefixCodingKey.self)
-                if container.contains(StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.trip)) {
+                let container = try decoder.container(keyedBy: CodingKeys.self)
+                if container.contains(.trip) {
                     self = try .trip(
                         container.decode(
                             Trip.self,
-                            forKey: StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.trip)
+                            forKey: .trip
                         )
                     )
-                } else if container.contains(StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.tripSummary)) {
+                } else if container.contains(.tripSummary) {
                     self = try .tripSummary(
                         container.decode(
                             TripSummary.self,
-                            forKey: StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.tripSummary)
+                            forKey: .tripSummary
                         )
                     )
                 } else {
@@ -95,6 +95,7 @@ public extension OJPv2 {
         }
     }
 
+    // https://vdvde.github.io/OJP/develop/index.html#LegStructure
     struct Leg: Codable {
         public let id: Int
         public let duration: String?
@@ -108,9 +109,9 @@ public extension OJPv2 {
         public init(from decoder: any Decoder) throws {
             legType = try LegTypeChoice(from: decoder)
 
-            let container = try decoder.container(keyedBy: StrippedPrefixCodingKey.self)
-            id = try container.decode(Int.self, forKey: StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.id))
-            duration = try? container.decode(String.self, forKey: StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.duration))
+            let container = try decoder.container(keyedBy: CodingKeys.self)
+            id = try container.decode(Int.self, forKey: .id)
+            duration = try? container.decode(String.self, forKey: .duration)
         }
 
         public enum LegTypeChoice: Codable {
@@ -125,26 +126,26 @@ public extension OJPv2 {
             }
 
             public init(from decoder: any Decoder) throws {
-                let container = try decoder.container(keyedBy: StrippedPrefixCodingKey.self)
-                if container.contains(StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.continous)) {
+                let container = try decoder.container(keyedBy: CodingKeys.self)
+                if container.contains(.continous) {
                     self = try .continous(
                         container.decode(
                             ContinuousLeg.self,
-                            forKey: StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.continous)
+                            forKey: .continous
                         )
                     )
-                } else if container.contains(StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.timed)) {
+                } else if container.contains(.timed) {
                     self = try .timed(
                         container.decode(
                             TimedLeg.self,
-                            forKey: StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.timed)
+                            forKey: .timed
                         )
                     )
-                } else if container.contains(StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.transfer)) {
+                } else if container.contains(.transfer) {
                     self = try .transfer(
                         container.decode(
                             TransferLeg.self,
-                            forKey: StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.transfer)
+                            forKey: .transfer
                         )
                     )
                 } else {
@@ -178,7 +179,7 @@ public extension OJPv2 {
         public let legStart: PlaceRefChoice
         public let legEnd: PlaceRefChoice
         public let duration: String
-        
+
         enum CodingKeys: String, CodingKey {
             case transferTypes = "TransferType"
             case duration = "Duration"
@@ -247,7 +248,7 @@ public extension OJPv2 {
         public let noAlightingAtStop: Bool?
 
         enum CodingKeys: String, CodingKey {
-            case stopPointRef = "StopPointRef" // siri:
+            case stopPointRef = "siri:StopPointRef"
             case stopPointName = "StopPointName"
             case nameSuffix = "NameSuffix"
             case plannedQuay = "PlannedQuay"
@@ -284,7 +285,7 @@ public extension OJPv2 {
         public let noAlightingAtStop: Bool?
 
         enum CodingKeys: String, CodingKey {
-            case stopPointRef = "StopPointRef" // siri:
+            case stopPointRef = "siri:StopPointRef"
             case stopPointName = "StopPointName"
             case nameSuffix = "NameSuffix"
             case plannedQuai = "PlannedQuay"
@@ -321,7 +322,7 @@ public extension OJPv2 {
         public let noAlightingAtStop: Bool?
 
         enum CodingKeys: String, CodingKey {
-            case stopPointRef = "StopPointRef" // siri:
+            case stopPointRef = "siri:StopPointRef"
             case stopPointName = "StopPointName"
             case nameSuffix = "NameSuffix"
             case plannedQuai = "PlannedQuay"
@@ -388,15 +389,15 @@ public extension OJPv2 {
             case operatingDayRef = "OperatingDayRef"
             case journeyRef = "JourneyRef"
             case publicCode = "PublicCode"
-            case lineRef = "LineRef" // siri:
+            case lineRef = "siri:LineRef"
             case directionRef = "DirectionRef"
             case mode = "Mode"
             case productCategory = "ProductCategory"
             case publishedServiceName = "PublishedServiceName"
             case trainNumber = "TrainNumber"
-            case vehicleRef = "siri:VehicleRef" // siri:
+            case vehicleRef = "siri:VehicleRef"
             case attributes = "Attribute"
-            case operatorRef = "OperatorRef" // siri:
+            case operatorRef = "siri:OperatorRef"
         }
 
         public enum ConventionalModesOfOperation: String, Codable {
@@ -456,6 +457,7 @@ public extension OJPv2 {
         }
     }
 
+    // https://vdvde.github.io/OJP/develop/index.html#ContinuousLegStructure
     struct ContinuousLeg: Codable {}
 
     struct TripSummary: Codable {}
@@ -504,7 +506,7 @@ public extension OJPv2 {
 
         enum CodingKeys: String, CodingKey {
             case stopPlaceRef = "StopPlaceRef"
-            case stopPointRef = "StopPointRef" // siri:
+            case stopPointRef = "siri:StopPointRef"
             case geoPosition = "siri:LocationStructure"
         }
 
@@ -512,35 +514,35 @@ public extension OJPv2 {
             var container = encoder.container(keyedBy: CodingKeys.self)
             switch self {
             case let .stopPlaceRef(stopPlace):
-                try container.encode(stopPlace, forKey: CodingKeys.stopPlaceRef)
+                try container.encode(stopPlace, forKey: .stopPlaceRef)
             case let .stopPointRef(stopPoint):
-                try container.encode(stopPoint, forKey: CodingKeys.stopPointRef)
+                try container.encode(stopPoint, forKey: .stopPointRef)
             case let .geoPosition(geoPosition):
-                try container.encode(geoPosition, forKey: CodingKeys.geoPosition)
+                try container.encode(geoPosition, forKey: .geoPosition)
             }
         }
 
         public init(from decoder: any Decoder) throws {
-            let container = try decoder.container(keyedBy: StrippedPrefixCodingKey.self)
-            if container.contains(StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.stopPlaceRef)) {
+            let container = try decoder.container(keyedBy: CodingKeys.self)
+            if container.contains(.stopPlaceRef) {
                 self = try .stopPlaceRef(
                     container.decode(
                         String.self,
-                        forKey: StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.stopPlaceRef)
+                        forKey: .stopPlaceRef
                     )
                 )
-            } else if container.contains(StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.geoPosition)) {
+            } else if container.contains(.geoPosition) {
                 self = try .geoPosition(
                     container.decode(
                         GeoPosition.self,
-                        forKey: StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.geoPosition)
+                        forKey: .geoPosition
                     )
                 )
-            } else if container.contains(StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.stopPointRef)) {
+            } else if container.contains(.stopPointRef) {
                 self = try .stopPointRef(
                     container.decode(
                         String.self,
-                        forKey: StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.stopPointRef)
+                        forKey: .stopPointRef
                     )
                 )
             } else {
@@ -550,7 +552,6 @@ public extension OJPv2 {
     }
 
     struct Params: Codable {
-
         public init(numberOfResultsBefore: Int? = nil, numberOfResultsAfter: Int? = nil, includeTrackSections: Bool? = nil, includeLegProjection: Bool? = nil, includeTurnDescription: Bool? = nil, includeIntermediateStops: Bool? = nil) {
             self.numberOfResultsBefore = numberOfResultsBefore
             self.numberOfResultsAfter = numberOfResultsAfter
@@ -559,7 +560,7 @@ public extension OJPv2 {
             self.includeTurnDescription = includeTurnDescription
             self.includeIntermediateStops = includeIntermediateStops
         }
-        
+
         let numberOfResultsBefore: Int?
         let numberOfResultsAfter: Int?
         let includeTrackSections: Bool?

@@ -9,28 +9,6 @@ import Foundation
 
 let OJP_SDK_Name = "IOS_SDK"
 
-struct StrippedPrefixCodingKey: CodingKey {
-    var stringValue: String
-    var intValue: Int?
-
-    init?(stringValue: String) {
-        self.stringValue = stringValue
-        intValue = nil
-    }
-
-    init?(intValue: Int) {
-        stringValue = String(intValue)
-        self.intValue = intValue
-    }
-
-    static func stripPrefix(fromKey key: CodingKey) -> StrippedPrefixCodingKey {
-        if let tail = key.stringValue.split(separator: ":").last {
-            return StrippedPrefixCodingKey(stringValue: String(tail))!
-        }
-        return StrippedPrefixCodingKey(stringValue: key.stringValue)!
-    }
-}
-
 public struct OJPv2: Codable {
     let request: Request?
     let response: Response?
@@ -40,20 +18,15 @@ public struct OJPv2: Codable {
         case response = "OJPResponse"
     }
 
-    struct Response: Codable {
+    public struct Response: Codable {
         public let serviceDelivery: ServiceDelivery
 
         public enum CodingKeys: String, CodingKey {
             case serviceDelivery = "siri:ServiceDelivery"
         }
-
-        public init(from decoder: any Decoder) throws {
-            let container = try decoder.container(keyedBy: StrippedPrefixCodingKey.self)
-            serviceDelivery = try container.decode(OJPv2.ServiceDelivery.self, forKey: StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.serviceDelivery))
-        }
     }
 
-    struct ServiceDelivery: Codable {
+    public struct ServiceDelivery: Codable {
         public let responseTimestamp: String
         public let producerRef: String?
         public let delivery: ServiceDeliveryTypeChoice
@@ -66,13 +39,13 @@ public struct OJPv2: Codable {
         public init(from decoder: any Decoder) throws {
             delivery = try ServiceDeliveryTypeChoice(from: decoder)
 
-            let container = try decoder.container(keyedBy: StrippedPrefixCodingKey.self)
-            responseTimestamp = try container.decode(String.self, forKey: StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.responseTimestamp))
-            producerRef = try? container.decode(String.self, forKey: StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.producerRef))
+            let container = try decoder.container(keyedBy: CodingKeys.self)
+            responseTimestamp = try container.decode(String.self, forKey: .responseTimestamp)
+            producerRef = try? container.decode(String.self, forKey: .producerRef)
         }
     }
 
-    enum ServiceDeliveryTypeChoice: Codable {
+    public enum ServiceDeliveryTypeChoice: Codable {
         case stopEvent(OJPv2.StopEventServiceDelivery)
         case locationInformation(OJPv2.LocationInformationDelivery)
         case trip(OJPv2.TripDelivery)
@@ -84,19 +57,19 @@ public struct OJPv2: Codable {
         }
 
         public init(from decoder: any Decoder) throws {
-            let container = try decoder.container(keyedBy: StrippedPrefixCodingKey.self)
-            if container.contains(StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.locationInformation)) {
+            let container = try decoder.container(keyedBy: CodingKeys.self)
+            if container.contains(.locationInformation) {
                 self = try .locationInformation(
                     container.decode(
                         LocationInformationDelivery.self,
-                        forKey: StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.locationInformation)
+                        forKey: .locationInformation
                     )
                 )
-            } else if container.contains(StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.trip)) {
+            } else if container.contains(.trip) {
                 self = try .trip(
                     container.decode(
                         TripDelivery.self,
-                        forKey: StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.trip)
+                        forKey: .trip
                     )
                 )
             } else {
@@ -105,7 +78,7 @@ public struct OJPv2: Codable {
         }
     }
 
-    struct Request: Codable {
+    public struct Request: Codable {
         public let serviceRequest: ServiceRequest
 
         public enum CodingKeys: String, CodingKey {
@@ -113,7 +86,7 @@ public struct OJPv2: Codable {
         }
     }
 
-    struct ServiceRequest: Codable {
+    public struct ServiceRequest: Codable {
         public let requestTimestamp: Date
         public let requestorRef: String
         public let locationInformationRequest: LocationInformationRequest?
@@ -149,13 +122,6 @@ public struct OJPv2: Codable {
         public init(longitude: Double, latitude: Double) {
             self.longitude = longitude
             self.latitude = latitude
-        }
-
-        public init(from decoder: any Decoder) throws {
-            let container = try decoder.container(keyedBy: StrippedPrefixCodingKey.self)
-
-            longitude = try container.decode(Double.self, forKey: StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.longitude))
-            latitude = try container.decode(Double.self, forKey: StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.latitude))
         }
     }
 
