@@ -504,7 +504,7 @@ public extension OJPv2 {
 
         enum CodingKeys: String, CodingKey {
             case stopPlaceRef = "StopPlaceRef"
-            case stopPointRef = "StopPointRef" // siri:
+            case stopPointRef = "siri:StopPointRef"
             case geoPosition = "siri:LocationStructure"
         }
 
