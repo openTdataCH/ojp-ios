@@ -95,6 +95,7 @@ public extension OJPv2 {
         }
     }
 
+    // https://vdvde.github.io/OJP/develop/index.html#LegStructure
     struct Leg: Codable {
         public let id: Int
         public let duration: String?
@@ -456,6 +457,7 @@ public extension OJPv2 {
         }
     }
 
+    // https://vdvde.github.io/OJP/develop/index.html#ContinuousLegStructure
     struct ContinuousLeg: Codable {}
 
     struct TripSummary: Codable {}
