@@ -536,11 +536,11 @@ public extension OJPv2 {
                         forKey: .geoPosition
                     )
                 )
-            } else if container.contains(StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.stopPointRef)) {
+            } else if container.contains(.stopPointRef) {
                 self = try .stopPointRef(
                     container.decode(
                         String.self,
-                        forKey: StrippedPrefixCodingKey.stripPrefix(fromKey: CodingKeys.stopPointRef)
+                        forKey: .stopPointRef
                     )
                 )
             } else {
