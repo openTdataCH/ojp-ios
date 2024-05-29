@@ -75,7 +75,7 @@ final class TripRequestTests: XCTestCase {
             XCTFail()
         }
     }
-    
+
     func testParseTrip_With_Tranfer_Legs() async throws {
         let xmlData = try TestHelpers.loadXML(xmlFilename: "tr-with-transfer-legs")
 

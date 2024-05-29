@@ -9,7 +9,6 @@ import Foundation
 
 let OJP_SDK_Name = "IOS_SDK"
 
-
 public struct OJPv2: Codable {
     let request: Request?
     let response: Response?

@@ -39,7 +39,6 @@ struct NamespaceAwareCodingKey: CodingKey {
             return NamespaceAwareCodingKey(stringValue: strippedKey)!
         }
 
-
         if !ojpNS.isEmpty, key.stringValue.contains(ojpNS) {
             // removes a potential "ojp" namespace to match the the type's CodingKeys
             mapping[strippedKey] = strippedKey
@@ -61,11 +60,10 @@ struct NamespaceAwareCodingKey: CodingKey {
     }
 }
 
-
 enum OJPDecoder {
     static func parseXML<T: Decodable>(_: T.Type, _ xmlData: Data) throws -> T {
         let decoder = XMLDecoder()
-        
+
         siriNameSpace = ""
         ojpNameSpace = ""
         keyMapping = [:]

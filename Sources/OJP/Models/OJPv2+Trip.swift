@@ -179,7 +179,7 @@ public extension OJPv2 {
         public let legStart: PlaceRefChoice
         public let legEnd: PlaceRefChoice
         public let duration: String
-        
+
         enum CodingKeys: String, CodingKey {
             case transferTypes = "TransferType"
             case duration = "Duration"

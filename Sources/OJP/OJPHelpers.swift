@@ -24,7 +24,6 @@ public enum DepArrTime {
 }
 
 enum OJPHelpers {
-
     class TripRequest {
         init(requesterReference: String) {
             self.requesterReference = requesterReference
