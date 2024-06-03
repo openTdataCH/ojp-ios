@@ -53,26 +53,18 @@ final class SystemTests: XCTestCase {
 
         let tripsAfter = try await ojpSdk.requestTrips(from: originDidok, to: destinationDidok, params: .init(numberOfResult: .after(20), includeIntermediateStops: true))
 
-        let nowDates = tripsNow.compactMap(\.tripType.trip).map { ($0.startTime, $0.endTime) }
+        let beforeDates = tripsBefore.compactMap(\.tripType.trip).map { $0.startTime }
+        let afterDates = tripsAfter.compactMap(\.tripType.trip).map { $0.startTime }
 
-        let beforeDates = tripsBefore.compactMap(\.tripType.trip).map { ($0.startTime, $0.endTime) }
+        XCTAssertFalse(tripsBefore.isEmpty)
+        XCTAssertFalse(tripsNow.isEmpty)
+        XCTAssertFalse(tripsAfter.isEmpty)
 
-        let afterDates = tripsAfter.compactMap(\.tripType.trip).map { ($0.startTime, $0.endTime) }
+        XCTAssertLessThan(beforeDates.last!, afterDates.first!)
 
-//        print("now")
-//        print(nowDates.map({ "Start: \($0.0.formatted(.iso8601)) – End: \($0.1.formatted(.iso8601))" }))
-//
-        print("----")
-        print("before")
-        print(beforeDates.map { "Start: \($0.0.formatted(.iso8601)) – End: \($0.1.formatted(.iso8601))" })
+        XCTAssertEqual(beforeDates.sorted(), beforeDates)
+        XCTAssertEqual(afterDates.sorted(), afterDates)
 
-        print("----")
-        print("after")
-        print(afterDates.map { "Start: \($0.0.formatted(.iso8601)) – End: \($0.1.formatted(.iso8601))" })
-
-        //        XCTAssert(afterDates != beforeDates)
-
-        //        XCTAssert(!trips.isEmpty)
     }
     //
 //    func testFetchTripWithCoordinates() async throws {
