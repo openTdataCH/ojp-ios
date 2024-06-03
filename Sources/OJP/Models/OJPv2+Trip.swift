@@ -281,8 +281,8 @@ public extension OJPv2 {
         public let plannedQuai: InternationalText?
         public let estimatedQuay: InternationalText?
 
-        public let serviceArrival: ServiceArrival
-        public let serviceDeparture: ServiceDeparture
+        public let serviceArrival: ServiceArrival? // Set as optional until https://github.com/openTdataCH/ojp-sdk/issues/42 is fixed
+        public let serviceDeparture: ServiceDeparture?  // Set as optional until https://github.com/openTdataCH/ojp-sdk/issues/42 is fixed
 
         // https://vdvde.github.io/OJP/develop/index.html#StopCallStatusGroup
         public let order: Int?
