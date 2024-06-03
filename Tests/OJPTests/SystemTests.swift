@@ -49,9 +49,9 @@ final class SystemTests: XCTestCase {
 
         let tripsNow = try await ojpSdk.requestTrips(from: originDidok, to: destinationDidok, params: .init(includeIntermediateStops: true))
 
-        let tripsBefore = try await ojpSdk.requestTrips(from: originDidok, to: destinationDidok, params: .init(numberOfResult: .before(20), includeIntermediateStops: true))
+        let tripsBefore = try await ojpSdk.requestTrips(from: originDidok, to: destinationDidok, params: .init(numberOfResults: .before(20), includeIntermediateStops: true))
 
-        let tripsAfter = try await ojpSdk.requestTrips(from: originDidok, to: destinationDidok, params: .init(numberOfResult: .after(20), includeIntermediateStops: true))
+        let tripsAfter = try await ojpSdk.requestTrips(from: originDidok, to: destinationDidok, params: .init(numberOfResults: .after(20), includeIntermediateStops: true))
 
         let beforeDates = tripsBefore.compactMap(\.tripType.trip).map { $0.startTime }
         let afterDates = tripsAfter.compactMap(\.tripType.trip).map { $0.startTime }

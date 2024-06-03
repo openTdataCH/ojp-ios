@@ -561,8 +561,8 @@ public extension OJPv2 {
 
     // https://vdvde.github.io/OJP/develop/index.html#TripParamStructure
     struct TripParams: Codable {
-        public init(numberOfResult: NumberOfResults = .minimum(10), includeTrackSections: Bool? = nil, includeLegProjection: Bool? = nil, includeTurnDescription: Bool? = nil, includeIntermediateStops: Bool? = nil) {
-            switch numberOfResult {
+        public init(numberOfResults: NumberOfResults = .minimum(10), includeTrackSections: Bool? = nil, includeLegProjection: Bool? = nil, includeTurnDescription: Bool? = nil, includeIntermediateStops: Bool? = nil) {
+            switch numberOfResults {
             case let .before(numberOfResults):
                 numberOfResultsBefore = numberOfResults
             case let .after(numberOfResults):
