@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import XMLCoder
 
 public extension OJPv2 {
     struct TripDelivery: Codable {
@@ -71,6 +72,13 @@ public extension OJPv2 {
                 } else {
                     throw OJPSDKError.notImplemented()
                 }
+            }
+
+            var trip: Trip? {
+                if case let .trip(trip) = self {
+                    return trip
+                }
+                return nil
             }
         }
     }
@@ -470,7 +478,7 @@ public extension OJPv2 {
         public let origin: PlaceContext
         public let destination: PlaceContext
         public let via: [TripVia]?
-        public let params: Params?
+        public let params: TripParams?
 
         public enum CodingKeys: String, CodingKey {
             case requestTimestamp = "siri:RequestTimestamp"
@@ -551,30 +559,57 @@ public extension OJPv2 {
         }
     }
 
-    struct Params: Codable {
-        public init(numberOfResultsBefore: Int? = nil, numberOfResultsAfter: Int? = nil, includeTrackSections: Bool? = nil, includeLegProjection: Bool? = nil, includeTurnDescription: Bool? = nil, includeIntermediateStops: Bool? = nil) {
-            self.numberOfResultsBefore = numberOfResultsBefore
-            self.numberOfResultsAfter = numberOfResultsAfter
+    // https://vdvde.github.io/OJP/develop/index.html#TripParamStructure
+    struct TripParams: Codable {
+        public init(numberOfResult: NumberOfResults = .minimum(10), includeTrackSections: Bool? = nil, includeLegProjection: Bool? = nil, includeTurnDescription: Bool? = nil, includeIntermediateStops: Bool? = nil) {
+            switch numberOfResult {
+            case let .before(numberOfResults):
+                numberOfResultsBefore = numberOfResults
+            case let .after(numberOfResults):
+                numberOfResultsAfter = numberOfResults
+            case let .minimum(count):
+                _numberOfResults = count
+            }
+
             self.includeTrackSections = includeTrackSections
             self.includeLegProjection = includeLegProjection
             self.includeTurnDescription = includeTurnDescription
             self.includeIntermediateStops = includeIntermediateStops
         }
 
-        let numberOfResultsBefore: Int?
-        let numberOfResultsAfter: Int?
+        private var numberOfResultsBefore: Int? = nil
+        private var numberOfResultsAfter: Int? = nil
+        private var _numberOfResults: Int? = nil
+
         let includeTrackSections: Bool?
         let includeLegProjection: Bool?
         let includeTurnDescription: Bool?
         let includeIntermediateStops: Bool?
 
+        var numberOfResults: NumberOfResults {
+            if let numberOfResultsBefore {
+                return .before(numberOfResultsBefore)
+            }
+            if let numberOfResultsAfter {
+                return .after(numberOfResultsAfter)
+            }
+            return .minimum(_numberOfResults ?? 10)
+        }
+
         public enum CodingKeys: String, CodingKey {
             case numberOfResultsBefore = "NumberOfResultsBefore"
             case numberOfResultsAfter = "NumberOfResultsAfter"
+            case _numberOfResults = "NumberOfResults"
             case includeTrackSections = "IncludeTrackSections"
             case includeLegProjection = "IncludeLegProjection"
             case includeTurnDescription = "IncludeTurnDescription"
             case includeIntermediateStops = "IncludeIntermediateStops"
         }
+    }
+
+    enum NumberOfResults: Codable {
+        case before(Int)
+        case after(Int)
+        case minimum(Int)
     }
 }

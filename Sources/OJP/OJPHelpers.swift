@@ -31,7 +31,7 @@ enum OJPHelpers {
 
         let requesterReference: String
 
-        public func requestTrips(from: OJPv2.PlaceRefChoice, to: OJPv2.PlaceRefChoice, via: [OJPv2.PlaceRefChoice]?, at: DepArrTime, params: OJPv2.Params) -> OJPv2 {
+        public func requestTrips(from: OJPv2.PlaceRefChoice, to: OJPv2.PlaceRefChoice, via: [OJPv2.PlaceRefChoice]?, at: DepArrTime, params: OJPv2.TripParams) -> OJPv2 {
             let requestTimestamp = Date()
             let origin: OJPv2.PlaceContext
             let destination: OJPv2.PlaceContext

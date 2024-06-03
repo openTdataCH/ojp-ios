@@ -40,7 +40,41 @@ final class SystemTests: XCTestCase {
 
         XCTAssert(!trips.isEmpty)
     }
+
+    func testFetchTripWithDifferentNumberOfResultPolicies() async throws {
+        let ojpSdk = OJP(loadingStrategy: .http(.int))
+
+        let originDidok = OJPv2.PlaceRefChoice.stopPlaceRef("8507110")
+        let destinationDidok = OJPv2.PlaceRefChoice.stopPlaceRef("8508052")
+
+        let tripsNow = try await ojpSdk.requestTrips(from: originDidok, to: destinationDidok, params: .init(includeIntermediateStops: true))
+
+        let tripsBefore = try await ojpSdk.requestTrips(from: originDidok, to: destinationDidok, params: .init(numberOfResult: .before(20), includeIntermediateStops: true))
+
+        let tripsAfter = try await ojpSdk.requestTrips(from: originDidok, to: destinationDidok, params: .init(numberOfResult: .after(20), includeIntermediateStops: true))
+
+        let nowDates = tripsNow.compactMap(\.tripType.trip).map { ($0.startTime, $0.endTime) }
+
+        let beforeDates = tripsBefore.compactMap(\.tripType.trip).map { ($0.startTime, $0.endTime) }
+
+        let afterDates = tripsAfter.compactMap(\.tripType.trip).map { ($0.startTime, $0.endTime) }
+
+//        print("now")
+//        print(nowDates.map({ "Start: \($0.0.formatted(.iso8601)) – End: \($0.1.formatted(.iso8601))" }))
 //
+        print("----")
+        print("before")
+        print(beforeDates.map { "Start: \($0.0.formatted(.iso8601)) – End: \($0.1.formatted(.iso8601))" })
+
+        print("----")
+        print("after")
+        print(afterDates.map { "Start: \($0.0.formatted(.iso8601)) – End: \($0.1.formatted(.iso8601))" })
+
+        //        XCTAssert(afterDates != beforeDates)
+
+        //        XCTAssert(!trips.isEmpty)
+    }
+    //
 //    func testFetchTripWithCoordinates() async throws {
 //        let ojpSdk = OJP(loadingStrategy: .http(.int))
 //
