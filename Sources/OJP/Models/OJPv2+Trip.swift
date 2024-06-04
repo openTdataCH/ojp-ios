@@ -73,17 +73,19 @@ public extension OJPv2 {
                     throw OJPSDKError.notImplemented()
                 }
             }
+        }
 
-            var trip: Trip? {
-                if case let .trip(trip) = self {
-                    return trip
-                }
-                return nil
+        /// convenience property to access the underlying trip (as TripSummary is currently not supported)
+        public var trip: Trip? {
+            if case let .trip(trip) = tripType {
+                return trip
             }
+            return nil
         }
     }
 
     struct Trip: Codable {
+        /// Unique within trip response. This ID can't be used over mutliple ``OJPv2/TripRequest``
         public let id: String
         public let duration: String
         public let startTime: Date
@@ -101,6 +103,32 @@ public extension OJPv2 {
             case distance = "Distance"
             case legs = "Leg"
         }
+
+        /// TripHash similar to the implementation in the JS SDK
+        /// - Note: not clear if that is required, or if numberOfResultsBefore/After will always take respect the date
+        public var tripHash: Int {
+            var h = Hasher()
+
+            for leg in legs {
+                switch leg.legType {
+                case .continous(let continuousLeg):
+                    // TODO: Implement
+                    h.combine("continuousLeg")
+                case .timed(let timedLeg):
+                    h.combine(timedLeg.service.publishedServiceName?.text ?? "TODO: REMOVE WHEN FIXED")
+                    h.combine(timedLeg.legBoard.stopPointName.text)
+                    h.combine(timedLeg.legBoard.serviceDeparture.timetabledTime)
+                    
+                    h.combine(timedLeg.legAlight.serviceArrival.timetabledTime)
+                    h.combine(timedLeg.legAlight.stopPointName.text)
+                case .transfer(let transferLeg):
+                    h.combine(transferLeg.transferTypes.hashValue)
+                    h.combine(transferLeg.duration)
+                }
+            }
+            return h.finalize()
+        }
+
     }
 
     // https://vdvde.github.io/OJP/develop/index.html#LegStructure
