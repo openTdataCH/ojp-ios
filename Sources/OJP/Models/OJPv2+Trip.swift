@@ -115,7 +115,7 @@ public extension OJPv2 {
                     // TODO: Implement
                     h.combine("continuousLeg")
                 case .timed(let timedLeg):
-                    h.combine(timedLeg.service.publishedServiceName?.text ?? "TODO: REMOVE WHEN FIXED")
+                    h.combine(timedLeg.service.publishedServiceName.text)
                     h.combine(timedLeg.legBoard.stopPointName.text)
                     h.combine(timedLeg.legBoard.serviceDeparture.timetabledTime)
                     
@@ -413,7 +413,7 @@ public extension OJPv2 {
 
         public let mode: Mode
         public let productCategory: ProductCategory?
-        public let publishedServiceName: InternationalText? // TODO: https://github.com/openTdataCH/ojp-sdk/issues/23
+        public let publishedServiceName: InternationalText
 
         public let trainNumber: String?
         public let vehicleRef: String?
