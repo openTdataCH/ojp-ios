@@ -53,8 +53,8 @@ final class SystemTests: XCTestCase {
 
         let tripsAfter = try await ojpSdk.requestTrips(from: originDidok, to: destinationDidok, params: .init(numberOfResults: .after(20), includeIntermediateStops: true))
 
-        let beforeDates = tripsBefore.compactMap(\.tripType.trip).map { $0.startTime }
-        let afterDates = tripsAfter.compactMap(\.tripType.trip).map { $0.startTime }
+        let beforeDates = tripsBefore.compactMap(\.trip).map { $0.startTime }
+        let afterDates = tripsAfter.compactMap(\.trip).map { $0.startTime }
 
         XCTAssertFalse(tripsBefore.isEmpty)
         XCTAssertFalse(tripsNow.isEmpty)
