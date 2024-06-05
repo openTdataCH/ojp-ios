@@ -91,4 +91,35 @@ final class TripRequestTests: XCTestCase {
             XCTFail()
         }
     }
+
+    func testTripHash() async throws {
+        let xmlData1 = try TestHelpers.loadXML(xmlFilename: "tr-bern-baerenplatz1")
+        let xmlData2 = try TestHelpers.loadXML(xmlFilename: "tr-bern-baerenplatz2")
+
+        guard case let .trip(tripDelivery1) = try OJPDecoder.parseXML(xmlData1).response?.serviceDelivery.delivery,
+              case let .trip(tripDelivery2) = try OJPDecoder.parseXML(xmlData2).response?.serviceDelivery.delivery else {
+            return XCTFail("unexpected empty")
+        }
+        XCTAssertEqual(tripDelivery1.tripResults.count, tripDelivery2.tripResults.count)
+        let trips1 = tripDelivery1.tripResults.compactMap({ $0.trip })
+        let trips2 = tripDelivery2.tripResults.compactMap({ $0.trip })
+
+        XCTAssertNotEqual(trips1.map({$0.tripHash}), trips2.map({$0.tripHash}))
+
+        let sum = trips1 + trips2
+        XCTAssertEqual(sum.count, 12)
+
+        var insertedHashes: Set<Int> = []
+        var uniqued: [OJPv2.Trip] = []
+
+        sum.forEach {
+            guard !insertedHashes.contains($0.tripHash) else {
+                return
+            }
+            uniqued.append($0)
+            insertedHashes.insert($0.tripHash)
+        }
+
+        XCTAssertEqual(uniqued.count, 11)
+    }
 }
