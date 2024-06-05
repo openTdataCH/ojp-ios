@@ -85,7 +85,8 @@ public extension OJPv2 {
     }
 
     struct Trip: Codable {
-        /// Unique within trip response. This ID can't be used over mutliple ``OJPv2/TripRequest``
+        /// Unique within trip response. This ID must not be used over mutliple ``OJPv2/TripRequest``
+        /// - Warning: This ID must not be used over mutliple ``OJPv2/TripRequest``. Use ``tripHash`` instead.
         public let id: String
         public let duration: String
         public let startTime: Date
@@ -104,31 +105,30 @@ public extension OJPv2 {
             case legs = "Leg"
         }
 
-        /// TripHash similar to the implementation in the JS SDK
-        /// - Note: not clear if that is required, or if numberOfResultsBefore/After will always take respect the date
+        /// Trip hash similar to the implementation in the JS SDK.
+        /// Can be used to de-duplicate trips in ``OJPv2/TripResult``
         public var tripHash: Int {
             var h = Hasher()
 
             for leg in legs {
                 switch leg.legType {
-                case .continous(let continuousLeg):
+                case let .continous(continuousLeg):
                     // TODO: Implement
                     h.combine("continuousLeg")
-                case .timed(let timedLeg):
+                case let .timed(timedLeg):
                     h.combine(timedLeg.service.publishedServiceName.text)
                     h.combine(timedLeg.legBoard.stopPointName.text)
                     h.combine(timedLeg.legBoard.serviceDeparture.timetabledTime)
-                    
+
                     h.combine(timedLeg.legAlight.serviceArrival.timetabledTime)
                     h.combine(timedLeg.legAlight.stopPointName.text)
-                case .transfer(let transferLeg):
+                case let .transfer(transferLeg):
                     h.combine(transferLeg.transferTypes.hashValue)
                     h.combine(transferLeg.duration)
                 }
             }
             return h.finalize()
         }
-
     }
 
     // https://vdvde.github.io/OJP/develop/index.html#LegStructure
@@ -310,7 +310,7 @@ public extension OJPv2 {
         public let estimatedQuay: InternationalText?
 
         public let serviceArrival: ServiceArrival? // Set as optional until https://github.com/openTdataCH/ojp-sdk/issues/42 is fixed
-        public let serviceDeparture: ServiceDeparture?  // Set as optional until https://github.com/openTdataCH/ojp-sdk/issues/42 is fixed
+        public let serviceDeparture: ServiceDeparture? // Set as optional until https://github.com/openTdataCH/ojp-sdk/issues/42 is fixed
 
         // https://vdvde.github.io/OJP/develop/index.html#StopCallStatusGroup
         public let order: Int?
@@ -589,7 +589,13 @@ public extension OJPv2 {
 
     // https://vdvde.github.io/OJP/develop/index.html#TripParamStructure
     struct TripParams: Codable {
-        public init(numberOfResults: NumberOfResults = .minimum(10), includeTrackSections: Bool? = nil, includeLegProjection: Bool? = nil, includeTurnDescription: Bool? = nil, includeIntermediateStops: Bool? = nil) {
+        public init(
+            numberOfResults: NumberOfResults = .minimum(10),
+            includeTrackSections: Bool? = nil,
+            includeLegProjection: Bool? = nil,
+            includeTurnDescription: Bool? = nil,
+            includeIntermediateStops: Bool? = nil
+        ) {
             switch numberOfResults {
             case let .before(numberOfResults):
                 numberOfResultsBefore = numberOfResults
@@ -635,6 +641,7 @@ public extension OJPv2 {
         }
     }
 
+    /// Convenience enum to define [NumberOfResults](https://vdvde.github.io/OJP/develop/index.html#NumberOfResultsGroup)
     enum NumberOfResults: Codable {
         case before(Int)
         case after(Int)

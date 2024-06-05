@@ -97,14 +97,15 @@ final class TripRequestTests: XCTestCase {
         let xmlData2 = try TestHelpers.loadXML(xmlFilename: "tr-bern-baerenplatz2")
 
         guard case let .trip(tripDelivery1) = try OJPDecoder.parseXML(xmlData1).response?.serviceDelivery.delivery,
-              case let .trip(tripDelivery2) = try OJPDecoder.parseXML(xmlData2).response?.serviceDelivery.delivery else {
+              case let .trip(tripDelivery2) = try OJPDecoder.parseXML(xmlData2).response?.serviceDelivery.delivery
+        else {
             return XCTFail("unexpected empty")
         }
         XCTAssertEqual(tripDelivery1.tripResults.count, tripDelivery2.tripResults.count)
-        let trips1 = tripDelivery1.tripResults.compactMap({ $0.trip })
-        let trips2 = tripDelivery2.tripResults.compactMap({ $0.trip })
+        let trips1 = tripDelivery1.tripResults.compactMap(\.trip)
+        let trips2 = tripDelivery2.tripResults.compactMap(\.trip)
 
-        XCTAssertNotEqual(trips1.map({$0.tripHash}), trips2.map({$0.tripHash}))
+        XCTAssertNotEqual(trips1.map(\.tripHash), trips2.map(\.tripHash))
 
         let sum = trips1 + trips2
         XCTAssertEqual(sum.count, 12)
@@ -112,12 +113,12 @@ final class TripRequestTests: XCTestCase {
         var insertedHashes: Set<Int> = []
         var uniqued: [OJPv2.Trip] = []
 
-        sum.forEach {
-            guard !insertedHashes.contains($0.tripHash) else {
-                return
+        for item in sum {
+            guard !insertedHashes.contains(item.tripHash) else {
+                continue
             }
-            uniqued.append($0)
-            insertedHashes.insert($0.tripHash)
+            uniqued.append(item)
+            insertedHashes.insert(item.tripHash)
         }
 
         XCTAssertEqual(uniqued.count, 11)
