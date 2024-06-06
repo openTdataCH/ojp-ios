@@ -40,7 +40,32 @@ final class SystemTests: XCTestCase {
 
         XCTAssert(!trips.isEmpty)
     }
-//
+
+    func testFetchTripWithDifferentNumberOfResultPolicies() async throws {
+        let ojpSdk = OJP(loadingStrategy: .http(.int))
+
+        let originDidok = OJPv2.PlaceRefChoice.stopPlaceRef("8507110")
+        let destinationDidok = OJPv2.PlaceRefChoice.stopPlaceRef("8508052")
+
+        let tripsNow = try await ojpSdk.requestTrips(from: originDidok, to: destinationDidok, params: .init(includeIntermediateStops: true))
+
+        let tripsBefore = try await ojpSdk.requestTrips(from: originDidok, to: destinationDidok, params: .init(numberOfResults: .before(20), includeIntermediateStops: true))
+
+        let tripsAfter = try await ojpSdk.requestTrips(from: originDidok, to: destinationDidok, params: .init(numberOfResults: .after(20), includeIntermediateStops: true))
+
+        let beforeDates = tripsBefore.compactMap(\.trip).map(\.startTime)
+        let afterDates = tripsAfter.compactMap(\.trip).map(\.startTime)
+
+        XCTAssertFalse(tripsBefore.isEmpty)
+        XCTAssertFalse(tripsNow.isEmpty)
+        XCTAssertFalse(tripsAfter.isEmpty)
+
+        XCTAssertLessThan(beforeDates.last!, afterDates.first!)
+
+        XCTAssertEqual(beforeDates.sorted(), beforeDates)
+        XCTAssertEqual(afterDates.sorted(), afterDates)
+    }
+    //
 //    func testFetchTripWithCoordinates() async throws {
 //        let ojpSdk = OJP(loadingStrategy: .http(.int))
 //

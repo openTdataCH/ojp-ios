@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import XMLCoder
 
 public extension OJPv2 {
     struct TripDelivery: Codable {
@@ -73,9 +74,19 @@ public extension OJPv2 {
                 }
             }
         }
+
+        /// convenience property to access the underlying trip (as TripSummary is currently not supported)
+        public var trip: Trip? {
+            if case let .trip(trip) = tripType {
+                return trip
+            }
+            return nil
+        }
     }
 
     struct Trip: Codable {
+        /// Unique within trip response. This ID must not be used over mutliple ``OJPv2/TripRequest``
+        /// - Warning: This ID must not be used over mutliple ``OJPv2/TripRequest``. Use ``tripHash`` instead.
         public let id: String
         public let duration: String
         public let startTime: Date
@@ -92,6 +103,31 @@ public extension OJPv2 {
             case transfers = "Transfers"
             case distance = "Distance"
             case legs = "Leg"
+        }
+
+        /// Trip hash similar to the implementation in the JS SDK.
+        /// Can be used to de-duplicate trips in ``OJPv2/TripResult``
+        public var tripHash: Int {
+            var h = Hasher()
+
+            for leg in legs {
+                switch leg.legType {
+                case let .continous(continuousLeg):
+                    // TODO: Implement
+                    h.combine("continuousLeg")
+                case let .timed(timedLeg):
+                    h.combine(timedLeg.service.publishedServiceName.text)
+                    h.combine(timedLeg.legBoard.stopPointName.text)
+                    h.combine(timedLeg.legBoard.serviceDeparture.timetabledTime)
+
+                    h.combine(timedLeg.legAlight.serviceArrival.timetabledTime)
+                    h.combine(timedLeg.legAlight.stopPointName.text)
+                case let .transfer(transferLeg):
+                    h.combine(transferLeg.transferTypes.hashValue)
+                    h.combine(transferLeg.duration)
+                }
+            }
+            return h.finalize()
         }
     }
 
@@ -273,8 +309,8 @@ public extension OJPv2 {
         public let plannedQuai: InternationalText?
         public let estimatedQuay: InternationalText?
 
-        public let serviceArrival: ServiceArrival
-        public let serviceDeparture: ServiceDeparture
+        public let serviceArrival: ServiceArrival? // Set as optional until https://github.com/openTdataCH/ojp-sdk/issues/42 is fixed
+        public let serviceDeparture: ServiceDeparture? // Set as optional until https://github.com/openTdataCH/ojp-sdk/issues/42 is fixed
 
         // https://vdvde.github.io/OJP/develop/index.html#StopCallStatusGroup
         public let order: Int?
@@ -377,7 +413,7 @@ public extension OJPv2 {
 
         public let mode: Mode
         public let productCategory: ProductCategory?
-        public let publishedServiceName: InternationalText? // TODO: https://github.com/openTdataCH/ojp-sdk/issues/23
+        public let publishedServiceName: InternationalText
 
         public let trainNumber: String?
         public let vehicleRef: String?
@@ -470,7 +506,7 @@ public extension OJPv2 {
         public let origin: PlaceContext
         public let destination: PlaceContext
         public let via: [TripVia]?
-        public let params: Params?
+        public let params: TripParams?
 
         public enum CodingKeys: String, CodingKey {
             case requestTimestamp = "siri:RequestTimestamp"
@@ -551,30 +587,64 @@ public extension OJPv2 {
         }
     }
 
-    struct Params: Codable {
-        public init(numberOfResultsBefore: Int? = nil, numberOfResultsAfter: Int? = nil, includeTrackSections: Bool? = nil, includeLegProjection: Bool? = nil, includeTurnDescription: Bool? = nil, includeIntermediateStops: Bool? = nil) {
-            self.numberOfResultsBefore = numberOfResultsBefore
-            self.numberOfResultsAfter = numberOfResultsAfter
+    // https://vdvde.github.io/OJP/develop/index.html#TripParamStructure
+    struct TripParams: Codable {
+        public init(
+            numberOfResults: NumberOfResults = .minimum(10),
+            includeTrackSections: Bool? = nil,
+            includeLegProjection: Bool? = nil,
+            includeTurnDescription: Bool? = nil,
+            includeIntermediateStops: Bool? = nil
+        ) {
+            switch numberOfResults {
+            case let .before(numberOfResults):
+                numberOfResultsBefore = numberOfResults
+            case let .after(numberOfResults):
+                numberOfResultsAfter = numberOfResults
+            case let .minimum(count):
+                _numberOfResults = count
+            }
+
             self.includeTrackSections = includeTrackSections
             self.includeLegProjection = includeLegProjection
             self.includeTurnDescription = includeTurnDescription
             self.includeIntermediateStops = includeIntermediateStops
         }
 
-        let numberOfResultsBefore: Int?
-        let numberOfResultsAfter: Int?
+        private var numberOfResultsBefore: Int? = nil
+        private var numberOfResultsAfter: Int? = nil
+        private var _numberOfResults: Int? = nil
+
         let includeTrackSections: Bool?
         let includeLegProjection: Bool?
         let includeTurnDescription: Bool?
         let includeIntermediateStops: Bool?
 
+        var numberOfResults: NumberOfResults {
+            if let numberOfResultsBefore {
+                return .before(numberOfResultsBefore)
+            }
+            if let numberOfResultsAfter {
+                return .after(numberOfResultsAfter)
+            }
+            return .minimum(_numberOfResults ?? 10)
+        }
+
         public enum CodingKeys: String, CodingKey {
             case numberOfResultsBefore = "NumberOfResultsBefore"
             case numberOfResultsAfter = "NumberOfResultsAfter"
+            case _numberOfResults = "NumberOfResults"
             case includeTrackSections = "IncludeTrackSections"
             case includeLegProjection = "IncludeLegProjection"
             case includeTurnDescription = "IncludeTurnDescription"
             case includeIntermediateStops = "IncludeIntermediateStops"
         }
+    }
+
+    /// Convenience enum to define [NumberOfResults](https://vdvde.github.io/OJP/develop/index.html#NumberOfResultsGroup)
+    enum NumberOfResults: Codable {
+        case before(Int)
+        case after(Int)
+        case minimum(Int)
     }
 }
