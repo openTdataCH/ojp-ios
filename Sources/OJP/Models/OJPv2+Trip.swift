@@ -459,22 +459,10 @@ public extension OJPv2 {
         }
     }
 
-    // Variation of https://vdvde.github.io/OJP/develop/index.html#PlaceRefStructure
-    // in the future we might get other elements, i.e. GeoPosition
-    struct TrackSectionStopPlaceRef: Codable {
-        public let stopPointRef: String
-        public let stopPointName: InternationalText
-
-        enum CodingKeys: String, CodingKey {
-            case stopPointRef = "siri:StopPointRef"
-            case stopPointName = "StopPointName"
-        }
-    }
-
     // https://vdvde.github.io/OJP/develop/index.html#TrackSectionStructure
     struct TrackSection: Codable {
-        public let trackSectionStart: TrackSectionStopPlaceRef?
-        public let trackSectionEnd: TrackSectionStopPlaceRef?
+        public let trackSectionStart: PlaceRefChoice?
+        public let trackSectionEnd: PlaceRefChoice?
         public let linkProjection: LinearShape?
 
         public enum CodingKeys: String, CodingKey {
