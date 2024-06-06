@@ -54,4 +54,27 @@ final class OJPPerformanceTests: XCTestCase {
             XCTAssert(true)
         }
     }
+
+    func testTripResultPerformance_be_zh_legprojection_singleResult() throws {
+        guard let xmlData = try? TestHelpers.loadXML(xmlFilename: "tr-perf-be-zh-1result-projection")
+        else {
+            return XCTFail("unexpected empty")
+        }
+
+        measure {
+            do {
+                let respone = try OJPDecoder.parseXML(xmlData).response!
+                let delivery = respone.serviceDelivery.delivery
+                switch delivery {
+                case let .trip(tripDelivery):
+                    XCTAssertEqual(tripDelivery.tripResults.count, 1)
+                default:
+                    XCTFail("Unexpeced delivery type: \(type(of: delivery))")
+                }
+            } catch {
+                XCTFail(error.localizedDescription)
+            }
+            XCTAssert(true)
+        }
+    }
 }
