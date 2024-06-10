@@ -420,6 +420,9 @@ public extension OJPv2 {
         public let attributes: [Attribute]
         public let operatorRef: String?
 
+//        public let originText: InternationalText
+        public let destinationText: InternationalText?
+
         public enum CodingKeys: String, CodingKey {
             case conventionalModeOfOperation = "ConventionalModeOfOperation"
             case operatingDayRef = "OperatingDayRef"
@@ -434,6 +437,8 @@ public extension OJPv2 {
             case vehicleRef = "siri:VehicleRef"
             case attributes = "Attribute"
             case operatorRef = "siri:OperatorRef"
+//            case originText = "OriginText" // currently missing (https://github.com/openTdataCH/ojp-sdk/issues/38#issuecomment-2158058636) TODO: Add OriginStopPointRef?
+            case destinationText = "DestinationText" // TODO: Add DestubationStopPointRef?
         }
 
         public enum ConventionalModesOfOperation: String, Codable {
