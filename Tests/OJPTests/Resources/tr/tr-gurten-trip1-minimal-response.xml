@@ -53,6 +53,14 @@
                                         <Text xml:lang="de">2351</Text>
                                     </PublishedServiceName>
                                     <OperatingDayRef>2024-05-14</OperatingDayRef>
+                                    <OriginStopPointRef>8507099</OriginStopPointRef>
+                                    <DestinationStopPointRef>8507097</DestinationStopPointRef>
+                                    <OriginText>
+                                        <Text xml:lang="de">Gurten Kulm</Text>
+                                    </OriginText>
+                                    <DestinationText>
+                                        <Text xml:lang="de">Wabern (Gurtenbahn)</Text>
+                                    </DestinationText>
                                     <JourneyRef>ojp-92-235-1-j24-1-14-TA</JourneyRef>
                                     <Attribute>
                                         <UserText>

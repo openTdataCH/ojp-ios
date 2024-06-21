@@ -420,6 +420,11 @@ public extension OJPv2 {
         public let attributes: [Attribute]
         public let operatorRef: String?
 
+        public let originText: InternationalText
+        public let originStopPointRef: String?
+        public let destinationText: InternationalText?
+        public let destinationStopPointRef: String?
+
         public enum CodingKeys: String, CodingKey {
             case conventionalModeOfOperation = "ConventionalModeOfOperation"
             case operatingDayRef = "OperatingDayRef"
@@ -434,6 +439,10 @@ public extension OJPv2 {
             case vehicleRef = "siri:VehicleRef"
             case attributes = "Attribute"
             case operatorRef = "siri:OperatorRef"
+            case originText = "OriginText" 
+            case originStopPointRef = "OriginStopPointRef"
+            case destinationText = "DestinationText" 
+            case destinationStopPointRef = "DestinationStopPointRef"
         }
 
         public enum ConventionalModesOfOperation: String, Codable {

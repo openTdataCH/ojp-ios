@@ -3,7 +3,7 @@ import XCTest
 
 final class TripRequestTests: XCTestCase {
     func testParseMinimalTripResponse() async throws {
-        let xmlData = try TestHelpers.loadXML(xmlFilename: "tr-gurten-rigi-trip1-minimal-response")
+        let xmlData = try TestHelpers.loadXML(xmlFilename: "tr-gurten-trip1-minimal-response")
         guard let tripDelivery = try OJPDecoder.parseXML(xmlData).response?.serviceDelivery.delivery else {
             return XCTFail("unexpected empty")
         }
@@ -60,8 +60,8 @@ final class TripRequestTests: XCTestCase {
         XCTFail()
     }
 
-    func testParseTrip_ZH_BE() async throws {
-        let xmlData = try TestHelpers.loadXML(xmlFilename: "trip-zh-bern-response")
+    func testParseTrip_BE_ZH() async throws {
+        let xmlData = try TestHelpers.loadXML(xmlFilename: "trip-bern-zh-response")
 
         guard let tripDelivery = try OJPDecoder.parseXML(xmlData).response?.serviceDelivery.delivery else {
             return XCTFail("unexpected empty")
