@@ -1,680 +1,728 @@
 <OJP xmlns="http://www.vdv.de/ojp" xmlns:siri="http://www.siri.org.uk/siri" version="2.0">
-  <OJPResponse>
-    <siri:ServiceDelivery>
-      <siri:ResponseTimestamp>2024-06-05T15:21:11.7999337+02:00</siri:ResponseTimestamp>
-      <siri:ProducerRef>MENTZ</siri:ProducerRef>
-      <OJPTripDelivery>
-        <siri:ResponseTimestamp>2024-06-05T15:21:11.7999347+02:00</siri:ResponseTimestamp>
-        <siri:RequestMessageRef>57564e1c-2960-494c-a906-2e180a41b677</siri:RequestMessageRef>
-        <siri:DefaultLanguage>de</siri:DefaultLanguage>
-        <CalcTime>216</CalcTime>
-        <TripResult>
-          <Id>ID-F8A85ADE-35D4-4397-B8D1-43FACF994D28</Id>
-          <Trip>
-            <Id>ID-F8A85ADE-35D4-4397-B8D1-43FACF994D28</Id>
-            <Duration>PT8M12S</Duration>
-            <StartTime>2024-06-05T13:31:00Z</StartTime>
-            <EndTime>2024-06-05T13:39:12Z</EndTime>
-            <Transfers>0</Transfers>
-            <Leg>
-              <Id>1</Id>
-              <Duration>PT7M</Duration>
-              <TransferLeg>
-                <TransferType>walk</TransferType>
-                <LegStart>
-                  <siri:StopPointRef>8507785</siri:StopPointRef>
-                  <Name>
-                    <Text xml:lang="de">Bern, Hauptbahnhof</Text>
-                  </Name>
-                </LegStart>
-                <LegEnd>
-                  <siri:StopPointRef>8576646</siri:StopPointRef>
-                  <Name>
-                    <Text xml:lang="de">Bern, Bahnhof</Text>
-                  </Name>
-                </LegEnd>
-                <Duration>PT7M</Duration>
-              </TransferLeg>
-            </Leg>
-            <Leg>
-              <Id>2</Id>
-              <Duration>PT1M12S</Duration>
-              <TimedLeg>
-                <LegBoard>
-                  <siri:StopPointRef>ch:1:sloid:76646:0:1</siri:StopPointRef>
-                  <StopPointName>
-                    <Text xml:lang="de">Bern, Bahnhof</Text>
-                  </StopPointName>
-                  <PlannedQuay>
-                    <Text xml:lang="de">B</Text>
-                  </PlannedQuay>
-                  <EstimatedQuay>
-                    <Text xml:lang="de">B</Text>
-                  </EstimatedQuay>
-                  <NameSuffix>
-                    <Text xml:lang="de">PLATFORM_ACCESS_WITH_ASSISTANCE</Text>
-                  </NameSuffix>
-                  <ServiceDeparture>
-                    <TimetabledTime>2024-06-05T13:38:00Z</TimetabledTime>
-                    <EstimatedTime>2024-06-05T13:38:00Z</EstimatedTime>
-                  </ServiceDeparture>
-                  <Order>1</Order>
-                </LegBoard>
-                <LegAlight>
-                  <siri:StopPointRef>ch:1:sloid:88989:0:1</siri:StopPointRef>
-                  <StopPointName>
-                    <Text xml:lang="de">Bern, Bärenplatz</Text>
-                  </StopPointName>
-                  <ServiceArrival>
-                    <TimetabledTime>2024-06-05T13:39:12Z</TimetabledTime>
-                    <EstimatedTime>2024-06-05T13:39:12Z</EstimatedTime>
-                  </ServiceArrival>
-                  <Order>2</Order>
-                </LegAlight>
-                <Service>
-                  <Mode>
-                    <PtMode>tram</PtMode>
-                    <siri:TramSubmode>cityTram</siri:TramSubmode>
-                    <Name>
-                      <Text xml:lang="de">Tram</Text>
-                    </Name>
-                    <ShortName>
-                      <Text xml:lang="de">T</Text>
-                    </ShortName>
-                  </Mode>
-                  <ConventionalModeOfOperation>scheduled</ConventionalModeOfOperation>
-                  <TrainNumber>2161</TrainNumber>
-                  <siri:LineRef>ojp:91006:A</siri:LineRef>
-                  <siri:OperatorRef>827</siri:OperatorRef>
-                  <PublicCode>Tram</PublicCode>
-                  <PublishedServiceName>
-                    <Text xml:lang="de">6</Text>
-                  </PublishedServiceName>
-                  <ProductCategory>
-                    <Name>
-                      <Text xml:lang="de">Tram</Text>
-                    </Name>
-                    <ShortName>
-                      <Text xml:lang="de">T</Text>
-                    </ShortName>
-                    <ProductCategoryRef>2</ProductCategoryRef>
-                  </ProductCategory>
-                  <siri:DirectionRef>H</siri:DirectionRef>
-                  <OperatingDayRef>2024-06-05</OperatingDayRef>
-                  <JourneyRef>ojp-91-6-A-j24-1-712-TA</JourneyRef>
-                  <Attribute>
-                    <UserText>
-                      <Text xml:lang="de">VELOS: Platzzahl eingeschränkt</Text>
-                    </UserText>
-                    <Code>A__VB</Code>
-                  </Attribute>
-                  <Attribute>
-                    <UserText>
-                      <Text xml:lang="de">Niederflureinstieg</Text>
-                    </UserText>
-                    <Code>A__NF</Code>
-                  </Attribute>
-                </Service>
-              </TimedLeg>
-            </Leg>
-          </Trip>
-        </TripResult>
-        <TripResult>
-          <Id>ID-6026AF31-65A1-4658-B4A1-126EB3B143D9</Id>
-          <Trip>
-            <Id>ID-6026AF31-65A1-4658-B4A1-126EB3B143D9</Id>
-            <Duration>PT8M</Duration>
-            <StartTime>2024-06-05T13:33:00Z</StartTime>
-            <EndTime>2024-06-05T13:41:00Z</EndTime>
-            <Transfers>0</Transfers>
-            <Leg>
-              <Id>1</Id>
-              <Duration>PT7M</Duration>
-              <TransferLeg>
-                <TransferType>walk</TransferType>
-                <LegStart>
-                  <siri:StopPointRef>8507785</siri:StopPointRef>
-                  <Name>
-                    <Text xml:lang="de">Bern, Hauptbahnhof</Text>
-                  </Name>
-                </LegStart>
-                <LegEnd>
-                  <siri:StopPointRef>8576646</siri:StopPointRef>
-                  <Name>
-                    <Text xml:lang="de">Bern, Bahnhof</Text>
-                  </Name>
-                </LegEnd>
-                <Duration>PT7M</Duration>
-              </TransferLeg>
-            </Leg>
-            <Leg>
-              <Id>2</Id>
-              <Duration>PT1M</Duration>
-              <TimedLeg>
-                <LegBoard>
-                  <siri:StopPointRef>ch:1:sloid:76646:0:5</siri:StopPointRef>
-                  <StopPointName>
-                    <Text xml:lang="de">Bern, Bahnhof</Text>
-                  </StopPointName>
-                  <PlannedQuay>
-                    <Text xml:lang="de">A</Text>
-                  </PlannedQuay>
-                  <EstimatedQuay>
-                    <Text xml:lang="de">A</Text>
-                  </EstimatedQuay>
-                  <NameSuffix>
-                    <Text xml:lang="de">PLATFORM_ACCESS_WITH_ASSISTANCE</Text>
-                  </NameSuffix>
-                  <ServiceDeparture>
-                    <TimetabledTime>2024-06-05T13:40:00Z</TimetabledTime>
-                    <EstimatedTime>2024-06-05T13:40:00Z</EstimatedTime>
-                  </ServiceDeparture>
-                  <Order>1</Order>
-                </LegBoard>
-                <LegAlight>
-                  <siri:StopPointRef>ch:1:sloid:88989:0:1</siri:StopPointRef>
-                  <StopPointName>
-                    <Text xml:lang="de">Bern, Bärenplatz</Text>
-                  </StopPointName>
-                  <ServiceArrival>
-                    <TimetabledTime>2024-06-05T13:41:00Z</TimetabledTime>
-                    <EstimatedTime>2024-06-05T13:41:00Z</EstimatedTime>
-                  </ServiceArrival>
-                  <Order>2</Order>
-                </LegAlight>
-                <Service>
-                  <Mode>
-                    <PtMode>bus</PtMode>
-                    <siri:BusSubmode>localBus</siri:BusSubmode>
-                    <Name>
-                      <Text xml:lang="de">Bus</Text>
-                    </Name>
-                    <ShortName>
-                      <Text xml:lang="de">B</Text>
-                    </ShortName>
-                  </Mode>
-                  <ConventionalModeOfOperation>scheduled</ConventionalModeOfOperation>
-                  <TrainNumber>14011</TrainNumber>
-                  <siri:LineRef>ojp:92012:_x0020_</siri:LineRef>
-                  <siri:OperatorRef>827</siri:OperatorRef>
-                  <PublicCode>Bus</PublicCode>
-                  <PublishedServiceName>
-                    <Text xml:lang="de">12</Text>
-                  </PublishedServiceName>
-                  <ProductCategory>
-                    <Name>
-                      <Text xml:lang="de">Bus</Text>
-                    </Name>
-                    <ShortName>
-                      <Text xml:lang="de">B</Text>
-                    </ShortName>
-                    <ProductCategoryRef>29</ProductCategoryRef>
-                  </ProductCategory>
-                  <siri:DirectionRef>H</siri:DirectionRef>
-                  <OperatingDayRef>2024-06-05</OperatingDayRef>
-                  <JourneyRef>ojp-92-12-_-j24-1-883-TA</JourneyRef>
-                  <Attribute>
-                    <UserText>
-                      <Text xml:lang="de">VELOS: Platzzahl eingeschränkt</Text>
-                    </UserText>
-                    <Code>A__VB</Code>
-                  </Attribute>
-                  <Attribute>
-                    <UserText>
-                      <Text xml:lang="de">Niederflureinstieg</Text>
-                    </UserText>
-                    <Code>A__NF</Code>
-                  </Attribute>
-                </Service>
-              </TimedLeg>
-            </Leg>
-          </Trip>
-        </TripResult>
-        <TripResult>
-          <Id>ID-BFBD436C-4BA1-4C6B-B57C-A42DDB768BE7</Id>
-          <Trip>
-            <Id>ID-BFBD436C-4BA1-4C6B-B57C-A42DDB768BE7</Id>
-            <Duration>PT8M</Duration>
-            <StartTime>2024-06-05T13:34:00Z</StartTime>
-            <EndTime>2024-06-05T13:42:00Z</EndTime>
-            <Transfers>0</Transfers>
-            <Leg>
-              <Id>1</Id>
-              <Duration>PT7M</Duration>
-              <TransferLeg>
-                <TransferType>walk</TransferType>
-                <LegStart>
-                  <siri:StopPointRef>8507785</siri:StopPointRef>
-                  <Name>
-                    <Text xml:lang="de">Bern, Hauptbahnhof</Text>
-                  </Name>
-                </LegStart>
-                <LegEnd>
-                  <siri:StopPointRef>8576646</siri:StopPointRef>
-                  <Name>
-                    <Text xml:lang="de">Bern, Bahnhof</Text>
-                  </Name>
-                </LegEnd>
-                <Duration>PT7M</Duration>
-              </TransferLeg>
-            </Leg>
-            <Leg>
-              <Id>2</Id>
-              <Duration>PT30S</Duration>
-              <TimedLeg>
-                <LegBoard>
-                  <siri:StopPointRef>ch:1:sloid:76646:0:1</siri:StopPointRef>
-                  <StopPointName>
-                    <Text xml:lang="de">Bern, Bahnhof</Text>
-                  </StopPointName>
-                  <PlannedQuay>
-                    <Text xml:lang="de">B</Text>
-                  </PlannedQuay>
-                  <EstimatedQuay>
-                    <Text xml:lang="de">B</Text>
-                  </EstimatedQuay>
-                  <NameSuffix>
-                    <Text xml:lang="de">PLATFORM_ACCESS_WITH_ASSISTANCE</Text>
-                  </NameSuffix>
-                  <ServiceDeparture>
-                    <TimetabledTime>2024-06-05T13:41:30Z</TimetabledTime>
-                    <EstimatedTime>2024-06-05T13:41:30Z</EstimatedTime>
-                  </ServiceDeparture>
-                  <Order>1</Order>
-                </LegBoard>
-                <LegAlight>
-                  <siri:StopPointRef>ch:1:sloid:88989:0:1</siri:StopPointRef>
-                  <StopPointName>
-                    <Text xml:lang="de">Bern, Bärenplatz</Text>
-                  </StopPointName>
-                  <ServiceArrival>
-                    <TimetabledTime>2024-06-05T13:42:00Z</TimetabledTime>
-                    <EstimatedTime>2024-06-05T13:42:00Z</EstimatedTime>
-                  </ServiceArrival>
-                  <Order>2</Order>
-                </LegAlight>
-                <Service>
-                  <Mode>
-                    <PtMode>tram</PtMode>
-                    <siri:TramSubmode>cityTram</siri:TramSubmode>
-                    <Name>
-                      <Text xml:lang="de">Tram</Text>
-                    </Name>
-                    <ShortName>
-                      <Text xml:lang="de">T</Text>
-                    </ShortName>
-                  </Mode>
-                  <ConventionalModeOfOperation>scheduled</ConventionalModeOfOperation>
-                  <TrainNumber>5847</TrainNumber>
-                  <siri:LineRef>ojp:91008:_x0020_</siri:LineRef>
-                  <siri:OperatorRef>827</siri:OperatorRef>
-                  <PublicCode>Tram</PublicCode>
-                  <PublishedServiceName>
-                    <Text xml:lang="de">8</Text>
-                  </PublishedServiceName>
-                  <ProductCategory>
-                    <Name>
-                      <Text xml:lang="de">Tram</Text>
-                    </Name>
-                    <ShortName>
-                      <Text xml:lang="de">T</Text>
-                    </ShortName>
-                    <ProductCategoryRef>2</ProductCategoryRef>
-                  </ProductCategory>
-                  <siri:DirectionRef>H</siri:DirectionRef>
-                  <OperatingDayRef>2024-06-05</OperatingDayRef>
-                  <JourneyRef>ojp-91-8-_-j24-1-641-TA</JourneyRef>
-                  <Attribute>
-                    <UserText>
-                      <Text xml:lang="de">VELOS: Platzzahl eingeschränkt</Text>
-                    </UserText>
-                    <Code>A__VB</Code>
-                  </Attribute>
-                  <Attribute>
-                    <UserText>
-                      <Text xml:lang="de">Niederflureinstieg</Text>
-                    </UserText>
-                    <Code>A__NF</Code>
-                  </Attribute>
-                </Service>
-              </TimedLeg>
-            </Leg>
-          </Trip>
-        </TripResult>
-        <TripResult>
-          <Id>ID-4B3E9FFD-5E49-411D-8C5C-B1E81768759E</Id>
-          <Trip>
-            <Id>ID-4B3E9FFD-5E49-411D-8C5C-B1E81768759E</Id>
-            <Duration>PT8M</Duration>
-            <StartTime>2024-06-05T13:36:00Z</StartTime>
-            <EndTime>2024-06-05T13:44:00Z</EndTime>
-            <Transfers>0</Transfers>
-            <Leg>
-              <Id>1</Id>
-              <Duration>PT7M</Duration>
-              <TransferLeg>
-                <TransferType>walk</TransferType>
-                <LegStart>
-                  <siri:StopPointRef>8507785</siri:StopPointRef>
-                  <Name>
-                    <Text xml:lang="de">Bern, Hauptbahnhof</Text>
-                  </Name>
-                </LegStart>
-                <LegEnd>
-                  <siri:StopPointRef>8576646</siri:StopPointRef>
-                  <Name>
-                    <Text xml:lang="de">Bern, Bahnhof</Text>
-                  </Name>
-                </LegEnd>
-                <Duration>PT7M</Duration>
-              </TransferLeg>
-            </Leg>
-            <Leg>
-              <Id>2</Id>
-              <Duration>PT1M</Duration>
-              <TimedLeg>
-                <LegBoard>
-                  <siri:StopPointRef>ch:1:sloid:76646:0:1</siri:StopPointRef>
-                  <StopPointName>
-                    <Text xml:lang="de">Bern, Bahnhof</Text>
-                  </StopPointName>
-                  <PlannedQuay>
-                    <Text xml:lang="de">B</Text>
-                  </PlannedQuay>
-                  <EstimatedQuay>
-                    <Text xml:lang="de">B</Text>
-                  </EstimatedQuay>
-                  <NameSuffix>
-                    <Text xml:lang="de">PLATFORM_ACCESS_WITH_ASSISTANCE</Text>
-                  </NameSuffix>
-                  <ServiceDeparture>
-                    <TimetabledTime>2024-06-05T13:43:00Z</TimetabledTime>
-                    <EstimatedTime>2024-06-05T13:43:00Z</EstimatedTime>
-                  </ServiceDeparture>
-                  <Order>1</Order>
-                </LegBoard>
-                <LegAlight>
-                  <siri:StopPointRef>ch:1:sloid:88989:0:1</siri:StopPointRef>
-                  <StopPointName>
-                    <Text xml:lang="de">Bern, Bärenplatz</Text>
-                  </StopPointName>
-                  <ServiceArrival>
-                    <TimetabledTime>2024-06-05T13:44:00Z</TimetabledTime>
-                    <EstimatedTime>2024-06-05T13:44:00Z</EstimatedTime>
-                  </ServiceArrival>
-                  <Order>2</Order>
-                </LegAlight>
-                <Service>
-                  <Mode>
-                    <PtMode>tram</PtMode>
-                    <siri:TramSubmode>cityTram</siri:TramSubmode>
-                    <Name>
-                      <Text xml:lang="de">Tram</Text>
-                    </Name>
-                    <ShortName>
-                      <Text xml:lang="de">T</Text>
-                    </ShortName>
-                  </Mode>
-                  <ConventionalModeOfOperation>scheduled</ConventionalModeOfOperation>
-                  <TrainNumber>8233</TrainNumber>
-                  <siri:LineRef>ojp:91009:_x0020_</siri:LineRef>
-                  <siri:OperatorRef>827</siri:OperatorRef>
-                  <PublicCode>Tram</PublicCode>
-                  <PublishedServiceName>
-                    <Text xml:lang="de">9</Text>
-                  </PublishedServiceName>
-                  <ProductCategory>
-                    <Name>
-                      <Text xml:lang="de">Tram</Text>
-                    </Name>
-                    <ShortName>
-                      <Text xml:lang="de">T</Text>
-                    </ShortName>
-                    <ProductCategoryRef>2</ProductCategoryRef>
-                  </ProductCategory>
-                  <siri:DirectionRef>H</siri:DirectionRef>
-                  <OperatingDayRef>2024-06-05</OperatingDayRef>
-                  <JourneyRef>ojp-91-9-_-j24-1-1185-TA</JourneyRef>
-                  <Attribute>
-                    <UserText>
-                      <Text xml:lang="de">VELOS: Platzzahl eingeschränkt</Text>
-                    </UserText>
-                    <Code>A__VB</Code>
-                  </Attribute>
-                  <Attribute>
-                    <UserText>
-                      <Text xml:lang="de">Niederflureinstieg</Text>
-                    </UserText>
-                    <Code>A__NF</Code>
-                  </Attribute>
-                </Service>
-              </TimedLeg>
-            </Leg>
-          </Trip>
-        </TripResult>
-        <TripResult>
-          <Id>ID-FEFB020A-E55A-4A93-A06F-915EBAAA6658</Id>
-          <Trip>
-            <Id>ID-FEFB020A-E55A-4A93-A06F-915EBAAA6658</Id>
-            <Duration>PT8M</Duration>
-            <StartTime>2024-06-05T13:38:00Z</StartTime>
-            <EndTime>2024-06-05T13:46:00Z</EndTime>
-            <Transfers>0</Transfers>
-            <Leg>
-              <Id>1</Id>
-              <Duration>PT7M</Duration>
-              <TransferLeg>
-                <TransferType>walk</TransferType>
-                <LegStart>
-                  <siri:StopPointRef>8507785</siri:StopPointRef>
-                  <Name>
-                    <Text xml:lang="de">Bern, Hauptbahnhof</Text>
-                  </Name>
-                </LegStart>
-                <LegEnd>
-                  <siri:StopPointRef>8576646</siri:StopPointRef>
-                  <Name>
-                    <Text xml:lang="de">Bern, Bahnhof</Text>
-                  </Name>
-                </LegEnd>
-                <Duration>PT7M</Duration>
-              </TransferLeg>
-            </Leg>
-            <Leg>
-              <Id>2</Id>
-              <Duration>PT1M</Duration>
-              <TimedLeg>
-                <LegBoard>
-                  <siri:StopPointRef>ch:1:sloid:76646:0:5</siri:StopPointRef>
-                  <StopPointName>
-                    <Text xml:lang="de">Bern, Bahnhof</Text>
-                  </StopPointName>
-                  <PlannedQuay>
-                    <Text xml:lang="de">A</Text>
-                  </PlannedQuay>
-                  <EstimatedQuay>
-                    <Text xml:lang="de">A</Text>
-                  </EstimatedQuay>
-                  <NameSuffix>
-                    <Text xml:lang="de">PLATFORM_ACCESS_WITH_ASSISTANCE</Text>
-                  </NameSuffix>
-                  <ServiceDeparture>
-                    <TimetabledTime>2024-06-05T13:45:00Z</TimetabledTime>
-                    <EstimatedTime>2024-06-05T13:45:00Z</EstimatedTime>
-                  </ServiceDeparture>
-                  <Order>1</Order>
-                </LegBoard>
-                <LegAlight>
-                  <siri:StopPointRef>ch:1:sloid:88989:0:1</siri:StopPointRef>
-                  <StopPointName>
-                    <Text xml:lang="de">Bern, Bärenplatz</Text>
-                  </StopPointName>
-                  <ServiceArrival>
-                    <TimetabledTime>2024-06-05T13:46:00Z</TimetabledTime>
-                    <EstimatedTime>2024-06-05T13:46:00Z</EstimatedTime>
-                  </ServiceArrival>
-                  <Order>2</Order>
-                </LegAlight>
-                <Service>
-                  <Mode>
-                    <PtMode>tram</PtMode>
-                    <siri:TramSubmode>cityTram</siri:TramSubmode>
-                    <Name>
-                      <Text xml:lang="de">Tram</Text>
-                    </Name>
-                    <ShortName>
-                      <Text xml:lang="de">T</Text>
-                    </ShortName>
-                  </Mode>
-                  <ConventionalModeOfOperation>scheduled</ConventionalModeOfOperation>
-                  <TrainNumber>3630</TrainNumber>
-                  <siri:LineRef>ojp:91007:_x0020_</siri:LineRef>
-                  <siri:OperatorRef>827</siri:OperatorRef>
-                  <PublicCode>Tram</PublicCode>
-                  <PublishedServiceName>
-                    <Text xml:lang="de">7</Text>
-                  </PublishedServiceName>
-                  <ProductCategory>
-                    <Name>
-                      <Text xml:lang="de">Tram</Text>
-                    </Name>
-                    <ShortName>
-                      <Text xml:lang="de">T</Text>
-                    </ShortName>
-                    <ProductCategoryRef>2</ProductCategoryRef>
-                  </ProductCategory>
-                  <siri:DirectionRef>H</siri:DirectionRef>
-                  <OperatingDayRef>2024-06-05</OperatingDayRef>
-                  <JourneyRef>ojp-91-7-_-j24-1-909-TA</JourneyRef>
-                  <Attribute>
-                    <UserText>
-                      <Text xml:lang="de">VELOS: Platzzahl eingeschränkt</Text>
-                    </UserText>
-                    <Code>A__VB</Code>
-                  </Attribute>
-                  <Attribute>
-                    <UserText>
-                      <Text xml:lang="de">Niederflureinstieg</Text>
-                    </UserText>
-                    <Code>A__NF</Code>
-                  </Attribute>
-                </Service>
-              </TimedLeg>
-            </Leg>
-          </Trip>
-        </TripResult>
-        <TripResult>
-          <Id>ID-6A74B1B6-A8E0-40E5-82EB-F936BDCB9873</Id>
-          <Trip>
-            <Id>ID-6A74B1B6-A8E0-40E5-82EB-F936BDCB9873</Id>
-            <Duration>PT8M12S</Duration>
-            <StartTime>2024-06-05T13:39:00Z</StartTime>
-            <EndTime>2024-06-05T13:47:12Z</EndTime>
-            <Transfers>0</Transfers>
-            <Leg>
-              <Id>1</Id>
-              <Duration>PT7M</Duration>
-              <TransferLeg>
-                <TransferType>walk</TransferType>
-                <LegStart>
-                  <siri:StopPointRef>8507785</siri:StopPointRef>
-                  <Name>
-                    <Text xml:lang="de">Bern, Hauptbahnhof</Text>
-                  </Name>
-                </LegStart>
-                <LegEnd>
-                  <siri:StopPointRef>8576646</siri:StopPointRef>
-                  <Name>
-                    <Text xml:lang="de">Bern, Bahnhof</Text>
-                  </Name>
-                </LegEnd>
-                <Duration>PT7M</Duration>
-              </TransferLeg>
-            </Leg>
-            <Leg>
-              <Id>2</Id>
-              <Duration>PT1M12S</Duration>
-              <TimedLeg>
-                <LegBoard>
-                  <siri:StopPointRef>ch:1:sloid:76646:0:5</siri:StopPointRef>
-                  <StopPointName>
-                    <Text xml:lang="de">Bern, Bahnhof</Text>
-                  </StopPointName>
-                  <PlannedQuay>
-                    <Text xml:lang="de">A</Text>
-                  </PlannedQuay>
-                  <EstimatedQuay>
-                    <Text xml:lang="de">A</Text>
-                  </EstimatedQuay>
-                  <NameSuffix>
-                    <Text xml:lang="de">PLATFORM_ACCESS_WITH_ASSISTANCE</Text>
-                  </NameSuffix>
-                  <ServiceDeparture>
-                    <TimetabledTime>2024-06-05T13:46:00Z</TimetabledTime>
-                    <EstimatedTime>2024-06-05T13:46:00Z</EstimatedTime>
-                  </ServiceDeparture>
-                  <Order>1</Order>
-                </LegBoard>
-                <LegAlight>
-                  <siri:StopPointRef>ch:1:sloid:88989:0:1</siri:StopPointRef>
-                  <StopPointName>
-                    <Text xml:lang="de">Bern, Bärenplatz</Text>
-                  </StopPointName>
-                  <ServiceArrival>
-                    <TimetabledTime>2024-06-05T13:47:12Z</TimetabledTime>
-                    <EstimatedTime>2024-06-05T13:47:12Z</EstimatedTime>
-                  </ServiceArrival>
-                  <Order>2</Order>
-                </LegAlight>
-                <Service>
-                  <Mode>
-                    <PtMode>bus</PtMode>
-                    <siri:BusSubmode>localBus</siri:BusSubmode>
-                    <Name>
-                      <Text xml:lang="de">Bus</Text>
-                    </Name>
-                    <ShortName>
-                      <Text xml:lang="de">B</Text>
-                    </ShortName>
-                  </Mode>
-                  <ConventionalModeOfOperation>scheduled</ConventionalModeOfOperation>
-                  <TrainNumber>14025</TrainNumber>
-                  <siri:LineRef>ojp:92012:_x0020_</siri:LineRef>
-                  <siri:OperatorRef>827</siri:OperatorRef>
-                  <PublicCode>Bus</PublicCode>
-                  <PublishedServiceName>
-                    <Text xml:lang="de">12</Text>
-                  </PublishedServiceName>
-                  <ProductCategory>
-                    <Name>
-                      <Text xml:lang="de">Bus</Text>
-                    </Name>
-                    <ShortName>
-                      <Text xml:lang="de">B</Text>
-                    </ShortName>
-                    <ProductCategoryRef>29</ProductCategoryRef>
-                  </ProductCategory>
-                  <siri:DirectionRef>H</siri:DirectionRef>
-                  <OperatingDayRef>2024-06-05</OperatingDayRef>
-                  <JourneyRef>ojp-92-12-_-j24-1-903-TA</JourneyRef>
-                  <Attribute>
-                    <UserText>
-                      <Text xml:lang="de">VELOS: Platzzahl eingeschränkt</Text>
-                    </UserText>
-                    <Code>A__VB</Code>
-                  </Attribute>
-                  <Attribute>
-                    <UserText>
-                      <Text xml:lang="de">Niederflureinstieg</Text>
-                    </UserText>
-                    <Code>A__NF</Code>
-                  </Attribute>
-                </Service>
-              </TimedLeg>
-            </Leg>
-          </Trip>
-        </TripResult>
-      </OJPTripDelivery>
-    </siri:ServiceDelivery>
-  </OJPResponse>
+    <OJPResponse>
+        <siri:ServiceDelivery>
+            <siri:ResponseTimestamp>2024-06-05T15:21:11.7999337+02:00</siri:ResponseTimestamp>
+            <siri:ProducerRef>MENTZ</siri:ProducerRef>
+            <OJPTripDelivery>
+                <siri:ResponseTimestamp>2024-06-05T15:21:11.7999347+02:00</siri:ResponseTimestamp>
+                <siri:RequestMessageRef>57564e1c-2960-494c-a906-2e180a41b677</siri:RequestMessageRef>
+                <siri:DefaultLanguage>de</siri:DefaultLanguage>
+                <CalcTime>216</CalcTime>
+                <TripResult>
+                    <Id>ID-F8A85ADE-35D4-4397-B8D1-43FACF994D28</Id>
+                    <Trip>
+                        <Id>ID-F8A85ADE-35D4-4397-B8D1-43FACF994D28</Id>
+                        <Duration>PT8M12S</Duration>
+                        <StartTime>2024-06-05T13:31:00Z</StartTime>
+                        <EndTime>2024-06-05T13:39:12Z</EndTime>
+                        <Transfers>0</Transfers>
+                        <Leg>
+                            <Id>1</Id>
+                            <Duration>PT7M</Duration>
+                            <TransferLeg>
+                                <TransferType>walk</TransferType>
+                                <LegStart>
+                                    <siri:StopPointRef>8507785</siri:StopPointRef>
+                                    <Name>
+                                        <Text xml:lang="de">Bern, Hauptbahnhof</Text>
+                                    </Name>
+                                </LegStart>
+                                <LegEnd>
+                                    <siri:StopPointRef>8576646</siri:StopPointRef>
+                                    <Name>
+                                        <Text xml:lang="de">Bern, Bahnhof</Text>
+                                    </Name>
+                                </LegEnd>
+                                <Duration>PT7M</Duration>
+                            </TransferLeg>
+                        </Leg>
+                        <Leg>
+                            <Id>2</Id>
+                            <Duration>PT1M12S</Duration>
+                            <TimedLeg>
+                                <LegBoard>
+                                    <siri:StopPointRef>ch:1:sloid:76646:0:1</siri:StopPointRef>
+                                    <StopPointName>
+                                        <Text xml:lang="de">Bern, Bahnhof</Text>
+                                    </StopPointName>
+                                    <PlannedQuay>
+                                        <Text xml:lang="de">B</Text>
+                                    </PlannedQuay>
+                                    <EstimatedQuay>
+                                        <Text xml:lang="de">B</Text>
+                                    </EstimatedQuay>
+                                    <NameSuffix>
+                                        <Text xml:lang="de">PLATFORM_ACCESS_WITH_ASSISTANCE</Text>
+                                    </NameSuffix>
+                                    <ServiceDeparture>
+                                        <TimetabledTime>2024-06-05T13:38:00Z</TimetabledTime>
+                                        <EstimatedTime>2024-06-05T13:38:00Z</EstimatedTime>
+                                    </ServiceDeparture>
+                                    <Order>1</Order>
+                                </LegBoard>
+                                <LegAlight>
+                                    <siri:StopPointRef>ch:1:sloid:88989:0:1</siri:StopPointRef>
+                                    <StopPointName>
+                                        <Text xml:lang="de">Bern, Bärenplatz</Text>
+                                    </StopPointName>
+                                    <ServiceArrival>
+                                        <TimetabledTime>2024-06-05T13:39:12Z</TimetabledTime>
+                                        <EstimatedTime>2024-06-05T13:39:12Z</EstimatedTime>
+                                    </ServiceArrival>
+                                    <Order>2</Order>
+                                </LegAlight>
+                                <Service>
+                                    <Mode>
+                                        <PtMode>tram</PtMode>
+                                        <siri:TramSubmode>cityTram</siri:TramSubmode>
+                                        <Name>
+                                            <Text xml:lang="de">Tram</Text>
+                                        </Name>
+                                        <ShortName>
+                                            <Text xml:lang="de">T</Text>
+                                        </ShortName>
+                                    </Mode>
+                                    <ConventionalModeOfOperation>scheduled</ConventionalModeOfOperation>
+                                    <TrainNumber>2161</TrainNumber>
+                                    <siri:LineRef>ojp:91006:A</siri:LineRef>
+                                    <siri:OperatorRef>827</siri:OperatorRef>
+                                    <PublicCode>Tram</PublicCode>
+                                    <PublishedServiceName>
+                                        <Text xml:lang="de">6</Text>
+                                    </PublishedServiceName>
+                                    <ProductCategory>
+                                        <Name>
+                                            <Text xml:lang="de">Tram</Text>
+                                        </Name>
+                                        <ShortName>
+                                            <Text xml:lang="de">T</Text>
+                                        </ShortName>
+                                        <ProductCategoryRef>2</ProductCategoryRef>
+                                    </ProductCategory>
+                                    <siri:DirectionRef>H</siri:DirectionRef>
+                                    <OperatingDayRef>2024-06-05</OperatingDayRef>
+                                    <OriginStopPointRef>ch:1:sloid:88989:0:2</OriginStopPointRef>
+                                    <DestinationStopPointRef>ch:1:sloid:76646:0:3</DestinationStopPointRef>
+                                    <OriginText>
+                                        <Text xml:lang="de">Bern, Bärenplatz</Text>
+                                    </OriginText>
+                                    <DestinationText>
+                                        <Text xml:lang="de">Bern, Bahnhof</Text>
+                                    </DestinationText>
+                                    <JourneyRef>ojp-91-6-A-j24-1-712-TA</JourneyRef>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text xml:lang="de">VELOS: Platzzahl eingeschränkt</Text>
+                                        </UserText>
+                                        <Code>A__VB</Code>
+                                    </Attribute>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text xml:lang="de">Niederflureinstieg</Text>
+                                        </UserText>
+                                        <Code>A__NF</Code>
+                                    </Attribute>
+                                </Service>
+                            </TimedLeg>
+                        </Leg>
+                    </Trip>
+                </TripResult>
+                <TripResult>
+                    <Id>ID-6026AF31-65A1-4658-B4A1-126EB3B143D9</Id>
+                    <Trip>
+                        <Id>ID-6026AF31-65A1-4658-B4A1-126EB3B143D9</Id>
+                        <Duration>PT8M</Duration>
+                        <StartTime>2024-06-05T13:33:00Z</StartTime>
+                        <EndTime>2024-06-05T13:41:00Z</EndTime>
+                        <Transfers>0</Transfers>
+                        <Leg>
+                            <Id>1</Id>
+                            <Duration>PT7M</Duration>
+                            <TransferLeg>
+                                <TransferType>walk</TransferType>
+                                <LegStart>
+                                    <siri:StopPointRef>8507785</siri:StopPointRef>
+                                    <Name>
+                                        <Text xml:lang="de">Bern, Hauptbahnhof</Text>
+                                    </Name>
+                                </LegStart>
+                                <LegEnd>
+                                    <siri:StopPointRef>8576646</siri:StopPointRef>
+                                    <Name>
+                                        <Text xml:lang="de">Bern, Bahnhof</Text>
+                                    </Name>
+                                </LegEnd>
+                                <Duration>PT7M</Duration>
+                            </TransferLeg>
+                        </Leg>
+                        <Leg>
+                            <Id>2</Id>
+                            <Duration>PT1M</Duration>
+                            <TimedLeg>
+                                <LegBoard>
+                                    <siri:StopPointRef>ch:1:sloid:76646:0:5</siri:StopPointRef>
+                                    <StopPointName>
+                                        <Text xml:lang="de">Bern, Bahnhof</Text>
+                                    </StopPointName>
+                                    <PlannedQuay>
+                                        <Text xml:lang="de">A</Text>
+                                    </PlannedQuay>
+                                    <EstimatedQuay>
+                                        <Text xml:lang="de">A</Text>
+                                    </EstimatedQuay>
+                                    <NameSuffix>
+                                        <Text xml:lang="de">PLATFORM_ACCESS_WITH_ASSISTANCE</Text>
+                                    </NameSuffix>
+                                    <ServiceDeparture>
+                                        <TimetabledTime>2024-06-05T13:40:00Z</TimetabledTime>
+                                        <EstimatedTime>2024-06-05T13:40:00Z</EstimatedTime>
+                                    </ServiceDeparture>
+                                    <Order>1</Order>
+                                </LegBoard>
+                                <LegAlight>
+                                    <siri:StopPointRef>ch:1:sloid:88989:0:1</siri:StopPointRef>
+                                    <StopPointName>
+                                        <Text xml:lang="de">Bern, Bärenplatz</Text>
+                                    </StopPointName>
+                                    <ServiceArrival>
+                                        <TimetabledTime>2024-06-05T13:41:00Z</TimetabledTime>
+                                        <EstimatedTime>2024-06-05T13:41:00Z</EstimatedTime>
+                                    </ServiceArrival>
+                                    <Order>2</Order>
+                                </LegAlight>
+                                <Service>
+                                    <Mode>
+                                        <PtMode>bus</PtMode>
+                                        <siri:BusSubmode>localBus</siri:BusSubmode>
+                                        <Name>
+                                            <Text xml:lang="de">Bus</Text>
+                                        </Name>
+                                        <ShortName>
+                                            <Text xml:lang="de">B</Text>
+                                        </ShortName>
+                                    </Mode>
+                                    <ConventionalModeOfOperation>scheduled</ConventionalModeOfOperation>
+                                    <TrainNumber>14011</TrainNumber>
+                                    <siri:LineRef>ojp:92012:_x0020_</siri:LineRef>
+                                    <siri:OperatorRef>827</siri:OperatorRef>
+                                    <PublicCode>Bus</PublicCode>
+                                    <PublishedServiceName>
+                                        <Text xml:lang="de">12</Text>
+                                    </PublishedServiceName>
+                                    <ProductCategory>
+                                        <Name>
+                                            <Text xml:lang="de">Bus</Text>
+                                        </Name>
+                                        <ShortName>
+                                            <Text xml:lang="de">B</Text>
+                                        </ShortName>
+                                        <ProductCategoryRef>29</ProductCategoryRef>
+                                    </ProductCategory>
+                                    <siri:DirectionRef>H</siri:DirectionRef>
+                                    <OperatingDayRef>2024-06-05</OperatingDayRef>
+                                    <OriginStopPointRef>ch:1:sloid:88989:0:2</OriginStopPointRef>
+                                    <DestinationStopPointRef>ch:1:sloid:76646:0:3</DestinationStopPointRef>
+                                    <OriginText>
+                                        <Text xml:lang="de">Bern, Bärenplatz</Text>
+                                    </OriginText>
+                                    <DestinationText>
+                                        <Text xml:lang="de">Bern, Bahnhof</Text>
+                                    </DestinationText>
+                                    <JourneyRef>ojp-92-12-_-j24-1-883-TA</JourneyRef>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text xml:lang="de">VELOS: Platzzahl eingeschränkt</Text>
+                                        </UserText>
+                                        <Code>A__VB</Code>
+                                    </Attribute>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text xml:lang="de">Niederflureinstieg</Text>
+                                        </UserText>
+                                        <Code>A__NF</Code>
+                                    </Attribute>
+                                </Service>
+                            </TimedLeg>
+                        </Leg>
+                    </Trip>
+                </TripResult>
+                <TripResult>
+                    <Id>ID-BFBD436C-4BA1-4C6B-B57C-A42DDB768BE7</Id>
+                    <Trip>
+                        <Id>ID-BFBD436C-4BA1-4C6B-B57C-A42DDB768BE7</Id>
+                        <Duration>PT8M</Duration>
+                        <StartTime>2024-06-05T13:34:00Z</StartTime>
+                        <EndTime>2024-06-05T13:42:00Z</EndTime>
+                        <Transfers>0</Transfers>
+                        <Leg>
+                            <Id>1</Id>
+                            <Duration>PT7M</Duration>
+                            <TransferLeg>
+                                <TransferType>walk</TransferType>
+                                <LegStart>
+                                    <siri:StopPointRef>8507785</siri:StopPointRef>
+                                    <Name>
+                                        <Text xml:lang="de">Bern, Hauptbahnhof</Text>
+                                    </Name>
+                                </LegStart>
+                                <LegEnd>
+                                    <siri:StopPointRef>8576646</siri:StopPointRef>
+                                    <Name>
+                                        <Text xml:lang="de">Bern, Bahnhof</Text>
+                                    </Name>
+                                </LegEnd>
+                                <Duration>PT7M</Duration>
+                            </TransferLeg>
+                        </Leg>
+                        <Leg>
+                            <Id>2</Id>
+                            <Duration>PT30S</Duration>
+                            <TimedLeg>
+                                <LegBoard>
+                                    <siri:StopPointRef>ch:1:sloid:76646:0:1</siri:StopPointRef>
+                                    <StopPointName>
+                                        <Text xml:lang="de">Bern, Bahnhof</Text>
+                                    </StopPointName>
+                                    <PlannedQuay>
+                                        <Text xml:lang="de">B</Text>
+                                    </PlannedQuay>
+                                    <EstimatedQuay>
+                                        <Text xml:lang="de">B</Text>
+                                    </EstimatedQuay>
+                                    <NameSuffix>
+                                        <Text xml:lang="de">PLATFORM_ACCESS_WITH_ASSISTANCE</Text>
+                                    </NameSuffix>
+                                    <ServiceDeparture>
+                                        <TimetabledTime>2024-06-05T13:41:30Z</TimetabledTime>
+                                        <EstimatedTime>2024-06-05T13:41:30Z</EstimatedTime>
+                                    </ServiceDeparture>
+                                    <Order>1</Order>
+                                </LegBoard>
+                                <LegAlight>
+                                    <siri:StopPointRef>ch:1:sloid:88989:0:1</siri:StopPointRef>
+                                    <StopPointName>
+                                        <Text xml:lang="de">Bern, Bärenplatz</Text>
+                                    </StopPointName>
+                                    <ServiceArrival>
+                                        <TimetabledTime>2024-06-05T13:42:00Z</TimetabledTime>
+                                        <EstimatedTime>2024-06-05T13:42:00Z</EstimatedTime>
+                                    </ServiceArrival>
+                                    <Order>2</Order>
+                                </LegAlight>
+                                <Service>
+                                    <Mode>
+                                        <PtMode>tram</PtMode>
+                                        <siri:TramSubmode>cityTram</siri:TramSubmode>
+                                        <Name>
+                                            <Text xml:lang="de">Tram</Text>
+                                        </Name>
+                                        <ShortName>
+                                            <Text xml:lang="de">T</Text>
+                                        </ShortName>
+                                    </Mode>
+                                    <ConventionalModeOfOperation>scheduled</ConventionalModeOfOperation>
+                                    <TrainNumber>5847</TrainNumber>
+                                    <siri:LineRef>ojp:91008:_x0020_</siri:LineRef>
+                                    <siri:OperatorRef>827</siri:OperatorRef>
+                                    <PublicCode>Tram</PublicCode>
+                                    <PublishedServiceName>
+                                        <Text xml:lang="de">8</Text>
+                                    </PublishedServiceName>
+                                    <ProductCategory>
+                                        <Name>
+                                            <Text xml:lang="de">Tram</Text>
+                                        </Name>
+                                        <ShortName>
+                                            <Text xml:lang="de">T</Text>
+                                        </ShortName>
+                                        <ProductCategoryRef>2</ProductCategoryRef>
+                                    </ProductCategory>
+                                    <siri:DirectionRef>H</siri:DirectionRef>
+                                    <OperatingDayRef>2024-06-05</OperatingDayRef>
+                                    <OriginStopPointRef>ch:1:sloid:88989:0:2</OriginStopPointRef>
+                                    <DestinationStopPointRef>ch:1:sloid:76646:0:3</DestinationStopPointRef>
+                                    <OriginText>
+                                        <Text xml:lang="de">Bern, Bärenplatz</Text>
+                                    </OriginText>
+                                    <DestinationText>
+                                        <Text xml:lang="de">Bern, Bahnhof</Text>
+                                    </DestinationText>
+                                    <JourneyRef>ojp-91-8-_-j24-1-641-TA</JourneyRef>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text xml:lang="de">VELOS: Platzzahl eingeschränkt</Text>
+                                        </UserText>
+                                        <Code>A__VB</Code>
+                                    </Attribute>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text xml:lang="de">Niederflureinstieg</Text>
+                                        </UserText>
+                                        <Code>A__NF</Code>
+                                    </Attribute>
+                                </Service>
+                            </TimedLeg>
+                        </Leg>
+                    </Trip>
+                </TripResult>
+                <TripResult>
+                    <Id>ID-4B3E9FFD-5E49-411D-8C5C-B1E81768759E</Id>
+                    <Trip>
+                        <Id>ID-4B3E9FFD-5E49-411D-8C5C-B1E81768759E</Id>
+                        <Duration>PT8M</Duration>
+                        <StartTime>2024-06-05T13:36:00Z</StartTime>
+                        <EndTime>2024-06-05T13:44:00Z</EndTime>
+                        <Transfers>0</Transfers>
+                        <Leg>
+                            <Id>1</Id>
+                            <Duration>PT7M</Duration>
+                            <TransferLeg>
+                                <TransferType>walk</TransferType>
+                                <LegStart>
+                                    <siri:StopPointRef>8507785</siri:StopPointRef>
+                                    <Name>
+                                        <Text xml:lang="de">Bern, Hauptbahnhof</Text>
+                                    </Name>
+                                </LegStart>
+                                <LegEnd>
+                                    <siri:StopPointRef>8576646</siri:StopPointRef>
+                                    <Name>
+                                        <Text xml:lang="de">Bern, Bahnhof</Text>
+                                    </Name>
+                                </LegEnd>
+                                <Duration>PT7M</Duration>
+                            </TransferLeg>
+                        </Leg>
+                        <Leg>
+                            <Id>2</Id>
+                            <Duration>PT1M</Duration>
+                            <TimedLeg>
+                                <LegBoard>
+                                    <siri:StopPointRef>ch:1:sloid:76646:0:1</siri:StopPointRef>
+                                    <StopPointName>
+                                        <Text xml:lang="de">Bern, Bahnhof</Text>
+                                    </StopPointName>
+                                    <PlannedQuay>
+                                        <Text xml:lang="de">B</Text>
+                                    </PlannedQuay>
+                                    <EstimatedQuay>
+                                        <Text xml:lang="de">B</Text>
+                                    </EstimatedQuay>
+                                    <NameSuffix>
+                                        <Text xml:lang="de">PLATFORM_ACCESS_WITH_ASSISTANCE</Text>
+                                    </NameSuffix>
+                                    <ServiceDeparture>
+                                        <TimetabledTime>2024-06-05T13:43:00Z</TimetabledTime>
+                                        <EstimatedTime>2024-06-05T13:43:00Z</EstimatedTime>
+                                    </ServiceDeparture>
+                                    <Order>1</Order>
+                                </LegBoard>
+                                <LegAlight>
+                                    <siri:StopPointRef>ch:1:sloid:88989:0:1</siri:StopPointRef>
+                                    <StopPointName>
+                                        <Text xml:lang="de">Bern, Bärenplatz</Text>
+                                    </StopPointName>
+                                    <ServiceArrival>
+                                        <TimetabledTime>2024-06-05T13:44:00Z</TimetabledTime>
+                                        <EstimatedTime>2024-06-05T13:44:00Z</EstimatedTime>
+                                    </ServiceArrival>
+                                    <Order>2</Order>
+                                </LegAlight>
+                                <Service>
+                                    <Mode>
+                                        <PtMode>tram</PtMode>
+                                        <siri:TramSubmode>cityTram</siri:TramSubmode>
+                                        <Name>
+                                            <Text xml:lang="de">Tram</Text>
+                                        </Name>
+                                        <ShortName>
+                                            <Text xml:lang="de">T</Text>
+                                        </ShortName>
+                                    </Mode>
+                                    <ConventionalModeOfOperation>scheduled</ConventionalModeOfOperation>
+                                    <TrainNumber>8233</TrainNumber>
+                                    <siri:LineRef>ojp:91009:_x0020_</siri:LineRef>
+                                    <siri:OperatorRef>827</siri:OperatorRef>
+                                    <PublicCode>Tram</PublicCode>
+                                    <PublishedServiceName>
+                                        <Text xml:lang="de">9</Text>
+                                    </PublishedServiceName>
+                                    <ProductCategory>
+                                        <Name>
+                                            <Text xml:lang="de">Tram</Text>
+                                        </Name>
+                                        <ShortName>
+                                            <Text xml:lang="de">T</Text>
+                                        </ShortName>
+                                        <ProductCategoryRef>2</ProductCategoryRef>
+                                    </ProductCategory>
+                                    <siri:DirectionRef>H</siri:DirectionRef>
+                                    <OperatingDayRef>2024-06-05</OperatingDayRef>
+                                    <OriginStopPointRef>ch:1:sloid:88989:0:2</OriginStopPointRef>
+                                    <DestinationStopPointRef>ch:1:sloid:76646:0:3</DestinationStopPointRef>
+                                    <OriginText>
+                                        <Text xml:lang="de">Bern, Bärenplatz</Text>
+                                    </OriginText>
+                                    <DestinationText>
+                                        <Text xml:lang="de">Bern, Bahnhof</Text>
+                                    </DestinationText>
+                                    <JourneyRef>ojp-91-9-_-j24-1-1185-TA</JourneyRef>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text xml:lang="de">VELOS: Platzzahl eingeschränkt</Text>
+                                        </UserText>
+                                        <Code>A__VB</Code>
+                                    </Attribute>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text xml:lang="de">Niederflureinstieg</Text>
+                                        </UserText>
+                                        <Code>A__NF</Code>
+                                    </Attribute>
+                                </Service>
+                            </TimedLeg>
+                        </Leg>
+                    </Trip>
+                </TripResult>
+                <TripResult>
+                    <Id>ID-FEFB020A-E55A-4A93-A06F-915EBAAA6658</Id>
+                    <Trip>
+                        <Id>ID-FEFB020A-E55A-4A93-A06F-915EBAAA6658</Id>
+                        <Duration>PT8M</Duration>
+                        <StartTime>2024-06-05T13:38:00Z</StartTime>
+                        <EndTime>2024-06-05T13:46:00Z</EndTime>
+                        <Transfers>0</Transfers>
+                        <Leg>
+                            <Id>1</Id>
+                            <Duration>PT7M</Duration>
+                            <TransferLeg>
+                                <TransferType>walk</TransferType>
+                                <LegStart>
+                                    <siri:StopPointRef>8507785</siri:StopPointRef>
+                                    <Name>
+                                        <Text xml:lang="de">Bern, Hauptbahnhof</Text>
+                                    </Name>
+                                </LegStart>
+                                <LegEnd>
+                                    <siri:StopPointRef>8576646</siri:StopPointRef>
+                                    <Name>
+                                        <Text xml:lang="de">Bern, Bahnhof</Text>
+                                    </Name>
+                                </LegEnd>
+                                <Duration>PT7M</Duration>
+                            </TransferLeg>
+                        </Leg>
+                        <Leg>
+                            <Id>2</Id>
+                            <Duration>PT1M</Duration>
+                            <TimedLeg>
+                                <LegBoard>
+                                    <siri:StopPointRef>ch:1:sloid:76646:0:5</siri:StopPointRef>
+                                    <StopPointName>
+                                        <Text xml:lang="de">Bern, Bahnhof</Text>
+                                    </StopPointName>
+                                    <PlannedQuay>
+                                        <Text xml:lang="de">A</Text>
+                                    </PlannedQuay>
+                                    <EstimatedQuay>
+                                        <Text xml:lang="de">A</Text>
+                                    </EstimatedQuay>
+                                    <NameSuffix>
+                                        <Text xml:lang="de">PLATFORM_ACCESS_WITH_ASSISTANCE</Text>
+                                    </NameSuffix>
+                                    <ServiceDeparture>
+                                        <TimetabledTime>2024-06-05T13:45:00Z</TimetabledTime>
+                                        <EstimatedTime>2024-06-05T13:45:00Z</EstimatedTime>
+                                    </ServiceDeparture>
+                                    <Order>1</Order>
+                                </LegBoard>
+                                <LegAlight>
+                                    <siri:StopPointRef>ch:1:sloid:88989:0:1</siri:StopPointRef>
+                                    <StopPointName>
+                                        <Text xml:lang="de">Bern, Bärenplatz</Text>
+                                    </StopPointName>
+                                    <ServiceArrival>
+                                        <TimetabledTime>2024-06-05T13:46:00Z</TimetabledTime>
+                                        <EstimatedTime>2024-06-05T13:46:00Z</EstimatedTime>
+                                    </ServiceArrival>
+                                    <Order>2</Order>
+                                </LegAlight>
+                                <Service>
+                                    <Mode>
+                                        <PtMode>tram</PtMode>
+                                        <siri:TramSubmode>cityTram</siri:TramSubmode>
+                                        <Name>
+                                            <Text xml:lang="de">Tram</Text>
+                                        </Name>
+                                        <ShortName>
+                                            <Text xml:lang="de">T</Text>
+                                        </ShortName>
+                                    </Mode>
+                                    <ConventionalModeOfOperation>scheduled</ConventionalModeOfOperation>
+                                    <TrainNumber>3630</TrainNumber>
+                                    <siri:LineRef>ojp:91007:_x0020_</siri:LineRef>
+                                    <siri:OperatorRef>827</siri:OperatorRef>
+                                    <PublicCode>Tram</PublicCode>
+                                    <PublishedServiceName>
+                                        <Text xml:lang="de">7</Text>
+                                    </PublishedServiceName>
+                                    <ProductCategory>
+                                        <Name>
+                                            <Text xml:lang="de">Tram</Text>
+                                        </Name>
+                                        <ShortName>
+                                            <Text xml:lang="de">T</Text>
+                                        </ShortName>
+                                        <ProductCategoryRef>2</ProductCategoryRef>
+                                    </ProductCategory>
+                                    <siri:DirectionRef>H</siri:DirectionRef>
+                                    <OperatingDayRef>2024-06-05</OperatingDayRef>
+                                    <OriginStopPointRef>ch:1:sloid:88989:0:2</OriginStopPointRef>
+                                    <DestinationStopPointRef>ch:1:sloid:76646:0:3</DestinationStopPointRef>
+                                    <OriginText>
+                                        <Text xml:lang="de">Bern, Bärenplatz</Text>
+                                    </OriginText>
+                                    <DestinationText>
+                                        <Text xml:lang="de">Bern, Bahnhof</Text>
+                                    </DestinationText>
+                                    <JourneyRef>ojp-91-7-_-j24-1-909-TA</JourneyRef>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text xml:lang="de">VELOS: Platzzahl eingeschränkt</Text>
+                                        </UserText>
+                                        <Code>A__VB</Code>
+                                    </Attribute>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text xml:lang="de">Niederflureinstieg</Text>
+                                        </UserText>
+                                        <Code>A__NF</Code>
+                                    </Attribute>
+                                </Service>
+                            </TimedLeg>
+                        </Leg>
+                    </Trip>
+                </TripResult>
+                <TripResult>
+                    <Id>ID-6A74B1B6-A8E0-40E5-82EB-F936BDCB9873</Id>
+                    <Trip>
+                        <Id>ID-6A74B1B6-A8E0-40E5-82EB-F936BDCB9873</Id>
+                        <Duration>PT8M12S</Duration>
+                        <StartTime>2024-06-05T13:39:00Z</StartTime>
+                        <EndTime>2024-06-05T13:47:12Z</EndTime>
+                        <Transfers>0</Transfers>
+                        <Leg>
+                            <Id>1</Id>
+                            <Duration>PT7M</Duration>
+                            <TransferLeg>
+                                <TransferType>walk</TransferType>
+                                <LegStart>
+                                    <siri:StopPointRef>8507785</siri:StopPointRef>
+                                    <Name>
+                                        <Text xml:lang="de">Bern, Hauptbahnhof</Text>
+                                    </Name>
+                                </LegStart>
+                                <LegEnd>
+                                    <siri:StopPointRef>8576646</siri:StopPointRef>
+                                    <Name>
+                                        <Text xml:lang="de">Bern, Bahnhof</Text>
+                                    </Name>
+                                </LegEnd>
+                                <Duration>PT7M</Duration>
+                            </TransferLeg>
+                        </Leg>
+                        <Leg>
+                            <Id>2</Id>
+                            <Duration>PT1M12S</Duration>
+                            <TimedLeg>
+                                <LegBoard>
+                                    <siri:StopPointRef>ch:1:sloid:76646:0:5</siri:StopPointRef>
+                                    <StopPointName>
+                                        <Text xml:lang="de">Bern, Bahnhof</Text>
+                                    </StopPointName>
+                                    <PlannedQuay>
+                                        <Text xml:lang="de">A</Text>
+                                    </PlannedQuay>
+                                    <EstimatedQuay>
+                                        <Text xml:lang="de">A</Text>
+                                    </EstimatedQuay>
+                                    <NameSuffix>
+                                        <Text xml:lang="de">PLATFORM_ACCESS_WITH_ASSISTANCE</Text>
+                                    </NameSuffix>
+                                    <ServiceDeparture>
+                                        <TimetabledTime>2024-06-05T13:46:00Z</TimetabledTime>
+                                        <EstimatedTime>2024-06-05T13:46:00Z</EstimatedTime>
+                                    </ServiceDeparture>
+                                    <Order>1</Order>
+                                </LegBoard>
+                                <LegAlight>
+                                    <siri:StopPointRef>ch:1:sloid:88989:0:1</siri:StopPointRef>
+                                    <StopPointName>
+                                        <Text xml:lang="de">Bern, Bärenplatz</Text>
+                                    </StopPointName>
+                                    <ServiceArrival>
+                                        <TimetabledTime>2024-06-05T13:47:12Z</TimetabledTime>
+                                        <EstimatedTime>2024-06-05T13:47:12Z</EstimatedTime>
+                                    </ServiceArrival>
+                                    <Order>2</Order>
+                                </LegAlight>
+                                <Service>
+                                    <Mode>
+                                        <PtMode>bus</PtMode>
+                                        <siri:BusSubmode>localBus</siri:BusSubmode>
+                                        <Name>
+                                            <Text xml:lang="de">Bus</Text>
+                                        </Name>
+                                        <ShortName>
+                                            <Text xml:lang="de">B</Text>
+                                        </ShortName>
+                                    </Mode>
+                                    <ConventionalModeOfOperation>scheduled</ConventionalModeOfOperation>
+                                    <TrainNumber>14025</TrainNumber>
+                                    <siri:LineRef>ojp:92012:_x0020_</siri:LineRef>
+                                    <siri:OperatorRef>827</siri:OperatorRef>
+                                    <PublicCode>Bus</PublicCode>
+                                    <PublishedServiceName>
+                                        <Text xml:lang="de">12</Text>
+                                    </PublishedServiceName>
+                                    <ProductCategory>
+                                        <Name>
+                                            <Text xml:lang="de">Bus</Text>
+                                        </Name>
+                                        <ShortName>
+                                            <Text xml:lang="de">B</Text>
+                                        </ShortName>
+                                        <ProductCategoryRef>29</ProductCategoryRef>
+                                    </ProductCategory>
+                                    <siri:DirectionRef>H</siri:DirectionRef>
+                                    <OperatingDayRef>2024-06-05</OperatingDayRef>
+                                    <OriginStopPointRef>ch:1:sloid:88989:0:2</OriginStopPointRef>
+                                    <DestinationStopPointRef>ch:1:sloid:76646:0:3</DestinationStopPointRef>
+                                    <OriginText>
+                                        <Text xml:lang="de">Bern, Bärenplatz</Text>
+                                    </OriginText>
+                                    <DestinationText>
+                                        <Text xml:lang="de">Bern, Bahnhof</Text>
+                                    </DestinationText>
+                                    <JourneyRef>ojp-92-12-_-j24-1-903-TA</JourneyRef>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text xml:lang="de">VELOS: Platzzahl eingeschränkt</Text>
+                                        </UserText>
+                                        <Code>A__VB</Code>
+                                    </Attribute>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text xml:lang="de">Niederflureinstieg</Text>
+                                        </UserText>
+                                        <Code>A__NF</Code>
+                                    </Attribute>
+                                </Service>
+                            </TimedLeg>
+                        </Leg>
+                    </Trip>
+                </TripResult>
+            </OJPTripDelivery>
+        </siri:ServiceDelivery>
+    </OJPResponse>
 </OJP>
