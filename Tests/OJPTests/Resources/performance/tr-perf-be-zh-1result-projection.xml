@@ -1,54 +1,47 @@
-<OJP xmlns="http://www.vdv.de/ojp" xmlns:siri="http://www.siri.org.uk/siri" version="2.0">
+<OJP xmlns:siri="http://www.siri.org.uk/siri" xmlns="http://www.vdv.de/ojp" version="2.0">
   <OJPResponse>
     <siri:ServiceDelivery>
-      <siri:ResponseTimestamp>2024-06-06T14:58:02.2049397+02:00</siri:ResponseTimestamp>
+      <siri:ResponseTimestamp>2024-06-24T08:25:27.1961471+02:00</siri:ResponseTimestamp>
       <siri:ProducerRef>MENTZ</siri:ProducerRef>
       <OJPTripDelivery>
-        <siri:ResponseTimestamp>2024-06-06T14:58:02.2049403+02:00</siri:ResponseTimestamp>
-        <siri:RequestMessageRef>8e398662-58ed-4202-a7d4-5c3fb05854af</siri:RequestMessageRef>
+        <siri:ResponseTimestamp>2024-06-24T08:25:27.1961477+02:00</siri:ResponseTimestamp>
+        <siri:RequestMessageRef>9e717850-7f43-424f-9fbd-2be1d7a6be9c</siri:RequestMessageRef>
         <siri:DefaultLanguage>de</siri:DefaultLanguage>
-        <CalcTime>63</CalcTime>
+        <CalcTime>59</CalcTime>
         <TripResult>
-          <Id>ID-45DC540A-D705-4547-884F-9CA04002360B</Id>
+          <Id>ID-F6F3FF33-39E6-4541-B648-5B888A8CE985</Id>
           <Trip>
-            <Id>ID-45DC540A-D705-4547-884F-9CA04002360B</Id>
-            <Duration>PT55M30S</Duration>
-            <StartTime>2024-06-06T13:02:30Z</StartTime>
-            <EndTime>2024-06-06T13:58:00Z</EndTime>
+            <Id>ID-F6F3FF33-39E6-4541-B648-5B888A8CE985</Id>
+            <Duration>PT55M6S</Duration>
+            <StartTime>2024-06-24T06:32:24Z</StartTime>
+            <EndTime>2024-06-24T07:27:30Z</EndTime>
             <Transfers>0</Transfers>
             <Leg>
               <Id>1</Id>
-              <Duration>PT55M30S</Duration>
+              <Duration>PT55M6S</Duration>
               <TimedLeg>
                 <LegBoard>
-                  <siri:StopPointRef>ch:1:sloid:7000:1:2</siri:StopPointRef>
+                  <siri:StopPointRef>ch:1:sloid:7000:4:8</siri:StopPointRef>
                   <StopPointName>
                     <Text xml:lang="de">Bern</Text>
                   </StopPointName>
                   <PlannedQuay>
-                    <Text xml:lang="de">2</Text>
+                    <Text xml:lang="de">8</Text>
                   </PlannedQuay>
                   <EstimatedQuay>
-                    <Text xml:lang="de">2</Text>
+                    <Text xml:lang="de">8</Text>
                   </EstimatedQuay>
                   <NameSuffix>
                     <Text xml:lang="de">NO_DATA</Text>
                   </NameSuffix>
                   <ServiceDeparture>
-                    <TimetabledTime>2024-06-06T13:02:00Z</TimetabledTime>
-                    <EstimatedTime>2024-06-06T13:02:30Z</EstimatedTime>
+                    <TimetabledTime>2024-06-24T06:31:00Z</TimetabledTime>
+                    <EstimatedTime>2024-06-24T06:32:24Z</EstimatedTime>
                   </ServiceDeparture>
                   <Order>1</Order>
                 </LegBoard>
-                <LegIntermediate>
-                  <siri:StopPointRef>132</siri:StopPointRef>
-                  <StopPointName>
-                    <Text xml:lang="de">Bahn-2000-Strecke</Text>
-                  </StopPointName>
-                  <Order>2</Order>
-                </LegIntermediate>
                 <LegAlight>
-                  <siri:StopPointRef>ch:1:sloid:3000:501:33</siri:StopPointRef>
+                  <siri:StopPointRef>ch:1:sloid:3000:501:34</siri:StopPointRef>
                   <StopPointName>
                     <Text xml:lang="de">Zürich HB</Text>
                   </StopPointName>
@@ -56,14 +49,14 @@
                     <Text xml:lang="de">NO_DATA</Text>
                   </NameSuffix>
                   <PlannedQuay>
-                    <Text xml:lang="de">33</Text>
+                    <Text xml:lang="de">34</Text>
                   </PlannedQuay>
                   <EstimatedQuay>
-                    <Text xml:lang="de">33</Text>
+                    <Text xml:lang="de">34</Text>
                   </EstimatedQuay>
                   <ServiceArrival>
-                    <TimetabledTime>2024-06-06T13:58:00Z</TimetabledTime>
-                    <EstimatedTime>2024-06-06T13:58:00Z</EstimatedTime>
+                    <TimetabledTime>2024-06-24T07:28:00Z</TimetabledTime>
+                    <EstimatedTime>2024-06-24T07:27:30Z</EstimatedTime>
                   </ServiceArrival>
                   <Order>3</Order>
                 </LegAlight>
@@ -79,12 +72,12 @@
                     </ShortName>
                   </Mode>
                   <ConventionalModeOfOperation>scheduled</ConventionalModeOfOperation>
-                  <TrainNumber>823</TrainNumber>
-                  <siri:LineRef>ojp:91081:A</siri:LineRef>
+                  <TrainNumber>709</TrainNumber>
+                  <siri:LineRef>ojp:91001:D</siri:LineRef>
                   <siri:OperatorRef>11</siri:OperatorRef>
                   <PublicCode>InterCity</PublicCode>
                   <PublishedServiceName>
-                    <Text xml:lang="de">IC81</Text>
+                    <Text xml:lang="de">IC1</Text>
                   </PublishedServiceName>
                   <ProductCategory>
                     <Name>
@@ -96,13 +89,27 @@
                     <ProductCategoryRef>23</ProductCategoryRef>
                   </ProductCategory>
                   <siri:DirectionRef>H</siri:DirectionRef>
-                  <OperatingDayRef>2024-06-06</OperatingDayRef>
-                  <JourneyRef>ch:1:sjyid:100001:823-002</JourneyRef>
+                  <OperatingDayRef>2024-06-24</OperatingDayRef>
+                  <OriginStopPointRef>ch:1:sloid:7000:4:8</OriginStopPointRef>
+                  <DestinationStopPointRef>ch:1:sloid:3000:501:34</DestinationStopPointRef>
+                  <OriginText>
+                    <Text xml:lang="de">Bern</Text>
+                  </OriginText>
+                  <DestinationText>
+                    <Text xml:lang="de">Zürich HB</Text>
+                  </DestinationText>
+                  <JourneyRef>ch:1:sjyid:100001:709-001</JourneyRef>
                   <Attribute>
                     <UserText>
-                      <Text xml:lang="de">Platzreservierung möglich</Text>
+                      <Text xml:lang="de">Ruhezone in 1. Klasse</Text>
                     </UserText>
-                    <Code>A___R</Code>
+                    <Code>A__RZ</Code>
+                  </Attribute>
+                  <Attribute>
+                    <UserText>
+                      <Text xml:lang="de">Familienwagen mit Spielplatz</Text>
+                    </UserText>
+                    <Code>A__FA</Code>
                   </Attribute>
                   <Attribute>
                     <UserText>
@@ -118,27 +125,21 @@
                   </Attribute>
                   <Attribute>
                     <UserText>
-                      <Text xml:lang="de">Familienwagen mit Spielplatz</Text>
-                    </UserText>
-                    <Code>A__FA</Code>
-                  </Attribute>
-                  <Attribute>
-                    <UserText>
-                      <Text xml:lang="de">Ruhezone in 1. Klasse</Text>
-                    </UserText>
-                    <Code>A__RZ</Code>
-                  </Attribute>
-                  <Attribute>
-                    <UserText>
                       <Text xml:lang="de">Restaurant</Text>
                     </UserText>
                     <Code>A__WR</Code>
                   </Attribute>
                   <Attribute>
                     <UserText>
-                      <Text xml:lang="de">Aussteigeseite: Links</Text>
+                      <Text xml:lang="de">Platzreservierung möglich</Text>
                     </UserText>
-                    <Code>ojp91081AH_InfoCall42_111055_1</Code>
+                    <Code>A___R</Code>
+                  </Attribute>
+                  <Attribute>
+                    <UserText>
+                      <Text xml:lang="de">Aussteigeseite: Rechts</Text>
+                    </UserText>
+                    <Code>ojp91001DH_InfoCall189_111055_1</Code>
                   </Attribute>
                 </Service>
                 <LegTrack>
@@ -157,76 +158,32 @@
                     </TrackSectionEnd>
                     <LinkProjection>
                       <Position>
-                        <siri:Longitude>7.43502</siri:Longitude>
-                        <siri:Latitude>46.94789</siri:Latitude>
+                        <siri:Longitude>7.43867</siri:Longitude>
+                        <siri:Latitude>46.94943</siri:Latitude>
                       </Position>
                       <Position>
-                        <siri:Longitude>7.4366</siri:Longitude>
-                        <siri:Latitude>46.94818</siri:Latitude>
+                        <siri:Longitude>7.43887</siri:Longitude>
+                        <siri:Latitude>46.94953</siri:Latitude>
                       </Position>
                       <Position>
-                        <siri:Longitude>7.437</siri:Longitude>
-                        <siri:Latitude>46.94827</siri:Latitude>
+                        <siri:Longitude>7.43908</siri:Longitude>
+                        <siri:Latitude>46.94967</siri:Latitude>
                       </Position>
                       <Position>
-                        <siri:Longitude>7.43736</siri:Longitude>
-                        <siri:Latitude>46.94835</siri:Latitude>
+                        <siri:Longitude>7.43931</siri:Longitude>
+                        <siri:Latitude>46.94983</siri:Latitude>
                       </Position>
                       <Position>
-                        <siri:Longitude>7.43797</siri:Longitude>
-                        <siri:Latitude>46.94851</siri:Latitude>
+                        <siri:Longitude>7.43945</siri:Longitude>
+                        <siri:Latitude>46.94998</siri:Latitude>
                       </Position>
                       <Position>
-                        <siri:Longitude>7.43815</siri:Longitude>
-                        <siri:Latitude>46.94856</siri:Latitude>
+                        <siri:Longitude>7.43975</siri:Longitude>
+                        <siri:Latitude>46.95033</siri:Latitude>
                       </Position>
                       <Position>
-                        <siri:Longitude>7.43837</siri:Longitude>
-                        <siri:Latitude>46.94865</siri:Latitude>
-                      </Position>
-                      <Position>
-                        <siri:Longitude>7.43906</siri:Longitude>
-                        <siri:Latitude>46.949</siri:Latitude>
-                      </Position>
-                      <Position>
-                        <siri:Longitude>7.43925</siri:Longitude>
-                        <siri:Latitude>46.94911</siri:Latitude>
-                      </Position>
-                      <Position>
-                        <siri:Longitude>7.43946</siri:Longitude>
-                        <siri:Latitude>46.94927</siri:Latitude>
-                      </Position>
-                      <Position>
-                        <siri:Longitude>7.43965</siri:Longitude>
-                        <siri:Latitude>46.94944</siri:Latitude>
-                      </Position>
-                      <Position>
-                        <siri:Longitude>7.43974</siri:Longitude>
-                        <siri:Latitude>46.94957</siri:Latitude>
-                      </Position>
-                      <Position>
-                        <siri:Longitude>7.43982</siri:Longitude>
-                        <siri:Latitude>46.9497</siri:Latitude>
-                      </Position>
-                      <Position>
-                        <siri:Longitude>7.43995</siri:Longitude>
-                        <siri:Latitude>46.94994</siri:Latitude>
-                      </Position>
-                      <Position>
-                        <siri:Longitude>7.44005</siri:Longitude>
-                        <siri:Latitude>46.9502</siri:Latitude>
-                      </Position>
-                      <Position>
-                        <siri:Longitude>7.44029</siri:Longitude>
-                        <siri:Latitude>46.95089</siri:Latitude>
-                      </Position>
-                      <Position>
-                        <siri:Longitude>7.44034</siri:Longitude>
-                        <siri:Latitude>46.95104</siri:Latitude>
-                      </Position>
-                      <Position>
-                        <siri:Longitude>7.4404</siri:Longitude>
-                        <siri:Latitude>46.95119</siri:Latitude>
+                        <siri:Longitude>7.44031</siri:Longitude>
+                        <siri:Latitude>46.95112</siri:Latitude>
                       </Position>
                       <Position>
                         <siri:Longitude>7.44053</siri:Longitude>
@@ -509,12 +466,8 @@
                         <siri:Latitude>46.96825</siri:Latitude>
                       </Position>
                       <Position>
-                        <siri:Longitude>7.46733</siri:Longitude>
-                        <siri:Latitude>46.9683</siri:Latitude>
-                      </Position>
-                      <Position>
-                        <siri:Longitude>7.46743</siri:Longitude>
-                        <siri:Latitude>46.96834</siri:Latitude>
+                        <siri:Longitude>7.46734</siri:Longitude>
+                        <siri:Latitude>46.96831</siri:Latitude>
                       </Position>
                       <Position>
                         <siri:Longitude>7.46752</siri:Longitude>
@@ -525,12 +478,16 @@
                         <siri:Latitude>46.96842</siri:Latitude>
                       </Position>
                       <Position>
+                        <siri:Longitude>7.46778</siri:Longitude>
+                        <siri:Latitude>46.96848</siri:Latitude>
+                      </Position>
+                      <Position>
                         <siri:Longitude>7.4679</siri:Longitude>
                         <siri:Latitude>46.96853</siri:Latitude>
                       </Position>
                       <Position>
-                        <siri:Longitude>7.46813</siri:Longitude>
-                        <siri:Latitude>46.96863</siri:Latitude>
+                        <siri:Longitude>7.46802</siri:Longitude>
+                        <siri:Latitude>46.96859</siri:Latitude>
                       </Position>
                       <Position>
                         <siri:Longitude>7.46822</siri:Longitude>
@@ -651,10 +608,6 @@
                       <Position>
                         <siri:Longitude>7.47026</siri:Longitude>
                         <siri:Latitude>46.9727</siri:Latitude>
-                      </Position>
-                      <Position>
-                        <siri:Longitude>7.47021</siri:Longitude>
-                        <siri:Latitude>46.97283</siri:Latitude>
                       </Position>
                       <Position>
                         <siri:Longitude>7.47017</siri:Longitude>
@@ -1547,6 +1500,10 @@
                       <Position>
                         <siri:Longitude>7.56562</siri:Longitude>
                         <siri:Latitude>47.07082</siri:Latitude>
+                      </Position>
+                      <Position>
+                        <siri:Longitude>7.56593</siri:Longitude>
+                        <siri:Latitude>47.07123</siri:Latitude>
                       </Position>
                       <Position>
                         <siri:Longitude>7.56646</siri:Longitude>
@@ -6105,8 +6062,8 @@
                         <siri:Latitude>47.38114</siri:Latitude>
                       </Position>
                       <Position>
-                        <siri:Longitude>8.52734</siri:Longitude>
-                        <siri:Latitude>47.38111</siri:Latitude>
+                        <siri:Longitude>8.52724</siri:Longitude>
+                        <siri:Latitude>47.38113</siri:Latitude>
                       </Position>
                       <Position>
                         <siri:Longitude>8.52745</siri:Longitude>
@@ -6141,10 +6098,6 @@
                         <siri:Latitude>47.38024</siri:Latitude>
                       </Position>
                       <Position>
-                        <siri:Longitude>8.53071</siri:Longitude>
-                        <siri:Latitude>47.38018</siri:Latitude>
-                      </Position>
-                      <Position>
                         <siri:Longitude>8.53094</siri:Longitude>
                         <siri:Latitude>47.38011</siri:Latitude>
                       </Position>
@@ -6157,23 +6110,31 @@
                         <siri:Latitude>47.37975</siri:Latitude>
                       </Position>
                       <Position>
-                        <siri:Longitude>8.53247</siri:Longitude>
-                        <siri:Latitude>47.37969</siri:Latitude>
+                        <siri:Longitude>8.53293</siri:Longitude>
+                        <siri:Latitude>47.37958</siri:Latitude>
                       </Position>
                       <Position>
-                        <siri:Longitude>8.53434</siri:Longitude>
-                        <siri:Latitude>47.37917</siri:Latitude>
+                        <siri:Longitude>8.53371</siri:Longitude>
+                        <siri:Latitude>47.3794</siri:Latitude>
                       </Position>
                       <Position>
-                        <siri:Longitude>8.53678</siri:Longitude>
-                        <siri:Latitude>47.3785</siri:Latitude>
+                        <siri:Longitude>8.53439</siri:Longitude>
+                        <siri:Latitude>47.37926</siri:Latitude>
                       </Position>
                       <Position>
-                        <siri:Longitude>8.53722</siri:Longitude>
-                        <siri:Latitude>47.37838</siri:Latitude>
+                        <siri:Longitude>8.53524</siri:Longitude>
+                        <siri:Latitude>47.37906</siri:Latitude>
+                      </Position>
+                      <Position>
+                        <siri:Longitude>8.53612</siri:Longitude>
+                        <siri:Latitude>47.37883</siri:Latitude>
+                      </Position>
+                      <Position>
+                        <siri:Longitude>8.5373</siri:Longitude>
+                        <siri:Latitude>47.37852</siri:Latitude>
                       </Position>
                     </LinkProjection>
-                    <Duration>PT56M</Duration>
+                    <Duration>PT57M</Duration>
                   </TrackSection>
                 </LegTrack>
               </TimedLeg>

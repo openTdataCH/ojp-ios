@@ -10,6 +10,13 @@ import XCTest
 
 final class OJPPerformanceTests: XCTestCase {
     func testTripResultPerformance_zh_stg_basic() throws {
+//        // Uncomment to re-create the test mock (use a proxy like charles or proxyman to get the xml)
+//        Task {
+//            // St. Gallen   ch:1:sloid:6302  8506302
+//            // Zürich HB    ch:1:sloid:3000  8503000
+//            let _ = try? await OJP(loadingStrategy: .http(.int)).requestTrips(from: .stopPointRef("8506302"), to: .stopPointRef("8503000"), params: .init(numberOfResults: .minimum(10), includeLegProjection: false))
+//        }
+
         guard let xmlData = try? TestHelpers.loadXML(xmlFilename: "tr-perf-zh-stg-10results-wo-projection")
         else {
             return XCTFail("unexpected empty")
@@ -33,6 +40,14 @@ final class OJPPerformanceTests: XCTestCase {
     }
 
     func testTripResultPerformance_be_zh_legprojection() throws {
+//        // Uncomment to re-create the test mock (use a proxy like charles or proxyman to get the xml)
+//        Task {
+//            // Bern         ch:1:sloid:7000  8507000
+//            // Zürich HB    ch:1:sloid:3000  8503000
+//            let _ = try? await OJP(loadingStrategy: .http(.int)).requestTrips(from: .stopPointRef("8507000"), to: .stopPointRef("8503000"), params: .init(numberOfResults: .minimum(20), includeLegProjection: true))
+//        }
+
+
         guard let xmlData = try? TestHelpers.loadXML(xmlFilename: "tr-perf-be-zh-20results-projection")
         else {
             return XCTFail("unexpected empty")
@@ -56,6 +71,13 @@ final class OJPPerformanceTests: XCTestCase {
     }
 
     func testTripResultPerformance_be_zh_legprojection_singleResult() throws {
+//        // Uncomment to re-create the test mock (use a proxy like charles or proxyman to get the xml)
+//        Task {
+//            // Bern         ch:1:sloid:7000  8507000
+//            // Zürich HB    ch:1:sloid:3000  8503000
+//            let _ = try? await OJP(loadingStrategy: .http(.int)).requestTrips(from: .stopPointRef("8507000"), to: .stopPointRef("8503000"), params: .init(numberOfResults: .minimum(1), includeLegProjection: true))
+//        }
+
         guard let xmlData = try? TestHelpers.loadXML(xmlFilename: "tr-perf-be-zh-1result-projection")
         else {
             return XCTFail("unexpected empty")
