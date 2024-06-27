@@ -24,6 +24,15 @@ enum AppSection: CaseIterable, Identifiable {
             "TR"
         }
     }
+
+    var image: Image {
+        switch self {
+        case .locationInformationRequest:
+                .init(systemName: "mappin.and.ellipse.circle.fill")
+        case .tripRequest:
+                .init(systemName: "calendar.circle.fill")
+        }
+    }
 }
 
 @main
@@ -43,28 +52,30 @@ struct OJPSampleApp: App {
             NavigationSplitView(sidebar: {
                 List(selection: $currentSection) {
                     ForEach(AppSection.allCases) { a in
-                        Text(a.title)
+                        HStack {
+                            a.image.imageScale(.large)
+                            Text(a.title)
+                        }
                     }
                 }
-            }, detail:  {
-                switch currentSection {
-                case .locationInformationRequest:
-                    VStack {
-                        ZStack(alignment: .topLeading) {
-                            Image("OpenTransportDataIcons")
-                                .padding()
-                        }
-                        .frame(
-                            maxWidth: .infinity,
-                            alignment: .topLeading
-                        )
-                        .background(.tint)
+            }, detail: {
+                VStack {
+                    ZStack(alignment: .topLeading) {
+                        Image("OpenTransportDataIcons")
+                            .padding()
+                    }
+                    .frame(
+                        maxWidth: .infinity,
+                        alignment: .topLeading
+                    )
+                    .background(.tint)
+                    switch currentSection {
+                    case .locationInformationRequest:
                         LocationSearchByNameView()
+                    case .tripRequest:
+                        Text("TripRequest")
                     }
-                case .tripRequest:
-                    VStack {
-                        Text("hej")
-                    }
+
                 }
             }).toolbar {
                 ToolbarItemGroup {

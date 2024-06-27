@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		CF06B9F32BBE7DD000B60917 /* Pulse in Frameworks */ = {isa = PBXBuildFile; productRef = CF06B9F22BBE7DD000B60917 /* Pulse */; };
 		CF06B9F52BBE7DD000B60917 /* PulseUI in Frameworks */ = {isa = PBXBuildFile; productRef = CF06B9F42BBE7DD000B60917 /* PulseUI */; };
+		CF1C2B6E2C2D964F00B51EFD /* tr-perf-be-zh-20results-projection.xml in Resources */ = {isa = PBXBuildFile; fileRef = CF1C2B6D2C2D94B700B51EFD /* tr-perf-be-zh-20results-projection.xml */; };
+		CF564A322C2D83D600424D91 /* TripRequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF564A312C2D83D600424D91 /* TripRequestView.swift */; };
+		CF564A342C2D8CFE00424D91 /* LocationSearchByNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF227B42BBD95CF00D3EADF /* LocationSearchByNameView.swift */; };
 		CF71377A2BE5398200D2411E /* DemoEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7137792BE5398200D2411E /* DemoEnvironment.swift */; };
 		CFBA60BB2BBD6106000FF2ED /* OJPSampleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBA60BA2BBD6106000FF2ED /* OJPSampleApp.swift */; };
 		CFBA60BF2BBD610C000FF2ED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CFBA60BE2BBD610C000FF2ED /* Assets.xcassets */; };
@@ -17,7 +20,6 @@
 		CFBA60D72BBD610F000FF2ED /* OJPSampleAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBA60D62BBD610F000FF2ED /* OJPSampleAppUITests.swift */; };
 		CFBA60D92BBD610F000FF2ED /* OJPSampleAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBA60D82BBD610F000FF2ED /* OJPSampleAppUITestsLaunchTests.swift */; };
 		CFF227B32BBD63AC00D3EADF /* OJP in Frameworks */ = {isa = PBXBuildFile; productRef = CFF227B22BBD63AC00D3EADF /* OJP */; };
-		CFF227B52BBD95CF00D3EADF /* LocationSearchByNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF227B42BBD95CF00D3EADF /* LocationSearchByNameView.swift */; };
 		CFF227B82BBDA10800D3EADF /* PlaceDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF227B72BBDA10800D3EADF /* PlaceDetailView.swift */; };
 /* End PBXBuildFile section */
 
@@ -39,6 +41,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CF1C2B6D2C2D94B700B51EFD /* tr-perf-be-zh-20results-projection.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "tr-perf-be-zh-20results-projection.xml"; sourceTree = "<group>"; };
+		CF564A312C2D83D600424D91 /* TripRequestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripRequestView.swift; sourceTree = "<group>"; };
 		CF7137792BE5398200D2411E /* DemoEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoEnvironment.swift; sourceTree = "<group>"; };
 		CFBA60B72BBD6106000FF2ED /* OJPSampleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OJPSampleApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFBA60BA2BBD6106000FF2ED /* OJPSampleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OJPSampleApp.swift; sourceTree = "<group>"; };
@@ -83,6 +87,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CF564A302C2D83C400424D91 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CFF227B42BBD95CF00D3EADF /* LocationSearchByNameView.swift */,
+				CF564A312C2D83D600424D91 /* TripRequestView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		CF7137782BE5396600D2411E /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -116,9 +129,9 @@
 		CFBA60B92BBD6106000FF2ED /* OJPSampleApp */ = {
 			isa = PBXGroup;
 			children = (
+				CF564A302C2D83C400424D91 /* Views */,
 				CF7137782BE5396600D2411E /* Models */,
 				CFBA60BA2BBD6106000FF2ED /* OJPSampleApp.swift */,
-				CFF227B42BBD95CF00D3EADF /* LocationSearchByNameView.swift */,
 				CFF227B72BBDA10800D3EADF /* PlaceDetailView.swift */,
 				CFBA60BE2BBD610C000FF2ED /* Assets.xcassets */,
 				CFBA60C02BBD610C000FF2ED /* OJPSampleApp.entitlements */,
@@ -130,6 +143,7 @@
 		CFBA60C12BBD610C000FF2ED /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
+				CF1C2B6D2C2D94B700B51EFD /* tr-perf-be-zh-20results-projection.xml */,
 				CFBA60C22BBD610C000FF2ED /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
@@ -272,6 +286,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CFBA60C32BBD610C000FF2ED /* Preview Assets.xcassets in Resources */,
+				CF1C2B6E2C2D964F00B51EFD /* tr-perf-be-zh-20results-projection.xml in Resources */,
 				CFBA60BF2BBD610C000FF2ED /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -297,8 +312,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CFF227B52BBD95CF00D3EADF /* LocationSearchByNameView.swift in Sources */,
+				CF564A322C2D83D600424D91 /* TripRequestView.swift in Sources */,
 				CFF227B82BBDA10800D3EADF /* PlaceDetailView.swift in Sources */,
+				CF564A342C2D8CFE00424D91 /* LocationSearchByNameView.swift in Sources */,
 				CF71377A2BE5398200D2411E /* DemoEnvironment.swift in Sources */,
 				CFBA60BB2BBD6106000FF2ED /* OJPSampleApp.swift in Sources */,
 			);
@@ -459,7 +475,7 @@
 				CODE_SIGN_ENTITLEMENTS = OJPSampleApp/OJPSampleApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"OJPSampleApp/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "OJPSampleApp/Preview\\ Content/tr-perf-be-zh-20results-projection.xml OJPSampleApp/Preview\\ Content";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
@@ -495,7 +511,7 @@
 				CODE_SIGN_ENTITLEMENTS = OJPSampleApp/OJPSampleApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"OJPSampleApp/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "OJPSampleApp/Preview\\ Content/tr-perf-be-zh-20results-projection.xml OJPSampleApp/Preview\\ Content";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;

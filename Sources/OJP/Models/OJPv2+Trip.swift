@@ -23,7 +23,7 @@ public extension OJPv2 {
         }
     }
 
-    struct TripResult: Codable {
+    struct TripResult: Codable, Identifiable {
         public let id: String
         public let tripType: TripTypeChoice
         public let tripFares: [TripFare]
@@ -84,7 +84,7 @@ public extension OJPv2 {
         }
     }
 
-    struct Trip: Codable {
+    struct Trip: Codable, Identifiable {
         /// Unique within trip response. This ID must not be used over mutliple ``OJPv2/TripRequest``
         /// - Warning: This ID must not be used over mutliple ``OJPv2/TripRequest``. Use ``tripHash`` instead.
         public let id: String
@@ -132,7 +132,7 @@ public extension OJPv2 {
     }
 
     // https://vdvde.github.io/OJP/develop/index.html#LegStructure
-    struct Leg: Codable {
+    struct Leg: Codable, Identifiable {
         public let id: Int
         public let duration: String?
         public let legType: LegTypeChoice
@@ -439,9 +439,9 @@ public extension OJPv2 {
             case vehicleRef = "siri:VehicleRef"
             case attributes = "Attribute"
             case operatorRef = "siri:OperatorRef"
-            case originText = "OriginText" 
+            case originText = "OriginText"
             case originStopPointRef = "OriginStopPointRef"
-            case destinationText = "DestinationText" 
+            case destinationText = "DestinationText"
             case destinationStopPointRef = "DestinationStopPointRef"
         }
 
