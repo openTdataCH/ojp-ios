@@ -10,6 +10,22 @@ import Pulse
 import PulseUI
 import SwiftUI
 
+enum AppSection: CaseIterable, Identifiable {
+    case locationInformationRequest
+    case tripRequest
+
+    var id: Self { self }
+
+    var title: String {
+        switch self {
+        case .locationInformationRequest:
+            "LIR"
+        case .tripRequest:
+            "TR"
+        }
+    }
+}
+
 @main
 struct OJPSampleApp: App {
     init() {
@@ -20,22 +36,37 @@ struct OJPSampleApp: App {
     @State var isShowingConsole: Bool = false
     @AppStorage("DemoEnvironment") var environment: String = DemoEnvironment.int.rawValue
 
+    @State var currentSection: AppSection = .locationInformationRequest
+
     var body: some Scene {
         WindowGroup {
-            NavigationStack {
-                VStack {
-                    ZStack(alignment: .topLeading) {
-                        Image("OpenTransportDataIcons")
-                            .padding()
+            NavigationSplitView(sidebar: {
+                List(selection: $currentSection) {
+                    ForEach(AppSection.allCases) { a in
+                        Text(a.title)
                     }
-                    .frame(
-                        maxWidth: .infinity,
-                        alignment: .topLeading
-                    )
-                    .background(.tint)
-                    LocationSearchByNameView()
                 }
-            }.toolbar {
+            }, detail:  {
+                switch currentSection {
+                case .locationInformationRequest:
+                    VStack {
+                        ZStack(alignment: .topLeading) {
+                            Image("OpenTransportDataIcons")
+                                .padding()
+                        }
+                        .frame(
+                            maxWidth: .infinity,
+                            alignment: .topLeading
+                        )
+                        .background(.tint)
+                        LocationSearchByNameView()
+                    }
+                case .tripRequest:
+                    VStack {
+                        Text("hej")
+                    }
+                }
+            }).toolbar {
                 ToolbarItemGroup {
                     Picker("Environment", selection: $environment) {
                         ForEach(DemoEnvironment.allCases) { env in
