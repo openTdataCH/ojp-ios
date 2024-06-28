@@ -10,10 +10,12 @@ import Foundation
 public extension OJPv2.PlaceRefChoice {
     var title: String {
         switch self {
-        case let .stopPointRef(_, name),
-             let .stopPlaceRef(_, name),
-             let .geoPosition(_, name):
-            name.text
+        case let .geoPosition(ref):
+            ref.name.text
+        case let .stopPointRef(ref):
+            ref.name.text
+        case let .stopPlaceRef(ref):
+            ref.name.text
         }
     }
 }
@@ -31,9 +33,19 @@ public extension OJPv2.PlaceResult {
     var placeRef: OJPv2.PlaceRefChoice {
         switch place.place {
         case let .stopPlace(stopPlace):
-            .stopPlaceRef(stopPlace.stopPlaceRef, stopPlace.stopPlaceName)
+            .stopPlaceRef(
+                .init(
+                    stopPlaceRef: stopPlace.stopPlaceRef,
+                    name: stopPlace.stopPlaceName
+                )
+            )
         case let .address(address):
-            .geoPosition(place.geoPosition, address.name)
+            .geoPosition(
+                .init(
+                    geoPosition: place.geoPosition,
+                    name: address.name
+                )
+            )
         }
     }
 }

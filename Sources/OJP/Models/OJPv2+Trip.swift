@@ -533,62 +533,96 @@ public extension OJPv2 {
         }
     }
 
+    struct StopPlaceRef: Codable {
+        let stopPlaceRef: String
+        let name: InternationalText
+
+        public init(stopPlaceRef: String, name: InternationalText) {
+            self.stopPlaceRef = stopPlaceRef
+            self.name = name
+        }
+
+        enum CodingKeys: String, CodingKey {
+            case stopPlaceRef = "StopPlaceRef"
+            case name = "Name"
+        }
+    }
+
+    struct StopPointRef: Codable {
+        let stopPointRef: String
+        let name: InternationalText
+
+        public init(stopPointRef: String, name: InternationalText) {
+            self.stopPointRef = stopPointRef
+            self.name = name
+        }
+
+        enum CodingKeys: String, CodingKey {
+            case stopPointRef = "siri:StopPointRef"
+            case name = "Name"
+        }
+    }
+
+    struct GeoPositionRef: Codable {
+        let geoPosition: OJPv2.GeoPosition
+        let name: InternationalText
+
+        public init(geoPosition: OJPv2.GeoPosition, name: InternationalText) {
+            self.geoPosition = geoPosition
+            self.name = name
+        }
+
+        enum CodingKeys: String, CodingKey {
+            case geoPosition = "GeoPosition"
+            case name = "Name"
+        }
+    }
+
     // https://vdvde.github.io/OJP/develop/index.html#PlaceRefGroup
     enum PlaceRefChoice: Codable {
-        case stopPlaceRef(String, InternationalText)
-        case geoPosition(OJPv2.GeoPosition, InternationalText)
-        case stopPointRef(String, InternationalText)
+        case stopPlaceRef(StopPlaceRef)
+        case geoPosition(GeoPositionRef)
+        case stopPointRef(StopPointRef)
 
         enum CodingKeys: String, CodingKey {
             case stopPlaceRef = "StopPlaceRef"
             case stopPointRef = "siri:StopPointRef"
-            case geoPosition = "GeoPosition"
             case name = "Name"
         }
 
         public func encode(to encoder: Encoder) throws {
-            var container = encoder.container(keyedBy: CodingKeys.self)
+            var svc = encoder.singleValueContainer()
             switch self {
-            case let .stopPlaceRef(stopPlace, name):
-                try container.encode(stopPlace, forKey: .stopPlaceRef)
-                try container.encode(name, forKey: .name)
-            case let .stopPointRef(stopPoint, name):
-                try container.encode(stopPoint, forKey: .stopPointRef)
-                try container.encode(name, forKey: .name)
-            case let .geoPosition(geoPosition, name):
-                try container.encode(geoPosition, forKey: .geoPosition)
-                try container.encode(name, forKey: .name)
+            case let .stopPlaceRef(stopPlaceRef):
+                try svc.encode(stopPlaceRef)
+            case let .stopPointRef(stopPointRef):
+                try svc.encode(stopPointRef)
+            case let .geoPosition(geoPositionRef):
+                try svc.encode(geoPositionRef)
             }
         }
 
         public init(from decoder: any Decoder) throws {
-            let container = try decoder.container(keyedBy: CodingKeys.self)
+            let svc = try decoder.singleValueContainer()
 
-            let name = try container.decode(InternationalText.self, forKey: .name)
-
-            if container.contains(.stopPlaceRef) {
+            if try decoder.container(keyedBy: StopPlaceRef.CodingKeys.self)
+                .contains(.stopPlaceRef)
+            {
                 self = try .stopPlaceRef(
-                    container.decode(
-                        String.self,
-                        forKey: .stopPlaceRef
-                    ),
-                    name
+                    svc.decode(StopPlaceRef.self)
                 )
-            } else if container.contains(.geoPosition) {
-                self = try .geoPosition(
-                    container.decode(
-                        GeoPosition.self,
-                        forKey: .geoPosition
-                    ),
-                    name
-                )
-            } else if container.contains(.stopPointRef) {
+                return
+            } else if try decoder.container(keyedBy: StopPointRef.CodingKeys.self)
+                .contains(.stopPointRef)
+            {
                 self = try .stopPointRef(
-                    container.decode(
-                        String.self,
-                        forKey: .stopPointRef
-                    ),
-                    name
+                    svc.decode(StopPointRef.self)
+                )
+            } else if try decoder.container(keyedBy: GeoPositionRef.CodingKeys.self)
+                .contains(.geoPosition)
+            {
+                self = try .geoPosition(
+                    svc.decode(GeoPositionRef.self)
                 )
             } else {
                 throw OJPSDKError.notImplemented()

@@ -37,10 +37,17 @@ class PreviewMocker {
     func loadTrips() async -> [OJPv2.TripResult] {
         do {
             return try await OJP(
-                loadingStrategy: Self.mockLoader())
-                .requestTrips(from: .stopPlaceRef("a", .init("A")),
-                              to: .stopPlaceRef("b", .init("B")),
-                              params: .init())
+                loadingStrategy: Self.mockLoader()
+            )
+            .requestTrips(
+                from: .stopPlaceRef(.init(stopPlaceRef: "a",
+                                          name: .init("A"))
+                ),
+                to: .stopPlaceRef(.init(stopPlaceRef: "b",
+                                        name: .init("B"))
+                ),
+                params: .init()
+            )
         } catch {
             print(error.localizedDescription)
             return []
