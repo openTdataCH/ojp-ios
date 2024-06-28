@@ -33,8 +33,8 @@ final class SystemTests: XCTestCase {
     func testFetchTripWithDidoks() async throws {
         let ojpSdk = OJP(loadingStrategy: .http(.int))
 
-        let originDidok = OJPv2.PlaceRefChoice.stopPlaceRef("8507110", .init("8507110"))
-        let destinationDidok = OJPv2.PlaceRefChoice.stopPlaceRef("8508052", .init("8508052"))
+        let originDidok = OJPv2.PlaceRefChoice.stopPlaceRef(.init(stopPlaceRef: "8507110", name: .init("8507110")))
+        let destinationDidok = OJPv2.PlaceRefChoice.stopPlaceRef(.init(stopPlaceRef:"8508052", name: .init("8508052")))
 
         let trips = try await ojpSdk.requestTrips(from: originDidok, to: destinationDidok, params: .init(includeIntermediateStops: true))
 
@@ -44,8 +44,8 @@ final class SystemTests: XCTestCase {
     func testFetchTripWithDifferentNumberOfResultPolicies() async throws {
         let ojpSdk = OJP(loadingStrategy: .http(.int))
 
-        let originDidok = OJPv2.PlaceRefChoice.stopPlaceRef("8507110", .init("8507110"))
-        let destinationDidok = OJPv2.PlaceRefChoice.stopPlaceRef("8508052", .init("8508052"))
+        let originDidok = OJPv2.PlaceRefChoice.stopPlaceRef(.init(stopPlaceRef: "8507110", name: .init("8507110")))
+        let destinationDidok = OJPv2.PlaceRefChoice.stopPlaceRef(.init(stopPlaceRef:"8508052", name: .init("8508052")))
 
         let tripsNow = try await ojpSdk.requestTrips(from: originDidok, to: destinationDidok, params: .init(includeIntermediateStops: true))
 
