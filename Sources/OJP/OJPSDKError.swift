@@ -29,7 +29,7 @@ public enum OJPSDKError: LocalizedError {
         case let .unexpectedHTTPStatus(int):
             "Unexpected HTTP status code: \(int)"
         case .unexpectedEmpty:
-            "Unexpeced Empty"
+            "Unexpected Empty"
         case .encodingFailed:
             "Encoding Failed"
         case let .loadingFailed(error):
