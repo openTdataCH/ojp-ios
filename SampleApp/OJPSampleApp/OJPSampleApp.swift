@@ -28,9 +28,9 @@ enum AppSection: CaseIterable, Identifiable {
     var image: Image {
         switch self {
         case .locationInformationRequest:
-                .init(systemName: "mappin.and.ellipse.circle.fill")
+            .init(systemName: "mappin.and.ellipse.circle.fill")
         case .tripRequest:
-                .init(systemName: "calendar.circle.fill")
+            .init(systemName: "calendar.circle.fill")
         }
     }
 }
@@ -52,7 +52,7 @@ struct OJPSampleApp: App {
             NavigationSplitView(sidebar: {
                 List(selection: $currentSection) {
                     ForEach(AppSection.allCases) { a in
-                        HStack {
+                        VStack {
                             a.image.imageScale(.large)
                             Text(a.title)
                         }
@@ -75,7 +75,6 @@ struct OJPSampleApp: App {
                     case .tripRequest:
                         Text("TripRequest")
                     }
-
                 }
             }).toolbar {
                 ToolbarItemGroup {
