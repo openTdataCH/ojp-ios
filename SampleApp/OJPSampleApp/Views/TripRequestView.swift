@@ -17,7 +17,7 @@ struct TripRequestView: View {
 
     var body: some View {
         VStack {
-            HStack {
+            HStack(alignment: .top) {
                 if let origin {
                     HStack {
                         Text("Form")
@@ -45,21 +45,28 @@ struct TripRequestView: View {
                 } else {
                     InlineLocationSerachView(ojp: ojp, selectedPlace: $destination)
                 }
-            }
-            Button {
-                if let origin, let destination {
-                    Task {
-                        do {
-                            tripResults = try await ojp.requestTrips(from: origin.placeRef, to: destination.placeRef, params: .init())
-                        } catch {
-                            print(error)
+
+                Button {
+                    if let origin, let destination {
+                        Task {
+                            do {
+                                tripResults = try await ojp.requestTrips(
+                                    from: origin.placeRef,
+                                    to: destination.placeRef,
+                                    params: .init(
+                                        includeTrackSections: true,
+                                        includeIntermediateStops: true
+                                    )
+                                )
+                            } catch {
+                                print(error)
+                            }
                         }
                     }
+                } label: {
+                    Text("Search")
                 }
-            } label: {
-                Text("Search")
             }
-
             TripRequestResultView(results: tripResults)
         }
     }

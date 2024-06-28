@@ -21,14 +21,18 @@ struct InlineLocationSerachView: View {
         VStack {
             TextField("Search Place", text: $searchText)
             if results.count > 0 {
-                ZStack {
+                ZStack  {
                     List($results) { $stop in
                         switch stop.place.place {
                         case let .stopPlace(stopPlace):
                             HStack {
                                 Image(systemName: "tram")
                                 Text(stopPlace.stopPlaceName.text)
+                                Spacer()
                             }
+                            .background(Color.white)
+                            .frame(maxHeight: .infinity)
+
                             .onTapGesture {
                                 selectedPlace = stop
                                 results = []
@@ -37,13 +41,16 @@ struct InlineLocationSerachView: View {
                             HStack {
                                 Image(systemName: "location")
                                 Text(address.name.text)
+                                Spacer()
                             }
+                            .background(Color.white)
                             .onTapGesture {
                                 selectedPlace = stop
                                 results = []
                             }
                         }
                     }
+
                 }
             }
         }.onChange(of: searchText) { _, _ in
