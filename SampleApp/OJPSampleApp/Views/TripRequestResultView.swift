@@ -5,11 +5,11 @@
 //  Created by Lehnherr Reto on 27.06.2024.
 //
 
+import Duration
 import OJP
 import SwiftUI
-import Duration
 
-struct DurationFormatter {
+enum DurationFormatter {
     static var formatter: DateComponentsFormatter {
         let f = DateComponentsFormatter()
         f.unitsStyle = .brief

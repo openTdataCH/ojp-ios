@@ -21,7 +21,7 @@ struct InlineLocationSerachView: View {
         VStack {
             TextField("Search Place", text: $searchText)
             if results.count > 0 {
-                ZStack  {
+                ZStack {
                     List($results) { $stop in
                         switch stop.place.place {
                         case let .stopPlace(stopPlace):
@@ -32,7 +32,6 @@ struct InlineLocationSerachView: View {
                             }
                             .background(Color.white)
                             .frame(maxHeight: .infinity)
-
                             .onTapGesture {
                                 selectedPlace = stop
                                 results = []
@@ -50,7 +49,6 @@ struct InlineLocationSerachView: View {
                             }
                         }
                     }
-
                 }
             }
         }.onChange(of: searchText) { _, _ in
