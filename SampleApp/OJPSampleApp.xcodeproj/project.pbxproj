@@ -13,6 +13,7 @@
 		CF564A322C2D83D600424D91 /* TripRequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF564A312C2D83D600424D91 /* TripRequestView.swift */; };
 		CF3CD8F62C2DB76700D25994 /* tr-with-transfer-legs.xml in Resources */ = {isa = PBXBuildFile; fileRef = CF3CD8F52C2DB76500D25994 /* tr-with-transfer-legs.xml */; };
 		CF3CD8FA2C2E8F5700D25994 /* PreviewMocker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3CD8F82C2DBABA00D25994 /* PreviewMocker.swift */; };
+		CF3CD8FC2C2E9BC700D25994 /* AsyncView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3CD8FB2C2E9BC700D25994 /* AsyncView.swift */; };
 		CF564A342C2D8CFE00424D91 /* LocationSearchByNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF227B42BBD95CF00D3EADF /* LocationSearchByNameView.swift */; };
 		CF71377A2BE5398200D2411E /* DemoEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7137792BE5398200D2411E /* DemoEnvironment.swift */; };
 		CFBA60BB2BBD6106000FF2ED /* OJPSampleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBA60BA2BBD6106000FF2ED /* OJPSampleApp.swift */; };
@@ -47,6 +48,7 @@
 		CF564A312C2D83D600424D91 /* TripRequestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripRequestView.swift; sourceTree = "<group>"; };
 		CF3CD8F52C2DB76500D25994 /* tr-with-transfer-legs.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "tr-with-transfer-legs.xml"; sourceTree = "<group>"; };
 		CF3CD8F82C2DBABA00D25994 /* PreviewMocker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewMocker.swift; sourceTree = "<group>"; };
+		CF3CD8FB2C2E9BC700D25994 /* AsyncView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncView.swift; sourceTree = "<group>"; };
 		CF7137792BE5398200D2411E /* DemoEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoEnvironment.swift; sourceTree = "<group>"; };
 		CFBA60B72BBD6106000FF2ED /* OJPSampleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OJPSampleApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFBA60BA2BBD6106000FF2ED /* OJPSampleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OJPSampleApp.swift; sourceTree = "<group>"; };
@@ -95,6 +97,7 @@
 			isa = PBXGroup;
 			children = (
 				CF3CD8F82C2DBABA00D25994 /* PreviewMocker.swift */,
+				CF3CD8FB2C2E9BC700D25994 /* AsyncView.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -332,6 +335,7 @@
 				CF564A342C2D8CFE00424D91 /* LocationSearchByNameView.swift in Sources */,
 				CF71377A2BE5398200D2411E /* DemoEnvironment.swift in Sources */,
 				CF3CD8FA2C2E8F5700D25994 /* PreviewMocker.swift in Sources */,
+				CF3CD8FC2C2E9BC700D25994 /* AsyncView.swift in Sources */,
 				CFBA60BB2BBD6106000FF2ED /* OJPSampleApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
