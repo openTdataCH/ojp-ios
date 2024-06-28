@@ -1,5 +1,5 @@
 //
-//  TripResult+Extensions.swift
+//  TripRequest+Extensions.swift
 //
 //
 //  Created by Lehnherr Reto on 27.06.2024.
@@ -10,10 +10,10 @@ import Foundation
 public extension OJPv2.PlaceRefChoice {
     var title: String {
         switch self {
-        case let .stopPointRef(_, name), 
-            let .stopPlaceRef(_, name),
-            let .geoPosition(_, name):
-            return name.text
+        case let .stopPointRef(_, name),
+             let .stopPlaceRef(_, name),
+             let .geoPosition(_, name):
+            name.text
         }
     }
 }
@@ -21,11 +21,11 @@ public extension OJPv2.PlaceRefChoice {
 public extension OJPv2.Trip {
     var originName: String {
         switch legs.first?.legType {
-        case .continous(let continuousLeg):
-            ""
-        case .timed(let timedLeg):
+        case .continous:
+            "continuousLeg not implemented"
+        case let .timed(timedLeg):
             timedLeg.legBoard.stopPointName.text
-        case .transfer(let transferLeg):
+        case let .transfer(transferLeg):
             transferLeg.legStart.title
         case nil:
             ""
@@ -34,11 +34,11 @@ public extension OJPv2.Trip {
 
     var destinationName: String {
         switch legs.last?.legType {
-        case .continous(let continuousLeg):
-            ""
-        case .timed(let timedLeg):
+        case .continous:
+            "continuousLeg not implemented"
+        case let .timed(timedLeg):
             timedLeg.legAlight.stopPointName.text
-        case .transfer(let transferLeg):
+        case let .transfer(transferLeg):
             transferLeg.legEnd.title
         case nil:
             ""

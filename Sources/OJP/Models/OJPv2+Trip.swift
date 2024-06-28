@@ -530,7 +530,7 @@ public extension OJPv2 {
         public enum CodingKeys: String, CodingKey {
             case viaPoint = "ViaPoint"
         }
-    } 
+    }
 
     enum PlaceRefChoice: Codable {
         case stopPlaceRef(String, InternationalText)

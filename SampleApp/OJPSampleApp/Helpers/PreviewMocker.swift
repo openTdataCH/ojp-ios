@@ -9,8 +9,7 @@ import Foundation
 import OJP
 
 class PreviewMocker {
-
-    static let shared: PreviewMocker = PreviewMocker()
+    static let shared: PreviewMocker = .init()
 
     static func loadXML(xmlFilename: String) throws -> Data {
         guard let path = Bundle.main.path(forResource: xmlFilename, ofType: "xml") else {
@@ -39,10 +38,9 @@ class PreviewMocker {
         do {
             return try await OJP(
                 loadingStrategy: Self.mockLoader())
-            .requestTrips(from: .stopPlaceRef("a", .init("A")),
-                          to: .stopPlaceRef("b", .init("B")),
-                          params: .init()
-            )
+                .requestTrips(from: .stopPlaceRef("a", .init("A")),
+                              to: .stopPlaceRef("b", .init("B")),
+                              params: .init())
         } catch {
             print(error.localizedDescription)
             return []

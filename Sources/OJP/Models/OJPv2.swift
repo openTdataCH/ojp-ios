@@ -107,7 +107,7 @@ public struct OJPv2: Codable {
         public init(_ text: String = "") {
             self.text = text
         }
-        
+
         public enum CodingKeys: String, CodingKey {
             case text = "Text"
         }
