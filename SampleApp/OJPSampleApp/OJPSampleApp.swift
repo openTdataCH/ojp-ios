@@ -73,7 +73,7 @@ struct OJPSampleApp: App {
                     case .locationInformationRequest:
                         LocationSearchByNameView()
                     case .tripRequest:
-                        Text("TripRequest")
+                        TripRequestView(ojp: OJP.configured)
                     }
                 }
             }).toolbar {
