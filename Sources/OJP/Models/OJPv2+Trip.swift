@@ -532,6 +532,7 @@ public extension OJPv2 {
         }
     }
 
+    // https://vdvde.github.io/OJP/develop/index.html#PlaceRefGroup
     enum PlaceRefChoice: Codable {
         case stopPlaceRef(String, InternationalText)
         case geoPosition(OJPv2.GeoPosition, InternationalText)
@@ -540,7 +541,7 @@ public extension OJPv2 {
         enum CodingKeys: String, CodingKey {
             case stopPlaceRef = "StopPlaceRef"
             case stopPointRef = "siri:StopPointRef"
-            case geoPosition = "siri:LocationStructure"
+            case geoPosition = "GeoPosition"
             case name = "Name"
         }
 
