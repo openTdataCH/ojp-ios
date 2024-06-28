@@ -5,6 +5,7 @@
 //  Created by Terence Alberti on 06.05.2024.
 //
 
+import Duration
 import Foundation
 import XMLCoder
 
@@ -88,7 +89,7 @@ public extension OJPv2 {
         /// Unique within trip response. This ID must not be used over mutliple ``OJPv2/TripRequest``
         /// - Warning: This ID must not be used over mutliple ``OJPv2/TripRequest``. Use ``tripHash`` instead.
         public let id: String
-        public let duration: String
+        public let duration: Duration
         public let startTime: Date
         public let endTime: Date
         public let transfers: Int
@@ -134,7 +135,7 @@ public extension OJPv2 {
     // https://vdvde.github.io/OJP/develop/index.html#LegStructure
     struct Leg: Codable, Identifiable {
         public let id: Int
-        public let duration: String?
+        public let duration: Duration?
         public let legType: LegTypeChoice
 
         enum CodingKeys: String, CodingKey {
@@ -147,7 +148,7 @@ public extension OJPv2 {
 
             let container = try decoder.container(keyedBy: CodingKeys.self)
             id = try container.decode(Int.self, forKey: .id)
-            duration = try? container.decode(String.self, forKey: .duration)
+            duration = try? container.decode(Duration.self, forKey: .duration)
         }
 
         public enum LegTypeChoice: Codable {
@@ -214,7 +215,7 @@ public extension OJPv2 {
         public let transferTypes: [TransferType]
         public let legStart: PlaceRefChoice
         public let legEnd: PlaceRefChoice
-        public let duration: String
+        public let duration: Duration
 
         enum CodingKeys: String, CodingKey {
             case transferTypes = "TransferType"

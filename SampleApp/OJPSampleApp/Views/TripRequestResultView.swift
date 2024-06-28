@@ -7,6 +7,20 @@
 
 import OJP
 import SwiftUI
+import Duration
+
+struct DurationFormatter {
+    static var formatter: DateComponentsFormatter {
+        let f = DateComponentsFormatter()
+        f.unitsStyle = .brief
+        f.allowedUnits = [.day, .hour, .minute]
+        return f
+    }
+
+    static func string(for duration: Duration) -> String {
+        formatter.string(from: duration.dateComponents) ?? ""
+    }
+}
 
 struct TripRequestResultView: View {
     var results: [OJPv2.TripResult] = []
@@ -21,6 +35,14 @@ struct TripRequestResultView: View {
                             Text(trip.startTime.formatted())
                         }
                         Spacer()
+                        HStack(spacing: 2) {
+                            Image(systemName: "clock.arrow.circlepath")
+                                .imageScale(.small)
+                                .foregroundStyle(.secondary)
+                            Text(DurationFormatter.string(for: trip.duration))
+                        }
+                        Spacer()
+
                         VStack(alignment: .trailing) {
                             Text(trip.destinationName)
                             Text(trip.endTime.formatted())
