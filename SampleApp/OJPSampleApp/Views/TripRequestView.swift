@@ -16,6 +16,8 @@ struct TripRequestView: View {
     @State var via: OJPv2.PlaceResult?
     @State var destination: OJPv2.PlaceResult?
 
+    @State var paginatedActor: PaginatedTripLoader?
+
     var body: some View {
         VStack {
             HStack(alignment: .top) {
@@ -65,15 +67,17 @@ struct TripRequestView: View {
                     if let origin, let destination {
                         Task {
                             do {
-                                tripResults = try await ojp.requestTrips(
-                                    from: origin.placeRef,
-                                    to: destination.placeRef,
-                                    via: via != nil ? [via!.placeRef] : nil,
-                                    params: .init(
-                                        includeTrackSections: true,
-                                        includeIntermediateStops: true
-                                    )
-                                )
+                                paginatedActor = PaginatedTripLoader(ojp: ojp)
+                                tripResults = try await paginatedActor!.loadTrips(for:
+                                    TripRequest(from: origin.placeRef,
+                                                to: destination.placeRef,
+                                                via: via != nil ? [via!.placeRef] : nil,
+                                                at: .departure(Date()),
+                                                params: .init(
+                                                    includeTrackSections: true,
+                                                    includeIntermediateStops: true
+                                                )),
+                                    numberOfResults: .minimum(6))
                             } catch {
                                 print(error)
                             }
@@ -83,7 +87,23 @@ struct TripRequestView: View {
                     Text("Search")
                 }
             }
-            TripRequestResultView(results: tripResults)
+            TripRequestResultView(
+                results: tripResults,
+                loadPrevious: {
+                    Task { @MainActor in
+                        guard let paginatedActor else { return }
+                        let prev = try await paginatedActor.loadPrevious()
+                        tripResults = prev + tripResults
+                    }
+                },
+                loadNext: {
+                    Task { @MainActor in
+                        guard let paginatedActor else { return }
+                        let next = try await paginatedActor.loadNext()
+                        tripResults = tripResults + next
+                    }
+                }
+            )
         }
     }
 }

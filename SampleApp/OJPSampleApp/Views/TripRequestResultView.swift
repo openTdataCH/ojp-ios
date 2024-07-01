@@ -23,45 +23,72 @@ enum DurationFormatter {
 }
 
 struct TripRequestResultView: View {
-    var results: [OJPv2.TripResult] = []
     @State var selectedTrip: OJPv2.Trip?
+
+    var results: [OJPv2.TripResult] = []
+    var loadPrevious: (() -> Void)?
+    var loadNext: (() -> Void)?
 
     var body: some View {
         HStack {
-            VStack {
-                List(results) { tripResult in
-                    if let trip = tripResult.trip {
+            ScrollView {
+                if results.count > 0 {
+                    Button(action: {
+                        loadPrevious?()
+                    }, label: {
+                        Text("Load Previous")
+                    })
+                }
+                LazyVStack(spacing: 0) {
+                    ForEach(results) { tripResult in
                         HStack {
-                            VStack(alignment: .leading) {
-                                Text(trip.originName)
-                                Text(trip.startTime.formatted())
-                            }
-                            Spacer()
-                            HStack(spacing: 2) {
-                                Image(systemName: "clock.arrow.circlepath")
-                                    .imageScale(.small)
-                                    .foregroundStyle(.secondary)
-                                Text(DurationFormatter.string(for: trip.duration))
-                            }
-                            Spacer()
+                            if let trip = tripResult.trip {
+                                if trip.tripHash == selectedTrip?.tripHash {
+                                    Color.accentColor.frame(maxWidth: 2)
+                                }
+                                VStack(alignment: .leading) {
+                                    Text(trip.originName)
+                                    Text(trip.startTime.formatted())
+                                }
+                                Spacer()
+                                HStack(spacing: 2) {
+                                    Image(systemName: "clock.arrow.circlepath")
+                                        .imageScale(.small)
+                                        .foregroundStyle(.secondary)
+                                    Text(DurationFormatter.string(for: trip.duration))
+                                }
+                                Spacer()
 
-                            VStack(alignment: .trailing) {
-                                Text(trip.destinationName)
-                                Text(trip.endTime.formatted())
-                            }
+                                VStack(alignment: .trailing) {
+                                    Text(trip.destinationName)
+                                    Text(trip.endTime.formatted())
+                                }
+                            } else { Text("No Trips found") }
                         }
-                        .contentShape(Rectangle())
+                        .background(Color.white)
                         .onTapGesture {
-                            selectedTrip = trip
+                            selectedTrip = tripResult.trip
                         }
-                    } else { Text("No Trips found") }
+                        Divider()
+                    }
+                    .background(Color.white)
+                }
+                if results.count > 0 {
+                    Button(action: {
+                        loadNext?()
+                    }, label: {
+                        Text("Load Next")
+                    })
                 }
             }
+
             if let selectedTrip {
                 TripDetailView(trip: selectedTrip)
+                    .padding()
                     .frame(maxWidth: 400)
             }
         }
+        .frame(minWidth: 300)
     }
 }
 

@@ -512,7 +512,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "OJPSampleApp/Preview\\ Content/tr-with-transfer-legs.xml OJPSampleApp/Preview\\ Content/tr-perf-be-zh-20results-projection.xml OJPSampleApp/Preview\\ Content";
-				DEVELOPMENT_TEAM = G8TB8WCHNT;
+				DEVELOPMENT_TEAM = PHSB4Y3852;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
@@ -549,7 +549,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "OJPSampleApp/Preview\\ Content/tr-with-transfer-legs.xml OJPSampleApp/Preview\\ Content/tr-perf-be-zh-20results-projection.xml OJPSampleApp/Preview\\ Content";
-				DEVELOPMENT_TEAM = G8TB8WCHNT;
+				DEVELOPMENT_TEAM = PHSB4Y3852;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
