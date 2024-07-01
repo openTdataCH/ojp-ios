@@ -24,32 +24,58 @@ enum DurationFormatter {
 
 struct TripRequestResultView: View {
     var results: [OJPv2.TripResult] = []
+    var loadPrevious: (() -> Void)?
+    var loadNext: (() -> Void)?
 
     var body: some View {
         VStack {
-            List(results) { tripResult in
-                HStack {
-                    if let trip = tripResult.trip {
-                        VStack(alignment: .leading) {
-                            Text(trip.originName)
-                            Text(trip.startTime.formatted())
-                        }
-                        Spacer()
-                        HStack(spacing: 2) {
-                            Image(systemName: "clock.arrow.circlepath")
-                                .imageScale(.small)
-                                .foregroundStyle(.secondary)
-                            Text(DurationFormatter.string(for: trip.duration))
-                        }
-                        Spacer()
+            ScrollView {
+                LazyVStack {
+                    if results.count > 0 {
+                        Button(action: {
+                            loadPrevious?()
+                        }, label: {
+                            Text("Load Previous")
+                        })
+                    }
+                    ForEach(results) { tripResult in
+                        VStack {
+                            HStack {
+                                if let trip = tripResult.trip {
+                                    VStack(alignment: .leading) {
+                                        Text(trip.originName)
+                                        Text(trip.startTime.formatted())
+                                    }
+                                    Spacer()
+                                    HStack(spacing: 2) {
+                                        Image(systemName: "clock.arrow.circlepath")
+                                            .imageScale(.small)
+                                            .foregroundStyle(.secondary)
+                                        Text(DurationFormatter.string(for: trip.duration))
+                                    }
+                                    Spacer()
 
-                        VStack(alignment: .trailing) {
-                            Text(trip.destinationName)
-                            Text(trip.endTime.formatted())
+                                    VStack(alignment: .trailing) {
+                                        Text(trip.destinationName)
+                                        Text(trip.endTime.formatted())
+                                    }
+                                } else { Text("No Trips found") }
+                            }
+                            .padding(.vertical)
+                            Divider()
                         }
-                    } else { Text("No Trips found") }
+                    }
+
+                    .padding()
+                    if results.count > 0 {
+                        Button(action: {
+                            loadNext?()
+                        }, label: {
+                            Text("Load Next")
+                        })
+                    }
                 }
-            }
+            }.frame(minWidth: 100)
         }
     }
 }

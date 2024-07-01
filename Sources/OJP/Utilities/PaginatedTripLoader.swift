@@ -57,7 +57,7 @@ public actor PaginatedTripLoader {
         self.request = request
 
         return tripResults
-            .filter({ $0.trip != nil }) // TripSummary currently not supported
+            .filter { $0.trip != nil } // TripSummary currently not supported
             .compactMap { tripResult in
                 guard let trip = tripResult.trip else { return nil }
                 let hash = trip.tripHash // de-duplicate trips based on tripHash
@@ -71,7 +71,6 @@ public actor PaginatedTripLoader {
 
                 return tripResult
             }
-
     }
 
     public func loadPrevious() async throws -> [OJPv2.TripResult] {
