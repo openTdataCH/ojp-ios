@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		92AEB2502C328DCF00D5828E /* TripDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92AEB24F2C328DCF00D5828E /* TripDetailView.swift */; };
+		92AEB2522C32AA2C00D5828E /* TimeInterval+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92AEB2512C32AA2C00D5828E /* TimeInterval+Extensions.swift */; };
 		CF06B9F32BBE7DD000B60917 /* Pulse in Frameworks */ = {isa = PBXBuildFile; productRef = CF06B9F22BBE7DD000B60917 /* Pulse */; };
 		CF06B9F52BBE7DD000B60917 /* PulseUI in Frameworks */ = {isa = PBXBuildFile; productRef = CF06B9F42BBE7DD000B60917 /* PulseUI */; };
 		CF1C2B6E2C2D964F00B51EFD /* tr-perf-be-zh-20results-projection.xml in Resources */ = {isa = PBXBuildFile; fileRef = CF1C2B6D2C2D94B700B51EFD /* tr-perf-be-zh-20results-projection.xml */; };
@@ -46,6 +48,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		92AEB24F2C328DCF00D5828E /* TripDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripDetailView.swift; sourceTree = "<group>"; };
+		92AEB2512C32AA2C00D5828E /* TimeInterval+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeInterval+Extensions.swift"; sourceTree = "<group>"; };
 		CF1C2B6D2C2D94B700B51EFD /* tr-perf-be-zh-20results-projection.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "tr-perf-be-zh-20results-projection.xml"; sourceTree = "<group>"; };
 		CF3CD8F52C2DB76500D25994 /* tr-with-transfer-legs.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "tr-with-transfer-legs.xml"; sourceTree = "<group>"; };
 		CF3CD8F82C2DBABA00D25994 /* PreviewMocker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewMocker.swift; sourceTree = "<group>"; };
@@ -102,6 +106,7 @@
 			children = (
 				CF3CD8F82C2DBABA00D25994 /* PreviewMocker.swift */,
 				CF3CD8FB2C2E9BC700D25994 /* AsyncView.swift */,
+				92AEB2512C32AA2C00D5828E /* TimeInterval+Extensions.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -114,6 +119,7 @@
 				CF564A312C2D83D600424D91 /* TripRequestResultView.swift */,
 				CF3CD8FD2C2EA0B200D25994 /* TripRequestView.swift */,
 				CF3CD8FF2C2EA4A800D25994 /* InlineLocationSerachView.swift */,
+				92AEB24F2C328DCF00D5828E /* TripDetailView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -336,12 +342,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				92AEB2502C328DCF00D5828E /* TripDetailView.swift in Sources */,
 				CF564A322C2D83D600424D91 /* TripRequestResultView.swift in Sources */,
 				CFF227B82BBDA10800D3EADF /* PlaceDetailView.swift in Sources */,
 				CF564A342C2D8CFE00424D91 /* LocationSearchByNameView.swift in Sources */,
 				CF3CD8FE2C2EA0B200D25994 /* TripRequestView.swift in Sources */,
 				CF71377A2BE5398200D2411E /* DemoEnvironment.swift in Sources */,
 				CF3CD8FA2C2E8F5700D25994 /* PreviewMocker.swift in Sources */,
+				92AEB2522C32AA2C00D5828E /* TimeInterval+Extensions.swift in Sources */,
 				CF3CD9002C2EA4A800D25994 /* InlineLocationSerachView.swift in Sources */,
 				CF3CD8FC2C2E9BC700D25994 /* AsyncView.swift in Sources */,
 				CFBA60BB2BBD6106000FF2ED /* OJPSampleApp.swift in Sources */,
@@ -504,6 +512,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "OJPSampleApp/Preview\\ Content/tr-with-transfer-legs.xml OJPSampleApp/Preview\\ Content/tr-perf-be-zh-20results-projection.xml OJPSampleApp/Preview\\ Content";
+				DEVELOPMENT_TEAM = G8TB8WCHNT;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
@@ -540,6 +549,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "OJPSampleApp/Preview\\ Content/tr-with-transfer-legs.xml OJPSampleApp/Preview\\ Content/tr-perf-be-zh-20results-projection.xml OJPSampleApp/Preview\\ Content";
+				DEVELOPMENT_TEAM = G8TB8WCHNT;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;

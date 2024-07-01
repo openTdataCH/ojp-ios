@@ -24,31 +24,41 @@ enum DurationFormatter {
 
 struct TripRequestResultView: View {
     var results: [OJPv2.TripResult] = []
+    @State var selectedTrip: OJPv2.Trip?
 
     var body: some View {
-        VStack {
-            List(results) { tripResult in
-                HStack {
+        HStack {
+            VStack {
+                List(results) { tripResult in
                     if let trip = tripResult.trip {
-                        VStack(alignment: .leading) {
-                            Text(trip.originName)
-                            Text(trip.startTime.formatted())
-                        }
-                        Spacer()
-                        HStack(spacing: 2) {
-                            Image(systemName: "clock.arrow.circlepath")
-                                .imageScale(.small)
-                                .foregroundStyle(.secondary)
-                            Text(DurationFormatter.string(for: trip.duration))
-                        }
-                        Spacer()
+                        HStack {
+                            VStack(alignment: .leading) {
+                                Text(trip.originName)
+                                Text(trip.startTime.formatted())
+                            }
+                            Spacer()
+                            HStack(spacing: 2) {
+                                Image(systemName: "clock.arrow.circlepath")
+                                    .imageScale(.small)
+                                    .foregroundStyle(.secondary)
+                                Text(DurationFormatter.string(for: trip.duration))
+                            }
+                            Spacer()
 
-                        VStack(alignment: .trailing) {
-                            Text(trip.destinationName)
-                            Text(trip.endTime.formatted())
+                            VStack(alignment: .trailing) {
+                                Text(trip.destinationName)
+                                Text(trip.endTime.formatted())
+                            }
+                        }.onTapGesture {
+                            selectedTrip = trip
                         }
-                    } else { Text("No Trips found") }
+                    }
+                    else { Text("No Trips found") }
                 }
+            }
+            if let selectedTrip {
+                TripDetailView(trip: selectedTrip)
+                    .frame(maxWidth: 400)
             }
         }
     }
