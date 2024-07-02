@@ -34,6 +34,12 @@ struct TripDetailView: View {
                         Text(legBoard.estimatedQuay?.text ?? legBoard.plannedQuay?.text ?? "")
                             .foregroundStyle(changedTrack ? .red : .black)
                     }
+                    ForEach(timedLeg.legsIntermediate, id: \.self) { legIntermediate in
+                        HStack {
+                            Text(legIntermediate.stopPointName.text)
+                                .foregroundStyle(.gray)
+                        }
+                    }
                     HStack {
                         let legAlight = timedLeg.legAlight
                         let timetabledTime = legAlight.serviceArrival.timetabledTime
@@ -74,4 +80,17 @@ struct TripDetailView: View {
             }
         }
     )
+}
+
+extension OJPv2.LegIntermediate: Hashable {
+    
+    public static func == (lhs: OJPv2.LegIntermediate, rhs: OJPv2.LegIntermediate) -> Bool {
+        return lhs.stopPointRef == rhs.stopPointRef
+    }
+    
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(stopPointRef)
+    }
+    
+    
 }
