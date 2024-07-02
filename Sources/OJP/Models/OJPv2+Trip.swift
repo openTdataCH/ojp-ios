@@ -307,7 +307,7 @@ public extension OJPv2 {
         public let stopPointRef: String
         public let stopPointName: InternationalText
         public let nameSuffix: InternationalText?
-        public let plannedQuai: InternationalText?
+        public let plannedQuay: InternationalText?
         public let estimatedQuay: InternationalText?
 
         public let serviceArrival: ServiceArrival? // Set as optional until https://github.com/openTdataCH/ojp-sdk/issues/42 is fixed
@@ -325,7 +325,7 @@ public extension OJPv2 {
             case stopPointRef = "siri:StopPointRef"
             case stopPointName = "StopPointName"
             case nameSuffix = "NameSuffix"
-            case plannedQuai = "PlannedQuay"
+            case plannedQuay = "PlannedQuay"
             case estimatedQuay = "EstimatedQuay"
             case serviceArrival = "ServiceArrival"
             case serviceDeparture = "ServiceDeparture"
@@ -344,7 +344,7 @@ public extension OJPv2 {
         public let stopPointRef: String
         public let stopPointName: InternationalText
         public let nameSuffix: InternationalText?
-        public let plannedQuai: InternationalText?
+        public let plannedQuay: InternationalText?
         public let estimatedQuay: InternationalText?
 
         public let serviceArrival: ServiceArrival
@@ -362,7 +362,7 @@ public extension OJPv2 {
             case stopPointRef = "siri:StopPointRef"
             case stopPointName = "StopPointName"
             case nameSuffix = "NameSuffix"
-            case plannedQuai = "PlannedQuay"
+            case plannedQuay = "PlannedQuay"
             case estimatedQuay = "EstimatedQuay"
             case serviceArrival = "ServiceArrival"
             case serviceDeparture = "ServiceDeparture"

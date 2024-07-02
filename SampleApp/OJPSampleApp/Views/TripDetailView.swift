@@ -49,14 +49,14 @@ struct TripDetailView: View {
                         let legAlight = timedLeg.legAlight
                         let timetabledTime = legAlight.serviceArrival.timetabledTime
                         let estimatedTime = legAlight.serviceArrival.estimatedTime
-                        let changedTrack = legAlight.estimatedQuay != nil && legAlight.estimatedQuay!.text != legAlight.plannedQuai?.text
+                        let changedTrack = legAlight.estimatedQuay != nil && legAlight.estimatedQuay!.text != legAlight.plannedQuay?.text
                         Text(estimatedTime?.formatted() ?? timetabledTime.formatted())
                         if let estimatedTime {
                             let delay = estimatedTime.timeIntervalSince(timetabledTime).formattedDelay
                             Text(delay)
                         }
                         Text(timedLeg.legAlight.stopPointName.text)
-                        Text(legAlight.estimatedQuay?.text ?? legAlight.plannedQuai?.text ?? "")
+                        Text(legAlight.estimatedQuay?.text ?? legAlight.plannedQuay?.text ?? "")
                             .foregroundStyle(changedTrack ? .red : .black)
                     }
                 }
