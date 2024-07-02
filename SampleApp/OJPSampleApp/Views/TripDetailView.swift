@@ -20,6 +20,12 @@ struct TripDetailView: View {
             case .timed(let timedLeg):
                 VStack(alignment: .leading) {
                     HStack {
+                        Text(timedLeg.service.publishedServiceName.text)
+                            .bold()
+                        Text(timedLeg.service.destinationText?.text ?? "")
+                            .bold()
+                    }
+                    HStack {
                         let legBoard = timedLeg.legBoard
                         let timetabledTime = legBoard.serviceDeparture.timetabledTime
                         let estimatedTime = legBoard.serviceDeparture.estimatedTime
@@ -30,7 +36,6 @@ struct TripDetailView: View {
                             Text(delay)
                         }
                         Text(legBoard.stopPointName.text)
-                        
                         Text(legBoard.estimatedQuay?.text ?? legBoard.plannedQuay?.text ?? "")
                             .foregroundStyle(changedTrack ? .red : .black)
                     }
