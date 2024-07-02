@@ -10,6 +10,31 @@ import Pulse
 import PulseUI
 import SwiftUI
 
+enum AppSection: CaseIterable, Identifiable {
+    case locationInformationRequest
+    case tripRequest
+
+    var id: Self { self }
+
+    var title: String {
+        switch self {
+        case .locationInformationRequest:
+            "LocationInformationRequest"
+        case .tripRequest:
+            "TripRequest"
+        }
+    }
+
+    var image: Image {
+        switch self {
+        case .locationInformationRequest:
+            .init(systemName: "mappin.and.ellipse.circle.fill")
+        case .tripRequest:
+            .init(systemName: "calendar.circle.fill")
+        }
+    }
+}
+
 @main
 struct OJPSampleApp: App {
     init() {
@@ -20,9 +45,24 @@ struct OJPSampleApp: App {
     @State var isShowingConsole: Bool = false
     @AppStorage("DemoEnvironment") var environment: String = DemoEnvironment.int.rawValue
 
+    @State var currentSection: AppSection = .locationInformationRequest
+
     var body: some Scene {
         WindowGroup {
-            NavigationStack {
+            NavigationSplitView(sidebar: {
+                List(selection: $currentSection) {
+                    ForEach(AppSection.allCases) { l in
+                        HStack {
+                            l.image
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 24, height: 24)
+
+                            Text(l.title)
+                        }
+                    }
+                }
+            }, detail: {
                 VStack {
                     ZStack(alignment: .topLeading) {
                         Image("OpenTransportDataIcons")
@@ -33,9 +73,14 @@ struct OJPSampleApp: App {
                         alignment: .topLeading
                     )
                     .background(.tint)
-                    LocationSearchByNameView()
+                    switch currentSection {
+                    case .locationInformationRequest:
+                        LocationSearchByNameView()
+                    case .tripRequest:
+                        TripRequestView(ojp: OJP.configured)
+                    }
                 }
-            }.toolbar {
+            }).toolbar {
                 ToolbarItemGroup {
                     Picker("Environment", selection: $environment) {
                         ForEach(DemoEnvironment.allCases) { env in
@@ -52,7 +97,7 @@ struct OJPSampleApp: App {
                         Image(systemName: "network")
                     }
                 }
-            }
+            }.navigationSplitViewStyle(.balanced)
         }
 
         WindowGroup(id: "Console") {

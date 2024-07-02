@@ -1,6 +1,15 @@
 {
   "pins" : [
     {
+      "identity" : "swift-duration",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/longinius/swift-duration.git",
+      "state" : {
+        "revision" : "f791096071b85c1c8781f6ab52b1b4e45c0de819",
+        "version" : "1.0.0"
+      }
+    },
+    {
       "identity" : "swiftformat",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/nicklockwood/SwiftFormat",

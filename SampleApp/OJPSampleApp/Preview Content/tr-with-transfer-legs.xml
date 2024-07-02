@@ -1,0 +1,1284 @@
+<OJP xmlns:siri="http://www.siri.org.uk/siri" xmlns="http://www.vdv.de/ojp" version="2.0">
+    <OJPResponse>
+        <siri:ServiceDelivery>
+            <siri:ResponseTimestamp>2024-06-21T09:40:16.6054895+02:00</siri:ResponseTimestamp>
+            <siri:ProducerRef>MENTZ</siri:ProducerRef>
+            <OJPTripDelivery>
+                <siri:ResponseTimestamp>2024-06-21T09:40:16.6054906+02:00</siri:ResponseTimestamp>
+                <siri:RequestMessageRef>ab6b0117-a2fd-40cb-aa68-e6c2a700658d</siri:RequestMessageRef>
+                <siri:DefaultLanguage>de</siri:DefaultLanguage>
+                <CalcTime>393</CalcTime>
+                <TripResult>
+                    <Id>ID-E00AB7CA-8186-4779-9488-6BECADBCD2E0</Id>
+                    <Trip>
+                        <Id>ID-E00AB7CA-8186-4779-9488-6BECADBCD2E0</Id>
+                        <Duration>PT14M36S</Duration>
+                        <StartTime>2024-06-21T08:04:00Z</StartTime>
+                        <EndTime>2024-06-21T08:18:36Z</EndTime>
+                        <Transfers>0</Transfers>
+                        <Leg>
+                            <Id>1</Id>
+                            <Duration>PT3M</Duration>
+                            <TransferLeg>
+                                <TransferType>walk</TransferType>
+                                <LegStart>
+                                    <siri:StopPointRef>8504881</siri:StopPointRef>
+                                    <Name>
+                                        <Text xml:lang="de">Fribourg/Freiburg, gare rout.</Text>
+                                    </Name>
+                                </LegStart>
+                                <LegEnd>
+                                    <siri:StopPointRef>8504100</siri:StopPointRef>
+                                    <Name>
+                                        <Text xml:lang="de">Fribourg/Freiburg</Text>
+                                    </Name>
+                                </LegEnd>
+                                <Duration>PT3M</Duration>
+                            </TransferLeg>
+                        </Leg>
+                        <Leg>
+                            <Id>2</Id>
+                            <Duration>PT11M24S</Duration>
+                            <TimedLeg>
+                                <LegBoard>
+                                    <siri:StopPointRef>ch:1:sloid:4100:2:2</siri:StopPointRef>
+                                    <StopPointName>
+                                        <Text xml:lang="de">Fribourg/Freiburg</Text>
+                                    </StopPointName>
+                                    <PlannedQuay>
+                                        <Text xml:lang="de">2</Text>
+                                    </PlannedQuay>
+                                    <EstimatedQuay>
+                                        <Text xml:lang="de">2</Text>
+                                    </EstimatedQuay>
+                                    <NameSuffix>
+                                        <Text xml:lang="de">NO_DATA</Text>
+                                    </NameSuffix>
+                                    <ServiceDeparture>
+                                        <TimetabledTime>2024-06-21T08:07:00Z</TimetabledTime>
+                                        <EstimatedTime>2024-06-21T08:07:12Z</EstimatedTime>
+                                    </ServiceDeparture>
+                                    <Order>1</Order>
+                                </LegBoard>
+                                <LegAlight>
+                                    <siri:StopPointRef>ch:1:sloid:4027:2:2</siri:StopPointRef>
+                                    <StopPointName>
+                                        <Text xml:lang="de">Neyruz FR</Text>
+                                    </StopPointName>
+                                    <NameSuffix>
+                                        <Text xml:lang="de">NO_DATA</Text>
+                                    </NameSuffix>
+                                    <PlannedQuay>
+                                        <Text xml:lang="de">2</Text>
+                                    </PlannedQuay>
+                                    <EstimatedQuay>
+                                        <Text xml:lang="de">2</Text>
+                                    </EstimatedQuay>
+                                    <ServiceArrival>
+                                        <TimetabledTime>2024-06-21T08:18:00Z</TimetabledTime>
+                                        <EstimatedTime>2024-06-21T08:18:36Z</EstimatedTime>
+                                    </ServiceArrival>
+                                    <Order>5</Order>
+                                </LegAlight>
+                                <Service>
+                                    <Mode>
+                                        <PtMode>rail</PtMode>
+                                        <siri:RailSubmode>regionalRail</siri:RailSubmode>
+                                        <Name>
+                                            <Text xml:lang="de">Zug</Text>
+                                        </Name>
+                                        <ShortName>
+                                            <Text xml:lang="de">S</Text>
+                                        </ShortName>
+                                    </Mode>
+                                    <ConventionalModeOfOperation>scheduled</ConventionalModeOfOperation>
+                                    <TrainNumber>14126</TrainNumber>
+                                    <siri:LineRef>ojp:91021:A</siri:LineRef>
+                                    <siri:OperatorRef>53</siri:OperatorRef>
+                                    <PublicCode>S-Bahn</PublicCode>
+                                    <PublishedServiceName>
+                                        <Text xml:lang="de">S21</Text>
+                                    </PublishedServiceName>
+                                    <ProductCategory>
+                                        <Name>
+                                            <Text xml:lang="de">Zug</Text>
+                                        </Name>
+                                        <ShortName>
+                                            <Text xml:lang="de">S</Text>
+                                        </ShortName>
+                                        <ProductCategoryRef>27</ProductCategoryRef>
+                                    </ProductCategory>
+                                    <siri:DirectionRef>H</siri:DirectionRef>
+                                    <OperatingDayRef>2024-06-21</OperatingDayRef>
+                                    <OriginStopPointRef>ch:1:sloid:4100:2:2</OriginStopPointRef>
+                                    <DestinationStopPointRef>ch:1:sloid:4027:2:2</DestinationStopPointRef>
+                                    <OriginText>
+                                        <Text xml:lang="de">Fribourg/Freiburg</Text>
+                                    </OriginText>
+                                    <DestinationText>
+                                        <Text xml:lang="de">Neyruz FR</Text>
+                                    </DestinationText>
+                                    <JourneyRef>ch:1:sjyid:100034:14126-001</JourneyRef>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text xml:lang="de">Aussteigeseite: Rechts</Text>
+                                        </UserText>
+                                        <Code>ojp91021AH_InfoCall29_109019_1</Code>
+                                    </Attribute>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text xml:lang="de">Aussteigeseite: Links</Text>
+                                        </UserText>
+                                        <Code>ojp91021AH_InfoCall29_108964_1</Code>
+                                    </Attribute>
+                                </Service>
+                            </TimedLeg>
+                        </Leg>
+                    </Trip>
+                </TripResult>
+                <TripResult>
+                    <Id>ID-108EA2E2-8AD0-44AA-90DF-79BD8540D9D2</Id>
+                    <Trip>
+                        <Id>ID-108EA2E2-8AD0-44AA-90DF-79BD8540D9D2</Id>
+                        <Duration>PT14M36S</Duration>
+                        <StartTime>2024-06-21T08:34:00Z</StartTime>
+                        <EndTime>2024-06-21T08:48:36Z</EndTime>
+                        <Transfers>0</Transfers>
+                        <Leg>
+                            <Id>1</Id>
+                            <Duration>PT3M</Duration>
+                            <TransferLeg>
+                                <TransferType>walk</TransferType>
+                                <LegStart>
+                                    <siri:StopPointRef>8504881</siri:StopPointRef>
+                                    <Name>
+                                        <Text xml:lang="de">Fribourg/Freiburg, gare rout.</Text>
+                                    </Name>
+                                </LegStart>
+                                <LegEnd>
+                                    <siri:StopPointRef>8504100</siri:StopPointRef>
+                                    <Name>
+                                        <Text xml:lang="de">Fribourg/Freiburg</Text>
+                                    </Name>
+                                </LegEnd>
+                                <Duration>PT3M</Duration>
+                            </TransferLeg>
+                        </Leg>
+                        <Leg>
+                            <Id>2</Id>
+                            <Duration>PT11M24S</Duration>
+                            <TimedLeg>
+                                <LegBoard>
+                                    <siri:StopPointRef>ch:1:sloid:4100:2:2</siri:StopPointRef>
+                                    <StopPointName>
+                                        <Text xml:lang="de">Fribourg/Freiburg</Text>
+                                    </StopPointName>
+                                    <PlannedQuay>
+                                        <Text xml:lang="de">2</Text>
+                                    </PlannedQuay>
+                                    <EstimatedQuay>
+                                        <Text xml:lang="de">2</Text>
+                                    </EstimatedQuay>
+                                    <NameSuffix>
+                                        <Text xml:lang="de">NO_DATA</Text>
+                                    </NameSuffix>
+                                    <ServiceDeparture>
+                                        <TimetabledTime>2024-06-21T08:37:00Z</TimetabledTime>
+                                        <EstimatedTime>2024-06-21T08:37:12Z</EstimatedTime>
+                                    </ServiceDeparture>
+                                    <Order>1</Order>
+                                </LegBoard>
+                                <LegAlight>
+                                    <siri:StopPointRef>ch:1:sloid:4027:2:2</siri:StopPointRef>
+                                    <StopPointName>
+                                        <Text xml:lang="de">Neyruz FR</Text>
+                                    </StopPointName>
+                                    <NameSuffix>
+                                        <Text xml:lang="de">NO_DATA</Text>
+                                    </NameSuffix>
+                                    <PlannedQuay>
+                                        <Text xml:lang="de">2</Text>
+                                    </PlannedQuay>
+                                    <EstimatedQuay>
+                                        <Text xml:lang="de">2</Text>
+                                    </EstimatedQuay>
+                                    <ServiceArrival>
+                                        <TimetabledTime>2024-06-21T08:48:00Z</TimetabledTime>
+                                        <EstimatedTime>2024-06-21T08:48:36Z</EstimatedTime>
+                                    </ServiceArrival>
+                                    <Order>5</Order>
+                                </LegAlight>
+                                <Service>
+                                    <Mode>
+                                        <PtMode>rail</PtMode>
+                                        <siri:RailSubmode>regionalRail</siri:RailSubmode>
+                                        <Name>
+                                            <Text xml:lang="de">Zug</Text>
+                                        </Name>
+                                        <ShortName>
+                                            <Text xml:lang="de">S</Text>
+                                        </ShortName>
+                                    </Mode>
+                                    <ConventionalModeOfOperation>scheduled</ConventionalModeOfOperation>
+                                    <TrainNumber>14228</TrainNumber>
+                                    <siri:LineRef>ojp:91020:B</siri:LineRef>
+                                    <siri:OperatorRef>53</siri:OperatorRef>
+                                    <PublicCode>S-Bahn</PublicCode>
+                                    <PublishedServiceName>
+                                        <Text xml:lang="de">S20</Text>
+                                    </PublishedServiceName>
+                                    <ProductCategory>
+                                        <Name>
+                                            <Text xml:lang="de">Zug</Text>
+                                        </Name>
+                                        <ShortName>
+                                            <Text xml:lang="de">S</Text>
+                                        </ShortName>
+                                        <ProductCategoryRef>27</ProductCategoryRef>
+                                    </ProductCategory>
+                                    <siri:DirectionRef>R</siri:DirectionRef>
+                                    <OperatingDayRef>2024-06-21</OperatingDayRef>
+                                    <OriginStopPointRef>ch:1:sloid:4100:2:2</OriginStopPointRef>
+                                    <DestinationStopPointRef>ch:1:sloid:4027:2:2</DestinationStopPointRef>
+                                    <OriginText>
+                                        <Text xml:lang="de">Fribourg/Freiburg</Text>
+                                    </OriginText>
+                                    <DestinationText>
+                                        <Text xml:lang="de">Neyruz FR</Text>
+                                    </DestinationText>
+                                    <JourneyRef>ch:1:sjyid:100034:14228-001</JourneyRef>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text xml:lang="de">Aussteigeseite: Rechts</Text>
+                                        </UserText>
+                                        <Code>ojp91020BR_InfoCall142_109019_1</Code>
+                                    </Attribute>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text xml:lang="de">Aussteigeseite: Links</Text>
+                                        </UserText>
+                                        <Code>ojp91020BR_InfoCall142_108964_1</Code>
+                                    </Attribute>
+                                </Service>
+                            </TimedLeg>
+                        </Leg>
+                    </Trip>
+                </TripResult>
+                <TripResult>
+                    <Id>ID-42CE1DCD-3C2C-44C8-8A5F-6B64461D78FF</Id>
+                    <Trip>
+                        <Id>ID-42CE1DCD-3C2C-44C8-8A5F-6B64461D78FF</Id>
+                        <Duration>PT14M36S</Duration>
+                        <StartTime>2024-06-21T09:04:00Z</StartTime>
+                        <EndTime>2024-06-21T09:18:36Z</EndTime>
+                        <Transfers>0</Transfers>
+                        <Leg>
+                            <Id>1</Id>
+                            <Duration>PT3M</Duration>
+                            <TransferLeg>
+                                <TransferType>walk</TransferType>
+                                <LegStart>
+                                    <siri:StopPointRef>8504881</siri:StopPointRef>
+                                    <Name>
+                                        <Text xml:lang="de">Fribourg/Freiburg, gare rout.</Text>
+                                    </Name>
+                                </LegStart>
+                                <LegEnd>
+                                    <siri:StopPointRef>8504100</siri:StopPointRef>
+                                    <Name>
+                                        <Text xml:lang="de">Fribourg/Freiburg</Text>
+                                    </Name>
+                                </LegEnd>
+                                <Duration>PT3M</Duration>
+                            </TransferLeg>
+                        </Leg>
+                        <Leg>
+                            <Id>2</Id>
+                            <Duration>PT11M24S</Duration>
+                            <TimedLeg>
+                                <LegBoard>
+                                    <siri:StopPointRef>ch:1:sloid:4100:2:2</siri:StopPointRef>
+                                    <StopPointName>
+                                        <Text xml:lang="de">Fribourg/Freiburg</Text>
+                                    </StopPointName>
+                                    <PlannedQuay>
+                                        <Text xml:lang="de">2</Text>
+                                    </PlannedQuay>
+                                    <EstimatedQuay>
+                                        <Text xml:lang="de">2</Text>
+                                    </EstimatedQuay>
+                                    <NameSuffix>
+                                        <Text xml:lang="de">NO_DATA</Text>
+                                    </NameSuffix>
+                                    <ServiceDeparture>
+                                        <TimetabledTime>2024-06-21T09:07:00Z</TimetabledTime>
+                                        <EstimatedTime>2024-06-21T09:07:12Z</EstimatedTime>
+                                    </ServiceDeparture>
+                                    <Order>1</Order>
+                                </LegBoard>
+                                <LegAlight>
+                                    <siri:StopPointRef>ch:1:sloid:4027:2:2</siri:StopPointRef>
+                                    <StopPointName>
+                                        <Text xml:lang="de">Neyruz FR</Text>
+                                    </StopPointName>
+                                    <NameSuffix>
+                                        <Text xml:lang="de">NO_DATA</Text>
+                                    </NameSuffix>
+                                    <PlannedQuay>
+                                        <Text xml:lang="de">2</Text>
+                                    </PlannedQuay>
+                                    <EstimatedQuay>
+                                        <Text xml:lang="de">2</Text>
+                                    </EstimatedQuay>
+                                    <ServiceArrival>
+                                        <TimetabledTime>2024-06-21T09:18:00Z</TimetabledTime>
+                                        <EstimatedTime>2024-06-21T09:18:36Z</EstimatedTime>
+                                    </ServiceArrival>
+                                    <Order>5</Order>
+                                </LegAlight>
+                                <Service>
+                                    <Mode>
+                                        <PtMode>rail</PtMode>
+                                        <siri:RailSubmode>regionalRail</siri:RailSubmode>
+                                        <Name>
+                                            <Text xml:lang="de">Zug</Text>
+                                        </Name>
+                                        <ShortName>
+                                            <Text xml:lang="de">S</Text>
+                                        </ShortName>
+                                    </Mode>
+                                    <ConventionalModeOfOperation>scheduled</ConventionalModeOfOperation>
+                                    <TrainNumber>14132</TrainNumber>
+                                    <siri:LineRef>ojp:91021:A</siri:LineRef>
+                                    <siri:OperatorRef>53</siri:OperatorRef>
+                                    <PublicCode>S-Bahn</PublicCode>
+                                    <PublishedServiceName>
+                                        <Text xml:lang="de">S21</Text>
+                                    </PublishedServiceName>
+                                    <ProductCategory>
+                                        <Name>
+                                            <Text xml:lang="de">Zug</Text>
+                                        </Name>
+                                        <ShortName>
+                                            <Text xml:lang="de">S</Text>
+                                        </ShortName>
+                                        <ProductCategoryRef>27</ProductCategoryRef>
+                                    </ProductCategory>
+                                    <siri:DirectionRef>H</siri:DirectionRef>
+                                    <OperatingDayRef>2024-06-21</OperatingDayRef>
+                                    <OriginStopPointRef>ch:1:sloid:4100:2:2</OriginStopPointRef>
+                                    <DestinationStopPointRef>ch:1:sloid:4027:2:2</DestinationStopPointRef>
+                                    <OriginText>
+                                        <Text xml:lang="de">Fribourg/Freiburg</Text>
+                                    </OriginText>
+                                    <DestinationText>
+                                        <Text xml:lang="de">Neyruz FR</Text>
+                                    </DestinationText>
+                                    <JourneyRef>ch:1:sjyid:100034:14132-001</JourneyRef>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text xml:lang="de">Aussteigeseite: Rechts</Text>
+                                        </UserText>
+                                        <Code>ojp91021AH_InfoCall33_109019_1</Code>
+                                    </Attribute>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text xml:lang="de">Aussteigeseite: Links</Text>
+                                        </UserText>
+                                        <Code>ojp91021AH_InfoCall33_108964_1</Code>
+                                    </Attribute>
+                                </Service>
+                            </TimedLeg>
+                        </Leg>
+                    </Trip>
+                </TripResult>
+                <TripResult>
+                    <Id>ID-0364EA53-8C47-428F-A35C-9CE3D2D49648</Id>
+                    <Trip>
+                        <Id>ID-0364EA53-8C47-428F-A35C-9CE3D2D49648</Id>
+                        <Duration>PT14M36S</Duration>
+                        <StartTime>2024-06-21T09:34:00Z</StartTime>
+                        <EndTime>2024-06-21T09:48:36Z</EndTime>
+                        <Transfers>0</Transfers>
+                        <Leg>
+                            <Id>1</Id>
+                            <Duration>PT3M</Duration>
+                            <TransferLeg>
+                                <TransferType>walk</TransferType>
+                                <LegStart>
+                                    <siri:StopPointRef>8504881</siri:StopPointRef>
+                                    <Name>
+                                        <Text xml:lang="de">Fribourg/Freiburg, gare rout.</Text>
+                                    </Name>
+                                </LegStart>
+                                <LegEnd>
+                                    <siri:StopPointRef>8504100</siri:StopPointRef>
+                                    <Name>
+                                        <Text xml:lang="de">Fribourg/Freiburg</Text>
+                                    </Name>
+                                </LegEnd>
+                                <Duration>PT3M</Duration>
+                            </TransferLeg>
+                        </Leg>
+                        <Leg>
+                            <Id>2</Id>
+                            <Duration>PT11M24S</Duration>
+                            <TimedLeg>
+                                <LegBoard>
+                                    <siri:StopPointRef>ch:1:sloid:4100:2:2</siri:StopPointRef>
+                                    <StopPointName>
+                                        <Text xml:lang="de">Fribourg/Freiburg</Text>
+                                    </StopPointName>
+                                    <PlannedQuay>
+                                        <Text xml:lang="de">2</Text>
+                                    </PlannedQuay>
+                                    <EstimatedQuay>
+                                        <Text xml:lang="de">2</Text>
+                                    </EstimatedQuay>
+                                    <NameSuffix>
+                                        <Text xml:lang="de">NO_DATA</Text>
+                                    </NameSuffix>
+                                    <ServiceDeparture>
+                                        <TimetabledTime>2024-06-21T09:37:00Z</TimetabledTime>
+                                        <EstimatedTime>2024-06-21T09:37:12Z</EstimatedTime>
+                                    </ServiceDeparture>
+                                    <Order>1</Order>
+                                </LegBoard>
+                                <LegAlight>
+                                    <siri:StopPointRef>ch:1:sloid:4027:2:2</siri:StopPointRef>
+                                    <StopPointName>
+                                        <Text xml:lang="de">Neyruz FR</Text>
+                                    </StopPointName>
+                                    <NameSuffix>
+                                        <Text xml:lang="de">NO_DATA</Text>
+                                    </NameSuffix>
+                                    <PlannedQuay>
+                                        <Text xml:lang="de">2</Text>
+                                    </PlannedQuay>
+                                    <EstimatedQuay>
+                                        <Text xml:lang="de">2</Text>
+                                    </EstimatedQuay>
+                                    <ServiceArrival>
+                                        <TimetabledTime>2024-06-21T09:48:00Z</TimetabledTime>
+                                        <EstimatedTime>2024-06-21T09:48:36Z</EstimatedTime>
+                                    </ServiceArrival>
+                                    <Order>5</Order>
+                                </LegAlight>
+                                <Service>
+                                    <Mode>
+                                        <PtMode>rail</PtMode>
+                                        <siri:RailSubmode>regionalRail</siri:RailSubmode>
+                                        <Name>
+                                            <Text xml:lang="de">Zug</Text>
+                                        </Name>
+                                        <ShortName>
+                                            <Text xml:lang="de">S</Text>
+                                        </ShortName>
+                                    </Mode>
+                                    <ConventionalModeOfOperation>scheduled</ConventionalModeOfOperation>
+                                    <TrainNumber>14234</TrainNumber>
+                                    <siri:LineRef>ojp:91020:B</siri:LineRef>
+                                    <siri:OperatorRef>53</siri:OperatorRef>
+                                    <PublicCode>S-Bahn</PublicCode>
+                                    <PublishedServiceName>
+                                        <Text xml:lang="de">S20</Text>
+                                    </PublishedServiceName>
+                                    <ProductCategory>
+                                        <Name>
+                                            <Text xml:lang="de">Zug</Text>
+                                        </Name>
+                                        <ShortName>
+                                            <Text xml:lang="de">S</Text>
+                                        </ShortName>
+                                        <ProductCategoryRef>27</ProductCategoryRef>
+                                    </ProductCategory>
+                                    <siri:DirectionRef>R</siri:DirectionRef>
+                                    <OperatingDayRef>2024-06-21</OperatingDayRef>
+                                    <OriginStopPointRef>ch:1:sloid:4100:2:2</OriginStopPointRef>
+                                    <DestinationStopPointRef>ch:1:sloid:4027:2:2</DestinationStopPointRef>
+                                    <OriginText>
+                                        <Text xml:lang="de">Fribourg/Freiburg</Text>
+                                    </OriginText>
+                                    <DestinationText>
+                                        <Text xml:lang="de">Neyruz FR</Text>
+                                    </DestinationText>
+                                    <JourneyRef>ch:1:sjyid:100034:14234-001</JourneyRef>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text xml:lang="de">Aussteigeseite: Rechts</Text>
+                                        </UserText>
+                                        <Code>ojp91020BR_InfoCall150_109019_1</Code>
+                                    </Attribute>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text xml:lang="de">Aussteigeseite: Links</Text>
+                                        </UserText>
+                                        <Code>ojp91020BR_InfoCall150_108964_1</Code>
+                                    </Attribute>
+                                </Service>
+                            </TimedLeg>
+                        </Leg>
+                    </Trip>
+                </TripResult>
+                <TripResult>
+                    <Id>ID-0A75340F-2C02-47FA-B6F2-75443D49D733</Id>
+                    <Trip>
+                        <Id>ID-0A75340F-2C02-47FA-B6F2-75443D49D733</Id>
+                        <Duration>PT14M36S</Duration>
+                        <StartTime>2024-06-21T10:04:00Z</StartTime>
+                        <EndTime>2024-06-21T10:18:36Z</EndTime>
+                        <Transfers>0</Transfers>
+                        <Leg>
+                            <Id>1</Id>
+                            <Duration>PT3M</Duration>
+                            <TransferLeg>
+                                <TransferType>walk</TransferType>
+                                <LegStart>
+                                    <siri:StopPointRef>8504881</siri:StopPointRef>
+                                    <Name>
+                                        <Text xml:lang="de">Fribourg/Freiburg, gare rout.</Text>
+                                    </Name>
+                                </LegStart>
+                                <LegEnd>
+                                    <siri:StopPointRef>8504100</siri:StopPointRef>
+                                    <Name>
+                                        <Text xml:lang="de">Fribourg/Freiburg</Text>
+                                    </Name>
+                                </LegEnd>
+                                <Duration>PT3M</Duration>
+                            </TransferLeg>
+                        </Leg>
+                        <Leg>
+                            <Id>2</Id>
+                            <Duration>PT11M24S</Duration>
+                            <TimedLeg>
+                                <LegBoard>
+                                    <siri:StopPointRef>ch:1:sloid:4100:2:2</siri:StopPointRef>
+                                    <StopPointName>
+                                        <Text xml:lang="de">Fribourg/Freiburg</Text>
+                                    </StopPointName>
+                                    <PlannedQuay>
+                                        <Text xml:lang="de">2</Text>
+                                    </PlannedQuay>
+                                    <EstimatedQuay>
+                                        <Text xml:lang="de">2</Text>
+                                    </EstimatedQuay>
+                                    <NameSuffix>
+                                        <Text xml:lang="de">NO_DATA</Text>
+                                    </NameSuffix>
+                                    <ServiceDeparture>
+                                        <TimetabledTime>2024-06-21T10:07:00Z</TimetabledTime>
+                                        <EstimatedTime>2024-06-21T10:07:12Z</EstimatedTime>
+                                    </ServiceDeparture>
+                                    <Order>1</Order>
+                                </LegBoard>
+                                <LegAlight>
+                                    <siri:StopPointRef>ch:1:sloid:4027:2:2</siri:StopPointRef>
+                                    <StopPointName>
+                                        <Text xml:lang="de">Neyruz FR</Text>
+                                    </StopPointName>
+                                    <NameSuffix>
+                                        <Text xml:lang="de">NO_DATA</Text>
+                                    </NameSuffix>
+                                    <PlannedQuay>
+                                        <Text xml:lang="de">2</Text>
+                                    </PlannedQuay>
+                                    <EstimatedQuay>
+                                        <Text xml:lang="de">2</Text>
+                                    </EstimatedQuay>
+                                    <ServiceArrival>
+                                        <TimetabledTime>2024-06-21T10:18:00Z</TimetabledTime>
+                                        <EstimatedTime>2024-06-21T10:18:36Z</EstimatedTime>
+                                    </ServiceArrival>
+                                    <Order>5</Order>
+                                </LegAlight>
+                                <Service>
+                                    <Mode>
+                                        <PtMode>rail</PtMode>
+                                        <siri:RailSubmode>regionalRail</siri:RailSubmode>
+                                        <Name>
+                                            <Text xml:lang="de">Zug</Text>
+                                        </Name>
+                                        <ShortName>
+                                            <Text xml:lang="de">S</Text>
+                                        </ShortName>
+                                    </Mode>
+                                    <ConventionalModeOfOperation>scheduled</ConventionalModeOfOperation>
+                                    <TrainNumber>14136</TrainNumber>
+                                    <siri:LineRef>ojp:91021:A</siri:LineRef>
+                                    <siri:OperatorRef>53</siri:OperatorRef>
+                                    <PublicCode>S-Bahn</PublicCode>
+                                    <PublishedServiceName>
+                                        <Text xml:lang="de">S21</Text>
+                                    </PublishedServiceName>
+                                    <ProductCategory>
+                                        <Name>
+                                            <Text xml:lang="de">Zug</Text>
+                                        </Name>
+                                        <ShortName>
+                                            <Text xml:lang="de">S</Text>
+                                        </ShortName>
+                                        <ProductCategoryRef>27</ProductCategoryRef>
+                                    </ProductCategory>
+                                    <siri:DirectionRef>H</siri:DirectionRef>
+                                    <OperatingDayRef>2024-06-21</OperatingDayRef>
+                                    <OriginStopPointRef>ch:1:sloid:4100:2:2</OriginStopPointRef>
+                                    <DestinationStopPointRef>ch:1:sloid:4027:2:2</DestinationStopPointRef>
+                                    <OriginText>
+                                        <Text xml:lang="de">Fribourg/Freiburg</Text>
+                                    </OriginText>
+                                    <DestinationText>
+                                        <Text xml:lang="de">Neyruz FR</Text>
+                                    </DestinationText>
+                                    <JourneyRef>ch:1:sjyid:100034:14136-001</JourneyRef>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text xml:lang="de">Aussteigeseite: Rechts</Text>
+                                        </UserText>
+                                        <Code>ojp91021AH_InfoCall38_109019_1</Code>
+                                    </Attribute>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text xml:lang="de">Aussteigeseite: Links</Text>
+                                        </UserText>
+                                        <Code>ojp91021AH_InfoCall38_108964_1</Code>
+                                    </Attribute>
+                                </Service>
+                            </TimedLeg>
+                        </Leg>
+                    </Trip>
+                </TripResult>
+                <TripResult>
+                    <Id>ID-70C00A3E-A0F7-416D-9FBE-17DA6CCE1F3D</Id>
+                    <Trip>
+                        <Id>ID-70C00A3E-A0F7-416D-9FBE-17DA6CCE1F3D</Id>
+                        <Duration>PT14M</Duration>
+                        <StartTime>2024-06-21T10:34:00Z</StartTime>
+                        <EndTime>2024-06-21T10:48:00Z</EndTime>
+                        <Transfers>0</Transfers>
+                        <Leg>
+                            <Id>1</Id>
+                            <Duration>PT3M</Duration>
+                            <TransferLeg>
+                                <TransferType>walk</TransferType>
+                                <LegStart>
+                                    <siri:StopPointRef>8504881</siri:StopPointRef>
+                                    <Name>
+                                        <Text xml:lang="de">Fribourg/Freiburg, gare rout.</Text>
+                                    </Name>
+                                </LegStart>
+                                <LegEnd>
+                                    <siri:StopPointRef>8504100</siri:StopPointRef>
+                                    <Name>
+                                        <Text xml:lang="de">Fribourg/Freiburg</Text>
+                                    </Name>
+                                </LegEnd>
+                                <Duration>PT3M</Duration>
+                            </TransferLeg>
+                        </Leg>
+                        <Leg>
+                            <Id>2</Id>
+                            <Duration>PT11M</Duration>
+                            <TimedLeg>
+                                <LegBoard>
+                                    <siri:StopPointRef>ch:1:sloid:4100:2:2</siri:StopPointRef>
+                                    <StopPointName>
+                                        <Text xml:lang="de">Fribourg/Freiburg</Text>
+                                    </StopPointName>
+                                    <PlannedQuay>
+                                        <Text xml:lang="de">2</Text>
+                                    </PlannedQuay>
+                                    <EstimatedQuay>
+                                        <Text xml:lang="de">2</Text>
+                                    </EstimatedQuay>
+                                    <NameSuffix>
+                                        <Text xml:lang="de">NO_DATA</Text>
+                                    </NameSuffix>
+                                    <ServiceDeparture>
+                                        <TimetabledTime>2024-06-21T10:37:00Z</TimetabledTime>
+                                    </ServiceDeparture>
+                                    <Order>1</Order>
+                                </LegBoard>
+                                <LegAlight>
+                                    <siri:StopPointRef>ch:1:sloid:4027:2:2</siri:StopPointRef>
+                                    <StopPointName>
+                                        <Text xml:lang="de">Neyruz FR</Text>
+                                    </StopPointName>
+                                    <NameSuffix>
+                                        <Text xml:lang="de">NO_DATA</Text>
+                                    </NameSuffix>
+                                    <PlannedQuay>
+                                        <Text xml:lang="de">2</Text>
+                                    </PlannedQuay>
+                                    <EstimatedQuay>
+                                        <Text xml:lang="de">2</Text>
+                                    </EstimatedQuay>
+                                    <ServiceArrival>
+                                        <TimetabledTime>2024-06-21T10:48:00Z</TimetabledTime>
+                                    </ServiceArrival>
+                                    <Order>5</Order>
+                                </LegAlight>
+                                <Service>
+                                    <Mode>
+                                        <PtMode>rail</PtMode>
+                                        <siri:RailSubmode>regionalRail</siri:RailSubmode>
+                                        <Name>
+                                            <Text xml:lang="de">Zug</Text>
+                                        </Name>
+                                        <ShortName>
+                                            <Text xml:lang="de">S</Text>
+                                        </ShortName>
+                                    </Mode>
+                                    <ConventionalModeOfOperation>scheduled</ConventionalModeOfOperation>
+                                    <TrainNumber>14238</TrainNumber>
+                                    <siri:LineRef>ojp:91020:B</siri:LineRef>
+                                    <siri:OperatorRef>53</siri:OperatorRef>
+                                    <PublicCode>S-Bahn</PublicCode>
+                                    <PublishedServiceName>
+                                        <Text xml:lang="de">S20</Text>
+                                    </PublishedServiceName>
+                                    <ProductCategory>
+                                        <Name>
+                                            <Text xml:lang="de">Zug</Text>
+                                        </Name>
+                                        <ShortName>
+                                            <Text xml:lang="de">S</Text>
+                                        </ShortName>
+                                        <ProductCategoryRef>27</ProductCategoryRef>
+                                    </ProductCategory>
+                                    <siri:DirectionRef>R</siri:DirectionRef>
+                                    <OperatingDayRef>2024-06-21</OperatingDayRef>
+                                    <OriginStopPointRef>ch:1:sloid:4100:2:2</OriginStopPointRef>
+                                    <DestinationStopPointRef>ch:1:sloid:4027:2:2</DestinationStopPointRef>
+                                    <OriginText>
+                                        <Text xml:lang="de">Fribourg/Freiburg</Text>
+                                    </OriginText>
+                                    <DestinationText>
+                                        <Text xml:lang="de">Neyruz FR</Text>
+                                    </DestinationText>
+                                    <JourneyRef>ch:1:sjyid:100034:14238-001</JourneyRef>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text xml:lang="de">Aussteigeseite: Rechts</Text>
+                                        </UserText>
+                                        <Code>ojp91020BR_InfoCall158_109019_1</Code>
+                                    </Attribute>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text xml:lang="de">Aussteigeseite: Links</Text>
+                                        </UserText>
+                                        <Code>ojp91020BR_InfoCall158_108964_1</Code>
+                                    </Attribute>
+                                </Service>
+                            </TimedLeg>
+                        </Leg>
+                    </Trip>
+                </TripResult>
+                <TripResult>
+                    <Id>ID-5DEDE75D-EC13-4E5A-94A2-4E2562A7EEF2</Id>
+                    <Trip>
+                        <Id>ID-5DEDE75D-EC13-4E5A-94A2-4E2562A7EEF2</Id>
+                        <Duration>PT14M</Duration>
+                        <StartTime>2024-06-21T11:04:00Z</StartTime>
+                        <EndTime>2024-06-21T11:18:00Z</EndTime>
+                        <Transfers>0</Transfers>
+                        <Leg>
+                            <Id>1</Id>
+                            <Duration>PT3M</Duration>
+                            <TransferLeg>
+                                <TransferType>walk</TransferType>
+                                <LegStart>
+                                    <siri:StopPointRef>8504881</siri:StopPointRef>
+                                    <Name>
+                                        <Text xml:lang="de">Fribourg/Freiburg, gare rout.</Text>
+                                    </Name>
+                                </LegStart>
+                                <LegEnd>
+                                    <siri:StopPointRef>8504100</siri:StopPointRef>
+                                    <Name>
+                                        <Text xml:lang="de">Fribourg/Freiburg</Text>
+                                    </Name>
+                                </LegEnd>
+                                <Duration>PT3M</Duration>
+                            </TransferLeg>
+                        </Leg>
+                        <Leg>
+                            <Id>2</Id>
+                            <Duration>PT11M</Duration>
+                            <TimedLeg>
+                                <LegBoard>
+                                    <siri:StopPointRef>ch:1:sloid:4100:2:2</siri:StopPointRef>
+                                    <StopPointName>
+                                        <Text xml:lang="de">Fribourg/Freiburg</Text>
+                                    </StopPointName>
+                                    <PlannedQuay>
+                                        <Text xml:lang="de">2</Text>
+                                    </PlannedQuay>
+                                    <EstimatedQuay>
+                                        <Text xml:lang="de">2</Text>
+                                    </EstimatedQuay>
+                                    <NameSuffix>
+                                        <Text xml:lang="de">NO_DATA</Text>
+                                    </NameSuffix>
+                                    <ServiceDeparture>
+                                        <TimetabledTime>2024-06-21T11:07:00Z</TimetabledTime>
+                                    </ServiceDeparture>
+                                    <Order>1</Order>
+                                </LegBoard>
+                                <LegAlight>
+                                    <siri:StopPointRef>ch:1:sloid:4027:2:2</siri:StopPointRef>
+                                    <StopPointName>
+                                        <Text xml:lang="de">Neyruz FR</Text>
+                                    </StopPointName>
+                                    <NameSuffix>
+                                        <Text xml:lang="de">NO_DATA</Text>
+                                    </NameSuffix>
+                                    <PlannedQuay>
+                                        <Text xml:lang="de">2</Text>
+                                    </PlannedQuay>
+                                    <EstimatedQuay>
+                                        <Text xml:lang="de">2</Text>
+                                    </EstimatedQuay>
+                                    <ServiceArrival>
+                                        <TimetabledTime>2024-06-21T11:18:00Z</TimetabledTime>
+                                    </ServiceArrival>
+                                    <Order>5</Order>
+                                </LegAlight>
+                                <Service>
+                                    <Mode>
+                                        <PtMode>rail</PtMode>
+                                        <siri:RailSubmode>regionalRail</siri:RailSubmode>
+                                        <Name>
+                                            <Text xml:lang="de">Zug</Text>
+                                        </Name>
+                                        <ShortName>
+                                            <Text xml:lang="de">S</Text>
+                                        </ShortName>
+                                    </Mode>
+                                    <ConventionalModeOfOperation>scheduled</ConventionalModeOfOperation>
+                                    <TrainNumber>14142</TrainNumber>
+                                    <siri:LineRef>ojp:91021:A</siri:LineRef>
+                                    <siri:OperatorRef>53</siri:OperatorRef>
+                                    <PublicCode>S-Bahn</PublicCode>
+                                    <PublishedServiceName>
+                                        <Text xml:lang="de">S21</Text>
+                                    </PublishedServiceName>
+                                    <ProductCategory>
+                                        <Name>
+                                            <Text xml:lang="de">Zug</Text>
+                                        </Name>
+                                        <ShortName>
+                                            <Text xml:lang="de">S</Text>
+                                        </ShortName>
+                                        <ProductCategoryRef>27</ProductCategoryRef>
+                                    </ProductCategory>
+                                    <siri:DirectionRef>H</siri:DirectionRef>
+                                    <OperatingDayRef>2024-06-21</OperatingDayRef>
+                                    <OriginStopPointRef>ch:1:sloid:4100:2:2</OriginStopPointRef>
+                                    <DestinationStopPointRef>ch:1:sloid:4027:2:2</DestinationStopPointRef>
+                                    <OriginText>
+                                        <Text xml:lang="de">Fribourg/Freiburg</Text>
+                                    </OriginText>
+                                    <DestinationText>
+                                        <Text xml:lang="de">Neyruz FR</Text>
+                                    </DestinationText>
+                                    <JourneyRef>ch:1:sjyid:100034:14142-001</JourneyRef>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text xml:lang="de">Aussteigeseite: Rechts</Text>
+                                        </UserText>
+                                        <Code>ojp91021AH_InfoCall42_109019_1</Code>
+                                    </Attribute>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text xml:lang="de">Aussteigeseite: Links</Text>
+                                        </UserText>
+                                        <Code>ojp91021AH_InfoCall42_108964_1</Code>
+                                    </Attribute>
+                                </Service>
+                            </TimedLeg>
+                        </Leg>
+                    </Trip>
+                </TripResult>
+                <TripResult>
+                    <Id>ID-AFEF88D8-CC27-445E-AC2D-11B852E1B1DE</Id>
+                    <Trip>
+                        <Id>ID-AFEF88D8-CC27-445E-AC2D-11B852E1B1DE</Id>
+                        <Duration>PT14M</Duration>
+                        <StartTime>2024-06-21T11:34:00Z</StartTime>
+                        <EndTime>2024-06-21T11:48:00Z</EndTime>
+                        <Transfers>0</Transfers>
+                        <Leg>
+                            <Id>1</Id>
+                            <Duration>PT3M</Duration>
+                            <TransferLeg>
+                                <TransferType>walk</TransferType>
+                                <LegStart>
+                                    <siri:StopPointRef>8504881</siri:StopPointRef>
+                                    <Name>
+                                        <Text xml:lang="de">Fribourg/Freiburg, gare rout.</Text>
+                                    </Name>
+                                </LegStart>
+                                <LegEnd>
+                                    <siri:StopPointRef>8504100</siri:StopPointRef>
+                                    <Name>
+                                        <Text xml:lang="de">Fribourg/Freiburg</Text>
+                                    </Name>
+                                </LegEnd>
+                                <Duration>PT3M</Duration>
+                            </TransferLeg>
+                        </Leg>
+                        <Leg>
+                            <Id>2</Id>
+                            <Duration>PT11M</Duration>
+                            <TimedLeg>
+                                <LegBoard>
+                                    <siri:StopPointRef>ch:1:sloid:4100:2:2</siri:StopPointRef>
+                                    <StopPointName>
+                                        <Text xml:lang="de">Fribourg/Freiburg</Text>
+                                    </StopPointName>
+                                    <PlannedQuay>
+                                        <Text xml:lang="de">2</Text>
+                                    </PlannedQuay>
+                                    <EstimatedQuay>
+                                        <Text xml:lang="de">2</Text>
+                                    </EstimatedQuay>
+                                    <NameSuffix>
+                                        <Text xml:lang="de">NO_DATA</Text>
+                                    </NameSuffix>
+                                    <ServiceDeparture>
+                                        <TimetabledTime>2024-06-21T11:37:00Z</TimetabledTime>
+                                    </ServiceDeparture>
+                                    <Order>1</Order>
+                                </LegBoard>
+                                <LegAlight>
+                                    <siri:StopPointRef>ch:1:sloid:4027:2:2</siri:StopPointRef>
+                                    <StopPointName>
+                                        <Text xml:lang="de">Neyruz FR</Text>
+                                    </StopPointName>
+                                    <NameSuffix>
+                                        <Text xml:lang="de">NO_DATA</Text>
+                                    </NameSuffix>
+                                    <PlannedQuay>
+                                        <Text xml:lang="de">2</Text>
+                                    </PlannedQuay>
+                                    <EstimatedQuay>
+                                        <Text xml:lang="de">2</Text>
+                                    </EstimatedQuay>
+                                    <ServiceArrival>
+                                        <TimetabledTime>2024-06-21T11:48:00Z</TimetabledTime>
+                                    </ServiceArrival>
+                                    <Order>5</Order>
+                                </LegAlight>
+                                <Service>
+                                    <Mode>
+                                        <PtMode>rail</PtMode>
+                                        <siri:RailSubmode>regionalRail</siri:RailSubmode>
+                                        <Name>
+                                            <Text xml:lang="de">Zug</Text>
+                                        </Name>
+                                        <ShortName>
+                                            <Text xml:lang="de">S</Text>
+                                        </ShortName>
+                                    </Mode>
+                                    <ConventionalModeOfOperation>scheduled</ConventionalModeOfOperation>
+                                    <TrainNumber>14244</TrainNumber>
+                                    <siri:LineRef>ojp:91020:B</siri:LineRef>
+                                    <siri:OperatorRef>53</siri:OperatorRef>
+                                    <PublicCode>S-Bahn</PublicCode>
+                                    <PublishedServiceName>
+                                        <Text xml:lang="de">S20</Text>
+                                    </PublishedServiceName>
+                                    <ProductCategory>
+                                        <Name>
+                                            <Text xml:lang="de">Zug</Text>
+                                        </Name>
+                                        <ShortName>
+                                            <Text xml:lang="de">S</Text>
+                                        </ShortName>
+                                        <ProductCategoryRef>27</ProductCategoryRef>
+                                    </ProductCategory>
+                                    <siri:DirectionRef>R</siri:DirectionRef>
+                                    <OperatingDayRef>2024-06-21</OperatingDayRef>
+                                    <OriginStopPointRef>ch:1:sloid:4100:2:2</OriginStopPointRef>
+                                    <DestinationStopPointRef>ch:1:sloid:4027:2:2</DestinationStopPointRef>
+                                    <OriginText>
+                                        <Text xml:lang="de">Fribourg/Freiburg</Text>
+                                    </OriginText>
+                                    <DestinationText>
+                                        <Text xml:lang="de">Neyruz FR</Text>
+                                    </DestinationText>
+                                    <JourneyRef>ch:1:sjyid:100034:14244-001</JourneyRef>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text xml:lang="de">Aussteigeseite: Rechts</Text>
+                                        </UserText>
+                                        <Code>ojp91020BR_InfoCall166_109019_1</Code>
+                                    </Attribute>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text xml:lang="de">Aussteigeseite: Links</Text>
+                                        </UserText>
+                                        <Code>ojp91020BR_InfoCall166_108964_1</Code>
+                                    </Attribute>
+                                </Service>
+                            </TimedLeg>
+                        </Leg>
+                    </Trip>
+                </TripResult>
+                <TripResult>
+                    <Id>ID-828C3DA4-FB29-468B-BA4D-4D370E3C1204</Id>
+                    <Trip>
+                        <Id>ID-828C3DA4-FB29-468B-BA4D-4D370E3C1204</Id>
+                        <Duration>PT14M</Duration>
+                        <StartTime>2024-06-21T12:04:00Z</StartTime>
+                        <EndTime>2024-06-21T12:18:00Z</EndTime>
+                        <Transfers>0</Transfers>
+                        <Leg>
+                            <Id>1</Id>
+                            <Duration>PT3M</Duration>
+                            <TransferLeg>
+                                <TransferType>walk</TransferType>
+                                <LegStart>
+                                    <siri:StopPointRef>8504881</siri:StopPointRef>
+                                    <Name>
+                                        <Text xml:lang="de">Fribourg/Freiburg, gare rout.</Text>
+                                    </Name>
+                                </LegStart>
+                                <LegEnd>
+                                    <siri:StopPointRef>8504100</siri:StopPointRef>
+                                    <Name>
+                                        <Text xml:lang="de">Fribourg/Freiburg</Text>
+                                    </Name>
+                                </LegEnd>
+                                <Duration>PT3M</Duration>
+                            </TransferLeg>
+                        </Leg>
+                        <Leg>
+                            <Id>2</Id>
+                            <Duration>PT11M</Duration>
+                            <TimedLeg>
+                                <LegBoard>
+                                    <siri:StopPointRef>ch:1:sloid:4100:2:2</siri:StopPointRef>
+                                    <StopPointName>
+                                        <Text xml:lang="de">Fribourg/Freiburg</Text>
+                                    </StopPointName>
+                                    <PlannedQuay>
+                                        <Text xml:lang="de">2</Text>
+                                    </PlannedQuay>
+                                    <EstimatedQuay>
+                                        <Text xml:lang="de">2</Text>
+                                    </EstimatedQuay>
+                                    <NameSuffix>
+                                        <Text xml:lang="de">NO_DATA</Text>
+                                    </NameSuffix>
+                                    <ServiceDeparture>
+                                        <TimetabledTime>2024-06-21T12:07:00Z</TimetabledTime>
+                                    </ServiceDeparture>
+                                    <Order>1</Order>
+                                </LegBoard>
+                                <LegAlight>
+                                    <siri:StopPointRef>ch:1:sloid:4027:2:2</siri:StopPointRef>
+                                    <StopPointName>
+                                        <Text xml:lang="de">Neyruz FR</Text>
+                                    </StopPointName>
+                                    <NameSuffix>
+                                        <Text xml:lang="de">NO_DATA</Text>
+                                    </NameSuffix>
+                                    <PlannedQuay>
+                                        <Text xml:lang="de">2</Text>
+                                    </PlannedQuay>
+                                    <EstimatedQuay>
+                                        <Text xml:lang="de">2</Text>
+                                    </EstimatedQuay>
+                                    <ServiceArrival>
+                                        <TimetabledTime>2024-06-21T12:18:00Z</TimetabledTime>
+                                    </ServiceArrival>
+                                    <Order>5</Order>
+                                </LegAlight>
+                                <Service>
+                                    <Mode>
+                                        <PtMode>rail</PtMode>
+                                        <siri:RailSubmode>regionalRail</siri:RailSubmode>
+                                        <Name>
+                                            <Text xml:lang="de">Zug</Text>
+                                        </Name>
+                                        <ShortName>
+                                            <Text xml:lang="de">S</Text>
+                                        </ShortName>
+                                    </Mode>
+                                    <ConventionalModeOfOperation>scheduled</ConventionalModeOfOperation>
+                                    <TrainNumber>14146</TrainNumber>
+                                    <siri:LineRef>ojp:91021:A</siri:LineRef>
+                                    <siri:OperatorRef>53</siri:OperatorRef>
+                                    <PublicCode>S-Bahn</PublicCode>
+                                    <PublishedServiceName>
+                                        <Text xml:lang="de">S21</Text>
+                                    </PublishedServiceName>
+                                    <ProductCategory>
+                                        <Name>
+                                            <Text xml:lang="de">Zug</Text>
+                                        </Name>
+                                        <ShortName>
+                                            <Text xml:lang="de">S</Text>
+                                        </ShortName>
+                                        <ProductCategoryRef>27</ProductCategoryRef>
+                                    </ProductCategory>
+                                    <siri:DirectionRef>H</siri:DirectionRef>
+                                    <OperatingDayRef>2024-06-21</OperatingDayRef>
+                                    <OriginStopPointRef>ch:1:sloid:4100:2:2</OriginStopPointRef>
+                                    <DestinationStopPointRef>ch:1:sloid:4027:2:2</DestinationStopPointRef>
+                                    <OriginText>
+                                        <Text xml:lang="de">Fribourg/Freiburg</Text>
+                                    </OriginText>
+                                    <DestinationText>
+                                        <Text xml:lang="de">Neyruz FR</Text>
+                                    </DestinationText>
+                                    <JourneyRef>ch:1:sjyid:100034:14146-001</JourneyRef>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text xml:lang="de">Aussteigeseite: Rechts</Text>
+                                        </UserText>
+                                        <Code>ojp91021AH_InfoCall46_109019_1</Code>
+                                    </Attribute>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text xml:lang="de">Aussteigeseite: Links</Text>
+                                        </UserText>
+                                        <Code>ojp91021AH_InfoCall46_108964_1</Code>
+                                    </Attribute>
+                                </Service>
+                            </TimedLeg>
+                        </Leg>
+                    </Trip>
+                </TripResult>
+                <TripResult>
+                    <Id>ID-46B495C7-5E4B-4F11-A066-1FD759B52DF0</Id>
+                    <Trip>
+                        <Id>ID-46B495C7-5E4B-4F11-A066-1FD759B52DF0</Id>
+                        <Duration>PT14M</Duration>
+                        <StartTime>2024-06-21T12:34:00Z</StartTime>
+                        <EndTime>2024-06-21T12:48:00Z</EndTime>
+                        <Transfers>0</Transfers>
+                        <Leg>
+                            <Id>1</Id>
+                            <Duration>PT3M</Duration>
+                            <TransferLeg>
+                                <TransferType>walk</TransferType>
+                                <LegStart>
+                                    <siri:StopPointRef>8504881</siri:StopPointRef>
+                                    <Name>
+                                        <Text xml:lang="de">Fribourg/Freiburg, gare rout.</Text>
+                                    </Name>
+                                </LegStart>
+                                <LegEnd>
+                                    <siri:StopPointRef>8504100</siri:StopPointRef>
+                                    <Name>
+                                        <Text xml:lang="de">Fribourg/Freiburg</Text>
+                                    </Name>
+                                </LegEnd>
+                                <Duration>PT3M</Duration>
+                            </TransferLeg>
+                        </Leg>
+                        <Leg>
+                            <Id>2</Id>
+                            <Duration>PT11M</Duration>
+                            <TimedLeg>
+                                <LegBoard>
+                                    <siri:StopPointRef>ch:1:sloid:4100:2:2</siri:StopPointRef>
+                                    <StopPointName>
+                                        <Text xml:lang="de">Fribourg/Freiburg</Text>
+                                    </StopPointName>
+                                    <PlannedQuay>
+                                        <Text xml:lang="de">2</Text>
+                                    </PlannedQuay>
+                                    <EstimatedQuay>
+                                        <Text xml:lang="de">2</Text>
+                                    </EstimatedQuay>
+                                    <NameSuffix>
+                                        <Text xml:lang="de">NO_DATA</Text>
+                                    </NameSuffix>
+                                    <ServiceDeparture>
+                                        <TimetabledTime>2024-06-21T12:37:00Z</TimetabledTime>
+                                    </ServiceDeparture>
+                                    <Order>1</Order>
+                                </LegBoard>
+                                <LegAlight>
+                                    <siri:StopPointRef>ch:1:sloid:4027:2:2</siri:StopPointRef>
+                                    <StopPointName>
+                                        <Text xml:lang="de">Neyruz FR</Text>
+                                    </StopPointName>
+                                    <NameSuffix>
+                                        <Text xml:lang="de">NO_DATA</Text>
+                                    </NameSuffix>
+                                    <PlannedQuay>
+                                        <Text xml:lang="de">2</Text>
+                                    </PlannedQuay>
+                                    <EstimatedQuay>
+                                        <Text xml:lang="de">2</Text>
+                                    </EstimatedQuay>
+                                    <ServiceArrival>
+                                        <TimetabledTime>2024-06-21T12:48:00Z</TimetabledTime>
+                                    </ServiceArrival>
+                                    <Order>5</Order>
+                                </LegAlight>
+                                <Service>
+                                    <Mode>
+                                        <PtMode>rail</PtMode>
+                                        <siri:RailSubmode>regionalRail</siri:RailSubmode>
+                                        <Name>
+                                            <Text xml:lang="de">Zug</Text>
+                                        </Name>
+                                        <ShortName>
+                                            <Text xml:lang="de">S</Text>
+                                        </ShortName>
+                                    </Mode>
+                                    <ConventionalModeOfOperation>scheduled</ConventionalModeOfOperation>
+                                    <TrainNumber>14248</TrainNumber>
+                                    <siri:LineRef>ojp:91020:B</siri:LineRef>
+                                    <siri:OperatorRef>53</siri:OperatorRef>
+                                    <PublicCode>S-Bahn</PublicCode>
+                                    <PublishedServiceName>
+                                        <Text xml:lang="de">S20</Text>
+                                    </PublishedServiceName>
+                                    <ProductCategory>
+                                        <Name>
+                                            <Text xml:lang="de">Zug</Text>
+                                        </Name>
+                                        <ShortName>
+                                            <Text xml:lang="de">S</Text>
+                                        </ShortName>
+                                        <ProductCategoryRef>27</ProductCategoryRef>
+                                    </ProductCategory>
+                                    <siri:DirectionRef>R</siri:DirectionRef>
+                                    <OperatingDayRef>2024-06-21</OperatingDayRef>
+                                    <OriginStopPointRef>ch:1:sloid:4100:2:2</OriginStopPointRef>
+                                    <DestinationStopPointRef>ch:1:sloid:4027:2:2</DestinationStopPointRef>
+                                    <OriginText>
+                                        <Text xml:lang="de">Fribourg/Freiburg</Text>
+                                    </OriginText>
+                                    <DestinationText>
+                                        <Text xml:lang="de">Neyruz FR</Text>
+                                    </DestinationText>
+                                    <JourneyRef>ch:1:sjyid:100034:14248-001</JourneyRef>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text xml:lang="de">Aussteigeseite: Rechts</Text>
+                                        </UserText>
+                                        <Code>ojp91020BR_InfoCall174_109019_1</Code>
+                                    </Attribute>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text xml:lang="de">Aussteigeseite: Links</Text>
+                                        </UserText>
+                                        <Code>ojp91020BR_InfoCall174_108964_1</Code>
+                                    </Attribute>
+                                </Service>
+                            </TimedLeg>
+                        </Leg>
+                    </Trip>
+                </TripResult>
+            </OJPTripDelivery>
+        </siri:ServiceDelivery>
+    </OJPResponse>
+</OJP>
