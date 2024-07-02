@@ -49,7 +49,9 @@ struct TripRequestResultView: View {
                                 Text(trip.destinationName)
                                 Text(trip.endTime.formatted())
                             }
-                        }.onTapGesture {
+                        }
+                        .contentShape(Rectangle())
+                        .onTapGesture {
                             selectedTrip = trip
                         }
                     }
