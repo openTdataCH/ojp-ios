@@ -13,6 +13,7 @@ struct TripRequestView: View {
 
     @State var tripResults: [OJPv2.TripResult] = []
     @State var origin: OJPv2.PlaceResult?
+    @State var via: OJPv2.PlaceResult?
     @State var destination: OJPv2.PlaceResult?
 
     var body: some View {
@@ -20,7 +21,7 @@ struct TripRequestView: View {
             HStack(alignment: .top) {
                 if let origin {
                     HStack {
-                        Text("Form")
+                        Text("From")
                         Text(origin.title).fontWeight(.bold)
                         Button {
                             self.origin = nil
@@ -29,7 +30,21 @@ struct TripRequestView: View {
                         }
                     }
                 } else {
-                    InlineLocationSerachView(ojp: ojp, selectedPlace: $origin)
+                    InlineLocationSerachView(ojp: ojp, textLabel: "From", selectedPlace: $origin)
+                }
+                
+                if let via {
+                    HStack {
+                        Text("Via")
+                        Text(via.title).fontWeight(.bold)
+                        Button {
+                            self.via = nil
+                        } label: {
+                            Image(systemName: "x.circle.fill")
+                        }
+                    }
+                } else {
+                    InlineLocationSerachView(ojp: ojp, textLabel: "Via", selectedPlace: $via)
                 }
 
                 if let destination {
@@ -43,7 +58,7 @@ struct TripRequestView: View {
                         }
                     }
                 } else {
-                    InlineLocationSerachView(ojp: ojp, selectedPlace: $destination)
+                    InlineLocationSerachView(ojp: ojp, textLabel: "Destination", selectedPlace: $destination)
                 }
 
                 Button {
@@ -53,6 +68,7 @@ struct TripRequestView: View {
                                 tripResults = try await ojp.requestTrips(
                                     from: origin.placeRef,
                                     to: destination.placeRef,
+                                    via: via != nil ? [via!.placeRef] : nil,
                                     params: .init(
                                         includeTrackSections: true,
                                         includeIntermediateStops: true

@@ -15,11 +15,12 @@ struct InlineLocationSerachView: View {
     @State private var results: [OJPv2.PlaceResult] = []
     @State private var currentTask: Task<Void, Never>? = nil
 
+    var textLabel: String
     @Binding var selectedPlace: OJPv2.PlaceResult?
 
     var body: some View {
         VStack {
-            TextField("Search Place", text: $searchText)
+            TextField(textLabel, text: $searchText)
             if results.count > 0 {
                 ZStack {
                     List($results) { $stop in
@@ -65,5 +66,5 @@ struct InlineLocationSerachView: View {
 }
 
 #Preview {
-    InlineLocationSerachView(ojp: OJP(loadingStrategy: .http(.int)), selectedPlace: .constant(nil))
+    InlineLocationSerachView(ojp: OJP(loadingStrategy: .http(.int)), textLabel: "From", selectedPlace: .constant(nil))
 }
