@@ -32,7 +32,7 @@ struct TripRequestView: View {
                 } else {
                     InlineLocationSerachView(ojp: ojp, textLabel: "From", selectedPlace: $origin)
                 }
-                
+
                 if let via {
                     HStack {
                         Text("Via")

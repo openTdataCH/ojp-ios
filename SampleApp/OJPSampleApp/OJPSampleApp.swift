@@ -19,9 +19,9 @@ enum AppSection: CaseIterable, Identifiable {
     var title: String {
         switch self {
         case .locationInformationRequest:
-            "LIR"
+            "LocationInformationRequest"
         case .tripRequest:
-            "TR"
+            "TripRequest"
         }
     }
 
@@ -51,10 +51,14 @@ struct OJPSampleApp: App {
         WindowGroup {
             NavigationSplitView(sidebar: {
                 List(selection: $currentSection) {
-                    ForEach(AppSection.allCases) { a in
-                        VStack {
-                            a.image.imageScale(.large)
-                            Text(a.title)
+                    ForEach(AppSection.allCases) { l in
+                        HStack {
+                            l.image
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 24, height: 24)
+
+                            Text(l.title)
                         }
                     }
                 }
@@ -93,7 +97,7 @@ struct OJPSampleApp: App {
                         Image(systemName: "network")
                     }
                 }
-            }
+            }.navigationSplitViewStyle(.balanced)
         }
 
         WindowGroup(id: "Console") {

@@ -54,8 +54,7 @@ struct TripRequestResultView: View {
                         .onTapGesture {
                             selectedTrip = trip
                         }
-                    }
-                    else { Text("No Trips found") }
+                    } else { Text("No Trips found") }
                 }
             }
             if let selectedTrip {
