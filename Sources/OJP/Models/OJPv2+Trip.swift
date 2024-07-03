@@ -14,7 +14,7 @@ public extension OJPv2 {
         public let responseTimestamp: String
         public let requestMessageRef: String
         public let calcTime: Int?
-        public let tripResults: [TripResult]
+        public internal(set) var tripResults: [TripResult]
 
         public enum CodingKeys: String, CodingKey {
             case responseTimestamp = "siri:ResponseTimestamp"
