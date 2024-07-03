@@ -18,7 +18,7 @@ class PreviewMocker {
         return try Data(contentsOf: URL(fileURLWithPath: path))
     }
 
-    static func mockLoader(xmlFilename: String = "tr-with-transfer-legs") -> LoadingStrategy {
+    static func mockLoader(xmlFilename: String) -> LoadingStrategy {
         .mock { _ in
             do {
                 let data = try loadXML(xmlFilename: xmlFilename)
@@ -34,10 +34,10 @@ class PreviewMocker {
         HTTPURLResponse(url: URL(string: "https://localhost")!, statusCode: statusCode, httpVersion: "1.0", headerFields: [:])!
     }
 
-    func loadTrips() async -> [OJPv2.TripResult] {
+    func loadTrips(xmlFileName: String = "tr-with-transfer-legs") async -> [OJPv2.TripResult] {
         do {
             return try await OJP(
-                loadingStrategy: Self.mockLoader()
+                loadingStrategy: Self.mockLoader(xmlFilename: xmlFileName)
             )
             .requestTrips(
                 from: .stopPlaceRef(.init(stopPlaceRef: "a",

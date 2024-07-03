@@ -10,7 +10,6 @@ import Foundation
 import Foundation
 
 extension TimeInterval {
-
     @available(*, deprecated, message: "use a localizable time formatter instead")
     var hoursMinutesSeconds: String {
         let hours = Int(self / .hour)
@@ -24,14 +23,14 @@ extension TimeInterval {
             return "\(seconds.description)s"
         }
     }
-    
+
     var hoursMinutesSecondsColonSeparated: String {
         let hours = Int(self / .hour)
         let minutes = (Int(self) % Int(.hour)) / Int(.minute)
         let seconds = Int(self) % Int(.minute)
         return "\(String(format: "%02d", hours)):\(String(format: "%02d", minutes)):\(String(format: "%02d", seconds))"
     }
-    
+
     var hoursMinutesColonSeparated: String {
         let hours = Int(self / .hour)
         let minutes = (Int(self) % Int(.hour)) / Int(.minute)
@@ -47,5 +46,4 @@ extension TimeInterval {
     static var second: Self { 1.0 }
     static var minute: Self { 60 * second }
     static var hour: Self { 60 * minute }
-    
 }
