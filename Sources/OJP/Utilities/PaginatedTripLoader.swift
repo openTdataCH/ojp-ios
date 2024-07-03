@@ -39,8 +39,8 @@ public actor PaginatedTripLoader {
         self.ojp = ojp
     }
 
-    public func loadTrips(for request: TripRequest, numberOfResults: OJPv2.NumberOfResults) async throws -> [OJPv2.TripResult] {
-        let tripResults = try await ojp.requestTrips(
+    public func loadTrips(for request: TripRequest, numberOfResults: OJPv2.NumberOfResults) async throws -> OJPv2.TripDelivery {
+        var tripDelivery = try await ojp.requestTrips(
             from: request.from,
             to: request.to,
             via: request.via,
@@ -56,7 +56,7 @@ public actor PaginatedTripLoader {
         try Task.checkCancellation()
         self.request = request
 
-        return tripResults
+        let filteredTripResults: [OJPv2.TripResult] = tripDelivery.tripResults
             .filter { $0.trip != nil } // TripSummary currently not supported
             .compactMap { tripResult in
                 guard let trip = tripResult.trip else { return nil }
@@ -71,9 +71,11 @@ public actor PaginatedTripLoader {
 
                 return tripResult
             }
+        tripDelivery.tripResults = filteredTripResults
+        return tripDelivery
     }
 
-    public func loadPrevious() async throws -> [OJPv2.TripResult] {
+    public func loadPrevious() async throws -> OJPv2.TripDelivery {
         guard var request, let minDate else {
             throw OJPSDKError.notImplemented()
         }
@@ -81,7 +83,7 @@ public actor PaginatedTripLoader {
         return try await loadTrips(for: request, numberOfResults: .before(number))
     }
 
-    public func loadNext() async throws -> [OJPv2.TripResult] {
+    public func loadNext() async throws -> OJPv2.TripDelivery {
         guard var request, let maxDate else {
             throw OJPSDKError.notImplemented()
         }
