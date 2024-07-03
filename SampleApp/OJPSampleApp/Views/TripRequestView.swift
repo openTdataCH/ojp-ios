@@ -15,7 +15,7 @@ struct TripRequestView: View {
     @State var origin: OJPv2.PlaceResult?
     @State var via: OJPv2.PlaceResult?
     @State var destination: OJPv2.PlaceResult?
-
+    @State var isLoading: Bool = false
     @State var paginatedActor: PaginatedTripLoader?
 
     var body: some View {
@@ -88,19 +88,26 @@ struct TripRequestView: View {
                 }
             }
             TripRequestResultView(
+                isLoading: isLoading,
                 results: tripResults,
                 loadPrevious: {
+                    guard !isLoading else { return }
+                    isLoading = true
                     Task { @MainActor in
                         guard let paginatedActor else { return }
                         let prev = try await paginatedActor.loadPrevious()
                         tripResults = prev + tripResults
+                        isLoading = false
                     }
                 },
                 loadNext: {
+                    guard !isLoading else { return }
+                    isLoading = true
                     Task { @MainActor in
                         guard let paginatedActor else { return }
                         let next = try await paginatedActor.loadNext()
                         tripResults = tripResults + next
+                        isLoading = false
                     }
                 }
             )
