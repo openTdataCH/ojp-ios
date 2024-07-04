@@ -27,13 +27,19 @@ struct NamespaceAwareCodingKey: CodingKey {
         self.intValue = intValue
     }
 
-    static func create(from key: CodingKey, ojpNS: String, siriNS: String, mapping: inout [String: String]) -> NamespaceAwareCodingKey {
-        let strippedKey = removeNameSpace(key.stringValue)
+    static func create(from keys: [CodingKey], ojpNS: String, siriNS: String, mapping: inout [String: String]) -> NamespaceAwareCodingKey {
+        let strippedKeys = keys.map { key in removeNameSpace(key.stringValue)
+        }
+        let lookupKey = strippedKeys
+            .filter({ $0 != "0" })
+            .joined(separator: "/")
         // the mapping is needed, as the keyDecodingStrategy could be performed on a already converted key, leading to an invalid new key
-        if let existing = mapping[strippedKey] {
+        print(lookupKey)
+        if let existing = mapping[lookupKey] {
             return NamespaceAwareCodingKey(stringValue: existing)!
         }
-
+        let key = keys.last!
+        let strippedKey = removeNameSpace(key.stringValue)
         if ojpNS.isEmpty && siriNS.isEmpty || key.stringValue.contains("xmlns") {
             // ignore root elements
             return NamespaceAwareCodingKey(stringValue: strippedKey)!
@@ -41,17 +47,17 @@ struct NamespaceAwareCodingKey: CodingKey {
 
         if !ojpNS.isEmpty, key.stringValue.contains(ojpNS) {
             // removes a potential "ojp" namespace to match the the type's CodingKeys
-            mapping[strippedKey] = strippedKey
+            mapping[lookupKey] = strippedKey
             return NamespaceAwareCodingKey(stringValue: removeNameSpace(key.stringValue))!
         }
         if siriNS.isEmpty, !key.stringValue.contains(ojpNS) {
             // adds 'siri:' if it isn't present in the source to match the type's CodingKeys
-            mapping[strippedKey] = "siri:\(key.stringValue)"
+            mapping[lookupKey] = "siri:\(key.stringValue)"
             return NamespaceAwareCodingKey(stringValue: "siri:\(key.stringValue)")!
         }
 
         // keep stringValue as it is
-        mapping[strippedKey] = "\(key.stringValue)"
+        mapping[lookupKey] = "\(key.stringValue)"
         return NamespaceAwareCodingKey(stringValue: key.stringValue)!
     }
 
@@ -70,11 +76,11 @@ enum OJPDecoder {
 
         decoder.dateDecodingStrategy = .iso8601
         decoder.keyDecodingStrategy = .custom { codingPath in
-            guard let codingPath = codingPath.last else { fatalError() }
+            guard let codingPathLast = codingPath.last else { fatalError() }
             // This is a very naive approach to check the used namespaces. Maybe implement a more robust one in the future.
-            if codingPath.stringValue.contains("xmlns:ojp") {
+            if codingPathLast.stringValue.contains("xmlns:ojp") {
                 ojpNameSpace = "ojp:"
-            } else if codingPath.stringValue.contains("xmlns:siri") {
+            } else if codingPathLast.stringValue.contains("xmlns:siri") {
                 siriNameSpace = "siri:"
             }
 
