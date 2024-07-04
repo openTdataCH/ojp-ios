@@ -20,7 +20,7 @@ final class TripRequestTests: XCTestCase {
                 XCTAssertEqual(dateFormatter.string(from: trip.startTime), "2024-05-14T21:45:00Z")
                 XCTAssertEqual(dateFormatter.string(from: trip.endTime), "2024-05-15T06:40:00Z")
                 XCTAssertEqual(trip.transfers, 4)
-                XCTAssertEqual(trip.duration, "PT8H55M")
+                XCTAssertEqual(trip.duration.iso8601, "PT8H55M")
                 XCTAssertEqual(trip.legs.count, 1)
 
                 guard let leg = trip.legs.first else {
@@ -28,7 +28,7 @@ final class TripRequestTests: XCTestCase {
                 }
 
                 XCTAssertEqual(leg.id, 1)
-                XCTAssertEqual(leg.duration, "PT15M")
+                XCTAssertEqual(leg.duration?.iso8601, "PT15M")
 
                 guard case let .timed(timedLeg) = leg.legType else {
                     return XCTFail("Expected a timed Leg")

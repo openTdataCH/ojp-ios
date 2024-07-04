@@ -73,6 +73,22 @@ import OJP
 let nearbyStops = try await ojpSdk.requestPlaceResults(from: Point(long: 5.6, lat: 2.3), restrictions: .init(type: [.stop])
 ```
 
+Get a list of Trips between place results
+
+``` swift
+import OJP
+
+let origin = try await ojpSdk.requestPlaceResults(from: "Bern", restrictions: .init(type: [.stop])).first!
+
+let via = try await ojpSdk.requestPlaceResults(from: "Luzern", restrictions: .init(type: [.stop])).first!
+
+let destination = try await ojpSdk.requestPlaceResults(from: "Zurich HB", restrictions: .init(type: [.stop])).first!
+
+let tripResults = try await ojp.requestTrips(from: origin.placeRef, to: destination.placeRef, via: via.placeRef, params: .init(includeTrackSections: true, includeIntermediateStops: true))
+
+```
+
+
 ## Sample App
 
 WIP: on branch [demo-app](https://github.com/openTdataCH/ojp-ios/tree/demo-app)

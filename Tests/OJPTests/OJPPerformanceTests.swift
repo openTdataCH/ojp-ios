@@ -47,7 +47,6 @@ final class OJPPerformanceTests: XCTestCase {
 //            let _ = try? await OJP(loadingStrategy: .http(.int)).requestTrips(from: .stopPointRef("8507000"), to: .stopPointRef("8503000"), params: .init(numberOfResults: .minimum(20), includeLegProjection: true))
 //        }
 
-
         guard let xmlData = try? TestHelpers.loadXML(xmlFilename: "tr-perf-be-zh-20results-projection")
         else {
             return XCTFail("unexpected empty")

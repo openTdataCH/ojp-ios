@@ -5,6 +5,7 @@
 //  Created by Terence Alberti on 06.05.2024.
 //
 
+import Duration
 import Foundation
 import XMLCoder
 
@@ -23,7 +24,7 @@ public extension OJPv2 {
         }
     }
 
-    struct TripResult: Codable {
+    struct TripResult: Codable, Identifiable {
         public let id: String
         public let tripType: TripTypeChoice
         public let tripFares: [TripFare]
@@ -84,11 +85,11 @@ public extension OJPv2 {
         }
     }
 
-    struct Trip: Codable {
+    struct Trip: Codable, Identifiable {
         /// Unique within trip response. This ID must not be used over mutliple ``OJPv2/TripRequest``
         /// - Warning: This ID must not be used over mutliple ``OJPv2/TripRequest``. Use ``tripHash`` instead.
         public let id: String
-        public let duration: String
+        public let duration: Duration
         public let startTime: Date
         public let endTime: Date
         public let transfers: Int
@@ -132,9 +133,9 @@ public extension OJPv2 {
     }
 
     // https://vdvde.github.io/OJP/develop/index.html#LegStructure
-    struct Leg: Codable {
+    struct Leg: Codable, Identifiable {
         public let id: Int
-        public let duration: String?
+        public let duration: Duration?
         public let legType: LegTypeChoice
 
         enum CodingKeys: String, CodingKey {
@@ -147,7 +148,7 @@ public extension OJPv2 {
 
             let container = try decoder.container(keyedBy: CodingKeys.self)
             id = try container.decode(Int.self, forKey: .id)
-            duration = try? container.decode(String.self, forKey: .duration)
+            duration = try? container.decode(Duration.self, forKey: .duration)
         }
 
         public enum LegTypeChoice: Codable {
@@ -214,7 +215,7 @@ public extension OJPv2 {
         public let transferTypes: [TransferType]
         public let legStart: PlaceRefChoice
         public let legEnd: PlaceRefChoice
-        public let duration: String
+        public let duration: Duration
 
         enum CodingKeys: String, CodingKey {
             case transferTypes = "TransferType"
@@ -306,7 +307,7 @@ public extension OJPv2 {
         public let stopPointRef: String
         public let stopPointName: InternationalText
         public let nameSuffix: InternationalText?
-        public let plannedQuai: InternationalText?
+        public let plannedQuay: InternationalText?
         public let estimatedQuay: InternationalText?
 
         public let serviceArrival: ServiceArrival? // Set as optional until https://github.com/openTdataCH/ojp-sdk/issues/42 is fixed
@@ -324,7 +325,7 @@ public extension OJPv2 {
             case stopPointRef = "siri:StopPointRef"
             case stopPointName = "StopPointName"
             case nameSuffix = "NameSuffix"
-            case plannedQuai = "PlannedQuay"
+            case plannedQuay = "PlannedQuay"
             case estimatedQuay = "EstimatedQuay"
             case serviceArrival = "ServiceArrival"
             case serviceDeparture = "ServiceDeparture"
@@ -343,7 +344,7 @@ public extension OJPv2 {
         public let stopPointRef: String
         public let stopPointName: InternationalText
         public let nameSuffix: InternationalText?
-        public let plannedQuai: InternationalText?
+        public let plannedQuay: InternationalText?
         public let estimatedQuay: InternationalText?
 
         public let serviceArrival: ServiceArrival
@@ -361,7 +362,7 @@ public extension OJPv2 {
             case stopPointRef = "siri:StopPointRef"
             case stopPointName = "StopPointName"
             case nameSuffix = "NameSuffix"
-            case plannedQuai = "PlannedQuay"
+            case plannedQuay = "PlannedQuay"
             case estimatedQuay = "EstimatedQuay"
             case serviceArrival = "ServiceArrival"
             case serviceDeparture = "ServiceDeparture"
@@ -439,9 +440,9 @@ public extension OJPv2 {
             case vehicleRef = "siri:VehicleRef"
             case attributes = "Attribute"
             case operatorRef = "siri:OperatorRef"
-            case originText = "OriginText" 
+            case originText = "OriginText"
             case originStopPointRef = "OriginStopPointRef"
-            case destinationText = "DestinationText" 
+            case destinationText = "DestinationText"
             case destinationStopPointRef = "DestinationStopPointRef"
         }
 
@@ -532,51 +533,96 @@ public extension OJPv2 {
         }
     }
 
+    struct StopPlaceRef: Codable {
+        let stopPlaceRef: String
+        let name: InternationalText
+
+        public init(stopPlaceRef: String, name: InternationalText) {
+            self.stopPlaceRef = stopPlaceRef
+            self.name = name
+        }
+
+        enum CodingKeys: String, CodingKey {
+            case stopPlaceRef = "StopPlaceRef"
+            case name = "Name"
+        }
+    }
+
+    struct StopPointRef: Codable {
+        let stopPointRef: String
+        let name: InternationalText
+
+        public init(stopPointRef: String, name: InternationalText) {
+            self.stopPointRef = stopPointRef
+            self.name = name
+        }
+
+        enum CodingKeys: String, CodingKey {
+            case stopPointRef = "siri:StopPointRef"
+            case name = "Name"
+        }
+    }
+
+    struct GeoPositionRef: Codable {
+        let geoPosition: OJPv2.GeoPosition
+        let name: InternationalText
+
+        public init(geoPosition: OJPv2.GeoPosition, name: InternationalText) {
+            self.geoPosition = geoPosition
+            self.name = name
+        }
+
+        enum CodingKeys: String, CodingKey {
+            case geoPosition = "GeoPosition"
+            case name = "Name"
+        }
+    }
+
+    // https://vdvde.github.io/OJP/develop/index.html#PlaceRefGroup
     enum PlaceRefChoice: Codable {
-        case stopPlaceRef(String)
-        case geoPosition(OJPv2.GeoPosition)
-        case stopPointRef(String)
+        case stopPlaceRef(StopPlaceRef)
+        case geoPosition(GeoPositionRef)
+        case stopPointRef(StopPointRef)
 
         enum CodingKeys: String, CodingKey {
             case stopPlaceRef = "StopPlaceRef"
             case stopPointRef = "siri:StopPointRef"
-            case geoPosition = "siri:LocationStructure"
+            case name = "Name"
         }
 
         public func encode(to encoder: Encoder) throws {
-            var container = encoder.container(keyedBy: CodingKeys.self)
+            var svc = encoder.singleValueContainer()
             switch self {
-            case let .stopPlaceRef(stopPlace):
-                try container.encode(stopPlace, forKey: .stopPlaceRef)
-            case let .stopPointRef(stopPoint):
-                try container.encode(stopPoint, forKey: .stopPointRef)
-            case let .geoPosition(geoPosition):
-                try container.encode(geoPosition, forKey: .geoPosition)
+            case let .stopPlaceRef(stopPlaceRef):
+                try svc.encode(stopPlaceRef)
+            case let .stopPointRef(stopPointRef):
+                try svc.encode(stopPointRef)
+            case let .geoPosition(geoPositionRef):
+                try svc.encode(geoPositionRef)
             }
         }
 
         public init(from decoder: any Decoder) throws {
-            let container = try decoder.container(keyedBy: CodingKeys.self)
-            if container.contains(.stopPlaceRef) {
+            let svc = try decoder.singleValueContainer()
+
+            if try decoder.container(keyedBy: StopPlaceRef.CodingKeys.self)
+                .contains(.stopPlaceRef)
+            {
                 self = try .stopPlaceRef(
-                    container.decode(
-                        String.self,
-                        forKey: .stopPlaceRef
-                    )
+                    svc.decode(StopPlaceRef.self)
                 )
-            } else if container.contains(.geoPosition) {
-                self = try .geoPosition(
-                    container.decode(
-                        GeoPosition.self,
-                        forKey: .geoPosition
-                    )
-                )
-            } else if container.contains(.stopPointRef) {
+                return
+            } else if try decoder.container(keyedBy: StopPointRef.CodingKeys.self)
+                .contains(.stopPointRef)
+            {
                 self = try .stopPointRef(
-                    container.decode(
-                        String.self,
-                        forKey: .stopPointRef
-                    )
+                    svc.decode(StopPointRef.self)
+                )
+            } else if try decoder.container(keyedBy: GeoPositionRef.CodingKeys.self)
+                .contains(.geoPosition)
+            {
+                self = try .geoPosition(
+                    svc.decode(GeoPositionRef.self)
                 )
             } else {
                 throw OJPSDKError.notImplemented()
