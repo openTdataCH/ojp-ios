@@ -77,7 +77,7 @@ struct TripRequestView: View {
                                                     includeTrackSections: true,
                                                     includeIntermediateStops: true
                                                 )),
-                                                numberOfResults: .minimum(6)).tripResults
+                                    numberOfResults: .minimum(6)).tripResults
                             } catch {
                                 print(error)
                             }
