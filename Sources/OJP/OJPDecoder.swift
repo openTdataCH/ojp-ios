@@ -28,13 +28,13 @@ struct NamespaceAwareCodingKey: CodingKey {
     }
 
     static func create(from keys: [CodingKey], ojpNS: String, siriNS: String, mapping: inout [String: String]) -> NamespaceAwareCodingKey {
-        let strippedKeys = keys.map { key in removeNameSpace(key.stringValue)
-        }
+        let strippedKeys = keys.map { key in removeNameSpace(key.stringValue) }
         let lookupKey = strippedKeys
-            .filter({ $0 != "0" })
+            .filter({ Int($0) == nil }) // ignore positional keys
             .joined(separator: "/")
-        // the mapping is needed, as the keyDecodingStrategy could be performed on a already converted key, leading to an invalid new key
-        print(lookupKey)
+
+        // the mapping is needed, as the keyDecodingStrategy could be performed on a already converted key, leading to an invalid new key.
+        // as elements could turn up both in siri and ojp namespace, we need the whole list of coding keys. See https://github.com/openTdataCH/ojp-ios/issues/56
         if let existing = mapping[lookupKey] {
             return NamespaceAwareCodingKey(stringValue: existing)!
         }
