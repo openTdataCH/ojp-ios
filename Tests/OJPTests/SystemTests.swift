@@ -30,6 +30,14 @@ final class SystemTests: XCTestCase {
         XCTAssert(!nearbyStations.isEmpty)
     }
 
+    func testFetchStationByDidok() async throws {
+        let ojpSdk = OJP(loadingStrategy: .http(.int))
+
+        let nearbyStations = try await ojpSdk.requestPlaceResults(placeRef: .stopPointRef(.init(stopPointRef: "8507000", name: .init("Bern"))), restrictions: .init(type: [.stop]))
+
+        XCTAssert(!nearbyStations.isEmpty)
+    }
+
     func testFetchTripWithDidoks() async throws {
         let ojpSdk = OJP(loadingStrategy: .http(.int))
 
