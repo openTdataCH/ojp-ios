@@ -49,7 +49,8 @@ public actor PaginatedTripLoader {
                 // TODO:
                 numberOfResults: numberOfResults,
                 includeLegProjection: false,
-                includeIntermediateStops: true
+                includeIntermediateStops: true,
+                includeAllRestrictedLines: true
             )
         )
 
