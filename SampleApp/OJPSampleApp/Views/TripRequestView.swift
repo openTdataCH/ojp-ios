@@ -95,7 +95,7 @@ struct TripRequestView: View {
                     isLoading = true
                     Task { @MainActor in
                         guard let paginatedActor else { return }
-                        let prev = try await paginatedActor.loadPrevious()
+                        let prev = try await paginatedActor.loadPrevious(numberOfResults: 6)
                         tripResults = prev + tripResults
                         isLoading = false
                     }
@@ -105,7 +105,7 @@ struct TripRequestView: View {
                     isLoading = true
                     Task { @MainActor in
                         guard let paginatedActor else { return }
-                        let next = try await paginatedActor.loadNext()
+                        let next = try await paginatedActor.loadNext(numberOfResults: 6)
                         tripResults = tripResults + next
                         isLoading = false
                     }

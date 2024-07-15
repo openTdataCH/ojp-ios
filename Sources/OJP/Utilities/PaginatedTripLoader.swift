@@ -28,11 +28,7 @@ public actor PaginatedTripLoader {
     private(set) var maxDate: Date?
 
     private var existingTripHashes: Set<Int> = Set()
-
     private var request: TripRequest?
-
-    private var number: Int = 6
-
     private let ojp: OJP
 
     public init(ojp: OJP) {
@@ -40,18 +36,19 @@ public actor PaginatedTripLoader {
     }
 
     public func loadTrips(for request: TripRequest, numberOfResults: OJPv2.NumberOfResults) async throws -> [OJPv2.TripResult] {
+        let params = OJPv2.TripParams(numberOfResults: numberOfResults,
+                                      includeLegProjection: request.params.includeLegProjection,
+                                      includeTurnDescription: request.params.includeTurnDescription,
+                                      includeIntermediateStops: request.params.includeIntermediateStops,
+                                      includeAllRestrictedLines: request.params.includeAllRestrictedLines,
+                                      modeAndModeOfOperationFilter: request.params.modeAndModeOfOperationFilter
+        )
         let tripResults = try await ojp.requestTrips(
             from: request.from,
             to: request.to,
             via: request.via,
             at: request.at,
-            params: OJPv2.TripParams(
-                // TODO:
-                numberOfResults: numberOfResults,
-                includeLegProjection: false,
-                includeIntermediateStops: true,
-                includeAllRestrictedLines: true
-            )
+            params: params
         )
 
         try Task.checkCancellation()
@@ -74,20 +71,20 @@ public actor PaginatedTripLoader {
             }
     }
 
-    public func loadPrevious() async throws -> [OJPv2.TripResult] {
+    public func loadPrevious(numberOfResults: Int) async throws -> [OJPv2.TripResult] {
         guard var request, let minDate else {
             throw OJPSDKError.notImplemented()
         }
         request.at = .departure(minDate)
-        return try await loadTrips(for: request, numberOfResults: .before(number))
+        return try await loadTrips(for: request, numberOfResults: .before(numberOfResults))
     }
 
-    public func loadNext() async throws -> [OJPv2.TripResult] {
+    public func loadNext(numberOfResults: Int) async throws -> [OJPv2.TripResult] {
         guard var request, let maxDate else {
             throw OJPSDKError.notImplemented()
         }
         request.at = .departure(maxDate)
-        return try await loadTrips(for: request, numberOfResults: .after(number))
+        return try await loadTrips(for: request, numberOfResults: .after(numberOfResults))
     }
 
     public func reset() {
