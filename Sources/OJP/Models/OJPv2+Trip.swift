@@ -632,6 +632,11 @@ public extension OJPv2 {
     
     // https://vdvde.github.io/OJP/develop/index.html#ModeAndModeOfOperationFilterStructure
     struct ModeAndModeOfOperationFilter: Codable {
+        
+        public init(ptMode: [Mode.PtMode]?, exclude: Bool?) {
+            self.ptMode = ptMode
+            self.exclude = exclude
+        }
      
         let ptMode: [Mode.PtMode]?
         let exclude: Bool?
