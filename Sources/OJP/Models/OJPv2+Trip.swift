@@ -629,6 +629,19 @@ public extension OJPv2 {
             }
         }
     }
+    
+    // https://vdvde.github.io/OJP/develop/index.html#ModeAndModeOfOperationFilterStructure
+    struct ModeAndModeOfOperationFilter: Codable {
+     
+        let ptMode: [Mode.PtMode]?
+        let exclude: Bool?
+        
+        public enum CodingKeys: String, CodingKey {
+            case exclude = "Exclude"
+            case ptMode = "PtMode"
+        }
+        
+    }
 
     // https://vdvde.github.io/OJP/develop/index.html#TripParamStructure
     struct TripParams: Codable {
@@ -638,7 +651,8 @@ public extension OJPv2 {
             includeLegProjection: Bool? = nil,
             includeTurnDescription: Bool? = nil,
             includeIntermediateStops: Bool? = nil,
-            includeAllRestrictedLines: Bool? = nil
+            includeAllRestrictedLines: Bool? = nil,
+            modeAndModeOfOperationFilter: ModeAndModeOfOperationFilter? = nil
             
         ) {
             switch numberOfResults {
@@ -655,6 +669,7 @@ public extension OJPv2 {
             self.includeTurnDescription = includeTurnDescription
             self.includeIntermediateStops = includeIntermediateStops
             self.includeAllRestrictedLines = includeAllRestrictedLines
+            self.modeAndModeOfOperationFilter = modeAndModeOfOperationFilter
         }
 
         private var numberOfResultsBefore: Int? = nil
@@ -666,6 +681,7 @@ public extension OJPv2 {
         let includeTurnDescription: Bool?
         let includeIntermediateStops: Bool?
         let includeAllRestrictedLines: Bool?
+        let modeAndModeOfOperationFilter: ModeAndModeOfOperationFilter?
 
         var numberOfResults: NumberOfResults {
             if let numberOfResultsBefore {
@@ -686,6 +702,7 @@ public extension OJPv2 {
             case includeTurnDescription = "IncludeTurnDescription"
             case includeIntermediateStops = "IncludeIntermediateStops"
             case includeAllRestrictedLines = "IncludeAllRestrictedLines"
+            case modeAndModeOfOperationFilter = "ModeAndModeOfOperationFilter"
         }
     }
 
