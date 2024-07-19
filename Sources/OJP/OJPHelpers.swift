@@ -81,11 +81,30 @@ enum OJPHelpers {
             let geoRestriction = OJPv2.GeoRestriction(rectangle: rectangle)
             let restrictions = OJPv2.PlaceParam(type: [.stop], numberOfResults: numberOfResults, includePtModes: true)
 
-            let locationInformationRequest = OJPv2.LocationInformationRequest(requestTimestamp: requestTimestamp, initialInput: OJPv2.InitialInput(geoRestriction: geoRestriction, name: nil), restrictions: restrictions)
+            let locationInformationRequest = OJPv2.LocationInformationRequest(requestTimestamp: requestTimestamp, input: .initialInput(OJPv2.InitialInput(geoRestriction: geoRestriction, name: nil)), restrictions: restrictions)
 
             let ojp = OJPv2(request: OJPv2.Request(serviceRequest: OJPv2.ServiceRequest(requestTimestamp: requestTimestamp, requestorRef: requesterReference, locationInformationRequest: locationInformationRequest, tripRequest: nil)), response: nil)
 
             return ojp
+        }
+
+        public func request(with placeRef: OJPv2.PlaceRefChoice, restrictions: OJPv2.PlaceParam) -> OJPv2 {
+            let lir = OJPv2.LocationInformationRequest(
+                requestTimestamp: Date(),
+                input: .placeRef(placeRef),
+                restrictions: restrictions
+            )
+            return OJPv2(
+                request: OJPv2.Request(
+                    serviceRequest: OJPv2.ServiceRequest(
+                        requestTimestamp: Date(),
+                        requestorRef: requesterReference,
+                        locationInformationRequest: lir,
+                        tripRequest: nil
+                    )
+                ),
+                response: nil
+            )
         }
 
         /// Creates a new OJP LocationInformationRequest with bounding box around a center coordinate.
@@ -130,7 +149,7 @@ enum OJPHelpers {
         public func requestWithSearchTerm(_ name: String, restrictions: OJPv2.PlaceParam) -> OJPv2 {
             let requestTimestamp = Date()
 
-            let locationInformationRequest = OJPv2.LocationInformationRequest(requestTimestamp: requestTimestamp, initialInput: OJPv2.InitialInput(geoRestriction: nil, name: name), restrictions: restrictions)
+            let locationInformationRequest = OJPv2.LocationInformationRequest(requestTimestamp: requestTimestamp, input: .initialInput(OJPv2.InitialInput(geoRestriction: nil, name: name)), restrictions: restrictions)
 
             // TODO: - avoid duplication (share this block with "requestWith(bbox: Geo.Bbox")
             let ojp = OJPv2(request: OJPv2.Request(serviceRequest: OJPv2.ServiceRequest(requestTimestamp: requestTimestamp, requestorRef: requesterReference, locationInformationRequest: locationInformationRequest, tripRequest: nil)), response: nil)

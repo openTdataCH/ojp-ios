@@ -178,15 +178,67 @@ public extension OJPv2 {
         }
     }
 
+    enum LocationInformationInputTypeChoice: Codable {
+        case initialInput(InitialInput)
+        case placeRef(PlaceRefChoice)
+
+        public enum CodingKeys: String, CodingKey {
+            case initialInput = "InitialInput"
+            case placeRef = "PlaceRef"
+        }
+
+        public init(from decoder: any Decoder) throws {
+            let container = try decoder.container(keyedBy: CodingKeys.self)
+
+            if container.contains(.initialInput) {
+                let initial = try container.decode(InitialInput.self, forKey: .initialInput)
+                self = .initialInput(initial)
+            } else if container.contains(.placeRef) {
+                let placeRef = try PlaceRefChoice(from: decoder)
+                self = .placeRef(placeRef)
+            } else {
+                throw OJPSDKError.notImplemented()
+            }
+        }
+    }
+
     struct LocationInformationRequest: Codable {
         public let requestTimestamp: Date
-        public let initialInput: InitialInput
+        public let input: LocationInformationInputTypeChoice
         public let restrictions: PlaceParam
 
         public enum CodingKeys: String, CodingKey {
             case requestTimestamp = "siri:RequestTimestamp"
-            case initialInput = "InitialInput"
             case restrictions = "Restrictions"
+
+            case initialInput = "InitialInput"
+            case placeRef = "PlaceRef"
+        }
+
+        public init(requestTimestamp: Date, input: LocationInformationInputTypeChoice, restrictions: PlaceParam) {
+            self.requestTimestamp = requestTimestamp
+            self.input = input
+            self.restrictions = restrictions
+        }
+
+        public init(from decoder: any Decoder) throws {
+            input = try LocationInformationInputTypeChoice(from: decoder)
+            let container = try decoder.container(keyedBy: CodingKeys.self)
+            requestTimestamp = try container.decode(Date.self, forKey: .requestTimestamp)
+            restrictions = try container.decode(PlaceParam.self, forKey: .restrictions)
+        }
+
+        public func encode(to encoder: any Encoder) throws {
+            var container = encoder.container(keyedBy: OJPv2.LocationInformationRequest.CodingKeys.self)
+            try container.encode(requestTimestamp, forKey: OJPv2.LocationInformationRequest.CodingKeys.requestTimestamp)
+            switch input {
+            case let .initialInput(initialInput):
+                try container.encode(initialInput, forKey: .initialInput)
+            case let .placeRef(placeRefChoice):
+                try container.encode(placeRefChoice, forKey: .placeRef)
+            }
+            // Order of encoded elements is enforced by service. would fail otherwise
+            try container.encode(restrictions, forKey: OJPv2.LocationInformationRequest.CodingKeys.restrictions)
         }
     }
 
