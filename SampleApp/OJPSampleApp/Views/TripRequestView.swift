@@ -77,7 +77,7 @@ struct TripRequestView: View {
                                                     includeTrackSections: true,
                                                     includeIntermediateStops: true
                                                 )),
-                                    numberOfResults: .minimum(6))
+                                    numberOfResults: .minimum(6)).tripResults
                             } catch {
                                 print(error)
                             }
@@ -95,7 +95,7 @@ struct TripRequestView: View {
                     isLoading = true
                     Task { @MainActor in
                         guard let paginatedActor else { return }
-                        let prev = try await paginatedActor.loadPrevious()
+                        let prev = try await paginatedActor.loadPrevious().tripResults
                         tripResults = prev + tripResults
                         isLoading = false
                     }
@@ -105,7 +105,7 @@ struct TripRequestView: View {
                     isLoading = true
                     Task { @MainActor in
                         guard let paginatedActor else { return }
-                        let next = try await paginatedActor.loadNext()
+                        let next = try await paginatedActor.loadNext().tripResults
                         tripResults = tripResults + next
                         isLoading = false
                     }

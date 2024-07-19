@@ -14,7 +14,7 @@ public extension OJPv2 {
         public let responseTimestamp: String
         public let requestMessageRef: String
         public let calcTime: Int?
-        public let tripResults: [TripResult]
+        public internal(set) var tripResults: [TripResult]
 
         public enum CodingKeys: String, CodingKey {
             case responseTimestamp = "siri:ResponseTimestamp"
@@ -637,7 +637,9 @@ public extension OJPv2 {
             includeTrackSections: Bool? = nil,
             includeLegProjection: Bool? = nil,
             includeTurnDescription: Bool? = nil,
-            includeIntermediateStops: Bool? = nil
+            includeIntermediateStops: Bool? = nil,
+            includeAllRestrictedLines: Bool? = nil
+            
         ) {
             switch numberOfResults {
             case let .before(numberOfResults):
@@ -652,6 +654,7 @@ public extension OJPv2 {
             self.includeLegProjection = includeLegProjection
             self.includeTurnDescription = includeTurnDescription
             self.includeIntermediateStops = includeIntermediateStops
+            self.includeAllRestrictedLines = includeAllRestrictedLines
         }
 
         private var numberOfResultsBefore: Int? = nil
@@ -662,6 +665,7 @@ public extension OJPv2 {
         let includeLegProjection: Bool?
         let includeTurnDescription: Bool?
         let includeIntermediateStops: Bool?
+        let includeAllRestrictedLines: Bool?
 
         var numberOfResults: NumberOfResults {
             if let numberOfResultsBefore {
@@ -681,6 +685,7 @@ public extension OJPv2 {
             case includeLegProjection = "IncludeLegProjection"
             case includeTurnDescription = "IncludeTurnDescription"
             case includeIntermediateStops = "IncludeIntermediateStops"
+            case includeAllRestrictedLines = "IncludeAllRestrictedLines"
         }
     }
 

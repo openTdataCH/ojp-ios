@@ -98,7 +98,7 @@ public class OJP {
         return locationInformationDelivery.placeResults
     }
 
-    public func requestTrips(from: OJPv2.PlaceRefChoice, to: OJPv2.PlaceRefChoice, via: [OJPv2.PlaceRefChoice]? = nil, at: DepArrTime = .departure(Date()), params: OJPv2.TripParams) async throws -> [OJPv2.TripResult] {
+    public func requestTrips(from: OJPv2.PlaceRefChoice, to: OJPv2.PlaceRefChoice, via: [OJPv2.PlaceRefChoice]? = nil, at: DepArrTime = .departure(Date()), params: OJPv2.TripParams) async throws -> OJPv2.TripDelivery {
         let ojp = tripRequest.requestTrips(from: from, to: to, via: via, at: at, params: params)
 
         let serviceDelivery = try await request(with: ojp).serviceDelivery
@@ -107,7 +107,7 @@ public class OJP {
             throw OJPSDKError.unexpectedEmpty
         }
 
-        return tripDelivery.tripResults
+        return tripDelivery
     }
 
     func request(with ojp: OJPv2) async throws -> OJPv2.Response {
