@@ -9,6 +9,12 @@ import Duration
 import Foundation
 import XMLCoder
 
+// TODO: can be removed as soon as Duration conforms to Sendable
+extension Duration: @unchecked Sendable {}
+
+// TODO: can be removed as soon as XMLCoder conforms to Sendable
+extension XMLEncoder.OutputFormatting: @unchecked Sendable {}
+
 public extension OJPv2 {
     struct TripDelivery: Codable, Sendable {
         public let responseTimestamp: String
