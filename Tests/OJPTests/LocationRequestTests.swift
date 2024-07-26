@@ -7,8 +7,9 @@ final class LocationRequestTests: XCTestCase {
     func testGeoRestrictionHelpers() throws {
         // BBOX with Kleine Schanze as center + width / height of 1km
         let ojp = locationInformationRequest.requestWithBox(centerLongitude: 7.44029, centerLatitude: 46.94578, boxWidth: 1000.0)
-
-        if let rectangle = ojp.request?.serviceRequest.locationInformationRequest!.initialInput.geoRestriction?.rectangle {
+        guard case let .initialInput(input) = ojp.request?.serviceRequest.locationInformationRequest!.input else { return XCTFail("invalid input type")
+        }
+        if let rectangle = input.geoRestriction?.rectangle {
             XCTAssertTrue(rectangle.lowerRight.longitude > rectangle.upperLeft.longitude)
             XCTAssertTrue(rectangle.upperLeft.latitude > rectangle.lowerRight.latitude)
 
@@ -18,7 +19,6 @@ final class LocationRequestTests: XCTestCase {
             XCTAssertTrue(rectangle.lowerRight.latitude == 46.941283, "Unexpected lowerRight.latitude \(rectangle.lowerRight.latitude)")
         } else {
             XCTFail("Cant compute geoRestriction rectangle")
-            print(ojp)
         }
     }
 

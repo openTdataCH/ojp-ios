@@ -35,7 +35,7 @@ public actor PaginatedTripLoader {
         self.ojp = ojp
     }
 
-    public func loadTrips(for request: TripRequest, numberOfResults: OJPv2.NumberOfResults) async throws -> [OJPv2.TripResult] {
+    public func loadTrips(for request: TripRequest, numberOfResults: OJPv2.NumberOfResults) async throws -> OJPv2.TripDelivery {
         let params = OJPv2.TripParams(numberOfResults: numberOfResults,
                                       includeLegProjection: request.params.includeLegProjection,
                                       includeTurnDescription: request.params.includeTurnDescription,
@@ -43,7 +43,7 @@ public actor PaginatedTripLoader {
                                       includeAllRestrictedLines: request.params.includeAllRestrictedLines,
                                       modeAndModeOfOperationFilter: request.params.modeAndModeOfOperationFilter
         )
-        let tripResults = try await ojp.requestTrips(
+        var tripDelivery = try await ojp.requestTrips(
             from: request.from,
             to: request.to,
             via: request.via,
@@ -54,7 +54,7 @@ public actor PaginatedTripLoader {
         try Task.checkCancellation()
         self.request = request
 
-        return tripResults
+        let filteredTripResults: [OJPv2.TripResult] = tripDelivery.tripResults
             .filter { $0.trip != nil } // TripSummary currently not supported
             .compactMap { tripResult in
                 guard let trip = tripResult.trip else { return nil }
@@ -69,9 +69,11 @@ public actor PaginatedTripLoader {
 
                 return tripResult
             }
+        tripDelivery.tripResults = filteredTripResults
+        return tripDelivery
     }
 
-    public func loadPrevious(numberOfResults: Int) async throws -> [OJPv2.TripResult] {
+    public func loadPrevious(numberOfResults: Int) async throws -> OJPv2.TripDelivery {
         guard var request, let minDate else {
             throw OJPSDKError.notImplemented()
         }
@@ -79,7 +81,7 @@ public actor PaginatedTripLoader {
         return try await loadTrips(for: request, numberOfResults: .before(numberOfResults))
     }
 
-    public func loadNext(numberOfResults: Int) async throws -> [OJPv2.TripResult] {
+    public func loadNext(numberOfResults: Int) async throws -> OJPv2.TripDelivery {
         guard var request, let maxDate else {
             throw OJPSDKError.notImplemented()
         }

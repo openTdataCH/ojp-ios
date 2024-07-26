@@ -34,7 +34,7 @@ class PreviewMocker {
         HTTPURLResponse(url: URL(string: "https://localhost")!, statusCode: statusCode, httpVersion: "1.0", headerFields: [:])!
     }
 
-    func loadTrips(xmlFileName: String = "tr-with-transfer-legs") async -> [OJPv2.TripResult] {
+    func loadTrips(xmlFileName: String = "tr-with-transfer-legs") async -> OJPv2.TripDelivery {
         do {
             return try await OJP(
                 loadingStrategy: Self.mockLoader(xmlFilename: xmlFileName)
@@ -49,8 +49,7 @@ class PreviewMocker {
                 params: .init()
             )
         } catch {
-            print(error.localizedDescription)
-            return []
+            fatalError(error.localizedDescription)
         }
     }
 }
