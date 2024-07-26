@@ -15,7 +15,7 @@ import XCTest
 // without making a big effort.
 final class SystemTests: XCTestCase {
     func testFetchStations() async throws {
-        let ojpSdk = OJP(loadingStrategy: .http(.int))
+        let ojpSdk = await OJP(loadingStrategy: .http(.int))
 
         let stations = try await ojpSdk.requestPlaceResults(from: "Bern", restrictions: .init(type: [.stop]))
 
@@ -23,7 +23,7 @@ final class SystemTests: XCTestCase {
     }
 
     func testFetchNearbyStations() async throws {
-        let ojpSdk = OJP(loadingStrategy: .http(.int))
+        let ojpSdk = await OJP(loadingStrategy: .http(.int))
 
         let nearbyStations = try await ojpSdk.requestPlaceResults(from: (long: 7.452178, lat: 46.948474))
 
@@ -31,7 +31,7 @@ final class SystemTests: XCTestCase {
     }
 
     func testFetchStationByDidok() async throws {
-        let ojpSdk = OJP(loadingStrategy: .http(.int))
+        let ojpSdk = await OJP(loadingStrategy: .http(.int))
 
         let nearbyStations = try await ojpSdk.requestPlaceResults(placeRef: .stopPointRef(.init(stopPointRef: "8507000", name: .init("Bern"))), restrictions: .init(type: [.stop]))
 
@@ -39,7 +39,7 @@ final class SystemTests: XCTestCase {
     }
 
     func testFetchTripWithDidoks() async throws {
-        let ojpSdk = OJP(loadingStrategy: .http(.int))
+        let ojpSdk = await OJP(loadingStrategy: .http(.int))
 
         let originDidok = OJPv2.PlaceRefChoice.stopPlaceRef(.init(stopPlaceRef: "8507110", name: .init("8507110")))
         let destinationDidok = OJPv2.PlaceRefChoice.stopPlaceRef(.init(stopPlaceRef: "8508052", name: .init("8508052")))
@@ -50,7 +50,7 @@ final class SystemTests: XCTestCase {
     }
 
     func testFetchTripWithDifferentNumberOfResultPolicies() async throws {
-        let ojpSdk = OJP(loadingStrategy: .http(.int))
+        let ojpSdk = await OJP(loadingStrategy: .http(.int))
 
         let originDidok = OJPv2.PlaceRefChoice.stopPlaceRef(.init(stopPlaceRef: "8507110", name: .init("8507110")))
         let destinationDidok = OJPv2.PlaceRefChoice.stopPlaceRef(.init(stopPlaceRef: "8508052", name: .init("8508052")))

@@ -58,7 +58,7 @@ final class LocationRequestTests: XCTestCase {
         XCTAssert(!xmlString.isEmpty)
     }
 
-    func testParseMinimumRequiredLIRResponse() throws {
+    @DecoderActor func testParseMinimumRequiredLIRResponse() throws {
         let xmlData = try TestHelpers.loadXML(xmlFilename: "lir-minimum-response")
         guard let locationInformationDelivery = try OJPDecoder.parseXML(xmlData).response?.serviceDelivery.delivery else {
             return XCTFail("unexpected empty")
@@ -67,7 +67,7 @@ final class LocationRequestTests: XCTestCase {
         XCTAssertTrue(true)
     }
 
-    func testParseRailBusAndUndergroundPtModes() throws {
+    @DecoderActor func testParseRailBusAndUndergroundPtModes() throws {
         let xmlData = try TestHelpers.loadXML(xmlFilename: "lir-lausanne")
 
         guard let locationInformationDelivery = try OJPDecoder.parseXML(xmlData).response?.serviceDelivery.delivery else {
@@ -86,7 +86,7 @@ final class LocationRequestTests: XCTestCase {
 
     func testParseStopPlaceWithSloid() async throws {
         let xmlData = try TestHelpers.loadXML(xmlFilename: "lir-emmenmatt-sloid")
-        let locationInformation = try OJPDecoder.parseXML(xmlData)
+        let locationInformation = try await OJPDecoder.parseXML(xmlData)
 
         guard let locationInformationDelivery = locationInformation.response?.serviceDelivery.delivery else {
             return XCTFail("unexpected empty")
@@ -108,7 +108,7 @@ final class LocationRequestTests: XCTestCase {
     func testAddress() async throws {
         let xmlData = try TestHelpers.loadXML(xmlFilename: "lir-address")
 
-        let locationInformation = try OJPDecoder.parseXML(xmlData)
+        let locationInformation = try await OJPDecoder.parseXML(xmlData)
         guard let delivery = locationInformation.response?.serviceDelivery.delivery else {
             XCTFail("unexpected empty delivery")
             return

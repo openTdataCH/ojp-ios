@@ -91,7 +91,6 @@ public extension OJPv2 {
         }
     }
 
-
     struct Trip: Codable, Identifiable, Sendable {
         /// Unique within trip response. This ID must not be used over mutliple ``OJPv2/TripRequest``
         /// - Warning: This ID must not be used over mutliple ``OJPv2/TripRequest``. Use ``tripHash`` instead.

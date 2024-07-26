@@ -134,7 +134,7 @@ public final class OJP: Sendable {
             guard httpResponse.statusCode == 200 else {
                 throw OJPSDKError.unexpectedHTTPStatus(httpResponse.statusCode)
             }
-            return try OJPDecoder.response(data)
+            return try await OJPDecoder.response(data)
         } else {
             throw OJPSDKError.unexpectedEmpty
         }
