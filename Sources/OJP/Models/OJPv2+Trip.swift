@@ -629,23 +629,21 @@ public extension OJPv2 {
             }
         }
     }
-    
+
     // https://vdvde.github.io/OJP/develop/index.html#ModeAndModeOfOperationFilterStructure
     struct ModeAndModeOfOperationFilter: Codable {
-        
         public init(ptMode: [Mode.PtMode]?, exclude: Bool?) {
             self.ptMode = ptMode
             self.exclude = exclude
         }
-     
+
         let ptMode: [Mode.PtMode]?
         let exclude: Bool?
-        
+
         public enum CodingKeys: String, CodingKey {
             case exclude = "Exclude"
             case ptMode = "PtMode"
         }
-        
     }
 
     // https://vdvde.github.io/OJP/develop/index.html#TripParamStructure
@@ -658,7 +656,7 @@ public extension OJPv2 {
             includeIntermediateStops: Bool? = nil,
             includeAllRestrictedLines: Bool? = nil,
             modeAndModeOfOperationFilter: ModeAndModeOfOperationFilter? = nil
-            
+
         ) {
             switch numberOfResults {
             case let .before(numberOfResults):

@@ -38,12 +38,11 @@ public actor PaginatedTripLoader {
     private var pageSize: Int = 6
 
     public func loadTrips(for request: TripRequest, numberOfResults: OJPv2.NumberOfResults) async throws -> OJPv2.TripDelivery {
-        
         reset()
 
         switch numberOfResults {
-        case .before(let amount), .after(let amount), .minimum(let amount):
-            self.pageSize = amount
+        case let .before(amount), let .after(amount), let .minimum(amount):
+            pageSize = amount
         }
 
         return try await load(request: request, numberOfResults: numberOfResults)
@@ -72,12 +71,21 @@ public actor PaginatedTripLoader {
     }
 
     private func load(request: TripRequest, numberOfResults: OJPv2.NumberOfResults) async throws -> OJPv2.TripDelivery {
+        let updatedParams = OJPv2.TripParams(
+            numberOfResults: numberOfResults,
+            includeLegProjection: request.params.includeLegProjection,
+            includeTurnDescription: request.params.includeTurnDescription,
+            includeIntermediateStops: request.params.includeIntermediateStops,
+            includeAllRestrictedLines: request.params.includeAllRestrictedLines,
+            modeAndModeOfOperationFilter: request.params.modeAndModeOfOperationFilter
+        )
+
         var tripDelivery = try await ojp.requestTrips(
             from: request.from,
             to: request.to,
             via: request.via,
             at: request.at,
-            params: request.params
+            params: updatedParams
         )
 
         try Task.checkCancellation()
