@@ -101,7 +101,7 @@ public struct OJPv2: Codable {
     }
 
     // https://vdvde.github.io/OJP/develop/index.html#InternationalTextStructure
-    public struct InternationalText: Codable {
+    public struct InternationalText: Codable, Sendable {
         public let text: String
 
         public init(_ text: String = "") {
@@ -114,7 +114,7 @@ public struct OJPv2: Codable {
     }
 
     // https://laidig.github.io/siri-20-java/doc/schemas/siri_location-v2_0_xsd/complexTypes/LocationStructure.html
-    public struct GeoPosition: Codable {
+    public struct GeoPosition: Codable, Sendable {
         public let longitude: Double
         public let latitude: Double
 
@@ -130,7 +130,7 @@ public struct OJPv2: Codable {
     }
 
     // https://vdvde.github.io/OJP/develop/index.html#ModeStructure
-    public struct Mode: Codable {
+    public struct Mode: Codable, Sendable {
         public let ptMode: PtMode
 
         // https://laidig.github.io/siri-20-java/doc/schemas/siri_modes-v1_1_xsd/schema-overview.html
@@ -151,7 +151,7 @@ public struct OJPv2: Codable {
             case shortName = "ShortName"
         }
 
-        public enum PtMode: String, Codable {
+        public enum PtMode: String, Codable, Sendable {
             case rail
             case bus
             case tram

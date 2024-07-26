@@ -18,13 +18,13 @@ extension Double {
     }
 }
 
-public enum DepArrTime {
+public enum DepArrTime: Sendable {
     case departure(Date)
     case arrival(Date)
 }
 
 enum OJPHelpers {
-    class TripRequest {
+    struct TripRequest: Sendable {
         init(requesterReference: String) {
             self.requesterReference = requesterReference
         }
@@ -60,7 +60,7 @@ enum OJPHelpers {
         }
     }
 
-    class LocationInformationRequest {
+    struct LocationInformationRequest: Sendable {
         init(requesterReference: String) {
             self.requesterReference = requesterReference
         }

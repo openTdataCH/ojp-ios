@@ -4,7 +4,7 @@
 import Foundation
 import XMLCoder
 
-public typealias Loader = (Data) async throws -> (Data, URLResponse)
+public typealias Loader = @Sendable (Data) async throws -> (Data, URLResponse)
 
 /// Defines the loading strategy. Basically used to switch between HTTP and Mocked-Requests
 public enum LoadingStrategy {
@@ -19,7 +19,7 @@ public enum PlaceType: String, Codable {
 }
 
 /// Entry point to OJP
-public class OJP {
+public final class OJP: Sendable {
     let loader: Loader
     let locationInformationRequest: OJPHelpers.LocationInformationRequest
     let tripRequest: OJPHelpers.TripRequest
