@@ -28,30 +28,64 @@ public actor PaginatedTripLoader {
     private(set) var maxDate: Date?
 
     private var existingTripHashes: Set<Int> = Set()
-
     private var request: TripRequest?
-
-    private var number: Int = 6
-
     private let ojp: OJP
 
     public init(ojp: OJP) {
         self.ojp = ojp
     }
 
+    private var pageSize: Int = 6
+
     public func loadTrips(for request: TripRequest, numberOfResults: OJPv2.NumberOfResults) async throws -> OJPv2.TripDelivery {
+        reset()
+
+        switch numberOfResults {
+        case let .before(amount), let .after(amount), let .minimum(amount):
+            pageSize = amount
+        }
+
+        return try await load(request: request, numberOfResults: numberOfResults)
+    }
+
+    public func loadPrevious() async throws -> OJPv2.TripDelivery {
+        guard var request, let minDate else {
+            throw OJPSDKError.notImplemented()
+        }
+        request.at = .departure(minDate)
+        return try await load(request: request, numberOfResults: .before(pageSize))
+    }
+
+    public func loadNext() async throws -> OJPv2.TripDelivery {
+        guard var request, let maxDate else {
+            throw OJPSDKError.notImplemented()
+        }
+        request.at = .departure(maxDate)
+        return try await load(request: request, numberOfResults: .after(pageSize))
+    }
+
+    public func reset() {
+        minDate = nil
+        maxDate = nil
+        existingTripHashes = []
+    }
+
+    private func load(request: TripRequest, numberOfResults: OJPv2.NumberOfResults) async throws -> OJPv2.TripDelivery {
+        let updatedParams = OJPv2.TripParams(
+            numberOfResults: numberOfResults,
+            includeLegProjection: request.params.includeLegProjection,
+            includeTurnDescription: request.params.includeTurnDescription,
+            includeIntermediateStops: request.params.includeIntermediateStops,
+            includeAllRestrictedLines: request.params.includeAllRestrictedLines,
+            modeAndModeOfOperationFilter: request.params.modeAndModeOfOperationFilter
+        )
+
         var tripDelivery = try await ojp.requestTrips(
             from: request.from,
             to: request.to,
             via: request.via,
             at: request.at,
-            params: OJPv2.TripParams(
-                // TODO:
-                numberOfResults: numberOfResults,
-                includeLegProjection: false,
-                includeIntermediateStops: true,
-                includeAllRestrictedLines: true
-            )
+            params: updatedParams
         )
 
         try Task.checkCancellation()
@@ -74,27 +108,5 @@ public actor PaginatedTripLoader {
             }
         tripDelivery.tripResults = filteredTripResults
         return tripDelivery
-    }
-
-    public func loadPrevious() async throws -> OJPv2.TripDelivery {
-        guard var request, let minDate else {
-            throw OJPSDKError.notImplemented()
-        }
-        request.at = .departure(minDate)
-        return try await loadTrips(for: request, numberOfResults: .before(number))
-    }
-
-    public func loadNext() async throws -> OJPv2.TripDelivery {
-        guard var request, let maxDate else {
-            throw OJPSDKError.notImplemented()
-        }
-        request.at = .departure(maxDate)
-        return try await loadTrips(for: request, numberOfResults: .after(number))
-    }
-
-    public func reset() {
-        minDate = nil
-        maxDate = nil
-        existingTripHashes = []
     }
 }
