@@ -25,10 +25,10 @@ public struct TripRequest {
 }
 
 /// When executing a TripRequest a common use case is to load previous or next trips.
-/// While OJP is stateless, this convience actor allows exactly that.
+/// While OJP is stateless, this convience actor keeps track of the already loaded TripResults by remembering the highest and lowest ``OJPv2/Trip/startTime`` and a `et` of  ``OJPv2/Trip/tripHash``.
 ///
 /// Execute an initital ``TripRequest`` using ``loadTrips(for:numberOfResults:)``.
-/// To get previous trips to the currenlty loaded call ``loadPrevious()`` and ``loadNext()`` to get future trips.
+/// To retrieve previous trips use ``loadPrevious()`` and ``loadNext()`` to get future trips. The `Set` of trip hashes is used to avoid duplicates. Each call only returns new results.
 public actor PaginatedTripLoader {
     private(set) var minDate: Date?
     private(set) var maxDate: Date?
@@ -43,11 +43,11 @@ public actor PaginatedTripLoader {
 
     private var pageSize: Int = 6
 
-    /// Performs an initial  [TripRequest](https://vdvde.github.io/OJP/develop/index.html#OJPTripRequest)
+    /// Performs the initial  [TripRequest](https://vdvde.github.io/OJP/develop/index.html#OJPTripRequest) resetting the internal state.
     /// - Parameters:
     ///   - request: ``TripRequest`` is a conve
-    ///   - numberOfResults: amount of results to be returned. Usually ``OJPv2/NumberOfResults/minimum(_:)`` should be used.
-    /// - Returns: Results of the resuest in a ``OJPv2/TripDelivery``
+    ///   - numberOfResults: amount of results to be returned. Usually ``OJPv2/NumberOfResults/minimum(_:)`` should be used. The associated value is reused as a page size in ``loadNext()`` and ``loadPrevious()``
+    /// - Returns: ``OJPv2/TripDelivery`` containing the ``OJPv2/TripResult``
     public func loadTrips(for request: TripRequest, numberOfResults: OJPv2.NumberOfResults = .minimum(6)) async throws -> OJPv2.TripDelivery {
         reset()
 
