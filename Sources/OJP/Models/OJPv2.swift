@@ -9,7 +9,7 @@ import Foundation
 
 let OJP_SDK_Name = "IOS_SDK"
 
-public struct OJPv2: Codable {
+public struct OJPv2: Codable, Sendable {
     let request: Request?
     let response: Response?
 
@@ -18,7 +18,7 @@ public struct OJPv2: Codable {
         case response = "OJPResponse"
     }
 
-    public struct Response: Codable {
+    public struct Response: Codable, Sendable {
         public let serviceDelivery: ServiceDelivery
 
         public enum CodingKeys: String, CodingKey {
@@ -26,7 +26,7 @@ public struct OJPv2: Codable {
         }
     }
 
-    public struct ServiceDelivery: Codable {
+    public struct ServiceDelivery: Codable, Sendable {
         public let responseTimestamp: String
         public let producerRef: String?
         public let delivery: ServiceDeliveryTypeChoice
@@ -45,7 +45,7 @@ public struct OJPv2: Codable {
         }
     }
 
-    public enum ServiceDeliveryTypeChoice: Codable {
+    public enum ServiceDeliveryTypeChoice: Codable, Sendable {
         case stopEvent(OJPv2.StopEventServiceDelivery)
         case locationInformation(OJPv2.LocationInformationDelivery)
         case trip(OJPv2.TripDelivery)
@@ -78,7 +78,7 @@ public struct OJPv2: Codable {
         }
     }
 
-    public struct Request: Codable {
+    public struct Request: Codable, Sendable {
         public let serviceRequest: ServiceRequest
 
         public enum CodingKeys: String, CodingKey {
@@ -86,7 +86,7 @@ public struct OJPv2: Codable {
         }
     }
 
-    public struct ServiceRequest: Codable {
+    public struct ServiceRequest: Codable, Sendable {
         public let requestTimestamp: Date
         public let requestorRef: String
         public let locationInformationRequest: LocationInformationRequest?

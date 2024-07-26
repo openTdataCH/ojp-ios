@@ -13,7 +13,7 @@ public enum LoadingStrategy {
 }
 
 // TODO: - find me a better place
-public enum PlaceType: String, Codable {
+public enum PlaceType: String, Codable, Sendable {
     case stop
     case address
 }
