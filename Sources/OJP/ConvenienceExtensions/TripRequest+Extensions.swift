@@ -53,8 +53,8 @@ public extension OJPv2.PlaceResult {
 public extension OJPv2.Trip {
     var originName: String {
         switch legs.first?.legType {
-        case .continous:
-            "continuousLeg not implemented"
+        case let .continous(continousLeg):
+            continousLeg.legStart.title
         case let .timed(timedLeg):
             timedLeg.legBoard.stopPointName.text
         case let .transfer(transferLeg):
@@ -66,8 +66,8 @@ public extension OJPv2.Trip {
 
     var destinationName: String {
         switch legs.last?.legType {
-        case .continous:
-            "continuousLeg not implemented"
+        case let .continous(continousLeg):
+            continousLeg.legEnd.title
         case let .timed(timedLeg):
             timedLeg.legAlight.stopPointName.text
         case let .transfer(transferLeg):

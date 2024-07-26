@@ -14,8 +14,6 @@ struct TripDetailView: View {
     var body: some View {
         List(trip.legs) { leg in
             switch leg.legType {
-            case .continous:
-                Text("Continous leg") // TODO: implement
             case let .timed(timedLeg):
                 VStack(alignment: .leading) {
                     Divider()
@@ -62,10 +60,12 @@ struct TripDetailView: View {
                             .foregroundStyle(changedTrack ? .red : .black)
                     }
                 }.listRowSeparator(.hidden)
-            case let .transfer(transferLeg):
+            case .transfer, .continous:
                 HStack {
                     Image(systemName: "figure.walk")
-                    Text(DurationFormatter.string(for: transferLeg.duration))
+                    if let duration = leg.duration {
+                        Text(DurationFormatter.string(for: duration))
+                    }
                 }
                 .listRowBackground(Color.gray.opacity(0.3).clipShape(RoundedRectangle(cornerRadius: 7))
                     .padding(.horizontal, 5)

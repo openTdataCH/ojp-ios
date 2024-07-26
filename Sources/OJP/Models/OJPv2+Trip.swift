@@ -492,7 +492,15 @@ public extension OJPv2 {
     }
 
     // https://vdvde.github.io/OJP/develop/index.html#ContinuousLegStructure
-    struct ContinuousLeg: Codable {}
+    struct ContinuousLeg: Codable {
+        public let legStart: PlaceRefChoice
+        public let legEnd: PlaceRefChoice
+        
+        public enum CodingKeys: String, CodingKey {
+            case legStart = "LegStart"
+            case legEnd = "LegEnd"
+        }
+    }
 
     struct TripSummary: Codable {}
 
