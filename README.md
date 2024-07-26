@@ -84,7 +84,7 @@ let via = try await ojpSdk.requestPlaceResults(from: "Luzern", restrictions: .in
 
 let destination = try await ojpSdk.requestPlaceResults(from: "Zurich HB", restrictions: .init(type: [.stop])).first!
 
-let tripResults = try await ojp.requestTrips(from: origin.placeRef, to: destination.placeRef, via: via.placeRef, params: .init(includeTrackSections: true, includeIntermediateStops: true))
+let tripDelivery = try await ojp.requestTrips(from: origin.placeRef, to: destination.placeRef, via: via.placeRef, params: .init(includeTrackSections: true, includeIntermediateStops: true))
 
 ```
 
