@@ -35,6 +35,8 @@ public actor PaginatedTripLoader {
         self.ojp = ojp
     }
 
+    private var pageSize: Int = 6
+
     public func loadTrips(for request: TripRequest, numberOfResults: OJPv2.NumberOfResults) async throws -> OJPv2.TripDelivery {
         let params = OJPv2.TripParams(numberOfResults: numberOfResults,
                                       includeLegProjection: request.params.includeLegProjection,
@@ -50,6 +52,11 @@ public actor PaginatedTripLoader {
             at: request.at,
             params: params
         )
+       
+        switch numberOfResults {
+        case .before(let amount), .after(let amount), .minimum(let amount):
+            self.pageSize = amount
+        }
 
         try Task.checkCancellation()
         self.request = request
@@ -73,20 +80,20 @@ public actor PaginatedTripLoader {
         return tripDelivery
     }
 
-    public func loadPrevious(numberOfResults: Int) async throws -> OJPv2.TripDelivery {
+    public func loadPrevious() async throws -> OJPv2.TripDelivery {
         guard var request, let minDate else {
             throw OJPSDKError.notImplemented()
         }
         request.at = .departure(minDate)
-        return try await loadTrips(for: request, numberOfResults: .before(numberOfResults))
+        return try await loadTrips(for: request, numberOfResults: .before(pageSize))
     }
 
-    public func loadNext(numberOfResults: Int) async throws -> OJPv2.TripDelivery {
+    public func loadNext() async throws -> OJPv2.TripDelivery {
         guard var request, let maxDate else {
             throw OJPSDKError.notImplemented()
         }
         request.at = .departure(maxDate)
-        return try await loadTrips(for: request, numberOfResults: .after(numberOfResults))
+        return try await loadTrips(for: request, numberOfResults: .after(pageSize))
     }
 
     public func reset() {
