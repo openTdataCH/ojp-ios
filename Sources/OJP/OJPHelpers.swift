@@ -164,7 +164,7 @@ enum OJPHelpers {
         encoder.outputFormatting = .prettyPrinted
         encoder.dateEncodingStrategy = .iso8601
 
-        let ojpXMLData = try encoder.encode(ojpRequest, withRootKey: "OJP", rootAttributes: OJP.requestXMLRootAttributes)
+        let ojpXMLData = try encoder.encode(ojpRequest, withRootKey: "OJP", rootAttributes: requestXMLRootAttributes)
         guard let ojpXML = String(data: ojpXMLData, encoding: .utf8) else {
             throw OJPSDKError.encodingFailed
         }

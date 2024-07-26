@@ -18,6 +18,13 @@ public enum PlaceType: String, Codable, Sendable {
     case address
 }
 
+let requestXMLRootAttributes = [
+    "xmlns": "http://www.vdv.de/ojp",
+    "xmlns:siri": "http://www.siri.org.uk/siri",
+    "xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance",
+    "version": "2.0",
+]
+
 /// Entry point to OJP
 public final class OJP: Sendable {
     let loader: Loader
@@ -39,13 +46,6 @@ public final class OJP: Sendable {
             tripRequest = OJPHelpers.TripRequest(requesterReference: "Mock_Requestor_Ref")
         }
     }
-
-    static var requestXMLRootAttributes = [
-        "xmlns": "http://www.vdv.de/ojp",
-        "xmlns:siri": "http://www.siri.org.uk/siri",
-        "xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance",
-        "version": "2.0",
-    ]
 
     private var encoder: XMLEncoder {
         let encoder = XMLEncoder()
@@ -111,7 +111,7 @@ public final class OJP: Sendable {
     }
 
     func request(with ojp: OJPv2) async throws -> OJPv2.Response {
-        let ojpXMLData = try encoder.encode(ojp, withRootKey: "OJP", rootAttributes: OJP.requestXMLRootAttributes)
+        let ojpXMLData = try encoder.encode(ojp, withRootKey: "OJP", rootAttributes: requestXMLRootAttributes)
         guard let xmlString = String(data: ojpXMLData, encoding: .utf8) else {
             throw OJPSDKError.encodingFailed
         }
