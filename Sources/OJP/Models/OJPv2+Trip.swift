@@ -10,6 +10,7 @@ import Foundation
 import XMLCoder
 
 public extension OJPv2 {
+    /// [Schema documentation on vdvde.github.io](https://vdvde.github.io/OJP/develop/index.html#OJPTripDeliveryStructure)
     struct TripDelivery: Codable {
         public let responseTimestamp: String
         public let requestMessageRef: String
@@ -23,7 +24,8 @@ public extension OJPv2 {
             case tripResults = "TripResult"
         }
     }
-
+    
+    /// [Schema documentation on vdvde.github.io](https://vdvde.github.io/OJP/develop/index.html#TripResultStructure)
     struct TripResult: Codable, Identifiable {
         public let id: String
         public let tripType: TripTypeChoice
