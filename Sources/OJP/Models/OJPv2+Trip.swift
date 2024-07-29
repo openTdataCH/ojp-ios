@@ -16,6 +16,7 @@ extension Duration: @unchecked Sendable {}
 extension XMLEncoder.OutputFormatting: @unchecked Sendable {}
 
 public extension OJPv2 {
+    /// [Schema documentation on vdvde.github.io](https://vdvde.github.io/OJP/develop/index.html#OJPTripDeliveryStructure)
     struct TripDelivery: Codable, Sendable {
         public let responseTimestamp: String
         public let requestMessageRef: String
@@ -30,6 +31,7 @@ public extension OJPv2 {
         }
     }
 
+    /// [Schema documentation on vdvde.github.io](https://vdvde.github.io/OJP/develop/index.html#TripResultStructure)
     struct TripResult: Codable, Identifiable, Sendable {
         public let id: String
         public let tripType: TripTypeChoice

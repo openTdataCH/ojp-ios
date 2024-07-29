@@ -51,7 +51,7 @@ let ojpSdk = OJP(loadingStrategy: .http(apiConfiguration))
 
 ### Basic Usage
 
-Get a list of PlaceResults from a keyword.
+#### Get a list of PlaceResults from a keyword
 
 ``` swift
 import OJP
@@ -65,7 +65,7 @@ let stops = try await ojpSdk.requestPlaceResults(from: "Bern", restrictions: .in
 let addresses = try await ojpSdk.requestPlaceResults(from: "Bern", restrictions: .init(type: [.stop, .address]))
 ```
 
-Get a list of PlaceResults around a place with longitude and latitude
+#### Get a List of PlaceResults around a Place using Longitude and Latitude
 
 ``` swift
 import OJP
@@ -73,7 +73,7 @@ import OJP
 let nearbyStops = try await ojpSdk.requestPlaceResults(from: Point(long: 5.6, lat: 2.3), restrictions: .init(type: [.stop])
 ```
 
-Get a list of Trips between place results
+#### Get a List of Trips between two Places
 
 ``` swift
 import OJP
@@ -88,10 +88,37 @@ let tripDelivery = try await ojp.requestTrips(from: origin.placeRef, to: destina
 
 ```
 
+#### Use `PaginatedTripLoader` to load previous and upcoming TripResults
+
+``` swift
+// create a new PaginatedTripLoader
+let paginatedActor = PaginatedTripLoader(ojp: ojp)
+
+// load the initial trips
+let tripRequest = TripRequest(from: origin.placeRef,
+                              to: destination.placeRef,
+                              via: via != nil ? [via!.placeRef] : nil,
+                              at: .departure(Date()),
+                              params: .init(
+                                  includeTrackSections: true,
+                                  includeIntermediateStops: true
+                                  )
+                              )
+let tripDelivery = try await paginatedActor!.loadTrips(for: tripRequest,
+                                    numberOfResults: .minimum(6))
+let tripResults = tripDelivery.tripResults
+
+// load previous TripResults
+let previousTripResults = try await paginatedActor.loadPrevious().tripResults
+
+// load future TripResults
+let nextTripResults = try await paginatedActor.loadPrevious().tripResults
+```
+
 
 ## Sample App
 
-WIP: on branch [demo-app](https://github.com/openTdataCH/ojp-ios/tree/demo-app)
+There is an experimental sample app under [Sample App](./SamplApp) to showcase and test the SDK. Currently intended to be run as a macOS app.
 
 ## Documentation
 
