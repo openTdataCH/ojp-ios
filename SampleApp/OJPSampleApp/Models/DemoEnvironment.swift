@@ -28,6 +28,7 @@ enum DemoEnvironment: String, CaseIterable, Identifiable {
         }
     }
 
+    @MainActor
     fileprivate var configuration: APIConfiguration {
         switch self {
         case .int:
@@ -40,6 +41,7 @@ enum DemoEnvironment: String, CaseIterable, Identifiable {
     }
 }
 
+@MainActor
 struct OJPHelper {
     @AppStorage("DemoEnvironment") var environment: DemoEnvironment = .int
     static var ojp: OJP {
@@ -55,6 +57,7 @@ struct OJPHelper {
 }
 
 extension OJP {
+    @MainActor
     static var configured: OJP {
         OJPHelper.ojp
     }
