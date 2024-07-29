@@ -33,14 +33,14 @@ public extension OJPv2 {
         }
     }
 
-    struct TripResponseContext: Codable {
+    struct TripResponseContext: Codable, Sendable {
         let situations: [SituationTypeChoice]
 
         public enum CodingKeys: String, CodingKey {
             case situations = "Situations"
         }
     }
-    struct Situation: Codable {
+    struct Situation: Codable, Sendable {
         let situation: SituationTypeChoice
 
         public init(from decoder: any Decoder) throws {
@@ -49,7 +49,7 @@ public extension OJPv2 {
     }
 
     /// https://vdvde.github.io/OJP/develop/index.html#SituationsStructure
-    enum SituationTypeChoice: Codable {
+    enum SituationTypeChoice: Codable, Sendable {
         case ptSituation(PTSituation)
         case roadSituation(RoadSituation)
 
@@ -80,8 +80,8 @@ public extension OJPv2 {
         }
     }
 
-    struct PTSituation: Codable {
-        
+    struct PTSituation: Codable, Sendable {
+
         let situationNumber: String
         let validityPeriod: ValidityPeriod
 
@@ -92,7 +92,7 @@ public extension OJPv2 {
     }
 
 
-    struct ValidityPeriod: Codable {
+    struct ValidityPeriod: Codable, Sendable {
         let startTime: Date
         let endTime: Date?
         
@@ -101,7 +101,7 @@ public extension OJPv2 {
             case endTime = "siri:EndTime"
         }
     }
-    struct RoadSituation: Codable {}
+    struct RoadSituation: Codable, Sendable {}
     
     /// [Schema documentation on vdvde.github.io](https://vdvde.github.io/OJP/develop/index.html#TripResultStructure)
     struct TripResult: Codable, Identifiable, Sendable {
