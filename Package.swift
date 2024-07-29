@@ -3,6 +3,10 @@
 
 import PackageDescription
 
+let settings: [SwiftSetting] = [
+  .enableExperimentalFeature("StrictConcurrency")
+]
+
 let package = Package(
     name: "OJP",
     platforms: [.iOS(.v15), .macOS(.v14)],
@@ -25,11 +29,14 @@ let package = Package(
             dependencies: [
                 .product(name: "XMLCoder", package: "xmlcoder"),
                 .product(name: "Duration", package: "swift-duration"),
-            ]),
+            ],
+            swiftSettings: settings
+        ),
         .testTarget(
             name: "OJPTests",
             dependencies: ["OJP"],
-            resources: [.process("Resources")]
+            resources: [.process("Resources")],
+            swiftSettings: settings
         ),
     ]
 )

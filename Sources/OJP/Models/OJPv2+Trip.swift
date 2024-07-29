@@ -9,8 +9,15 @@ import Duration
 import Foundation
 import XMLCoder
 
+// TODO: can be removed as soon as Duration conforms to Sendable
+extension Duration: @unchecked Sendable {}
+
+// TODO: can be removed as soon as XMLCoder conforms to Sendable
+extension XMLEncoder.OutputFormatting: @unchecked Sendable {}
+
 public extension OJPv2 {
-    struct TripDelivery: Codable {
+    /// [Schema documentation on vdvde.github.io](https://vdvde.github.io/OJP/develop/index.html#OJPTripDeliveryStructure)
+    struct TripDelivery: Codable, Sendable {
         public let responseTimestamp: String
         public let requestMessageRef: String
         public let calcTime: Int?
@@ -95,8 +102,9 @@ public extension OJPv2 {
         }
     }
     struct RoadSituation: Codable {}
-
-    struct TripResult: Codable, Identifiable {
+    
+    /// [Schema documentation on vdvde.github.io](https://vdvde.github.io/OJP/develop/index.html#TripResultStructure)
+    struct TripResult: Codable, Identifiable, Sendable {
         public let id: String
         public let tripType: TripTypeChoice
         public let tripFares: [TripFare]
@@ -117,7 +125,7 @@ public extension OJPv2 {
             isAlternativeOption = try? container.decode(Bool.self, forKey: .isAlternativeOption)
         }
 
-        public enum TripTypeChoice: Codable {
+        public enum TripTypeChoice: Codable, Sendable {
             case trip(OJPv2.Trip)
             case tripSummary(OJPv2.TripSummary)
 
@@ -157,7 +165,7 @@ public extension OJPv2 {
         }
     }
 
-    struct Trip: Codable, Identifiable {
+    struct Trip: Codable, Identifiable, Sendable {
         /// Unique within trip response. This ID must not be used over mutliple ``OJPv2/TripRequest``
         /// - Warning: This ID must not be used over mutliple ``OJPv2/TripRequest``. Use ``tripHash`` instead.
         public let id: String
@@ -185,7 +193,7 @@ public extension OJPv2 {
 
             for leg in legs {
                 switch leg.legType {
-                case let .continous(continuousLeg):
+                case .continous:
                     // TODO: Implement
                     h.combine("continuousLeg")
                 case let .timed(timedLeg):
@@ -205,7 +213,7 @@ public extension OJPv2 {
     }
 
     // https://vdvde.github.io/OJP/develop/index.html#LegStructure
-    struct Leg: Codable, Identifiable {
+    struct Leg: Codable, Identifiable, Sendable {
         public let id: Int
         public let duration: Duration?
         public let legType: LegTypeChoice
@@ -223,7 +231,7 @@ public extension OJPv2 {
             duration = try? container.decode(Duration.self, forKey: .duration)
         }
 
-        public enum LegTypeChoice: Codable {
+        public enum LegTypeChoice: Codable, Sendable {
             case continous(OJPv2.ContinuousLeg)
             case timed(OJPv2.TimedLeg)
             case transfer(OJPv2.TransferLeg)
@@ -265,7 +273,7 @@ public extension OJPv2 {
     }
 
     // https://vdvde.github.io/OJP/develop/index.html#TransferTypeEnumeration
-    enum TransferType: String, Codable {
+    enum TransferType: String, Codable, Sendable {
         case walk
         case shuttle
         case taxi
@@ -283,7 +291,7 @@ public extension OJPv2 {
     }
 
     // https://vdvde.github.io/OJP/develop/index.html#TransferLegStructure
-    struct TransferLeg: Codable {
+    struct TransferLeg: Codable, Sendable {
         public let transferTypes: [TransferType]
         public let legStart: PlaceRefChoice
         public let legEnd: PlaceRefChoice
@@ -298,7 +306,7 @@ public extension OJPv2 {
     }
 
     // https://vdvde.github.io/OJP/develop/index.html#TimedLegStructure
-    struct TimedLeg: Codable {
+    struct TimedLeg: Codable, Sendable {
         public let legBoard: LegBoard
         public let legsIntermediate: [LegIntermediate]
         public let legAlight: LegAlight
@@ -315,7 +323,7 @@ public extension OJPv2 {
     }
 
     // https://vdvde.github.io/OJP/develop/index.html#ServiceArrivalStructure
-    struct ServiceArrival: Codable {
+    struct ServiceArrival: Codable, Sendable {
         public let timetabledTime: Date
         public let estimatedTime: Date?
 
@@ -326,7 +334,7 @@ public extension OJPv2 {
     }
 
     // https://vdvde.github.io/OJP/develop/index.html#ServiceDepartureStructure
-    struct ServiceDeparture: Codable {
+    struct ServiceDeparture: Codable, Sendable {
         public let timetabledTime: Date
         public let estimatedTime: Date?
 
@@ -337,7 +345,7 @@ public extension OJPv2 {
     }
 
     // https://vdvde.github.io/OJP/develop/index.html#LegBoardStructure
-    struct LegBoard: Codable {
+    struct LegBoard: Codable, Sendable {
         // https://vdvde.github.io/OJP/develop/index.html#StopPointGroup
         public let stopPointRef: String
         public let stopPointName: InternationalText
@@ -374,7 +382,7 @@ public extension OJPv2 {
     }
 
     // https://vdvde.github.io/OJP/develop/index.html#LegIntermediateStructure
-    struct LegIntermediate: Codable {
+    struct LegIntermediate: Codable, Sendable {
         // https://vdvde.github.io/OJP/develop/index.html#StopPointGroup
         public let stopPointRef: String
         public let stopPointName: InternationalText
@@ -411,7 +419,7 @@ public extension OJPv2 {
     }
 
     // https://vdvde.github.io/OJP/develop/index.html#LegAlightStructure
-    struct LegAlight: Codable {
+    struct LegAlight: Codable, Sendable {
         // https://vdvde.github.io/OJP/develop/index.html#StopPointGroup
         public let stopPointRef: String
         public let stopPointName: InternationalText
@@ -448,7 +456,7 @@ public extension OJPv2 {
     }
 
     // https://vdvde.github.io/OJP/develop/index.html#ProductCategoryStructure
-    struct ProductCategory: Codable {
+    struct ProductCategory: Codable, Sendable {
         public let name: InternationalText?
         public let shortName: InternationalText?
         public let productCategoryRef: String?
@@ -461,7 +469,7 @@ public extension OJPv2 {
     }
 
     // https://vdvde.github.io/OJP/develop/index.html#GeneralAttributeStructure
-    struct Attribute: Codable {
+    struct Attribute: Codable, Sendable {
         public let userText: InternationalText
         public let code: String
 
@@ -472,7 +480,7 @@ public extension OJPv2 {
     }
 
     // https://vdvde.github.io/OJP/develop/index.html#ContinuousServiceStructure
-    struct Service: Codable {
+    struct Service: Codable, Sendable {
         // https://vdvde.github.io/OJP/develop/index.html#ConventionalModesOfOperationEnumeration
         public let conventionalModeOfOperation: ConventionalModesOfOperation?
 
@@ -518,7 +526,7 @@ public extension OJPv2 {
             case destinationStopPointRef = "DestinationStopPointRef"
         }
 
-        public enum ConventionalModesOfOperation: String, Codable {
+        public enum ConventionalModesOfOperation: String, Codable, Sendable {
             case scheduled
             case demandResponsive
             case flexibleRoute
@@ -532,7 +540,7 @@ public extension OJPv2 {
     }
 
     // https://vdvde.github.io/OJP/develop/index.html#LinearShapeStructure
-    struct LinearShape: Codable {
+    struct LinearShape: Codable, Sendable {
         // in XSD min 2 <GeoPosition> elements are required
         public let positions: [GeoPosition]
 
@@ -542,7 +550,7 @@ public extension OJPv2 {
     }
 
     // https://vdvde.github.io/OJP/develop/index.html#TrackSectionStructure
-    struct TrackSection: Codable {
+    struct TrackSection: Codable, Sendable {
         public let trackSectionStart: PlaceRefChoice?
         public let trackSectionEnd: PlaceRefChoice?
         public let linkProjection: LinearShape?
@@ -555,7 +563,7 @@ public extension OJPv2 {
     }
 
     // https://vdvde.github.io/OJP/develop/index.html#LegTrackStructure
-    struct LegTrack: Codable {
+    struct LegTrack: Codable, Sendable {
         public let trackSections: [TrackSection]
 
         public enum CodingKeys: String, CodingKey {
@@ -564,13 +572,13 @@ public extension OJPv2 {
     }
 
     // https://vdvde.github.io/OJP/develop/index.html#ContinuousLegStructure
-    struct ContinuousLeg: Codable {}
+    struct ContinuousLeg: Codable, Sendable {}
 
-    struct TripSummary: Codable {}
+    struct TripSummary: Codable, Sendable {}
 
-    struct TripFare: Codable {}
+    struct TripFare: Codable, Sendable {}
 
-    struct TripRequest: Codable {
+    struct TripRequest: Codable, Sendable {
         public let requestTimestamp: Date
 
         public let origin: PlaceContext
@@ -587,7 +595,7 @@ public extension OJPv2 {
         }
     }
 
-    struct PlaceContext: Codable {
+    struct PlaceContext: Codable, Sendable {
         public let placeRef: PlaceRefChoice
         public let depArrTime: Date?
 
@@ -597,7 +605,7 @@ public extension OJPv2 {
         }
     }
 
-    struct TripVia: Codable {
+    struct TripVia: Codable, Sendable {
         public let viaPoint: PlaceRefChoice
 
         public enum CodingKeys: String, CodingKey {
@@ -605,7 +613,7 @@ public extension OJPv2 {
         }
     }
 
-    struct StopPlaceRef: Codable {
+    struct StopPlaceRef: Codable, Sendable {
         let stopPlaceRef: String
         let name: InternationalText
 
@@ -620,7 +628,7 @@ public extension OJPv2 {
         }
     }
 
-    struct StopPointRef: Codable {
+    struct StopPointRef: Codable, Sendable {
         let stopPointRef: String
         let name: InternationalText
 
@@ -635,7 +643,7 @@ public extension OJPv2 {
         }
     }
 
-    struct GeoPositionRef: Codable {
+    struct GeoPositionRef: Codable, Sendable {
         let geoPosition: OJPv2.GeoPosition
         let name: InternationalText
 
@@ -651,7 +659,7 @@ public extension OJPv2 {
     }
 
     // https://vdvde.github.io/OJP/develop/index.html#PlaceRefGroup
-    enum PlaceRefChoice: Codable {
+    enum PlaceRefChoice: Codable, Sendable {
         case stopPlaceRef(StopPlaceRef)
         case geoPosition(GeoPositionRef)
         case stopPointRef(StopPointRef)
@@ -703,7 +711,7 @@ public extension OJPv2 {
     }
 
     // https://vdvde.github.io/OJP/develop/index.html#ModeAndModeOfOperationFilterStructure
-    struct ModeAndModeOfOperationFilter: Codable {
+    struct ModeAndModeOfOperationFilter: Codable, Sendable {
         public init(ptMode: [Mode.PtMode]?, exclude: Bool?) {
             self.ptMode = ptMode
             self.exclude = exclude
@@ -719,7 +727,7 @@ public extension OJPv2 {
     }
 
     // https://vdvde.github.io/OJP/develop/index.html#TripParamStructure
-    struct TripParams: Codable {
+    struct TripParams: Codable, Sendable {
         public init(
             numberOfResults: NumberOfResults = .minimum(10),
             includeTrackSections: Bool? = nil,
@@ -782,7 +790,7 @@ public extension OJPv2 {
     }
 
     /// Convenience enum to define [NumberOfResults](https://vdvde.github.io/OJP/develop/index.html#NumberOfResultsGroup)
-    enum NumberOfResults: Codable {
+    enum NumberOfResults: Codable, Sendable {
         case before(Int)
         case after(Int)
         case minimum(Int)

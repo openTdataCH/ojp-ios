@@ -8,7 +8,7 @@
 import Foundation
 import OJP
 
-class PreviewMocker {
+actor PreviewMocker {
     static let shared: PreviewMocker = .init()
 
     static func loadXML(xmlFilename: String) throws -> Data {

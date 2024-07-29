@@ -9,7 +9,7 @@ import Foundation
 
 let OJP_SDK_Name = "IOS_SDK"
 
-public struct OJPv2: Codable {
+public struct OJPv2: Codable, Sendable {
     let request: Request?
     let response: Response?
 
@@ -18,7 +18,7 @@ public struct OJPv2: Codable {
         case response = "OJPResponse"
     }
 
-    public struct Response: Codable {
+    public struct Response: Codable, Sendable {
         public let serviceDelivery: ServiceDelivery
 
         public enum CodingKeys: String, CodingKey {
@@ -26,7 +26,7 @@ public struct OJPv2: Codable {
         }
     }
 
-    public struct ServiceDelivery: Codable {
+    public struct ServiceDelivery: Codable, Sendable {
         public let responseTimestamp: String
         public let producerRef: String?
         public let delivery: ServiceDeliveryTypeChoice
@@ -45,7 +45,7 @@ public struct OJPv2: Codable {
         }
     }
 
-    public enum ServiceDeliveryTypeChoice: Codable {
+    public enum ServiceDeliveryTypeChoice: Codable, Sendable {
         case stopEvent(OJPv2.StopEventServiceDelivery)
         case locationInformation(OJPv2.LocationInformationDelivery)
         case trip(OJPv2.TripDelivery)
@@ -78,7 +78,7 @@ public struct OJPv2: Codable {
         }
     }
 
-    public struct Request: Codable {
+    public struct Request: Codable, Sendable {
         public let serviceRequest: ServiceRequest
 
         public enum CodingKeys: String, CodingKey {
@@ -86,7 +86,7 @@ public struct OJPv2: Codable {
         }
     }
 
-    public struct ServiceRequest: Codable {
+    public struct ServiceRequest: Codable, Sendable {
         public let requestTimestamp: Date
         public let requestorRef: String
         public let locationInformationRequest: LocationInformationRequest?
@@ -101,7 +101,7 @@ public struct OJPv2: Codable {
     }
 
     // https://vdvde.github.io/OJP/develop/index.html#InternationalTextStructure
-    public struct InternationalText: Codable {
+    public struct InternationalText: Codable, Sendable {
         public let text: String
 
         public init(_ text: String = "") {
@@ -114,7 +114,7 @@ public struct OJPv2: Codable {
     }
 
     // https://laidig.github.io/siri-20-java/doc/schemas/siri_location-v2_0_xsd/complexTypes/LocationStructure.html
-    public struct GeoPosition: Codable {
+    public struct GeoPosition: Codable, Sendable {
         public let longitude: Double
         public let latitude: Double
 
@@ -130,7 +130,7 @@ public struct OJPv2: Codable {
     }
 
     // https://vdvde.github.io/OJP/develop/index.html#ModeStructure
-    public struct Mode: Codable {
+    public struct Mode: Codable, Sendable {
         public let ptMode: PtMode
 
         // https://laidig.github.io/siri-20-java/doc/schemas/siri_modes-v1_1_xsd/schema-overview.html
@@ -151,7 +151,7 @@ public struct OJPv2: Codable {
             case shortName = "ShortName"
         }
 
-        public enum PtMode: String, Codable {
+        public enum PtMode: String, Codable, Sendable {
             case rail
             case bus
             case tram

@@ -8,9 +8,15 @@
 import Foundation
 import XMLCoder
 
-private var ojpNameSpace = ""
-private var siriNameSpace = ""
+@globalActor actor DecoderActor: GlobalActor {
+    static let shared = DecoderActor()
+}
 
+@DecoderActor
+private var ojpNameSpace = ""
+@DecoderActor
+private var siriNameSpace = ""
+@DecoderActor
 private var keyMapping: [String: String] = [:] // ["no-namespace" : "resolved according to CodingKeys"]
 
 struct NamespaceAwareCodingKey: CodingKey {
@@ -66,6 +72,7 @@ struct NamespaceAwareCodingKey: CodingKey {
     }
 }
 
+@DecoderActor
 enum OJPDecoder {
     static func parseXML<T: Decodable>(_: T.Type, _ xmlData: Data) throws -> T {
         let decoder = XMLDecoder()

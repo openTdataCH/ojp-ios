@@ -9,6 +9,7 @@
 import XCTest
 
 final class OJPPerformanceTests: XCTestCase {
+    @DecoderActor
     func testTripResultPerformance_zh_stg_basic() throws {
 //        // Uncomment to re-create the test mock (use a proxy like charles or proxyman to get the xml)
 //        Task {
@@ -39,6 +40,7 @@ final class OJPPerformanceTests: XCTestCase {
         }
     }
 
+    @DecoderActor
     func testTripResultPerformance_be_zh_legprojection() throws {
 //        // Uncomment to re-create the test mock (use a proxy like charles or proxyman to get the xml)
 //        Task {
@@ -69,6 +71,7 @@ final class OJPPerformanceTests: XCTestCase {
         }
     }
 
+    @DecoderActor
     func testTripResultPerformance_be_zh_legprojection_singleResult() throws {
 //        // Uncomment to re-create the test mock (use a proxy like charles or proxyman to get the xml)
 //        Task {

@@ -10,13 +10,13 @@ final class LoaderTests: XCTestCase {
 
         let body = try OJPHelpers.buildXMLRequest(ojpRequest: ojpRequest).data(using: .utf8)!
 
-        let ojp = OJP(loadingStrategy: .http(.int))
+        let ojp = await OJP(loadingStrategy: .http(.int))
         let (data, response) = try await ojp.loader(body)
         dump(response)
 
         if let xmlString = String(data: data, encoding: .utf8) {
             print(xmlString)
-            let serivceDelivery = try OJPDecoder.response(data).serviceDelivery
+            let serivceDelivery = try await OJPDecoder.response(data).serviceDelivery
             guard case let .locationInformation(locationInformation) = serivceDelivery.delivery else {
                 XCTFail()
                 return
@@ -57,7 +57,7 @@ final class LoaderTests: XCTestCase {
         if let xmlString = String(data: data, encoding: .utf8) {
             print(xmlString)
         }
-        guard case let .locationInformation(locationInformation) = try OJPDecoder.response(data).serviceDelivery.delivery else {
+        guard case let .locationInformation(locationInformation) = try await OJPDecoder.response(data).serviceDelivery.delivery else {
             XCTFail()
             return
         }
