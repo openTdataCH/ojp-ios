@@ -20,6 +20,24 @@ public extension OJPv2.PlaceRefChoice {
     }
 }
 
+extension OJPv2.PlaceRefChoice: Hashable {
+    public static func == (lhs: OJPv2.PlaceRefChoice, rhs: OJPv2.PlaceRefChoice) -> Bool {
+        lhs.hashValue == rhs.hashValue
+    }
+    
+    public func hash(into hasher: inout Hasher) {
+        switch self {
+        case .stopPlaceRef(let stopPlaceRef):
+            hasher.combine(stopPlaceRef.stopPlaceRef)
+        case .geoPosition(let geoPositionRef):
+            hasher.combine(geoPositionRef.geoPosition.latitude)
+            hasher.combine(geoPositionRef.geoPosition.longitude)
+        case .stopPointRef(let stopPointRef):
+            hasher.combine(stopPointRef.stopPointRef)
+        }
+    }
+}
+
 public extension OJPv2.PlaceResult {
     var title: String {
         switch place.place {

@@ -121,9 +121,10 @@ public extension OJPv2 {
 
             for leg in legs {
                 switch leg.legType {
-                case .continous:
-                    // TODO: Implement
-                    h.combine("continuousLeg")
+                case let .continous(continuousLeg):
+                    h.combine(continuousLeg.service.publishedServiceName.text)
+                    h.combine(continuousLeg.legStart)
+                    h.combine(continuousLeg.legEnd)
                 case let .timed(timedLeg):
                     h.combine(timedLeg.service.publishedServiceName.text)
                     h.combine(timedLeg.legBoard.stopPointName.text)
@@ -503,11 +504,27 @@ public extension OJPv2 {
     struct ContinuousLeg: Codable, Sendable {
         public let legStart: PlaceRefChoice
         public let legEnd: PlaceRefChoice
-        
-        public enum CodingKeys: String, CodingKey {
+        public let duration: Duration
+        public let service: ContinuousService
+
+        enum CodingKeys: String, CodingKey {
             case legStart = "LegStart"
             case legEnd = "LegEnd"
+            case duration = "Duration"
+            case service = "Service"
         }
+    }
+
+    // https://vdvde.github.io/OJP/develop/index.html#ContinuousServiceStructure
+    struct ContinuousService: Codable, Sendable {
+        public let operatingDayRef: String
+        public let journeyRef: String
+        public let publicCode: String?
+        public let mode: Mode
+        public let publishedServiceName: InternationalText
+
+        public let originText: InternationalText
+        public let destinationText: InternationalText?
     }
 
     struct TripSummary: Codable, Sendable {}
