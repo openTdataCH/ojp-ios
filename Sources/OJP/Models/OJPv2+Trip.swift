@@ -716,7 +716,7 @@ public extension OJPv2 {
     }
 
     /// Convenience enum to define [NumberOfResults](https://vdvde.github.io/OJP/develop/index.html#NumberOfResultsGroup)
-    enum NumberOfResults: Codable {
+    enum NumberOfResults: Codable, Sendable {
         case before(Int)
         case after(Int)
         case minimum(Int)

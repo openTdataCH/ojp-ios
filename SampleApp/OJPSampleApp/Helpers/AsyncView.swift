@@ -8,7 +8,7 @@
 import SwiftUI
 
 /// Conveniene container view for Previews with async state. E.g. when loading mocks
-struct AsyncView<Content: View, S>: View {
+struct AsyncView<Content: View, S: Sendable>: View {
     let task: () async -> S
     @State var state: S
     @ViewBuilder let content: (S) -> Content
