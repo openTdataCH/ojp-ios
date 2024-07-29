@@ -4,7 +4,7 @@
 import Foundation
 import XMLCoder
 
-public typealias Loader = (Data) async throws -> (Data, URLResponse)
+public typealias Loader = @Sendable (Data) async throws -> (Data, URLResponse)
 
 /// Defines the loading strategy. Basically used to switch between HTTP and Mocked-Requests
 public enum LoadingStrategy {
@@ -13,13 +13,20 @@ public enum LoadingStrategy {
 }
 
 // TODO: - find me a better place
-public enum PlaceType: String, Codable {
+public enum PlaceType: String, Codable, Sendable {
     case stop
     case address
 }
 
+let requestXMLRootAttributes = [
+    "xmlns": "http://www.vdv.de/ojp",
+    "xmlns:siri": "http://www.siri.org.uk/siri",
+    "xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance",
+    "version": "2.0",
+]
+
 /// Entry point to OJP
-public class OJP {
+public final class OJP: Sendable {
     let loader: Loader
     let locationInformationRequest: OJPHelpers.LocationInformationRequest
     let tripRequest: OJPHelpers.TripRequest
@@ -39,13 +46,6 @@ public class OJP {
             tripRequest = OJPHelpers.TripRequest(requesterReference: "Mock_Requestor_Ref")
         }
     }
-
-    static var requestXMLRootAttributes = [
-        "xmlns": "http://www.vdv.de/ojp",
-        "xmlns:siri": "http://www.siri.org.uk/siri",
-        "xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance",
-        "version": "2.0",
-    ]
 
     private var encoder: XMLEncoder {
         let encoder = XMLEncoder()
@@ -111,7 +111,7 @@ public class OJP {
     }
 
     func request(with ojp: OJPv2) async throws -> OJPv2.Response {
-        let ojpXMLData = try encoder.encode(ojp, withRootKey: "OJP", rootAttributes: OJP.requestXMLRootAttributes)
+        let ojpXMLData = try encoder.encode(ojp, withRootKey: "OJP", rootAttributes: requestXMLRootAttributes)
         guard let xmlString = String(data: ojpXMLData, encoding: .utf8) else {
             throw OJPSDKError.encodingFailed
         }
@@ -134,7 +134,7 @@ public class OJP {
             guard httpResponse.statusCode == 200 else {
                 throw OJPSDKError.unexpectedHTTPStatus(httpResponse.statusCode)
             }
-            return try OJPDecoder.response(data)
+            return try await OJPDecoder.response(data)
         } else {
             throw OJPSDKError.unexpectedEmpty
         }

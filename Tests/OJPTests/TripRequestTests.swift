@@ -4,7 +4,7 @@ import XCTest
 final class TripRequestTests: XCTestCase {
     func testParseMinimalTripResponse() async throws {
         let xmlData = try TestHelpers.loadXML(xmlFilename: "tr-gurten-trip1-minimal-response")
-        guard let tripDelivery = try OJPDecoder.parseXML(xmlData).response?.serviceDelivery.delivery else {
+        guard let tripDelivery = try await OJPDecoder.parseXML(xmlData).response?.serviceDelivery.delivery else {
             return XCTFail("unexpected empty")
         }
 
@@ -63,7 +63,7 @@ final class TripRequestTests: XCTestCase {
     func testParseTrip_BE_ZH() async throws {
         let xmlData = try TestHelpers.loadXML(xmlFilename: "trip-bern-zh-response")
 
-        guard let tripDelivery = try OJPDecoder.parseXML(xmlData).response?.serviceDelivery.delivery else {
+        guard let tripDelivery = try await OJPDecoder.parseXML(xmlData).response?.serviceDelivery.delivery else {
             return XCTFail("unexpected empty")
         }
 
@@ -79,7 +79,7 @@ final class TripRequestTests: XCTestCase {
     func testParseTrip_With_Tranfer_Legs() async throws {
         let xmlData = try TestHelpers.loadXML(xmlFilename: "tr-with-transfer-legs")
 
-        guard let tripDelivery = try OJPDecoder.parseXML(xmlData).response?.serviceDelivery.delivery else {
+        guard let tripDelivery = try await OJPDecoder.parseXML(xmlData).response?.serviceDelivery.delivery else {
             return XCTFail("unexpected empty")
         }
 
@@ -96,8 +96,8 @@ final class TripRequestTests: XCTestCase {
         let xmlData1 = try TestHelpers.loadXML(xmlFilename: "tr-bern-baerenplatz1")
         let xmlData2 = try TestHelpers.loadXML(xmlFilename: "tr-bern-baerenplatz2")
 
-        guard case let .trip(tripDelivery1) = try OJPDecoder.parseXML(xmlData1).response?.serviceDelivery.delivery,
-              case let .trip(tripDelivery2) = try OJPDecoder.parseXML(xmlData2).response?.serviceDelivery.delivery
+        guard case let .trip(tripDelivery1) = try await OJPDecoder.parseXML(xmlData1).response?.serviceDelivery.delivery,
+              case let .trip(tripDelivery2) = try await OJPDecoder.parseXML(xmlData2).response?.serviceDelivery.delivery
         else {
             return XCTFail("unexpected empty")
         }

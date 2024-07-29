@@ -8,7 +8,7 @@
 import Foundation
 
 /// A  convenience type to define a new TripRequest to be used in the ``PaginatedTripLoader``
-public struct TripRequest {
+public struct TripRequest: Sendable {
     let from: OJPv2.PlaceRefChoice
     let to: OJPv2.PlaceRefChoice
     let via: [OJPv2.PlaceRefChoice]?

@@ -2,7 +2,7 @@
 import XCTest
 
 final class OjpErrorTests: XCTestCase {
-    func testDecodingFailedError() throws {
+    @DecoderActor func testDecodingFailedError() throws {
         let invalidXmlData = "I'm not a valid xml".data(using: .utf8)!
 
         do {

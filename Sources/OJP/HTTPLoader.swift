@@ -7,13 +7,14 @@
 
 import Foundation
 
-public class HTTPLoader {
+public struct HTTPLoader: Sendable {
     let configuration: APIConfiguration
 
     init(configuration: APIConfiguration) {
         self.configuration = configuration
     }
 
+    @Sendable
     func load(request: Data) async throws -> (Data, URLResponse) {
         let session = URLSession.shared
         var urlRequest = baseRequest

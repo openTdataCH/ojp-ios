@@ -8,7 +8,7 @@
 import Foundation
 
 /// Defines the access to OJP Service
-public struct APIConfiguration {
+public struct APIConfiguration: Sendable {
     public let apiEndPoint: URL
     public let requesterReference: String
     public let additionalHeaders: [String: String]?
@@ -26,9 +26,11 @@ public struct APIConfiguration {
 
     /// TEST environment.
     /// - Note: this configuration should only be used for demo / testing purposes. It can change frequently
+    @MainActor
     public static let test = Self(apiEndPoint: URL(string: "https://odpch-api.clients.liip.ch/ojp20-test")!, requesterReference: "OJP_Demo_iOS", additionalHeaders: ["Authorization": "Bearer eyJvcmciOiI2M2Q4ODhiMDNmZmRmODAwMDEzMDIwODkiLCJpZCI6IjUzYzAyNWI2ZTRhNjQyOTM4NzMxMDRjNTg2ODEzNTYyIiwiaCI6Im11cm11cjEyOCJ9"])
 
     /// INT environment.
     /// - Note: this configuration should only be used for demo / testing purposes. It can change frequently
+    @MainActor
     public static let int = Self(apiEndPoint: URL(string: "https://odpch-api.clients.liip.ch/ojp20-beta")!, requesterReference: "OJP_Demo_iOS", additionalHeaders: ["Authorization": "Bearer eyJvcmciOiI2M2Q4ODhiMDNmZmRmODAwMDEzMDIwODkiLCJpZCI6IjUzYzAyNWI2ZTRhNjQyOTM4NzMxMDRjNTg2ODEzNTYyIiwiaCI6Im11cm11cjEyOCJ9"])
 }

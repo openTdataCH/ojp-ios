@@ -9,7 +9,7 @@ import Foundation
 import XMLCoder
 
 public extension OJPv2 {
-    struct StopEventServiceDelivery: Codable {
+    struct StopEventServiceDelivery: Codable, Sendable {
         let responseTimestamp: String
         let producerRef: String
         let stopEventDelivery: StopEventDelivery
@@ -21,7 +21,7 @@ public extension OJPv2 {
         }
     }
 
-    struct StopEventDelivery: Codable {
+    struct StopEventDelivery: Codable, Sendable {
         let places: [Place]
     }
 
@@ -38,7 +38,7 @@ public extension OJPv2 {
         }
     }
 
-    struct LocationInformationDelivery: Codable {
+    struct LocationInformationDelivery: Codable, Sendable {
         public let responseTimestamp: String
         public let requestMessageRef: String?
         public let defaultLanguage: String?
@@ -54,7 +54,7 @@ public extension OJPv2 {
         }
     }
 
-    struct PlaceResult: Codable {
+    struct PlaceResult: Codable, Sendable {
         public let place: Place
         public let complete: Bool
         public let probability: Float?
@@ -66,7 +66,7 @@ public extension OJPv2 {
         }
     }
 
-    enum PlaceTypeChoice: Codable {
+    enum PlaceTypeChoice: Codable, Sendable {
         case stopPlace(OJPv2.StopPlace)
         case address(OJPv2.Address)
 
@@ -106,7 +106,7 @@ public extension OJPv2 {
 //        }
     }
 
-    struct Place: Codable {
+    struct Place: Codable, Sendable {
         public let place: PlaceTypeChoice
 
         public let name: InternationalText
@@ -130,7 +130,7 @@ public extension OJPv2 {
         }
     }
 
-    struct StopPlace: Codable {
+    struct StopPlace: Codable, Sendable {
         public let stopPlaceRef: String
         public let stopPlaceName: InternationalText
         public let privateCodes: [PrivateCode]
@@ -144,7 +144,7 @@ public extension OJPv2 {
         }
     }
 
-    struct Address: Codable {
+    struct Address: Codable, Sendable {
         public let publicCode: String
         public let topographicPlaceRef: String?
         public let topographicPlaceName: String?
@@ -168,7 +168,7 @@ public extension OJPv2 {
         }
     }
 
-    struct PrivateCode: Codable {
+    struct PrivateCode: Codable, Sendable {
         public let system: String
         public let value: String
 
@@ -178,7 +178,7 @@ public extension OJPv2 {
         }
     }
 
-    enum LocationInformationInputTypeChoice: Codable {
+    enum LocationInformationInputTypeChoice: Codable, Sendable {
         case initialInput(InitialInput)
         case placeRef(PlaceRefChoice)
 
@@ -202,7 +202,7 @@ public extension OJPv2 {
         }
     }
 
-    struct LocationInformationRequest: Codable {
+    struct LocationInformationRequest: Codable, Sendable {
         public let requestTimestamp: Date
         public let input: LocationInformationInputTypeChoice
         public let restrictions: PlaceParam
@@ -242,7 +242,7 @@ public extension OJPv2 {
         }
     }
 
-    struct InitialInput: Codable {
+    struct InitialInput: Codable, Sendable {
         public let geoRestriction: GeoRestriction?
         public let name: String?
 
@@ -252,7 +252,7 @@ public extension OJPv2 {
         }
     }
 
-    struct GeoRestriction: Codable {
+    struct GeoRestriction: Codable, Sendable {
         public let rectangle: Rectangle?
 
         public enum CodingKeys: String, CodingKey {
@@ -260,7 +260,7 @@ public extension OJPv2 {
         }
     }
 
-    struct Rectangle: Codable {
+    struct Rectangle: Codable, Sendable {
         public let upperLeft: GeoPosition
         public let lowerRight: GeoPosition
 
@@ -270,7 +270,7 @@ public extension OJPv2 {
         }
     }
 
-    struct PlaceParam: Codable {
+    struct PlaceParam: Codable, Sendable {
         public init(type: [PlaceType], numberOfResults: Int = 10, includePtModes: Bool = true) {
             self.type = type
             self.numberOfResults = numberOfResults
