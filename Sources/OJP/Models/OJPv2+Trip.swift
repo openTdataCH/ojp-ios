@@ -21,16 +21,88 @@ public extension OJPv2 {
         public let responseTimestamp: String
         public let requestMessageRef: String
         public let calcTime: Int?
+        public let tripResponseContext: TripResponseContext?
         public internal(set) var tripResults: [TripResult]
 
         public enum CodingKeys: String, CodingKey {
             case responseTimestamp = "siri:ResponseTimestamp"
             case requestMessageRef = "siri:RequestMessageRef"
             case calcTime = "CalcTime"
+            case tripResponseContext = "TripResponseContext"
             case tripResults = "TripResult"
         }
     }
 
+    struct TripResponseContext: Codable, Sendable {
+        let situations: [SituationTypeChoice]
+
+        public enum CodingKeys: String, CodingKey {
+            case situations = "Situations"
+        }
+    }
+    struct Situation: Codable, Sendable {
+        let situation: SituationTypeChoice
+
+        public init(from decoder: any Decoder) throws {
+            situation = try SituationTypeChoice(from: decoder)
+        }
+    }
+
+    /// https://vdvde.github.io/OJP/develop/index.html#SituationsStructure
+    enum SituationTypeChoice: Codable, Sendable {
+        case ptSituation(PTSituation)
+        case roadSituation(RoadSituation)
+
+        enum CodingKeys: String, CodingKey {
+            case ptSituation = "PtSituation"
+            case roadSituation = "RoadSituation"
+        }
+
+        public init(from decoder: any Decoder) throws {
+            let container = try decoder.container(keyedBy: CodingKeys.self)
+            if container.contains(.ptSituation) {
+                self = try .ptSituation(
+                    container.decode(
+                        PTSituation.self,
+                        forKey: .ptSituation
+                    )
+                )
+            } else if container.contains(.roadSituation) {
+                self = try .roadSituation(
+                    container.decode(
+                        RoadSituation.self,
+                        forKey: .roadSituation
+                    )
+                )
+            } else {
+                throw OJPSDKError.notImplemented()
+            }
+        }
+    }
+
+    struct PTSituation: Codable, Sendable {
+
+        let situationNumber: String
+        let validityPeriod: ValidityPeriod
+
+        public enum CodingKeys: String, CodingKey {
+            case situationNumber = "siri:SituationNumber"
+            case validityPeriod = "siri:ValidityPeriod"
+        }
+    }
+
+
+    struct ValidityPeriod: Codable, Sendable {
+        let startTime: Date
+        let endTime: Date?
+        
+        public enum CodingKeys: String, CodingKey {
+            case startTime = "siri:StartTime"
+            case endTime = "siri:EndTime"
+        }
+    }
+    struct RoadSituation: Codable, Sendable {}
+    
     /// [Schema documentation on vdvde.github.io](https://vdvde.github.io/OJP/develop/index.html#TripResultStructure)
     struct TripResult: Codable, Identifiable, Sendable {
         public let id: String
