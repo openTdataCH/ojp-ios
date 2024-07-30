@@ -130,7 +130,7 @@ final class TripRequestTests: XCTestCase {
     func testSituationParsing() async throws {
         let xmlData = try TestHelpers.loadXML(xmlFilename: "tr-berne-nimes")
         do {
-            guard case let .trip(tripDelivery) = try OJPDecoder.parseXML(xmlData).response?.serviceDelivery.delivery else {
+            guard case let .trip(tripDelivery) = try await OJPDecoder.parseXML(xmlData).response?.serviceDelivery.delivery else {
                 return XCTFail("unexpected empty")
             }
             guard let responseContext = tripDelivery.tripResponseContext else {
