@@ -98,7 +98,7 @@ public extension OJPv2 {
     }
     
     struct DescriptionContent: Codable, Sendable {
-        let descriptionText: String? // optional to avoid this bug: https://github.com/CoreOffice/XMLCoder/issues/283
+        let descriptionText: String
 
         public enum CodingKeys: String, CodingKey {
             case descriptionText = "siri:DescriptionText"
@@ -106,7 +106,7 @@ public extension OJPv2 {
     }
     
     struct ConsequenceContent: Codable, Sendable {
-        let consequenceText: String? // optional to avoid this bug: https://github.com/CoreOffice/XMLCoder/issues/283
+        let consequenceText: String
 
         public enum CodingKeys: String, CodingKey {
             case consequenceText = "siri:ConsequenceText"
@@ -114,7 +114,7 @@ public extension OJPv2 {
     }
     
     struct RecommendationContent: Codable, Sendable {
-        let recommendationText: String? // optional to avoid this bug: https://github.com/CoreOffice/XMLCoder/issues/283
+        let recommendationText: String
 
         public enum CodingKeys: String, CodingKey {
             case recommendationText = "siri:RecommendationText"
@@ -122,7 +122,7 @@ public extension OJPv2 {
     }
     
     struct RemarkContent: Codable, Sendable {
-        let remarkText: String? // optional to avoid this bug: https://github.com/CoreOffice/XMLCoder/issues/283
+        let remarkText: String
 
         public enum CodingKeys: String, CodingKey {
             case remarkText = "siri:RemarkText"
@@ -155,6 +155,19 @@ public extension OJPv2 {
             case durationContent = "siri:DurationContent"
             case remarkContents = "siri:RemarkContent"
         }
+        
+        public init(from decoder: any Decoder) throws {
+            // optionals for arrays to avoid this bug: https://github.com/CoreOffice/XMLCoder/issues/283
+            let container: KeyedDecodingContainer<OJPv2.TextualContent.CodingKeys> = try decoder.container(keyedBy: OJPv2.TextualContent.CodingKeys.self)
+            self.summaryContent = try container.decode(OJPv2.SummaryContent.self, forKey: OJPv2.TextualContent.CodingKeys.summaryContent)
+            self.reasonContent = try? container.decodeIfPresent(OJPv2.ReasonContent.self, forKey: OJPv2.TextualContent.CodingKeys.reasonContent)
+            self.descriptionContents = (try? container.decode([OJPv2.DescriptionContent].self, forKey: OJPv2.TextualContent.CodingKeys.descriptionContents)) ?? []
+            self.consequenceContents = (try? container.decode([OJPv2.ConsequenceContent].self, forKey: OJPv2.TextualContent.CodingKeys.consequenceContents)) ?? []
+            self.recommendationContents = (try? container.decode([OJPv2.RecommendationContent].self, forKey: OJPv2.TextualContent.CodingKeys.recommendationContents)) ?? []
+            self.durationContent = try? container.decodeIfPresent(OJPv2.DurationContent.self, forKey: OJPv2.TextualContent.CodingKeys.durationContent)
+            self.remarkContents = (try? container.decode([OJPv2.RemarkContent].self, forKey: OJPv2.TextualContent.CodingKeys.remarkContents)) ?? []
+        }
+        
     }
 
     struct PassengerInformationAction: Codable, Sendable {
