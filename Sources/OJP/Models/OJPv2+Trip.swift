@@ -90,7 +90,7 @@ public extension OJPv2 {
     }
     
     struct ReasonContent: Codable, Sendable {
-        let reasonText: String
+        let reasonText: String? 
 
         public enum CodingKeys: String, CodingKey {
             case reasonText = "siri:ReasonText"
@@ -98,7 +98,7 @@ public extension OJPv2 {
     }
     
     struct DescriptionContent: Codable, Sendable {
-        let descriptionText: String
+        let descriptionText: String? // optional to avoid this bug: https://github.com/CoreOffice/XMLCoder/issues/283
 
         public enum CodingKeys: String, CodingKey {
             case descriptionText = "siri:DescriptionText"
@@ -106,7 +106,7 @@ public extension OJPv2 {
     }
     
     struct ConsequenceContent: Codable, Sendable {
-        let consequenceText: String
+        let consequenceText: String? // optional to avoid this bug: https://github.com/CoreOffice/XMLCoder/issues/283
 
         public enum CodingKeys: String, CodingKey {
             case consequenceText = "siri:ConsequenceText"
@@ -114,7 +114,7 @@ public extension OJPv2 {
     }
     
     struct RecommendationContent: Codable, Sendable {
-        let recommendationText: String
+        let recommendationText: String? // optional to avoid this bug: https://github.com/CoreOffice/XMLCoder/issues/283
 
         public enum CodingKeys: String, CodingKey {
             case recommendationText = "siri:RecommendationText"
@@ -122,7 +122,7 @@ public extension OJPv2 {
     }
     
     struct RemarkContent: Codable, Sendable {
-        let remarkText: String
+        let remarkText: String? // optional to avoid this bug: https://github.com/CoreOffice/XMLCoder/issues/283
 
         public enum CodingKeys: String, CodingKey {
             case remarkText = "siri:RemarkText"
