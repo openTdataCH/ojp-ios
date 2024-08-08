@@ -68,7 +68,7 @@ struct NamespaceAwareCodingKey: CodingKey {
     }
 
     static func removeNameSpace(_ string: String) -> String {
-        String(string.split(separator: ":").last!)
+        String(string.split(separator: ":").last ?? "0")
     }
 }
 

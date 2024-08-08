@@ -40,6 +40,7 @@ public extension OJPv2 {
             case situations = "Situations"
         }
     }
+
     struct Situation: Codable, Sendable {
         let situation: SituationTypeChoice
 
@@ -80,29 +81,131 @@ public extension OJPv2 {
         }
     }
 
-    struct PTSituation: Codable, Sendable {
+    struct SummaryContent: Codable, Sendable {
+        let summaryText: String
 
+        public enum CodingKeys: String, CodingKey {
+            case summaryText = "siri:SummaryText"
+        }
+    }
+    
+    struct ReasonContent: Codable, Sendable {
+        let reasonText: String
+
+        public enum CodingKeys: String, CodingKey {
+            case reasonText = "siri:ReasonText"
+        }
+    }
+    
+    struct DescriptionContent: Codable, Sendable {
+        let descriptionText: String
+
+        public enum CodingKeys: String, CodingKey {
+            case descriptionText = "siri:DescriptionText"
+        }
+    }
+    
+    struct ConsequenceContent: Codable, Sendable {
+        let consequenceText: String
+
+        public enum CodingKeys: String, CodingKey {
+            case consequenceText = "siri:ConsequenceText"
+        }
+    }
+    
+    struct RecommendationContent: Codable, Sendable {
+        let recommendationText: String
+
+        public enum CodingKeys: String, CodingKey {
+            case recommendationText = "siri:RecommendationText"
+        }
+    }
+    
+    struct RemarkContent: Codable, Sendable {
+        let remarkText: String
+
+        public enum CodingKeys: String, CodingKey {
+            case remarkText = "siri:RemarkText"
+        }
+    }
+    
+    struct DurationContent: Codable, Sendable {
+        let durationText: String
+
+        public enum CodingKeys: String, CodingKey {
+            case durationText = "siri:DurationText"
+        }
+    }
+
+    struct TextualContent: Codable, Sendable {
+        let summaryContent: SummaryContent
+        let reasonContent: ReasonContent?
+        let descriptionContents: [DescriptionContent]
+        let consequenceContents: [ConsequenceContent]
+        let recommendationContents: [RecommendationContent]
+        let durationContent: DurationContent?
+        let remarkContents: [RemarkContent]
+
+        public enum CodingKeys: String, CodingKey {
+            case summaryContent = "siri:SummaryContent"
+            case reasonContent = "siri:ReasonContent"
+            case descriptionContents = "siri:DescriptionContent"
+            case consequenceContents = "siri:ConsequenceContent"
+            case recommendationContents = "siri:RecommendationContent"
+            case durationContent = "siri:DurationContent"
+            case remarkContents = "siri:RemarkContent"
+        }
+    }
+
+    struct PassengerInformationAction: Codable, Sendable {
+        let textualContents: [TextualContent]
+
+        public enum CodingKeys: String, CodingKey {
+            case textualContents = "siri:TextualContent"
+        }
+    }
+
+    struct PublishingAction: Codable, Sendable {
+        let passengerInformationActions: [PassengerInformationAction]
+
+        public enum CodingKeys: String, CodingKey {
+            case passengerInformationActions = "siri:PassengerInformationAction"
+        }
+    }
+    
+    struct PublishingActions: Codable, Sendable {
+        
+        let publishingActions: [PublishingAction]
+        
+        public enum CodingKeys: String, CodingKey {
+            case publishingActions = "siri:PublishingAction"
+        }
+    }
+
+    struct PTSituation: Codable, Sendable {
         let situationNumber: String
         let validityPeriod: ValidityPeriod
+        let publishingActions: PublishingActions
 
         public enum CodingKeys: String, CodingKey {
             case situationNumber = "siri:SituationNumber"
             case validityPeriod = "siri:ValidityPeriod"
+            case publishingActions = "siri:PublishingActions"
         }
     }
-
 
     struct ValidityPeriod: Codable, Sendable {
         let startTime: Date
         let endTime: Date?
-        
+
         public enum CodingKeys: String, CodingKey {
             case startTime = "siri:StartTime"
             case endTime = "siri:EndTime"
         }
     }
+
     struct RoadSituation: Codable, Sendable {}
-    
+
     /// [Schema documentation on vdvde.github.io](https://vdvde.github.io/OJP/develop/index.html#TripResultStructure)
     struct TripResult: Codable, Identifiable, Sendable {
         public let id: String
