@@ -124,11 +124,10 @@ final class TripRequestTests: XCTestCase {
         XCTAssertEqual(uniqued.count, 11)
     }
 
-
     // MARK: - Situations (maybe move to separate file)
 
     func testSituationParsing() async throws {
-        let xmlData = try TestHelpers.loadXML(xmlFilename: "tr-berne-nimes")
+        let xmlData = try TestHelpers.loadXML(xmlFilename: "tr-fribourg-berne")
         do {
             guard case let .trip(tripDelivery) = try await OJPDecoder.parseXML(xmlData).response?.serviceDelivery.delivery else {
                 return XCTFail("unexpected empty")
@@ -142,5 +141,4 @@ final class TripRequestTests: XCTestCase {
             throw error
         }
     }
-
 }

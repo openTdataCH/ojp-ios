@@ -594,6 +594,29 @@ public extension OJPv2 {
             case code = "Code"
         }
     }
+    
+    struct SituationFullRef: Codable, Sendable {
+        
+        public let participantRef: String
+        public let situationNumber: String
+        
+        enum CodingKeys: String, CodingKey {
+            case participantRef = "siri:ParticipantRef" // todo: where is the doc?
+            case situationNumber = "siri:SituationNumber" // todo: where is the doc?
+        }
+        
+    }
+    
+    // https://vdvde.github.io/OJP/develop/index.html#SituationRefList
+    struct SituationFullRefs: Codable, Sendable {
+        
+        public let situationFullRef: SituationFullRef
+        
+        enum CodingKeys: String, CodingKey {
+            case situationFullRef = "SituationFullRef"
+        }
+        
+    }
 
     // https://vdvde.github.io/OJP/develop/index.html#ContinuousServiceStructure
     struct Service: Codable, Sendable {
@@ -621,6 +644,7 @@ public extension OJPv2 {
         public let originStopPointRef: String?
         public let destinationText: InternationalText?
         public let destinationStopPointRef: String?
+        public let situationFullRefs: SituationFullRefs?
 
         public enum CodingKeys: String, CodingKey {
             case conventionalModeOfOperation = "ConventionalModeOfOperation"
@@ -640,6 +664,7 @@ public extension OJPv2 {
             case originStopPointRef = "OriginStopPointRef"
             case destinationText = "DestinationText"
             case destinationStopPointRef = "DestinationStopPointRef"
+            case situationFullRefs = "SituationFullRefs"
         }
 
         public enum ConventionalModesOfOperation: String, Codable, Sendable {
