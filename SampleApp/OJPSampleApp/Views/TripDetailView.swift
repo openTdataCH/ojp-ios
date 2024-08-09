@@ -162,14 +162,8 @@ extension OJPv2.TripDelivery {
 
 extension OJPv2.TimedLeg {
     func relevantPtSituations(allPtSituations: [OJPv2.PTSituation]) -> [OJPv2.PTSituation] {
-        allPtSituations.filter { ptSituation in
-            if let situationFullRefs = service.situationFullRefs {
-                situationFullRefs.situationFullRefs.contains(where: { situationFullRef in
-                    situationFullRef.situationNumber == ptSituation.situationNumber
-                })
-            } else {
-                false
-            }
-        }
+        service.situationFullRefs?.situationFullRefs.flatMap { serviceSituationRef in
+            allPtSituations.filter { $0.situationNumber == serviceSituationRef.situationNumber }
+        } ?? []
     }
 }
