@@ -68,7 +68,7 @@ struct TripDetailView: View {
                             Text(infoText)
                         }
                     }
-                    
+
                 }.listRowSeparator(.hidden)
             case let .transfer(transferLeg):
                 HStack {
@@ -92,7 +92,8 @@ struct TripDetailView: View {
         state: nil,
         content: { tripDelivery in
             if let tripDelivery,
-               let trip = tripDelivery.tripResults.first {
+               let trip = tripDelivery.tripResults.first
+            {
                 TripDetailView(trip: trip.trip!, ptSituations: tripDelivery.ptSituations)
             } else {
                 Text("No Trip").frame(minWidth: 200, minHeight: 200)
@@ -115,38 +116,38 @@ extension OJPv2.PTSituation: Hashable {
     public static func == (lhs: OJPv2.PTSituation, rhs: OJPv2.PTSituation) -> Bool {
         lhs.situationNumber == rhs.situationNumber
     }
-    
+
     public func hash(into hasher: inout Hasher) {
         hasher.combine(situationNumber)
     }
-    
+
     var allInfos: [String] {
         var infos: [String] = []
         for publishingAction in publishingActions.publishingActions {
             for passengerInformationAction in publishingAction.passengerInformationActions {
                 for textualContent in passengerInformationAction.textualContents {
                     infos.append(textualContent.summaryContent.summaryText)
-                    
+
                     for descriptionContent in textualContent.descriptionContents {
                         infos.append(descriptionContent.descriptionText)
                     }
-                    
+
                     for consequenceContent in textualContent.consequenceContents {
                         infos.append(consequenceContent.consequenceText)
                     }
-                    
+
                     for recommendationContent in textualContent.recommendationContents {
                         infos.append(recommendationContent.recommendationText)
                     }
-                    
+
                     for remarkContent in textualContent.remarkContents {
                         infos.append(remarkContent.remarkText)
                     }
-                    
+
                     if let reasonContent = textualContent.reasonContent {
                         infos.append(reasonContent.reasonText)
                     }
-                    
+
                     if let durationContent = textualContent.durationContent {
                         infos.append(durationContent.durationText)
                     }
@@ -158,32 +159,28 @@ extension OJPv2.PTSituation: Hashable {
 }
 
 extension OJPv2.TripDelivery {
-    
     var ptSituations: [OJPv2.PTSituation] {
-        return tripResponseContext?.situations.compactMap({ situation in
+        tripResponseContext?.situations.compactMap { situation in
             switch situation {
-            case .ptSituation(let pTSituation):
-                return pTSituation
+            case let .ptSituation(pTSituation):
+                pTSituation
             case .roadSituation:
-                return nil
+                nil
             }
-        }) ?? []
+        } ?? []
     }
-    
 }
 
 extension OJPv2.TimedLeg {
-    
     func relevantPtSituations(allPtSituations: [OJPv2.PTSituation]) -> [OJPv2.PTSituation] {
-        return allPtSituations.filter { ptSituation in
+        allPtSituations.filter { ptSituation in
             if let situationFullRefs = service.situationFullRefs {
-                return situationFullRefs.situationFullRefs.contains(where: { situationFullRef in
+                situationFullRefs.situationFullRefs.contains(where: { situationFullRef in
                     situationFullRef.situationNumber == ptSituation.situationNumber
                 })
             } else {
-                return false
+                false
             }
         }
     }
-    
 }

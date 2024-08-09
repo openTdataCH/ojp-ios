@@ -39,10 +39,10 @@ public extension OJPv2 {
         public enum CodingKeys: String, CodingKey {
             case situations = "Situations"
         }
-        
+
         public init(from decoder: any Decoder) throws {
             let container: KeyedDecodingContainer<OJPv2.TripResponseContext.CodingKeys> = try decoder.container(keyedBy: OJPv2.TripResponseContext.CodingKeys.self)
-            self.situations = (try? container.decode([OJPv2.SituationTypeChoice].self, forKey: OJPv2.TripResponseContext.CodingKeys.situations)) ?? []
+            situations = (try? container.decode([OJPv2.SituationTypeChoice].self, forKey: OJPv2.TripResponseContext.CodingKeys.situations)) ?? []
         }
     }
 
@@ -93,15 +93,15 @@ public extension OJPv2 {
             case summaryText = "siri:SummaryText"
         }
     }
-    
+
     struct ReasonContent: Codable, Sendable {
-        public let reasonText: String 
+        public let reasonText: String
 
         public enum CodingKeys: String, CodingKey {
             case reasonText = "siri:ReasonText"
         }
     }
-    
+
     struct DescriptionContent: Codable, Sendable {
         public let descriptionText: String
 
@@ -109,7 +109,7 @@ public extension OJPv2 {
             case descriptionText = "siri:DescriptionText"
         }
     }
-    
+
     struct ConsequenceContent: Codable, Sendable {
         public let consequenceText: String
 
@@ -117,7 +117,7 @@ public extension OJPv2 {
             case consequenceText = "siri:ConsequenceText"
         }
     }
-    
+
     struct RecommendationContent: Codable, Sendable {
         public let recommendationText: String
 
@@ -125,7 +125,7 @@ public extension OJPv2 {
             case recommendationText = "siri:RecommendationText"
         }
     }
-    
+
     struct RemarkContent: Codable, Sendable {
         public let remarkText: String
 
@@ -133,7 +133,7 @@ public extension OJPv2 {
             case remarkText = "siri:RemarkText"
         }
     }
-    
+
     struct DurationContent: Codable, Sendable {
         public let durationText: String
 
@@ -160,19 +160,18 @@ public extension OJPv2 {
             case durationContent = "siri:DurationContent"
             case remarkContents = "siri:RemarkContent"
         }
-        
+
         public init(from decoder: any Decoder) throws {
             // optionals for arrays to avoid this bug: https://github.com/CoreOffice/XMLCoder/issues/283
             let container: KeyedDecodingContainer<OJPv2.TextualContent.CodingKeys> = try decoder.container(keyedBy: OJPv2.TextualContent.CodingKeys.self)
-            self.summaryContent = try container.decode(OJPv2.SummaryContent.self, forKey: OJPv2.TextualContent.CodingKeys.summaryContent)
-            self.reasonContent = try? container.decodeIfPresent(OJPv2.ReasonContent.self, forKey: OJPv2.TextualContent.CodingKeys.reasonContent)
-            self.descriptionContents = (try? container.decode([OJPv2.DescriptionContent].self, forKey: OJPv2.TextualContent.CodingKeys.descriptionContents)) ?? []
-            self.consequenceContents = (try? container.decode([OJPv2.ConsequenceContent].self, forKey: OJPv2.TextualContent.CodingKeys.consequenceContents)) ?? []
-            self.recommendationContents = (try? container.decode([OJPv2.RecommendationContent].self, forKey: OJPv2.TextualContent.CodingKeys.recommendationContents)) ?? []
-            self.durationContent = try? container.decodeIfPresent(OJPv2.DurationContent.self, forKey: OJPv2.TextualContent.CodingKeys.durationContent)
-            self.remarkContents = (try? container.decode([OJPv2.RemarkContent].self, forKey: OJPv2.TextualContent.CodingKeys.remarkContents)) ?? []
+            summaryContent = try container.decode(OJPv2.SummaryContent.self, forKey: OJPv2.TextualContent.CodingKeys.summaryContent)
+            reasonContent = try? container.decodeIfPresent(OJPv2.ReasonContent.self, forKey: OJPv2.TextualContent.CodingKeys.reasonContent)
+            descriptionContents = (try? container.decode([OJPv2.DescriptionContent].self, forKey: OJPv2.TextualContent.CodingKeys.descriptionContents)) ?? []
+            consequenceContents = (try? container.decode([OJPv2.ConsequenceContent].self, forKey: OJPv2.TextualContent.CodingKeys.consequenceContents)) ?? []
+            recommendationContents = (try? container.decode([OJPv2.RecommendationContent].self, forKey: OJPv2.TextualContent.CodingKeys.recommendationContents)) ?? []
+            durationContent = try? container.decodeIfPresent(OJPv2.DurationContent.self, forKey: OJPv2.TextualContent.CodingKeys.durationContent)
+            remarkContents = (try? container.decode([OJPv2.RemarkContent].self, forKey: OJPv2.TextualContent.CodingKeys.remarkContents)) ?? []
         }
-        
     }
 
     struct PassengerInformationAction: Codable, Sendable {
@@ -190,11 +189,10 @@ public extension OJPv2 {
             case passengerInformationActions = "siri:PassengerInformationAction"
         }
     }
-    
+
     struct PublishingActions: Codable, Sendable {
-        
         public let publishingActions: [PublishingAction]
-        
+
         public enum CodingKeys: String, CodingKey {
             case publishingActions = "siri:PublishingAction"
         }
@@ -599,28 +597,24 @@ public extension OJPv2 {
             case code = "Code"
         }
     }
-    
+
     struct SituationFullRef: Codable, Sendable {
-        
         public let participantRef: String
         public let situationNumber: String
-        
+
         enum CodingKeys: String, CodingKey {
-            case participantRef = "siri:ParticipantRef" // todo: where is the doc?
-            case situationNumber = "siri:SituationNumber" // todo: where is the doc?
+            case participantRef = "siri:ParticipantRef" // TODO: where is the doc?
+            case situationNumber = "siri:SituationNumber" // TODO: where is the doc?
         }
-        
     }
-    
+
     // https://vdvde.github.io/OJP/develop/index.html#SituationRefList
     struct SituationFullRefs: Codable, Sendable {
-        
         public let situationFullRefs: [SituationFullRef]
-        
+
         enum CodingKeys: String, CodingKey {
             case situationFullRefs = "SituationFullRef"
         }
-        
     }
 
     // https://vdvde.github.io/OJP/develop/index.html#DatedJourneyStructure
