@@ -123,9 +123,9 @@ public extension OJPv2 {
                 switch leg.legType {
                 case let .continous(continuousLeg):
                     switch continuousLeg.service.type {
-                    case .personalService(let personalService):
+                    case let .personalService(personalService):
                         h.combine(personalService.personalMode)
-                    case .datedJourney(let datedJourney):
+                    case let .datedJourney(datedJourney):
                         h.combine(datedJourney.journeyRef)
                     }
                     h.combine(continuousLeg.legStart)
@@ -522,7 +522,7 @@ public extension OJPv2 {
 
     struct PersonalService: Codable, Sendable {
         let personalMode: String
-        
+
         enum CodingKeys: String, CodingKey {
             case personalMode = "PersonalMode"
         }
@@ -535,9 +535,9 @@ public extension OJPv2 {
 
         public init(from decoder: any Decoder) throws {
             do {
-                self = .personalService(try PersonalService(from: decoder))
+                self = try .personalService(PersonalService(from: decoder))
             } catch {
-                self = .datedJourney(try DatedJourney(from: decoder))
+                self = try .datedJourney(DatedJourney(from: decoder))
             }
         }
     }
@@ -545,10 +545,10 @@ public extension OJPv2 {
     // https://vdvde.github.io/OJP/develop/index.html#ContinuousServiceStructure
     struct ContinuousService: Codable, Sendable {
         public let type: ContinuousServiceTypeChoice
-        /// TODO: add SituationFullRefs
+        // TODO: add SituationFullRefs
 
         public init(from decoder: any Decoder) throws {
-            self.type = try ContinuousServiceTypeChoice(from: decoder)
+            type = try ContinuousServiceTypeChoice(from: decoder)
         }
     }
 

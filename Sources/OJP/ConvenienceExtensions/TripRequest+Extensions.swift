@@ -24,15 +24,15 @@ extension OJPv2.PlaceRefChoice: Hashable {
     public static func == (lhs: OJPv2.PlaceRefChoice, rhs: OJPv2.PlaceRefChoice) -> Bool {
         lhs.hashValue == rhs.hashValue
     }
-    
+
     public func hash(into hasher: inout Hasher) {
         switch self {
-        case .stopPlaceRef(let stopPlaceRef):
+        case let .stopPlaceRef(stopPlaceRef):
             hasher.combine(stopPlaceRef.stopPlaceRef)
-        case .geoPosition(let geoPositionRef):
+        case let .geoPosition(geoPositionRef):
             hasher.combine(geoPositionRef.geoPosition.latitude)
             hasher.combine(geoPositionRef.geoPosition.longitude)
-        case .stopPointRef(let stopPointRef):
+        case let .stopPointRef(stopPointRef):
             hasher.combine(stopPointRef.stopPointRef)
         }
     }
