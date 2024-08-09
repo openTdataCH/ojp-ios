@@ -42,7 +42,7 @@ struct TripDetailView: View {
                         Text(legBoard.estimatedQuay?.text ?? legBoard.plannedQuay?.text ?? "")
                             .foregroundStyle(changedTrack ? .red : .black)
                     }
-                    ForEach(timedLeg.legsIntermediate, id: \.self) { legIntermediate in
+                    ForEach(timedLeg.legsIntermediate) { legIntermediate in
                         HStack {
                             Text(legIntermediate.stopPointName.text)
                                 .foregroundStyle(.gray)
@@ -62,7 +62,7 @@ struct TripDetailView: View {
                         Text(legAlight.estimatedQuay?.text ?? legAlight.plannedQuay?.text ?? "")
                             .foregroundStyle(changedTrack ? .red : .black)
                     }
-                    ForEach(timedLeg.relevantPtSituations(allPtSituations: ptSituations), id: \.self) { ptSituation in
+                    ForEach(timedLeg.relevantPtSituations(allPtSituations: ptSituations)) { ptSituation in
                         Divider()
                         ForEach(ptSituation.allInfos, id: \.self) { infoText in
                             Text(infoText)
@@ -99,23 +99,15 @@ struct TripDetailView: View {
     )
 }
 
-extension OJPv2.LegIntermediate: Hashable {
-    public static func == (lhs: OJPv2.LegIntermediate, rhs: OJPv2.LegIntermediate) -> Bool {
-        lhs.stopPointRef == rhs.stopPointRef
-    }
-
-    public func hash(into hasher: inout Hasher) {
-        hasher.combine(stopPointRef)
+extension OJPv2.LegIntermediate: Identifiable {
+    public var id: String {
+        stopPointRef
     }
 }
 
-extension OJPv2.PTSituation: Hashable {
-    public static func == (lhs: OJPv2.PTSituation, rhs: OJPv2.PTSituation) -> Bool {
-        lhs.situationNumber == rhs.situationNumber
-    }
-
-    public func hash(into hasher: inout Hasher) {
-        hasher.combine(situationNumber)
+extension OJPv2.PTSituation: Identifiable {
+    public var id: String {
+        situationNumber
     }
 
     var allInfos: [String] {
