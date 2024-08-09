@@ -431,7 +431,7 @@ public extension OJPv2 {
         public let legBoard: LegBoard
         public let legsIntermediate: [LegIntermediate]
         public let legAlight: LegAlight
-        public let service: Service
+        public let service: DatedJourney
         public let legTrack: LegTrack?
 
         enum CodingKeys: String, CodingKey {
@@ -623,8 +623,8 @@ public extension OJPv2 {
         
     }
 
-    // https://vdvde.github.io/OJP/develop/index.html#ContinuousServiceStructure
-    struct Service: Codable, Sendable {
+    // https://vdvde.github.io/OJP/develop/index.html#DatedJourneyStructure
+    struct DatedJourney: Codable, Sendable {
         // https://vdvde.github.io/OJP/develop/index.html#ConventionalModesOfOperationEnumeration
         public let conventionalModeOfOperation: ConventionalModesOfOperation?
 
