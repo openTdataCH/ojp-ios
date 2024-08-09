@@ -87,7 +87,7 @@ struct TripDetailView: View {
 #Preview {
     AsyncView(
         task: {
-            try await PreviewMocker.shared.loadTrips()
+            try await PreviewMocker.shared.loadTrips(xmlFileName: "tr-fribourg-berne")
         },
         content: { tripDelivery in
             if let trip = tripDelivery.tripResults.first {

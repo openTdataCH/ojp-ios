@@ -11,7 +11,6 @@
 		92AEB2522C32AA2C00D5828E /* TimeInterval+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92AEB2512C32AA2C00D5828E /* TimeInterval+Extensions.swift */; };
 		CF06B9F32BBE7DD000B60917 /* Pulse in Frameworks */ = {isa = PBXBuildFile; productRef = CF06B9F22BBE7DD000B60917 /* Pulse */; };
 		CF06B9F52BBE7DD000B60917 /* PulseUI in Frameworks */ = {isa = PBXBuildFile; productRef = CF06B9F42BBE7DD000B60917 /* PulseUI */; };
-		CF1A97DE2C3532EF00FEAEC0 /* tr-berne-nimes.xml in Resources */ = {isa = PBXBuildFile; fileRef = CF1A97DD2C3532CE00FEAEC0 /* tr-berne-nimes.xml */; };
 		CF1A97E02C3533D100FEAEC0 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1A97DF2C3533D100FEAEC0 /* LoadingView.swift */; };
 		CF1C2B6E2C2D964F00B51EFD /* tr-perf-be-zh-20results-projection.xml in Resources */ = {isa = PBXBuildFile; fileRef = CF1C2B6D2C2D94B700B51EFD /* tr-perf-be-zh-20results-projection.xml */; };
 		CF3CD8F62C2DB76700D25994 /* tr-with-transfer-legs.xml in Resources */ = {isa = PBXBuildFile; fileRef = CF3CD8F52C2DB76500D25994 /* tr-with-transfer-legs.xml */; };
@@ -28,6 +27,7 @@
 		CFBA60CD2BBD610F000FF2ED /* OJPSampleAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBA60CC2BBD610F000FF2ED /* OJPSampleAppTests.swift */; };
 		CFBA60D72BBD610F000FF2ED /* OJPSampleAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBA60D62BBD610F000FF2ED /* OJPSampleAppUITests.swift */; };
 		CFBA60D92BBD610F000FF2ED /* OJPSampleAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBA60D82BBD610F000FF2ED /* OJPSampleAppUITestsLaunchTests.swift */; };
+		CFCEAB0C2C664BA0006EDA6A /* tr-fribourg-berne.xml in Resources */ = {isa = PBXBuildFile; fileRef = CFCEAB0B2C664BA0006EDA6A /* tr-fribourg-berne.xml */; };
 		CFF227B32BBD63AC00D3EADF /* OJP in Frameworks */ = {isa = PBXBuildFile; productRef = CFF227B22BBD63AC00D3EADF /* OJP */; };
 		CFF227B82BBDA10800D3EADF /* PlaceDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF227B72BBDA10800D3EADF /* PlaceDetailView.swift */; };
 /* End PBXBuildFile section */
@@ -52,7 +52,6 @@
 /* Begin PBXFileReference section */
 		92AEB24F2C328DCF00D5828E /* TripDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripDetailView.swift; sourceTree = "<group>"; };
 		92AEB2512C32AA2C00D5828E /* TimeInterval+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeInterval+Extensions.swift"; sourceTree = "<group>"; };
-		CF1A97DD2C3532CE00FEAEC0 /* tr-berne-nimes.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "tr-berne-nimes.xml"; sourceTree = "<group>"; };
 		CF1A97DF2C3533D100FEAEC0 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		CF1C2B6D2C2D94B700B51EFD /* tr-perf-be-zh-20results-projection.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "tr-perf-be-zh-20results-projection.xml"; sourceTree = "<group>"; };
 		CF3CD8F52C2DB76500D25994 /* tr-with-transfer-legs.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "tr-with-transfer-legs.xml"; sourceTree = "<group>"; };
@@ -72,6 +71,7 @@
 		CFBA60D22BBD610F000FF2ED /* OJPSampleAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OJPSampleAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFBA60D62BBD610F000FF2ED /* OJPSampleAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OJPSampleAppUITests.swift; sourceTree = "<group>"; };
 		CFBA60D82BBD610F000FF2ED /* OJPSampleAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OJPSampleAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		CFCEAB0B2C664BA0006EDA6A /* tr-fribourg-berne.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = "tr-fribourg-berne.xml"; path = "../../../Tests/OJPTests/Resources/tr/situations/tr-fribourg-berne.xml"; sourceTree = "<group>"; };
 		CFF227B02BBD639000D3EADF /* OJP */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = OJP; path = ..; sourceTree = "<group>"; };
 		CFF227B42BBD95CF00D3EADF /* LocationSearchByNameView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationSearchByNameView.swift; sourceTree = "<group>"; };
 		CFF227B72BBDA10800D3EADF /* PlaceDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceDetailView.swift; sourceTree = "<group>"; };
@@ -178,7 +178,7 @@
 			children = (
 				CF1C2B6D2C2D94B700B51EFD /* tr-perf-be-zh-20results-projection.xml */,
 				CF3CD8F52C2DB76500D25994 /* tr-with-transfer-legs.xml */,
-				CF1A97DD2C3532CE00FEAEC0 /* tr-berne-nimes.xml */,
+				CFCEAB0B2C664BA0006EDA6A /* tr-fribourg-berne.xml */,
 				CFBA60C22BBD610C000FF2ED /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
@@ -322,9 +322,9 @@
 			files = (
 				CFBA60C32BBD610C000FF2ED /* Preview Assets.xcassets in Resources */,
 				CF3CD8F62C2DB76700D25994 /* tr-with-transfer-legs.xml in Resources */,
+				CFCEAB0C2C664BA0006EDA6A /* tr-fribourg-berne.xml in Resources */,
 				CF1C2B6E2C2D964F00B51EFD /* tr-perf-be-zh-20results-projection.xml in Resources */,
 				CFBA60BF2BBD610C000FF2ED /* Assets.xcassets in Resources */,
-				CF1A97DE2C3532EF00FEAEC0 /* tr-berne-nimes.xml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
