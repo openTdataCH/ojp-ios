@@ -122,7 +122,12 @@ public extension OJPv2 {
             for leg in legs {
                 switch leg.legType {
                 case let .continous(continuousLeg):
-                    h.combine(continuousLeg.service.publishedServiceName.text)
+                    switch continuousLeg.service.type {
+                    case .personalService(let personalService):
+                        h.combine(personalService.personalMode)
+                    case .datedJourney(let datedJourney):
+                        h.combine(datedJourney.journeyRef)
+                    }
                     h.combine(continuousLeg.legStart)
                     h.combine(continuousLeg.legEnd)
                 case let .timed(timedLeg):
@@ -515,16 +520,36 @@ public extension OJPv2 {
         }
     }
 
+    struct PersonalService: Codable, Sendable {
+        let personalMode: String
+        
+        enum CodingKeys: String, CodingKey {
+            case personalMode = "PersonalMode"
+        }
+    }
+
+    // https://vdvde.github.io/OJP/develop/index.html#ContinuousServiceStructure
+    enum ContinuousServiceTypeChoice: Codable, Sendable {
+        case personalService(PersonalService)
+        case datedJourney(DatedJourney)
+
+        public init(from decoder: any Decoder) throws {
+            do {
+                self = .personalService(try PersonalService(from: decoder))
+            } catch {
+                self = .datedJourney(try DatedJourney(from: decoder))
+            }
+        }
+    }
+
     // https://vdvde.github.io/OJP/develop/index.html#ContinuousServiceStructure
     struct ContinuousService: Codable, Sendable {
-        public let operatingDayRef: String
-        public let journeyRef: String
-        public let publicCode: String?
-        public let mode: Mode
-        public let publishedServiceName: InternationalText
+        public let type: ContinuousServiceTypeChoice
+        /// TODO: add SituationFullRefs
 
-        public let originText: InternationalText
-        public let destinationText: InternationalText?
+        public init(from decoder: any Decoder) throws {
+            self.type = try ContinuousServiceTypeChoice(from: decoder)
+        }
     }
 
     struct TripSummary: Codable, Sendable {}

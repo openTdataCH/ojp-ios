@@ -92,6 +92,21 @@ final class TripRequestTests: XCTestCase {
         }
     }
 
+    func testParseTrip_With_ContinousWalkLeg() async throws {
+        let xmlData = try TestHelpers.loadXML(xmlFilename: "tr-continuous-leg-walk")
+
+        guard let tripDelivery = try await OJPDecoder.parseXML(xmlData).response?.serviceDelivery.delivery else {
+            return XCTFail("unexpected empty")
+        }
+
+        switch tripDelivery {
+        case let .trip(trip):
+            XCTAssert(true)
+        default:
+            XCTFail()
+        }
+    }
+
     func testTripHash() async throws {
         let xmlData1 = try TestHelpers.loadXML(xmlFilename: "tr-bern-baerenplatz1")
         let xmlData2 = try TestHelpers.loadXML(xmlFilename: "tr-bern-baerenplatz2")
