@@ -24,6 +24,7 @@ enum DurationFormatter {
 
 struct TripRequestResultView: View {
     @State var selectedTrip: OJPv2.Trip?
+    let ptSituations: [OJPv2.PTSituation]
     let isLoading: Bool
     var results: [OJPv2.TripResult] = []
     var loadPrevious: (() -> Void)?
@@ -88,7 +89,7 @@ struct TripRequestResultView: View {
             }
 
             if let selectedTrip {
-                TripDetailView(trip: selectedTrip)
+                TripDetailView(trip: selectedTrip, ptSituations: ptSituations)
                     .padding()
                     .frame(maxWidth: 400)
             }
@@ -101,11 +102,11 @@ struct TripRequestResultView: View {
 #Preview {
     AsyncView(
         task: {
-            await PreviewMocker.shared.loadTrips().tripResults
+            await PreviewMocker.shared.loadTrips()?.tripResults ?? []
         },
         state: [],
         content: { t in
-            TripRequestResultView(isLoading: false, results: t)
+            TripRequestResultView(ptSituations: [], isLoading: false, results: t)
         }
     )
 }

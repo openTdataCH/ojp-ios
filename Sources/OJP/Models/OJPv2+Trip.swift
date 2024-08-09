@@ -34,10 +34,15 @@ public extension OJPv2 {
     }
 
     struct TripResponseContext: Codable, Sendable {
-        let situations: [SituationTypeChoice]
+        public let situations: [SituationTypeChoice]
 
         public enum CodingKeys: String, CodingKey {
             case situations = "Situations"
+        }
+        
+        public init(from decoder: any Decoder) throws {
+            let container: KeyedDecodingContainer<OJPv2.TripResponseContext.CodingKeys> = try decoder.container(keyedBy: OJPv2.TripResponseContext.CodingKeys.self)
+            self.situations = (try? container.decode([OJPv2.SituationTypeChoice].self, forKey: OJPv2.TripResponseContext.CodingKeys.situations)) ?? []
         }
     }
 
@@ -82,7 +87,7 @@ public extension OJPv2 {
     }
 
     struct SummaryContent: Codable, Sendable {
-        let summaryText: String
+        public let summaryText: String
 
         public enum CodingKeys: String, CodingKey {
             case summaryText = "siri:SummaryText"
@@ -90,7 +95,7 @@ public extension OJPv2 {
     }
     
     struct ReasonContent: Codable, Sendable {
-        let reasonText: String? 
+        public let reasonText: String 
 
         public enum CodingKeys: String, CodingKey {
             case reasonText = "siri:ReasonText"
@@ -98,7 +103,7 @@ public extension OJPv2 {
     }
     
     struct DescriptionContent: Codable, Sendable {
-        let descriptionText: String
+        public let descriptionText: String
 
         public enum CodingKeys: String, CodingKey {
             case descriptionText = "siri:DescriptionText"
@@ -106,7 +111,7 @@ public extension OJPv2 {
     }
     
     struct ConsequenceContent: Codable, Sendable {
-        let consequenceText: String
+        public let consequenceText: String
 
         public enum CodingKeys: String, CodingKey {
             case consequenceText = "siri:ConsequenceText"
@@ -114,7 +119,7 @@ public extension OJPv2 {
     }
     
     struct RecommendationContent: Codable, Sendable {
-        let recommendationText: String
+        public let recommendationText: String
 
         public enum CodingKeys: String, CodingKey {
             case recommendationText = "siri:RecommendationText"
@@ -122,7 +127,7 @@ public extension OJPv2 {
     }
     
     struct RemarkContent: Codable, Sendable {
-        let remarkText: String
+        public let remarkText: String
 
         public enum CodingKeys: String, CodingKey {
             case remarkText = "siri:RemarkText"
@@ -130,7 +135,7 @@ public extension OJPv2 {
     }
     
     struct DurationContent: Codable, Sendable {
-        let durationText: String
+        public let durationText: String
 
         public enum CodingKeys: String, CodingKey {
             case durationText = "siri:DurationText"
@@ -138,13 +143,13 @@ public extension OJPv2 {
     }
 
     struct TextualContent: Codable, Sendable {
-        let summaryContent: SummaryContent
-        let reasonContent: ReasonContent?
-        let descriptionContents: [DescriptionContent]
-        let consequenceContents: [ConsequenceContent]
-        let recommendationContents: [RecommendationContent]
-        let durationContent: DurationContent?
-        let remarkContents: [RemarkContent]
+        public let summaryContent: SummaryContent
+        public let reasonContent: ReasonContent?
+        public let descriptionContents: [DescriptionContent]
+        public let consequenceContents: [ConsequenceContent]
+        public let recommendationContents: [RecommendationContent]
+        public let durationContent: DurationContent?
+        public let remarkContents: [RemarkContent]
 
         public enum CodingKeys: String, CodingKey {
             case summaryContent = "siri:SummaryContent"
@@ -171,7 +176,7 @@ public extension OJPv2 {
     }
 
     struct PassengerInformationAction: Codable, Sendable {
-        let textualContents: [TextualContent]
+        public let textualContents: [TextualContent]
 
         public enum CodingKeys: String, CodingKey {
             case textualContents = "siri:TextualContent"
@@ -179,7 +184,7 @@ public extension OJPv2 {
     }
 
     struct PublishingAction: Codable, Sendable {
-        let passengerInformationActions: [PassengerInformationAction]
+        public let passengerInformationActions: [PassengerInformationAction]
 
         public enum CodingKeys: String, CodingKey {
             case passengerInformationActions = "siri:PassengerInformationAction"
@@ -188,7 +193,7 @@ public extension OJPv2 {
     
     struct PublishingActions: Codable, Sendable {
         
-        let publishingActions: [PublishingAction]
+        public let publishingActions: [PublishingAction]
         
         public enum CodingKeys: String, CodingKey {
             case publishingActions = "siri:PublishingAction"
@@ -196,9 +201,9 @@ public extension OJPv2 {
     }
 
     struct PTSituation: Codable, Sendable {
-        let situationNumber: String
-        let validityPeriod: ValidityPeriod
-        let publishingActions: PublishingActions
+        public let situationNumber: String
+        public let validityPeriod: ValidityPeriod
+        public let publishingActions: PublishingActions
 
         public enum CodingKeys: String, CodingKey {
             case situationNumber = "siri:SituationNumber"
@@ -208,8 +213,8 @@ public extension OJPv2 {
     }
 
     struct ValidityPeriod: Codable, Sendable {
-        let startTime: Date
-        let endTime: Date?
+        public let startTime: Date
+        public let endTime: Date?
 
         public enum CodingKeys: String, CodingKey {
             case startTime = "siri:StartTime"
@@ -610,10 +615,10 @@ public extension OJPv2 {
     // https://vdvde.github.io/OJP/develop/index.html#SituationRefList
     struct SituationFullRefs: Codable, Sendable {
         
-        public let situationFullRef: SituationFullRef
+        public let situationFullRefs: [SituationFullRef]
         
         enum CodingKeys: String, CodingKey {
-            case situationFullRef = "SituationFullRef"
+            case situationFullRefs = "SituationFullRef"
         }
         
     }
