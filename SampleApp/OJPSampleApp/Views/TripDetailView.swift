@@ -87,16 +87,13 @@ struct TripDetailView: View {
 #Preview {
     AsyncView(
         task: {
-            await PreviewMocker.shared.loadTrips()
+            try await PreviewMocker.shared.loadTrips()
         },
-        state: nil,
         content: { tripDelivery in
-            if let tripDelivery,
-               let trip = tripDelivery.tripResults.first
-            {
+            if let trip = tripDelivery.tripResults.first {
                 TripDetailView(trip: trip.trip!, ptSituations: tripDelivery.ptSituations)
             } else {
-                Text("No Trip").frame(minWidth: 200, minHeight: 200)
+                Text("No Trip")
             }
         }
     )

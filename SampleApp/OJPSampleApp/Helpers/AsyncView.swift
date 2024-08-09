@@ -9,25 +9,45 @@ import SwiftUI
 
 /// Conveniene container view for Previews with async state. E.g. when loading mocks
 struct AsyncView<Content: View, S: Sendable>: View {
-    let task: () async -> S
-    @State var state: S
+    enum AsyncViewState: Sendable {
+        case loading
+        case success(S)
+        case failed(Error)
+    }
+
+    let task: () async throws -> S
+    @State var state: AsyncViewState = .loading
     @ViewBuilder let content: (S) -> Content
 
     var body: some View {
-        content(state)
-            .task {
-                state = await task()
+        switch state {
+        case .loading:
+            Text("Loading")
+                .frame(minWidth: 200, minHeight: 200)
+                .task {
+                    do {
+                        state = try await .success(task())
+                    } catch {
+                        state = .failed(error)
+                    }
+                }
+        case let .success(s):
+            content(s)
+        case let .failed(error):
+            VStack {
+                Text("Loading Failed").fontWeight(.bold)
+                Text(error.localizedDescription)
             }
+        }
     }
 }
 
 #Preview {
     AsyncView(
         task: {
-            try? await Task.sleep(nanoseconds: 1_000_000_000)
+            try await Task.sleep(nanoseconds: 1_000_000_000)
             return "Loaded Example"
         },
-        state: "Loading",
         content: { text in
             Text(text)
         }

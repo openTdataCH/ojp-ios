@@ -34,22 +34,18 @@ actor PreviewMocker {
         HTTPURLResponse(url: URL(string: "https://localhost")!, statusCode: statusCode, httpVersion: "1.0", headerFields: [:])!
     }
 
-    func loadTrips(xmlFileName: String = "tr-with-transfer-legs") async -> OJPv2.TripDelivery? {
-        do {
-            return try await OJP(
-                loadingStrategy: Self.mockLoader(xmlFilename: xmlFileName)
-            )
-            .requestTrips(
-                from: .stopPlaceRef(.init(stopPlaceRef: "a",
-                                          name: .init("A"))
-                ),
-                to: .stopPlaceRef(.init(stopPlaceRef: "b",
-                                        name: .init("B"))
-                ),
-                params: .init()
-            )
-        } catch {
-            fatalError(error.localizedDescription)
-        }
+    func loadTrips(xmlFileName: String = "tr-with-transfer-legs") async throws -> OJPv2.TripDelivery {
+        try await OJP(
+            loadingStrategy: Self.mockLoader(xmlFilename: xmlFileName)
+        )
+        .requestTrips(
+            from: .stopPlaceRef(.init(stopPlaceRef: "a",
+                                      name: .init("A"))
+            ),
+            to: .stopPlaceRef(.init(stopPlaceRef: "b",
+                                    name: .init("B"))
+            ),
+            params: .init()
+        )
     }
 }

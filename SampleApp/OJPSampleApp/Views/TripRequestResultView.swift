@@ -102,9 +102,8 @@ struct TripRequestResultView: View {
 #Preview {
     AsyncView(
         task: {
-            await PreviewMocker.shared.loadTrips()?.tripResults ?? []
+            try await PreviewMocker.shared.loadTrips().tripResults
         },
-        state: [],
         content: { t in
             TripRequestResultView(ptSituations: [], isLoading: false, results: t)
         }
