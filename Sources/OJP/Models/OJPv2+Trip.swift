@@ -34,12 +34,18 @@ public extension OJPv2 {
     }
 
     struct TripResponseContext: Codable, Sendable {
-        let situations: [SituationTypeChoice]
+        public let situations: [SituationTypeChoice]
 
         public enum CodingKeys: String, CodingKey {
             case situations = "Situations"
         }
+
+        public init(from decoder: any Decoder) throws {
+            let container: KeyedDecodingContainer<OJPv2.TripResponseContext.CodingKeys> = try decoder.container(keyedBy: OJPv2.TripResponseContext.CodingKeys.self)
+            situations = (try? container.decode([OJPv2.SituationTypeChoice].self, forKey: OJPv2.TripResponseContext.CodingKeys.situations)) ?? []
+        }
     }
+
     struct Situation: Codable, Sendable {
         let situation: SituationTypeChoice
 
@@ -80,29 +86,142 @@ public extension OJPv2 {
         }
     }
 
-    struct PTSituation: Codable, Sendable {
+    struct SummaryContent: Codable, Sendable {
+        public let summaryText: String
 
-        let situationNumber: String
-        let validityPeriod: ValidityPeriod
+        public enum CodingKeys: String, CodingKey {
+            case summaryText = "siri:SummaryText"
+        }
+    }
+
+    struct ReasonContent: Codable, Sendable {
+        public let reasonText: String
+
+        public enum CodingKeys: String, CodingKey {
+            case reasonText = "siri:ReasonText"
+        }
+    }
+
+    struct DescriptionContent: Codable, Sendable {
+        public let descriptionText: String
+
+        public enum CodingKeys: String, CodingKey {
+            case descriptionText = "siri:DescriptionText"
+        }
+    }
+
+    struct ConsequenceContent: Codable, Sendable {
+        public let consequenceText: String
+
+        public enum CodingKeys: String, CodingKey {
+            case consequenceText = "siri:ConsequenceText"
+        }
+    }
+
+    struct RecommendationContent: Codable, Sendable {
+        public let recommendationText: String
+
+        public enum CodingKeys: String, CodingKey {
+            case recommendationText = "siri:RecommendationText"
+        }
+    }
+
+    struct RemarkContent: Codable, Sendable {
+        public let remarkText: String
+
+        public enum CodingKeys: String, CodingKey {
+            case remarkText = "siri:RemarkText"
+        }
+    }
+
+    struct DurationContent: Codable, Sendable {
+        public let durationText: String
+
+        public enum CodingKeys: String, CodingKey {
+            case durationText = "siri:DurationText"
+        }
+    }
+
+    struct TextualContent: Codable, Sendable {
+        public let summaryContent: SummaryContent
+        public let reasonContent: ReasonContent?
+        public let descriptionContents: [DescriptionContent]
+        public let consequenceContents: [ConsequenceContent]
+        public let recommendationContents: [RecommendationContent]
+        public let durationContent: DurationContent?
+        public let remarkContents: [RemarkContent]
+
+        public enum CodingKeys: String, CodingKey {
+            case summaryContent = "siri:SummaryContent"
+            case reasonContent = "siri:ReasonContent"
+            case descriptionContents = "siri:DescriptionContent"
+            case consequenceContents = "siri:ConsequenceContent"
+            case recommendationContents = "siri:RecommendationContent"
+            case durationContent = "siri:DurationContent"
+            case remarkContents = "siri:RemarkContent"
+        }
+
+        public init(from decoder: any Decoder) throws {
+            // optionals for arrays to avoid this bug: https://github.com/CoreOffice/XMLCoder/issues/283
+            let container: KeyedDecodingContainer<OJPv2.TextualContent.CodingKeys> = try decoder.container(keyedBy: OJPv2.TextualContent.CodingKeys.self)
+            summaryContent = try container.decode(OJPv2.SummaryContent.self, forKey: OJPv2.TextualContent.CodingKeys.summaryContent)
+            reasonContent = try? container.decodeIfPresent(OJPv2.ReasonContent.self, forKey: OJPv2.TextualContent.CodingKeys.reasonContent)
+            descriptionContents = (try? container.decode([OJPv2.DescriptionContent].self, forKey: OJPv2.TextualContent.CodingKeys.descriptionContents)) ?? []
+            consequenceContents = (try? container.decode([OJPv2.ConsequenceContent].self, forKey: OJPv2.TextualContent.CodingKeys.consequenceContents)) ?? []
+            recommendationContents = (try? container.decode([OJPv2.RecommendationContent].self, forKey: OJPv2.TextualContent.CodingKeys.recommendationContents)) ?? []
+            durationContent = try? container.decodeIfPresent(OJPv2.DurationContent.self, forKey: OJPv2.TextualContent.CodingKeys.durationContent)
+            remarkContents = (try? container.decode([OJPv2.RemarkContent].self, forKey: OJPv2.TextualContent.CodingKeys.remarkContents)) ?? []
+        }
+    }
+
+    struct PassengerInformationAction: Codable, Sendable {
+        public let textualContents: [TextualContent]
+
+        public enum CodingKeys: String, CodingKey {
+            case textualContents = "siri:TextualContent"
+        }
+    }
+
+    struct PublishingAction: Codable, Sendable {
+        public let passengerInformationActions: [PassengerInformationAction]
+
+        public enum CodingKeys: String, CodingKey {
+            case passengerInformationActions = "siri:PassengerInformationAction"
+        }
+    }
+
+    struct PublishingActions: Codable, Sendable {
+        public let publishingActions: [PublishingAction]
+
+        public enum CodingKeys: String, CodingKey {
+            case publishingActions = "siri:PublishingAction"
+        }
+    }
+
+    struct PTSituation: Codable, Sendable {
+        public let situationNumber: String
+        public let validityPeriod: ValidityPeriod
+        public let publishingActions: PublishingActions
 
         public enum CodingKeys: String, CodingKey {
             case situationNumber = "siri:SituationNumber"
             case validityPeriod = "siri:ValidityPeriod"
+            case publishingActions = "siri:PublishingActions"
         }
     }
 
-
     struct ValidityPeriod: Codable, Sendable {
-        let startTime: Date
-        let endTime: Date?
-        
+        public let startTime: Date
+        public let endTime: Date?
+
         public enum CodingKeys: String, CodingKey {
             case startTime = "siri:StartTime"
             case endTime = "siri:EndTime"
         }
     }
+
     struct RoadSituation: Codable, Sendable {}
-    
+
     /// [Schema documentation on vdvde.github.io](https://vdvde.github.io/OJP/develop/index.html#TripResultStructure)
     struct TripResult: Codable, Identifiable, Sendable {
         public let id: String
@@ -310,7 +429,7 @@ public extension OJPv2 {
         public let legBoard: LegBoard
         public let legsIntermediate: [LegIntermediate]
         public let legAlight: LegAlight
-        public let service: Service
+        public let service: DatedJourney
         public let legTrack: LegTrack?
 
         enum CodingKeys: String, CodingKey {
@@ -479,8 +598,27 @@ public extension OJPv2 {
         }
     }
 
-    // https://vdvde.github.io/OJP/develop/index.html#ContinuousServiceStructure
-    struct Service: Codable, Sendable {
+    struct SituationFullRef: Codable, Sendable {
+        public let participantRef: String
+        public let situationNumber: String
+
+        enum CodingKeys: String, CodingKey {
+            case participantRef = "siri:ParticipantRef" // TODO: where is the doc?
+            case situationNumber = "siri:SituationNumber" // TODO: where is the doc?
+        }
+    }
+
+    // https://vdvde.github.io/OJP/develop/index.html#SituationRefList
+    struct SituationFullRefs: Codable, Sendable {
+        public let situationFullRefs: [SituationFullRef]
+
+        enum CodingKeys: String, CodingKey {
+            case situationFullRefs = "SituationFullRef"
+        }
+    }
+
+    // https://vdvde.github.io/OJP/develop/index.html#DatedJourneyStructure
+    struct DatedJourney: Codable, Sendable {
         // https://vdvde.github.io/OJP/develop/index.html#ConventionalModesOfOperationEnumeration
         public let conventionalModeOfOperation: ConventionalModesOfOperation?
 
@@ -505,6 +643,7 @@ public extension OJPv2 {
         public let originStopPointRef: String?
         public let destinationText: InternationalText?
         public let destinationStopPointRef: String?
+        public let situationFullRefs: SituationFullRefs?
 
         public enum CodingKeys: String, CodingKey {
             case conventionalModeOfOperation = "ConventionalModeOfOperation"
@@ -524,6 +663,7 @@ public extension OJPv2 {
             case originStopPointRef = "OriginStopPointRef"
             case destinationText = "DestinationText"
             case destinationStopPointRef = "DestinationStopPointRef"
+            case situationFullRefs = "SituationFullRefs"
         }
 
         public enum ConventionalModesOfOperation: String, Codable, Sendable {
