@@ -12,6 +12,8 @@ struct TripDetailView: View {
     let trip: OJPv2.Trip
     let ptSituations: [OJPv2.PTSituation]
 
+    @State var selectedPTSituation: OJPv2.PTSituation?
+
     var body: some View {
         List(trip.legs) { leg in
             switch leg.legType {
@@ -64,8 +66,10 @@ struct TripDetailView: View {
                     }
                     ForEach(timedLeg.relevantPtSituations(allPtSituations: ptSituations)) { ptSituation in
                         Divider()
-                        ForEach(ptSituation.allInfos, id: \.self) { infoText in
-                            Text(infoText)
+                        ForEach(ptSituation.allInfos.indices) { index in
+                            Text(ptSituation.allInfos[index])
+                        }.onTapGesture {
+                            selectedPTSituation = ptSituation
                         }
                     }
 
@@ -80,6 +84,19 @@ struct TripDetailView: View {
                 )
                 .listRowSeparator(.hidden)
             }
+        }
+        .sheet(item: $selectedPTSituation) { situation in
+            VStack {
+                HStack {
+                    Spacer()
+                    Button {
+                        selectedPTSituation = nil
+                    } label: {
+                        Image(systemName: "xmark")
+                    }
+                }
+                PTSituationDetailView(ptSituation: situation)
+            }.padding()
         }
     }
 }
@@ -105,11 +122,7 @@ extension OJPv2.LegIntermediate: Identifiable {
     }
 }
 
-extension OJPv2.PTSituation: Identifiable {
-    public var id: String {
-        situationNumber
-    }
-
+extension OJPv2.PTSituation {
     var allInfos: [String] {
         var infos: [String] = []
         for publishingAction in publishingActions.publishingActions {
