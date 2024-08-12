@@ -141,4 +141,20 @@ final class TripRequestTests: XCTestCase {
             throw error
         }
     }
+
+    func testSituationsMapping() async throws {
+        let xmlData = try TestHelpers.loadXML(xmlFilename: "tr-fribourg-basel")
+        do {
+            guard case let .trip(tripDelivery) = try await OJPDecoder.parseXML(xmlData).response?.serviceDelivery.delivery else {
+                return XCTFail("unexpected empty")
+            }
+            guard let responseContext = tripDelivery.tripResponseContext else {
+                return XCTFail("expected to have a tripResponseContext")
+            }
+            let ptSituations = tripDelivery.ptSituations
+            XCTAssertEqual(ptSituations.count, 2)
+        } catch {
+            throw error
+        }
+    }
 }
