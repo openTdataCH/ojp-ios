@@ -153,6 +153,28 @@ final class TripRequestTests: XCTestCase {
             }
             let ptSituations = tripDelivery.ptSituations
             XCTAssertEqual(ptSituations.count, 2)
+            XCTAssertEqual(ptSituations.map(\.situationNumber), responseContext.situations.ptSituations?.map(\.situationNumber))
+
+            if let firstTrip = tripDelivery.tripResults.first?.trip {
+                if case let .timed(firstLeg) = firstTrip.legs.first?.legType {
+                    let situations = firstLeg.relevantPtSituations(allPtSituations: ptSituations)
+                    XCTAssertEqual(situations.count, 1)
+                    XCTAssertEqual(situations.first?.situationNumber, "ch:1:sstid:100001:dccd662a-e519-468b-b06b-1fdb25727282-1")
+                } else {
+                    XCTFail()
+                }
+
+                if case let .timed(lastLeg) = firstTrip.legs.last?.legType {
+                    let situations = lastLeg.relevantPtSituations(allPtSituations: ptSituations)
+                    XCTAssertEqual(situations.count, 2)
+                    XCTAssertEqual(situations.map(\.situationNumber), [
+                        "ch:1:sstid:100001:dccd662a-e519-468b-b06b-1fdb25727282-1",
+                        "ch:1:sstid:100001:dfc1dfd3-bbe0-441c-89df-7a309eb7b358-1",
+                    ])
+                } else {
+                    XCTFail()
+                }
+            }
         } catch {
             throw error
         }

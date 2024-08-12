@@ -85,15 +85,9 @@ public extension OJPv2.Trip {
 // MARK: - Situations
 
 public extension OJPv2.TripDelivery {
+    /// convenience property for ``OJPv2/PTSituation``.
     var ptSituations: [OJPv2.PTSituation] {
-        tripResponseContext?.situations.compactMap { situation in
-            switch situation {
-            case let .ptSituation(ptSituation):
-                ptSituation
-            case .roadSituation:
-                nil
-            }
-        } ?? []
+        tripResponseContext?.situations.ptSituations ?? []
     }
 }
 

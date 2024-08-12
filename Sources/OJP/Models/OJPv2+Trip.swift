@@ -34,55 +34,21 @@ public extension OJPv2 {
     }
 
     struct TripResponseContext: Codable, Sendable {
-        public let situations: [SituationTypeChoice]
+        public let situations: Situation
 
         public enum CodingKeys: String, CodingKey {
             case situations = "Situations"
         }
-
-        public init(from decoder: any Decoder) throws {
-            let container: KeyedDecodingContainer<OJPv2.TripResponseContext.CodingKeys> = try decoder.container(keyedBy: OJPv2.TripResponseContext.CodingKeys.self)
-            situations = (try? container.decode([OJPv2.SituationTypeChoice].self, forKey: OJPv2.TripResponseContext.CodingKeys.situations)) ?? []
-        }
-    }
-
-    struct Situation: Codable, Sendable {
-        let situation: SituationTypeChoice
-
-        public init(from decoder: any Decoder) throws {
-            situation = try SituationTypeChoice(from: decoder)
-        }
     }
 
     /// https://vdvde.github.io/OJP/develop/index.html#SituationsStructure
-    enum SituationTypeChoice: Codable, Sendable {
-        case ptSituation(PTSituation)
-        case roadSituation(RoadSituation)
+    struct Situation: Codable, Sendable {
+        let ptSituations: [PTSituation]?
+        let roadSituations: [RoadSituation]?
 
         enum CodingKeys: String, CodingKey {
-            case ptSituation = "PtSituation"
-            case roadSituation = "RoadSituation"
-        }
-
-        public init(from decoder: any Decoder) throws {
-            let container = try decoder.container(keyedBy: CodingKeys.self)
-            if container.contains(.ptSituation) {
-                self = try .ptSituation(
-                    container.decode(
-                        PTSituation.self,
-                        forKey: .ptSituation
-                    )
-                )
-            } else if container.contains(.roadSituation) {
-                self = try .roadSituation(
-                    container.decode(
-                        RoadSituation.self,
-                        forKey: .roadSituation
-                    )
-                )
-            } else {
-                throw OJPSDKError.notImplemented()
-            }
+            case ptSituations = "PtSituation"
+            case roadSituations = "RoadSituation"
         }
     }
 
@@ -163,14 +129,14 @@ public extension OJPv2 {
 
         public init(from decoder: any Decoder) throws {
             // optionals for arrays to avoid this bug: https://github.com/CoreOffice/XMLCoder/issues/283
-            let container: KeyedDecodingContainer<OJPv2.TextualContent.CodingKeys> = try decoder.container(keyedBy: OJPv2.TextualContent.CodingKeys.self)
-            summaryContent = try container.decode(OJPv2.SummaryContent.self, forKey: OJPv2.TextualContent.CodingKeys.summaryContent)
-            reasonContent = try? container.decodeIfPresent(OJPv2.ReasonContent.self, forKey: OJPv2.TextualContent.CodingKeys.reasonContent)
+            let container = try decoder.container(keyedBy: CodingKeys.self)
+            summaryContent = try container.decode(OJPv2.SummaryContent.self, forKey: CodingKeys.summaryContent)
+            reasonContent = (try? container.decodeIfPresent(OJPv2.ReasonContent.self, forKey: CodingKeys.reasonContent)) ?? nil
             descriptionContents = (try? container.decode([OJPv2.DescriptionContent].self, forKey: OJPv2.TextualContent.CodingKeys.descriptionContents)) ?? []
-            consequenceContents = (try? container.decode([OJPv2.ConsequenceContent].self, forKey: OJPv2.TextualContent.CodingKeys.consequenceContents)) ?? []
-            recommendationContents = (try? container.decode([OJPv2.RecommendationContent].self, forKey: OJPv2.TextualContent.CodingKeys.recommendationContents)) ?? []
-            durationContent = try? container.decodeIfPresent(OJPv2.DurationContent.self, forKey: OJPv2.TextualContent.CodingKeys.durationContent)
-            remarkContents = (try? container.decode([OJPv2.RemarkContent].self, forKey: OJPv2.TextualContent.CodingKeys.remarkContents)) ?? []
+            consequenceContents = try container.decode([OJPv2.ConsequenceContent].self, forKey: CodingKeys.consequenceContents)
+            recommendationContents = try container.decode([OJPv2.RecommendationContent].self, forKey: CodingKeys.recommendationContents)
+            durationContent = try container.decodeIfPresent(OJPv2.DurationContent.self, forKey: CodingKeys.durationContent)
+            remarkContents = (try? container.decodeIfPresent([OJPv2.RemarkContent].self, forKey: CodingKeys.remarkContents)) ?? []
         }
     }
 
@@ -934,5 +900,91 @@ public extension OJPv2 {
         case before(Int)
         case after(Int)
         case minimum(Int)
+    }
+}
+
+// MARK: - A bit more convenience for the Situations
+
+extension OJPv2.PTSituation: Identifiable {
+    public var id: String { situationNumber }
+}
+
+extension OJPv2.PublishingActions: Hashable {
+    public func hash(into hasher: inout Hasher) {
+        for publishingAction in publishingActions {
+            hasher.combine(publishingAction)
+        }
+    }
+}
+
+extension OJPv2.PublishingAction: Hashable {
+    public func hash(into hasher: inout Hasher) {
+        passengerInformationActions.forEach { hasher.combine($0) }
+    }
+}
+
+extension OJPv2.PassengerInformationAction: Hashable {
+    public func hash(into hasher: inout Hasher) {
+        for textualContent in textualContents {
+            hasher.combine(textualContent)
+        }
+    }
+}
+
+extension OJPv2.TextualContent: Hashable {
+    public static func == (lhs: OJPv2.TextualContent, rhs: OJPv2.TextualContent) -> Bool {
+        lhs.hashValue == rhs.hashValue
+    }
+
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(summaryContent)
+        hasher.combine(reasonContent)
+        hasher.combine(descriptionContents)
+        hasher.combine(consequenceContents)
+        hasher.combine(recommendationContents)
+        hasher.combine(durationContent)
+        hasher.combine(remarkContents)
+    }
+}
+
+extension OJPv2.SummaryContent: Hashable {
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(summaryText)
+    }
+}
+
+extension OJPv2.ReasonContent: Hashable {
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(reasonText)
+    }
+}
+
+extension OJPv2.DescriptionContent: Hashable {
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(descriptionText)
+    }
+}
+
+extension OJPv2.ConsequenceContent: Hashable {
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(consequenceText)
+    }
+}
+
+extension OJPv2.RecommendationContent: Hashable {
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(recommendationText)
+    }
+}
+
+extension OJPv2.RemarkContent: Hashable {
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(remarkText)
+    }
+}
+
+extension OJPv2.DurationContent: Hashable {
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(durationText)
     }
 }
