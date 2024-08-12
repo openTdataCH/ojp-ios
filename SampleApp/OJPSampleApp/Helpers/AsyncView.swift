@@ -23,7 +23,7 @@ struct AsyncView<Content: View, S: Sendable>: View {
         switch state {
         case .loading:
             Text("Loading")
-                .frame(minWidth: 200, minHeight: 200)
+                .frame(minWidth: 200, maxWidth: .infinity, minHeight: 200, maxHeight: .infinity)
                 .task {
                     do {
                         state = try await .success(task())

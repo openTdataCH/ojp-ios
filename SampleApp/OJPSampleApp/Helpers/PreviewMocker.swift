@@ -39,11 +39,17 @@ actor PreviewMocker {
             loadingStrategy: Self.mockLoader(xmlFilename: xmlFileName)
         )
         .requestTrips(
-            from: .stopPlaceRef(.init(stopPlaceRef: "a",
-                                      name: .init("A"))
+            from: .stopPlaceRef(
+                .init(
+                    stopPlaceRef: "a",
+                    name: .init("A")
+                )
             ),
-            to: .stopPlaceRef(.init(stopPlaceRef: "b",
-                                    name: .init("B"))
+            to: .stopPlaceRef(
+                .init(
+                    stopPlaceRef: "b",
+                    name: .init("B")
+                )
             ),
             params: .init()
         )
