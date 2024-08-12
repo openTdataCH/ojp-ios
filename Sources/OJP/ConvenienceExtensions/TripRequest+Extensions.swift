@@ -81,3 +81,26 @@ public extension OJPv2.Trip {
         legs.count
     }
 }
+
+// MARK: - Situations
+
+public extension OJPv2.TripDelivery {
+    var ptSituations: [OJPv2.PTSituation] {
+        tripResponseContext?.situations.compactMap { situation in
+            switch situation {
+            case let .ptSituation(ptSituation):
+                ptSituation
+            case .roadSituation:
+                nil
+            }
+        } ?? []
+    }
+}
+
+public extension OJPv2.TimedLeg {
+    func relevantPtSituations(allPtSituations: [OJPv2.PTSituation]) -> [OJPv2.PTSituation] {
+        service.situationFullRefs?.situationFullRefs.flatMap { serviceSituationRef in
+            allPtSituations.filter { $0.situationNumber == serviceSituationRef.situationNumber }
+        } ?? []
+    }
+}

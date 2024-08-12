@@ -146,24 +146,3 @@ extension OJPv2.PTSituation: Identifiable {
         return infos
     }
 }
-
-extension OJPv2.TripDelivery {
-    var ptSituations: [OJPv2.PTSituation] {
-        tripResponseContext?.situations.compactMap { situation in
-            switch situation {
-            case let .ptSituation(pTSituation):
-                pTSituation
-            case .roadSituation:
-                nil
-            }
-        } ?? []
-    }
-}
-
-extension OJPv2.TimedLeg {
-    func relevantPtSituations(allPtSituations: [OJPv2.PTSituation]) -> [OJPv2.PTSituation] {
-        service.situationFullRefs?.situationFullRefs.flatMap { serviceSituationRef in
-            allPtSituations.filter { $0.situationNumber == serviceSituationRef.situationNumber }
-        } ?? []
-    }
-}
