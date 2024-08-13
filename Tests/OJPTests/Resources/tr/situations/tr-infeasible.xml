@@ -1,0 +1,588 @@
+<?xml version="1.0" encoding="utf-8"?>
+<OJP xmlns:siri="http://www.siri.org.uk/siri" version="2.0" xmlns="http://www.vdv.de/ojp">
+    <OJPResponse>
+        <siri:ServiceDelivery>
+            <siri:ResponseTimestamp>2024-08-06T16:44:17.3216625+02:00</siri:ResponseTimestamp>
+            <siri:ProducerRef>MENTZ</siri:ProducerRef>
+            <OJPTripDelivery>
+                <siri:ResponseTimestamp>2024-08-06T16:44:17.3216635+02:00</siri:ResponseTimestamp>
+                <siri:RequestMessageRef>ec398dc6-cdb5-47df-bbf7-ae36b60fe67f</siri:RequestMessageRef>
+                <siri:DefaultLanguage>de</siri:DefaultLanguage>
+                <CalcTime>75</CalcTime>
+                <TripResponseContext>
+                    <Places>
+                        <Place>
+                            <StopPlace>
+                                <StopPlaceRef>8014459</StopPlaceRef>
+                                <StopPlaceName>
+                                    <Text xml:lang="de">Wyhlen</Text>
+                                </StopPlaceName>
+                                <PrivateCode>
+                                    <System>EFA</System>
+                                    <Value>105874:0:2</Value>
+                                </PrivateCode>
+                                <TopographicPlaceRef>8336105:3</TopographicPlaceRef>
+                            </StopPlace>
+                            <Name>
+                                <Text xml:lang="de">Wyhlen</Text>
+                            </Name>
+                            <GeoPosition>
+                                <siri:Longitude>7.69092</siri:Longitude>
+                                <siri:Latitude>47.54633</siri:Latitude>
+                            </GeoPosition>
+                        </Place>
+                        <Place>
+                            <StopPlace>
+                                <StopPlaceRef>8500090</StopPlaceRef>
+                                <StopPlaceName>
+                                    <Text xml:lang="de">Basel Bad Bf</Text>
+                                </StopPlaceName>
+                                <PrivateCode>
+                                    <System>EFA</System>
+                                    <Value>106562:0:8</Value>
+                                </PrivateCode>
+                                <TopographicPlaceRef>23005701:2</TopographicPlaceRef>
+                            </StopPlace>
+                            <Name>
+                                <Text xml:lang="de">Basel Bad Bf</Text>
+                            </Name>
+                            <GeoPosition>
+                                <siri:Longitude>7.60692</siri:Longitude>
+                                <siri:Latitude>47.56731</siri:Latitude>
+                            </GeoPosition>
+                        </Place>
+                        <Place>
+                            <StopPlace>
+                                <StopPlaceRef>8592321</StopPlaceRef>
+                                <StopPlaceName>
+                                    <Text xml:lang="de">Badischer Bahnhof</Text>
+                                </StopPlaceName>
+                                <PrivateCode>
+                                    <System>EFA</System>
+                                    <Value>129333:0:E</Value>
+                                </PrivateCode>
+                                <TopographicPlaceRef>23005701:2</TopographicPlaceRef>
+                            </StopPlace>
+                            <Name>
+                                <Text xml:lang="de">Badischer Bahnhof</Text>
+                            </Name>
+                            <GeoPosition>
+                                <siri:Longitude>7.6076</siri:Longitude>
+                                <siri:Latitude>47.56613</siri:Latitude>
+                            </GeoPosition>
+                        </Place>
+                        <Place>
+                            <StopPlace>
+                                <StopPlaceRef>8589456</StopPlaceRef>
+                                <StopPlaceName>
+                                    <Text xml:lang="de">Habermatten</Text>
+                                </StopPlaceName>
+                                <PrivateCode>
+                                    <System>EFA</System>
+                                    <Value>126737:0:10000</Value>
+                                </PrivateCode>
+                                <TopographicPlaceRef>23005703:1</TopographicPlaceRef>
+                            </StopPlace>
+                            <Name>
+                                <Text xml:lang="de">Habermatten</Text>
+                            </Name>
+                            <GeoPosition>
+                                <siri:Longitude>7.63055</siri:Longitude>
+                                <siri:Latitude>47.57326</siri:Latitude>
+                            </GeoPosition>
+                        </Place>
+                    </Places>
+                    <Situations>
+                        <PtSituation>
+                            <siri:CreationTime>2024-03-28T06:37:00Z</siri:CreationTime>
+                            <siri:ParticipantRef>ski-ddip-out-sx_test</siri:ParticipantRef>
+                            <siri:SituationNumber>ch:1:sstid:100001:dfc1dfd3-bbe0-441c-89df-7a309eb7b358-1</siri:SituationNumber>
+                            <siri:Version>3</siri:Version>
+                            <siri:Source>
+                                <siri:SourceType>other</siri:SourceType>
+                            </siri:Source>
+                            <siri:ValidityPeriod>
+                                <siri:StartTime>2024-07-22T18:30:00Z</siri:StartTime>
+                                <siri:EndTime>2024-08-20T03:00:00Z</siri:EndTime>
+                            </siri:ValidityPeriod>
+                            <siri:AlertCause>unknown</siri:AlertCause>
+                            <siri:UnknownReason>unknown</siri:UnknownReason>
+                            <siri:Priority>3</siri:Priority>
+                            <siri:ScopeType>stopPoint</siri:ScopeType>
+                            <siri:Language>de</siri:Language>
+                            <siri:Affects>
+                                <siri:StopPoints>
+                                    <siri:AffectedStopPoint>
+                                        <siri:StopPointRef>8500010</siri:StopPointRef>
+                                    </siri:AffectedStopPoint>
+                                    <siri:AffectedStopPoint>
+                                        <siri:StopPointRef>8500090</siri:StopPointRef>
+                                    </siri:AffectedStopPoint>
+                                </siri:StopPoints>
+                                <siri:VehicleJourneys />
+                            </siri:Affects>
+                            <siri:Consequences>
+                                <siri:Consequence>
+                                    <siri:Blocking>
+                                        <siri:JourneyPlanner>true</siri:JourneyPlanner>
+                                    </siri:Blocking>
+                                </siri:Consequence>
+                            </siri:Consequences>
+                            <siri:PublishingActions>
+                                <siri:PublishingAction>
+                                    <siri:PassengerInformationAction>
+                                        <siri:RecordedAtTime>0001-01-01T00:00:00</siri:RecordedAtTime>
+                                        <siri:TextualContent>
+                                            <siri:SummaryContent>
+                                                <siri:SummaryText xml:lang="de">Der Bahnverkehr zwischen Basel SBB und Basel Bad Bf ist eingeschränkt.</siri:SummaryText>
+                                            </siri:SummaryContent>
+                                            <siri:ReasonContent>
+                                                <siri:ReasonText xml:lang="de">Der Grund dafür sind Bauarbeiten.</siri:ReasonText>
+                                            </siri:ReasonContent>
+                                            <siri:DescriptionContent />
+                                            <siri:ConsequenceContent>
+                                                <siri:ConsequenceText xml:lang="de">Es ist ein geänderter Fahrplan zu erwarten.</siri:ConsequenceText>
+                                            </siri:ConsequenceContent>
+                                            <siri:RecommendationContent>
+                                                <siri:RecommendationText xml:lang="de">Wir empfehlen, kurz vor jeder Fahrt den Online-Fahrplan zu konsultieren.</siri:RecommendationText>
+                                            </siri:RecommendationContent>
+                                            <siri:DurationContent>
+                                                <siri:DurationText xml:lang="de">Die Einschränkung dauert von 22.07.2024, 20:30 bis 23.07.2024, 05:00. Die Einschränkung dauert von 19.08.2024, 20:30 bis 20.08.2024, 05:00.</siri:DurationText>
+                                            </siri:DurationContent>
+                                            <siri:RemarkContent />
+                                        </siri:TextualContent>
+                                    </siri:PassengerInformationAction>
+                                </siri:PublishingAction>
+                            </siri:PublishingActions>
+                        </PtSituation>
+                    </Situations>
+                </TripResponseContext>
+                <TripResult>
+                    <Id>ID-737BC6F0-5B6B-47E4-A281-FB250F5C8092</Id>
+                    <Trip>
+                        <Id>ID-737BC6F0-5B6B-47E4-A281-FB250F5C8092</Id>
+                        <Duration>-PT4M</Duration>
+                        <StartTime>2024-08-06T14:53:00Z</StartTime>
+                        <EndTime>2024-08-06T14:49:00Z</EndTime>
+                        <Transfers>1</Transfers>
+                        <Leg>
+                            <Id>1</Id>
+                            <Duration>PT8M</Duration>
+                            <TimedLeg>
+                                <LegBoard>
+                                    <siri:StopPointRef>8014459</siri:StopPointRef>
+                                    <StopPointName>
+                                        <Text xml:lang="de">Wyhlen</Text>
+                                    </StopPointName>
+                                    <PlannedQuay>
+                                        <Text xml:lang="de">2</Text>
+                                    </PlannedQuay>
+                                    <EstimatedQuay>
+                                        <Text xml:lang="de">2</Text>
+                                    </EstimatedQuay>
+                                    <ServiceDeparture>
+                                        <TimetabledTime>2024-08-06T14:30:00Z</TimetabledTime>
+                                        <EstimatedTime>2024-08-06T14:53:00Z</EstimatedTime>
+                                    </ServiceDeparture>
+                                    <Order>1</Order>
+                                </LegBoard>
+                                <LegAlight>
+                                    <siri:StopPointRef>8500090</siri:StopPointRef>
+                                    <StopPointName>
+                                        <Text xml:lang="de">Basel Bad Bf</Text>
+                                    </StopPointName>
+                                    <NameSuffix>
+                                        <Text xml:lang="de">PLATFORM_NOT_WHEELCHAIR_ACCESSIBLE</Text>
+                                    </NameSuffix>
+                                    <PlannedQuay>
+                                        <Text xml:lang="de">8</Text>
+                                    </PlannedQuay>
+                                    <EstimatedQuay>
+                                        <Text xml:lang="de">8</Text>
+                                    </EstimatedQuay>
+                                    <ServiceArrival>
+                                        <TimetabledTime>2024-08-06T14:38:00Z</TimetabledTime>
+                                        <EstimatedTime>2024-08-06T15:01:00Z</EstimatedTime>
+                                    </ServiceArrival>
+                                    <Order>3</Order>
+                                </LegAlight>
+                                <Service>
+                                    <Mode>
+                                        <PtMode>rail</PtMode>
+                                        <siri:RailSubmode>regionalRail</siri:RailSubmode>
+                                        <Name>
+                                            <Text xml:lang="de">Zug</Text>
+                                        </Name>
+                                        <ShortName>
+                                            <Text xml:lang="de">RB</Text>
+                                        </ShortName>
+                                    </Mode>
+                                    <ConventionalModeOfOperation>scheduled</ConventionalModeOfOperation>
+                                    <TrainNumber>17272</TrainNumber>
+                                    <siri:LineRef>ojp:91030:H</siri:LineRef>
+                                    <siri:OperatorRef>800693</siri:OperatorRef>
+                                    <PublicCode>Regionalbahn</PublicCode>
+                                    <PublishedServiceName>
+                                        <Text xml:lang="de">30</Text>
+                                    </PublishedServiceName>
+                                    <ProductCategory>
+                                        <Name>
+                                            <Text xml:lang="de">Zug</Text>
+                                        </Name>
+                                        <ShortName>
+                                            <Text xml:lang="de">RB</Text>
+                                        </ShortName>
+                                        <ProductCategoryRef>24</ProductCategoryRef>
+                                    </ProductCategory>
+                                    <siri:DirectionRef>H</siri:DirectionRef>
+                                    <OperatingDayRef>2024-08-06</OperatingDayRef>
+                                    <DestinationStopPointRef>8500090</DestinationStopPointRef>
+                                    <OriginText>
+                                        <Text xml:lang="de">n/a</Text>
+                                    </OriginText>
+                                    <DestinationText>
+                                        <Text xml:lang="de">Basel Bad Bf</Text>
+                                    </DestinationText>
+                                    <JourneyRef>ojp-91-30-H-j24-1-38-TA</JourneyRef>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text xml:lang="de">Möglicherweise nur 2. Klasse</Text>
+                                        </UserText>
+                                        <Code>A__ZM</Code>
+                                    </Attribute>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text xml:lang="de">Kein Niederflur</Text>
+                                        </UserText>
+                                        <Code>A__PH</Code>
+                                    </Attribute>
+                                    <SituationFullRefs>
+                                        <SituationFullRef>
+                                            <siri:ParticipantRef>ski-ddip-out-sx_test</siri:ParticipantRef>
+                                            <siri:SituationNumber>ch:1:sstid:100001:dfc1dfd3-bbe0-441c-89df-7a309eb7b358-1</siri:SituationNumber>
+                                        </SituationFullRef>
+                                    </SituationFullRefs>
+                                </Service>
+                            </TimedLeg>
+                        </Leg>
+                        <Leg>
+                            <Id>2</Id>
+                            <Duration>PT6M</Duration>
+                            <TransferLeg>
+                                <TransferType>walk</TransferType>
+                                <LegStart>
+                                    <siri:StopPointRef>8500090</siri:StopPointRef>
+                                    <Name>
+                                        <Text xml:lang="de">Basel Bad Bf</Text>
+                                    </Name>
+                                </LegStart>
+                                <LegEnd>
+                                    <siri:StopPointRef>8592321</siri:StopPointRef>
+                                    <Name>
+                                        <Text xml:lang="de">Basel, Badischer Bahnhof</Text>
+                                    </Name>
+                                </LegEnd>
+                                <Duration>PT6M</Duration>
+                            </TransferLeg>
+                        </Leg>
+                        <Leg>
+                            <Id>3</Id>
+                            <Duration>PT5M</Duration>
+                            <TimedLeg>
+                                <LegBoard>
+                                    <siri:StopPointRef>ch:1:sloid:92321:2:31</siri:StopPointRef>
+                                    <StopPointName>
+                                        <Text xml:lang="de">Basel, Badischer Bahnhof</Text>
+                                    </StopPointName>
+                                    <PlannedQuay>
+                                        <Text xml:lang="de">E</Text>
+                                    </PlannedQuay>
+                                    <EstimatedQuay>
+                                        <Text xml:lang="de">E</Text>
+                                    </EstimatedQuay>
+                                    <NameSuffix>
+                                        <Text xml:lang="de">PLATFORM_NOT_WHEELCHAIR_ACCESSIBLE</Text>
+                                    </NameSuffix>
+                                    <ServiceDeparture>
+                                        <TimetabledTime>2024-08-06T14:44:00Z</TimetabledTime>
+                                        <EstimatedTime>2024-08-06T14:44:00Z</EstimatedTime>
+                                    </ServiceDeparture>
+                                    <Order>1</Order>
+                                </LegBoard>
+                                <LegAlight>
+                                    <siri:StopPointRef>ch:1:sloid:89456:1:1</siri:StopPointRef>
+                                    <StopPointName>
+                                        <Text xml:lang="de">Riehen, Habermatten</Text>
+                                    </StopPointName>
+                                    <ServiceArrival>
+                                        <TimetabledTime>2024-08-06T14:49:00Z</TimetabledTime>
+                                        <EstimatedTime>2024-08-06T14:49:00Z</EstimatedTime>
+                                    </ServiceArrival>
+                                    <Order>4</Order>
+                                </LegAlight>
+                                <Service>
+                                    <Mode>
+                                        <PtMode>tram</PtMode>
+                                        <siri:TramSubmode>cityTram</siri:TramSubmode>
+                                        <Name>
+                                            <Text xml:lang="de">Tram</Text>
+                                        </Name>
+                                        <ShortName>
+                                            <Text xml:lang="de">T</Text>
+                                        </ShortName>
+                                    </Mode>
+                                    <ConventionalModeOfOperation>scheduled</ConventionalModeOfOperation>
+                                    <TrainNumber>6183</TrainNumber>
+                                    <siri:LineRef>ojp:91006:_x0020_</siri:LineRef>
+                                    <siri:OperatorRef>823</siri:OperatorRef>
+                                    <PublicCode>Tram</PublicCode>
+                                    <PublishedServiceName>
+                                        <Text xml:lang="de">6</Text>
+                                    </PublishedServiceName>
+                                    <ProductCategory>
+                                        <Name>
+                                            <Text xml:lang="de">Tram</Text>
+                                        </Name>
+                                        <ShortName>
+                                            <Text xml:lang="de">T</Text>
+                                        </ShortName>
+                                        <ProductCategoryRef>2</ProductCategoryRef>
+                                    </ProductCategory>
+                                    <siri:DirectionRef>H</siri:DirectionRef>
+                                    <OperatingDayRef>2024-08-06</OperatingDayRef>
+                                    <DestinationStopPointRef>8589455</DestinationStopPointRef>
+                                    <OriginText>
+                                        <Text xml:lang="de">n/a</Text>
+                                    </OriginText>
+                                    <DestinationText>
+                                        <Text xml:lang="de">Riehen, Grenze</Text>
+                                    </DestinationText>
+                                    <JourneyRef>ojp-91-6-_-j24-1-1753-TA</JourneyRef>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text xml:lang="de">Kein Niederflur</Text>
+                                        </UserText>
+                                        <Code>A__PH</Code>
+                                    </Attribute>
+                                </Service>
+                            </TimedLeg>
+                        </Leg>
+                        <Infeasible>true</Infeasible>
+                    </Trip>
+                </TripResult>
+                <TripResult>
+                    <Id>ID-14231B47-D400-4E0A-98FF-8093D0F80D52</Id>
+                    <Trip>
+                        <Id>ID-14231B47-D400-4E0A-98FF-8093D0F80D52</Id>
+                        <Duration>PT19M6S</Duration>
+                        <StartTime>2024-08-06T14:53:00Z</StartTime>
+                        <EndTime>2024-08-06T15:12:06Z</EndTime>
+                        <Transfers>1</Transfers>
+                        <Leg>
+                            <Id>1</Id>
+                            <Duration>PT8M</Duration>
+                            <TimedLeg>
+                                <LegBoard>
+                                    <siri:StopPointRef>8014459</siri:StopPointRef>
+                                    <StopPointName>
+                                        <Text xml:lang="de">Wyhlen</Text>
+                                    </StopPointName>
+                                    <PlannedQuay>
+                                        <Text xml:lang="de">2</Text>
+                                    </PlannedQuay>
+                                    <EstimatedQuay>
+                                        <Text xml:lang="de">2</Text>
+                                    </EstimatedQuay>
+                                    <ServiceDeparture>
+                                        <TimetabledTime>2024-08-06T14:30:00Z</TimetabledTime>
+                                        <EstimatedTime>2024-08-06T14:53:00Z</EstimatedTime>
+                                    </ServiceDeparture>
+                                    <Order>1</Order>
+                                </LegBoard>
+                                <LegAlight>
+                                    <siri:StopPointRef>8500090</siri:StopPointRef>
+                                    <StopPointName>
+                                        <Text xml:lang="de">Basel Bad Bf</Text>
+                                    </StopPointName>
+                                    <NameSuffix>
+                                        <Text xml:lang="de">PLATFORM_NOT_WHEELCHAIR_ACCESSIBLE</Text>
+                                    </NameSuffix>
+                                    <PlannedQuay>
+                                        <Text xml:lang="de">8</Text>
+                                    </PlannedQuay>
+                                    <EstimatedQuay>
+                                        <Text xml:lang="de">8</Text>
+                                    </EstimatedQuay>
+                                    <ServiceArrival>
+                                        <TimetabledTime>2024-08-06T14:38:00Z</TimetabledTime>
+                                        <EstimatedTime>2024-08-06T15:01:00Z</EstimatedTime>
+                                    </ServiceArrival>
+                                    <Order>3</Order>
+                                </LegAlight>
+                                <Service>
+                                    <Mode>
+                                        <PtMode>rail</PtMode>
+                                        <siri:RailSubmode>regionalRail</siri:RailSubmode>
+                                        <Name>
+                                            <Text xml:lang="de">Zug</Text>
+                                        </Name>
+                                        <ShortName>
+                                            <Text xml:lang="de">RB</Text>
+                                        </ShortName>
+                                    </Mode>
+                                    <ConventionalModeOfOperation>scheduled</ConventionalModeOfOperation>
+                                    <TrainNumber>17272</TrainNumber>
+                                    <siri:LineRef>ojp:91030:H</siri:LineRef>
+                                    <siri:OperatorRef>800693</siri:OperatorRef>
+                                    <PublicCode>Regionalbahn</PublicCode>
+                                    <PublishedServiceName>
+                                        <Text xml:lang="de">30</Text>
+                                    </PublishedServiceName>
+                                    <ProductCategory>
+                                        <Name>
+                                            <Text xml:lang="de">Zug</Text>
+                                        </Name>
+                                        <ShortName>
+                                            <Text xml:lang="de">RB</Text>
+                                        </ShortName>
+                                        <ProductCategoryRef>24</ProductCategoryRef>
+                                    </ProductCategory>
+                                    <siri:DirectionRef>H</siri:DirectionRef>
+                                    <OperatingDayRef>2024-08-06</OperatingDayRef>
+                                    <DestinationStopPointRef>8500090</DestinationStopPointRef>
+                                    <OriginText>
+                                        <Text xml:lang="de">n/a</Text>
+                                    </OriginText>
+                                    <DestinationText>
+                                        <Text xml:lang="de">Basel Bad Bf</Text>
+                                    </DestinationText>
+                                    <JourneyRef>ojp-91-30-H-j24-1-38-TA</JourneyRef>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text xml:lang="de">Möglicherweise nur 2. Klasse</Text>
+                                        </UserText>
+                                        <Code>A__ZM</Code>
+                                    </Attribute>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text xml:lang="de">Kein Niederflur</Text>
+                                        </UserText>
+                                        <Code>A__PH</Code>
+                                    </Attribute>
+                                    <SituationFullRefs>
+                                        <SituationFullRef>
+                                            <siri:ParticipantRef>ski-ddip-out-sx_test</siri:ParticipantRef>
+                                            <siri:SituationNumber>ch:1:sstid:100001:dfc1dfd3-bbe0-441c-89df-7a309eb7b358-1</siri:SituationNumber>
+                                        </SituationFullRef>
+                                    </SituationFullRefs>
+                                </Service>
+                            </TimedLeg>
+                        </Leg>
+                        <Leg>
+                            <Id>2</Id>
+                            <Duration>PT6M</Duration>
+                            <TransferLeg>
+                                <TransferType>walk</TransferType>
+                                <LegStart>
+                                    <siri:StopPointRef>8500090</siri:StopPointRef>
+                                    <Name>
+                                        <Text xml:lang="de">Basel Bad Bf</Text>
+                                    </Name>
+                                </LegStart>
+                                <LegEnd>
+                                    <siri:StopPointRef>8592321</siri:StopPointRef>
+                                    <Name>
+                                        <Text xml:lang="de">Basel, Badischer Bahnhof</Text>
+                                    </Name>
+                                </LegEnd>
+                                <Duration>PT6M</Duration>
+                            </TransferLeg>
+                        </Leg>
+                        <Leg>
+                            <Id>3</Id>
+                            <Duration>PT4M24S</Duration>
+                            <TimedLeg>
+                                <LegBoard>
+                                    <siri:StopPointRef>ch:1:sloid:92321:2:31</siri:StopPointRef>
+                                    <StopPointName>
+                                        <Text xml:lang="de">Basel, Badischer Bahnhof</Text>
+                                    </StopPointName>
+                                    <PlannedQuay>
+                                        <Text xml:lang="de">E</Text>
+                                    </PlannedQuay>
+                                    <EstimatedQuay>
+                                        <Text xml:lang="de">E</Text>
+                                    </EstimatedQuay>
+                                    <NameSuffix>
+                                        <Text xml:lang="de">PLATFORM_NOT_WHEELCHAIR_ACCESSIBLE</Text>
+                                    </NameSuffix>
+                                    <ServiceDeparture>
+                                        <TimetabledTime>2024-08-06T15:07:18Z</TimetabledTime>
+                                        <EstimatedTime>2024-08-06T15:07:42Z</EstimatedTime>
+                                    </ServiceDeparture>
+                                    <Order>1</Order>
+                                </LegBoard>
+                                <LegAlight>
+                                    <siri:StopPointRef>ch:1:sloid:89456:1:1</siri:StopPointRef>
+                                    <StopPointName>
+                                        <Text xml:lang="de">Riehen, Habermatten</Text>
+                                    </StopPointName>
+                                    <ServiceArrival>
+                                        <TimetabledTime>2024-08-06T15:11:42Z</TimetabledTime>
+                                        <EstimatedTime>2024-08-06T15:12:06Z</EstimatedTime>
+                                    </ServiceArrival>
+                                    <Order>4</Order>
+                                </LegAlight>
+                                <Service>
+                                    <Mode>
+                                        <PtMode>tram</PtMode>
+                                        <siri:TramSubmode>cityTram</siri:TramSubmode>
+                                        <Name>
+                                            <Text xml:lang="de">Tram</Text>
+                                        </Name>
+                                        <ShortName>
+                                            <Text xml:lang="de">T</Text>
+                                        </ShortName>
+                                    </Mode>
+                                    <ConventionalModeOfOperation>scheduled</ConventionalModeOfOperation>
+                                    <TrainNumber>6189</TrainNumber>
+                                    <siri:LineRef>ojp:91006:_x0020_</siri:LineRef>
+                                    <siri:OperatorRef>823</siri:OperatorRef>
+                                    <PublicCode>Tram</PublicCode>
+                                    <PublishedServiceName>
+                                        <Text xml:lang="de">6</Text>
+                                    </PublishedServiceName>
+                                    <ProductCategory>
+                                        <Name>
+                                            <Text xml:lang="de">Tram</Text>
+                                        </Name>
+                                        <ShortName>
+                                            <Text xml:lang="de">T</Text>
+                                        </ShortName>
+                                        <ProductCategoryRef>2</ProductCategoryRef>
+                                    </ProductCategory>
+                                    <siri:DirectionRef>H</siri:DirectionRef>
+                                    <OperatingDayRef>2024-08-06</OperatingDayRef>
+                                    <DestinationStopPointRef>8589455</DestinationStopPointRef>
+                                    <OriginText>
+                                        <Text xml:lang="de">n/a</Text>
+                                    </OriginText>
+                                    <DestinationText>
+                                        <Text xml:lang="de">Riehen, Grenze</Text>
+                                    </DestinationText>
+                                    <JourneyRef>ojp-91-6-_-j24-1-1622-TA</JourneyRef>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text xml:lang="de">Kein Niederflur</Text>
+                                        </UserText>
+                                        <Code>A__PH</Code>
+                                    </Attribute>
+                                </Service>
+                            </TimedLeg>
+                        </Leg>
+                    </Trip>
+                </TripResult>
+            </OJPTripDelivery>
+        </siri:ServiceDelivery>
+    </OJPResponse>
+</OJP>
