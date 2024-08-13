@@ -76,7 +76,8 @@ struct TripRequestView: View {
                                                 at: .departure(Date()),
                                                 params: .init(
                                                     includeTrackSections: true,
-                                                    includeIntermediateStops: true
+                                                    includeIntermediateStops: true,
+                                                    useRealtimeData: "explanatory"
                                                 )),
                                     numberOfResults: .minimum(6))
                                 tripResults = tripDelivery.tripResults
