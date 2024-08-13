@@ -835,6 +835,12 @@ public extension OJPv2 {
     // https://vdvde.github.io/OJP/develop/index.html#TripParamStructure
     struct TripParams: Codable, Sendable {
         
+        public enum RealtimeData: String, Sendable, Codable {
+            case explanatory
+            case full
+            case none
+        }
+        
         public init(
             numberOfResults: NumberOfResults = .minimum(10),
             includeTrackSections: Bool? = nil,
@@ -842,7 +848,7 @@ public extension OJPv2 {
             includeTurnDescription: Bool? = nil,
             includeIntermediateStops: Bool? = nil,
             includeAllRestrictedLines: Bool? = nil,
-            useRealtimeData: String? = nil,
+            useRealtimeData: RealtimeData? = nil,
             modeAndModeOfOperationFilter: ModeAndModeOfOperationFilter? = nil
 
         ) {
@@ -873,7 +879,7 @@ public extension OJPv2 {
         let includeTurnDescription: Bool?
         let includeIntermediateStops: Bool?
         let includeAllRestrictedLines: Bool?
-        let useRealtimeData: String?
+        let useRealtimeData: RealtimeData?
         let modeAndModeOfOperationFilter: ModeAndModeOfOperationFilter?
 
         var numberOfResults: NumberOfResults {
