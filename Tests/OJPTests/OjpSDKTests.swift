@@ -18,7 +18,6 @@ final class OjpSDKTests: XCTestCase {
         guard let locationInformationDelivery = try OJPDecoder.parseXML(xmlData).response?.serviceDelivery.delivery else {
             return XCTFail("unexpected empty")
         }
-        dump(locationInformationDelivery)
         XCTAssertTrue(true)
     }
 
@@ -27,7 +26,6 @@ final class OjpSDKTests: XCTestCase {
         guard let locationInformationDelivery = try OJPDecoder.parseXML(xmlData).response?.serviceDelivery.delivery else {
             return XCTFail("unexpected empty")
         }
-        dump(locationInformationDelivery)
         XCTAssertTrue(true)
     }
 
@@ -36,7 +34,6 @@ final class OjpSDKTests: XCTestCase {
         guard let locationInformationDelivery = try OJPDecoder.parseXML(xmlData).response?.serviceDelivery.delivery else {
             return XCTFail("unexpected empty")
         }
-        dump(locationInformationDelivery)
         XCTAssertTrue(true)
     }
 }

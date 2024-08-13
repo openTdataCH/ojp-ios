@@ -119,6 +119,7 @@ public final class OJP: Sendable {
         let (data, response): (Data, URLResponse)
         do {
             (data, response) = try await loader(ojpXMLData)
+            dump(response)
         } catch let error as URLError {
             throw OJPSDKError.loadingFailed(error)
         }
