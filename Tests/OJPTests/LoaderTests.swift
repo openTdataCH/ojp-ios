@@ -12,20 +12,14 @@ final class LoaderTests: XCTestCase {
 
         let ojp = await OJP(loadingStrategy: .http(.int))
         let (data, response) = try await ojp.loader(body)
-        dump(response)
-
-        if let xmlString = String(data: data, encoding: .utf8) {
-            print(xmlString)
-            let serivceDelivery = try await OJPDecoder.response(data).serviceDelivery
-            guard case let .locationInformation(locationInformation) = serivceDelivery.delivery else {
-                XCTFail()
-                return
-            }
-            print("places:")
-            for placeResult in locationInformation.placeResults {
-                print(placeResult.place.name.text)
-            }
+        
+        let serivceDelivery = try await OJPDecoder.response(data).serviceDelivery
+        guard case let .locationInformation(locationInformation) = serivceDelivery.delivery else {
+            XCTFail()
+            return
         }
+        XCTAssertGreaterThan(locationInformation.placeResults.count, 0)
+        
 
         let httpResponse = response as? HTTPURLResponse
         XCTAssertNotNil(httpResponse)
@@ -52,11 +46,7 @@ final class LoaderTests: XCTestCase {
 
         let ojp = OJP(loadingStrategy: mock)
         let (data, response) = try await ojp.loader(body)
-        dump(response)
 
-        if let xmlString = String(data: data, encoding: .utf8) {
-            print(xmlString)
-        }
         guard case let .locationInformation(locationInformation) = try await OJPDecoder.response(data).serviceDelivery.delivery else {
             XCTFail()
             return

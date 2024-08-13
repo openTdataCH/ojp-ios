@@ -69,8 +69,7 @@ final class TripRequestTests: XCTestCase {
 
         switch tripDelivery {
         case let .trip(trip):
-            debugPrint("\(trip.calcTime!)")
-            XCTAssert(true)
+            XCTAssertEqual(trip.tripResults.count, 10)
         default:
             XCTFail()
         }
@@ -85,8 +84,7 @@ final class TripRequestTests: XCTestCase {
 
         switch tripDelivery {
         case let .trip(trip):
-            debugPrint("\(trip.calcTime!)")
-            XCTAssert(true)
+            XCTAssertEqual(trip.tripResults.count, 10)
         default:
             XCTFail()
         }
@@ -101,7 +99,7 @@ final class TripRequestTests: XCTestCase {
 
         switch tripDelivery {
         case let .trip(trip):
-            XCTAssert(true)
+            XCTAssertEqual(trip.tripResults.count, 6)
         default:
             XCTFail()
         }
