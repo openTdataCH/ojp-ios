@@ -21,15 +21,172 @@ public extension OJPv2 {
         public let responseTimestamp: String
         public let requestMessageRef: String
         public let calcTime: Int?
+        public let tripResponseContext: TripResponseContext?
         public internal(set) var tripResults: [TripResult]
 
         public enum CodingKeys: String, CodingKey {
             case responseTimestamp = "siri:ResponseTimestamp"
             case requestMessageRef = "siri:RequestMessageRef"
             case calcTime = "CalcTime"
+            case tripResponseContext = "TripResponseContext"
             case tripResults = "TripResult"
         }
     }
+
+    struct TripResponseContext: Codable, Sendable {
+        public let situations: Situation
+
+        public enum CodingKeys: String, CodingKey {
+            case situations = "Situations"
+        }
+    }
+
+    /// https://vdvde.github.io/OJP/develop/index.html#SituationsStructure
+    struct Situation: Codable, Sendable {
+        let ptSituations: [PTSituation]?
+        let roadSituations: [RoadSituation]?
+
+        enum CodingKeys: String, CodingKey {
+            case ptSituations = "PtSituation"
+            case roadSituations = "RoadSituation"
+        }
+    }
+
+    struct SummaryContent: Codable, Sendable {
+        public let summaryText: String
+
+        public enum CodingKeys: String, CodingKey {
+            case summaryText = "siri:SummaryText"
+        }
+    }
+
+    struct ReasonContent: Codable, Sendable {
+        public let reasonText: String
+
+        public enum CodingKeys: String, CodingKey {
+            case reasonText = "siri:ReasonText"
+        }
+    }
+
+    struct DescriptionContent: Codable, Sendable {
+        public let descriptionText: String
+
+        public enum CodingKeys: String, CodingKey {
+            case descriptionText = "siri:DescriptionText"
+        }
+    }
+
+    struct ConsequenceContent: Codable, Sendable {
+        public let consequenceText: String
+
+        public enum CodingKeys: String, CodingKey {
+            case consequenceText = "siri:ConsequenceText"
+        }
+    }
+
+    struct RecommendationContent: Codable, Sendable {
+        public let recommendationText: String
+
+        public enum CodingKeys: String, CodingKey {
+            case recommendationText = "siri:RecommendationText"
+        }
+    }
+
+    struct RemarkContent: Codable, Sendable {
+        public let remarkText: String
+
+        public enum CodingKeys: String, CodingKey {
+            case remarkText = "siri:RemarkText"
+        }
+    }
+
+    struct DurationContent: Codable, Sendable {
+        public let durationText: String
+
+        public enum CodingKeys: String, CodingKey {
+            case durationText = "siri:DurationText"
+        }
+    }
+
+    struct TextualContent: Codable, Sendable {
+        public let summaryContent: SummaryContent
+        public let reasonContent: ReasonContent?
+        public let descriptionContents: [DescriptionContent]
+        public let consequenceContents: [ConsequenceContent]
+        public let recommendationContents: [RecommendationContent]
+        public let durationContent: DurationContent?
+        public let remarkContents: [RemarkContent]
+
+        public enum CodingKeys: String, CodingKey {
+            case summaryContent = "siri:SummaryContent"
+            case reasonContent = "siri:ReasonContent"
+            case descriptionContents = "siri:DescriptionContent"
+            case consequenceContents = "siri:ConsequenceContent"
+            case recommendationContents = "siri:RecommendationContent"
+            case durationContent = "siri:DurationContent"
+            case remarkContents = "siri:RemarkContent"
+        }
+
+        public init(from decoder: any Decoder) throws {
+            // optionals for arrays to avoid this bug: https://github.com/CoreOffice/XMLCoder/issues/283
+            let container = try decoder.container(keyedBy: CodingKeys.self)
+            summaryContent = try container.decode(OJPv2.SummaryContent.self, forKey: CodingKeys.summaryContent)
+            reasonContent = (try? container.decodeIfPresent(OJPv2.ReasonContent.self, forKey: CodingKeys.reasonContent)) ?? nil
+            descriptionContents = (try? container.decode([OJPv2.DescriptionContent].self, forKey: OJPv2.TextualContent.CodingKeys.descriptionContents)) ?? []
+            consequenceContents = try container.decode([OJPv2.ConsequenceContent].self, forKey: CodingKeys.consequenceContents)
+            recommendationContents = try container.decode([OJPv2.RecommendationContent].self, forKey: CodingKeys.recommendationContents)
+            durationContent = try container.decodeIfPresent(OJPv2.DurationContent.self, forKey: CodingKeys.durationContent)
+            remarkContents = (try? container.decodeIfPresent([OJPv2.RemarkContent].self, forKey: CodingKeys.remarkContents)) ?? []
+        }
+    }
+
+    struct PassengerInformationAction: Codable, Sendable {
+        public let textualContents: [TextualContent]
+
+        public enum CodingKeys: String, CodingKey {
+            case textualContents = "siri:TextualContent"
+        }
+    }
+
+    struct PublishingAction: Codable, Sendable {
+        public let passengerInformationActions: [PassengerInformationAction]
+
+        public enum CodingKeys: String, CodingKey {
+            case passengerInformationActions = "siri:PassengerInformationAction"
+        }
+    }
+
+    struct PublishingActions: Codable, Sendable {
+        public let publishingActions: [PublishingAction]
+
+        public enum CodingKeys: String, CodingKey {
+            case publishingActions = "siri:PublishingAction"
+        }
+    }
+
+    struct PTSituation: Codable, Sendable {
+        public let situationNumber: String
+        public let validityPeriod: ValidityPeriod
+        public let publishingActions: PublishingActions
+
+        public enum CodingKeys: String, CodingKey {
+            case situationNumber = "siri:SituationNumber"
+            case validityPeriod = "siri:ValidityPeriod"
+            case publishingActions = "siri:PublishingActions"
+        }
+    }
+
+    struct ValidityPeriod: Codable, Sendable {
+        public let startTime: Date
+        public let endTime: Date?
+
+        public enum CodingKeys: String, CodingKey {
+            case startTime = "siri:StartTime"
+            case endTime = "siri:EndTime"
+        }
+    }
+
+    struct RoadSituation: Codable, Sendable {}
 
     /// [Schema documentation on vdvde.github.io](https://vdvde.github.io/OJP/develop/index.html#TripResultStructure)
     struct TripResult: Codable, Identifiable, Sendable {
@@ -413,6 +570,25 @@ public extension OJPv2 {
         }
     }
 
+    struct SituationFullRef: Codable, Sendable {
+        public let participantRef: String
+        public let situationNumber: String
+
+        enum CodingKeys: String, CodingKey {
+            case participantRef = "siri:ParticipantRef" // TODO: where is the doc?
+            case situationNumber = "siri:SituationNumber" // TODO: where is the doc?
+        }
+    }
+
+    // https://vdvde.github.io/OJP/develop/index.html#SituationRefList
+    struct SituationFullRefs: Codable, Sendable {
+        public let situationFullRefs: [SituationFullRef]
+
+        enum CodingKeys: String, CodingKey {
+            case situationFullRefs = "SituationFullRef"
+        }
+    }
+
     // https://vdvde.github.io/OJP/develop/index.html#DatedJourneyStructure
     struct DatedJourney: Codable, Sendable {
         // https://vdvde.github.io/OJP/develop/index.html#ConventionalModesOfOperationEnumeration
@@ -439,6 +615,7 @@ public extension OJPv2 {
         public let originStopPointRef: String?
         public let destinationText: InternationalText?
         public let destinationStopPointRef: String?
+        public let situationFullRefs: SituationFullRefs?
 
         public enum CodingKeys: String, CodingKey {
             case conventionalModeOfOperation = "ConventionalModeOfOperation"
@@ -458,6 +635,7 @@ public extension OJPv2 {
             case originStopPointRef = "OriginStopPointRef"
             case destinationText = "DestinationText"
             case destinationStopPointRef = "DestinationStopPointRef"
+            case situationFullRefs = "SituationFullRefs"
         }
 
         public enum ConventionalModesOfOperation: String, Codable, Sendable {
@@ -706,6 +884,13 @@ public extension OJPv2 {
 
     // https://vdvde.github.io/OJP/develop/index.html#TripParamStructure
     struct TripParams: Codable, Sendable {
+        
+        public enum RealtimeData: String, Sendable, Codable {
+            case explanatory
+            case full
+            case none
+        }
+        
         public init(
             numberOfResults: NumberOfResults = .minimum(10),
             includeTrackSections: Bool? = nil,
@@ -713,6 +898,7 @@ public extension OJPv2 {
             includeTurnDescription: Bool? = nil,
             includeIntermediateStops: Bool? = nil,
             includeAllRestrictedLines: Bool? = nil,
+            useRealtimeData: RealtimeData? = nil,
             modeAndModeOfOperationFilter: ModeAndModeOfOperationFilter? = nil
 
         ) {
@@ -730,6 +916,7 @@ public extension OJPv2 {
             self.includeTurnDescription = includeTurnDescription
             self.includeIntermediateStops = includeIntermediateStops
             self.includeAllRestrictedLines = includeAllRestrictedLines
+            self.useRealtimeData = useRealtimeData
             self.modeAndModeOfOperationFilter = modeAndModeOfOperationFilter
         }
 
@@ -742,6 +929,7 @@ public extension OJPv2 {
         let includeTurnDescription: Bool?
         let includeIntermediateStops: Bool?
         let includeAllRestrictedLines: Bool?
+        let useRealtimeData: RealtimeData?
         let modeAndModeOfOperationFilter: ModeAndModeOfOperationFilter?
 
         var numberOfResults: NumberOfResults {
@@ -763,6 +951,7 @@ public extension OJPv2 {
             case includeTurnDescription = "IncludeTurnDescription"
             case includeIntermediateStops = "IncludeIntermediateStops"
             case includeAllRestrictedLines = "IncludeAllRestrictedLines"
+            case useRealtimeData = "UseRealtimeData"
             case modeAndModeOfOperationFilter = "ModeAndModeOfOperationFilter"
         }
     }
@@ -772,5 +961,91 @@ public extension OJPv2 {
         case before(Int)
         case after(Int)
         case minimum(Int)
+    }
+}
+
+// MARK: - A bit more convenience for the Situations
+
+extension OJPv2.PTSituation: Identifiable {
+    public var id: String { situationNumber }
+}
+
+extension OJPv2.PublishingActions: Hashable {
+    public func hash(into hasher: inout Hasher) {
+        for publishingAction in publishingActions {
+            hasher.combine(publishingAction)
+        }
+    }
+}
+
+extension OJPv2.PublishingAction: Hashable {
+    public func hash(into hasher: inout Hasher) {
+        passengerInformationActions.forEach { hasher.combine($0) }
+    }
+}
+
+extension OJPv2.PassengerInformationAction: Hashable {
+    public func hash(into hasher: inout Hasher) {
+        for textualContent in textualContents {
+            hasher.combine(textualContent)
+        }
+    }
+}
+
+extension OJPv2.TextualContent: Hashable {
+    public static func == (lhs: OJPv2.TextualContent, rhs: OJPv2.TextualContent) -> Bool {
+        lhs.hashValue == rhs.hashValue
+    }
+
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(summaryContent)
+        hasher.combine(reasonContent)
+        hasher.combine(descriptionContents)
+        hasher.combine(consequenceContents)
+        hasher.combine(recommendationContents)
+        hasher.combine(durationContent)
+        hasher.combine(remarkContents)
+    }
+}
+
+extension OJPv2.SummaryContent: Hashable {
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(summaryText)
+    }
+}
+
+extension OJPv2.ReasonContent: Hashable {
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(reasonText)
+    }
+}
+
+extension OJPv2.DescriptionContent: Hashable {
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(descriptionText)
+    }
+}
+
+extension OJPv2.ConsequenceContent: Hashable {
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(consequenceText)
+    }
+}
+
+extension OJPv2.RecommendationContent: Hashable {
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(recommendationText)
+    }
+}
+
+extension OJPv2.RemarkContent: Hashable {
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(remarkText)
+    }
+}
+
+extension OJPv2.DurationContent: Hashable {
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(durationText)
     }
 }
