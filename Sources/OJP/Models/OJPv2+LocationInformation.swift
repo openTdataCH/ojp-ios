@@ -77,9 +77,9 @@ public extension OJPv2 {
 
         public init(from decoder: any Decoder) throws {
             let container = try decoder.container(keyedBy: CodingKeys.self)
-            do {
-                self = try .address(container.decode(Address.self, forKey: .address))
-            } catch {
+            if let address = try container.decodeIfPresent(Address.self, forKey: .address) {
+                self = .address(address)
+            } else {
                 self = try .stopPlace(container.decode(StopPlace.self, forKey: .stopPlace))
             }
         }

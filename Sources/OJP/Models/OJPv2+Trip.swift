@@ -162,7 +162,7 @@ public extension OJPv2 {
 
             let container = try decoder.container(keyedBy: CodingKeys.self)
             id = try container.decode(Int.self, forKey: .id)
-            duration = try? container.decode(Duration.self, forKey: .duration)
+            duration = try container.decodeIfPresent(Duration.self, forKey: .duration)
         }
 
         public enum LegTypeChoice: Codable, Sendable {
