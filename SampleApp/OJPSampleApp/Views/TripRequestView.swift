@@ -12,6 +12,7 @@ struct TripRequestView: View {
     let ojp: OJP
 
     @State var tripResults: [OJPv2.TripResult] = []
+    @State var ptSituations: [OJPv2.PTSituation] = []
     @State var origin: OJPv2.PlaceResult?
     @State var via: OJPv2.PlaceResult?
     @State var destination: OJPv2.PlaceResult?
@@ -68,16 +69,19 @@ struct TripRequestView: View {
                         Task {
                             do {
                                 paginatedActor = PaginatedTripLoader(ojp: ojp)
-                                tripResults = try await paginatedActor!.loadTrips(for:
+                                let tripDelivery = try await paginatedActor!.loadTrips(for:
                                     TripRequest(from: origin.placeRef,
                                                 to: destination.placeRef,
                                                 via: via != nil ? [via!.placeRef] : nil,
                                                 at: .departure(Date()),
                                                 params: .init(
                                                     includeTrackSections: true,
-                                                    includeIntermediateStops: true
+                                                    includeIntermediateStops: true,
+                                                    useRealtimeData: .explanatory
                                                 )),
-                                    numberOfResults: .minimum(6)).tripResults
+                                    numberOfResults: .minimum(6))
+                                tripResults = tripDelivery.tripResults
+                                ptSituations = tripDelivery.ptSituations
                             } catch {
                                 print(error)
                             }
@@ -88,15 +92,16 @@ struct TripRequestView: View {
                 }
             }
             TripRequestResultView(
-                isLoading: isLoading,
+                ptSituations: ptSituations, isLoading: isLoading,
                 results: tripResults,
                 loadPrevious: {
                     guard !isLoading else { return }
                     isLoading = true
                     Task { @MainActor in
                         guard let paginatedActor else { return }
-                        let prev = try await paginatedActor.loadPrevious().tripResults
-                        tripResults = prev + tripResults
+                        let prev = try await paginatedActor.loadPrevious()
+                        tripResults = prev.tripResults + tripResults
+                        ptSituations = prev.ptSituations + ptSituations
                         isLoading = false
                     }
                 },
@@ -105,8 +110,9 @@ struct TripRequestView: View {
                     isLoading = true
                     Task { @MainActor in
                         guard let paginatedActor else { return }
-                        let next = try await paginatedActor.loadNext().tripResults
-                        tripResults = tripResults + next
+                        let next = try await paginatedActor.loadNext()
+                        tripResults = tripResults + next.tripResults
+                        ptSituations = ptSituations + next.ptSituations
                         isLoading = false
                     }
                 }

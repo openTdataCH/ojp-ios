@@ -124,11 +124,10 @@ final class TripRequestTests: XCTestCase {
         XCTAssertEqual(uniqued.count, 11)
     }
 
-
     // MARK: - Situations (maybe move to separate file)
 
     func testSituationParsing() async throws {
-        let xmlData = try TestHelpers.loadXML(xmlFilename: "tr-berne-nimes")
+        let xmlData = try TestHelpers.loadXML(xmlFilename: "tr-fribourg-berne")
         do {
             guard case let .trip(tripDelivery) = try await OJPDecoder.parseXML(xmlData).response?.serviceDelivery.delivery else {
                 return XCTFail("unexpected empty")
@@ -143,4 +142,41 @@ final class TripRequestTests: XCTestCase {
         }
     }
 
+    func testSituationsMapping() async throws {
+        let xmlData = try TestHelpers.loadXML(xmlFilename: "tr-fribourg-basel")
+        do {
+            guard case let .trip(tripDelivery) = try await OJPDecoder.parseXML(xmlData).response?.serviceDelivery.delivery else {
+                return XCTFail("unexpected empty")
+            }
+            guard let responseContext = tripDelivery.tripResponseContext else {
+                return XCTFail("expected to have a tripResponseContext")
+            }
+            let ptSituations = tripDelivery.ptSituations
+            XCTAssertEqual(ptSituations.count, 2)
+            XCTAssertEqual(ptSituations.map(\.situationNumber), responseContext.situations.ptSituations?.map(\.situationNumber))
+
+            if let firstTrip = tripDelivery.tripResults.first?.trip {
+                if case let .timed(firstLeg) = firstTrip.legs.first?.legType {
+                    let situations = firstLeg.relevantPtSituations(allPtSituations: ptSituations)
+                    XCTAssertEqual(situations.count, 1)
+                    XCTAssertEqual(situations.first?.situationNumber, "ch:1:sstid:100001:dccd662a-e519-468b-b06b-1fdb25727282-1")
+                } else {
+                    XCTFail()
+                }
+
+                if case let .timed(lastLeg) = firstTrip.legs.last?.legType {
+                    let situations = lastLeg.relevantPtSituations(allPtSituations: ptSituations)
+                    XCTAssertEqual(situations.count, 2)
+                    XCTAssertEqual(situations.map(\.situationNumber), [
+                        "ch:1:sstid:100001:dccd662a-e519-468b-b06b-1fdb25727282-1",
+                        "ch:1:sstid:100001:dfc1dfd3-bbe0-441c-89df-7a309eb7b358-1",
+                    ])
+                } else {
+                    XCTFail()
+                }
+            }
+        } catch {
+            throw error
+        }
+    }
 }

@@ -81,3 +81,20 @@ public extension OJPv2.Trip {
         legs.count
     }
 }
+
+// MARK: - Situations
+
+public extension OJPv2.TripDelivery {
+    /// convenience property for ``OJPv2/PTSituation``.
+    var ptSituations: [OJPv2.PTSituation] {
+        tripResponseContext?.situations.ptSituations ?? []
+    }
+}
+
+public extension OJPv2.TimedLeg {
+    func relevantPtSituations(allPtSituations: [OJPv2.PTSituation]) -> [OJPv2.PTSituation] {
+        service.situationFullRefs?.situationFullRefs.flatMap { serviceSituationRef in
+            allPtSituations.filter { $0.situationNumber == serviceSituationRef.situationNumber }
+        } ?? []
+    }
+}

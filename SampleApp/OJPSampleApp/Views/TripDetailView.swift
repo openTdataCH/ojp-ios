@@ -10,6 +10,9 @@ import SwiftUI
 
 struct TripDetailView: View {
     let trip: OJPv2.Trip
+    let ptSituations: [OJPv2.PTSituation]
+
+    @State var selectedPTSituation: OJPv2.PTSituation?
 
     var body: some View {
         List(trip.legs) { leg in
@@ -41,7 +44,7 @@ struct TripDetailView: View {
                         Text(legBoard.estimatedQuay?.text ?? legBoard.plannedQuay?.text ?? "")
                             .foregroundStyle(changedTrack ? .red : .black)
                     }
-                    ForEach(timedLeg.legsIntermediate, id: \.self) { legIntermediate in
+                    ForEach(timedLeg.legsIntermediate) { legIntermediate in
                         HStack {
                             Text(legIntermediate.stopPointName.text)
                                 .foregroundStyle(.gray)
@@ -61,6 +64,15 @@ struct TripDetailView: View {
                         Text(legAlight.estimatedQuay?.text ?? legAlight.plannedQuay?.text ?? "")
                             .foregroundStyle(changedTrack ? .red : .black)
                     }
+                    ForEach(timedLeg.relevantPtSituations(allPtSituations: ptSituations)) { ptSituation in
+                        Divider()
+                        ForEach(ptSituation.allInfos.indices) { index in
+                            Text(ptSituation.allInfos[index])
+                        }.onTapGesture {
+                            selectedPTSituation = ptSituation
+                        }
+                    }
+
                 }.listRowSeparator(.hidden)
             case let .transfer(transferLeg):
                 HStack {
@@ -73,31 +85,77 @@ struct TripDetailView: View {
                 .listRowSeparator(.hidden)
             }
         }
+        .sheet(item: $selectedPTSituation) { situation in
+            VStack {
+                HStack {
+                    Spacer()
+                    Button {
+                        selectedPTSituation = nil
+                    } label: {
+                        Image(systemName: "xmark")
+                    }
+                }
+                PTSituationDetailView(ptSituation: situation)
+            }.padding()
+        }
     }
 }
 
 #Preview {
     AsyncView(
         task: {
-            await PreviewMocker.shared.loadTrips().tripResults
+            try await PreviewMocker.shared.loadTrips(xmlFileName: "tr-fribourg-berne")
         },
-        state: [],
-        content: { t in
-            if let trip = t.first?.trip {
-                TripDetailView(trip: trip)
+        content: { tripDelivery in
+            if let trip = tripDelivery.tripResults.first {
+                TripDetailView(trip: trip.trip!, ptSituations: tripDelivery.ptSituations)
             } else {
-                Text("No Trip").frame(minWidth: 200, minHeight: 200)
+                Text("No Trip")
             }
         }
     )
 }
 
-extension OJPv2.LegIntermediate: Hashable {
-    public static func == (lhs: OJPv2.LegIntermediate, rhs: OJPv2.LegIntermediate) -> Bool {
-        lhs.stopPointRef == rhs.stopPointRef
+extension OJPv2.LegIntermediate: Identifiable {
+    public var id: String {
+        stopPointRef
     }
+}
 
-    public func hash(into hasher: inout Hasher) {
-        hasher.combine(stopPointRef)
+extension OJPv2.PTSituation {
+    var allInfos: [String] {
+        var infos: [String] = []
+        for publishingAction in publishingActions.publishingActions {
+            for passengerInformationAction in publishingAction.passengerInformationActions {
+                for textualContent in passengerInformationAction.textualContents {
+                    infos.append(textualContent.summaryContent.summaryText)
+
+                    for descriptionContent in textualContent.descriptionContents {
+                        infos.append(descriptionContent.descriptionText)
+                    }
+
+                    for consequenceContent in textualContent.consequenceContents {
+                        infos.append(consequenceContent.consequenceText)
+                    }
+
+                    for recommendationContent in textualContent.recommendationContents {
+                        infos.append(recommendationContent.recommendationText)
+                    }
+
+                    for remarkContent in textualContent.remarkContents {
+                        infos.append(remarkContent.remarkText)
+                    }
+
+                    if let reasonContent = textualContent.reasonContent {
+                        infos.append(reasonContent.reasonText)
+                    }
+
+                    if let durationContent = textualContent.durationContent {
+                        infos.append(durationContent.durationText)
+                    }
+                }
+            }
+        }
+        return infos
     }
 }

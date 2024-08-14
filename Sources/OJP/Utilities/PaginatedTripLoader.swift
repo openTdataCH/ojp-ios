@@ -92,6 +92,7 @@ public actor PaginatedTripLoader {
             includeTurnDescription: request.params.includeTurnDescription,
             includeIntermediateStops: request.params.includeIntermediateStops,
             includeAllRestrictedLines: request.params.includeAllRestrictedLines,
+            useRealtimeData: request.params.useRealtimeData,
             modeAndModeOfOperationFilter: request.params.modeAndModeOfOperationFilter
         )
 
