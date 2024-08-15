@@ -20,6 +20,24 @@ public extension OJPv2.PlaceRefChoice {
     }
 }
 
+extension OJPv2.PlaceRefChoice: Hashable {
+    public static func == (lhs: OJPv2.PlaceRefChoice, rhs: OJPv2.PlaceRefChoice) -> Bool {
+        lhs.hashValue == rhs.hashValue
+    }
+
+    public func hash(into hasher: inout Hasher) {
+        switch self {
+        case let .stopPlaceRef(stopPlaceRef):
+            hasher.combine(stopPlaceRef.stopPlaceRef)
+        case let .geoPosition(geoPositionRef):
+            hasher.combine(geoPositionRef.geoPosition.latitude)
+            hasher.combine(geoPositionRef.geoPosition.longitude)
+        case let .stopPointRef(stopPointRef):
+            hasher.combine(stopPointRef.stopPointRef)
+        }
+    }
+}
+
 public extension OJPv2.PlaceResult {
     var title: String {
         switch place.place {
@@ -53,8 +71,8 @@ public extension OJPv2.PlaceResult {
 public extension OJPv2.Trip {
     var originName: String {
         switch legs.first?.legType {
-        case .continous:
-            "continuousLeg not implemented"
+        case let .continous(continousLeg):
+            continousLeg.legStart.title
         case let .timed(timedLeg):
             timedLeg.legBoard.stopPointName.text
         case let .transfer(transferLeg):
@@ -66,8 +84,8 @@ public extension OJPv2.Trip {
 
     var destinationName: String {
         switch legs.last?.legType {
-        case .continous:
-            "continuousLeg not implemented"
+        case let .continous(continousLeg):
+            continousLeg.legEnd.title
         case let .timed(timedLeg):
             timedLeg.legAlight.stopPointName.text
         case let .transfer(transferLeg):

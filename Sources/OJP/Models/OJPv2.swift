@@ -41,7 +41,7 @@ public struct OJPv2: Codable, Sendable {
 
             let container = try decoder.container(keyedBy: CodingKeys.self)
             responseTimestamp = try container.decode(String.self, forKey: .responseTimestamp)
-            producerRef = try? container.decode(String.self, forKey: .producerRef)
+            producerRef = try container.decodeIfPresent(String.self, forKey: .producerRef)
         }
     }
 

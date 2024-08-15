@@ -70,13 +70,13 @@ struct TripRequestResultView: View {
                                 .padding()
                             } else { Text("No Trips found") }
                         }
-                        .background(Color.white)
+                        .background(Color.listBackground)
                         .onTapGesture {
                             selectedTrip = tripResult.trip
                         }
                         Divider()
                     }
-                    .background(Color.white)
+                    .background(Color.listBackground)
                 }
                 if results.count > 0 {
                     Button(action: {

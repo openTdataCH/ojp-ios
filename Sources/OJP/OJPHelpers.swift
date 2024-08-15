@@ -169,7 +169,6 @@ enum OJPHelpers {
             throw OJPSDKError.encodingFailed
         }
 
-        debugPrint(ojpXML)
         return ojpXML
     }
 }

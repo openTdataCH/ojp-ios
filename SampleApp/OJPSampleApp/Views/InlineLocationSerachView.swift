@@ -31,7 +31,7 @@ struct InlineLocationSerachView: View {
                                 Text(stopPlace.stopPlaceName.text)
                                 Spacer()
                             }
-                            .background(Color.white)
+                            .background(Color.listBackground)
                             .frame(maxHeight: .infinity)
                             .onTapGesture {
                                 selectedPlace = stop
@@ -43,7 +43,7 @@ struct InlineLocationSerachView: View {
                                 Text(address.name.text)
                                 Spacer()
                             }
-                            .background(Color.white)
+                            .background(Color.listBackground)
                             .onTapGesture {
                                 selectedPlace = stop
                                 results = []

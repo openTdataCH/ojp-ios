@@ -278,9 +278,15 @@ public extension OJPv2 {
 
             for leg in legs {
                 switch leg.legType {
-                case .continous:
-                    // TODO: Implement
-                    h.combine("continuousLeg")
+                case let .continous(continuousLeg):
+                    switch continuousLeg.service.type {
+                    case let .personalService(personalService):
+                        h.combine(personalService.personalMode)
+                    case let .datedJourney(datedJourney):
+                        h.combine(datedJourney.journeyRef)
+                    }
+                    h.combine(continuousLeg.legStart)
+                    h.combine(continuousLeg.legEnd)
                 case let .timed(timedLeg):
                     h.combine(timedLeg.service.publishedServiceName.text)
                     h.combine(timedLeg.legBoard.stopPointName.text)
@@ -313,7 +319,7 @@ public extension OJPv2 {
 
             let container = try decoder.container(keyedBy: CodingKeys.self)
             id = try container.decode(Int.self, forKey: .id)
-            duration = try? container.decode(Duration.self, forKey: .duration)
+            duration = try container.decodeIfPresent(Duration.self, forKey: .duration)
         }
 
         public enum LegTypeChoice: Codable, Sendable {
@@ -678,7 +684,51 @@ public extension OJPv2 {
     }
 
     // https://vdvde.github.io/OJP/develop/index.html#ContinuousLegStructure
-    struct ContinuousLeg: Codable, Sendable {}
+    struct ContinuousLeg: Codable, Sendable {
+        public let legStart: PlaceRefChoice
+        public let legEnd: PlaceRefChoice
+        public let duration: Duration
+        public let service: ContinuousService
+
+        enum CodingKeys: String, CodingKey {
+            case legStart = "LegStart"
+            case legEnd = "LegEnd"
+            case duration = "Duration"
+            case service = "Service"
+        }
+    }
+
+    struct PersonalService: Codable, Sendable {
+        let personalMode: String
+
+        enum CodingKeys: String, CodingKey {
+            case personalMode = "PersonalMode"
+        }
+    }
+
+    // https://vdvde.github.io/OJP/develop/index.html#ContinuousServiceStructure
+    enum ContinuousServiceTypeChoice: Codable, Sendable {
+        case personalService(PersonalService)
+        case datedJourney(DatedJourney)
+
+        public init(from decoder: any Decoder) throws {
+            do {
+                self = try .personalService(PersonalService(from: decoder))
+            } catch {
+                self = try .datedJourney(DatedJourney(from: decoder))
+            }
+        }
+    }
+
+    // https://vdvde.github.io/OJP/develop/index.html#ContinuousServiceStructure
+    struct ContinuousService: Codable, Sendable {
+        public let type: ContinuousServiceTypeChoice
+        // TODO: add SituationFullRefs
+
+        public init(from decoder: any Decoder) throws {
+            type = try ContinuousServiceTypeChoice(from: decoder)
+        }
+    }
 
     struct TripSummary: Codable, Sendable {}
 

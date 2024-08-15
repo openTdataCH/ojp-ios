@@ -1,0 +1,1882 @@
+<OJP xmlns:siri="http://www.siri.org.uk/siri" xmlns="http://www.vdv.de/ojp" version="2.0">
+  <OJPResponse>
+    <siri:ServiceDelivery>
+      <siri:ResponseTimestamp>2024-08-09T12:23:37.8349266+02:00</siri:ResponseTimestamp>
+      <siri:ProducerRef>MENTZ</siri:ProducerRef>
+      <OJPTripDelivery>
+        <siri:ResponseTimestamp>2024-08-09T12:23:37.8349272+02:00</siri:ResponseTimestamp>
+        <siri:RequestMessageRef>e8e710e5-18eb-445e-be86-06ff6c9df293</siri:RequestMessageRef>
+        <siri:DefaultLanguage>de</siri:DefaultLanguage>
+        <CalcTime>340</CalcTime>
+        <TripResponseContext>
+          <Places>
+            <Place>
+              <StopPlace>
+                <StopPlaceRef/>
+                <StopPlaceName>
+                  <Text xml:lang="de">Bern, Zentweg (Bern)</Text>
+                </StopPlaceName>
+                <PrivateCode>
+                  <System>EFA</System>
+                  <Value>99999997</Value>
+                </PrivateCode>
+                <TopographicPlaceRef>-1:-1</TopographicPlaceRef>
+              </StopPlace>
+              <Name>
+                <Text xml:lang="de">Bern, Zentweg (Bern)</Text>
+              </Name>
+              <GeoPosition/>
+            </Place>
+            <Place>
+              <StopPlace>
+                <StopPlaceRef>8507002</StopPlaceRef>
+                <StopPlaceName>
+                  <Text xml:lang="de">Ostermundigen</Text>
+                </StopPlaceName>
+                <PrivateCode>
+                  <System>EFA</System>
+                  <Value>111056:0:1</Value>
+                </PrivateCode>
+                <TopographicPlaceRef>23006363:2</TopographicPlaceRef>
+              </StopPlace>
+              <Name>
+                <Text xml:lang="de">Ostermundigen</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>7.4813</siri:Longitude>
+                <siri:Latitude>46.95789</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <StopPlace>
+                <StopPlaceRef>8516161</StopPlaceRef>
+                <StopPlaceName>
+                  <Text xml:lang="de">Bern Wankdorf</Text>
+                </StopPlaceName>
+                <PrivateCode>
+                  <System>EFA</System>
+                  <Value>112702:0:1</Value>
+                </PrivateCode>
+                <TopographicPlaceRef>23006351:1</TopographicPlaceRef>
+              </StopPlace>
+              <Name>
+                <Text xml:lang="de">Bern Wankdorf</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>7.46601</siri:Longitude>
+                <siri:Latitude>46.96675</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <StopPlace>
+                <StopPlaceRef>8507000</StopPlaceRef>
+                <StopPlaceName>
+                  <Text xml:lang="de">Bern</Text>
+                </StopPlaceName>
+                <PrivateCode>
+                  <System>EFA</System>
+                  <Value>111055:0:2</Value>
+                </PrivateCode>
+                <TopographicPlaceRef>23006351:1</TopographicPlaceRef>
+              </StopPlace>
+              <Name>
+                <Text xml:lang="de">Bern</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>7.43503</siri:Longitude>
+                <siri:Latitude>46.94788</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <StopPlace>
+                <StopPlaceRef>8577002</StopPlaceRef>
+                <StopPlaceName>
+                  <Text xml:lang="de">Waldeck</Text>
+                </StopPlaceName>
+                <PrivateCode>
+                  <System>EFA</System>
+                  <Value>119492:0:10000</Value>
+                </PrivateCode>
+                <TopographicPlaceRef>23006363:2</TopographicPlaceRef>
+              </StopPlace>
+              <Name>
+                <Text xml:lang="de">Waldeck</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>7.47755</siri:Longitude>
+                <siri:Latitude>46.95434</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <StopPlace>
+                <StopPlaceRef>8577003</StopPlaceRef>
+                <StopPlaceName>
+                  <Text xml:lang="de">Bahnhof</Text>
+                </StopPlaceName>
+                <PrivateCode>
+                  <System>EFA</System>
+                  <Value>119493:0:B</Value>
+                </PrivateCode>
+                <TopographicPlaceRef>23006363:2</TopographicPlaceRef>
+              </StopPlace>
+              <Name>
+                <Text xml:lang="de">Bahnhof</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>7.48081</siri:Longitude>
+                <siri:Latitude>46.95546</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <StopPlace>
+                <StopPlaceRef>8590050</StopPlaceRef>
+                <StopPlaceName>
+                  <Text xml:lang="de">Schosshaldenfriedhof</Text>
+                </StopPlaceName>
+                <PrivateCode>
+                  <System>EFA</System>
+                  <Value>127287:0:10001</Value>
+                </PrivateCode>
+                <TopographicPlaceRef>23006351:1</TopographicPlaceRef>
+              </StopPlace>
+              <Name>
+                <Text xml:lang="de">Schosshaldenfriedhof</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>7.47317</siri:Longitude>
+                <siri:Latitude>46.95378</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <StopPlace>
+                <StopPlaceRef>8590049</StopPlaceRef>
+                <StopPlaceName>
+                  <Text xml:lang="de">Galgenfeld</Text>
+                </StopPlaceName>
+                <PrivateCode>
+                  <System>EFA</System>
+                  <Value>127286:0:10001</Value>
+                </PrivateCode>
+                <TopographicPlaceRef>23006351:1</TopographicPlaceRef>
+              </StopPlace>
+              <Name>
+                <Text xml:lang="de">Galgenfeld</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>7.4667</siri:Longitude>
+                <siri:Latitude>46.95254</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <StopPlace>
+                <StopPlaceRef>8587485</StopPlaceRef>
+                <StopPlaceName>
+                  <Text xml:lang="de">Rosengarten</Text>
+                </StopPlaceName>
+                <PrivateCode>
+                  <System>EFA</System>
+                  <Value>125119:0:10001</Value>
+                </PrivateCode>
+                <TopographicPlaceRef>23006351:1</TopographicPlaceRef>
+              </StopPlace>
+              <Name>
+                <Text xml:lang="de">Rosengarten</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>7.46107</siri:Longitude>
+                <siri:Latitude>46.95225</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <StopPlace>
+                <StopPlaceRef>8587484</StopPlaceRef>
+                <StopPlaceName>
+                  <Text xml:lang="de">Schönburg</Text>
+                </StopPlaceName>
+                <PrivateCode>
+                  <System>EFA</System>
+                  <Value>125118:0:10001</Value>
+                </PrivateCode>
+                <TopographicPlaceRef>23006351:1</TopographicPlaceRef>
+              </StopPlace>
+              <Name>
+                <Text xml:lang="de">Schönburg</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>7.45798</siri:Longitude>
+                <siri:Latitude>46.95366</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <StopPlace>
+                <StopPlaceRef>8587483</StopPlaceRef>
+                <StopPlaceName>
+                  <Text xml:lang="de">Salem</Text>
+                </StopPlaceName>
+                <PrivateCode>
+                  <System>EFA</System>
+                  <Value>125117:0:10001</Value>
+                </PrivateCode>
+                <TopographicPlaceRef>23006351:1</TopographicPlaceRef>
+              </StopPlace>
+              <Name>
+                <Text xml:lang="de">Salem</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>7.45519</siri:Longitude>
+                <siri:Latitude>46.95375</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <StopPlace>
+                <StopPlaceRef>8590021</StopPlaceRef>
+                <StopPlaceName>
+                  <Text xml:lang="de">Viktoriaplatz</Text>
+                </StopPlaceName>
+                <PrivateCode>
+                  <System>EFA</System>
+                  <Value>127259:0:C</Value>
+                </PrivateCode>
+                <TopographicPlaceRef>23006351:1</TopographicPlaceRef>
+              </StopPlace>
+              <Name>
+                <Text xml:lang="de">Viktoriaplatz</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>7.45129</siri:Longitude>
+                <siri:Latitude>46.95464</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <StopPlace>
+                <StopPlaceRef>8507110</StopPlaceRef>
+                <StopPlaceName>
+                  <Text xml:lang="de">Zytglogge</Text>
+                </StopPlaceName>
+                <PrivateCode>
+                  <System>EFA</System>
+                  <Value>111105:0:A</Value>
+                </PrivateCode>
+                <TopographicPlaceRef>23006351:1</TopographicPlaceRef>
+              </StopPlace>
+              <Name>
+                <Text xml:lang="de">Zytglogge</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>7.44749</siri:Longitude>
+                <siri:Latitude>46.9482</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <StopPlace>
+                <StopPlaceRef>8590048</StopPlaceRef>
+                <StopPlaceName>
+                  <Text xml:lang="de">Bundesplatz</Text>
+                </StopPlaceName>
+                <PrivateCode>
+                  <System>EFA</System>
+                  <Value>127285:0:10001</Value>
+                </PrivateCode>
+                <TopographicPlaceRef>23006351:1</TopographicPlaceRef>
+              </StopPlace>
+              <Name>
+                <Text xml:lang="de">Bundesplatz</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>7.4443</siri:Longitude>
+                <siri:Latitude>46.94733</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <StopPlace>
+                <StopPlaceRef>8576646</StopPlaceRef>
+                <StopPlaceName>
+                  <Text xml:lang="de">Bahnhof</Text>
+                </StopPlaceName>
+                <PrivateCode>
+                  <System>EFA</System>
+                  <Value>119184:0:I</Value>
+                </PrivateCode>
+                <TopographicPlaceRef>23006351:1</TopographicPlaceRef>
+              </StopPlace>
+              <Name>
+                <Text xml:lang="de">Bahnhof</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>7.441</siri:Longitude>
+                <siri:Latitude>46.94736</siri:Latitude>
+              </GeoPosition>
+            </Place>
+          </Places>
+          <Situations>
+            <PtSituation>
+              <siri:CreationTime>2024-04-17T13:20:00Z</siri:CreationTime>
+              <siri:ParticipantRef>ski-ddip-out-sx_test</siri:ParticipantRef>
+              <siri:SituationNumber>ch:1:sstid:100001:dccd662a-e519-468b-b06b-1fdb25727282-1</siri:SituationNumber>
+              <siri:Version>3</siri:Version>
+              <siri:Source>
+                <siri:SourceType>other</siri:SourceType>
+              </siri:Source>
+              <siri:ValidityPeriod>
+                <siri:StartTime>2024-07-13T20:15:00Z</siri:StartTime>
+                <siri:EndTime>2024-08-12T03:20:00Z</siri:EndTime>
+              </siri:ValidityPeriod>
+              <siri:AlertCause>unknown</siri:AlertCause>
+              <siri:UnknownReason>unknown</siri:UnknownReason>
+              <siri:Priority>3</siri:Priority>
+              <siri:ScopeType>stopPoint</siri:ScopeType>
+              <siri:Language>de</siri:Language>
+              <siri:Affects>
+                <siri:StopPoints>
+                  <siri:AffectedStopPoint>
+                    <siri:StopPointRef>8516161</siri:StopPointRef>
+                  </siri:AffectedStopPoint>
+                  <siri:AffectedStopPoint>
+                    <siri:StopPointRef>8507000</siri:StopPointRef>
+                  </siri:AffectedStopPoint>
+                </siri:StopPoints>
+                <siri:VehicleJourneys/>
+              </siri:Affects>
+              <siri:Consequences>
+                <siri:Consequence>
+                  <siri:Blocking>
+                    <siri:JourneyPlanner>true</siri:JourneyPlanner>
+                  </siri:Blocking>
+                </siri:Consequence>
+              </siri:Consequences>
+              <siri:PublishingActions>
+                <siri:PublishingAction>
+                  <siri:PassengerInformationAction>
+                    <siri:RecordedAtTime>0001-01-01T00:00:00</siri:RecordedAtTime>
+                    <siri:TextualContent>
+                      <siri:SummaryContent>
+                        <siri:SummaryText xml:lang="de">Der Bahnverkehr zwischen Bern Wankdorf und Bern ist eingeschränkt.</siri:SummaryText>
+                      </siri:SummaryContent>
+                      <siri:ReasonContent>
+                        <siri:ReasonText xml:lang="de">Der Grund dafür sind Bauarbeiten.</siri:ReasonText>
+                      </siri:ReasonContent>
+                      <siri:DescriptionContent/>
+                      <siri:ConsequenceContent>
+                        <siri:ConsequenceText xml:lang="de">Es sind Ausfälle, ein geänderter Fahrplan und geänderte Anschlüsse zu erwarten.</siri:ConsequenceText>
+                      </siri:ConsequenceContent>
+                      <siri:RecommendationContent>
+                        <siri:RecommendationText xml:lang="de">Wir empfehlen, kurz vor jeder Fahrt den Online-Fahrplan zu konsultieren.</siri:RecommendationText>
+                      </siri:RecommendationContent>
+                      <siri:DurationContent>
+                        <siri:DurationText xml:lang="de">Die Einschränkung dauert von 13.07.2024 bis 15.07.2024, jeweils von 22:15 - 05:20. Die Einschränkung dauert von 10.08.2024 bis 12.08.2024, jeweils von 22:15 - 05:20.</siri:DurationText>
+                      </siri:DurationContent>
+                      <siri:RemarkContent/>
+                    </siri:TextualContent>
+                  </siri:PassengerInformationAction>
+                </siri:PublishingAction>
+              </siri:PublishingActions>
+            </PtSituation>
+          </Situations>
+        </TripResponseContext>
+        <TripResult>
+          <Id>ID-E22A32B6-E223-48EB-8C4B-F7DDD551384E</Id>
+          <Trip>
+            <Id>ID-E22A32B6-E223-48EB-8C4B-F7DDD551384E</Id>
+            <Duration>PT18M30S</Duration>
+            <StartTime>2024-08-09T10:24:30Z</StartTime>
+            <EndTime>2024-08-09T10:43:00Z</EndTime>
+            <Transfers>0</Transfers>
+            <Leg>
+              <Id>1</Id>
+              <Duration>PT12M</Duration>
+              <ContinuousLeg>
+                <LegStart>
+                  <GeoPosition>
+                    <siri:Longitude>7.47475</siri:Longitude>
+                    <siri:Latitude>46.95635</siri:Latitude>
+                  </GeoPosition>
+                  <Name>
+                    <Text xml:lang="de">Bern, Zentweg (Bern)</Text>
+                  </Name>
+                </LegStart>
+                <LegEnd>
+                  <siri:StopPointRef>8507002</siri:StopPointRef>
+                  <Name>
+                    <Text xml:lang="de">Ostermundigen</Text>
+                  </Name>
+                </LegEnd>
+                <Service>
+                  <PersonalModeOfOperation>own</PersonalModeOfOperation>
+                  <PersonalMode>foot</PersonalMode>
+                </Service>
+                <Duration>PT12M</Duration>
+                <Length>0</Length>
+              </ContinuousLeg>
+            </Leg>
+            <Leg>
+              <Id>2</Id>
+              <Duration>PT6M30S</Duration>
+              <TimedLeg>
+                <LegBoard>
+                  <siri:StopPointRef>ch:1:sloid:7002:1:1</siri:StopPointRef>
+                  <StopPointName>
+                    <Text xml:lang="de">Ostermundigen</Text>
+                  </StopPointName>
+                  <PlannedQuay>
+                    <Text xml:lang="de">1</Text>
+                  </PlannedQuay>
+                  <EstimatedQuay>
+                    <Text xml:lang="de">1</Text>
+                  </EstimatedQuay>
+                  <NameSuffix>
+                    <Text xml:lang="de">NO_DATA</Text>
+                  </NameSuffix>
+                  <ServiceDeparture>
+                    <TimetabledTime>2024-08-09T10:36:00Z</TimetabledTime>
+                    <EstimatedTime>2024-08-09T10:36:30Z</EstimatedTime>
+                  </ServiceDeparture>
+                  <Order>1</Order>
+                </LegBoard>
+                <LegIntermediate>
+                  <siri:StopPointRef>ch:1:sloid:16161:0:0</siri:StopPointRef>
+                  <StopPointName>
+                    <Text xml:lang="de">Bern Wankdorf</Text>
+                  </StopPointName>
+                  <NameSuffix>
+                    <Text xml:lang="de">NO_DATA</Text>
+                  </NameSuffix>
+                  <PlannedQuay>
+                    <Text xml:lang="de">1</Text>
+                  </PlannedQuay>
+                  <EstimatedQuay>
+                    <Text xml:lang="de">1</Text>
+                  </EstimatedQuay>
+                  <ServiceArrival>
+                    <TimetabledTime>2024-08-09T10:38:00Z</TimetabledTime>
+                    <EstimatedTime>2024-08-09T10:38:18Z</EstimatedTime>
+                  </ServiceArrival>
+                  <ServiceDeparture>
+                    <TimetabledTime>2024-08-09T10:38:00Z</TimetabledTime>
+                    <EstimatedTime>2024-08-09T10:38:54Z</EstimatedTime>
+                  </ServiceDeparture>
+                  <Order>2</Order>
+                </LegIntermediate>
+                <LegAlight>
+                  <siri:StopPointRef>ch:1:sloid:7000:1:2</siri:StopPointRef>
+                  <StopPointName>
+                    <Text xml:lang="de">Bern</Text>
+                  </StopPointName>
+                  <NameSuffix>
+                    <Text xml:lang="de">NO_DATA</Text>
+                  </NameSuffix>
+                  <PlannedQuay>
+                    <Text xml:lang="de">2</Text>
+                  </PlannedQuay>
+                  <EstimatedQuay>
+                    <Text xml:lang="de">2E-H</Text>
+                  </EstimatedQuay>
+                  <ServiceArrival>
+                    <TimetabledTime>2024-08-09T10:43:00Z</TimetabledTime>
+                    <EstimatedTime>2024-08-09T10:43:00Z</EstimatedTime>
+                  </ServiceArrival>
+                  <Order>3</Order>
+                </LegAlight>
+                <Service>
+                  <Mode>
+                    <PtMode>rail</PtMode>
+                    <siri:RailSubmode>regionalRail</siri:RailSubmode>
+                    <Name>
+                      <Text xml:lang="de">Zug</Text>
+                    </Name>
+                    <ShortName>
+                      <Text xml:lang="de">S</Text>
+                    </ShortName>
+                  </Mode>
+                  <ConventionalModeOfOperation>scheduled</ConventionalModeOfOperation>
+                  <TrainNumber>15144</TrainNumber>
+                  <siri:LineRef>ojp:91001:E</siri:LineRef>
+                  <siri:OperatorRef>33</siri:OperatorRef>
+                  <PublicCode>S-Bahn</PublicCode>
+                  <PublishedServiceName>
+                    <Text xml:lang="de">S1</Text>
+                  </PublishedServiceName>
+                  <ProductCategory>
+                    <Name>
+                      <Text xml:lang="de">Zug</Text>
+                    </Name>
+                    <ShortName>
+                      <Text xml:lang="de">S</Text>
+                    </ShortName>
+                    <ProductCategoryRef>27</ProductCategoryRef>
+                  </ProductCategory>
+                  <siri:DirectionRef>H</siri:DirectionRef>
+                  <OperatingDayRef>2024-08-09</OperatingDayRef>
+                  <DestinationStopPointRef>8504100</DestinationStopPointRef>
+                  <OriginText>
+                    <Text xml:lang="de">n/a</Text>
+                  </OriginText>
+                  <DestinationText>
+                    <Text xml:lang="de">Fribourg/Freiburg</Text>
+                  </DestinationText>
+                  <JourneyRef>ch:1:sjyid:100015:15144-001</JourneyRef>
+                  <Attribute>
+                    <UserText>
+                      <Text xml:lang="de">Aussteigeseite: Links</Text>
+                    </UserText>
+                    <Code>ojp91001EH_InfoCall56_111056_1</Code>
+                  </Attribute>
+                  <SituationFullRefs>
+                    <SituationFullRef>
+                      <siri:ParticipantRef>ski-ddip-out-sx_test</siri:ParticipantRef>
+                      <siri:SituationNumber>ch:1:sstid:100001:dccd662a-e519-468b-b06b-1fdb25727282-1</siri:SituationNumber>
+                    </SituationFullRef>
+                  </SituationFullRefs>
+                </Service>
+              </TimedLeg>
+            </Leg>
+          </Trip>
+        </TripResult>
+        <TripResult>
+          <Id>ID-886A6ED2-0DB4-4B5E-A176-1423C0DC0BDC</Id>
+          <Trip>
+            <Id>ID-886A6ED2-0DB4-4B5E-A176-1423C0DC0BDC</Id>
+            <Duration>PT17M36S</Duration>
+            <StartTime>2024-08-09T10:25:24Z</StartTime>
+            <EndTime>2024-08-09T10:43:00Z</EndTime>
+            <Transfers>1</Transfers>
+            <Leg>
+              <Id>1</Id>
+              <Duration>PT5M</Duration>
+              <ContinuousLeg>
+                <LegStart>
+                  <GeoPosition>
+                    <siri:Longitude>7.47475</siri:Longitude>
+                    <siri:Latitude>46.95635</siri:Latitude>
+                  </GeoPosition>
+                  <Name>
+                    <Text xml:lang="de">Bern, Zentweg (Bern)</Text>
+                  </Name>
+                </LegStart>
+                <LegEnd>
+                  <siri:StopPointRef>8577002</siri:StopPointRef>
+                  <Name>
+                    <Text xml:lang="de">Ostermundigen, Waldeck</Text>
+                  </Name>
+                </LegEnd>
+                <Service>
+                  <PersonalModeOfOperation>own</PersonalModeOfOperation>
+                  <PersonalMode>foot</PersonalMode>
+                </Service>
+                <Duration>PT5M</Duration>
+                <Length>0</Length>
+              </ContinuousLeg>
+            </Leg>
+            <Leg>
+              <Id>2</Id>
+              <Duration>PT1M</Duration>
+              <TimedLeg>
+                <LegBoard>
+                  <siri:StopPointRef>ch:1:sloid:77002:0:1</siri:StopPointRef>
+                  <StopPointName>
+                    <Text xml:lang="de">Ostermundigen, Waldeck</Text>
+                  </StopPointName>
+                  <NameSuffix>
+                    <Text xml:lang="de">PLATFORM_ACCESS_WITH_ASSISTANCE</Text>
+                  </NameSuffix>
+                  <ServiceDeparture>
+                    <TimetabledTime>2024-08-09T10:26:00Z</TimetabledTime>
+                    <EstimatedTime>2024-08-09T10:30:24Z</EstimatedTime>
+                  </ServiceDeparture>
+                  <Order>1</Order>
+                </LegBoard>
+                <LegAlight>
+                  <siri:StopPointRef>ch:1:sloid:77003:0:1</siri:StopPointRef>
+                  <StopPointName>
+                    <Text xml:lang="de">Ostermundigen, Bahnhof</Text>
+                  </StopPointName>
+                  <NameSuffix>
+                    <Text xml:lang="de">PLATFORM_ACCESS_WITH_ASSISTANCE</Text>
+                  </NameSuffix>
+                  <PlannedQuay>
+                    <Text xml:lang="de">B</Text>
+                  </PlannedQuay>
+                  <EstimatedQuay>
+                    <Text xml:lang="de">B</Text>
+                  </EstimatedQuay>
+                  <ServiceArrival>
+                    <TimetabledTime>2024-08-09T10:27:00Z</TimetabledTime>
+                    <EstimatedTime>2024-08-09T10:31:24Z</EstimatedTime>
+                  </ServiceArrival>
+                  <Order>2</Order>
+                </LegAlight>
+                <Service>
+                  <Mode>
+                    <PtMode>bus</PtMode>
+                    <siri:BusSubmode>localBus</siri:BusSubmode>
+                    <Name>
+                      <Text xml:lang="de">Bus</Text>
+                    </Name>
+                    <ShortName>
+                      <Text xml:lang="de">B</Text>
+                    </ShortName>
+                  </Mode>
+                  <ConventionalModeOfOperation>scheduled</ConventionalModeOfOperation>
+                  <TrainNumber>12188</TrainNumber>
+                  <siri:LineRef>ojp:92010:_x0020_</siri:LineRef>
+                  <siri:OperatorRef>827</siri:OperatorRef>
+                  <PublicCode>Bus</PublicCode>
+                  <PublishedServiceName>
+                    <Text xml:lang="de">10</Text>
+                  </PublishedServiceName>
+                  <ProductCategory>
+                    <Name>
+                      <Text xml:lang="de">Bus</Text>
+                    </Name>
+                    <ShortName>
+                      <Text xml:lang="de">B</Text>
+                    </ShortName>
+                    <ProductCategoryRef>29</ProductCategoryRef>
+                  </ProductCategory>
+                  <siri:DirectionRef>H</siri:DirectionRef>
+                  <OperatingDayRef>2024-08-09</OperatingDayRef>
+                  <DestinationStopPointRef>8590052</DestinationStopPointRef>
+                  <OriginText>
+                    <Text xml:lang="de">n/a</Text>
+                  </OriginText>
+                  <DestinationText>
+                    <Text xml:lang="de">Ostermundigen Rüti</Text>
+                  </DestinationText>
+                  <JourneyRef>ojp-92-10-_-j24-1-1103-TA</JourneyRef>
+                  <Attribute>
+                    <UserText>
+                      <Text xml:lang="de">VELOS: Platzzahl eingeschränkt</Text>
+                    </UserText>
+                    <Code>A__VB</Code>
+                  </Attribute>
+                  <Attribute>
+                    <UserText>
+                      <Text xml:lang="de">Niederflureinstieg</Text>
+                    </UserText>
+                    <Code>A__NF</Code>
+                  </Attribute>
+                </Service>
+              </TimedLeg>
+            </Leg>
+            <Leg>
+              <Id>3</Id>
+              <Duration>PT5M</Duration>
+              <TransferLeg>
+                <TransferType>walk</TransferType>
+                <LegStart>
+                  <siri:StopPointRef>8577003</siri:StopPointRef>
+                  <Name>
+                    <Text xml:lang="de">Ostermundigen, Bahnhof</Text>
+                  </Name>
+                </LegStart>
+                <LegEnd>
+                  <siri:StopPointRef>8507002</siri:StopPointRef>
+                  <Name>
+                    <Text xml:lang="de">Ostermundigen</Text>
+                  </Name>
+                </LegEnd>
+                <Duration>PT5M</Duration>
+              </TransferLeg>
+            </Leg>
+            <Leg>
+              <Id>4</Id>
+              <Duration>PT6M30S</Duration>
+              <TimedLeg>
+                <LegBoard>
+                  <siri:StopPointRef>ch:1:sloid:7002:1:1</siri:StopPointRef>
+                  <StopPointName>
+                    <Text xml:lang="de">Ostermundigen</Text>
+                  </StopPointName>
+                  <PlannedQuay>
+                    <Text xml:lang="de">1</Text>
+                  </PlannedQuay>
+                  <EstimatedQuay>
+                    <Text xml:lang="de">1</Text>
+                  </EstimatedQuay>
+                  <NameSuffix>
+                    <Text xml:lang="de">NO_DATA</Text>
+                  </NameSuffix>
+                  <ServiceDeparture>
+                    <TimetabledTime>2024-08-09T10:36:00Z</TimetabledTime>
+                    <EstimatedTime>2024-08-09T10:36:30Z</EstimatedTime>
+                  </ServiceDeparture>
+                  <Order>1</Order>
+                </LegBoard>
+                <LegIntermediate>
+                  <siri:StopPointRef>ch:1:sloid:16161:0:0</siri:StopPointRef>
+                  <StopPointName>
+                    <Text xml:lang="de">Bern Wankdorf</Text>
+                  </StopPointName>
+                  <NameSuffix>
+                    <Text xml:lang="de">NO_DATA</Text>
+                  </NameSuffix>
+                  <PlannedQuay>
+                    <Text xml:lang="de">1</Text>
+                  </PlannedQuay>
+                  <EstimatedQuay>
+                    <Text xml:lang="de">1</Text>
+                  </EstimatedQuay>
+                  <ServiceArrival>
+                    <TimetabledTime>2024-08-09T10:38:00Z</TimetabledTime>
+                    <EstimatedTime>2024-08-09T10:38:18Z</EstimatedTime>
+                  </ServiceArrival>
+                  <ServiceDeparture>
+                    <TimetabledTime>2024-08-09T10:38:00Z</TimetabledTime>
+                    <EstimatedTime>2024-08-09T10:38:54Z</EstimatedTime>
+                  </ServiceDeparture>
+                  <Order>2</Order>
+                </LegIntermediate>
+                <LegAlight>
+                  <siri:StopPointRef>ch:1:sloid:7000:1:2</siri:StopPointRef>
+                  <StopPointName>
+                    <Text xml:lang="de">Bern</Text>
+                  </StopPointName>
+                  <NameSuffix>
+                    <Text xml:lang="de">NO_DATA</Text>
+                  </NameSuffix>
+                  <PlannedQuay>
+                    <Text xml:lang="de">2</Text>
+                  </PlannedQuay>
+                  <EstimatedQuay>
+                    <Text xml:lang="de">2E-H</Text>
+                  </EstimatedQuay>
+                  <ServiceArrival>
+                    <TimetabledTime>2024-08-09T10:43:00Z</TimetabledTime>
+                    <EstimatedTime>2024-08-09T10:43:00Z</EstimatedTime>
+                  </ServiceArrival>
+                  <Order>3</Order>
+                </LegAlight>
+                <Service>
+                  <Mode>
+                    <PtMode>rail</PtMode>
+                    <siri:RailSubmode>regionalRail</siri:RailSubmode>
+                    <Name>
+                      <Text xml:lang="de">Zug</Text>
+                    </Name>
+                    <ShortName>
+                      <Text xml:lang="de">S</Text>
+                    </ShortName>
+                  </Mode>
+                  <ConventionalModeOfOperation>scheduled</ConventionalModeOfOperation>
+                  <TrainNumber>15144</TrainNumber>
+                  <siri:LineRef>ojp:91001:E</siri:LineRef>
+                  <siri:OperatorRef>33</siri:OperatorRef>
+                  <PublicCode>S-Bahn</PublicCode>
+                  <PublishedServiceName>
+                    <Text xml:lang="de">S1</Text>
+                  </PublishedServiceName>
+                  <ProductCategory>
+                    <Name>
+                      <Text xml:lang="de">Zug</Text>
+                    </Name>
+                    <ShortName>
+                      <Text xml:lang="de">S</Text>
+                    </ShortName>
+                    <ProductCategoryRef>27</ProductCategoryRef>
+                  </ProductCategory>
+                  <siri:DirectionRef>H</siri:DirectionRef>
+                  <OperatingDayRef>2024-08-09</OperatingDayRef>
+                  <DestinationStopPointRef>8504100</DestinationStopPointRef>
+                  <OriginText>
+                    <Text xml:lang="de">n/a</Text>
+                  </OriginText>
+                  <DestinationText>
+                    <Text xml:lang="de">Fribourg/Freiburg</Text>
+                  </DestinationText>
+                  <JourneyRef>ch:1:sjyid:100015:15144-001</JourneyRef>
+                  <Attribute>
+                    <UserText>
+                      <Text xml:lang="de">Aussteigeseite: Links</Text>
+                    </UserText>
+                    <Code>ojp91001EH_InfoCall56_111056_1</Code>
+                  </Attribute>
+                  <SituationFullRefs>
+                    <SituationFullRef>
+                      <siri:ParticipantRef>ski-ddip-out-sx_test</siri:ParticipantRef>
+                      <siri:SituationNumber>ch:1:sstid:100001:dccd662a-e519-468b-b06b-1fdb25727282-1</siri:SituationNumber>
+                    </SituationFullRef>
+                  </SituationFullRefs>
+                </Service>
+              </TimedLeg>
+            </Leg>
+          </Trip>
+        </TripResult>
+        <TripResult>
+          <Id>ID-9F4E87C8-C982-4E43-9E66-0CEE1D758B8A</Id>
+          <Trip>
+            <Id>ID-9F4E87C8-C982-4E43-9E66-0CEE1D758B8A</Id>
+            <Duration>PT18M12S</Duration>
+            <StartTime>2024-08-09T10:29:48Z</StartTime>
+            <EndTime>2024-08-09T10:48:00Z</EndTime>
+            <Transfers>0</Transfers>
+            <Leg>
+              <Id>1</Id>
+              <Duration>PT12M</Duration>
+              <ContinuousLeg>
+                <LegStart>
+                  <GeoPosition>
+                    <siri:Longitude>7.47475</siri:Longitude>
+                    <siri:Latitude>46.95635</siri:Latitude>
+                  </GeoPosition>
+                  <Name>
+                    <Text xml:lang="de">Bern, Zentweg (Bern)</Text>
+                  </Name>
+                </LegStart>
+                <LegEnd>
+                  <siri:StopPointRef>8507002</siri:StopPointRef>
+                  <Name>
+                    <Text xml:lang="de">Ostermundigen</Text>
+                  </Name>
+                </LegEnd>
+                <Service>
+                  <PersonalModeOfOperation>own</PersonalModeOfOperation>
+                  <PersonalMode>foot</PersonalMode>
+                </Service>
+                <Duration>PT12M</Duration>
+                <Length>0</Length>
+              </ContinuousLeg>
+            </Leg>
+            <Leg>
+              <Id>2</Id>
+              <Duration>PT6M12S</Duration>
+              <TimedLeg>
+                <LegBoard>
+                  <siri:StopPointRef>ch:1:sloid:7002:1:1</siri:StopPointRef>
+                  <StopPointName>
+                    <Text xml:lang="de">Ostermundigen</Text>
+                  </StopPointName>
+                  <PlannedQuay>
+                    <Text xml:lang="de">1</Text>
+                  </PlannedQuay>
+                  <EstimatedQuay>
+                    <Text xml:lang="de">1</Text>
+                  </EstimatedQuay>
+                  <NameSuffix>
+                    <Text xml:lang="de">NO_DATA</Text>
+                  </NameSuffix>
+                  <ServiceDeparture>
+                    <TimetabledTime>2024-08-09T10:40:00Z</TimetabledTime>
+                    <EstimatedTime>2024-08-09T10:41:48Z</EstimatedTime>
+                  </ServiceDeparture>
+                  <Order>1</Order>
+                </LegBoard>
+                <LegIntermediate>
+                  <siri:StopPointRef>ch:1:sloid:16161:0:0</siri:StopPointRef>
+                  <StopPointName>
+                    <Text xml:lang="de">Bern Wankdorf</Text>
+                  </StopPointName>
+                  <NameSuffix>
+                    <Text xml:lang="de">NO_DATA</Text>
+                  </NameSuffix>
+                  <PlannedQuay>
+                    <Text xml:lang="de">1</Text>
+                  </PlannedQuay>
+                  <EstimatedQuay>
+                    <Text xml:lang="de">1</Text>
+                  </EstimatedQuay>
+                  <ServiceArrival>
+                    <TimetabledTime>2024-08-09T10:43:00Z</TimetabledTime>
+                    <EstimatedTime>2024-08-09T10:43:36Z</EstimatedTime>
+                  </ServiceArrival>
+                  <ServiceDeparture>
+                    <TimetabledTime>2024-08-09T10:43:00Z</TimetabledTime>
+                    <EstimatedTime>2024-08-09T10:44:18Z</EstimatedTime>
+                  </ServiceDeparture>
+                  <Order>2</Order>
+                </LegIntermediate>
+                <LegAlight>
+                  <siri:StopPointRef>ch:1:sloid:7000:1:21</siri:StopPointRef>
+                  <StopPointName>
+                    <Text xml:lang="de">Bern</Text>
+                  </StopPointName>
+                  <NameSuffix>
+                    <Text xml:lang="de">NO_DATA</Text>
+                  </NameSuffix>
+                  <PlannedQuay>
+                    <Text xml:lang="de">1</Text>
+                  </PlannedQuay>
+                  <EstimatedQuay>
+                    <Text xml:lang="de">1A-D</Text>
+                  </EstimatedQuay>
+                  <ServiceArrival>
+                    <TimetabledTime>2024-08-09T10:48:00Z</TimetabledTime>
+                    <EstimatedTime>2024-08-09T10:48:00Z</EstimatedTime>
+                  </ServiceArrival>
+                  <Order>3</Order>
+                </LegAlight>
+                <Service>
+                  <Mode>
+                    <PtMode>rail</PtMode>
+                    <siri:RailSubmode>regionalRail</siri:RailSubmode>
+                    <Name>
+                      <Text xml:lang="de">Zug</Text>
+                    </Name>
+                    <ShortName>
+                      <Text xml:lang="de">S</Text>
+                    </ShortName>
+                  </Mode>
+                  <ConventionalModeOfOperation>scheduled</ConventionalModeOfOperation>
+                  <TrainNumber>15246</TrainNumber>
+                  <siri:LineRef>ojp:91002:A</siri:LineRef>
+                  <siri:OperatorRef>33</siri:OperatorRef>
+                  <PublicCode>S-Bahn</PublicCode>
+                  <PublishedServiceName>
+                    <Text xml:lang="de">S2</Text>
+                  </PublishedServiceName>
+                  <ProductCategory>
+                    <Name>
+                      <Text xml:lang="de">Zug</Text>
+                    </Name>
+                    <ShortName>
+                      <Text xml:lang="de">S</Text>
+                    </ShortName>
+                    <ProductCategoryRef>27</ProductCategoryRef>
+                  </ProductCategory>
+                  <siri:DirectionRef>R</siri:DirectionRef>
+                  <OperatingDayRef>2024-08-09</OperatingDayRef>
+                  <DestinationStopPointRef>8504194</DestinationStopPointRef>
+                  <OriginText>
+                    <Text xml:lang="de">n/a</Text>
+                  </OriginText>
+                  <DestinationText>
+                    <Text xml:lang="de">Laupen BE</Text>
+                  </DestinationText>
+                  <JourneyRef>ch:1:sjyid:100015:15246-001</JourneyRef>
+                  <Attribute>
+                    <UserText>
+                      <Text xml:lang="de">Aussteigeseite: Links</Text>
+                    </UserText>
+                    <Code>ojp91002AR_InfoCall240_111056_1</Code>
+                  </Attribute>
+                  <Attribute>
+                    <UserText>
+                      <Text xml:lang="de">Aussteigeseite: Rechts</Text>
+                    </UserText>
+                    <Code>ojp91002AR_InfoCall240_111055_1</Code>
+                  </Attribute>
+                  <SituationFullRefs>
+                    <SituationFullRef>
+                      <siri:ParticipantRef>ski-ddip-out-sx_test</siri:ParticipantRef>
+                      <siri:SituationNumber>ch:1:sstid:100001:dccd662a-e519-468b-b06b-1fdb25727282-1</siri:SituationNumber>
+                    </SituationFullRef>
+                  </SituationFullRefs>
+                </Service>
+              </TimedLeg>
+            </Leg>
+          </Trip>
+        </TripResult>
+        <TripResult>
+          <Id>ID-000C6AFF-543D-4635-9CD2-F6C755D6AA67</Id>
+          <Trip>
+            <Id>ID-000C6AFF-543D-4635-9CD2-F6C755D6AA67</Id>
+            <Duration>PT22M12S</Duration>
+            <StartTime>2024-08-09T10:32:54Z</StartTime>
+            <EndTime>2024-08-09T10:55:06Z</EndTime>
+            <Transfers>0</Transfers>
+            <Leg>
+              <Id>1</Id>
+              <Duration>PT5M</Duration>
+              <ContinuousLeg>
+                <LegStart>
+                  <GeoPosition>
+                    <siri:Longitude>7.47475</siri:Longitude>
+                    <siri:Latitude>46.95635</siri:Latitude>
+                  </GeoPosition>
+                  <Name>
+                    <Text xml:lang="de">Bern, Zentweg (Bern)</Text>
+                  </Name>
+                </LegStart>
+                <LegEnd>
+                  <siri:StopPointRef>8577002</siri:StopPointRef>
+                  <Name>
+                    <Text xml:lang="de">Ostermundigen, Waldeck</Text>
+                  </Name>
+                </LegEnd>
+                <Service>
+                  <PersonalModeOfOperation>own</PersonalModeOfOperation>
+                  <PersonalMode>foot</PersonalMode>
+                </Service>
+                <Duration>PT5M</Duration>
+                <Length>0</Length>
+              </ContinuousLeg>
+            </Leg>
+            <Leg>
+              <Id>2</Id>
+              <Duration>PT11M12S</Duration>
+              <TimedLeg>
+                <LegBoard>
+                  <siri:StopPointRef>ch:1:sloid:77002:0:2</siri:StopPointRef>
+                  <StopPointName>
+                    <Text xml:lang="de">Ostermundigen, Waldeck</Text>
+                  </StopPointName>
+                  <NameSuffix>
+                    <Text xml:lang="de">PLATFORM_ACCESS_WITH_ASSISTANCE</Text>
+                  </NameSuffix>
+                  <ServiceDeparture>
+                    <TimetabledTime>2024-08-09T10:35:00Z</TimetabledTime>
+                    <EstimatedTime>2024-08-09T10:37:54Z</EstimatedTime>
+                  </ServiceDeparture>
+                  <Order>1</Order>
+                </LegBoard>
+                <LegIntermediate>
+                  <siri:StopPointRef>ch:1:sloid:90050:0:2</siri:StopPointRef>
+                  <StopPointName>
+                    <Text xml:lang="de">Bern, Schosshaldenfriedhof</Text>
+                  </StopPointName>
+                  <NameSuffix>
+                    <Text xml:lang="de">PLATFORM_NOT_WHEELCHAIR_ACCESSIBLE</Text>
+                  </NameSuffix>
+                  <ServiceArrival>
+                    <TimetabledTime>2024-08-09T10:36:00Z</TimetabledTime>
+                    <EstimatedTime>2024-08-09T10:38:48Z</EstimatedTime>
+                  </ServiceArrival>
+                  <ServiceDeparture>
+                    <TimetabledTime>2024-08-09T10:36:00Z</TimetabledTime>
+                    <EstimatedTime>2024-08-09T10:38:48Z</EstimatedTime>
+                  </ServiceDeparture>
+                  <Order>2</Order>
+                </LegIntermediate>
+                <LegIntermediate>
+                  <siri:StopPointRef>ch:1:sloid:90049:0:2</siri:StopPointRef>
+                  <StopPointName>
+                    <Text xml:lang="de">Bern, Galgenfeld</Text>
+                  </StopPointName>
+                  <NameSuffix>
+                    <Text xml:lang="de">PLATFORM_NOT_WHEELCHAIR_ACCESSIBLE</Text>
+                  </NameSuffix>
+                  <ServiceArrival>
+                    <TimetabledTime>2024-08-09T10:38:00Z</TimetabledTime>
+                    <EstimatedTime>2024-08-09T10:40:06Z</EstimatedTime>
+                  </ServiceArrival>
+                  <ServiceDeparture>
+                    <TimetabledTime>2024-08-09T10:38:00Z</TimetabledTime>
+                    <EstimatedTime>2024-08-09T10:40:06Z</EstimatedTime>
+                  </ServiceDeparture>
+                  <Order>3</Order>
+                </LegIntermediate>
+                <LegIntermediate>
+                  <siri:StopPointRef>ch:1:sloid:87485:0:2</siri:StopPointRef>
+                  <StopPointName>
+                    <Text xml:lang="de">Bern, Rosengarten</Text>
+                  </StopPointName>
+                  <NameSuffix>
+                    <Text xml:lang="de">PLATFORM_ACCESS_WITH_ASSISTANCE</Text>
+                  </NameSuffix>
+                  <ServiceArrival>
+                    <TimetabledTime>2024-08-09T10:39:00Z</TimetabledTime>
+                    <EstimatedTime>2024-08-09T10:41:30Z</EstimatedTime>
+                  </ServiceArrival>
+                  <ServiceDeparture>
+                    <TimetabledTime>2024-08-09T10:39:00Z</TimetabledTime>
+                    <EstimatedTime>2024-08-09T10:41:30Z</EstimatedTime>
+                  </ServiceDeparture>
+                  <Order>4</Order>
+                </LegIntermediate>
+                <LegIntermediate>
+                  <siri:StopPointRef>ch:1:sloid:87484:0:1</siri:StopPointRef>
+                  <StopPointName>
+                    <Text xml:lang="de">Bern, Schönburg</Text>
+                  </StopPointName>
+                  <NameSuffix>
+                    <Text xml:lang="de">PLATFORM_ACCESS_WITH_ASSISTANCE</Text>
+                  </NameSuffix>
+                  <ServiceArrival>
+                    <TimetabledTime>2024-08-09T10:40:00Z</TimetabledTime>
+                    <EstimatedTime>2024-08-09T10:42:36Z</EstimatedTime>
+                  </ServiceArrival>
+                  <ServiceDeparture>
+                    <TimetabledTime>2024-08-09T10:40:00Z</TimetabledTime>
+                    <EstimatedTime>2024-08-09T10:42:36Z</EstimatedTime>
+                  </ServiceDeparture>
+                  <Order>5</Order>
+                </LegIntermediate>
+                <LegIntermediate>
+                  <siri:StopPointRef>ch:1:sloid:87483:0:2</siri:StopPointRef>
+                  <StopPointName>
+                    <Text xml:lang="de">Bern, Salem</Text>
+                  </StopPointName>
+                  <NameSuffix>
+                    <Text xml:lang="de">PLATFORM_NOT_WHEELCHAIR_ACCESSIBLE</Text>
+                  </NameSuffix>
+                  <ServiceArrival>
+                    <TimetabledTime>2024-08-09T10:41:00Z</TimetabledTime>
+                    <EstimatedTime>2024-08-09T10:43:24Z</EstimatedTime>
+                  </ServiceArrival>
+                  <ServiceDeparture>
+                    <TimetabledTime>2024-08-09T10:41:00Z</TimetabledTime>
+                    <EstimatedTime>2024-08-09T10:43:24Z</EstimatedTime>
+                  </ServiceDeparture>
+                  <Order>6</Order>
+                </LegIntermediate>
+                <LegIntermediate>
+                  <siri:StopPointRef>ch:1:sloid:90021:0:4</siri:StopPointRef>
+                  <StopPointName>
+                    <Text xml:lang="de">Bern, Viktoriaplatz</Text>
+                  </StopPointName>
+                  <NameSuffix>
+                    <Text xml:lang="de">PLATFORM_ACCESS_WITH_ASSISTANCE</Text>
+                  </NameSuffix>
+                  <PlannedQuay>
+                    <Text xml:lang="de">C</Text>
+                  </PlannedQuay>
+                  <EstimatedQuay>
+                    <Text xml:lang="de">C</Text>
+                  </EstimatedQuay>
+                  <ServiceArrival>
+                    <TimetabledTime>2024-08-09T10:42:00Z</TimetabledTime>
+                    <EstimatedTime>2024-08-09T10:44:24Z</EstimatedTime>
+                  </ServiceArrival>
+                  <ServiceDeparture>
+                    <TimetabledTime>2024-08-09T10:42:00Z</TimetabledTime>
+                    <EstimatedTime>2024-08-09T10:44:24Z</EstimatedTime>
+                  </ServiceDeparture>
+                  <Order>7</Order>
+                </LegIntermediate>
+                <LegIntermediate>
+                  <siri:StopPointRef>ch:1:sloid:7110:0:4</siri:StopPointRef>
+                  <StopPointName>
+                    <Text xml:lang="de">Bern, Zytglogge</Text>
+                  </StopPointName>
+                  <NameSuffix>
+                    <Text xml:lang="de">PLATFORM_ACCESS_WITH_ASSISTANCE</Text>
+                  </NameSuffix>
+                  <PlannedQuay>
+                    <Text xml:lang="de">A</Text>
+                  </PlannedQuay>
+                  <EstimatedQuay>
+                    <Text xml:lang="de">A</Text>
+                  </EstimatedQuay>
+                  <ServiceArrival>
+                    <TimetabledTime>2024-08-09T10:44:00Z</TimetabledTime>
+                    <EstimatedTime>2024-08-09T10:46:48Z</EstimatedTime>
+                  </ServiceArrival>
+                  <ServiceDeparture>
+                    <TimetabledTime>2024-08-09T10:44:00Z</TimetabledTime>
+                    <EstimatedTime>2024-08-09T10:46:48Z</EstimatedTime>
+                  </ServiceDeparture>
+                  <Order>8</Order>
+                </LegIntermediate>
+                <LegIntermediate>
+                  <siri:StopPointRef>ch:1:sloid:90048:0:2</siri:StopPointRef>
+                  <StopPointName>
+                    <Text xml:lang="de">Bern, Bundesplatz</Text>
+                  </StopPointName>
+                  <NameSuffix>
+                    <Text xml:lang="de">PLATFORM_ACCESS_WITH_ASSISTANCE</Text>
+                  </NameSuffix>
+                  <ServiceArrival>
+                    <TimetabledTime>2024-08-09T10:46:00Z</TimetabledTime>
+                    <EstimatedTime>2024-08-09T10:48:12Z</EstimatedTime>
+                  </ServiceArrival>
+                  <ServiceDeparture>
+                    <TimetabledTime>2024-08-09T10:46:00Z</TimetabledTime>
+                    <EstimatedTime>2024-08-09T10:48:12Z</EstimatedTime>
+                  </ServiceDeparture>
+                  <Order>9</Order>
+                </LegIntermediate>
+                <LegAlight>
+                  <siri:StopPointRef>ch:1:sloid:76646:0:11</siri:StopPointRef>
+                  <StopPointName>
+                    <Text xml:lang="de">Bern, Bahnhof</Text>
+                  </StopPointName>
+                  <NameSuffix>
+                    <Text xml:lang="de">PLATFORM_ACCESS_WITH_ASSISTANCE</Text>
+                  </NameSuffix>
+                  <PlannedQuay>
+                    <Text xml:lang="de">I</Text>
+                  </PlannedQuay>
+                  <EstimatedQuay>
+                    <Text xml:lang="de">I</Text>
+                  </EstimatedQuay>
+                  <ServiceArrival>
+                    <TimetabledTime>2024-08-09T10:47:00Z</TimetabledTime>
+                    <EstimatedTime>2024-08-09T10:49:06Z</EstimatedTime>
+                  </ServiceArrival>
+                  <Order>10</Order>
+                </LegAlight>
+                <Service>
+                  <Mode>
+                    <PtMode>bus</PtMode>
+                    <siri:BusSubmode>localBus</siri:BusSubmode>
+                    <Name>
+                      <Text xml:lang="de">Bus</Text>
+                    </Name>
+                    <ShortName>
+                      <Text xml:lang="de">B</Text>
+                    </ShortName>
+                  </Mode>
+                  <ConventionalModeOfOperation>scheduled</ConventionalModeOfOperation>
+                  <TrainNumber>12178</TrainNumber>
+                  <siri:LineRef>ojp:92010:_x0020_</siri:LineRef>
+                  <siri:OperatorRef>827</siri:OperatorRef>
+                  <PublicCode>Bus</PublicCode>
+                  <PublishedServiceName>
+                    <Text xml:lang="de">10</Text>
+                  </PublishedServiceName>
+                  <ProductCategory>
+                    <Name>
+                      <Text xml:lang="de">Bus</Text>
+                    </Name>
+                    <ShortName>
+                      <Text xml:lang="de">B</Text>
+                    </ShortName>
+                    <ProductCategoryRef>29</ProductCategoryRef>
+                  </ProductCategory>
+                  <siri:DirectionRef>R</siri:DirectionRef>
+                  <OperatingDayRef>2024-08-09</OperatingDayRef>
+                  <DestinationStopPointRef>8595932</DestinationStopPointRef>
+                  <OriginText>
+                    <Text xml:lang="de">n/a</Text>
+                  </OriginText>
+                  <DestinationText>
+                    <Text xml:lang="de">Schliern</Text>
+                  </DestinationText>
+                  <JourneyRef>ojp-92-10-_-j24-1-3063-TA</JourneyRef>
+                  <Attribute>
+                    <UserText>
+                      <Text xml:lang="de">VELOS: Platzzahl eingeschränkt</Text>
+                    </UserText>
+                    <Code>A__VB</Code>
+                  </Attribute>
+                  <Attribute>
+                    <UserText>
+                      <Text xml:lang="de">Niederflureinstieg</Text>
+                    </UserText>
+                    <Code>A__NF</Code>
+                  </Attribute>
+                </Service>
+              </TimedLeg>
+            </Leg>
+            <Leg>
+              <Id>3</Id>
+              <Duration>PT6M</Duration>
+              <TransferLeg>
+                <TransferType>walk</TransferType>
+                <LegStart>
+                  <siri:StopPointRef>8576646</siri:StopPointRef>
+                  <Name>
+                    <Text xml:lang="de">Bern, Bahnhof</Text>
+                  </Name>
+                </LegStart>
+                <LegEnd>
+                  <siri:StopPointRef>8507000</siri:StopPointRef>
+                  <Name>
+                    <Text xml:lang="de">Bern</Text>
+                  </Name>
+                </LegEnd>
+                <Duration>PT6M</Duration>
+              </TransferLeg>
+            </Leg>
+          </Trip>
+        </TripResult>
+        <TripResult>
+          <Id>ID-65C27444-E460-488F-B579-679B0748360A</Id>
+          <Trip>
+            <Id>ID-65C27444-E460-488F-B579-679B0748360A</Id>
+            <Duration>PT22M12S</Duration>
+            <StartTime>2024-08-09T10:36:48Z</StartTime>
+            <EndTime>2024-08-09T10:59:00Z</EndTime>
+            <Transfers>0</Transfers>
+            <Leg>
+              <Id>1</Id>
+              <Duration>PT5M</Duration>
+              <ContinuousLeg>
+                <LegStart>
+                  <GeoPosition>
+                    <siri:Longitude>7.47475</siri:Longitude>
+                    <siri:Latitude>46.95635</siri:Latitude>
+                  </GeoPosition>
+                  <Name>
+                    <Text xml:lang="de">Bern, Zentweg (Bern)</Text>
+                  </Name>
+                </LegStart>
+                <LegEnd>
+                  <siri:StopPointRef>8577002</siri:StopPointRef>
+                  <Name>
+                    <Text xml:lang="de">Ostermundigen, Waldeck</Text>
+                  </Name>
+                </LegEnd>
+                <Service>
+                  <PersonalModeOfOperation>own</PersonalModeOfOperation>
+                  <PersonalMode>foot</PersonalMode>
+                </Service>
+                <Duration>PT5M</Duration>
+                <Length>0</Length>
+              </ContinuousLeg>
+            </Leg>
+            <Leg>
+              <Id>2</Id>
+              <Duration>PT11M12S</Duration>
+              <TimedLeg>
+                <LegBoard>
+                  <siri:StopPointRef>ch:1:sloid:77002:0:2</siri:StopPointRef>
+                  <StopPointName>
+                    <Text xml:lang="de">Ostermundigen, Waldeck</Text>
+                  </StopPointName>
+                  <NameSuffix>
+                    <Text xml:lang="de">PLATFORM_ACCESS_WITH_ASSISTANCE</Text>
+                  </NameSuffix>
+                  <ServiceDeparture>
+                    <TimetabledTime>2024-08-09T10:41:00Z</TimetabledTime>
+                    <EstimatedTime>2024-08-09T10:41:48Z</EstimatedTime>
+                  </ServiceDeparture>
+                  <Order>1</Order>
+                </LegBoard>
+                <LegIntermediate>
+                  <siri:StopPointRef>ch:1:sloid:90050:0:2</siri:StopPointRef>
+                  <StopPointName>
+                    <Text xml:lang="de">Bern, Schosshaldenfriedhof</Text>
+                  </StopPointName>
+                  <NameSuffix>
+                    <Text xml:lang="de">PLATFORM_NOT_WHEELCHAIR_ACCESSIBLE</Text>
+                  </NameSuffix>
+                  <ServiceArrival>
+                    <TimetabledTime>2024-08-09T10:42:00Z</TimetabledTime>
+                    <EstimatedTime>2024-08-09T10:42:42Z</EstimatedTime>
+                  </ServiceArrival>
+                  <ServiceDeparture>
+                    <TimetabledTime>2024-08-09T10:42:00Z</TimetabledTime>
+                    <EstimatedTime>2024-08-09T10:42:42Z</EstimatedTime>
+                  </ServiceDeparture>
+                  <Order>2</Order>
+                </LegIntermediate>
+                <LegIntermediate>
+                  <siri:StopPointRef>ch:1:sloid:90049:0:2</siri:StopPointRef>
+                  <StopPointName>
+                    <Text xml:lang="de">Bern, Galgenfeld</Text>
+                  </StopPointName>
+                  <NameSuffix>
+                    <Text xml:lang="de">PLATFORM_NOT_WHEELCHAIR_ACCESSIBLE</Text>
+                  </NameSuffix>
+                  <ServiceArrival>
+                    <TimetabledTime>2024-08-09T10:44:00Z</TimetabledTime>
+                    <EstimatedTime>2024-08-09T10:44:00Z</EstimatedTime>
+                  </ServiceArrival>
+                  <ServiceDeparture>
+                    <TimetabledTime>2024-08-09T10:44:00Z</TimetabledTime>
+                    <EstimatedTime>2024-08-09T10:44:00Z</EstimatedTime>
+                  </ServiceDeparture>
+                  <Order>3</Order>
+                </LegIntermediate>
+                <LegIntermediate>
+                  <siri:StopPointRef>ch:1:sloid:87485:0:2</siri:StopPointRef>
+                  <StopPointName>
+                    <Text xml:lang="de">Bern, Rosengarten</Text>
+                  </StopPointName>
+                  <NameSuffix>
+                    <Text xml:lang="de">PLATFORM_ACCESS_WITH_ASSISTANCE</Text>
+                  </NameSuffix>
+                  <ServiceArrival>
+                    <TimetabledTime>2024-08-09T10:45:00Z</TimetabledTime>
+                    <EstimatedTime>2024-08-09T10:45:24Z</EstimatedTime>
+                  </ServiceArrival>
+                  <ServiceDeparture>
+                    <TimetabledTime>2024-08-09T10:45:00Z</TimetabledTime>
+                    <EstimatedTime>2024-08-09T10:45:24Z</EstimatedTime>
+                  </ServiceDeparture>
+                  <Order>4</Order>
+                </LegIntermediate>
+                <LegIntermediate>
+                  <siri:StopPointRef>ch:1:sloid:87484:0:1</siri:StopPointRef>
+                  <StopPointName>
+                    <Text xml:lang="de">Bern, Schönburg</Text>
+                  </StopPointName>
+                  <NameSuffix>
+                    <Text xml:lang="de">PLATFORM_ACCESS_WITH_ASSISTANCE</Text>
+                  </NameSuffix>
+                  <ServiceArrival>
+                    <TimetabledTime>2024-08-09T10:46:00Z</TimetabledTime>
+                    <EstimatedTime>2024-08-09T10:46:30Z</EstimatedTime>
+                  </ServiceArrival>
+                  <ServiceDeparture>
+                    <TimetabledTime>2024-08-09T10:46:00Z</TimetabledTime>
+                    <EstimatedTime>2024-08-09T10:46:30Z</EstimatedTime>
+                  </ServiceDeparture>
+                  <Order>5</Order>
+                </LegIntermediate>
+                <LegIntermediate>
+                  <siri:StopPointRef>ch:1:sloid:87483:0:2</siri:StopPointRef>
+                  <StopPointName>
+                    <Text xml:lang="de">Bern, Salem</Text>
+                  </StopPointName>
+                  <NameSuffix>
+                    <Text xml:lang="de">PLATFORM_NOT_WHEELCHAIR_ACCESSIBLE</Text>
+                  </NameSuffix>
+                  <ServiceArrival>
+                    <TimetabledTime>2024-08-09T10:47:00Z</TimetabledTime>
+                    <EstimatedTime>2024-08-09T10:47:18Z</EstimatedTime>
+                  </ServiceArrival>
+                  <ServiceDeparture>
+                    <TimetabledTime>2024-08-09T10:47:00Z</TimetabledTime>
+                    <EstimatedTime>2024-08-09T10:47:18Z</EstimatedTime>
+                  </ServiceDeparture>
+                  <Order>6</Order>
+                </LegIntermediate>
+                <LegIntermediate>
+                  <siri:StopPointRef>ch:1:sloid:90021:0:4</siri:StopPointRef>
+                  <StopPointName>
+                    <Text xml:lang="de">Bern, Viktoriaplatz</Text>
+                  </StopPointName>
+                  <NameSuffix>
+                    <Text xml:lang="de">PLATFORM_ACCESS_WITH_ASSISTANCE</Text>
+                  </NameSuffix>
+                  <PlannedQuay>
+                    <Text xml:lang="de">C</Text>
+                  </PlannedQuay>
+                  <EstimatedQuay>
+                    <Text xml:lang="de">C</Text>
+                  </EstimatedQuay>
+                  <ServiceArrival>
+                    <TimetabledTime>2024-08-09T10:48:00Z</TimetabledTime>
+                    <EstimatedTime>2024-08-09T10:48:18Z</EstimatedTime>
+                  </ServiceArrival>
+                  <ServiceDeparture>
+                    <TimetabledTime>2024-08-09T10:48:00Z</TimetabledTime>
+                    <EstimatedTime>2024-08-09T10:48:18Z</EstimatedTime>
+                  </ServiceDeparture>
+                  <Order>7</Order>
+                </LegIntermediate>
+                <LegIntermediate>
+                  <siri:StopPointRef>ch:1:sloid:7110:0:4</siri:StopPointRef>
+                  <StopPointName>
+                    <Text xml:lang="de">Bern, Zytglogge</Text>
+                  </StopPointName>
+                  <NameSuffix>
+                    <Text xml:lang="de">PLATFORM_ACCESS_WITH_ASSISTANCE</Text>
+                  </NameSuffix>
+                  <PlannedQuay>
+                    <Text xml:lang="de">A</Text>
+                  </PlannedQuay>
+                  <EstimatedQuay>
+                    <Text xml:lang="de">A</Text>
+                  </EstimatedQuay>
+                  <ServiceArrival>
+                    <TimetabledTime>2024-08-09T10:50:00Z</TimetabledTime>
+                    <EstimatedTime>2024-08-09T10:50:42Z</EstimatedTime>
+                  </ServiceArrival>
+                  <ServiceDeparture>
+                    <TimetabledTime>2024-08-09T10:50:00Z</TimetabledTime>
+                    <EstimatedTime>2024-08-09T10:50:42Z</EstimatedTime>
+                  </ServiceDeparture>
+                  <Order>8</Order>
+                </LegIntermediate>
+                <LegIntermediate>
+                  <siri:StopPointRef>ch:1:sloid:90048:0:2</siri:StopPointRef>
+                  <StopPointName>
+                    <Text xml:lang="de">Bern, Bundesplatz</Text>
+                  </StopPointName>
+                  <NameSuffix>
+                    <Text xml:lang="de">PLATFORM_ACCESS_WITH_ASSISTANCE</Text>
+                  </NameSuffix>
+                  <ServiceArrival>
+                    <TimetabledTime>2024-08-09T10:52:00Z</TimetabledTime>
+                    <EstimatedTime>2024-08-09T10:52:06Z</EstimatedTime>
+                  </ServiceArrival>
+                  <ServiceDeparture>
+                    <TimetabledTime>2024-08-09T10:52:00Z</TimetabledTime>
+                    <EstimatedTime>2024-08-09T10:52:06Z</EstimatedTime>
+                  </ServiceDeparture>
+                  <Order>9</Order>
+                </LegIntermediate>
+                <LegAlight>
+                  <siri:StopPointRef>ch:1:sloid:76646:0:11</siri:StopPointRef>
+                  <StopPointName>
+                    <Text xml:lang="de">Bern, Bahnhof</Text>
+                  </StopPointName>
+                  <NameSuffix>
+                    <Text xml:lang="de">PLATFORM_ACCESS_WITH_ASSISTANCE</Text>
+                  </NameSuffix>
+                  <PlannedQuay>
+                    <Text xml:lang="de">I</Text>
+                  </PlannedQuay>
+                  <EstimatedQuay>
+                    <Text xml:lang="de">I</Text>
+                  </EstimatedQuay>
+                  <ServiceArrival>
+                    <TimetabledTime>2024-08-09T10:53:00Z</TimetabledTime>
+                    <EstimatedTime>2024-08-09T10:53:00Z</EstimatedTime>
+                  </ServiceArrival>
+                  <Order>10</Order>
+                </LegAlight>
+                <Service>
+                  <Mode>
+                    <PtMode>bus</PtMode>
+                    <siri:BusSubmode>localBus</siri:BusSubmode>
+                    <Name>
+                      <Text xml:lang="de">Bus</Text>
+                    </Name>
+                    <ShortName>
+                      <Text xml:lang="de">B</Text>
+                    </ShortName>
+                  </Mode>
+                  <ConventionalModeOfOperation>scheduled</ConventionalModeOfOperation>
+                  <TrainNumber>12243</TrainNumber>
+                  <siri:LineRef>ojp:92010:_x0020_</siri:LineRef>
+                  <siri:OperatorRef>827</siri:OperatorRef>
+                  <PublicCode>Bus</PublicCode>
+                  <PublishedServiceName>
+                    <Text xml:lang="de">10</Text>
+                  </PublishedServiceName>
+                  <ProductCategory>
+                    <Name>
+                      <Text xml:lang="de">Bus</Text>
+                    </Name>
+                    <ShortName>
+                      <Text xml:lang="de">B</Text>
+                    </ShortName>
+                    <ProductCategoryRef>29</ProductCategoryRef>
+                  </ProductCategory>
+                  <siri:DirectionRef>R</siri:DirectionRef>
+                  <OperatingDayRef>2024-08-09</OperatingDayRef>
+                  <DestinationStopPointRef>8595932</DestinationStopPointRef>
+                  <OriginText>
+                    <Text xml:lang="de">n/a</Text>
+                  </OriginText>
+                  <DestinationText>
+                    <Text xml:lang="de">Schliern</Text>
+                  </DestinationText>
+                  <JourneyRef>ojp-92-10-_-j24-1-3037-TA</JourneyRef>
+                  <Attribute>
+                    <UserText>
+                      <Text xml:lang="de">VELOS: Platzzahl eingeschränkt</Text>
+                    </UserText>
+                    <Code>A__VB</Code>
+                  </Attribute>
+                  <Attribute>
+                    <UserText>
+                      <Text xml:lang="de">Niederflureinstieg</Text>
+                    </UserText>
+                    <Code>A__NF</Code>
+                  </Attribute>
+                </Service>
+              </TimedLeg>
+            </Leg>
+            <Leg>
+              <Id>3</Id>
+              <Duration>PT6M</Duration>
+              <TransferLeg>
+                <TransferType>walk</TransferType>
+                <LegStart>
+                  <siri:StopPointRef>8576646</siri:StopPointRef>
+                  <Name>
+                    <Text xml:lang="de">Bern, Bahnhof</Text>
+                  </Name>
+                </LegStart>
+                <LegEnd>
+                  <siri:StopPointRef>8507000</siri:StopPointRef>
+                  <Name>
+                    <Text xml:lang="de">Bern</Text>
+                  </Name>
+                </LegEnd>
+                <Duration>PT6M</Duration>
+              </TransferLeg>
+            </Leg>
+          </Trip>
+        </TripResult>
+        <TripResult>
+          <Id>ID-D47D41AB-CC9A-497A-9678-05885A73C2D6</Id>
+          <Trip>
+            <Id>ID-D47D41AB-CC9A-497A-9678-05885A73C2D6</Id>
+            <Duration>PT22M12S</Duration>
+            <StartTime>2024-08-09T10:42:48Z</StartTime>
+            <EndTime>2024-08-09T11:05:00Z</EndTime>
+            <Transfers>0</Transfers>
+            <Leg>
+              <Id>1</Id>
+              <Duration>PT5M</Duration>
+              <ContinuousLeg>
+                <LegStart>
+                  <GeoPosition>
+                    <siri:Longitude>7.47475</siri:Longitude>
+                    <siri:Latitude>46.95635</siri:Latitude>
+                  </GeoPosition>
+                  <Name>
+                    <Text xml:lang="de">Bern, Zentweg (Bern)</Text>
+                  </Name>
+                </LegStart>
+                <LegEnd>
+                  <siri:StopPointRef>8577002</siri:StopPointRef>
+                  <Name>
+                    <Text xml:lang="de">Ostermundigen, Waldeck</Text>
+                  </Name>
+                </LegEnd>
+                <Service>
+                  <PersonalModeOfOperation>own</PersonalModeOfOperation>
+                  <PersonalMode>foot</PersonalMode>
+                </Service>
+                <Duration>PT5M</Duration>
+                <Length>0</Length>
+              </ContinuousLeg>
+            </Leg>
+            <Leg>
+              <Id>2</Id>
+              <Duration>PT11M12S</Duration>
+              <TimedLeg>
+                <LegBoard>
+                  <siri:StopPointRef>ch:1:sloid:77002:0:2</siri:StopPointRef>
+                  <StopPointName>
+                    <Text xml:lang="de">Ostermundigen, Waldeck</Text>
+                  </StopPointName>
+                  <NameSuffix>
+                    <Text xml:lang="de">PLATFORM_ACCESS_WITH_ASSISTANCE</Text>
+                  </NameSuffix>
+                  <ServiceDeparture>
+                    <TimetabledTime>2024-08-09T10:47:00Z</TimetabledTime>
+                    <EstimatedTime>2024-08-09T10:47:48Z</EstimatedTime>
+                  </ServiceDeparture>
+                  <Order>1</Order>
+                </LegBoard>
+                <LegIntermediate>
+                  <siri:StopPointRef>ch:1:sloid:90050:0:2</siri:StopPointRef>
+                  <StopPointName>
+                    <Text xml:lang="de">Bern, Schosshaldenfriedhof</Text>
+                  </StopPointName>
+                  <NameSuffix>
+                    <Text xml:lang="de">PLATFORM_NOT_WHEELCHAIR_ACCESSIBLE</Text>
+                  </NameSuffix>
+                  <ServiceArrival>
+                    <TimetabledTime>2024-08-09T10:48:00Z</TimetabledTime>
+                    <EstimatedTime>2024-08-09T10:48:42Z</EstimatedTime>
+                  </ServiceArrival>
+                  <ServiceDeparture>
+                    <TimetabledTime>2024-08-09T10:48:00Z</TimetabledTime>
+                    <EstimatedTime>2024-08-09T10:48:42Z</EstimatedTime>
+                  </ServiceDeparture>
+                  <Order>2</Order>
+                </LegIntermediate>
+                <LegIntermediate>
+                  <siri:StopPointRef>ch:1:sloid:90049:0:2</siri:StopPointRef>
+                  <StopPointName>
+                    <Text xml:lang="de">Bern, Galgenfeld</Text>
+                  </StopPointName>
+                  <NameSuffix>
+                    <Text xml:lang="de">PLATFORM_NOT_WHEELCHAIR_ACCESSIBLE</Text>
+                  </NameSuffix>
+                  <ServiceArrival>
+                    <TimetabledTime>2024-08-09T10:50:00Z</TimetabledTime>
+                    <EstimatedTime>2024-08-09T10:50:00Z</EstimatedTime>
+                  </ServiceArrival>
+                  <ServiceDeparture>
+                    <TimetabledTime>2024-08-09T10:50:00Z</TimetabledTime>
+                    <EstimatedTime>2024-08-09T10:50:00Z</EstimatedTime>
+                  </ServiceDeparture>
+                  <Order>3</Order>
+                </LegIntermediate>
+                <LegIntermediate>
+                  <siri:StopPointRef>ch:1:sloid:87485:0:2</siri:StopPointRef>
+                  <StopPointName>
+                    <Text xml:lang="de">Bern, Rosengarten</Text>
+                  </StopPointName>
+                  <NameSuffix>
+                    <Text xml:lang="de">PLATFORM_ACCESS_WITH_ASSISTANCE</Text>
+                  </NameSuffix>
+                  <ServiceArrival>
+                    <TimetabledTime>2024-08-09T10:51:00Z</TimetabledTime>
+                    <EstimatedTime>2024-08-09T10:51:24Z</EstimatedTime>
+                  </ServiceArrival>
+                  <ServiceDeparture>
+                    <TimetabledTime>2024-08-09T10:51:00Z</TimetabledTime>
+                    <EstimatedTime>2024-08-09T10:51:24Z</EstimatedTime>
+                  </ServiceDeparture>
+                  <Order>4</Order>
+                </LegIntermediate>
+                <LegIntermediate>
+                  <siri:StopPointRef>ch:1:sloid:87484:0:1</siri:StopPointRef>
+                  <StopPointName>
+                    <Text xml:lang="de">Bern, Schönburg</Text>
+                  </StopPointName>
+                  <NameSuffix>
+                    <Text xml:lang="de">PLATFORM_ACCESS_WITH_ASSISTANCE</Text>
+                  </NameSuffix>
+                  <ServiceArrival>
+                    <TimetabledTime>2024-08-09T10:52:00Z</TimetabledTime>
+                    <EstimatedTime>2024-08-09T10:52:30Z</EstimatedTime>
+                  </ServiceArrival>
+                  <ServiceDeparture>
+                    <TimetabledTime>2024-08-09T10:52:00Z</TimetabledTime>
+                    <EstimatedTime>2024-08-09T10:52:30Z</EstimatedTime>
+                  </ServiceDeparture>
+                  <Order>5</Order>
+                </LegIntermediate>
+                <LegIntermediate>
+                  <siri:StopPointRef>ch:1:sloid:87483:0:2</siri:StopPointRef>
+                  <StopPointName>
+                    <Text xml:lang="de">Bern, Salem</Text>
+                  </StopPointName>
+                  <NameSuffix>
+                    <Text xml:lang="de">PLATFORM_NOT_WHEELCHAIR_ACCESSIBLE</Text>
+                  </NameSuffix>
+                  <ServiceArrival>
+                    <TimetabledTime>2024-08-09T10:53:00Z</TimetabledTime>
+                    <EstimatedTime>2024-08-09T10:53:18Z</EstimatedTime>
+                  </ServiceArrival>
+                  <ServiceDeparture>
+                    <TimetabledTime>2024-08-09T10:53:00Z</TimetabledTime>
+                    <EstimatedTime>2024-08-09T10:53:18Z</EstimatedTime>
+                  </ServiceDeparture>
+                  <Order>6</Order>
+                </LegIntermediate>
+                <LegIntermediate>
+                  <siri:StopPointRef>ch:1:sloid:90021:0:4</siri:StopPointRef>
+                  <StopPointName>
+                    <Text xml:lang="de">Bern, Viktoriaplatz</Text>
+                  </StopPointName>
+                  <NameSuffix>
+                    <Text xml:lang="de">PLATFORM_ACCESS_WITH_ASSISTANCE</Text>
+                  </NameSuffix>
+                  <PlannedQuay>
+                    <Text xml:lang="de">C</Text>
+                  </PlannedQuay>
+                  <EstimatedQuay>
+                    <Text xml:lang="de">C</Text>
+                  </EstimatedQuay>
+                  <ServiceArrival>
+                    <TimetabledTime>2024-08-09T10:54:00Z</TimetabledTime>
+                    <EstimatedTime>2024-08-09T10:54:18Z</EstimatedTime>
+                  </ServiceArrival>
+                  <ServiceDeparture>
+                    <TimetabledTime>2024-08-09T10:54:00Z</TimetabledTime>
+                    <EstimatedTime>2024-08-09T10:54:18Z</EstimatedTime>
+                  </ServiceDeparture>
+                  <Order>7</Order>
+                </LegIntermediate>
+                <LegIntermediate>
+                  <siri:StopPointRef>ch:1:sloid:7110:0:4</siri:StopPointRef>
+                  <StopPointName>
+                    <Text xml:lang="de">Bern, Zytglogge</Text>
+                  </StopPointName>
+                  <NameSuffix>
+                    <Text xml:lang="de">PLATFORM_ACCESS_WITH_ASSISTANCE</Text>
+                  </NameSuffix>
+                  <PlannedQuay>
+                    <Text xml:lang="de">A</Text>
+                  </PlannedQuay>
+                  <EstimatedQuay>
+                    <Text xml:lang="de">A</Text>
+                  </EstimatedQuay>
+                  <ServiceArrival>
+                    <TimetabledTime>2024-08-09T10:56:00Z</TimetabledTime>
+                    <EstimatedTime>2024-08-09T10:56:42Z</EstimatedTime>
+                  </ServiceArrival>
+                  <ServiceDeparture>
+                    <TimetabledTime>2024-08-09T10:56:00Z</TimetabledTime>
+                    <EstimatedTime>2024-08-09T10:56:42Z</EstimatedTime>
+                  </ServiceDeparture>
+                  <Order>8</Order>
+                </LegIntermediate>
+                <LegIntermediate>
+                  <siri:StopPointRef>ch:1:sloid:90048:0:2</siri:StopPointRef>
+                  <StopPointName>
+                    <Text xml:lang="de">Bern, Bundesplatz</Text>
+                  </StopPointName>
+                  <NameSuffix>
+                    <Text xml:lang="de">PLATFORM_ACCESS_WITH_ASSISTANCE</Text>
+                  </NameSuffix>
+                  <ServiceArrival>
+                    <TimetabledTime>2024-08-09T10:58:00Z</TimetabledTime>
+                    <EstimatedTime>2024-08-09T10:58:06Z</EstimatedTime>
+                  </ServiceArrival>
+                  <ServiceDeparture>
+                    <TimetabledTime>2024-08-09T10:58:00Z</TimetabledTime>
+                    <EstimatedTime>2024-08-09T10:58:06Z</EstimatedTime>
+                  </ServiceDeparture>
+                  <Order>9</Order>
+                </LegIntermediate>
+                <LegAlight>
+                  <siri:StopPointRef>ch:1:sloid:76646:0:11</siri:StopPointRef>
+                  <StopPointName>
+                    <Text xml:lang="de">Bern, Bahnhof</Text>
+                  </StopPointName>
+                  <NameSuffix>
+                    <Text xml:lang="de">PLATFORM_ACCESS_WITH_ASSISTANCE</Text>
+                  </NameSuffix>
+                  <PlannedQuay>
+                    <Text xml:lang="de">I</Text>
+                  </PlannedQuay>
+                  <EstimatedQuay>
+                    <Text xml:lang="de">I</Text>
+                  </EstimatedQuay>
+                  <ServiceArrival>
+                    <TimetabledTime>2024-08-09T10:59:00Z</TimetabledTime>
+                    <EstimatedTime>2024-08-09T10:59:00Z</EstimatedTime>
+                  </ServiceArrival>
+                  <Order>10</Order>
+                </LegAlight>
+                <Service>
+                  <Mode>
+                    <PtMode>bus</PtMode>
+                    <siri:BusSubmode>localBus</siri:BusSubmode>
+                    <Name>
+                      <Text xml:lang="de">Bus</Text>
+                    </Name>
+                    <ShortName>
+                      <Text xml:lang="de">B</Text>
+                    </ShortName>
+                  </Mode>
+                  <ConventionalModeOfOperation>scheduled</ConventionalModeOfOperation>
+                  <TrainNumber>12326</TrainNumber>
+                  <siri:LineRef>ojp:92010:_x0020_</siri:LineRef>
+                  <siri:OperatorRef>827</siri:OperatorRef>
+                  <PublicCode>Bus</PublicCode>
+                  <PublishedServiceName>
+                    <Text xml:lang="de">10</Text>
+                  </PublishedServiceName>
+                  <ProductCategory>
+                    <Name>
+                      <Text xml:lang="de">Bus</Text>
+                    </Name>
+                    <ShortName>
+                      <Text xml:lang="de">B</Text>
+                    </ShortName>
+                    <ProductCategoryRef>29</ProductCategoryRef>
+                  </ProductCategory>
+                  <siri:DirectionRef>R</siri:DirectionRef>
+                  <OperatingDayRef>2024-08-09</OperatingDayRef>
+                  <DestinationStopPointRef>8595932</DestinationStopPointRef>
+                  <OriginText>
+                    <Text xml:lang="de">n/a</Text>
+                  </OriginText>
+                  <DestinationText>
+                    <Text xml:lang="de">Schliern</Text>
+                  </DestinationText>
+                  <JourneyRef>ojp-92-10-_-j24-1-3053-TA</JourneyRef>
+                  <Attribute>
+                    <UserText>
+                      <Text xml:lang="de">VELOS: Platzzahl eingeschränkt</Text>
+                    </UserText>
+                    <Code>A__VB</Code>
+                  </Attribute>
+                  <Attribute>
+                    <UserText>
+                      <Text xml:lang="de">Niederflureinstieg</Text>
+                    </UserText>
+                    <Code>A__NF</Code>
+                  </Attribute>
+                </Service>
+              </TimedLeg>
+            </Leg>
+            <Leg>
+              <Id>3</Id>
+              <Duration>PT6M</Duration>
+              <TransferLeg>
+                <TransferType>walk</TransferType>
+                <LegStart>
+                  <siri:StopPointRef>8576646</siri:StopPointRef>
+                  <Name>
+                    <Text xml:lang="de">Bern, Bahnhof</Text>
+                  </Name>
+                </LegStart>
+                <LegEnd>
+                  <siri:StopPointRef>8507000</siri:StopPointRef>
+                  <Name>
+                    <Text xml:lang="de">Bern</Text>
+                  </Name>
+                </LegEnd>
+                <Duration>PT6M</Duration>
+              </TransferLeg>
+            </Leg>
+          </Trip>
+        </TripResult>
+      </OJPTripDelivery>
+    </siri:ServiceDelivery>
+  </OJPResponse>
+</OJP>

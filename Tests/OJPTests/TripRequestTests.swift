@@ -69,8 +69,7 @@ final class TripRequestTests: XCTestCase {
 
         switch tripDelivery {
         case let .trip(trip):
-            debugPrint("\(trip.calcTime!)")
-            XCTAssert(true)
+            XCTAssertEqual(trip.tripResults.count, 10)
         default:
             XCTFail()
         }
@@ -85,8 +84,22 @@ final class TripRequestTests: XCTestCase {
 
         switch tripDelivery {
         case let .trip(trip):
-            debugPrint("\(trip.calcTime!)")
-            XCTAssert(true)
+            XCTAssertEqual(trip.tripResults.count, 10)
+        default:
+            XCTFail()
+        }
+    }
+
+    func testParseTrip_With_ContinousWalkLeg() async throws {
+        let xmlData = try TestHelpers.loadXML(xmlFilename: "tr-continuous-leg-walk")
+
+        guard let tripDelivery = try await OJPDecoder.parseXML(xmlData).response?.serviceDelivery.delivery else {
+            return XCTFail("unexpected empty")
+        }
+
+        switch tripDelivery {
+        case let .trip(trip):
+            XCTAssertEqual(trip.tripResults.count, 6)
         default:
             XCTFail()
         }
