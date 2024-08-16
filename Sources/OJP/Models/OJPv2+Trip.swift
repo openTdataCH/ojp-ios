@@ -19,7 +19,7 @@ public extension OJPv2 {
     /// [Schema documentation on vdvde.github.io](https://vdvde.github.io/OJP/develop/index.html#OJPTripDeliveryStructure)
     struct TripDelivery: Codable, Sendable {
         public let responseTimestamp: String
-        public let requestMessageRef: String
+        public let requestMessageRef: String?
         public let calcTime: Int?
         public let tripResponseContext: TripResponseContext?
         public internal(set) var tripResults: [TripResult]
@@ -133,7 +133,7 @@ public extension OJPv2 {
             summaryContent = try container.decode(OJPv2.SummaryContent.self, forKey: CodingKeys.summaryContent)
             reasonContent = (try? container.decodeIfPresent(OJPv2.ReasonContent.self, forKey: CodingKeys.reasonContent)) ?? nil
             descriptionContents = (try? container.decode([OJPv2.DescriptionContent].self, forKey: OJPv2.TextualContent.CodingKeys.descriptionContents)) ?? []
-            consequenceContents = try container.decode([OJPv2.ConsequenceContent].self, forKey: CodingKeys.consequenceContents)
+            consequenceContents = (try? container.decode([OJPv2.ConsequenceContent].self, forKey: CodingKeys.consequenceContents)) ?? []
             recommendationContents = try container.decode([OJPv2.RecommendationContent].self, forKey: CodingKeys.recommendationContents)
             durationContent = try container.decodeIfPresent(OJPv2.DurationContent.self, forKey: CodingKeys.durationContent)
             remarkContents = (try? container.decodeIfPresent([OJPv2.RemarkContent].self, forKey: CodingKeys.remarkContents)) ?? []
@@ -165,20 +165,76 @@ public extension OJPv2 {
     }
 
     struct PTSituation: Codable, Sendable {
+        public let creationTime: Date
+        public let version: Int
+        public let alertCause: AlertCause
+        public let participantRef: String
         public let situationNumber: String
-        public let validityPeriod: ValidityPeriod
+        public let validityPeriod: [ValidityPeriod]
+        public let affects: Affects
+
+        /// Profil CH
+        /// - 1 = Notfall
+        /// - 2 = Nicht verwendet
+        /// - 3 = Un-/Planmäßige Situation
+        /// - 4 = allgemeine Information
+        /// Optional according to siri-sx, but mandatory according to [Realisierungsvorgabe Profil CH SIRI-SX/VDV736](https://www.oev-info.ch/de/branchenstandard/technische-standards/ereignisdaten)
+        public let priority: Int
+
+        /// Optional according to siri-sx, but mandatory according to [Realisierungsvorgabe Profil CH SIRI-SX/VDV736](https://www.oev-info.ch/de/branchenstandard/technische-standards/ereignisdaten)
         public let publishingActions: PublishingActions
+        public private(set) var planned: Bool? = false
 
         public enum CodingKeys: String, CodingKey {
             case situationNumber = "siri:SituationNumber"
+            case creationTime = "siri:CreationTime"
+            case participantRef = "siri:ParticipantRef"
             case validityPeriod = "siri:ValidityPeriod"
+            case affects = "siri:Affects"
             case publishingActions = "siri:PublishingActions"
+            case alertCause = "siri:AlertCause"
+            case version = "siri:Version"
+            case priority = "siri:Priority"
+            case planned = "siri:Planned"
         }
+    }
+
+    struct Affects: Codable, Sendable {
+        let stopPoints: [AffectedStopPoint]
+
+        public enum CodingKeys: String, CodingKey {
+            case stopPoints = "siri:AffectedStopPoint"
+        }
+    }
+
+    struct AffectedStopPoint: Codable, Sendable {
+        let stopPointRef: String
+
+        public enum CodingKeys: String, CodingKey {
+            case stopPointRef = "siri:StopPointRef"
+        }
+    }
+
+    enum AlertCause: String, Codable, Sendable {
+        case undefinedAlertCause
+        case constructionWork
+        case serviceDisruption
+        case emergencyServicesCall
+        case vehicleFailure
+        case poorWeather
+        case routeBlockage
+        case technicalProblem
+        case unknown
+        case accident
+        case specialEvent
+        case congestion
+        case maintenanceWork
     }
 
     struct ValidityPeriod: Codable, Sendable {
         public let startTime: Date
-        public let endTime: Date?
+        /// Optional according to siri-sx, but mandatory according to [Realisierungsvorgabe Profil CH SIRI-SX/VDV736](https://www.oev-info.ch/de/branchenstandard/technische-standards/ereignisdaten)
+        public let endTime: Date
 
         public enum CodingKeys: String, CodingKey {
             case startTime = "siri:StartTime"
@@ -250,6 +306,7 @@ public extension OJPv2 {
         }
     }
 
+    /// https://vdvde.github.io/OJP/develop/index.html#TripStructure
     struct Trip: Codable, Identifiable, Sendable {
         /// Unique within trip response. This ID must not be used over mutliple ``OJPv2/TripRequest``
         /// - Warning: This ID must not be used over mutliple ``OJPv2/TripRequest``. Use ``tripHash`` instead.
@@ -575,8 +632,8 @@ public extension OJPv2 {
         public let situationNumber: String
 
         enum CodingKeys: String, CodingKey {
-            case participantRef = "siri:ParticipantRef" // TODO: where is the doc?
-            case situationNumber = "siri:SituationNumber" // TODO: where is the doc?
+            case participantRef = "siri:ParticipantRef"
+            case situationNumber = "siri:SituationNumber"
         }
     }
 
@@ -723,7 +780,7 @@ public extension OJPv2 {
     // https://vdvde.github.io/OJP/develop/index.html#ContinuousServiceStructure
     struct ContinuousService: Codable, Sendable {
         public let type: ContinuousServiceTypeChoice
-        // TODO: add SituationFullRefs
+        // TODO: add SituationFullRefs!
 
         public init(from decoder: any Decoder) throws {
             type = try ContinuousServiceTypeChoice(from: decoder)
@@ -884,13 +941,12 @@ public extension OJPv2 {
 
     // https://vdvde.github.io/OJP/develop/index.html#TripParamStructure
     struct TripParams: Codable, Sendable {
-        
         public enum RealtimeData: String, Sendable, Codable {
             case explanatory
             case full
             case none
         }
-        
+
         public init(
             numberOfResults: NumberOfResults = .minimum(10),
             includeTrackSections: Bool? = nil,

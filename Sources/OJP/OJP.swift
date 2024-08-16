@@ -123,7 +123,7 @@ public final class OJP: Sendable {
             debugPrint(xmlString)
             if let urlresponse = response as? HTTPURLResponse {
                 debugPrint("--- Response ----")
-                if let xmlResponse = String(data:data, encoding: .utf8) {
+                if let xmlResponse = String(data: data, encoding: .utf8) {
                     debugPrint(xmlResponse)
                 }
                 debugPrint("---")

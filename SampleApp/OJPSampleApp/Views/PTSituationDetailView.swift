@@ -26,7 +26,9 @@ struct PTSituationDetailView: View {
             }
             GridRow {
                 Text("Dauer")
-                Text("Von \(ptSituation.validityPeriod.startTime.formatted()) bis \(ptSituation.validityPeriod.endTime?.formatted() ?? "unbestimmt")")
+                ForEach(ptSituation.validityPeriod, id: \.startTime) { validityPeriod in
+                    Text("Von \(validityPeriod.startTime.formatted()) bis \(validityPeriod.endTime.formatted() ?? "unbestimmt")")
+                }
             }
             Divider()
 
