@@ -54,20 +54,27 @@ struct TripRequestResultView: View {
                                         Text(trip.startTime.formatted())
                                     }
                                     Spacer()
-                                    HStack(spacing: 2) {
-                                        Image(systemName: "clock.arrow.circlepath")
-                                            .imageScale(.small)
-                                            .foregroundStyle(.secondary)
-                                        Text(DurationFormatter.string(for: trip.duration))
+                                    VStack {
+                                        HStack(spacing: 4) {
+                                            Image(systemName: "clock.arrow.circlepath")
+                                                .imageScale(.small)
+                                                .foregroundStyle(.secondary)
+                                            Text(DurationFormatter.string(for: trip.duration))
+                                        }
+
+                                        if trip.tripStatus.hasIssue {
+                                            TripStatusLabel(tripStatus: trip.tripStatus)
+                                        } else { Spacer() }
                                     }
+
                                     Spacer()
 
                                     VStack(alignment: .trailing) {
                                         Text(trip.destinationName)
                                         Text(trip.endTime.formatted())
                                     }
-                                }
-                                .padding()
+                                }.foregroundStyle(trip.tripStatus.cancelled == true ? .red : Color.label)
+                                    .padding()
                             } else { Text("No Trips found") }
                         }
                         .background(Color.listBackground)
@@ -99,13 +106,47 @@ struct TripRequestResultView: View {
     }
 }
 
+extension OJPv2.TripStatus {
+    var hasIssue: Bool {
+        cancelled || infeasible || deviation
+    }
+
+    var title: String {
+        if cancelled {
+            "Cancelled"
+        } else if infeasible {
+            "Infeasible"
+        } else if deviation {
+            "Deviation"
+        } else {
+            ""
+        }
+    }
+}
+
 #Preview {
     AsyncView(
         task: {
-            try await PreviewMocker.shared.loadTrips().tripResults
+            try await PreviewMocker.shared.loadTrips(xmlFileName: "tr-with-cancellations-and-notservicedstops").tripResults
         },
         content: { t in
             TripRequestResultView(ptSituations: [], isLoading: false, results: t)
         }
     )
+}
+
+struct TripStatusLabel: View {
+    let tripStatus: OJPv2.TripStatus
+
+    var body: some View {
+        HStack(spacing: 4) {
+            Image(systemName: "exclamationmark.triangle")
+                .imageScale(.small)
+            Text(tripStatus.title)
+        }
+        .foregroundStyle(.black)
+        .padding(.horizontal, 4)
+        .background(.red)
+        .clipShape(Capsule())
+    }
 }
