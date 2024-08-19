@@ -192,4 +192,18 @@ final class TripRequestTests: XCTestCase {
             throw error
         }
     }
+
+    // MARK: - TripStatus
+    func testTripStatusInfeasible() async throws {
+        let xmlData = try TestHelpers.loadXML(xmlFilename: "tr-infeasible")
+        do {
+            guard case let .trip(tripDelivery) = try await OJPDecoder.parseXML(xmlData).response?.serviceDelivery.delivery else {
+                return XCTFail("unexpected empty")
+            }
+
+            let infeasibleTrip = tripDelivery.tripResults.first
+            XCTAssertEqual(infeasibleTrip?.trip?.tripStatus?.infeasible, true)
+        }
+    }
+
 }
