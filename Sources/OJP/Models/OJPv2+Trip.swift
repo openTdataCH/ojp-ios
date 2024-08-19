@@ -306,23 +306,6 @@ public extension OJPv2 {
         }
     }
 
-    /// https://vdvde.github.io/OJP/develop/index.html#TripStatusGroup
-    struct TripStatus: Codable, Sendable {
-        var unplanned: Bool?
-        var cancelled: Bool?
-        var deviation: Bool?
-        var delayed: Bool?
-        var infeasible: Bool?
-
-        enum CodingKeys: String, CodingKey {
-            case unplanned = "Unplanned"
-            case cancelled = "Cancelled"
-            case deviation = "Deviation"
-            case delayed = "Delayed"
-            case infeasible = "Infeasible"
-        }
-    }
-
     /// https://vdvde.github.io/OJP/develop/index.html#TripStructure
     struct Trip: Codable, Identifiable, Sendable {
         /// Unique within trip response. This ID must not be used over mutliple ``OJPv2/TripRequest``
@@ -334,7 +317,13 @@ public extension OJPv2 {
         public let transfers: Int
         public let distance: Double?
         public let legs: [Leg]
-        public let tripStatus: TripStatus?
+
+        /// https://vdvde.github.io/OJP/develop/index.html#TripStatusGroup
+        public let unplanned: Bool?
+        public let cancelled: Bool?
+        public let deviation: Bool?
+        public let delayed: Bool?
+        public let infeasible: Bool?
 
         enum CodingKeys: String, CodingKey {
             case id = "Id"
@@ -344,19 +333,12 @@ public extension OJPv2 {
             case transfers = "Transfers"
             case distance = "Distance"
             case legs = "Leg"
-            case tripStatus
-        }
 
-        public init(from decoder: any Decoder) throws {
-            let container = try decoder.container(keyedBy: OJPv2.Trip.CodingKeys.self)
-            self.id = try container.decode(String.self, forKey: .id)
-            self.duration = try container.decode(Duration.self, forKey: .duration)
-            self.startTime = try container.decode(Date.self, forKey: .startTime)
-            self.endTime = try container.decode(Date.self, forKey: .endTime)
-            self.transfers = try container.decode(Int.self, forKey: .transfers)
-            self.distance = try container.decodeIfPresent(Double.self, forKey: .distance)
-            self.legs = try container.decode([OJPv2.Leg].self, forKey: .legs)
-            self.tripStatus = try TripStatus(from: decoder)
+            case unplanned = "Unplanned"
+            case cancelled = "Cancelled"
+            case deviation = "Deviation"
+            case delayed = "Delayed"
+            case infeasible = "Infeasible"
         }
 
         /// Trip hash similar to the implementation in the JS SDK.

@@ -202,7 +202,7 @@ final class TripRequestTests: XCTestCase {
             }
 
             let infeasibleTrip = tripDelivery.tripResults.first
-            XCTAssertEqual(infeasibleTrip?.trip?.tripStatus?.infeasible, true)
+            XCTAssertEqual(infeasibleTrip?.trip?.infeasible, true)
         }
     }
 
