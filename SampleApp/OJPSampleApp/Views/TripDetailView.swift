@@ -40,13 +40,29 @@ struct TripDetailView: View {
                         }
                         Text(legBoard.stopPointName.text).bold()
                         Text(legBoard.estimatedQuay?.text ?? legBoard.plannedQuay?.text ?? "")
-                            .foregroundStyle(changedTrack ? .red : .black)
+                            .foregroundStyle(changedTrack ? .red : Color.label)
                     }
                     ForEach(timedLeg.legsIntermediate) { legIntermediate in
-                        HStack {
-                            Text(legIntermediate.stopPointName.text)
-                                .foregroundStyle(.gray)
-                        }
+                        VStack(spacing: 0) {
+                            if let arrivalTime = legIntermediate.serviceArrival?.arrivalTime {
+                                HStack {
+                                    Text(arrivalTime.timetabled.formatted(date: .omitted, time: .shortened))
+                                    Text(arrivalTime.hasDelay ? arrivalTime.delay.formattedDelay : "")
+                                    Spacer()
+                                }.foregroundStyle(arrivalTime.hasDelay ? .red : .gray)
+                                    .offset(x: 10)
+                            }
+                            HStack(spacing: 4) {
+                                Circle()
+                                    .frame(width: 6, height: 6)
+                                if let departureTime = legIntermediate.serviceDeparture?.departureTime {
+                                    Text(departureTime.timetabled.formatted(date: .omitted, time: .shortened))
+                                    Text(departureTime.hasDelay ? departureTime.delay.formattedDelay : "")
+                                }
+                                Text(legIntermediate.stopPointName.text)
+                                Spacer()
+                            }
+                        }.foregroundStyle(legIntermediate.stopCallStatus.notServicedStop ? .red : Color.label)
                     }
                     HStack {
                         let legAlight = timedLeg.legAlight
@@ -60,7 +76,7 @@ struct TripDetailView: View {
                         }
                         Text(timedLeg.legAlight.stopPointName.text).bold()
                         Text(legAlight.estimatedQuay?.text ?? legAlight.plannedQuay?.text ?? "")
-                            .foregroundStyle(changedTrack ? .red : .black)
+                            .foregroundStyle(changedTrack ? .red : Color.label)
                     }
                     ForEach(timedLeg.relevantPtSituations(allPtSituations: ptSituations)) { ptSituation in
                         Divider()
@@ -101,10 +117,38 @@ struct TripDetailView: View {
     }
 }
 
+struct StationTime {
+    let estimated: Date?
+    let timetabled: Date
+
+    var hasDelay: Bool {
+        delay >= 60
+    }
+
+    var delay: TimeInterval {
+        if let estimated {
+            estimated.timeIntervalSince(timetabled)
+        } else { 0 }
+
+    }
+}
+
+extension OJPv2.ServiceArrival {
+    var arrivalTime: StationTime {
+        StationTime(estimated: estimatedTime, timetabled: timetabledTime)
+    }
+}
+
+extension OJPv2.ServiceDeparture {
+    var departureTime: StationTime {
+        StationTime(estimated: estimatedTime, timetabled: timetabledTime)
+    }
+}
+
 #Preview {
     AsyncView(
         task: {
-            try await PreviewMocker.shared.loadTrips(xmlFileName: "tr-fribourg-berne")
+            try await PreviewMocker.shared.loadTrips(xmlFileName: "tr-fribourg-basel")
         },
         content: { tripDelivery in
             if let trip = tripDelivery.tripResults.first {
