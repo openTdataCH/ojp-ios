@@ -318,11 +318,11 @@ public extension OJPv2 {
     /// https://vdvde.github.io/OJP/develop/index.html#TripStatusGroup
     /// - Note: OJP currently doesn't return `unplanned` or `delayed`
     struct TripStatus: Codable, Sendable {
-//        var unplanned: Bool
-        var cancelled: Bool
-        var deviation: Bool
-//        var delayed: Bool
-        var infeasible: Bool
+//        public var unplanned: Bool
+        public var cancelled: Bool
+        public var deviation: Bool
+//        public var delayed: Bool
+        public var infeasible: Bool
 
         enum CodingKeys: String, CodingKey {
 //            case unplanned = "Unplanned"
