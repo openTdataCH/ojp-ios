@@ -16,6 +16,7 @@ struct TripRequestView: View {
     @State var origin: OJPv2.PlaceResult?
     @State var via: OJPv2.PlaceResult?
     @State var destination: OJPv2.PlaceResult?
+    @State private var departureDateTime = Date.now
     @State var isLoading: Bool = false
     @State var paginatedActor: PaginatedTripLoader?
 
@@ -73,7 +74,7 @@ struct TripRequestView: View {
                                     TripRequest(from: origin.placeRef,
                                                 to: destination.placeRef,
                                                 via: via != nil ? [via!.placeRef] : nil,
-                                                at: .departure(Date()),
+                                                at: .departure(departureDateTime),
                                                 params: .init(
                                                     includeTrackSections: true,
                                                     includeIntermediateStops: true,
@@ -91,6 +92,7 @@ struct TripRequestView: View {
                     Text("Search")
                 }
             }
+            DatePicker("Departure", selection: $departureDateTime)
             TripRequestResultView(
                 ptSituations: ptSituations, isLoading: isLoading,
                 results: tripResults,
