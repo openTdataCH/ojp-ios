@@ -334,6 +334,7 @@ public extension OJPv2 {
         public let transfers: Int
         public let distance: Double?
         public let legs: [Leg]
+        public let tripStatus: TripStatus?
 
         enum CodingKeys: String, CodingKey {
             case id = "Id"
