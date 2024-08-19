@@ -194,6 +194,7 @@ final class TripRequestTests: XCTestCase {
     }
 
     // MARK: - TripStatus
+
     func testTripStatusInfeasible() async throws {
         let xmlData = try TestHelpers.loadXML(xmlFilename: "tr-infeasible")
         do {
@@ -202,8 +203,49 @@ final class TripRequestTests: XCTestCase {
             }
 
             let infeasibleTrip = tripDelivery.tripResults.first
-            XCTAssertEqual(infeasibleTrip?.trip?.infeasible, true)
+            XCTAssertEqual(infeasibleTrip?.trip?.tripStatus.infeasible, true)
         }
     }
 
+    func testTripStatusCancelled() async throws {
+        let xmlData = try TestHelpers.loadXML(xmlFilename: "tr-cancellation")
+        do {
+            guard case let .trip(tripDelivery) = try await OJPDecoder.parseXML(xmlData).response?.serviceDelivery.delivery else {
+                return XCTFail("unexpected empty")
+            }
+
+            let cancelledTrip = try XCTUnwrap(tripDelivery.tripResults[1].trip)
+            XCTAssertEqual(cancelledTrip.tripStatus.cancelled, true)
+        }
+    }
+
+    func testTripStatusDeviation() async throws {
+        let xmlData = try TestHelpers.loadXML(xmlFilename: "tr-deviation-notActuallyALiveExample")
+        do {
+            guard case let .trip(tripDelivery) = try await OJPDecoder.parseXML(xmlData).response?.serviceDelivery.delivery else {
+                return XCTFail("unexpected empty")
+            }
+
+            let cancelledTrip = try XCTUnwrap(tripDelivery.tripResults[1].trip)
+            XCTAssertEqual(cancelledTrip.tripStatus.deviation, true)
+        }
+    }
+
+    func testTripNotServicedStop() async throws {
+        let xmlData = try TestHelpers.loadXML(xmlFilename: "trip-not-serviced")
+        do {
+            guard case let .trip(tripDelivery) = try await OJPDecoder.parseXML(xmlData).response?.serviceDelivery.delivery else {
+                return XCTFail("unexpected empty")
+            }
+
+            let firstTrip = try XCTUnwrap(tripDelivery.tripResults.first?.trip)
+            if case let .timed(legWithNotServicedStop) = firstTrip.legs[1].legType {
+                for leg in legWithNotServicedStop.legsIntermediate {
+                    XCTAssertEqual(leg.stopCallStatus.notServicedStop, leg.stopPointName.text == "Neuchâtel, Gouttes d'or")
+                }
+            } else {
+                XCTFail()
+            }
+        }
+    }
 }

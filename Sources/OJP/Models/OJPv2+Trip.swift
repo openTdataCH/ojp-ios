@@ -31,6 +31,15 @@ public extension OJPv2 {
             case tripResponseContext = "TripResponseContext"
             case tripResults = "TripResult"
         }
+
+        public init(from decoder: any Decoder) throws {
+            let container = try decoder.container(keyedBy: CodingKeys.self)
+            responseTimestamp = try container.decode(String.self, forKey: .responseTimestamp)
+            requestMessageRef = try container.decodeIfPresent(String.self, forKey: .requestMessageRef)
+            calcTime = try container.decodeIfPresent(Int.self, forKey: .calcTime)
+            tripResponseContext = try container.decodeIfPresent(OJPv2.TripResponseContext.self, forKey: .tripResponseContext)
+            tripResults = (try? container.decode([OJPv2.TripResult].self, forKey: .tripResults)) ?? [] // tripResults could be optional
+        }
     }
 
     struct TripResponseContext: Codable, Sendable {
@@ -134,7 +143,7 @@ public extension OJPv2 {
             reasonContent = (try? container.decodeIfPresent(OJPv2.ReasonContent.self, forKey: CodingKeys.reasonContent)) ?? nil
             descriptionContents = (try? container.decode([OJPv2.DescriptionContent].self, forKey: OJPv2.TextualContent.CodingKeys.descriptionContents)) ?? []
             consequenceContents = (try? container.decode([OJPv2.ConsequenceContent].self, forKey: CodingKeys.consequenceContents)) ?? []
-            recommendationContents = try container.decode([OJPv2.RecommendationContent].self, forKey: CodingKeys.recommendationContents)
+            recommendationContents = (try? container.decode([OJPv2.RecommendationContent].self, forKey: CodingKeys.recommendationContents)) ?? []
             durationContent = try container.decodeIfPresent(OJPv2.DurationContent.self, forKey: CodingKeys.durationContent)
             remarkContents = (try? container.decodeIfPresent([OJPv2.RemarkContent].self, forKey: CodingKeys.remarkContents)) ?? []
         }
@@ -171,7 +180,7 @@ public extension OJPv2 {
         public let participantRef: String
         public let situationNumber: String
         public let validityPeriod: [ValidityPeriod]
-        public let affects: Affects
+        public let affects: Affects?
 
         /// Profil CH
         /// - 1 = Notfall
@@ -306,6 +315,33 @@ public extension OJPv2 {
         }
     }
 
+    /// https://vdvde.github.io/OJP/develop/index.html#TripStatusGroup
+    /// - Note: OJP currently doesn't return `unplanned` or `delayed`
+    struct TripStatus: Codable, Sendable {
+//        var unplanned: Bool
+        var cancelled: Bool
+        var deviation: Bool
+//        var delayed: Bool
+        var infeasible: Bool
+
+        enum CodingKeys: String, CodingKey {
+//            case unplanned = "Unplanned"
+            case cancelled = "Cancelled"
+            case deviation = "Deviation"
+//            case delayed = "Delayed"
+            case infeasible = "Infeasible"
+        }
+
+        public init(from decoder: any Decoder) throws {
+            let container = try decoder.container(keyedBy: CodingKeys.self)
+//            self.unplanned = try container.decode(Bool?.self, forKey: .unplanned) ?? false
+            cancelled = try container.decode(Bool?.self, forKey: .cancelled) ?? false
+            deviation = try container.decode(Bool?.self, forKey: .deviation) ?? false
+//            self.delayed = try container.decode(Bool?.self, forKey: .delayed) ?? false
+            infeasible = try container.decode(Bool?.self, forKey: .infeasible) ?? false
+        }
+    }
+
     /// https://vdvde.github.io/OJP/develop/index.html#TripStructure
     struct Trip: Codable, Identifiable, Sendable {
         /// Unique within trip response. This ID must not be used over mutliple ``OJPv2/TripRequest``
@@ -317,13 +353,7 @@ public extension OJPv2 {
         public let transfers: Int
         public let distance: Double?
         public let legs: [Leg]
-
-        /// https://vdvde.github.io/OJP/develop/index.html#TripStatusGroup
-        public let unplanned: Bool?
-        public let cancelled: Bool?
-        public let deviation: Bool?
-        public let delayed: Bool?
-        public let infeasible: Bool?
+        public let tripStatus: TripStatus
 
         enum CodingKeys: String, CodingKey {
             case id = "Id"
@@ -333,12 +363,19 @@ public extension OJPv2 {
             case transfers = "Transfers"
             case distance = "Distance"
             case legs = "Leg"
+            case tripStatus
+        }
 
-            case unplanned = "Unplanned"
-            case cancelled = "Cancelled"
-            case deviation = "Deviation"
-            case delayed = "Delayed"
-            case infeasible = "Infeasible"
+        public init(from decoder: any Decoder) throws {
+            let container = try decoder.container(keyedBy: OJPv2.Trip.CodingKeys.self)
+            id = try container.decode(String.self, forKey: .id)
+            duration = try container.decode(Duration.self, forKey: .duration)
+            startTime = try container.decode(Date.self, forKey: .startTime)
+            endTime = try container.decode(Date.self, forKey: .endTime)
+            transfers = try container.decode(Int.self, forKey: .transfers)
+            distance = try container.decodeIfPresent(Double.self, forKey: .distance)
+            legs = try container.decode([OJPv2.Leg].self, forKey: .legs)
+            tripStatus = try TripStatus(from: decoder)
         }
 
         /// Trip hash similar to the implementation in the JS SDK.
@@ -517,13 +554,7 @@ public extension OJPv2 {
         public let serviceArrival: ServiceArrival?
         public let serviceDeparture: ServiceDeparture
 
-        // https://vdvde.github.io/OJP/develop/index.html#StopCallStatusGroup
-        public let order: Int?
-        public let requestStop: Bool?
-        public let unplannedStop: Bool?
-        public let notServicedStop: Bool?
-        public let noBoardingAtStop: Bool?
-        public let noAlightingAtStop: Bool?
+        public let stopCallStatus: StopCallStatus
 
         enum CodingKeys: String, CodingKey {
             case stopPointRef = "siri:StopPointRef"
@@ -533,12 +564,19 @@ public extension OJPv2 {
             case estimatedQuay = "EstimatedQuay"
             case serviceArrival = "ServiceArrival"
             case serviceDeparture = "ServiceDeparture"
-            case order = "Order"
-            case requestStop = "RequestStop"
-            case unplannedStop = "UnplannedStop"
-            case notServicedStop = "NotServicedStop"
-            case noBoardingAtStop = "NoBoardingAtStop"
-            case noAlightingAtStop = "NoAlightingAtStop"
+            case stopCallStatus
+        }
+
+        public init(from decoder: any Decoder) throws {
+            let container = try decoder.container(keyedBy: CodingKeys.self)
+            stopPointRef = try container.decode(String.self, forKey: .stopPointRef)
+            stopPointName = try container.decode(InternationalText.self, forKey: .stopPointName)
+            nameSuffix = try container.decode(InternationalText?.self, forKey: .nameSuffix)
+            plannedQuay = try container.decode(InternationalText?.self, forKey: .plannedQuay)
+            estimatedQuay = try container.decode(InternationalText?.self, forKey: .estimatedQuay)
+            serviceArrival = try container.decode(ServiceArrival?.self, forKey: .serviceArrival)
+            serviceDeparture = try container.decode(ServiceDeparture.self, forKey: .serviceDeparture)
+            stopCallStatus = try StopCallStatus(from: decoder)
         }
     }
 
@@ -554,13 +592,7 @@ public extension OJPv2 {
         public let serviceArrival: ServiceArrival? // Set as optional until https://github.com/openTdataCH/ojp-sdk/issues/42 is fixed
         public let serviceDeparture: ServiceDeparture? // Set as optional until https://github.com/openTdataCH/ojp-sdk/issues/42 is fixed
 
-        // https://vdvde.github.io/OJP/develop/index.html#StopCallStatusGroup
-        public let order: Int?
-        public let requestStop: Bool?
-        public let unplannedStop: Bool?
-        public let notServicedStop: Bool?
-        public let noBoardingAtStop: Bool?
-        public let noAlightingAtStop: Bool?
+        public let stopCallStatus: StopCallStatus
 
         enum CodingKeys: String, CodingKey {
             case stopPointRef = "siri:StopPointRef"
@@ -570,12 +602,19 @@ public extension OJPv2 {
             case estimatedQuay = "EstimatedQuay"
             case serviceArrival = "ServiceArrival"
             case serviceDeparture = "ServiceDeparture"
-            case order = "Order"
-            case requestStop = "RequestStop"
-            case unplannedStop = "UnplannedStop"
-            case notServicedStop = "NotServicedStop"
-            case noBoardingAtStop = "NoBoardingAtStop"
-            case noAlightingAtStop = "NoAlightingAtStop"
+            case stopCallStatus
+        }
+
+        public init(from decoder: any Decoder) throws {
+            let container = try decoder.container(keyedBy: CodingKeys.self)
+            stopPointRef = try container.decode(String.self, forKey: .stopPointRef)
+            stopPointName = try container.decode(InternationalText.self, forKey: .stopPointName)
+            nameSuffix = try container.decode(InternationalText?.self, forKey: .nameSuffix)
+            plannedQuay = try container.decode(InternationalText?.self, forKey: .plannedQuay)
+            estimatedQuay = try container.decode(InternationalText?.self, forKey: .estimatedQuay)
+            serviceArrival = try container.decode(ServiceArrival?.self, forKey: .serviceArrival)
+            serviceDeparture = try container.decode(ServiceDeparture?.self, forKey: .serviceDeparture)
+            stopCallStatus = try StopCallStatus(from: decoder)
         }
     }
 
@@ -591,13 +630,7 @@ public extension OJPv2 {
         public let serviceArrival: ServiceArrival
         public let serviceDeparture: ServiceDeparture?
 
-        // https://vdvde.github.io/OJP/develop/index.html#StopCallStatusGroup
-        public let order: Int?
-        public let requestStop: Bool?
-        public let unplannedStop: Bool?
-        public let notServicedStop: Bool?
-        public let noBoardingAtStop: Bool?
-        public let noAlightingAtStop: Bool?
+        public let stopCallStatus: StopCallStatus
 
         enum CodingKeys: String, CodingKey {
             case stopPointRef = "siri:StopPointRef"
@@ -607,12 +640,48 @@ public extension OJPv2 {
             case estimatedQuay = "EstimatedQuay"
             case serviceArrival = "ServiceArrival"
             case serviceDeparture = "ServiceDeparture"
+            case stopCallStatus
+        }
+
+        public init(from decoder: any Decoder) throws {
+            let container = try decoder.container(keyedBy: CodingKeys.self)
+            stopPointRef = try container.decode(String.self, forKey: .stopPointRef)
+            stopPointName = try container.decode(InternationalText.self, forKey: .stopPointName)
+            nameSuffix = try container.decode(InternationalText?.self, forKey: .nameSuffix)
+            plannedQuay = try container.decode(InternationalText?.self, forKey: .plannedQuay)
+            estimatedQuay = try container.decode(InternationalText?.self, forKey: .estimatedQuay)
+            serviceArrival = try container.decode(ServiceArrival.self, forKey: .serviceArrival)
+            serviceDeparture = try container.decode(ServiceDeparture?.self, forKey: .serviceDeparture)
+            stopCallStatus = try StopCallStatus(from: decoder)
+        }
+    }
+
+    // https://vdvde.github.io/OJP/develop/index.html#StopCallStatusGroup
+    struct StopCallStatus: Codable, Sendable {
+        public let order: Int?
+        public let requestStop: Bool
+        public let unplannedStop: Bool
+        public let notServicedStop: Bool
+        public let noBoardingAtStop: Bool
+        public let noAlightingAtStop: Bool
+
+        enum CodingKeys: String, CodingKey {
             case order = "Order"
             case requestStop = "RequestStop"
             case unplannedStop = "UnplannedStop"
             case notServicedStop = "NotServicedStop"
             case noBoardingAtStop = "NoBoardingAtStop"
             case noAlightingAtStop = "NoAlightingAtStop"
+        }
+
+        public init(from decoder: any Decoder) throws {
+            let container = try decoder.container(keyedBy: CodingKeys.self)
+            order = try container.decodeIfPresent(Int.self, forKey: .order)
+            requestStop = try container.decodeIfPresent(Bool.self, forKey: .requestStop) ?? false
+            unplannedStop = try container.decodeIfPresent(Bool.self, forKey: .unplannedStop) ?? false
+            notServicedStop = try container.decodeIfPresent(Bool.self, forKey: .notServicedStop) ?? false
+            noBoardingAtStop = try container.decodeIfPresent(Bool.self, forKey: .noBoardingAtStop) ?? false
+            noAlightingAtStop = try container.decodeIfPresent(Bool.self, forKey: .noAlightingAtStop) ?? false
         }
     }
 
