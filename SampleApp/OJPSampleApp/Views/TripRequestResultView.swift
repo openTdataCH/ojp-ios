@@ -58,7 +58,6 @@ struct TripRequestResultView: View {
                                         HStack(spacing: 4) {
                                             Image(systemName: "clock.arrow.circlepath")
                                                 .imageScale(.small)
-                                                .foregroundStyle(.secondary)
                                             Text(DurationFormatter.string(for: trip.duration))
                                         }
 

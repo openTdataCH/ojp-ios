@@ -38,7 +38,7 @@ public extension OJPv2 {
             requestMessageRef = try container.decodeIfPresent(String.self, forKey: .requestMessageRef)
             calcTime = try container.decodeIfPresent(Int.self, forKey: .calcTime)
             tripResponseContext = try container.decodeIfPresent(OJPv2.TripResponseContext.self, forKey: .tripResponseContext)
-            tripResults = (try? container.decode([OJPv2.TripResult].self, forKey: .tripResults)) ?? [] // tripResults could be optional
+            tripResults = try (container.decodeIfPresent([OJPv2.TripResult].self, forKey: .tripResults)) ?? [] // tripResults could be optional
         }
     }
 
