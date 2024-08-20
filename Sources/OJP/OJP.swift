@@ -25,6 +25,8 @@ let requestXMLRootAttributes = [
     "version": "2.0",
 ]
 
+public let defaultLanguage = Locale.current.language.languageCode?.identifier(.alpha2) ?? "de"
+
 /// Entry point to OJP
 public final class OJP: Sendable {
     let loader: Loader
@@ -33,17 +35,29 @@ public final class OJP: Sendable {
 
     /// Constructor of the OJP class
     /// - Parameter loadingStrategy: Pass a real loader with an API Configuration or a Mock for test purpuse
-    public init(loadingStrategy: LoadingStrategy) {
+    public init(loadingStrategy: LoadingStrategy, language: String = defaultLanguage) {
         switch loadingStrategy {
         case let .http(apiConfiguration):
             let httpLoader = HTTPLoader(configuration: apiConfiguration)
             loader = httpLoader.load(request:)
-            locationInformationRequest = OJPHelpers.LocationInformationRequest(requesterReference: apiConfiguration.requesterReference)
-            tripRequest = OJPHelpers.TripRequest(requesterReference: apiConfiguration.requesterReference)
+            locationInformationRequest = OJPHelpers.LocationInformationRequest(
+                language: language,
+                requesterReference: apiConfiguration.requesterReference
+            )
+            tripRequest = OJPHelpers.TripRequest(
+                language: language,
+                requesterReference: apiConfiguration.requesterReference
+            )
         case let .mock(loader):
             self.loader = loader
-            locationInformationRequest = OJPHelpers.LocationInformationRequest(requesterReference: "Mock_Requestor_Ref")
-            tripRequest = OJPHelpers.TripRequest(requesterReference: "Mock_Requestor_Ref")
+            locationInformationRequest = OJPHelpers.LocationInformationRequest(
+                language: language,
+                requesterReference: "Mock_Requestor_Ref"
+            )
+            tripRequest = OJPHelpers.TripRequest(
+                language: language,
+                requesterReference: "Mock_Requestor_Ref"
+            )
         }
     }
 
@@ -98,7 +112,13 @@ public final class OJP: Sendable {
         return locationInformationDelivery.placeResults
     }
 
-    public func requestTrips(from: OJPv2.PlaceRefChoice, to: OJPv2.PlaceRefChoice, via: [OJPv2.PlaceRefChoice]? = nil, at: DepArrTime = .departure(Date()), params: OJPv2.TripParams) async throws -> OJPv2.TripDelivery {
+    public func requestTrips(
+        from: OJPv2.PlaceRefChoice,
+        to: OJPv2.PlaceRefChoice,
+        via: [OJPv2.PlaceRefChoice]? = nil,
+        at: DepArrTime = .departure(Date()),
+        params: OJPv2.TripParams
+    ) async throws -> OJPv2.TripDelivery {
         let ojp = tripRequest.requestTrips(from: from, to: to, via: via, at: at, params: params)
 
         let serviceDelivery = try await request(with: ojp).serviceDelivery
@@ -123,7 +143,7 @@ public final class OJP: Sendable {
             debugPrint(xmlString)
             if let urlresponse = response as? HTTPURLResponse {
                 debugPrint("--- Response ----")
-                if let xmlResponse = String(data:data, encoding: .utf8) {
+                if let xmlResponse = String(data: data, encoding: .utf8) {
                     debugPrint(xmlResponse)
                 }
                 debugPrint("---")

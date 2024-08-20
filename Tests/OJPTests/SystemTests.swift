@@ -73,5 +73,4 @@ final class SystemTests: XCTestCase {
         XCTAssertEqual(beforeDates.sorted(), beforeDates)
         XCTAssertEqual(afterDates.sorted(), afterDates)
     }
-    
 }

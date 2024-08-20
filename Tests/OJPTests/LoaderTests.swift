@@ -12,14 +12,13 @@ final class LoaderTests: XCTestCase {
 
         let ojp = await OJP(loadingStrategy: .http(.int))
         let (data, response) = try await ojp.loader(body)
-        
+
         let serivceDelivery = try await OJPDecoder.response(data).serviceDelivery
         guard case let .locationInformation(locationInformation) = serivceDelivery.delivery else {
             XCTFail()
             return
         }
         XCTAssertGreaterThan(locationInformation.placeResults.count, 0)
-        
 
         let httpResponse = response as? HTTPURLResponse
         XCTAssertNotNil(httpResponse)
