@@ -52,8 +52,8 @@ public extension OJPv2 {
 
     /// https://vdvde.github.io/OJP/develop/index.html#SituationsStructure
     struct Situation: Codable, Sendable {
-        let ptSituations: [PTSituation]?
-        let roadSituations: [RoadSituation]?
+        public let ptSituations: [PTSituation]?
+        public let roadSituations: [RoadSituation]?
 
         enum CodingKeys: String, CodingKey {
             case ptSituations = "PtSituation"
