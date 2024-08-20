@@ -107,6 +107,32 @@ public extension OJPv2.TripDelivery {
     var ptSituations: [OJPv2.PTSituation] {
         tripResponseContext?.situations.ptSituations ?? []
     }
+
+    func hasSituation(trip: OJPv2.Trip) -> Bool {
+        guard !ptSituations.isEmpty else { return false }
+        return tripResults
+            .compactMap(\.trip)
+            .contains { trip in
+                trip.legs.contains { leg in
+                    guard case let .timed(timedLeg) = leg.legType else {
+                        return false
+                    }
+                    return !timedLeg.relevantPtSituations(allPtSituations: ptSituations).isEmpty
+                }
+            }
+    }
+}
+
+public extension OJPv2.Trip {
+    func hasSituation(allPtSituations: [OJPv2.PTSituation]) -> Bool {
+        guard !allPtSituations.isEmpty else { return false }
+        return legs.contains { leg in
+            guard case let .timed(timedLeg) = leg.legType else {
+                return false
+            }
+            return !timedLeg.relevantPtSituations(allPtSituations: allPtSituations).isEmpty
+        }
+    }
 }
 
 public extension OJPv2.TimedLeg {
