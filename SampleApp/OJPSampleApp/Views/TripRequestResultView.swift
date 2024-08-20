@@ -63,6 +63,9 @@ struct TripRequestResultView: View {
 
                                         if trip.tripStatus.hasIssue {
                                             TripStatusLabel(tripStatus: trip.tripStatus)
+                                        } else if trip.hasSituation(allPtSituations: ptSituations) {
+                                            Image(systemName: "bolt.circle.fill")
+                                                .foregroundStyle(.red)
                                         } else { Spacer() }
                                     }
 
@@ -123,13 +126,28 @@ extension OJPv2.TripStatus {
     }
 }
 
-#Preview {
+#Preview("Cancellations and Not Serviced") {
     AsyncView(
         task: {
             try await PreviewMocker.shared.loadTrips(xmlFileName: "tr-with-cancellations-and-notservicedstops").tripResults
         },
         content: { t in
             TripRequestResultView(ptSituations: [], isLoading: false, results: t)
+        }
+    )
+}
+
+#Preview("Situations") {
+    AsyncView(
+        task: {
+            try await PreviewMocker.shared.loadTrips(xmlFileName: "tr-fribourg-basel")
+        },
+        content: { t in
+            TripRequestResultView(
+                ptSituations: t.tripResponseContext?.situations.ptSituations ?? [],
+                isLoading: false,
+                results: t.tripResults
+            )
         }
     )
 }

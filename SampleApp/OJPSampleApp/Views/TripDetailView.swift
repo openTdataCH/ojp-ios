@@ -121,8 +121,11 @@ struct TripDetailView: View {
                         Image(systemName: "xmark")
                     }
                 }
-                PTSituationDetailView(ptSituation: situation)
+                ScrollView(.vertical) {
+                    PTSituationDetailView(ptSituation: situation)
+                }
             }.padding()
+                .frame(maxWidth: 960)
         }
     }
 }
