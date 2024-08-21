@@ -31,6 +31,7 @@
 		CFCEAB0C2C664BA0006EDA6A /* tr-fribourg-berne.xml in Resources */ = {isa = PBXBuildFile; fileRef = CFCEAB0B2C664BA0006EDA6A /* tr-fribourg-berne.xml */; };
 		CFE465E92C738D6B00E5CADB /* tr-fribourg-basel.xml in Resources */ = {isa = PBXBuildFile; fileRef = CFE465E82C738D4900E5CADB /* tr-fribourg-basel.xml */; };
 		CFE465EB2C73D92500E5CADB /* tr-with-cancellations-and-notservicedstops.xml in Resources */ = {isa = PBXBuildFile; fileRef = CFE465EA2C73D8F100E5CADB /* tr-with-cancellations-and-notservicedstops.xml */; };
+		CFE465ED2C76092200E5CADB /* OJP+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE465EC2C76092200E5CADB /* OJP+Extensions.swift */; };
 		CFF227B32BBD63AC00D3EADF /* OJP in Frameworks */ = {isa = PBXBuildFile; productRef = CFF227B22BBD63AC00D3EADF /* OJP */; };
 		CFF227B82BBDA10800D3EADF /* PlaceDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF227B72BBDA10800D3EADF /* PlaceDetailView.swift */; };
 /* End PBXBuildFile section */
@@ -78,6 +79,7 @@
 		CFCEAB0B2C664BA0006EDA6A /* tr-fribourg-berne.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = "tr-fribourg-berne.xml"; path = "../../../Tests/OJPTests/Resources/tr/situations/tr-fribourg-berne.xml"; sourceTree = "<group>"; };
 		CFE465E82C738D4900E5CADB /* tr-fribourg-basel.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "tr-fribourg-basel.xml"; sourceTree = "<group>"; };
 		CFE465EA2C73D8F100E5CADB /* tr-with-cancellations-and-notservicedstops.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "tr-with-cancellations-and-notservicedstops.xml"; sourceTree = "<group>"; };
+		CFE465EC2C76092200E5CADB /* OJP+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OJP+Extensions.swift"; sourceTree = "<group>"; };
 		CFF227B02BBD639000D3EADF /* OJP */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = OJP; path = ..; sourceTree = "<group>"; };
 		CFF227B42BBD95CF00D3EADF /* LocationSearchByNameView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationSearchByNameView.swift; sourceTree = "<group>"; };
 		CFF227B72BBDA10800D3EADF /* PlaceDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceDetailView.swift; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 				CF3CD8FB2C2E9BC700D25994 /* AsyncView.swift */,
 				92AEB2512C32AA2C00D5828E /* TimeInterval+Extensions.swift */,
 				CF1A97DF2C3533D100FEAEC0 /* LoadingView.swift */,
+				CFE465EC2C76092200E5CADB /* OJP+Extensions.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -372,6 +375,7 @@
 				92AEB2522C32AA2C00D5828E /* TimeInterval+Extensions.swift in Sources */,
 				CF3CD9002C2EA4A800D25994 /* InlineLocationSerachView.swift in Sources */,
 				CF3CD8FC2C2E9BC700D25994 /* AsyncView.swift in Sources */,
+				CFE465ED2C76092200E5CADB /* OJP+Extensions.swift in Sources */,
 				CFBA60BB2BBD6106000FF2ED /* OJPSampleApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

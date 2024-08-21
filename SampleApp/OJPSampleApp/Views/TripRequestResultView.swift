@@ -108,24 +108,6 @@ struct TripRequestResultView: View {
     }
 }
 
-extension OJPv2.TripStatus {
-    var hasIssue: Bool {
-        cancelled || infeasible || deviation
-    }
-
-    var title: String {
-        if cancelled {
-            "Cancelled"
-        } else if infeasible {
-            "Infeasible"
-        } else if deviation {
-            "Deviation"
-        } else {
-            ""
-        }
-    }
-}
-
 #Preview("Cancellations and Not Serviced") {
     AsyncView(
         task: {

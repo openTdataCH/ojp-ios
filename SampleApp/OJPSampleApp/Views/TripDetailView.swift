@@ -130,33 +130,6 @@ struct TripDetailView: View {
     }
 }
 
-struct StationTime {
-    let estimated: Date?
-    let timetabled: Date
-
-    var hasDelay: Bool {
-        delay >= 60
-    }
-
-    var delay: TimeInterval {
-        if let estimated {
-            estimated.timeIntervalSince(timetabled)
-        } else { 0 }
-    }
-}
-
-extension OJPv2.ServiceArrival {
-    var arrivalTime: StationTime {
-        StationTime(estimated: estimatedTime, timetabled: timetabledTime)
-    }
-}
-
-extension OJPv2.ServiceDeparture {
-    var departureTime: StationTime {
-        StationTime(estimated: estimatedTime, timetabled: timetabledTime)
-    }
-}
-
 #Preview {
     AsyncView(
         task: {
@@ -170,48 +143,4 @@ extension OJPv2.ServiceDeparture {
             }
         }
     )
-}
-
-extension OJPv2.LegIntermediate: Identifiable {
-    public var id: String {
-        stopPointRef
-    }
-}
-
-extension OJPv2.PTSituation {
-    var allInfos: [String] {
-        var infos: [String] = []
-        for publishingAction in publishingActions.publishingActions {
-            for passengerInformationAction in publishingAction.passengerInformationActions {
-                for textualContent in passengerInformationAction.textualContents {
-                    infos.append(textualContent.summaryContent.summaryText)
-
-                    for descriptionContent in textualContent.descriptionContents {
-                        infos.append(descriptionContent.descriptionText)
-                    }
-
-                    for consequenceContent in textualContent.consequenceContents {
-                        infos.append(consequenceContent.consequenceText)
-                    }
-
-                    for recommendationContent in textualContent.recommendationContents {
-                        infos.append(recommendationContent.recommendationText)
-                    }
-
-                    for remarkContent in textualContent.remarkContents {
-                        infos.append(remarkContent.remarkText)
-                    }
-
-                    if let reasonContent = textualContent.reasonContent {
-                        infos.append(reasonContent.reasonText)
-                    }
-
-                    if let durationContent = textualContent.durationContent {
-                        infos.append(durationContent.durationText)
-                    }
-                }
-            }
-        }
-        return infos
-    }
 }
