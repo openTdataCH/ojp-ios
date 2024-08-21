@@ -255,7 +255,6 @@ final class TripRequestTests: XCTestCase {
             guard case let .trip(tripDelivery) = try await OJPDecoder.parseXML(xmlData).response?.serviceDelivery.delivery else {
                 return XCTFail("unexpected empty")
             }
-            dump(tripDelivery)
             XCTAssertTrue(tripDelivery.tripResults.isEmpty)
         }
     }

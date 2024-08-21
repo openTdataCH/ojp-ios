@@ -728,6 +728,29 @@ public extension OJPv2 {
         }
     }
 
+    /// https://vdvde.github.io/OJP/develop/index.html#ServiceStatusGroup
+    struct ServiceStatusGroup: Codable, Sendable {
+        let unplanned: Bool
+        let cancelled: Bool
+        let deviation: Bool
+        let undefinedDelay: Bool
+
+        public enum CodingKeys: String, CodingKey {
+            case unplanned = "Unplanned"
+            case cancelled
+            case deviation = "Deviation"
+            case undefinedDelay = "UndefinedDelay"
+        }
+
+        public init(from decoder: any Decoder) throws {
+            let container = try decoder.container(keyedBy: CodingKeys.self)
+            unplanned = try container.decode(Bool?.self, forKey: .unplanned) ?? false
+            cancelled = try container.decode(Bool?.self, forKey: .cancelled) ?? false
+            deviation = try container.decode(Bool?.self, forKey: .deviation) ?? false
+            undefinedDelay = try container.decode(Bool?.self, forKey: .undefinedDelay) ?? false
+        }
+    }
+
     // https://vdvde.github.io/OJP/develop/index.html#DatedJourneyStructure
     struct DatedJourney: Codable, Sendable {
         // https://vdvde.github.io/OJP/develop/index.html#ConventionalModesOfOperationEnumeration
@@ -755,6 +778,7 @@ public extension OJPv2 {
         public let destinationText: InternationalText?
         public let destinationStopPointRef: String?
         public let situationFullRefs: SituationFullRefs?
+        public let serviceStatus: ServiceStatusGroup
 
         public enum CodingKeys: String, CodingKey {
             case conventionalModeOfOperation = "ConventionalModeOfOperation"
@@ -775,6 +799,7 @@ public extension OJPv2 {
             case destinationText = "DestinationText"
             case destinationStopPointRef = "DestinationStopPointRef"
             case situationFullRefs = "SituationFullRefs"
+            case serviceStatus
         }
 
         public enum ConventionalModesOfOperation: String, Codable, Sendable {
@@ -787,6 +812,29 @@ public extension OJPv2 {
             case replacement
             case school
             case pRM
+        }
+
+        public init(from decoder: any Decoder) throws {
+            let container = try decoder.container(keyedBy: CodingKeys.self)
+            conventionalModeOfOperation = try container.decodeIfPresent(OJPv2.DatedJourney.ConventionalModesOfOperation.self, forKey: .conventionalModeOfOperation)
+            operatingDayRef = try container.decode(String.self, forKey: .operatingDayRef)
+            journeyRef = try container.decode(String.self, forKey: .journeyRef)
+            publicCode = try container.decodeIfPresent(String.self, forKey: .publicCode)
+            lineRef = try container.decode(String.self, forKey: .lineRef)
+            directionRef = try container.decodeIfPresent(String.self, forKey: .directionRef)
+            mode = try container.decode(OJPv2.Mode.self, forKey: .mode)
+            productCategory = try container.decodeIfPresent(OJPv2.ProductCategory.self, forKey: .productCategory)
+            publishedServiceName = try container.decode(OJPv2.InternationalText.self, forKey: .publishedServiceName)
+            trainNumber = try container.decodeIfPresent(String.self, forKey: .trainNumber)
+            vehicleRef = try container.decodeIfPresent(String.self, forKey: .vehicleRef)
+            attributes = try container.decode([OJPv2.Attribute].self, forKey: .attributes)
+            operatorRef = try container.decodeIfPresent(String.self, forKey: .operatorRef)
+            originText = try container.decode(OJPv2.InternationalText.self, forKey: .originText)
+            originStopPointRef = try container.decodeIfPresent(String.self, forKey: .originStopPointRef)
+            destinationText = try container.decodeIfPresent(OJPv2.InternationalText.self, forKey: .destinationText)
+            destinationStopPointRef = try container.decodeIfPresent(String.self, forKey: .destinationStopPointRef)
+            situationFullRefs = try container.decodeIfPresent(OJPv2.SituationFullRefs.self, forKey: .situationFullRefs)
+            serviceStatus = try ServiceStatusGroup(from: decoder)
         }
     }
 
