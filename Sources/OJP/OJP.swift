@@ -25,8 +25,6 @@ let requestXMLRootAttributes = [
     "version": "2.0",
 ]
 
-public let defaultLanguage = Locale.current.language.languageCode?.identifier(.alpha2) ?? "de"
-
 /// Entry point to OJP
 public final class OJP: Sendable {
     let loader: Loader
@@ -35,7 +33,11 @@ public final class OJP: Sendable {
 
     /// Constructor of the OJP class
     /// - Parameter loadingStrategy: Pass a real loader with an API Configuration or a Mock for test purpuse
-    public init(loadingStrategy: LoadingStrategy, language: String = defaultLanguage) {
+    /// - Parameter language: ISO language code. Defaults to the first current preferred localization according to the bundle.
+    public init(
+        loadingStrategy: LoadingStrategy,
+        language: String = Bundle.main.preferredLocalizations.first ?? "de"
+    ) {
         switch loadingStrategy {
         case let .http(apiConfiguration):
             let httpLoader = HTTPLoader(configuration: apiConfiguration)

@@ -46,7 +46,10 @@ let apiConfiguration = APIConfiguration(
         ]
     )
 
-let ojpSdk = OJP(loadingStrategy: .http(apiConfiguration))
+let ojpSdk = OJP(
+    loadingStrategy: .http(apiConfiguration),
+    language: "de" // optional ISO language code. Defaults to the preferred localization. 
+    )
 ```
 
 ### Basic Usage
