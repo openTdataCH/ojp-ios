@@ -16,6 +16,7 @@ struct PTSituationDetailView: View {
     }
 
     var body: some View {
+        AlertLabel(alertCause: ptSituation.alertCause)
         Grid(alignment: .leadingFirstTextBaseline,
              horizontalSpacing: 5,
              verticalSpacing: 5)

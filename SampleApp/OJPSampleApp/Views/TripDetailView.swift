@@ -89,6 +89,7 @@ struct TripDetailView: View {
 
                         ForEach(timedLeg.relevantPtSituations(allPtSituations: ptSituations)) { ptSituation in
                             Divider()
+                            AlertLabel(alertCause: ptSituation.alertCause)
                             ForEach(ptSituation.allInfos.indices) { index in
                                 Text(ptSituation.allInfos[index])
                             }.onTapGesture {

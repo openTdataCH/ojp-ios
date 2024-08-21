@@ -1,11 +1,10 @@
 //
-//  Trip+Extensions.swift
+//  OJP+Extensions.swift
 //  OJPSampleApp
 //
 //  Created by Lehnherr Reto on 21.08.2024.
 //
 // Collection of convenience extensions
-
 
 import Foundation
 import OJP
@@ -109,7 +108,6 @@ extension OJPv2.TripStatus {
 extension OJPv2.AlertCause {
     var title: String {
         switch self {
-
         case .undefinedAlertCause:
             "Störung"
         case .constructionWork:

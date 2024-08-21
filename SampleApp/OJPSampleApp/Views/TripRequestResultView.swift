@@ -149,3 +149,19 @@ struct TripStatusLabel: View {
         .clipShape(Capsule())
     }
 }
+
+struct AlertLabel: View {
+    let alertCause: OJPv2.AlertCause
+
+    var body: some View {
+        HStack(spacing: 4) {
+            Image(systemName: "exclamationmark.triangle") // TODO: make conditional to cause
+                .imageScale(.small)
+            Text(alertCause.title)
+        }
+        .foregroundStyle(.black)
+        .padding(.horizontal, 4)
+        .background(.red)
+        .clipShape(Capsule())
+    }
+}
