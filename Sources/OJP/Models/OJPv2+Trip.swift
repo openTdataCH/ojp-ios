@@ -730,10 +730,10 @@ public extension OJPv2 {
 
     /// https://vdvde.github.io/OJP/develop/index.html#ServiceStatusGroup
     struct ServiceStatusGroup: Codable, Sendable {
-        let unplanned: Bool
-        let cancelled: Bool
-        let deviation: Bool
-        let undefinedDelay: Bool
+        public let unplanned: Bool
+        public let cancelled: Bool
+        public let deviation: Bool
+        public let undefinedDelay: Bool
 
         public enum CodingKeys: String, CodingKey {
             case unplanned = "Unplanned"
