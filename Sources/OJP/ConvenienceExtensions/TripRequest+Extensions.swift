@@ -133,6 +133,24 @@ public extension OJPv2.Trip {
             return !timedLeg.relevantPtSituations(allPtSituations: allPtSituations).isEmpty
         }
     }
+
+    /// Returns all ``OJPv2/PTSituation`` that occur any of the ``OJPv2/TimedLeg`` of this trip uniqued by ``OJPv2/PTSituation/situationNumber``.
+    func relevantPtSituations(allPtSituations: [OJPv2.PTSituation]) -> [OJPv2.PTSituation] {
+        guard !allPtSituations.isEmpty else { return [] }
+        return timedLegs.compactMap { timedLeg in
+            timedLeg.relevantPtSituations(allPtSituations: allPtSituations)
+        }
+        .flatMap { $0 }
+        .unique(by: \.situationNumber)
+    }
+
+    /// Returns only timed legs of a trip.
+    var timedLegs: [OJPv2.TimedLeg] {
+        legs.compactMap { leg in
+            guard case let .timed(timedLeg) = leg.legType else { return nil }
+            return timedLeg
+        }
+    }
 }
 
 public extension OJPv2.TimedLeg {
