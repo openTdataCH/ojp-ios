@@ -109,7 +109,7 @@ extension OJPv2.AlertCause {
     var title: String {
         switch self {
         case .undefinedAlertCause:
-            "Störung"
+            "Undefiniert"
         case .constructionWork:
             "Baustelle"
         case .serviceDisruption:
@@ -123,9 +123,9 @@ extension OJPv2.AlertCause {
         case .routeBlockage:
             "Blockierte Strecke"
         case .technicalProblem:
-            "Tchnisches Problem"
+            "Technisches Problem"
         case .unknown:
-            "Störung"
+            "Unbekannt"
         case .accident:
             "Unfall"
         case .specialEvent:
@@ -135,5 +135,16 @@ extension OJPv2.AlertCause {
         case .maintenanceWork:
             "Unterhaltsarbeiten"
         }
+    }
+}
+
+extension OJPv2.Trip {
+    var firstTimedLeg: OJPv2.TimedLeg? {
+        legs.compactMap({ leg in
+            if case let .timed(timedLeg) = leg.legType {
+                return timedLeg
+            }
+            return nil }
+        ).first
     }
 }

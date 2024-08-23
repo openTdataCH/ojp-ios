@@ -37,7 +37,7 @@ struct TripDetailView: View {
                             let timetabledTime = legBoard.serviceDeparture.timetabledTime
                             let estimatedTime = legBoard.serviceDeparture.estimatedTime
                             let changedTrack = legBoard.estimatedQuay != nil && legBoard.estimatedQuay!.text != legBoard.plannedQuay?.text
-                            Text(estimatedTime?.formatted() ?? timetabledTime.formatted())
+                            Text(timetabledTime.formatted())
                             if let estimatedTime {
                                 let delay = estimatedTime.timeIntervalSince(timetabledTime).formattedDelay
                                 Text(delay).foregroundStyle(.red)
@@ -76,7 +76,7 @@ struct TripDetailView: View {
                             let timetabledTime = legAlight.serviceArrival.timetabledTime
                             let estimatedTime = legAlight.serviceArrival.estimatedTime
                             let changedTrack = legAlight.estimatedQuay != nil && legAlight.estimatedQuay!.text != legAlight.plannedQuay?.text
-                            Text(estimatedTime?.formatted() ?? timetabledTime.formatted())
+                            Text(timetabledTime.formatted())
                             if let estimatedTime {
                                 let delay = estimatedTime.timeIntervalSince(timetabledTime).formattedDelay
                                 Text(delay).foregroundStyle(.red)

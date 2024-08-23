@@ -51,7 +51,11 @@ struct TripRequestResultView: View {
                                 HStack {
                                     VStack(alignment: .leading) {
                                         Text(trip.originName)
-                                        Text(trip.startTime.formatted())
+                                        Text(
+                                            (
+                                                trip.firstTimedLeg?.legBoard.serviceDeparture.timetabledTime ?? trip.startTime
+                                            ).formatted()
+                                        )
                                     }
                                     Spacer()
                                     VStack {
