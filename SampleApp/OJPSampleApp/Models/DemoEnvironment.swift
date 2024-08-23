@@ -55,10 +55,3 @@ struct OJPHelper {
         return environment
     }
 }
-
-extension OJP {
-    @MainActor
-    static var configured: OJP {
-        OJPHelper.ojp
-    }
-}

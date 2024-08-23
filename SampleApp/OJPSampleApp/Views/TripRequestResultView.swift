@@ -51,23 +51,40 @@ struct TripRequestResultView: View {
                                 HStack {
                                     VStack(alignment: .leading) {
                                         Text(trip.originName)
-                                        Text(trip.startTime.formatted())
+                                        Text(
+                                            (
+                                                trip.firstTimedLeg?.legBoard.serviceDeparture.timetabledTime ?? trip.startTime
+                                            ).formatted()
+                                        )
                                     }
                                     Spacer()
-                                    HStack(spacing: 2) {
-                                        Image(systemName: "clock.arrow.circlepath")
-                                            .imageScale(.small)
-                                            .foregroundStyle(.secondary)
-                                        Text(DurationFormatter.string(for: trip.duration))
+                                    VStack {
+                                        HStack(spacing: 4) {
+                                            Image(systemName: "clock.arrow.circlepath")
+                                                .imageScale(.small)
+                                            Text(DurationFormatter.string(for: trip.duration))
+                                        }
+
+                                        if trip.tripStatus.hasIssue {
+                                            TripStatusLabel(tripStatus: trip.tripStatus)
+                                        } else if trip.hasSituation(allPtSituations: ptSituations) {
+                                            Image(systemName: "bolt.circle.fill")
+                                                .foregroundStyle(.red)
+                                        } else { Spacer() }
                                     }
+
                                     Spacer()
 
                                     VStack(alignment: .trailing) {
                                         Text(trip.destinationName)
-                                        Text(trip.endTime.formatted())
+                                        Text(
+                                        (
+                                            trip.lastTimedLeg?.legAlight.serviceArrival.timetabledTime ?? trip.endTime
+                                        ).formatted()
+                                        )
                                     }
-                                }
-                                .padding()
+                                }.foregroundStyle(trip.tripStatus.cancelled == true ? .red : Color.label)
+                                    .padding()
                             } else { Text("No Trips found") }
                         }
                         .background(Color.listBackground)
@@ -99,13 +116,60 @@ struct TripRequestResultView: View {
     }
 }
 
-#Preview {
+#Preview("Cancellations and Not Serviced") {
     AsyncView(
         task: {
-            try await PreviewMocker.shared.loadTrips().tripResults
+            try await PreviewMocker.shared.loadTrips(xmlFileName: "tr-with-cancellations-and-notservicedstops").tripResults
         },
         content: { t in
             TripRequestResultView(ptSituations: [], isLoading: false, results: t)
         }
     )
+}
+
+#Preview("Situations") {
+    AsyncView(
+        task: {
+            try await PreviewMocker.shared.loadTrips(xmlFileName: "tr-fribourg-basel")
+        },
+        content: { t in
+            TripRequestResultView(
+                ptSituations: t.tripResponseContext?.situations.ptSituations ?? [],
+                isLoading: false,
+                results: t.tripResults
+            )
+        }
+    )
+}
+
+struct TripStatusLabel: View {
+    let tripStatus: OJPv2.TripStatus
+
+    var body: some View {
+        HStack(spacing: 4) {
+            Image(systemName: "exclamationmark.triangle")
+                .imageScale(.small)
+            Text(tripStatus.title)
+        }
+        .foregroundStyle(.black)
+        .padding(.horizontal, 4)
+        .background(.red)
+        .clipShape(Capsule())
+    }
+}
+
+struct AlertLabel: View {
+    let alertCause: OJPv2.AlertCause
+
+    var body: some View {
+        HStack(spacing: 4) {
+            Image(systemName: "exclamationmark.triangle") // TODO: make conditional to cause
+                .imageScale(.small)
+            Text(alertCause.title)
+        }
+        .foregroundStyle(.black)
+        .padding(.horizontal, 4)
+        .background(.red)
+        .clipShape(Capsule())
+    }
 }

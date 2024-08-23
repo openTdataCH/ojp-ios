@@ -16,6 +16,7 @@ struct PTSituationDetailView: View {
     }
 
     var body: some View {
+        AlertLabel(alertCause: ptSituation.alertCause)
         Grid(alignment: .leadingFirstTextBaseline,
              horizontalSpacing: 5,
              verticalSpacing: 5)
@@ -26,7 +27,9 @@ struct PTSituationDetailView: View {
             }
             GridRow {
                 Text("Dauer")
-                Text("Von \(ptSituation.validityPeriod.startTime.formatted()) bis \(ptSituation.validityPeriod.endTime?.formatted() ?? "unbestimmt")")
+                ForEach(ptSituation.validityPeriod, id: \.startTime) { validityPeriod in
+                    Text("Von \(validityPeriod.startTime.formatted()) bis \(validityPeriod.endTime.formatted())")
+                }
             }
             Divider()
 

@@ -107,12 +107,60 @@ public extension OJPv2.TripDelivery {
     var ptSituations: [OJPv2.PTSituation] {
         tripResponseContext?.situations.ptSituations ?? []
     }
+
+    func hasSituation(trip: OJPv2.Trip) -> Bool {
+        guard !ptSituations.isEmpty else { return false }
+        return tripResults
+            .compactMap(\.trip)
+            .contains { trip in
+                trip.legs.contains { leg in
+                    guard case let .timed(timedLeg) = leg.legType else {
+                        return false
+                    }
+                    return !timedLeg.relevantPtSituations(allPtSituations: ptSituations).isEmpty
+                }
+            }
+    }
+}
+
+public extension OJPv2.Trip {
+    func hasSituation(allPtSituations: [OJPv2.PTSituation]) -> Bool {
+        let uniqueSituations = allPtSituations.unique(by: \.situationNumber)
+        guard !uniqueSituations.isEmpty else { return false }
+        return legs.contains { leg in
+            guard case let .timed(timedLeg) = leg.legType else {
+                return false
+            }
+            return !timedLeg.relevantPtSituations(allPtSituations: uniqueSituations).isEmpty
+        }
+    }
+
+    /// Returns all ``OJPv2/PTSituation`` that occur any of the ``OJPv2/TimedLeg`` of this trip uniqued by ``OJPv2/PTSituation/situationNumber``.
+    func relevantPtSituations(allPtSituations: [OJPv2.PTSituation]) -> [OJPv2.PTSituation] {
+        let uniqueSituations = allPtSituations.unique(by: \.situationNumber)
+        guard !uniqueSituations.isEmpty else { return [] }
+        return timedLegs.compactMap { timedLeg in
+            timedLeg.relevantPtSituations(allPtSituations: uniqueSituations)
+        }
+        .flatMap { $0 }
+        .unique(by: \.situationNumber)
+    }
+
+    /// Returns only timed legs of a trip.
+    var timedLegs: [OJPv2.TimedLeg] {
+        legs.compactMap { leg in
+            guard case let .timed(timedLeg) = leg.legType else { return nil }
+            return timedLeg
+        }
+    }
 }
 
 public extension OJPv2.TimedLeg {
     func relevantPtSituations(allPtSituations: [OJPv2.PTSituation]) -> [OJPv2.PTSituation] {
-        service.situationFullRefs?.situationFullRefs.flatMap { serviceSituationRef in
-            allPtSituations.filter { $0.situationNumber == serviceSituationRef.situationNumber }
+        let uniqueSituations = allPtSituations.unique(by: \.situationNumber)
+        guard !uniqueSituations.isEmpty else { return [] }
+        return service.situationFullRefs?.situationFullRefs.flatMap { serviceSituationRef in
+            uniqueSituations.filter { $0.situationNumber == serviceSituationRef.situationNumber }
         } ?? []
     }
 }

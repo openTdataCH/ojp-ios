@@ -155,41 +155,156 @@ final class TripRequestTests: XCTestCase {
         }
     }
 
-    func testSituationsMapping() async throws {
+    func testSituationsMappingOnLegs() async throws {
         let xmlData = try TestHelpers.loadXML(xmlFilename: "tr-fribourg-basel")
+
+        guard case let .trip(tripDelivery) = try await OJPDecoder.parseXML(xmlData).response?.serviceDelivery.delivery else {
+            return XCTFail("unexpected empty")
+        }
+        guard let responseContext = tripDelivery.tripResponseContext else {
+            return XCTFail("expected to have a tripResponseContext")
+        }
+        let ptSituations = tripDelivery.ptSituations
+        XCTAssertEqual(ptSituations.count, 2)
+        XCTAssertEqual(ptSituations.map(\.situationNumber), responseContext.situations.ptSituations?.map(\.situationNumber))
+
+        if let firstTrip = tripDelivery.tripResults.first?.trip {
+            if case let .timed(firstLeg) = firstTrip.legs.first?.legType {
+                let situations = firstLeg.relevantPtSituations(allPtSituations: ptSituations)
+                XCTAssertEqual(situations.count, 1)
+                XCTAssertEqual(situations.first?.situationNumber, "ch:1:sstid:100001:dccd662a-e519-468b-b06b-1fdb25727282-1")
+            } else {
+                XCTFail()
+            }
+
+            if case let .timed(lastLeg) = firstTrip.legs.last?.legType {
+                let situations = lastLeg.relevantPtSituations(allPtSituations: ptSituations)
+                XCTAssertEqual(situations.count, 2)
+                XCTAssertEqual(situations.map(\.situationNumber), [
+                    "ch:1:sstid:100001:dccd662a-e519-468b-b06b-1fdb25727282-1",
+                    "ch:1:sstid:100001:dfc1dfd3-bbe0-441c-89df-7a309eb7b358-1",
+                ])
+            } else {
+                XCTFail()
+            }
+        }
+    }
+
+    func testSituationsMappingUniqueness() async throws {
+        let xmlData = try TestHelpers.loadXML(xmlFilename: "tr-fribourg-basel")
+
+        guard case let .trip(tripDelivery) = try await OJPDecoder.parseXML(xmlData).response?.serviceDelivery.delivery else {
+            return XCTFail("unexpected empty")
+        }
+        guard let responseContext = tripDelivery.tripResponseContext else {
+            return XCTFail("expected to have a tripResponseContext")
+        }
+        let ptSituations = tripDelivery.ptSituations
+        XCTAssertEqual(ptSituations.count, 2)
+        XCTAssertEqual(ptSituations.map(\.situationNumber), responseContext.situations.ptSituations?.map(\.situationNumber))
+        let situations = try XCTUnwrap(responseContext.situations.ptSituations)
+        let duplicateSituations = situations + situations
+        XCTAssertEqual(duplicateSituations.count, 4)
+
+        if let firstTrip = tripDelivery.tripResults.first?.trip {
+            if case let .timed(firstLeg) = firstTrip.legs.first?.legType {
+                let situations = firstLeg.relevantPtSituations(allPtSituations: duplicateSituations)
+                XCTAssertEqual(situations.count, 1)
+                XCTAssertEqual(situations.first?.situationNumber, "ch:1:sstid:100001:dccd662a-e519-468b-b06b-1fdb25727282-1")
+            } else {
+                XCTFail()
+            }
+        }
+    }
+
+    func testSituationsMappingOnTrip() async throws {
+        let xmlData = try TestHelpers.loadXML(xmlFilename: "tr-fribourg-basel")
+
+        guard case let .trip(tripDelivery) = try await OJPDecoder.parseXML(xmlData).response?.serviceDelivery.delivery else {
+            return XCTFail("unexpected empty")
+        }
+        guard let responseContext = tripDelivery.tripResponseContext else {
+            return XCTFail("expected to have a tripResponseContext")
+        }
+        let ptSituations = tripDelivery.ptSituations
+        XCTAssertEqual(ptSituations.count, 2)
+        XCTAssertEqual(ptSituations.map(\.situationNumber), responseContext.situations.ptSituations?.map(\.situationNumber))
+
+        let firstTrip = try XCTUnwrap(tripDelivery.tripResults.first?.trip)
+
+        XCTAssertTrue(firstTrip.hasSituation(allPtSituations: ptSituations))
+
+        let situationsOfFirstTrip = firstTrip.relevantPtSituations(allPtSituations: ptSituations)
+        XCTAssertEqual(situationsOfFirstTrip.count, 2)
+        XCTAssertEqual(situationsOfFirstTrip.map(\.situationNumber), [
+            "ch:1:sstid:100001:dccd662a-e519-468b-b06b-1fdb25727282-1",
+            "ch:1:sstid:100001:dfc1dfd3-bbe0-441c-89df-7a309eb7b358-1",
+        ])
+    }
+
+    // MARK: - TripStatus
+
+    func testTripStatusInfeasible() async throws {
+        let xmlData = try TestHelpers.loadXML(xmlFilename: "tr-infeasible")
         do {
             guard case let .trip(tripDelivery) = try await OJPDecoder.parseXML(xmlData).response?.serviceDelivery.delivery else {
                 return XCTFail("unexpected empty")
             }
-            guard let responseContext = tripDelivery.tripResponseContext else {
-                return XCTFail("expected to have a tripResponseContext")
-            }
-            let ptSituations = tripDelivery.ptSituations
-            XCTAssertEqual(ptSituations.count, 2)
-            XCTAssertEqual(ptSituations.map(\.situationNumber), responseContext.situations.ptSituations?.map(\.situationNumber))
 
-            if let firstTrip = tripDelivery.tripResults.first?.trip {
-                if case let .timed(firstLeg) = firstTrip.legs.first?.legType {
-                    let situations = firstLeg.relevantPtSituations(allPtSituations: ptSituations)
-                    XCTAssertEqual(situations.count, 1)
-                    XCTAssertEqual(situations.first?.situationNumber, "ch:1:sstid:100001:dccd662a-e519-468b-b06b-1fdb25727282-1")
-                } else {
-                    XCTFail()
-                }
+            let infeasibleTrip = tripDelivery.tripResults.first
+            XCTAssertEqual(infeasibleTrip?.trip?.tripStatus.infeasible, true)
+        }
+    }
 
-                if case let .timed(lastLeg) = firstTrip.legs.last?.legType {
-                    let situations = lastLeg.relevantPtSituations(allPtSituations: ptSituations)
-                    XCTAssertEqual(situations.count, 2)
-                    XCTAssertEqual(situations.map(\.situationNumber), [
-                        "ch:1:sstid:100001:dccd662a-e519-468b-b06b-1fdb25727282-1",
-                        "ch:1:sstid:100001:dfc1dfd3-bbe0-441c-89df-7a309eb7b358-1",
-                    ])
-                } else {
-                    XCTFail()
-                }
+    func testTripStatusCancelled() async throws {
+        let xmlData = try TestHelpers.loadXML(xmlFilename: "tr-cancellation")
+        do {
+            guard case let .trip(tripDelivery) = try await OJPDecoder.parseXML(xmlData).response?.serviceDelivery.delivery else {
+                return XCTFail("unexpected empty")
             }
-        } catch {
-            throw error
+
+            let cancelledTrip = try XCTUnwrap(tripDelivery.tripResults[1].trip)
+            XCTAssertEqual(cancelledTrip.tripStatus.cancelled, true)
+        }
+    }
+
+    func testTripStatusDeviation() async throws {
+        let xmlData = try TestHelpers.loadXML(xmlFilename: "tr-deviation-notActuallyALiveExample")
+        do {
+            guard case let .trip(tripDelivery) = try await OJPDecoder.parseXML(xmlData).response?.serviceDelivery.delivery else {
+                return XCTFail("unexpected empty")
+            }
+
+            let cancelledTrip = try XCTUnwrap(tripDelivery.tripResults[1].trip)
+            XCTAssertEqual(cancelledTrip.tripStatus.deviation, true)
+        }
+    }
+
+    func testTripNotServicedStop() async throws {
+        let xmlData = try TestHelpers.loadXML(xmlFilename: "trip-not-serviced")
+        do {
+            guard case let .trip(tripDelivery) = try await OJPDecoder.parseXML(xmlData).response?.serviceDelivery.delivery else {
+                return XCTFail("unexpected empty")
+            }
+
+            let firstTrip = try XCTUnwrap(tripDelivery.tripResults.first?.trip)
+            if case let .timed(legWithNotServicedStop) = firstTrip.legs[1].legType {
+                for leg in legWithNotServicedStop.legsIntermediate {
+                    XCTAssertEqual(leg.stopCallStatus.notServicedStop, leg.stopPointName.text == "Neuchâtel, Gouttes d'or")
+                }
+            } else {
+                XCTFail()
+            }
+        }
+    }
+
+    func testEmptyTripResultEdgeCase() async throws {
+        let xmlData = try TestHelpers.loadXML(xmlFilename: "trip-edgecase-empty-tripresult")
+        do {
+            guard case let .trip(tripDelivery) = try await OJPDecoder.parseXML(xmlData).response?.serviceDelivery.delivery else {
+                return XCTFail("unexpected empty")
+            }
+            XCTAssertTrue(tripDelivery.tripResults.isEmpty)
         }
     }
 }

@@ -12,7 +12,7 @@ struct TripRequestView: View {
     let ojp: OJP
 
     @State var tripResults: [OJPv2.TripResult] = []
-    @State var ptSituations: [OJPv2.PTSituation] = []
+    @State var ptSituations: Set<OJPv2.PTSituation> = []
     @State var origin: OJPv2.PlaceResult?
     @State var via: OJPv2.PlaceResult?
     @State var destination: OJPv2.PlaceResult?
@@ -82,7 +82,7 @@ struct TripRequestView: View {
                                                 )),
                                     numberOfResults: .minimum(6))
                                 tripResults = tripDelivery.tripResults
-                                ptSituations = tripDelivery.ptSituations
+                                ptSituations = Set(tripDelivery.ptSituations)
                             } catch {
                                 print(error)
                             }
@@ -94,7 +94,8 @@ struct TripRequestView: View {
             }
             DatePicker("Departure", selection: $departureDateTime)
             TripRequestResultView(
-                ptSituations: ptSituations, isLoading: isLoading,
+                ptSituations: Array(ptSituations),
+                isLoading: isLoading,
                 results: tripResults,
                 loadPrevious: {
                     guard !isLoading else { return }
@@ -103,7 +104,7 @@ struct TripRequestView: View {
                         guard let paginatedActor else { return }
                         let prev = try await paginatedActor.loadPrevious()
                         tripResults = prev.tripResults + tripResults
-                        ptSituations = prev.ptSituations + ptSituations
+                        ptSituations = ptSituations.union(prev.ptSituations)
                         isLoading = false
                     }
                 },
@@ -114,7 +115,7 @@ struct TripRequestView: View {
                         guard let paginatedActor else { return }
                         let next = try await paginatedActor.loadNext()
                         tripResults = tripResults + next.tripResults
-                        ptSituations = ptSituations + next.ptSituations
+                        ptSituations = ptSituations.union(next.ptSituations)
                         isLoading = false
                     }
                 }

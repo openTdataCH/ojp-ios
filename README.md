@@ -128,6 +128,11 @@ There is an experimental sample app under [Sample App](./SamplApp) to showcase a
 - [Documentation of the iOS Library](https://opentdatach.github.io/ojp-ios/documentation/ojp/)
 - run `format-code.sh` to execute swiftformat on the library
 
+### Used Standards
+
+- [OJP - Open API for distributed Journey Planning (vdvde.github.io/OJP/develop)](https://vdvde.github.io/OJP/develop/index.html)
+- [SIRI-SX/VDV736](https://www.oev-info.ch/de/branchenstandard/technische-standards/ereignisdaten) -> [realization_guide_siri-sx_oev_schweiz_v1.0.pdf](https://www.oev-info.ch/sites/default/files/2024-07/realization_guide_siri-sx_oev_schweiz_v1.0.pdf)
+
 ## Contributing
 
 Contributions are welcomed. Feel free to create an issue or a feature request, or fork the project and submit a pull request.
