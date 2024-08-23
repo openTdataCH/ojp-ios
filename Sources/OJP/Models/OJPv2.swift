@@ -87,16 +87,26 @@ public struct OJPv2: Codable, Sendable {
     }
 
     public struct ServiceRequest: Codable, Sendable {
+        public let requestContext: ServiceRequestContext
         public let requestTimestamp: Date
         public let requestorRef: String
         public let locationInformationRequest: LocationInformationRequest?
         public let tripRequest: TripRequest?
 
         public enum CodingKeys: String, CodingKey {
+            case requestContext = "siri:ServiceRequestContext"
             case requestTimestamp = "siri:RequestTimestamp"
             case requestorRef = "siri:RequestorRef"
             case locationInformationRequest = "OJPLocationInformationRequest"
             case tripRequest = "OJPTripRequest"
+        }
+    }
+
+    public struct ServiceRequestContext: Codable, Sendable {
+        public let language: String
+
+        public enum CodingKeys: String, CodingKey {
+            case language = "siri:Language"
         }
     }
 

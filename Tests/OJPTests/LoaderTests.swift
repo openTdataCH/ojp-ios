@@ -5,21 +5,20 @@ final class LoaderTests: XCTestCase {
     func testLoader() async throws {
         // BE/Köniz area
         let bbox = Geo.Bbox(minLongitude: 7.372097, minLatitude: 46.904860, maxLongitude: 7.479042, maxLatitude: 46.942787)
-        let ojpRequest = OJPHelpers.LocationInformationRequest(requesterReference: "")
+        let ojpRequest = OJPHelpers.LocationInformationRequest(language: "de", requesterReference: "")
             .requestWith(bbox: bbox)
 
         let body = try OJPHelpers.buildXMLRequest(ojpRequest: ojpRequest).data(using: .utf8)!
 
         let ojp = await OJP(loadingStrategy: .http(.int))
         let (data, response) = try await ojp.loader(body)
-        
+
         let serivceDelivery = try await OJPDecoder.response(data).serviceDelivery
         guard case let .locationInformation(locationInformation) = serivceDelivery.delivery else {
             XCTFail()
             return
         }
         XCTAssertGreaterThan(locationInformation.placeResults.count, 0)
-        
 
         let httpResponse = response as? HTTPURLResponse
         XCTAssertNotNil(httpResponse)
@@ -29,7 +28,7 @@ final class LoaderTests: XCTestCase {
     func testMockLoader() async throws {
         // BE/Köniz area
         let bbox = Geo.Bbox(minLongitude: 7.372097, minLatitude: 46.904860, maxLongitude: 7.479042, maxLatitude: 46.942787)
-        let ojpRequest = OJPHelpers.LocationInformationRequest(requesterReference: "")
+        let ojpRequest = OJPHelpers.LocationInformationRequest(language: "de",requesterReference: "")
             .requestWith(bbox: bbox)
 
         let body = try OJPHelpers.buildXMLRequest(ojpRequest: ojpRequest).data(using: .utf8)!
