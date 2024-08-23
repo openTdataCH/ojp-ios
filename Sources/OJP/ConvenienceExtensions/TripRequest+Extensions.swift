@@ -125,20 +125,22 @@ public extension OJPv2.TripDelivery {
 
 public extension OJPv2.Trip {
     func hasSituation(allPtSituations: [OJPv2.PTSituation]) -> Bool {
-        guard !allPtSituations.isEmpty else { return false }
+        let uniqueSituations = allPtSituations.unique(by: \.situationNumber)
+        guard !uniqueSituations.isEmpty else { return false }
         return legs.contains { leg in
             guard case let .timed(timedLeg) = leg.legType else {
                 return false
             }
-            return !timedLeg.relevantPtSituations(allPtSituations: allPtSituations).isEmpty
+            return !timedLeg.relevantPtSituations(allPtSituations: uniqueSituations).isEmpty
         }
     }
 
     /// Returns all ``OJPv2/PTSituation`` that occur any of the ``OJPv2/TimedLeg`` of this trip uniqued by ``OJPv2/PTSituation/situationNumber``.
     func relevantPtSituations(allPtSituations: [OJPv2.PTSituation]) -> [OJPv2.PTSituation] {
-        guard !allPtSituations.isEmpty else { return [] }
+        let uniqueSituations = allPtSituations.unique(by: \.situationNumber)
+        guard !uniqueSituations.isEmpty else { return [] }
         return timedLegs.compactMap { timedLeg in
-            timedLeg.relevantPtSituations(allPtSituations: allPtSituations)
+            timedLeg.relevantPtSituations(allPtSituations: uniqueSituations)
         }
         .flatMap { $0 }
         .unique(by: \.situationNumber)
@@ -155,8 +157,10 @@ public extension OJPv2.Trip {
 
 public extension OJPv2.TimedLeg {
     func relevantPtSituations(allPtSituations: [OJPv2.PTSituation]) -> [OJPv2.PTSituation] {
-        service.situationFullRefs?.situationFullRefs.flatMap { serviceSituationRef in
-            allPtSituations.filter { $0.situationNumber == serviceSituationRef.situationNumber }
+        let uniqueSituations = allPtSituations.unique(by: \.situationNumber)
+        guard !uniqueSituations.isEmpty else { return [] }
+        return service.situationFullRefs?.situationFullRefs.flatMap { serviceSituationRef in
+            uniqueSituations.filter { $0.situationNumber == serviceSituationRef.situationNumber }
         } ?? []
     }
 }

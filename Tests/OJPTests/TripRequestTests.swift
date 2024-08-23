@@ -190,6 +190,33 @@ final class TripRequestTests: XCTestCase {
         }
     }
 
+    func testSituationsMappingUniqueness() async throws {
+        let xmlData = try TestHelpers.loadXML(xmlFilename: "tr-fribourg-basel")
+
+        guard case let .trip(tripDelivery) = try await OJPDecoder.parseXML(xmlData).response?.serviceDelivery.delivery else {
+            return XCTFail("unexpected empty")
+        }
+        guard let responseContext = tripDelivery.tripResponseContext else {
+            return XCTFail("expected to have a tripResponseContext")
+        }
+        let ptSituations = tripDelivery.ptSituations
+        XCTAssertEqual(ptSituations.count, 2)
+        XCTAssertEqual(ptSituations.map(\.situationNumber), responseContext.situations.ptSituations?.map(\.situationNumber))
+        let situations = try XCTUnwrap(responseContext.situations.ptSituations)
+        let duplicateSituations = situations + situations
+        XCTAssertEqual(duplicateSituations.count, 4)
+        
+        if let firstTrip = tripDelivery.tripResults.first?.trip {
+            if case let .timed(firstLeg) = firstTrip.legs.first?.legType {
+                let situations = firstLeg.relevantPtSituations(allPtSituations: duplicateSituations)
+                XCTAssertEqual(situations.count, 1)
+                XCTAssertEqual(situations.first?.situationNumber, "ch:1:sstid:100001:dccd662a-e519-468b-b06b-1fdb25727282-1")
+            } else {
+                XCTFail()
+            }
+        }
+    }
+
     func testSituationsMappingOnTrip() async throws {
         let xmlData = try TestHelpers.loadXML(xmlFilename: "tr-fribourg-basel")
 
