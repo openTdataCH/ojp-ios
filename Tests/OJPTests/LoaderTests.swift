@@ -5,7 +5,7 @@ final class LoaderTests: XCTestCase {
     func testLoader() async throws {
         // BE/Köniz area
         let bbox = Geo.Bbox(minLongitude: 7.372097, minLatitude: 46.904860, maxLongitude: 7.479042, maxLatitude: 46.942787)
-        let ojpRequest = OJPHelpers.LocationInformationRequest(requesterReference: "")
+        let ojpRequest = OJPHelpers.LocationInformationRequest(language: "de", requesterReference: "")
             .requestWith(bbox: bbox)
 
         let body = try OJPHelpers.buildXMLRequest(ojpRequest: ojpRequest).data(using: .utf8)!
@@ -28,7 +28,7 @@ final class LoaderTests: XCTestCase {
     func testMockLoader() async throws {
         // BE/Köniz area
         let bbox = Geo.Bbox(minLongitude: 7.372097, minLatitude: 46.904860, maxLongitude: 7.479042, maxLatitude: 46.942787)
-        let ojpRequest = OJPHelpers.LocationInformationRequest(requesterReference: "")
+        let ojpRequest = OJPHelpers.LocationInformationRequest(language: "de",requesterReference: "")
             .requestWith(bbox: bbox)
 
         let body = try OJPHelpers.buildXMLRequest(ojpRequest: ojpRequest).data(using: .utf8)!
