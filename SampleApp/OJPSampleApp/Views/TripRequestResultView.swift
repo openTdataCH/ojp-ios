@@ -77,7 +77,11 @@ struct TripRequestResultView: View {
 
                                     VStack(alignment: .trailing) {
                                         Text(trip.destinationName)
-                                        Text(trip.endTime.formatted())
+                                        Text(
+                                        (
+                                            trip.lastTimedLeg?.legAlight.serviceArrival.timetabledTime ?? trip.endTime
+                                        ).formatted()
+                                        )
                                     }
                                 }.foregroundStyle(trip.tripStatus.cancelled == true ? .red : Color.label)
                                     .padding()
