@@ -348,7 +348,9 @@ public extension OJPv2 {
         /// - Warning: This ID must not be used over mutliple ``OJPv2/TripRequest``. Use ``tripHash`` instead.
         public let id: String
         public let duration: Duration
+        /// startTime respects  the time of a potential first `walk` leg and the ``OJPv2/ServiceDeparture/estimatedTime`` of the **first** ``OJPv2/TimedLeg``. Use this value with caution!
         public let startTime: Date
+        /// endTime respects the time of a potential last `walk` leg and the ``OJPv2/ServiceArrival/estimatedTime`` of the **last** ``OJPv2/TimedLeg``. Use this value with caution!
         public let endTime: Date
         public let transfers: Int
         public let distance: Double?
