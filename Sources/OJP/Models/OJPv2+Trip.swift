@@ -1152,8 +1152,16 @@ public extension OJPv2 {
 
 // MARK: - A bit more convenience for the Situations
 
-extension OJPv2.PTSituation: Identifiable {
+extension OJPv2.PTSituation: Identifiable, Hashable {
+    public static func == (lhs: OJPv2.PTSituation, rhs: OJPv2.PTSituation) -> Bool {
+        lhs.id == rhs.id
+    }
+
     public var id: String { situationNumber }
+
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(situationNumber)
+    }
 }
 
 extension OJPv2.PublishingActions: Hashable {

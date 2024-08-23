@@ -205,7 +205,7 @@ final class TripRequestTests: XCTestCase {
         let situations = try XCTUnwrap(responseContext.situations.ptSituations)
         let duplicateSituations = situations + situations
         XCTAssertEqual(duplicateSituations.count, 4)
-        
+
         if let firstTrip = tripDelivery.tripResults.first?.trip {
             if case let .timed(firstLeg) = firstTrip.legs.first?.legType {
                 let situations = firstLeg.relevantPtSituations(allPtSituations: duplicateSituations)
