@@ -31,3 +31,5 @@ git commit -am "Create Version $NEWTAG"
 git tag $NEWTAG
 
 git push --tags --set-upstream origin $BRANCHNAME
+
+open "https://github.com/openTdataCH/ojp-ios/compare/release/$NEWTAG?expand=1"
