@@ -43,7 +43,7 @@ public actor PaginatedTripLoader {
 
     private var pageSize: Int = 6
 
-    /// Performs the initial  [TripRequest](https://vdvde.github.io/OJP/develop/index.html#OJPTripRequest) resetting the internal state.
+    /// Performs the initial  [TripRequest](https://vdvde.github.io/OJP/develop/documentation-tables/ojp.html#type_ojp__OJPTripRequest) resetting the internal state.
     /// - Parameters:
     ///   - request: ``TripRequest`` is a conve
     ///   - numberOfResults: amount of results to be returned. Usually ``OJPv2/NumberOfResults/minimum(_:)`` should be used. The associated value is reused as a page size in ``loadNext()`` and ``loadPrevious()``

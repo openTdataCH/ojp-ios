@@ -4,7 +4,7 @@ iOS SDK for Open Journey Planner Service (OJP) provided by SKI+
 
 ## Overview
 
-For a general introduction to Open Journey Planner, consult the [Cookbook](https://opentransportdata.swiss/de/cookbook/open-journey-planner-ojp/) on [opentransportdata.swiss](https://opentransportdata.swiss). Visit [vdvde.github.io/OJP](https://vdvde.github.io/OJP/develop/index.html) for a human readable documentation of the schema to OJP.
+For a general introduction to Open Journey Planner, consult the [Cookbook](https://opentransportdata.swiss/de/cookbook/open-journey-planner-ojp/) on [opentransportdata.swiss](https://opentransportdata.swiss). Visit [vdvde.github.io/OJP](https://vdvde.github.io/OJP/develop/documentation-tables/ojp.html) for a human readable documentation of the schema to OJP.
 
 ## Configuration
 

@@ -43,7 +43,7 @@ Under the hood our custom `keyDecodingStrategy` and `NamespaceAwareCodingKey` wi
 
 XML supports choice types which translate best to Swift enums with associated types. Parsing those types requires some adaptation and conventions.
 
-As an example, a [Leg](https://vdvde.github.io/OJP/develop/index.html#LegStructure) contains a choice of either [ContinuousLegStructure](https://vdvde.github.io/OJP/develop/index.html#ContinuousLegStructure), [TimedLegStructure](https://vdvde.github.io/OJP/develop/index.html#TimedLegStructure) or 
-[TransferLegStructure](https://vdvde.github.io/OJP/develop/index.html#TransferLegStructure).
+As an example, a [Leg](https://vdvde.github.io/OJP/develop/documentation-tables/ojp.html#type_ojp__LegStructure) contains a choice of either [ContinuousLegStructure](https://vdvde.github.io/OJP/develop/documentation-tables/ojp.html#type_ojp__ContinuousLegStructure), [TimedLegStructure](https://vdvde.github.io/OJP/develop/documentation-tables/ojp.html#type_ojp__TimedLegStructure) or 
+[TransferLegStructure](https://vdvde.github.io/OJP/develop/documentation-tables/ojp.html#type_ojp__TransferLegStructure).
 
 To support this, we introduce a ``LegTypeChoice`` enum that containes those three cases. The value is added as a ``OJPv2/Leg/legType`` property.
