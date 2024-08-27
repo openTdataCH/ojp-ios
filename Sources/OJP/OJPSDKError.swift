@@ -7,7 +7,7 @@
 
 import Foundation
 
-/// ``OJPSDKError`` describes errors that can occur when using the SDK. It is not equivalent to [OJPError](https://vdvde.github.io/OJP/develop/index.html#OJPError) that defines a sequence of OJP related problems.
+/// ``OJPSDKError`` describes errors that can occur when using the SDK. It is not equivalent to [OJPError](https://vdvde.github.io/OJP/develop/documentation-tables/ojp.html#type_ojp__OJPError) that defines a sequence of OJP related problems.
 public enum OJPSDKError: LocalizedError {
     /// Used as a placeholder for features, that are not finished implementing
     case notImplemented(_ file: StaticString = #file, _ line: UInt = #line)

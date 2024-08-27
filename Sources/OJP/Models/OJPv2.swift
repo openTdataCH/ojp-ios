@@ -110,7 +110,7 @@ public struct OJPv2: Codable, Sendable {
         }
     }
 
-    // https://vdvde.github.io/OJP/develop/index.html#InternationalTextStructure
+    /// https://vdvde.github.io/OJP/develop/documentation-tables/ojp.html#type_ojp__InternationalTextStructure
     public struct InternationalText: Codable, Sendable {
         public let text: String
 
@@ -123,7 +123,7 @@ public struct OJPv2: Codable, Sendable {
         }
     }
 
-    // https://laidig.github.io/siri-20-java/doc/schemas/siri_location-v2_0_xsd/complexTypes/LocationStructure.html
+    /// https://vdvde.github.io/OJP/develop/documentation-tables/siri.html#type_siri__LocationStructure
     public struct GeoPosition: Codable, Sendable {
         public let longitude: Double
         public let latitude: Double
@@ -139,15 +139,14 @@ public struct OJPv2: Codable, Sendable {
         }
     }
 
-    // https://vdvde.github.io/OJP/develop/index.html#ModeStructure
+    //// https://vdvde.github.io/OJP/develop/documentation-tables/ojp.html#type_ojp__ModeStructure
     public struct Mode: Codable, Sendable {
         public let ptMode: PtMode
 
-        // https://laidig.github.io/siri-20-java/doc/schemas/siri_modes-v1_1_xsd/schema-overview.html
+        // https://vdvde.github.io/OJP/develop/documentation-tables/ojp.html#group_ojp__ModeGroup
         // siri:PtModeChoiceGroup
         // keep busSubmode, railSubmode for now
         public let busSubmode: String?
-        // https://laidig.github.io/siri-20-java/doc/schemas/siri_modes-v1_1_xsd/elements/RailSubmode.html
         public let railSubmode: String?
 
         public let name: InternationalText?
