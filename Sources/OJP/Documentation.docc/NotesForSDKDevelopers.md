@@ -46,4 +46,4 @@ XML supports choice types which translate best to Swift enums with associated ty
 As an example, a [Leg](https://vdvde.github.io/OJP/develop/documentation-tables/ojp.html#type_ojp__LegStructure) contains a choice of either [ContinuousLegStructure](https://vdvde.github.io/OJP/develop/documentation-tables/ojp.html#type_ojp__ContinuousLegStructure), [TimedLegStructure](https://vdvde.github.io/OJP/develop/documentation-tables/ojp.html#type_ojp__TimedLegStructure) or 
 [TransferLegStructure](https://vdvde.github.io/OJP/develop/documentation-tables/ojp.html#type_ojp__TransferLegStructure).
 
-To support this, we introduce a ``LegTypeChoice`` enum that containes those three cases. The value is added as a ``OJPv2/Leg/legType`` property.
+To support this, we introduce a ``OJPv2/Leg/LegTypeChoice`` enum that containes those three cases. The value is added as a ``OJPv2/Leg/legType`` property.
