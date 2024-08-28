@@ -147,7 +147,7 @@ extension OJPv2.Trip {
             return nil }
         ).first
     }
-    
+
     var lastTimedLeg: OJPv2.TimedLeg? {
         legs.compactMap({ leg in
             if case let .timed(timedLeg) = leg.legType {
