@@ -18,6 +18,8 @@
 		CF3CD8FC2C2E9BC700D25994 /* AsyncView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3CD8FB2C2E9BC700D25994 /* AsyncView.swift */; };
 		CF3CD8FE2C2EA0B200D25994 /* TripRequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3CD8FD2C2EA0B200D25994 /* TripRequestView.swift */; };
 		CF3CD9002C2EA4A800D25994 /* InlineLocationSerachView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3CD8FF2C2EA4A800D25994 /* InlineLocationSerachView.swift */; };
+		CF52AD022C7F580C000CE7F8 /* tr-fribourg-basel-fake-infolink.xml in Resources */ = {isa = PBXBuildFile; fileRef = CF52AD012C7F580C000CE7F8 /* tr-fribourg-basel-fake-infolink.xml */; };
+		CF52AD032C7F581D000CE7F8 /* tr-fribourg-berne.xml in Resources */ = {isa = PBXBuildFile; fileRef = CF52AD002C7F5797000CE7F8 /* tr-fribourg-berne.xml */; };
 		CF564A322C2D83D600424D91 /* TripRequestResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF564A312C2D83D600424D91 /* TripRequestResultView.swift */; };
 		CF564A342C2D8CFE00424D91 /* LocationSearchByNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF227B42BBD95CF00D3EADF /* LocationSearchByNameView.swift */; };
 		CF71377A2BE5398200D2411E /* DemoEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7137792BE5398200D2411E /* DemoEnvironment.swift */; };
@@ -28,7 +30,6 @@
 		CFBA60CD2BBD610F000FF2ED /* OJPSampleAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBA60CC2BBD610F000FF2ED /* OJPSampleAppTests.swift */; };
 		CFBA60D72BBD610F000FF2ED /* OJPSampleAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBA60D62BBD610F000FF2ED /* OJPSampleAppUITests.swift */; };
 		CFBA60D92BBD610F000FF2ED /* OJPSampleAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBA60D82BBD610F000FF2ED /* OJPSampleAppUITestsLaunchTests.swift */; };
-		CFCEAB0C2C664BA0006EDA6A /* tr-fribourg-berne.xml in Resources */ = {isa = PBXBuildFile; fileRef = CFCEAB0B2C664BA0006EDA6A /* tr-fribourg-berne.xml */; };
 		CFE465E92C738D6B00E5CADB /* tr-fribourg-basel.xml in Resources */ = {isa = PBXBuildFile; fileRef = CFE465E82C738D4900E5CADB /* tr-fribourg-basel.xml */; };
 		CFE465EB2C73D92500E5CADB /* tr-with-cancellations-and-notservicedstops.xml in Resources */ = {isa = PBXBuildFile; fileRef = CFE465EA2C73D8F100E5CADB /* tr-with-cancellations-and-notservicedstops.xml */; };
 		CFE465ED2C76092200E5CADB /* OJP+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE465EC2C76092200E5CADB /* OJP+Extensions.swift */; };
@@ -63,6 +64,8 @@
 		CF3CD8FB2C2E9BC700D25994 /* AsyncView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncView.swift; sourceTree = "<group>"; };
 		CF3CD8FD2C2EA0B200D25994 /* TripRequestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripRequestView.swift; sourceTree = "<group>"; };
 		CF3CD8FF2C2EA4A800D25994 /* InlineLocationSerachView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InlineLocationSerachView.swift; sourceTree = "<group>"; };
+		CF52AD002C7F5797000CE7F8 /* tr-fribourg-berne.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "tr-fribourg-berne.xml"; sourceTree = "<group>"; };
+		CF52AD012C7F580C000CE7F8 /* tr-fribourg-basel-fake-infolink.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "tr-fribourg-basel-fake-infolink.xml"; sourceTree = "<group>"; };
 		CF564A312C2D83D600424D91 /* TripRequestResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripRequestResultView.swift; sourceTree = "<group>"; };
 		CF7137792BE5398200D2411E /* DemoEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoEnvironment.swift; sourceTree = "<group>"; };
 		CF8F0C8C2C6672AC008BABC6 /* PTSituationDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PTSituationDetailView.swift; sourceTree = "<group>"; };
@@ -76,7 +79,6 @@
 		CFBA60D22BBD610F000FF2ED /* OJPSampleAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OJPSampleAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFBA60D62BBD610F000FF2ED /* OJPSampleAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OJPSampleAppUITests.swift; sourceTree = "<group>"; };
 		CFBA60D82BBD610F000FF2ED /* OJPSampleAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OJPSampleAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		CFCEAB0B2C664BA0006EDA6A /* tr-fribourg-berne.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = "tr-fribourg-berne.xml"; path = "../../../Tests/OJPTests/Resources/tr/situations/tr-fribourg-berne.xml"; sourceTree = "<group>"; };
 		CFE465E82C738D4900E5CADB /* tr-fribourg-basel.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "tr-fribourg-basel.xml"; sourceTree = "<group>"; };
 		CFE465EA2C73D8F100E5CADB /* tr-with-cancellations-and-notservicedstops.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "tr-with-cancellations-and-notservicedstops.xml"; sourceTree = "<group>"; };
 		CFE465EC2C76092200E5CADB /* OJP+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OJP+Extensions.swift"; sourceTree = "<group>"; };
@@ -187,10 +189,11 @@
 			isa = PBXGroup;
 			children = (
 				CF1C2B6D2C2D94B700B51EFD /* tr-perf-be-zh-20results-projection.xml */,
+				CF52AD012C7F580C000CE7F8 /* tr-fribourg-basel-fake-infolink.xml */,
 				CF3CD8F52C2DB76500D25994 /* tr-with-transfer-legs.xml */,
 				CFE465EA2C73D8F100E5CADB /* tr-with-cancellations-and-notservicedstops.xml */,
 				CFE465E82C738D4900E5CADB /* tr-fribourg-basel.xml */,
-				CFCEAB0B2C664BA0006EDA6A /* tr-fribourg-berne.xml */,
+				CF52AD002C7F5797000CE7F8 /* tr-fribourg-berne.xml */,
 				CFBA60C22BBD610C000FF2ED /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
@@ -332,9 +335,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF52AD032C7F581D000CE7F8 /* tr-fribourg-berne.xml in Resources */,
 				CFBA60C32BBD610C000FF2ED /* Preview Assets.xcassets in Resources */,
 				CF3CD8F62C2DB76700D25994 /* tr-with-transfer-legs.xml in Resources */,
-				CFCEAB0C2C664BA0006EDA6A /* tr-fribourg-berne.xml in Resources */,
+				CF52AD022C7F580C000CE7F8 /* tr-fribourg-basel-fake-infolink.xml in Resources */,
 				CFE465E92C738D6B00E5CADB /* tr-fribourg-basel.xml in Resources */,
 				CFE465EB2C73D92500E5CADB /* tr-with-cancellations-and-notservicedstops.xml in Resources */,
 				CF1C2B6E2C2D964F00B51EFD /* tr-perf-be-zh-20results-projection.xml in Resources */,
