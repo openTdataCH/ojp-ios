@@ -1,0 +1,2383 @@
+<OJP xmlns:siri="http://www.siri.org.uk/siri" xmlns="http://www.vdv.de/ojp" version="2.0">
+    <OJPResponse>
+        <siri:ServiceDelivery>
+            <siri:ResponseTimestamp>2024-08-09T18:07:55.6497342+02:00</siri:ResponseTimestamp>
+            <siri:ProducerRef>MENTZ</siri:ProducerRef>
+            <OJPTripDelivery>
+                <siri:ResponseTimestamp>2024-08-09T18:07:55.6497353+02:00</siri:ResponseTimestamp>
+                <siri:RequestMessageRef>c7571851-77ed-4983-ae75-83d3ad8ede46</siri:RequestMessageRef>
+                <siri:DefaultLanguage>de</siri:DefaultLanguage>
+                <CalcTime>422</CalcTime>
+                <TripResponseContext>
+                    <Places>
+                        <Place>
+                            <StopPlace>
+                                <StopPlaceRef>8504100</StopPlaceRef>
+                                <StopPlaceName>
+                                    <Text xml:lang="de">Fribourg/Freiburg</Text>
+                                </StopPlaceName>
+                                <PrivateCode>
+                                    <System>EFA</System>
+                                    <Value>109019:0:4</Value>
+                                </PrivateCode>
+                                <TopographicPlaceRef>23008196:4</TopographicPlaceRef>
+                            </StopPlace>
+                            <Name>
+                                <Text xml:lang="de">Fribourg/Freiburg</Text>
+                            </Name>
+                            <GeoPosition>
+                                <siri:Longitude>7.14962</siri:Longitude>
+                                <siri:Latitude>46.80189</siri:Latitude>
+                            </GeoPosition>
+                        </Place>
+                        <Place>
+                            <StopPlace>
+                                <StopPlaceRef>8507000</StopPlaceRef>
+                                <StopPlaceName>
+                                    <Text xml:lang="de">Bern</Text>
+                                </StopPlaceName>
+                                <PrivateCode>
+                                    <System>EFA</System>
+                                    <Value>111055:0:10</Value>
+                                </PrivateCode>
+                                <TopographicPlaceRef>23006351:1</TopographicPlaceRef>
+                            </StopPlace>
+                            <Name>
+                                <Text xml:lang="de">Bern</Text>
+                            </Name>
+                            <GeoPosition>
+                                <siri:Longitude>7.43849</siri:Longitude>
+                                <siri:Latitude>46.94946</siri:Latitude>
+                            </GeoPosition>
+                        </Place>
+                        <Place>
+                            <StopPlace>
+                                <StopPlaceRef>132</StopPlaceRef>
+                                <StopPlaceName>
+                                    <Text xml:lang="de">???</Text>
+                                </StopPlaceName>
+                                <PrivateCode>
+                                    <System>EFA</System>
+                                    <Value>100078</Value>
+                                </PrivateCode>
+                                <TopographicPlaceRef>23006977:3</TopographicPlaceRef>
+                            </StopPlace>
+                            <Name>
+                                <Text xml:lang="de">???</Text>
+                            </Name>
+                            <GeoPosition>
+                                <siri:Longitude>7.68936</siri:Longitude>
+                                <siri:Latitude>47.19637</siri:Latitude>
+                            </GeoPosition>
+                        </Place>
+                        <Place>
+                            <StopPlace>
+                                <StopPlaceRef>8500218</StopPlaceRef>
+                                <StopPlaceName>
+                                    <Text xml:lang="de">Olten</Text>
+                                </StopPlaceName>
+                                <PrivateCode>
+                                    <System>EFA</System>
+                                    <Value>106652:0:7</Value>
+                                </PrivateCode>
+                                <TopographicPlaceRef>23019581:1</TopographicPlaceRef>
+                            </StopPlace>
+                            <Name>
+                                <Text xml:lang="de">Olten</Text>
+                            </Name>
+                            <GeoPosition>
+                                <siri:Longitude>7.90821</siri:Longitude>
+                                <siri:Latitude>47.35391</siri:Latitude>
+                            </GeoPosition>
+                        </Place>
+                        <Place>
+                            <StopPlace>
+                                <StopPlaceRef>8500023</StopPlaceRef>
+                                <StopPlaceName>
+                                    <Text xml:lang="de">Liestal</Text>
+                                </StopPlaceName>
+                                <PrivateCode>
+                                    <System>EFA</System>
+                                    <Value>106520:0:4</Value>
+                                </PrivateCode>
+                                <TopographicPlaceRef>23004829:2</TopographicPlaceRef>
+                            </StopPlace>
+                            <Name>
+                                <Text xml:lang="de">Liestal</Text>
+                            </Name>
+                            <GeoPosition>
+                                <siri:Longitude>7.73296</siri:Longitude>
+                                <siri:Latitude>47.48306</siri:Latitude>
+                            </GeoPosition>
+                        </Place>
+                        <Place>
+                            <StopPlace>
+                                <StopPlaceRef>8500010</StopPlaceRef>
+                                <StopPlaceName>
+                                    <Text xml:lang="de">Basel SBB</Text>
+                                </StopPlaceName>
+                                <PrivateCode>
+                                    <System>EFA</System>
+                                    <Value>106514:0:8</Value>
+                                </PrivateCode>
+                                <TopographicPlaceRef>23005701:2</TopographicPlaceRef>
+                            </StopPlace>
+                            <Name>
+                                <Text xml:lang="de">Basel SBB</Text>
+                            </Name>
+                            <GeoPosition>
+                                <siri:Longitude>7.59292</siri:Longitude>
+                                <siri:Latitude>47.54576</siri:Latitude>
+                            </GeoPosition>
+                        </Place>
+                    </Places>
+                    <Situations>
+                        <PtSituation>
+                            <siri:CreationTime>2024-04-17T13:20:00Z</siri:CreationTime>
+                            <siri:ParticipantRef>ski-ddip-out-sx_test</siri:ParticipantRef>
+                            <siri:SituationNumber>ch:1:sstid:100001:dccd662a-e519-468b-b06b-1fdb25727282-1</siri:SituationNumber>
+                            <siri:Version>3</siri:Version>
+                            <siri:Source>
+                                <siri:SourceType>other</siri:SourceType>
+                            </siri:Source>
+                            <siri:ValidityPeriod>
+                                <siri:StartTime>2024-07-13T20:15:00Z</siri:StartTime>
+                                <siri:EndTime>2024-08-12T03:20:00Z</siri:EndTime>
+                            </siri:ValidityPeriod>
+                            <siri:AlertCause>unknown</siri:AlertCause>
+                            <siri:UnknownReason>unknown</siri:UnknownReason>
+                            <siri:Priority>3</siri:Priority>
+                            <siri:ScopeType>stopPoint</siri:ScopeType>
+                            <siri:Language>de</siri:Language>
+                            <siri:Affects>
+                                <siri:StopPoints>
+                                    <siri:AffectedStopPoint>
+                                        <siri:StopPointRef>8516161</siri:StopPointRef>
+                                    </siri:AffectedStopPoint>
+                                    <siri:AffectedStopPoint>
+                                        <siri:StopPointRef>8507000</siri:StopPointRef>
+                                    </siri:AffectedStopPoint>
+                                </siri:StopPoints>
+                                <siri:VehicleJourneys/>
+                            </siri:Affects>
+                            <siri:Consequences>
+                                <siri:Consequence>
+                                    <siri:Blocking>
+                                        <siri:JourneyPlanner>true</siri:JourneyPlanner>
+                                    </siri:Blocking>
+                                </siri:Consequence>
+                            </siri:Consequences>
+                            <siri:PublishingActions>
+                                <siri:PublishingAction>
+                                    <siri:PassengerInformationAction>
+                                        <siri:RecordedAtTime>0001-01-01T00:00:00</siri:RecordedAtTime>
+                                        <siri:TextualContent>
+                                            <siri:SummaryContent>
+                                                <siri:SummaryText xml:lang="de">Der Bahnverkehr zwischen Bern Wankdorf und Bern ist eingeschränkt.</siri:SummaryText>
+                                            </siri:SummaryContent>
+                                            <siri:ReasonContent>
+                                                <siri:ReasonText xml:lang="de">Der Grund dafür sind Bauarbeiten.</siri:ReasonText>
+                                            </siri:ReasonContent>
+                                            <siri:DescriptionContent/>
+                                            <siri:ConsequenceContent>
+                                                <siri:ConsequenceText xml:lang="de">Es sind Ausfälle, ein geänderter Fahrplan und geänderte Anschlüsse zu erwarten.</siri:ConsequenceText>
+                                            </siri:ConsequenceContent>
+                                            <siri:RecommendationContent>
+                                                <siri:RecommendationText xml:lang="de">Wir empfehlen, kurz vor jeder Fahrt den Online-Fahrplan zu konsultieren.</siri:RecommendationText>
+                                            </siri:RecommendationContent>
+                                            <siri:DurationContent>
+                                                <siri:DurationText xml:lang="de">Die Einschränkung dauert von 13.07.2024 bis 15.07.2024, jeweils von 22:15 - 05:20. Die Einschränkung dauert von 10.08.2024 bis 12.08.2024, jeweils von 22:15 - 05:20.</siri:DurationText>
+                                            </siri:DurationContent>
+                                            <siri:RemarkContent/>
+                                            <siri:InfoLink>
+                                                <siri:Uri>https://www.sbb.ch/de/fahrplan</siri:Uri>
+                                            </siri:InfoLink>
+                                            <siri:InfoLink>
+                                                <siri:Uri>https://www.bls.ch</siri:Uri>
+                                                <siri:Label>Weitere Informationen erhalten Sie im &lt;a href="https://www.sbb.ch/de/fahrplan"&gt;SBB-Fahrplan&lt;/a&gt;</siri:Label>
+                                            </siri:InfoLink>
+                                        </siri:TextualContent>
+                                    </siri:PassengerInformationAction>
+                                </siri:PublishingAction>
+                            </siri:PublishingActions>
+                        </PtSituation>
+                        <PtSituation>
+                            <siri:CreationTime>2024-03-28T06:37:00Z</siri:CreationTime>
+                            <siri:ParticipantRef>ski-ddip-out-sx_test</siri:ParticipantRef>
+                            <siri:SituationNumber>ch:1:sstid:100001:dfc1dfd3-bbe0-441c-89df-7a309eb7b358-1</siri:SituationNumber>
+                            <siri:Version>3</siri:Version>
+                            <siri:Source>
+                                <siri:SourceType>other</siri:SourceType>
+                            </siri:Source>
+                            <siri:ValidityPeriod>
+                                <siri:StartTime>2024-07-22T18:30:00Z</siri:StartTime>
+                                <siri:EndTime>2024-08-20T03:00:00Z</siri:EndTime>
+                            </siri:ValidityPeriod>
+                            <siri:AlertCause>unknown</siri:AlertCause>
+                            <siri:UnknownReason>unknown</siri:UnknownReason>
+                            <siri:Priority>3</siri:Priority>
+                            <siri:ScopeType>stopPoint</siri:ScopeType>
+                            <siri:Language>de</siri:Language>
+                            <siri:Affects>
+                                <siri:StopPoints>
+                                    <siri:AffectedStopPoint>
+                                        <siri:StopPointRef>8500010</siri:StopPointRef>
+                                    </siri:AffectedStopPoint>
+                                    <siri:AffectedStopPoint>
+                                        <siri:StopPointRef>8500090</siri:StopPointRef>
+                                    </siri:AffectedStopPoint>
+                                </siri:StopPoints>
+                                <siri:VehicleJourneys/>
+                            </siri:Affects>
+                            <siri:Consequences>
+                                <siri:Consequence>
+                                    <siri:Blocking>
+                                        <siri:JourneyPlanner>true</siri:JourneyPlanner>
+                                    </siri:Blocking>
+                                </siri:Consequence>
+                            </siri:Consequences>
+                            <siri:PublishingActions>
+                                <siri:PublishingAction>
+                                    <siri:PassengerInformationAction>
+                                        <siri:RecordedAtTime>0001-01-01T00:00:00</siri:RecordedAtTime>
+                                        <siri:TextualContent>
+                                            <siri:SummaryContent>
+                                                <siri:SummaryText xml:lang="de">Der Bahnverkehr zwischen Basel SBB und Basel Bad Bf ist eingeschränkt.</siri:SummaryText>
+                                            </siri:SummaryContent>
+                                            <siri:ReasonContent>
+                                                <siri:ReasonText xml:lang="de">Der Grund dafür sind Bauarbeiten.</siri:ReasonText>
+                                            </siri:ReasonContent>
+                                            <siri:DescriptionContent/>
+                                            <siri:ConsequenceContent>
+                                                <siri:ConsequenceText xml:lang="de">Es ist ein geänderter Fahrplan zu erwarten.</siri:ConsequenceText>
+                                            </siri:ConsequenceContent>
+                                            <siri:RecommendationContent>
+                                                <siri:RecommendationText xml:lang="de">Wir empfehlen, kurz vor jeder Fahrt den Online-Fahrplan zu konsultieren.</siri:RecommendationText>
+                                            </siri:RecommendationContent>
+                                            <siri:DurationContent>
+                                                <siri:DurationText xml:lang="de">Die Einschränkung dauert von 22.07.2024, 20:30 bis 23.07.2024, 05:00. Die Einschränkung dauert von 19.08.2024, 20:30 bis 20.08.2024, 05:00.</siri:DurationText>
+                                            </siri:DurationContent>
+                                            <siri:RemarkContent/>
+                                        </siri:TextualContent>
+                                    </siri:PassengerInformationAction>
+                                </siri:PublishingAction>
+                            </siri:PublishingActions>
+                        </PtSituation>
+                    </Situations>
+                </TripResponseContext>
+                <TripResult>
+                    <Id>ID-450F687D-BAE3-491B-A7CD-77E6479CC9BD</Id>
+                    <Trip>
+                        <Id>ID-450F687D-BAE3-491B-A7CD-77E6479CC9BD</Id>
+                        <Duration>PT1H31M6S</Duration>
+                        <StartTime>2024-08-09T16:34:54Z</StartTime>
+                        <EndTime>2024-08-09T18:06:00Z</EndTime>
+                        <Transfers>1</Transfers>
+                        <Leg>
+                            <Id>1</Id>
+                            <Duration>PT21M6S</Duration>
+                            <TimedLeg>
+                                <LegBoard>
+                                    <siri:StopPointRef>ch:1:sloid:4100:0:54</siri:StopPointRef>
+                                    <StopPointName>
+                                        <Text xml:lang="de">Fribourg/Freiburg</Text>
+                                    </StopPointName>
+                                    <PlannedQuay>
+                                        <Text xml:lang="de">4</Text>
+                                    </PlannedQuay>
+                                    <EstimatedQuay>
+                                        <Text xml:lang="de">4</Text>
+                                    </EstimatedQuay>
+                                    <NameSuffix>
+                                        <Text xml:lang="de">NO_DATA</Text>
+                                    </NameSuffix>
+                                    <ServiceDeparture>
+                                        <TimetabledTime>2024-08-09T16:34:00Z</TimetabledTime>
+                                        <EstimatedTime>2024-08-09T16:34:54Z</EstimatedTime>
+                                    </ServiceDeparture>
+                                    <Order>1</Order>
+                                </LegBoard>
+                                <LegAlight>
+                                    <siri:StopPointRef>ch:1:sloid:7000:5:10</siri:StopPointRef>
+                                    <StopPointName>
+                                        <Text xml:lang="de">Bern</Text>
+                                    </StopPointName>
+                                    <NameSuffix>
+                                        <Text xml:lang="de">NO_DATA</Text>
+                                    </NameSuffix>
+                                    <PlannedQuay>
+                                        <Text xml:lang="de">10</Text>
+                                    </PlannedQuay>
+                                    <EstimatedQuay>
+                                        <Text xml:lang="de">10</Text>
+                                    </EstimatedQuay>
+                                    <ServiceArrival>
+                                        <TimetabledTime>2024-08-09T16:56:00Z</TimetabledTime>
+                                        <EstimatedTime>2024-08-09T16:56:00Z</EstimatedTime>
+                                    </ServiceArrival>
+                                    <Order>2</Order>
+                                </LegAlight>
+                                <Service>
+                                    <Mode>
+                                        <PtMode>rail</PtMode>
+                                        <siri:RailSubmode>regionalRail</siri:RailSubmode>
+                                        <Name>
+                                            <Text xml:lang="de">Zug</Text>
+                                        </Name>
+                                        <ShortName>
+                                            <Text xml:lang="de">IR</Text>
+                                        </ShortName>
+                                    </Mode>
+                                    <ConventionalModeOfOperation>scheduled</ConventionalModeOfOperation>
+                                    <TrainNumber>2531</TrainNumber>
+                                    <siri:LineRef>ojp:91015:B</siri:LineRef>
+                                    <siri:OperatorRef>11</siri:OperatorRef>
+                                    <PublicCode>InterRegio</PublicCode>
+                                    <PublishedServiceName>
+                                        <Text xml:lang="de">IR15</Text>
+                                    </PublishedServiceName>
+                                    <ProductCategory>
+                                        <Name>
+                                            <Text xml:lang="de">Zug</Text>
+                                        </Name>
+                                        <ShortName>
+                                            <Text xml:lang="de">IR</Text>
+                                        </ShortName>
+                                        <ProductCategoryRef>1</ProductCategoryRef>
+                                    </ProductCategory>
+                                    <siri:DirectionRef>H</siri:DirectionRef>
+                                    <OperatingDayRef>2024-08-09</OperatingDayRef>
+                                    <DestinationStopPointRef>8505000</DestinationStopPointRef>
+                                    <OriginText>
+                                        <Text xml:lang="de">n/a</Text>
+                                    </OriginText>
+                                    <DestinationText>
+                                        <Text xml:lang="de">Luzern</Text>
+                                    </DestinationText>
+                                    <JourneyRef>ch:1:sjyid:100001:2531-003</JourneyRef>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text xml:lang="de">Familienwagen mit Spielplatz</Text>
+                                        </UserText>
+                                        <Code>A__FA</Code>
+                                    </Attribute>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text xml:lang="de">Gratis-Internet mit der App SBB FreeSurf</Text>
+                                        </UserText>
+                                        <Code>A__FS</Code>
+                                    </Attribute>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text xml:lang="de">Businesszone in 1. Klasse</Text>
+                                        </UserText>
+                                        <Code>A__BZ</Code>
+                                    </Attribute>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text xml:lang="de">Aussteigeseite: Links</Text>
+                                        </UserText>
+                                        <Code>ojp91015BH_InfoCall337_109019_1</Code>
+                                    </Attribute>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text xml:lang="de">Aussteigeseite: Rechts</Text>
+                                        </UserText>
+                                        <Code>ojp91015BH_InfoCall337_111055_1</Code>
+                                    </Attribute>
+                                    <SituationFullRefs>
+                                        <SituationFullRef>
+                                            <siri:ParticipantRef>ski-ddip-out-sx_test</siri:ParticipantRef>
+                                            <siri:SituationNumber>ch:1:sstid:100001:dccd662a-e519-468b-b06b-1fdb25727282-1</siri:SituationNumber>
+                                        </SituationFullRef>
+                                    </SituationFullRefs>
+                                </Service>
+                            </TimedLeg>
+                        </Leg>
+                        <Leg>
+                            <Id>2</Id>
+                            <Duration>PT6M</Duration>
+                            <TransferLeg>
+                                <TransferType>walk</TransferType>
+                                <LegStart>
+                                    <siri:StopPointRef>8507000</siri:StopPointRef>
+                                    <Name>
+                                        <Text xml:lang="de">Bern</Text>
+                                    </Name>
+                                </LegStart>
+                                <LegEnd>
+                                    <siri:StopPointRef>8507000</siri:StopPointRef>
+                                    <Name>
+                                        <Text xml:lang="de">Bern</Text>
+                                    </Name>
+                                </LegEnd>
+                                <Duration>PT6M</Duration>
+                            </TransferLeg>
+                        </Leg>
+                        <Leg>
+                            <Id>3</Id>
+                            <Duration>PT1H1M</Duration>
+                            <TimedLeg>
+                                <LegBoard>
+                                    <siri:StopPointRef>ch:1:sloid:7000:2:4</siri:StopPointRef>
+                                    <StopPointName>
+                                        <Text xml:lang="de">Bern</Text>
+                                    </StopPointName>
+                                    <PlannedQuay>
+                                        <Text xml:lang="de">4</Text>
+                                    </PlannedQuay>
+                                    <EstimatedQuay>
+                                        <Text xml:lang="de">4</Text>
+                                    </EstimatedQuay>
+                                    <NameSuffix>
+                                        <Text xml:lang="de">NO_DATA</Text>
+                                    </NameSuffix>
+                                    <ServiceDeparture>
+                                        <TimetabledTime>2024-08-09T17:04:00Z</TimetabledTime>
+                                        <EstimatedTime>2024-08-09T17:05:00Z</EstimatedTime>
+                                    </ServiceDeparture>
+                                    <Order>1</Order>
+                                </LegBoard>
+                                <LegIntermediate>
+                                    <siri:StopPointRef>ch:1:sloid:218:4:7</siri:StopPointRef>
+                                    <StopPointName>
+                                        <Text xml:lang="de">Olten</Text>
+                                    </StopPointName>
+                                    <NameSuffix>
+                                        <Text xml:lang="de">NO_DATA</Text>
+                                    </NameSuffix>
+                                    <PlannedQuay>
+                                        <Text xml:lang="de">7</Text>
+                                    </PlannedQuay>
+                                    <EstimatedQuay>
+                                        <Text xml:lang="de">7</Text>
+                                    </EstimatedQuay>
+                                    <ServiceArrival>
+                                        <TimetabledTime>2024-08-09T17:30:00Z</TimetabledTime>
+                                        <EstimatedTime>2024-08-09T17:30:54Z</EstimatedTime>
+                                    </ServiceArrival>
+                                    <ServiceDeparture>
+                                        <TimetabledTime>2024-08-09T17:33:00Z</TimetabledTime>
+                                        <EstimatedTime>2024-08-09T17:33:42Z</EstimatedTime>
+                                    </ServiceDeparture>
+                                    <Order>2</Order>
+                                </LegIntermediate>
+                                <LegIntermediate>
+                                    <siri:StopPointRef>ch:1:sloid:23:2:4</siri:StopPointRef>
+                                    <StopPointName>
+                                        <Text xml:lang="de">Liestal</Text>
+                                    </StopPointName>
+                                    <NameSuffix>
+                                        <Text xml:lang="de">NO_DATA</Text>
+                                    </NameSuffix>
+                                    <PlannedQuay>
+                                        <Text xml:lang="de">4</Text>
+                                    </PlannedQuay>
+                                    <EstimatedQuay>
+                                        <Text xml:lang="de">4</Text>
+                                    </EstimatedQuay>
+                                    <ServiceArrival>
+                                        <TimetabledTime>2024-08-09T17:53:00Z</TimetabledTime>
+                                        <EstimatedTime>2024-08-09T17:53:30Z</EstimatedTime>
+                                    </ServiceArrival>
+                                    <ServiceDeparture>
+                                        <TimetabledTime>2024-08-09T17:55:00Z</TimetabledTime>
+                                        <EstimatedTime>2024-08-09T17:55:30Z</EstimatedTime>
+                                    </ServiceDeparture>
+                                    <Order>3</Order>
+                                </LegIntermediate>
+                                <LegAlight>
+                                    <siri:StopPointRef>ch:1:sloid:10:4:8</siri:StopPointRef>
+                                    <StopPointName>
+                                        <Text xml:lang="de">Basel SBB</Text>
+                                    </StopPointName>
+                                    <NameSuffix>
+                                        <Text xml:lang="de">NO_DATA</Text>
+                                    </NameSuffix>
+                                    <PlannedQuay>
+                                        <Text xml:lang="de">8</Text>
+                                    </PlannedQuay>
+                                    <EstimatedQuay>
+                                        <Text xml:lang="de">8</Text>
+                                    </EstimatedQuay>
+                                    <ServiceArrival>
+                                        <TimetabledTime>2024-08-09T18:06:00Z</TimetabledTime>
+                                        <EstimatedTime>2024-08-09T18:06:00Z</EstimatedTime>
+                                    </ServiceArrival>
+                                    <Order>5</Order>
+                                </LegAlight>
+                                <Service>
+                                    <Mode>
+                                        <PtMode>rail</PtMode>
+                                        <siri:RailSubmode>interregionalRail</siri:RailSubmode>
+                                        <Name>
+                                            <Text xml:lang="de">Zug</Text>
+                                        </Name>
+                                        <ShortName>
+                                            <Text xml:lang="de">IC</Text>
+                                        </ShortName>
+                                    </Mode>
+                                    <ConventionalModeOfOperation>scheduled</ConventionalModeOfOperation>
+                                    <TrainNumber>982</TrainNumber>
+                                    <siri:LineRef>ojp:91006:H</siri:LineRef>
+                                    <siri:OperatorRef>11</siri:OperatorRef>
+                                    <PublicCode>InterCity</PublicCode>
+                                    <PublishedServiceName>
+                                        <Text xml:lang="de">IC6</Text>
+                                    </PublishedServiceName>
+                                    <ProductCategory>
+                                        <Name>
+                                            <Text xml:lang="de">Zug</Text>
+                                        </Name>
+                                        <ShortName>
+                                            <Text xml:lang="de">IC</Text>
+                                        </ShortName>
+                                        <ProductCategoryRef>23</ProductCategoryRef>
+                                    </ProductCategory>
+                                    <siri:DirectionRef>R</siri:DirectionRef>
+                                    <OperatingDayRef>2024-08-09</OperatingDayRef>
+                                    <DestinationStopPointRef>8500010</DestinationStopPointRef>
+                                    <OriginText>
+                                        <Text xml:lang="de">n/a</Text>
+                                    </OriginText>
+                                    <DestinationText>
+                                        <Text xml:lang="de">Basel SBB</Text>
+                                    </DestinationText>
+                                    <JourneyRef>ch:1:sjyid:100001:982-001</JourneyRef>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text xml:lang="de">Fahrplanänderung</Text>
+                                        </UserText>
+                                        <Code>A__BA</Code>
+                                    </Attribute>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text xml:lang="de">Ruhezone in 1. Klasse</Text>
+                                        </UserText>
+                                        <Code>A__RZ</Code>
+                                    </Attribute>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text xml:lang="de">Gratis-Internet mit der App SBB FreeSurf</Text>
+                                        </UserText>
+                                        <Code>A__FS</Code>
+                                    </Attribute>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text xml:lang="de">Familienwagen mit Spielplatz</Text>
+                                        </UserText>
+                                        <Code>A__FA</Code>
+                                    </Attribute>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text xml:lang="de">Businesszone in 1. Klasse</Text>
+                                        </UserText>
+                                        <Code>A__BZ</Code>
+                                    </Attribute>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text xml:lang="de">Platzreservierung möglich</Text>
+                                        </UserText>
+                                        <Code>A___R</Code>
+                                    </Attribute>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text xml:lang="de">VELOS: Reservierung obligatorisch</Text>
+                                        </UserText>
+                                        <Code>A__VR</Code>
+                                    </Attribute>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text xml:lang="de">Restaurant</Text>
+                                        </UserText>
+                                        <Code>A__WR</Code>
+                                    </Attribute>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text xml:lang="de">Aussteigeseite: Links</Text>
+                                        </UserText>
+                                        <Code>ojp91006HR_InfoCall486_111055_1</Code>
+                                    </Attribute>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text xml:lang="de">Aussteigeseite: Rechts</Text>
+                                        </UserText>
+                                        <Code>ojp91006HR_InfoCall486_106514_1</Code>
+                                    </Attribute>
+                                    <SituationFullRefs>
+                                        <SituationFullRef>
+                                            <siri:ParticipantRef>ski-ddip-out-sx_test</siri:ParticipantRef>
+                                            <siri:SituationNumber>ch:1:sstid:100001:dccd662a-e519-468b-b06b-1fdb25727282-1</siri:SituationNumber>
+                                        </SituationFullRef>
+                                        <SituationFullRef>
+                                            <siri:ParticipantRef>ski-ddip-out-sx_test</siri:ParticipantRef>
+                                            <siri:SituationNumber>ch:1:sstid:100001:dfc1dfd3-bbe0-441c-89df-7a309eb7b358-1</siri:SituationNumber>
+                                        </SituationFullRef>
+                                    </SituationFullRefs>
+                                </Service>
+                            </TimedLeg>
+                        </Leg>
+                    </Trip>
+                </TripResult>
+                <TripResult>
+                    <Id>ID-C3F24289-F93D-464E-AB4C-05D5A548215F</Id>
+                    <Trip>
+                        <Id>ID-C3F24289-F93D-464E-AB4C-05D5A548215F</Id>
+                        <Duration>PT1H34M12S</Duration>
+                        <StartTime>2024-08-09T17:04:48Z</StartTime>
+                        <EndTime>2024-08-09T18:39:00Z</EndTime>
+                        <Transfers>1</Transfers>
+                        <Leg>
+                            <Id>1</Id>
+                            <Duration>PT21M12S</Duration>
+                            <TimedLeg>
+                                <LegBoard>
+                                    <siri:StopPointRef>ch:1:sloid:4100:0:54</siri:StopPointRef>
+                                    <StopPointName>
+                                        <Text xml:lang="de">Fribourg/Freiburg</Text>
+                                    </StopPointName>
+                                    <PlannedQuay>
+                                        <Text xml:lang="de">4</Text>
+                                    </PlannedQuay>
+                                    <EstimatedQuay>
+                                        <Text xml:lang="de">4</Text>
+                                    </EstimatedQuay>
+                                    <NameSuffix>
+                                        <Text xml:lang="de">NO_DATA</Text>
+                                    </NameSuffix>
+                                    <ServiceDeparture>
+                                        <TimetabledTime>2024-08-09T17:04:00Z</TimetabledTime>
+                                        <EstimatedTime>2024-08-09T17:04:48Z</EstimatedTime>
+                                    </ServiceDeparture>
+                                    <Order>1</Order>
+                                </LegBoard>
+                                <LegAlight>
+                                    <siri:StopPointRef>ch:1:sloid:7000:4:8</siri:StopPointRef>
+                                    <StopPointName>
+                                        <Text xml:lang="de">Bern</Text>
+                                    </StopPointName>
+                                    <NameSuffix>
+                                        <Text xml:lang="de">NO_DATA</Text>
+                                    </NameSuffix>
+                                    <PlannedQuay>
+                                        <Text xml:lang="de">8</Text>
+                                    </PlannedQuay>
+                                    <EstimatedQuay>
+                                        <Text xml:lang="de">8</Text>
+                                    </EstimatedQuay>
+                                    <ServiceArrival>
+                                        <TimetabledTime>2024-08-09T17:26:00Z</TimetabledTime>
+                                        <EstimatedTime>2024-08-09T17:26:00Z</EstimatedTime>
+                                    </ServiceArrival>
+                                    <Order>2</Order>
+                                </LegAlight>
+                                <Service>
+                                    <Mode>
+                                        <PtMode>rail</PtMode>
+                                        <siri:RailSubmode>interregionalRail</siri:RailSubmode>
+                                        <Name>
+                                            <Text xml:lang="de">Zug</Text>
+                                        </Name>
+                                        <ShortName>
+                                            <Text xml:lang="de">IC</Text>
+                                        </ShortName>
+                                    </Mode>
+                                    <ConventionalModeOfOperation>scheduled</ConventionalModeOfOperation>
+                                    <TrainNumber>731</TrainNumber>
+                                    <siri:LineRef>ojp:91001:D</siri:LineRef>
+                                    <siri:OperatorRef>11</siri:OperatorRef>
+                                    <PublicCode>InterCity</PublicCode>
+                                    <PublishedServiceName>
+                                        <Text xml:lang="de">IC1</Text>
+                                    </PublishedServiceName>
+                                    <ProductCategory>
+                                        <Name>
+                                            <Text xml:lang="de">Zug</Text>
+                                        </Name>
+                                        <ShortName>
+                                            <Text xml:lang="de">IC</Text>
+                                        </ShortName>
+                                        <ProductCategoryRef>23</ProductCategoryRef>
+                                    </ProductCategory>
+                                    <siri:DirectionRef>H</siri:DirectionRef>
+                                    <OperatingDayRef>2024-08-09</OperatingDayRef>
+                                    <DestinationStopPointRef>8506302</DestinationStopPointRef>
+                                    <OriginText>
+                                        <Text xml:lang="de">n/a</Text>
+                                    </OriginText>
+                                    <DestinationText>
+                                        <Text xml:lang="de">St. Gallen</Text>
+                                    </DestinationText>
+                                    <JourneyRef>ch:1:sjyid:100001:731-001</JourneyRef>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text xml:lang="de">Familienwagen mit Spielplatz</Text>
+                                        </UserText>
+                                        <Code>A__FA</Code>
+                                    </Attribute>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text xml:lang="de">Businesszone in 1. Klasse</Text>
+                                        </UserText>
+                                        <Code>A__BZ</Code>
+                                    </Attribute>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text xml:lang="de">Gratis-Internet mit der App SBB FreeSurf</Text>
+                                        </UserText>
+                                        <Code>A__FS</Code>
+                                    </Attribute>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text xml:lang="de">Ruhezone in 1. Klasse</Text>
+                                        </UserText>
+                                        <Code>A__RZ</Code>
+                                    </Attribute>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text xml:lang="de">Restaurant</Text>
+                                        </UserText>
+                                        <Code>A__WR</Code>
+                                    </Attribute>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text xml:lang="de">Platzreservierung möglich</Text>
+                                        </UserText>
+                                        <Code>A___R</Code>
+                                    </Attribute>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text xml:lang="de">VELOS: Reservierung obligatorisch</Text>
+                                        </UserText>
+                                        <Code>A__VR</Code>
+                                    </Attribute>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text xml:lang="de">Aussteigeseite: Links</Text>
+                                        </UserText>
+                                        <Code>ojp91001DH_InfoCall326_109019_1</Code>
+                                    </Attribute>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text xml:lang="de">Aussteigeseite: Rechts</Text>
+                                        </UserText>
+                                        <Code>ojp91001DH_InfoCall326_111055_1</Code>
+                                    </Attribute>
+                                    <SituationFullRefs>
+                                        <SituationFullRef>
+                                            <siri:ParticipantRef>ski-ddip-out-sx_test</siri:ParticipantRef>
+                                            <siri:SituationNumber>ch:1:sstid:100001:dccd662a-e519-468b-b06b-1fdb25727282-1</siri:SituationNumber>
+                                        </SituationFullRef>
+                                    </SituationFullRefs>
+                                </Service>
+                            </TimedLeg>
+                        </Leg>
+                        <Leg>
+                            <Id>2</Id>
+                            <Duration>PT6M</Duration>
+                            <TransferLeg>
+                                <TransferType>walk</TransferType>
+                                <LegStart>
+                                    <siri:StopPointRef>8507000</siri:StopPointRef>
+                                    <Name>
+                                        <Text xml:lang="de">Bern</Text>
+                                    </Name>
+                                </LegStart>
+                                <LegEnd>
+                                    <siri:StopPointRef>8507000</siri:StopPointRef>
+                                    <Name>
+                                        <Text xml:lang="de">Bern</Text>
+                                    </Name>
+                                </LegEnd>
+                                <Duration>PT6M</Duration>
+                            </TransferLeg>
+                        </Leg>
+                        <Leg>
+                            <Id>3</Id>
+                            <Duration>PT1H</Duration>
+                            <TimedLeg>
+                                <LegBoard>
+                                    <siri:StopPointRef>ch:1:sloid:7000:2:4</siri:StopPointRef>
+                                    <StopPointName>
+                                        <Text xml:lang="de">Bern</Text>
+                                    </StopPointName>
+                                    <PlannedQuay>
+                                        <Text xml:lang="de">4</Text>
+                                    </PlannedQuay>
+                                    <EstimatedQuay>
+                                        <Text xml:lang="de">4</Text>
+                                    </EstimatedQuay>
+                                    <NameSuffix>
+                                        <Text xml:lang="de">NO_DATA</Text>
+                                    </NameSuffix>
+                                    <ServiceDeparture>
+                                        <TimetabledTime>2024-08-09T17:38:00Z</TimetabledTime>
+                                        <EstimatedTime>2024-08-09T17:39:00Z</EstimatedTime>
+                                    </ServiceDeparture>
+                                    <Order>1</Order>
+                                </LegBoard>
+                                <LegIntermediate>
+                                    <siri:StopPointRef>ch:1:sloid:218:4:7</siri:StopPointRef>
+                                    <StopPointName>
+                                        <Text xml:lang="de">Olten</Text>
+                                    </StopPointName>
+                                    <NameSuffix>
+                                        <Text xml:lang="de">NO_DATA</Text>
+                                    </NameSuffix>
+                                    <PlannedQuay>
+                                        <Text xml:lang="de">7</Text>
+                                    </PlannedQuay>
+                                    <EstimatedQuay>
+                                        <Text xml:lang="de">7</Text>
+                                    </EstimatedQuay>
+                                    <ServiceArrival>
+                                        <TimetabledTime>2024-08-09T18:05:00Z</TimetabledTime>
+                                        <EstimatedTime>2024-08-09T18:04:42Z</EstimatedTime>
+                                    </ServiceArrival>
+                                    <ServiceDeparture>
+                                        <TimetabledTime>2024-08-09T18:06:00Z</TimetabledTime>
+                                        <EstimatedTime>2024-08-09T18:06:42Z</EstimatedTime>
+                                    </ServiceDeparture>
+                                    <Order>2</Order>
+                                </LegIntermediate>
+                                <LegIntermediate>
+                                    <siri:StopPointRef>ch:1:sloid:23:2:4</siri:StopPointRef>
+                                    <StopPointName>
+                                        <Text xml:lang="de">Liestal</Text>
+                                    </StopPointName>
+                                    <NameSuffix>
+                                        <Text xml:lang="de">NO_DATA</Text>
+                                    </NameSuffix>
+                                    <PlannedQuay>
+                                        <Text xml:lang="de">4</Text>
+                                    </PlannedQuay>
+                                    <EstimatedQuay>
+                                        <Text xml:lang="de">4</Text>
+                                    </EstimatedQuay>
+                                    <ServiceArrival>
+                                        <TimetabledTime>2024-08-09T18:26:00Z</TimetabledTime>
+                                        <EstimatedTime>2024-08-09T18:26:30Z</EstimatedTime>
+                                    </ServiceArrival>
+                                    <ServiceDeparture>
+                                        <TimetabledTime>2024-08-09T18:28:00Z</TimetabledTime>
+                                        <EstimatedTime>2024-08-09T18:28:30Z</EstimatedTime>
+                                    </ServiceDeparture>
+                                    <Order>3</Order>
+                                </LegIntermediate>
+                                <LegAlight>
+                                    <siri:StopPointRef>ch:1:sloid:10:5:9</siri:StopPointRef>
+                                    <StopPointName>
+                                        <Text xml:lang="de">Basel SBB</Text>
+                                    </StopPointName>
+                                    <NameSuffix>
+                                        <Text xml:lang="de">NO_DATA</Text>
+                                    </NameSuffix>
+                                    <PlannedQuay>
+                                        <Text xml:lang="de">9</Text>
+                                    </PlannedQuay>
+                                    <EstimatedQuay>
+                                        <Text xml:lang="de">9</Text>
+                                    </EstimatedQuay>
+                                    <ServiceArrival>
+                                        <TimetabledTime>2024-08-09T18:39:00Z</TimetabledTime>
+                                        <EstimatedTime>2024-08-09T18:39:00Z</EstimatedTime>
+                                    </ServiceArrival>
+                                    <Order>5</Order>
+                                </LegAlight>
+                                <Service>
+                                    <Mode>
+                                        <PtMode>rail</PtMode>
+                                        <siri:RailSubmode>interregionalRail</siri:RailSubmode>
+                                        <Name>
+                                            <Text xml:lang="de">Zug</Text>
+                                        </Name>
+                                        <ShortName>
+                                            <Text xml:lang="de">IC</Text>
+                                        </ShortName>
+                                    </Mode>
+                                    <ConventionalModeOfOperation>scheduled</ConventionalModeOfOperation>
+                                    <TrainNumber>1082</TrainNumber>
+                                    <siri:LineRef>ojp:91061:A</siri:LineRef>
+                                    <siri:OperatorRef>11</siri:OperatorRef>
+                                    <PublicCode>InterCity</PublicCode>
+                                    <PublishedServiceName>
+                                        <Text xml:lang="de">IC61</Text>
+                                    </PublishedServiceName>
+                                    <ProductCategory>
+                                        <Name>
+                                            <Text xml:lang="de">Zug</Text>
+                                        </Name>
+                                        <ShortName>
+                                            <Text xml:lang="de">IC</Text>
+                                        </ShortName>
+                                        <ProductCategoryRef>23</ProductCategoryRef>
+                                    </ProductCategory>
+                                    <siri:DirectionRef>H</siri:DirectionRef>
+                                    <OperatingDayRef>2024-08-09</OperatingDayRef>
+                                    <DestinationStopPointRef>8500010</DestinationStopPointRef>
+                                    <OriginText>
+                                        <Text xml:lang="de">n/a</Text>
+                                    </OriginText>
+                                    <DestinationText>
+                                        <Text xml:lang="de">Basel SBB</Text>
+                                    </DestinationText>
+                                    <JourneyRef>ch:1:sjyid:100001:1082-004</JourneyRef>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text xml:lang="de">Fahrplanänderung</Text>
+                                        </UserText>
+                                        <Code>A__BA</Code>
+                                    </Attribute>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text xml:lang="de">Ruhezone in 1. Klasse</Text>
+                                        </UserText>
+                                        <Code>A__RZ</Code>
+                                    </Attribute>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text xml:lang="de">Businesszone in 1. Klasse</Text>
+                                        </UserText>
+                                        <Code>A__BZ</Code>
+                                    </Attribute>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text xml:lang="de">Familienwagen mit Spielplatz</Text>
+                                        </UserText>
+                                        <Code>A__FA</Code>
+                                    </Attribute>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text xml:lang="de">Gratis-Internet mit der App SBB FreeSurf</Text>
+                                        </UserText>
+                                        <Code>A__FS</Code>
+                                    </Attribute>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text xml:lang="de">Platzreservierung möglich</Text>
+                                        </UserText>
+                                        <Code>A___R</Code>
+                                    </Attribute>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text xml:lang="de">VELOS: Reservierung obligatorisch</Text>
+                                        </UserText>
+                                        <Code>A__VR</Code>
+                                    </Attribute>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text xml:lang="de">Aussteigeseite: Links</Text>
+                                        </UserText>
+                                        <Code>ojp91061AH_InfoCall168_111055_1</Code>
+                                    </Attribute>
+                                    <SituationFullRefs>
+                                        <SituationFullRef>
+                                            <siri:ParticipantRef>ski-ddip-out-sx_test</siri:ParticipantRef>
+                                            <siri:SituationNumber>ch:1:sstid:100001:dccd662a-e519-468b-b06b-1fdb25727282-1</siri:SituationNumber>
+                                        </SituationFullRef>
+                                        <SituationFullRef>
+                                            <siri:ParticipantRef>ski-ddip-out-sx_test</siri:ParticipantRef>
+                                            <siri:SituationNumber>ch:1:sstid:100001:dfc1dfd3-bbe0-441c-89df-7a309eb7b358-1</siri:SituationNumber>
+                                        </SituationFullRef>
+                                    </SituationFullRefs>
+                                </Service>
+                            </TimedLeg>
+                        </Leg>
+                    </Trip>
+                </TripResult>
+                <TripResult>
+                    <Id>ID-42FC6240-1F8B-40C6-924F-966487C76530</Id>
+                    <Trip>
+                        <Id>ID-42FC6240-1F8B-40C6-924F-966487C76530</Id>
+                        <Duration>PT1H31M6S</Duration>
+                        <StartTime>2024-08-09T17:34:54Z</StartTime>
+                        <EndTime>2024-08-09T19:06:00Z</EndTime>
+                        <Transfers>1</Transfers>
+                        <Leg>
+                            <Id>1</Id>
+                            <Duration>PT21M6S</Duration>
+                            <TimedLeg>
+                                <LegBoard>
+                                    <siri:StopPointRef>ch:1:sloid:4100:0:54</siri:StopPointRef>
+                                    <StopPointName>
+                                        <Text xml:lang="de">Fribourg/Freiburg</Text>
+                                    </StopPointName>
+                                    <PlannedQuay>
+                                        <Text xml:lang="de">4</Text>
+                                    </PlannedQuay>
+                                    <EstimatedQuay>
+                                        <Text xml:lang="de">4</Text>
+                                    </EstimatedQuay>
+                                    <NameSuffix>
+                                        <Text xml:lang="de">NO_DATA</Text>
+                                    </NameSuffix>
+                                    <ServiceDeparture>
+                                        <TimetabledTime>2024-08-09T17:34:00Z</TimetabledTime>
+                                        <EstimatedTime>2024-08-09T17:34:54Z</EstimatedTime>
+                                    </ServiceDeparture>
+                                    <Order>1</Order>
+                                </LegBoard>
+                                <LegAlight>
+                                    <siri:StopPointRef>ch:1:sloid:7000:5:10</siri:StopPointRef>
+                                    <StopPointName>
+                                        <Text xml:lang="de">Bern</Text>
+                                    </StopPointName>
+                                    <NameSuffix>
+                                        <Text xml:lang="de">NO_DATA</Text>
+                                    </NameSuffix>
+                                    <PlannedQuay>
+                                        <Text xml:lang="de">10</Text>
+                                    </PlannedQuay>
+                                    <EstimatedQuay>
+                                        <Text xml:lang="de">10</Text>
+                                    </EstimatedQuay>
+                                    <ServiceArrival>
+                                        <TimetabledTime>2024-08-09T17:56:00Z</TimetabledTime>
+                                        <EstimatedTime>2024-08-09T17:56:00Z</EstimatedTime>
+                                    </ServiceArrival>
+                                    <Order>2</Order>
+                                </LegAlight>
+                                <Service>
+                                    <Mode>
+                                        <PtMode>rail</PtMode>
+                                        <siri:RailSubmode>regionalRail</siri:RailSubmode>
+                                        <Name>
+                                            <Text xml:lang="de">Zug</Text>
+                                        </Name>
+                                        <ShortName>
+                                            <Text xml:lang="de">IR</Text>
+                                        </ShortName>
+                                    </Mode>
+                                    <ConventionalModeOfOperation>scheduled</ConventionalModeOfOperation>
+                                    <TrainNumber>2533</TrainNumber>
+                                    <siri:LineRef>ojp:91015:B</siri:LineRef>
+                                    <siri:OperatorRef>11</siri:OperatorRef>
+                                    <PublicCode>InterRegio</PublicCode>
+                                    <PublishedServiceName>
+                                        <Text xml:lang="de">IR15</Text>
+                                    </PublishedServiceName>
+                                    <ProductCategory>
+                                        <Name>
+                                            <Text xml:lang="de">Zug</Text>
+                                        </Name>
+                                        <ShortName>
+                                            <Text xml:lang="de">IR</Text>
+                                        </ShortName>
+                                        <ProductCategoryRef>1</ProductCategoryRef>
+                                    </ProductCategory>
+                                    <siri:DirectionRef>H</siri:DirectionRef>
+                                    <OperatingDayRef>2024-08-09</OperatingDayRef>
+                                    <DestinationStopPointRef>8505000</DestinationStopPointRef>
+                                    <OriginText>
+                                        <Text xml:lang="de">n/a</Text>
+                                    </OriginText>
+                                    <DestinationText>
+                                        <Text xml:lang="de">Luzern</Text>
+                                    </DestinationText>
+                                    <JourneyRef>ch:1:sjyid:100001:2533-003</JourneyRef>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text xml:lang="de">Gratis-Internet mit der App SBB FreeSurf</Text>
+                                        </UserText>
+                                        <Code>A__FS</Code>
+                                    </Attribute>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text xml:lang="de">Businesszone in 1. Klasse</Text>
+                                        </UserText>
+                                        <Code>A__BZ</Code>
+                                    </Attribute>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text xml:lang="de">Aussteigeseite: Links</Text>
+                                        </UserText>
+                                        <Code>ojp91015BH_InfoCall146_109019_1</Code>
+                                    </Attribute>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text xml:lang="de">Aussteigeseite: Rechts</Text>
+                                        </UserText>
+                                        <Code>ojp91015BH_InfoCall146_111055_1</Code>
+                                    </Attribute>
+                                    <SituationFullRefs>
+                                        <SituationFullRef>
+                                            <siri:ParticipantRef>ski-ddip-out-sx_test</siri:ParticipantRef>
+                                            <siri:SituationNumber>ch:1:sstid:100001:dccd662a-e519-468b-b06b-1fdb25727282-1</siri:SituationNumber>
+                                        </SituationFullRef>
+                                    </SituationFullRefs>
+                                </Service>
+                            </TimedLeg>
+                        </Leg>
+                        <Leg>
+                            <Id>2</Id>
+                            <Duration>PT6M</Duration>
+                            <TransferLeg>
+                                <TransferType>walk</TransferType>
+                                <LegStart>
+                                    <siri:StopPointRef>8507000</siri:StopPointRef>
+                                    <Name>
+                                        <Text xml:lang="de">Bern</Text>
+                                    </Name>
+                                </LegStart>
+                                <LegEnd>
+                                    <siri:StopPointRef>8507000</siri:StopPointRef>
+                                    <Name>
+                                        <Text xml:lang="de">Bern</Text>
+                                    </Name>
+                                </LegEnd>
+                                <Duration>PT6M</Duration>
+                            </TransferLeg>
+                        </Leg>
+                        <Leg>
+                            <Id>3</Id>
+                            <Duration>PT1H1M</Duration>
+                            <TimedLeg>
+                                <LegBoard>
+                                    <siri:StopPointRef>ch:1:sloid:7000:2:4</siri:StopPointRef>
+                                    <StopPointName>
+                                        <Text xml:lang="de">Bern</Text>
+                                    </StopPointName>
+                                    <PlannedQuay>
+                                        <Text xml:lang="de">4</Text>
+                                    </PlannedQuay>
+                                    <EstimatedQuay>
+                                        <Text xml:lang="de">4</Text>
+                                    </EstimatedQuay>
+                                    <NameSuffix>
+                                        <Text xml:lang="de">NO_DATA</Text>
+                                    </NameSuffix>
+                                    <ServiceDeparture>
+                                        <TimetabledTime>2024-08-09T18:04:00Z</TimetabledTime>
+                                        <EstimatedTime>2024-08-09T18:05:00Z</EstimatedTime>
+                                    </ServiceDeparture>
+                                    <Order>1</Order>
+                                </LegBoard>
+                                <LegIntermediate>
+                                    <siri:StopPointRef>ch:1:sloid:218:4:7</siri:StopPointRef>
+                                    <StopPointName>
+                                        <Text xml:lang="de">Olten</Text>
+                                    </StopPointName>
+                                    <NameSuffix>
+                                        <Text xml:lang="de">NO_DATA</Text>
+                                    </NameSuffix>
+                                    <PlannedQuay>
+                                        <Text xml:lang="de">7</Text>
+                                    </PlannedQuay>
+                                    <EstimatedQuay>
+                                        <Text xml:lang="de">7</Text>
+                                    </EstimatedQuay>
+                                    <ServiceArrival>
+                                        <TimetabledTime>2024-08-09T18:30:00Z</TimetabledTime>
+                                        <EstimatedTime>2024-08-09T18:30:54Z</EstimatedTime>
+                                    </ServiceArrival>
+                                    <ServiceDeparture>
+                                        <TimetabledTime>2024-08-09T18:33:00Z</TimetabledTime>
+                                        <EstimatedTime>2024-08-09T18:33:42Z</EstimatedTime>
+                                    </ServiceDeparture>
+                                    <Order>2</Order>
+                                </LegIntermediate>
+                                <LegIntermediate>
+                                    <siri:StopPointRef>ch:1:sloid:23:2:4</siri:StopPointRef>
+                                    <StopPointName>
+                                        <Text xml:lang="de">Liestal</Text>
+                                    </StopPointName>
+                                    <NameSuffix>
+                                        <Text xml:lang="de">NO_DATA</Text>
+                                    </NameSuffix>
+                                    <PlannedQuay>
+                                        <Text xml:lang="de">4</Text>
+                                    </PlannedQuay>
+                                    <EstimatedQuay>
+                                        <Text xml:lang="de">4</Text>
+                                    </EstimatedQuay>
+                                    <ServiceArrival>
+                                        <TimetabledTime>2024-08-09T18:53:00Z</TimetabledTime>
+                                        <EstimatedTime>2024-08-09T18:53:30Z</EstimatedTime>
+                                    </ServiceArrival>
+                                    <ServiceDeparture>
+                                        <TimetabledTime>2024-08-09T18:55:00Z</TimetabledTime>
+                                        <EstimatedTime>2024-08-09T18:55:30Z</EstimatedTime>
+                                    </ServiceDeparture>
+                                    <Order>3</Order>
+                                </LegIntermediate>
+                                <LegAlight>
+                                    <siri:StopPointRef>ch:1:sloid:10:3:5</siri:StopPointRef>
+                                    <StopPointName>
+                                        <Text xml:lang="de">Basel SBB</Text>
+                                    </StopPointName>
+                                    <NameSuffix>
+                                        <Text xml:lang="de">NO_DATA</Text>
+                                    </NameSuffix>
+                                    <PlannedQuay>
+                                        <Text xml:lang="de">5</Text>
+                                    </PlannedQuay>
+                                    <EstimatedQuay>
+                                        <Text xml:lang="de">5</Text>
+                                    </EstimatedQuay>
+                                    <ServiceArrival>
+                                        <TimetabledTime>2024-08-09T19:06:00Z</TimetabledTime>
+                                        <EstimatedTime>2024-08-09T19:06:00Z</EstimatedTime>
+                                    </ServiceArrival>
+                                    <Order>5</Order>
+                                </LegAlight>
+                                <Service>
+                                    <Mode>
+                                        <PtMode>rail</PtMode>
+                                        <siri:RailSubmode>interregionalRail</siri:RailSubmode>
+                                        <Name>
+                                            <Text xml:lang="de">Zug</Text>
+                                        </Name>
+                                        <ShortName>
+                                            <Text xml:lang="de">IC</Text>
+                                        </ShortName>
+                                    </Mode>
+                                    <ConventionalModeOfOperation>scheduled</ConventionalModeOfOperation>
+                                    <TrainNumber>984</TrainNumber>
+                                    <siri:LineRef>ojp:91061:A</siri:LineRef>
+                                    <siri:OperatorRef>11</siri:OperatorRef>
+                                    <PublicCode>InterCity</PublicCode>
+                                    <PublishedServiceName>
+                                        <Text xml:lang="de">IC61</Text>
+                                    </PublishedServiceName>
+                                    <ProductCategory>
+                                        <Name>
+                                            <Text xml:lang="de">Zug</Text>
+                                        </Name>
+                                        <ShortName>
+                                            <Text xml:lang="de">IC</Text>
+                                        </ShortName>
+                                        <ProductCategoryRef>23</ProductCategoryRef>
+                                    </ProductCategory>
+                                    <siri:DirectionRef>H</siri:DirectionRef>
+                                    <OperatingDayRef>2024-08-09</OperatingDayRef>
+                                    <DestinationStopPointRef>8500010</DestinationStopPointRef>
+                                    <OriginText>
+                                        <Text xml:lang="de">n/a</Text>
+                                    </OriginText>
+                                    <DestinationText>
+                                        <Text xml:lang="de">Basel SBB</Text>
+                                    </DestinationText>
+                                    <JourneyRef>ch:1:sjyid:100001:984-002</JourneyRef>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text xml:lang="de">Fahrplanänderung</Text>
+                                        </UserText>
+                                        <Code>A__BA</Code>
+                                    </Attribute>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text xml:lang="de">Ruhezone in 1. Klasse</Text>
+                                        </UserText>
+                                        <Code>A__RZ</Code>
+                                    </Attribute>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text xml:lang="de">Businesszone in 1. Klasse</Text>
+                                        </UserText>
+                                        <Code>A__BZ</Code>
+                                    </Attribute>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text xml:lang="de">Familienwagen mit Spielplatz</Text>
+                                        </UserText>
+                                        <Code>A__FA</Code>
+                                    </Attribute>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text xml:lang="de">Gratis-Internet mit der App SBB FreeSurf</Text>
+                                        </UserText>
+                                        <Code>A__FS</Code>
+                                    </Attribute>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text xml:lang="de">Restaurant</Text>
+                                        </UserText>
+                                        <Code>A__WR</Code>
+                                    </Attribute>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text xml:lang="de">Platzreservierung möglich</Text>
+                                        </UserText>
+                                        <Code>A___R</Code>
+                                    </Attribute>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text xml:lang="de">VELOS: Reservierung obligatorisch</Text>
+                                        </UserText>
+                                        <Code>A__VR</Code>
+                                    </Attribute>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text xml:lang="de">Aussteigeseite: Links</Text>
+                                        </UserText>
+                                        <Code>ojp91061AH_InfoCall200_111055_1</Code>
+                                    </Attribute>
+                                    <SituationFullRefs>
+                                        <SituationFullRef>
+                                            <siri:ParticipantRef>ski-ddip-out-sx_test</siri:ParticipantRef>
+                                            <siri:SituationNumber>ch:1:sstid:100001:dccd662a-e519-468b-b06b-1fdb25727282-1</siri:SituationNumber>
+                                        </SituationFullRef>
+                                        <SituationFullRef>
+                                            <siri:ParticipantRef>ski-ddip-out-sx_test</siri:ParticipantRef>
+                                            <siri:SituationNumber>ch:1:sstid:100001:dfc1dfd3-bbe0-441c-89df-7a309eb7b358-1</siri:SituationNumber>
+                                        </SituationFullRef>
+                                    </SituationFullRefs>
+                                </Service>
+                            </TimedLeg>
+                        </Leg>
+                    </Trip>
+                </TripResult>
+                <TripResult>
+                    <Id>ID-0520345B-1868-44EF-84E4-D1A8486543A6</Id>
+                    <Trip>
+                        <Id>ID-0520345B-1868-44EF-84E4-D1A8486543A6</Id>
+                        <Duration>PT1H34M12S</Duration>
+                        <StartTime>2024-08-09T18:04:48Z</StartTime>
+                        <EndTime>2024-08-09T19:39:00Z</EndTime>
+                        <Transfers>1</Transfers>
+                        <Leg>
+                            <Id>1</Id>
+                            <Duration>PT21M12S</Duration>
+                            <TimedLeg>
+                                <LegBoard>
+                                    <siri:StopPointRef>ch:1:sloid:4100:0:54</siri:StopPointRef>
+                                    <StopPointName>
+                                        <Text xml:lang="de">Fribourg/Freiburg</Text>
+                                    </StopPointName>
+                                    <PlannedQuay>
+                                        <Text xml:lang="de">4</Text>
+                                    </PlannedQuay>
+                                    <EstimatedQuay>
+                                        <Text xml:lang="de">4</Text>
+                                    </EstimatedQuay>
+                                    <NameSuffix>
+                                        <Text xml:lang="de">NO_DATA</Text>
+                                    </NameSuffix>
+                                    <ServiceDeparture>
+                                        <TimetabledTime>2024-08-09T18:04:00Z</TimetabledTime>
+                                        <EstimatedTime>2024-08-09T18:04:48Z</EstimatedTime>
+                                    </ServiceDeparture>
+                                    <Order>1</Order>
+                                </LegBoard>
+                                <LegAlight>
+                                    <siri:StopPointRef>ch:1:sloid:7000:4:8</siri:StopPointRef>
+                                    <StopPointName>
+                                        <Text xml:lang="de">Bern</Text>
+                                    </StopPointName>
+                                    <NameSuffix>
+                                        <Text xml:lang="de">NO_DATA</Text>
+                                    </NameSuffix>
+                                    <PlannedQuay>
+                                        <Text xml:lang="de">8</Text>
+                                    </PlannedQuay>
+                                    <EstimatedQuay>
+                                        <Text xml:lang="de">8</Text>
+                                    </EstimatedQuay>
+                                    <ServiceArrival>
+                                        <TimetabledTime>2024-08-09T18:26:00Z</TimetabledTime>
+                                        <EstimatedTime>2024-08-09T18:26:00Z</EstimatedTime>
+                                    </ServiceArrival>
+                                    <Order>2</Order>
+                                </LegAlight>
+                                <Service>
+                                    <Mode>
+                                        <PtMode>rail</PtMode>
+                                        <siri:RailSubmode>interregionalRail</siri:RailSubmode>
+                                        <Name>
+                                            <Text xml:lang="de">Zug</Text>
+                                        </Name>
+                                        <ShortName>
+                                            <Text xml:lang="de">IC</Text>
+                                        </ShortName>
+                                    </Mode>
+                                    <ConventionalModeOfOperation>scheduled</ConventionalModeOfOperation>
+                                    <TrainNumber>733</TrainNumber>
+                                    <siri:LineRef>ojp:91001:D</siri:LineRef>
+                                    <siri:OperatorRef>11</siri:OperatorRef>
+                                    <PublicCode>InterCity</PublicCode>
+                                    <PublishedServiceName>
+                                        <Text xml:lang="de">IC1</Text>
+                                    </PublishedServiceName>
+                                    <ProductCategory>
+                                        <Name>
+                                            <Text xml:lang="de">Zug</Text>
+                                        </Name>
+                                        <ShortName>
+                                            <Text xml:lang="de">IC</Text>
+                                        </ShortName>
+                                        <ProductCategoryRef>23</ProductCategoryRef>
+                                    </ProductCategory>
+                                    <siri:DirectionRef>H</siri:DirectionRef>
+                                    <OperatingDayRef>2024-08-09</OperatingDayRef>
+                                    <DestinationStopPointRef>8506302</DestinationStopPointRef>
+                                    <OriginText>
+                                        <Text xml:lang="de">n/a</Text>
+                                    </OriginText>
+                                    <DestinationText>
+                                        <Text xml:lang="de">St. Gallen</Text>
+                                    </DestinationText>
+                                    <JourneyRef>ch:1:sjyid:100001:733-001</JourneyRef>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text xml:lang="de">Familienwagen mit Spielplatz</Text>
+                                        </UserText>
+                                        <Code>A__FA</Code>
+                                    </Attribute>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text xml:lang="de">Businesszone in 1. Klasse</Text>
+                                        </UserText>
+                                        <Code>A__BZ</Code>
+                                    </Attribute>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text xml:lang="de">Gratis-Internet mit der App SBB FreeSurf</Text>
+                                        </UserText>
+                                        <Code>A__FS</Code>
+                                    </Attribute>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text xml:lang="de">Ruhezone in 1. Klasse</Text>
+                                        </UserText>
+                                        <Code>A__RZ</Code>
+                                    </Attribute>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text xml:lang="de">Restaurant</Text>
+                                        </UserText>
+                                        <Code>A__WR</Code>
+                                    </Attribute>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text xml:lang="de">Platzreservierung möglich</Text>
+                                        </UserText>
+                                        <Code>A___R</Code>
+                                    </Attribute>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text xml:lang="de">VELOS: Reservierung obligatorisch</Text>
+                                        </UserText>
+                                        <Code>A__VR</Code>
+                                    </Attribute>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text xml:lang="de">Aussteigeseite: Links</Text>
+                                        </UserText>
+                                        <Code>ojp91001DH_InfoCall301_109019_1</Code>
+                                    </Attribute>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text xml:lang="de">Aussteigeseite: Rechts</Text>
+                                        </UserText>
+                                        <Code>ojp91001DH_InfoCall301_111055_1</Code>
+                                    </Attribute>
+                                    <SituationFullRefs>
+                                        <SituationFullRef>
+                                            <siri:ParticipantRef>ski-ddip-out-sx_test</siri:ParticipantRef>
+                                            <siri:SituationNumber>ch:1:sstid:100001:dccd662a-e519-468b-b06b-1fdb25727282-1</siri:SituationNumber>
+                                        </SituationFullRef>
+                                    </SituationFullRefs>
+                                </Service>
+                            </TimedLeg>
+                        </Leg>
+                        <Leg>
+                            <Id>2</Id>
+                            <Duration>PT6M</Duration>
+                            <TransferLeg>
+                                <TransferType>walk</TransferType>
+                                <LegStart>
+                                    <siri:StopPointRef>8507000</siri:StopPointRef>
+                                    <Name>
+                                        <Text xml:lang="de">Bern</Text>
+                                    </Name>
+                                </LegStart>
+                                <LegEnd>
+                                    <siri:StopPointRef>8507000</siri:StopPointRef>
+                                    <Name>
+                                        <Text xml:lang="de">Bern</Text>
+                                    </Name>
+                                </LegEnd>
+                                <Duration>PT6M</Duration>
+                            </TransferLeg>
+                        </Leg>
+                        <Leg>
+                            <Id>3</Id>
+                            <Duration>PT1H</Duration>
+                            <TimedLeg>
+                                <LegBoard>
+                                    <siri:StopPointRef>ch:1:sloid:7000:2:4</siri:StopPointRef>
+                                    <StopPointName>
+                                        <Text xml:lang="de">Bern</Text>
+                                    </StopPointName>
+                                    <PlannedQuay>
+                                        <Text xml:lang="de">4</Text>
+                                    </PlannedQuay>
+                                    <EstimatedQuay>
+                                        <Text xml:lang="de">4</Text>
+                                    </EstimatedQuay>
+                                    <NameSuffix>
+                                        <Text xml:lang="de">NO_DATA</Text>
+                                    </NameSuffix>
+                                    <ServiceDeparture>
+                                        <TimetabledTime>2024-08-09T18:38:00Z</TimetabledTime>
+                                        <EstimatedTime>2024-08-09T18:39:00Z</EstimatedTime>
+                                    </ServiceDeparture>
+                                    <Order>1</Order>
+                                </LegBoard>
+                                <LegIntermediate>
+                                    <siri:StopPointRef>ch:1:sloid:218:4:7</siri:StopPointRef>
+                                    <StopPointName>
+                                        <Text xml:lang="de">Olten</Text>
+                                    </StopPointName>
+                                    <NameSuffix>
+                                        <Text xml:lang="de">NO_DATA</Text>
+                                    </NameSuffix>
+                                    <PlannedQuay>
+                                        <Text xml:lang="de">7</Text>
+                                    </PlannedQuay>
+                                    <EstimatedQuay>
+                                        <Text xml:lang="de">7</Text>
+                                    </EstimatedQuay>
+                                    <ServiceArrival>
+                                        <TimetabledTime>2024-08-09T19:05:00Z</TimetabledTime>
+                                        <EstimatedTime>2024-08-09T19:04:42Z</EstimatedTime>
+                                    </ServiceArrival>
+                                    <ServiceDeparture>
+                                        <TimetabledTime>2024-08-09T19:06:00Z</TimetabledTime>
+                                        <EstimatedTime>2024-08-09T19:06:42Z</EstimatedTime>
+                                    </ServiceDeparture>
+                                    <Order>2</Order>
+                                </LegIntermediate>
+                                <LegIntermediate>
+                                    <siri:StopPointRef>ch:1:sloid:23:2:4</siri:StopPointRef>
+                                    <StopPointName>
+                                        <Text xml:lang="de">Liestal</Text>
+                                    </StopPointName>
+                                    <NameSuffix>
+                                        <Text xml:lang="de">NO_DATA</Text>
+                                    </NameSuffix>
+                                    <PlannedQuay>
+                                        <Text xml:lang="de">4</Text>
+                                    </PlannedQuay>
+                                    <EstimatedQuay>
+                                        <Text xml:lang="de">4</Text>
+                                    </EstimatedQuay>
+                                    <ServiceArrival>
+                                        <TimetabledTime>2024-08-09T19:26:00Z</TimetabledTime>
+                                        <EstimatedTime>2024-08-09T19:26:30Z</EstimatedTime>
+                                    </ServiceArrival>
+                                    <ServiceDeparture>
+                                        <TimetabledTime>2024-08-09T19:28:00Z</TimetabledTime>
+                                        <EstimatedTime>2024-08-09T19:28:30Z</EstimatedTime>
+                                    </ServiceDeparture>
+                                    <Order>3</Order>
+                                </LegIntermediate>
+                                <LegAlight>
+                                    <siri:StopPointRef>ch:1:sloid:10:6:11</siri:StopPointRef>
+                                    <StopPointName>
+                                        <Text xml:lang="de">Basel SBB</Text>
+                                    </StopPointName>
+                                    <NameSuffix>
+                                        <Text xml:lang="de">NO_DATA</Text>
+                                    </NameSuffix>
+                                    <PlannedQuay>
+                                        <Text xml:lang="de">11</Text>
+                                    </PlannedQuay>
+                                    <EstimatedQuay>
+                                        <Text xml:lang="de">11</Text>
+                                    </EstimatedQuay>
+                                    <ServiceArrival>
+                                        <TimetabledTime>2024-08-09T19:39:00Z</TimetabledTime>
+                                        <EstimatedTime>2024-08-09T19:39:00Z</EstimatedTime>
+                                    </ServiceArrival>
+                                    <Order>5</Order>
+                                </LegAlight>
+                                <Service>
+                                    <Mode>
+                                        <PtMode>rail</PtMode>
+                                        <siri:RailSubmode>interregionalRail</siri:RailSubmode>
+                                        <Name>
+                                            <Text xml:lang="de">Zug</Text>
+                                        </Name>
+                                        <ShortName>
+                                            <Text xml:lang="de">IC</Text>
+                                        </ShortName>
+                                    </Mode>
+                                    <ConventionalModeOfOperation>scheduled</ConventionalModeOfOperation>
+                                    <TrainNumber>1084</TrainNumber>
+                                    <siri:LineRef>ojp:91006:H</siri:LineRef>
+                                    <siri:OperatorRef>11</siri:OperatorRef>
+                                    <PublicCode>InterCity</PublicCode>
+                                    <PublishedServiceName>
+                                        <Text xml:lang="de">IC6</Text>
+                                    </PublishedServiceName>
+                                    <ProductCategory>
+                                        <Name>
+                                            <Text xml:lang="de">Zug</Text>
+                                        </Name>
+                                        <ShortName>
+                                            <Text xml:lang="de">IC</Text>
+                                        </ShortName>
+                                        <ProductCategoryRef>23</ProductCategoryRef>
+                                    </ProductCategory>
+                                    <siri:DirectionRef>R</siri:DirectionRef>
+                                    <OperatingDayRef>2024-08-09</OperatingDayRef>
+                                    <DestinationStopPointRef>8500010</DestinationStopPointRef>
+                                    <OriginText>
+                                        <Text xml:lang="de">n/a</Text>
+                                    </OriginText>
+                                    <DestinationText>
+                                        <Text xml:lang="de">Basel SBB</Text>
+                                    </DestinationText>
+                                    <JourneyRef>ch:1:sjyid:100001:1084-002</JourneyRef>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text xml:lang="de">Fahrplanänderung</Text>
+                                        </UserText>
+                                        <Code>A__BA</Code>
+                                    </Attribute>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text xml:lang="de">Ruhezone in 1. Klasse</Text>
+                                        </UserText>
+                                        <Code>A__RZ</Code>
+                                    </Attribute>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text xml:lang="de">Gratis-Internet mit der App SBB FreeSurf</Text>
+                                        </UserText>
+                                        <Code>A__FS</Code>
+                                    </Attribute>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text xml:lang="de">Familienwagen mit Spielplatz</Text>
+                                        </UserText>
+                                        <Code>A__FA</Code>
+                                    </Attribute>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text xml:lang="de">Businesszone in 1. Klasse</Text>
+                                        </UserText>
+                                        <Code>A__BZ</Code>
+                                    </Attribute>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text xml:lang="de">Platzreservierung möglich</Text>
+                                        </UserText>
+                                        <Code>A___R</Code>
+                                    </Attribute>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text xml:lang="de">Restaurant</Text>
+                                        </UserText>
+                                        <Code>A__WR</Code>
+                                    </Attribute>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text xml:lang="de">VELOS: Reservierung obligatorisch</Text>
+                                        </UserText>
+                                        <Code>A__VR</Code>
+                                    </Attribute>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text xml:lang="de">Aussteigeseite: Links</Text>
+                                        </UserText>
+                                        <Code>ojp91006HR_InfoCall529_111055_1</Code>
+                                    </Attribute>
+                                    <SituationFullRefs>
+                                        <SituationFullRef>
+                                            <siri:ParticipantRef>ski-ddip-out-sx_test</siri:ParticipantRef>
+                                            <siri:SituationNumber>ch:1:sstid:100001:dccd662a-e519-468b-b06b-1fdb25727282-1</siri:SituationNumber>
+                                        </SituationFullRef>
+                                        <SituationFullRef>
+                                            <siri:ParticipantRef>ski-ddip-out-sx_test</siri:ParticipantRef>
+                                            <siri:SituationNumber>ch:1:sstid:100001:dfc1dfd3-bbe0-441c-89df-7a309eb7b358-1</siri:SituationNumber>
+                                        </SituationFullRef>
+                                    </SituationFullRefs>
+                                </Service>
+                            </TimedLeg>
+                        </Leg>
+                    </Trip>
+                </TripResult>
+                <TripResult>
+                    <Id>ID-0C110E97-75F6-4FAE-B57C-965E165D30B7</Id>
+                    <Trip>
+                        <Id>ID-0C110E97-75F6-4FAE-B57C-965E165D30B7</Id>
+                        <Duration>PT1H31M6S</Duration>
+                        <StartTime>2024-08-09T18:34:54Z</StartTime>
+                        <EndTime>2024-08-09T20:06:00Z</EndTime>
+                        <Transfers>1</Transfers>
+                        <Leg>
+                            <Id>1</Id>
+                            <Duration>PT21M6S</Duration>
+                            <TimedLeg>
+                                <LegBoard>
+                                    <siri:StopPointRef>ch:1:sloid:4100:0:54</siri:StopPointRef>
+                                    <StopPointName>
+                                        <Text xml:lang="de">Fribourg/Freiburg</Text>
+                                    </StopPointName>
+                                    <PlannedQuay>
+                                        <Text xml:lang="de">4</Text>
+                                    </PlannedQuay>
+                                    <EstimatedQuay>
+                                        <Text xml:lang="de">4</Text>
+                                    </EstimatedQuay>
+                                    <NameSuffix>
+                                        <Text xml:lang="de">NO_DATA</Text>
+                                    </NameSuffix>
+                                    <ServiceDeparture>
+                                        <TimetabledTime>2024-08-09T18:34:00Z</TimetabledTime>
+                                        <EstimatedTime>2024-08-09T18:34:54Z</EstimatedTime>
+                                    </ServiceDeparture>
+                                    <Order>1</Order>
+                                </LegBoard>
+                                <LegAlight>
+                                    <siri:StopPointRef>ch:1:sloid:7000:5:10</siri:StopPointRef>
+                                    <StopPointName>
+                                        <Text xml:lang="de">Bern</Text>
+                                    </StopPointName>
+                                    <NameSuffix>
+                                        <Text xml:lang="de">NO_DATA</Text>
+                                    </NameSuffix>
+                                    <PlannedQuay>
+                                        <Text xml:lang="de">10</Text>
+                                    </PlannedQuay>
+                                    <EstimatedQuay>
+                                        <Text xml:lang="de">10</Text>
+                                    </EstimatedQuay>
+                                    <ServiceArrival>
+                                        <TimetabledTime>2024-08-09T18:56:00Z</TimetabledTime>
+                                        <EstimatedTime>2024-08-09T18:56:00Z</EstimatedTime>
+                                    </ServiceArrival>
+                                    <Order>2</Order>
+                                </LegAlight>
+                                <Service>
+                                    <Mode>
+                                        <PtMode>rail</PtMode>
+                                        <siri:RailSubmode>regionalRail</siri:RailSubmode>
+                                        <Name>
+                                            <Text xml:lang="de">Zug</Text>
+                                        </Name>
+                                        <ShortName>
+                                            <Text xml:lang="de">IR</Text>
+                                        </ShortName>
+                                    </Mode>
+                                    <ConventionalModeOfOperation>scheduled</ConventionalModeOfOperation>
+                                    <TrainNumber>2535</TrainNumber>
+                                    <siri:LineRef>ojp:91015:B</siri:LineRef>
+                                    <siri:OperatorRef>11</siri:OperatorRef>
+                                    <PublicCode>InterRegio</PublicCode>
+                                    <PublishedServiceName>
+                                        <Text xml:lang="de">IR15</Text>
+                                    </PublishedServiceName>
+                                    <ProductCategory>
+                                        <Name>
+                                            <Text xml:lang="de">Zug</Text>
+                                        </Name>
+                                        <ShortName>
+                                            <Text xml:lang="de">IR</Text>
+                                        </ShortName>
+                                        <ProductCategoryRef>1</ProductCategoryRef>
+                                    </ProductCategory>
+                                    <siri:DirectionRef>H</siri:DirectionRef>
+                                    <OperatingDayRef>2024-08-09</OperatingDayRef>
+                                    <DestinationStopPointRef>8505000</DestinationStopPointRef>
+                                    <OriginText>
+                                        <Text xml:lang="de">n/a</Text>
+                                    </OriginText>
+                                    <DestinationText>
+                                        <Text xml:lang="de">Luzern</Text>
+                                    </DestinationText>
+                                    <JourneyRef>ch:1:sjyid:100001:2535-003</JourneyRef>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text xml:lang="de">Gratis-Internet mit der App SBB FreeSurf</Text>
+                                        </UserText>
+                                        <Code>A__FS</Code>
+                                    </Attribute>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text xml:lang="de">Businesszone in 1. Klasse</Text>
+                                        </UserText>
+                                        <Code>A__BZ</Code>
+                                    </Attribute>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text xml:lang="de">Aussteigeseite: Links</Text>
+                                        </UserText>
+                                        <Code>ojp91015BH_InfoCall157_109019_1</Code>
+                                    </Attribute>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text xml:lang="de">Aussteigeseite: Rechts</Text>
+                                        </UserText>
+                                        <Code>ojp91015BH_InfoCall157_111055_1</Code>
+                                    </Attribute>
+                                    <SituationFullRefs>
+                                        <SituationFullRef>
+                                            <siri:ParticipantRef>ski-ddip-out-sx_test</siri:ParticipantRef>
+                                            <siri:SituationNumber>ch:1:sstid:100001:dccd662a-e519-468b-b06b-1fdb25727282-1</siri:SituationNumber>
+                                        </SituationFullRef>
+                                    </SituationFullRefs>
+                                </Service>
+                            </TimedLeg>
+                        </Leg>
+                        <Leg>
+                            <Id>2</Id>
+                            <Duration>PT6M</Duration>
+                            <TransferLeg>
+                                <TransferType>walk</TransferType>
+                                <LegStart>
+                                    <siri:StopPointRef>8507000</siri:StopPointRef>
+                                    <Name>
+                                        <Text xml:lang="de">Bern</Text>
+                                    </Name>
+                                </LegStart>
+                                <LegEnd>
+                                    <siri:StopPointRef>8507000</siri:StopPointRef>
+                                    <Name>
+                                        <Text xml:lang="de">Bern</Text>
+                                    </Name>
+                                </LegEnd>
+                                <Duration>PT6M</Duration>
+                            </TransferLeg>
+                        </Leg>
+                        <Leg>
+                            <Id>3</Id>
+                            <Duration>PT1H1M</Duration>
+                            <TimedLeg>
+                                <LegBoard>
+                                    <siri:StopPointRef>ch:1:sloid:7000:2:4</siri:StopPointRef>
+                                    <StopPointName>
+                                        <Text xml:lang="de">Bern</Text>
+                                    </StopPointName>
+                                    <PlannedQuay>
+                                        <Text xml:lang="de">4</Text>
+                                    </PlannedQuay>
+                                    <EstimatedQuay>
+                                        <Text xml:lang="de">4</Text>
+                                    </EstimatedQuay>
+                                    <NameSuffix>
+                                        <Text xml:lang="de">NO_DATA</Text>
+                                    </NameSuffix>
+                                    <ServiceDeparture>
+                                        <TimetabledTime>2024-08-09T19:04:00Z</TimetabledTime>
+                                        <EstimatedTime>2024-08-09T19:05:00Z</EstimatedTime>
+                                    </ServiceDeparture>
+                                    <Order>1</Order>
+                                </LegBoard>
+                                <LegIntermediate>
+                                    <siri:StopPointRef>ch:1:sloid:218:4:7</siri:StopPointRef>
+                                    <StopPointName>
+                                        <Text xml:lang="de">Olten</Text>
+                                    </StopPointName>
+                                    <NameSuffix>
+                                        <Text xml:lang="de">NO_DATA</Text>
+                                    </NameSuffix>
+                                    <PlannedQuay>
+                                        <Text xml:lang="de">7</Text>
+                                    </PlannedQuay>
+                                    <EstimatedQuay>
+                                        <Text xml:lang="de">7</Text>
+                                    </EstimatedQuay>
+                                    <ServiceArrival>
+                                        <TimetabledTime>2024-08-09T19:30:00Z</TimetabledTime>
+                                        <EstimatedTime>2024-08-09T19:30:54Z</EstimatedTime>
+                                    </ServiceArrival>
+                                    <ServiceDeparture>
+                                        <TimetabledTime>2024-08-09T19:33:00Z</TimetabledTime>
+                                        <EstimatedTime>2024-08-09T19:33:42Z</EstimatedTime>
+                                    </ServiceDeparture>
+                                    <Order>2</Order>
+                                </LegIntermediate>
+                                <LegIntermediate>
+                                    <siri:StopPointRef>ch:1:sloid:23:2:4</siri:StopPointRef>
+                                    <StopPointName>
+                                        <Text xml:lang="de">Liestal</Text>
+                                    </StopPointName>
+                                    <NameSuffix>
+                                        <Text xml:lang="de">NO_DATA</Text>
+                                    </NameSuffix>
+                                    <PlannedQuay>
+                                        <Text xml:lang="de">4</Text>
+                                    </PlannedQuay>
+                                    <EstimatedQuay>
+                                        <Text xml:lang="de">4</Text>
+                                    </EstimatedQuay>
+                                    <ServiceArrival>
+                                        <TimetabledTime>2024-08-09T19:53:00Z</TimetabledTime>
+                                        <EstimatedTime>2024-08-09T19:53:30Z</EstimatedTime>
+                                    </ServiceArrival>
+                                    <ServiceDeparture>
+                                        <TimetabledTime>2024-08-09T19:55:00Z</TimetabledTime>
+                                        <EstimatedTime>2024-08-09T19:55:30Z</EstimatedTime>
+                                    </ServiceDeparture>
+                                    <Order>3</Order>
+                                </LegIntermediate>
+                                <LegAlight>
+                                    <siri:StopPointRef>ch:1:sloid:10:5:9</siri:StopPointRef>
+                                    <StopPointName>
+                                        <Text xml:lang="de">Basel SBB</Text>
+                                    </StopPointName>
+                                    <NameSuffix>
+                                        <Text xml:lang="de">NO_DATA</Text>
+                                    </NameSuffix>
+                                    <PlannedQuay>
+                                        <Text xml:lang="de">9</Text>
+                                    </PlannedQuay>
+                                    <EstimatedQuay>
+                                        <Text xml:lang="de">9</Text>
+                                    </EstimatedQuay>
+                                    <ServiceArrival>
+                                        <TimetabledTime>2024-08-09T20:06:00Z</TimetabledTime>
+                                        <EstimatedTime>2024-08-09T20:06:00Z</EstimatedTime>
+                                    </ServiceArrival>
+                                    <Order>5</Order>
+                                </LegAlight>
+                                <Service>
+                                    <Mode>
+                                        <PtMode>rail</PtMode>
+                                        <siri:RailSubmode>interregionalRail</siri:RailSubmode>
+                                        <Name>
+                                            <Text xml:lang="de">Zug</Text>
+                                        </Name>
+                                        <ShortName>
+                                            <Text xml:lang="de">IC</Text>
+                                        </ShortName>
+                                    </Mode>
+                                    <ConventionalModeOfOperation>scheduled</ConventionalModeOfOperation>
+                                    <TrainNumber>986</TrainNumber>
+                                    <siri:LineRef>ojp:91006:H</siri:LineRef>
+                                    <siri:OperatorRef>11</siri:OperatorRef>
+                                    <PublicCode>InterCity</PublicCode>
+                                    <PublishedServiceName>
+                                        <Text xml:lang="de">IC6</Text>
+                                    </PublishedServiceName>
+                                    <ProductCategory>
+                                        <Name>
+                                            <Text xml:lang="de">Zug</Text>
+                                        </Name>
+                                        <ShortName>
+                                            <Text xml:lang="de">IC</Text>
+                                        </ShortName>
+                                        <ProductCategoryRef>23</ProductCategoryRef>
+                                    </ProductCategory>
+                                    <siri:DirectionRef>R</siri:DirectionRef>
+                                    <OperatingDayRef>2024-08-09</OperatingDayRef>
+                                    <DestinationStopPointRef>8500010</DestinationStopPointRef>
+                                    <OriginText>
+                                        <Text xml:lang="de">n/a</Text>
+                                    </OriginText>
+                                    <DestinationText>
+                                        <Text xml:lang="de">Basel SBB</Text>
+                                    </DestinationText>
+                                    <JourneyRef>ch:1:sjyid:100001:986-001</JourneyRef>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text xml:lang="de">Fahrplanänderung</Text>
+                                        </UserText>
+                                        <Code>A__BA</Code>
+                                    </Attribute>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text xml:lang="de">Ruhezone in 1. Klasse</Text>
+                                        </UserText>
+                                        <Code>A__RZ</Code>
+                                    </Attribute>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text xml:lang="de">Gratis-Internet mit der App SBB FreeSurf</Text>
+                                        </UserText>
+                                        <Code>A__FS</Code>
+                                    </Attribute>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text xml:lang="de">Familienwagen mit Spielplatz</Text>
+                                        </UserText>
+                                        <Code>A__FA</Code>
+                                    </Attribute>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text xml:lang="de">Businesszone in 1. Klasse</Text>
+                                        </UserText>
+                                        <Code>A__BZ</Code>
+                                    </Attribute>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text xml:lang="de">Platzreservierung möglich</Text>
+                                        </UserText>
+                                        <Code>A___R</Code>
+                                    </Attribute>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text xml:lang="de">VELOS: Reservierung obligatorisch</Text>
+                                        </UserText>
+                                        <Code>A__VR</Code>
+                                    </Attribute>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text xml:lang="de">Aussteigeseite: Links</Text>
+                                        </UserText>
+                                        <Code>ojp91006HR_InfoCall424_111055_1</Code>
+                                    </Attribute>
+                                    <SituationFullRefs>
+                                        <SituationFullRef>
+                                            <siri:ParticipantRef>ski-ddip-out-sx_test</siri:ParticipantRef>
+                                            <siri:SituationNumber>ch:1:sstid:100001:dccd662a-e519-468b-b06b-1fdb25727282-1</siri:SituationNumber>
+                                        </SituationFullRef>
+                                        <SituationFullRef>
+                                            <siri:ParticipantRef>ski-ddip-out-sx_test</siri:ParticipantRef>
+                                            <siri:SituationNumber>ch:1:sstid:100001:dfc1dfd3-bbe0-441c-89df-7a309eb7b358-1</siri:SituationNumber>
+                                        </SituationFullRef>
+                                    </SituationFullRefs>
+                                </Service>
+                            </TimedLeg>
+                        </Leg>
+                    </Trip>
+                </TripResult>
+                <TripResult>
+                    <Id>ID-4E4E3DAB-D205-4D12-9C83-12E401B4CF5C</Id>
+                    <Trip>
+                        <Id>ID-4E4E3DAB-D205-4D12-9C83-12E401B4CF5C</Id>
+                        <Duration>PT1H34M12S</Duration>
+                        <StartTime>2024-08-09T19:04:48Z</StartTime>
+                        <EndTime>2024-08-09T20:39:00Z</EndTime>
+                        <Transfers>1</Transfers>
+                        <Leg>
+                            <Id>1</Id>
+                            <Duration>PT21M12S</Duration>
+                            <TimedLeg>
+                                <LegBoard>
+                                    <siri:StopPointRef>ch:1:sloid:4100:0:54</siri:StopPointRef>
+                                    <StopPointName>
+                                        <Text xml:lang="de">Fribourg/Freiburg</Text>
+                                    </StopPointName>
+                                    <PlannedQuay>
+                                        <Text xml:lang="de">4</Text>
+                                    </PlannedQuay>
+                                    <EstimatedQuay>
+                                        <Text xml:lang="de">4</Text>
+                                    </EstimatedQuay>
+                                    <NameSuffix>
+                                        <Text xml:lang="de">NO_DATA</Text>
+                                    </NameSuffix>
+                                    <ServiceDeparture>
+                                        <TimetabledTime>2024-08-09T19:04:00Z</TimetabledTime>
+                                        <EstimatedTime>2024-08-09T19:04:48Z</EstimatedTime>
+                                    </ServiceDeparture>
+                                    <Order>1</Order>
+                                </LegBoard>
+                                <LegAlight>
+                                    <siri:StopPointRef>ch:1:sloid:7000:4:8</siri:StopPointRef>
+                                    <StopPointName>
+                                        <Text xml:lang="de">Bern</Text>
+                                    </StopPointName>
+                                    <NameSuffix>
+                                        <Text xml:lang="de">NO_DATA</Text>
+                                    </NameSuffix>
+                                    <PlannedQuay>
+                                        <Text xml:lang="de">8</Text>
+                                    </PlannedQuay>
+                                    <EstimatedQuay>
+                                        <Text xml:lang="de">8</Text>
+                                    </EstimatedQuay>
+                                    <ServiceArrival>
+                                        <TimetabledTime>2024-08-09T19:26:00Z</TimetabledTime>
+                                        <EstimatedTime>2024-08-09T19:26:00Z</EstimatedTime>
+                                    </ServiceArrival>
+                                    <Order>2</Order>
+                                </LegAlight>
+                                <Service>
+                                    <Mode>
+                                        <PtMode>rail</PtMode>
+                                        <siri:RailSubmode>interregionalRail</siri:RailSubmode>
+                                        <Name>
+                                            <Text xml:lang="de">Zug</Text>
+                                        </Name>
+                                        <ShortName>
+                                            <Text xml:lang="de">IC</Text>
+                                        </ShortName>
+                                    </Mode>
+                                    <ConventionalModeOfOperation>scheduled</ConventionalModeOfOperation>
+                                    <TrainNumber>735</TrainNumber>
+                                    <siri:LineRef>ojp:91001:D</siri:LineRef>
+                                    <siri:OperatorRef>11</siri:OperatorRef>
+                                    <PublicCode>InterCity</PublicCode>
+                                    <PublishedServiceName>
+                                        <Text xml:lang="de">IC1</Text>
+                                    </PublishedServiceName>
+                                    <ProductCategory>
+                                        <Name>
+                                            <Text xml:lang="de">Zug</Text>
+                                        </Name>
+                                        <ShortName>
+                                            <Text xml:lang="de">IC</Text>
+                                        </ShortName>
+                                        <ProductCategoryRef>23</ProductCategoryRef>
+                                    </ProductCategory>
+                                    <siri:DirectionRef>H</siri:DirectionRef>
+                                    <OperatingDayRef>2024-08-09</OperatingDayRef>
+                                    <DestinationStopPointRef>8506302</DestinationStopPointRef>
+                                    <OriginText>
+                                        <Text xml:lang="de">n/a</Text>
+                                    </OriginText>
+                                    <DestinationText>
+                                        <Text xml:lang="de">St. Gallen</Text>
+                                    </DestinationText>
+                                    <JourneyRef>ch:1:sjyid:100001:735-001</JourneyRef>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text xml:lang="de">Familienwagen mit Spielplatz</Text>
+                                        </UserText>
+                                        <Code>A__FA</Code>
+                                    </Attribute>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text xml:lang="de">Businesszone in 1. Klasse</Text>
+                                        </UserText>
+                                        <Code>A__BZ</Code>
+                                    </Attribute>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text xml:lang="de">Gratis-Internet mit der App SBB FreeSurf</Text>
+                                        </UserText>
+                                        <Code>A__FS</Code>
+                                    </Attribute>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text xml:lang="de">Ruhezone in 1. Klasse</Text>
+                                        </UserText>
+                                        <Code>A__RZ</Code>
+                                    </Attribute>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text xml:lang="de">Platzreservierung möglich</Text>
+                                        </UserText>
+                                        <Code>A___R</Code>
+                                    </Attribute>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text xml:lang="de">VELOS: Reservierung obligatorisch</Text>
+                                        </UserText>
+                                        <Code>A__VR</Code>
+                                    </Attribute>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text xml:lang="de">Aussteigeseite: Links</Text>
+                                        </UserText>
+                                        <Code>ojp91001DH_InfoCall192_109019_1</Code>
+                                    </Attribute>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text xml:lang="de">Aussteigeseite: Rechts</Text>
+                                        </UserText>
+                                        <Code>ojp91001DH_InfoCall192_111055_1</Code>
+                                    </Attribute>
+                                    <SituationFullRefs>
+                                        <SituationFullRef>
+                                            <siri:ParticipantRef>ski-ddip-out-sx_test</siri:ParticipantRef>
+                                            <siri:SituationNumber>ch:1:sstid:100001:dccd662a-e519-468b-b06b-1fdb25727282-1</siri:SituationNumber>
+                                        </SituationFullRef>
+                                    </SituationFullRefs>
+                                </Service>
+                            </TimedLeg>
+                        </Leg>
+                        <Leg>
+                            <Id>2</Id>
+                            <Duration>PT6M</Duration>
+                            <TransferLeg>
+                                <TransferType>walk</TransferType>
+                                <LegStart>
+                                    <siri:StopPointRef>8507000</siri:StopPointRef>
+                                    <Name>
+                                        <Text xml:lang="de">Bern</Text>
+                                    </Name>
+                                </LegStart>
+                                <LegEnd>
+                                    <siri:StopPointRef>8507000</siri:StopPointRef>
+                                    <Name>
+                                        <Text xml:lang="de">Bern</Text>
+                                    </Name>
+                                </LegEnd>
+                                <Duration>PT6M</Duration>
+                            </TransferLeg>
+                        </Leg>
+                        <Leg>
+                            <Id>3</Id>
+                            <Duration>PT1H</Duration>
+                            <TimedLeg>
+                                <LegBoard>
+                                    <siri:StopPointRef>ch:1:sloid:7000:2:4</siri:StopPointRef>
+                                    <StopPointName>
+                                        <Text xml:lang="de">Bern</Text>
+                                    </StopPointName>
+                                    <PlannedQuay>
+                                        <Text xml:lang="de">4</Text>
+                                    </PlannedQuay>
+                                    <EstimatedQuay>
+                                        <Text xml:lang="de">4</Text>
+                                    </EstimatedQuay>
+                                    <NameSuffix>
+                                        <Text xml:lang="de">NO_DATA</Text>
+                                    </NameSuffix>
+                                    <ServiceDeparture>
+                                        <TimetabledTime>2024-08-09T19:38:00Z</TimetabledTime>
+                                        <EstimatedTime>2024-08-09T19:39:00Z</EstimatedTime>
+                                    </ServiceDeparture>
+                                    <Order>1</Order>
+                                </LegBoard>
+                                <LegIntermediate>
+                                    <siri:StopPointRef>ch:1:sloid:218:4:7</siri:StopPointRef>
+                                    <StopPointName>
+                                        <Text xml:lang="de">Olten</Text>
+                                    </StopPointName>
+                                    <NameSuffix>
+                                        <Text xml:lang="de">NO_DATA</Text>
+                                    </NameSuffix>
+                                    <PlannedQuay>
+                                        <Text xml:lang="de">7</Text>
+                                    </PlannedQuay>
+                                    <EstimatedQuay>
+                                        <Text xml:lang="de">7</Text>
+                                    </EstimatedQuay>
+                                    <ServiceArrival>
+                                        <TimetabledTime>2024-08-09T20:04:00Z</TimetabledTime>
+                                        <EstimatedTime>2024-08-09T20:04:42Z</EstimatedTime>
+                                    </ServiceArrival>
+                                    <ServiceDeparture>
+                                        <TimetabledTime>2024-08-09T20:06:00Z</TimetabledTime>
+                                        <EstimatedTime>2024-08-09T20:06:54Z</EstimatedTime>
+                                    </ServiceDeparture>
+                                    <Order>2</Order>
+                                </LegIntermediate>
+                                <LegIntermediate>
+                                    <siri:StopPointRef>ch:1:sloid:23:2:4</siri:StopPointRef>
+                                    <StopPointName>
+                                        <Text xml:lang="de">Liestal</Text>
+                                    </StopPointName>
+                                    <NameSuffix>
+                                        <Text xml:lang="de">NO_DATA</Text>
+                                    </NameSuffix>
+                                    <PlannedQuay>
+                                        <Text xml:lang="de">4</Text>
+                                    </PlannedQuay>
+                                    <EstimatedQuay>
+                                        <Text xml:lang="de">4</Text>
+                                    </EstimatedQuay>
+                                    <ServiceArrival>
+                                        <TimetabledTime>2024-08-09T20:26:00Z</TimetabledTime>
+                                        <EstimatedTime>2024-08-09T20:26:30Z</EstimatedTime>
+                                    </ServiceArrival>
+                                    <ServiceDeparture>
+                                        <TimetabledTime>2024-08-09T20:27:00Z</TimetabledTime>
+                                        <EstimatedTime>2024-08-09T20:28:24Z</EstimatedTime>
+                                    </ServiceDeparture>
+                                    <Order>3</Order>
+                                </LegIntermediate>
+                                <LegAlight>
+                                    <siri:StopPointRef>ch:1:sloid:10:5:9</siri:StopPointRef>
+                                    <StopPointName>
+                                        <Text xml:lang="de">Basel SBB</Text>
+                                    </StopPointName>
+                                    <NameSuffix>
+                                        <Text xml:lang="de">NO_DATA</Text>
+                                    </NameSuffix>
+                                    <PlannedQuay>
+                                        <Text xml:lang="de">9</Text>
+                                    </PlannedQuay>
+                                    <EstimatedQuay>
+                                        <Text xml:lang="de">9</Text>
+                                    </EstimatedQuay>
+                                    <ServiceArrival>
+                                        <TimetabledTime>2024-08-09T20:39:00Z</TimetabledTime>
+                                        <EstimatedTime>2024-08-09T20:39:00Z</EstimatedTime>
+                                    </ServiceArrival>
+                                    <Order>5</Order>
+                                </LegAlight>
+                                <Service>
+                                    <Mode>
+                                        <PtMode>rail</PtMode>
+                                        <siri:RailSubmode>international</siri:RailSubmode>
+                                        <Name>
+                                            <Text xml:lang="de">Zug</Text>
+                                        </Name>
+                                        <ShortName>
+                                            <Text xml:lang="de">EC</Text>
+                                        </ShortName>
+                                    </Mode>
+                                    <ConventionalModeOfOperation>scheduled</ConventionalModeOfOperation>
+                                    <TrainNumber>56</TrainNumber>
+                                    <siri:LineRef>ojp:9103I:Y</siri:LineRef>
+                                    <siri:OperatorRef>11</siri:OperatorRef>
+                                    <PublicCode>EuroCity</PublicCode>
+                                    <PublishedServiceName>
+                                        <Text xml:lang="de">EC</Text>
+                                    </PublishedServiceName>
+                                    <ProductCategory>
+                                        <Name>
+                                            <Text xml:lang="de">Zug</Text>
+                                        </Name>
+                                        <ShortName>
+                                            <Text xml:lang="de">EC</Text>
+                                        </ShortName>
+                                        <ProductCategoryRef>21</ProductCategoryRef>
+                                    </ProductCategory>
+                                    <siri:DirectionRef>H</siri:DirectionRef>
+                                    <OperatingDayRef>2024-08-09</OperatingDayRef>
+                                    <DestinationStopPointRef>8500010</DestinationStopPointRef>
+                                    <OriginText>
+                                        <Text xml:lang="de">n/a</Text>
+                                    </OriginText>
+                                    <DestinationText>
+                                        <Text xml:lang="de">Basel SBB</Text>
+                                    </DestinationText>
+                                    <JourneyRef>ch:1:sjyid:100001:56-008</JourneyRef>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text xml:lang="de">Fahrplanänderung</Text>
+                                        </UserText>
+                                        <Code>A__BA</Code>
+                                    </Attribute>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text xml:lang="de">Familienzone ohne Spielplatz</Text>
+                                        </UserText>
+                                        <Code>A__FZ</Code>
+                                    </Attribute>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text xml:lang="de">Gratis-Internet mit der App SBB FreeSurf</Text>
+                                        </UserText>
+                                        <Code>A__FS</Code>
+                                    </Attribute>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text xml:lang="de">Neigezug</Text>
+                                        </UserText>
+                                        <Code>A__TT</Code>
+                                    </Attribute>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text xml:lang="de">Aussteigeseite: Links</Text>
+                                        </UserText>
+                                        <Code>ojp9103IYH_InfoCall32_111055_1</Code>
+                                    </Attribute>
+                                    <SituationFullRefs>
+                                        <SituationFullRef>
+                                            <siri:ParticipantRef>ski-ddip-out-sx_test</siri:ParticipantRef>
+                                            <siri:SituationNumber>ch:1:sstid:100001:dccd662a-e519-468b-b06b-1fdb25727282-1</siri:SituationNumber>
+                                        </SituationFullRef>
+                                        <SituationFullRef>
+                                            <siri:ParticipantRef>ski-ddip-out-sx_test</siri:ParticipantRef>
+                                            <siri:SituationNumber>ch:1:sstid:100001:dfc1dfd3-bbe0-441c-89df-7a309eb7b358-1</siri:SituationNumber>
+                                        </SituationFullRef>
+                                    </SituationFullRefs>
+                                </Service>
+                            </TimedLeg>
+                        </Leg>
+                    </Trip>
+                </TripResult>
+            </OJPTripDelivery>
+        </siri:ServiceDelivery>
+    </OJPResponse>
+</OJP>

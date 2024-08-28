@@ -117,6 +117,29 @@ public extension OJPv2 {
         }
     }
 
+    /// https://vdvde.github.io/OJP/develop/documentation-tables/siri.html#type_siri__InfoLinkStructure
+    struct InfoLink: Codable, Sendable, Identifiable {
+        public let url: URL
+        /// if a `label` is present, display that instead of the url. It will contain a url escaped `<a>` tag.
+        public let label: String?
+
+        public var id: String { url.absoluteString + (label ?? "") }
+
+        public enum CodingKeys: String, CodingKey {
+            case url = "siri:Uri"
+            case label = "siri:Label"
+        }
+
+        public init(from decoder: any Decoder) throws {
+            let container = try decoder.container(keyedBy: CodingKeys.self)
+            url = try container.decode(URL.self, forKey: .url)
+            label = try container.decodeIfPresent(String.self, forKey: .label)?
+                .replacingOccurrences(of: "&lt;", with: "<")
+                .replacingOccurrences(of: "&gt;", with: ">")
+        }
+    }
+
+    /// https://vdvde.github.io/OJP/develop/documentation-tables/siri.html#type_siri__TextualContentStructure
     struct TextualContent: Codable, Sendable {
         public let summaryContent: SummaryContent
         public let reasonContent: ReasonContent?
@@ -125,6 +148,7 @@ public extension OJPv2 {
         public let recommendationContents: [RecommendationContent]
         public let durationContent: DurationContent?
         public let remarkContents: [RemarkContent]
+        public let infoLinks: [InfoLink]
 
         public enum CodingKeys: String, CodingKey {
             case summaryContent = "siri:SummaryContent"
@@ -134,6 +158,7 @@ public extension OJPv2 {
             case recommendationContents = "siri:RecommendationContent"
             case durationContent = "siri:DurationContent"
             case remarkContents = "siri:RemarkContent"
+            case infoLinks = "siri:InfoLink"
         }
 
         public init(from decoder: any Decoder) throws {
@@ -146,6 +171,7 @@ public extension OJPv2 {
             recommendationContents = (try? container.decode([OJPv2.RecommendationContent].self, forKey: CodingKeys.recommendationContents)) ?? []
             durationContent = try container.decodeIfPresent(OJPv2.DurationContent.self, forKey: CodingKeys.durationContent)
             remarkContents = (try? container.decodeIfPresent([OJPv2.RemarkContent].self, forKey: CodingKeys.remarkContents)) ?? []
+            infoLinks = (try? container.decodeIfPresent([OJPv2.InfoLink].self, forKey: CodingKeys.infoLinks)) ?? []
         }
     }
 

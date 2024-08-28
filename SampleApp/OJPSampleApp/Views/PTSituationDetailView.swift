@@ -94,6 +94,18 @@ struct PTSituationDetailView: View {
                                 Text(dc.remarkText)
                             }
                         }
+                        ForEach(tc.infoLinks, id: \.id) { link in
+                            GridRow {
+                                Text("Link")
+                                if let label = link.label {
+                                    Text(label)
+                                } else {
+                                    Link(destination: link.url) {
+                                        Text("Additional Infos")
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -105,6 +117,21 @@ struct PTSituationDetailView: View {
     AsyncView(
         task: {
             try await PreviewMocker.shared.loadTrips(xmlFileName: "tr-fribourg-berne")
+        },
+        content: { tripDelivery in
+            if let ptSituation = tripDelivery.ptSituations.first {
+                PTSituationDetailView(ptSituation: ptSituation)
+            } else {
+                Text("No Situation")
+            }
+        }
+    )
+}
+
+#Preview("Info Link") {
+    AsyncView(
+        task: {
+            try await PreviewMocker.shared.loadTrips(xmlFileName: "tr-fribourg-basel-fake-infolink")
         },
         content: { tripDelivery in
             if let ptSituation = tripDelivery.ptSituations.first {
