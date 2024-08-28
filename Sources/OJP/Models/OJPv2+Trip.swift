@@ -731,6 +731,7 @@ public extension OJPv2 {
     }
 
     /// https://vdvde.github.io/OJP/develop/documentation-tables/ojp.html#type_ojp__ServiceStatusGroup
+    /// - WARNING: This is information currently not provided by OJP in Switzerland. See comment on [GitHub](https://github.com/openTdataCH/ojp-sdk/issues/41#issuecomment-2304431303)
     struct ServiceStatusGroup: Codable, Sendable {
         public let unplanned: Bool
         public let cancelled: Bool
@@ -780,6 +781,7 @@ public extension OJPv2 {
         public let destinationText: InternationalText?
         public let destinationStopPointRef: String?
         public let situationFullRefs: SituationFullRefs?
+        /// - WARNING: `serviceStatus` currently not provided by OJP in Switzerland. See comment on [GitHub](https://github.com/openTdataCH/ojp-sdk/issues/41#issuecomment-2304431303)
         public let serviceStatus: ServiceStatusGroup
 
         public enum CodingKeys: String, CodingKey {
