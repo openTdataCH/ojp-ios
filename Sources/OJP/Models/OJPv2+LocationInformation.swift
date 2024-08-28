@@ -271,7 +271,7 @@ public extension OJPv2 {
     }
 
     struct PlaceParam: Codable, Sendable {
-        public init(type: [PlaceType], numberOfResults: Int = 10, includePtModes: Bool = true) {
+        public init(type: [PlaceType], numberOfResults: Int = 40, includePtModes: Bool = true) {
             self.type = type
             self.numberOfResults = numberOfResults
             self.includePtModes = includePtModes
