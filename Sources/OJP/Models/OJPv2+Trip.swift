@@ -424,6 +424,7 @@ public extension OJPv2 {
                     h.combine(continuousLeg.legEnd)
                 case let .timed(timedLeg):
                     h.combine(timedLeg.service.publishedServiceName.text)
+                    h.combine(timedLeg.service.destinationText?.text)
                     h.combine(timedLeg.legBoard.stopPointName.text)
                     h.combine(timedLeg.legBoard.serviceDeparture.timetabledTime)
 
