@@ -341,7 +341,7 @@ public extension OJPv2 {
         }
     }
 
-    /// https://vdvde.github.io/OJP/develop/documentation-tables/ojp.html#type_ojp__TripStatusGroup
+    /// https://vdvde.github.io/OJP/develop/documentation-tables/ojp.html#group_ojp__TripStatusGroup
     /// - Note: OJP currently doesn't return `unplanned` or `delayed`
     struct TripStatus: Codable, Sendable {
 //        public var unplanned: Bool
@@ -573,7 +573,7 @@ public extension OJPv2 {
 
     /// https://vdvde.github.io/OJP/develop/documentation-tables/ojp.html#type_ojp__LegBoardStructure
     struct LegBoard: Codable, Sendable {
-        /// https://vdvde.github.io/OJP/develop/documentation-tables/ojp.html#type_ojp__StopPointGroup
+        /// https://vdvde.github.io/OJP/develop/documentation-tables/ojp.html#group_ojp__StopPointGroup
         public let stopPointRef: String
         public let stopPointName: InternationalText
         public let nameSuffix: InternationalText?
@@ -611,7 +611,7 @@ public extension OJPv2 {
 
     /// https://vdvde.github.io/OJP/develop/documentation-tables/ojp.html#type_ojp__LegIntermediateStructure
     struct LegIntermediate: Codable, Sendable {
-        /// https://vdvde.github.io/OJP/develop/documentation-tables/ojp.html#type_ojp__StopPointGroup
+        /// https://vdvde.github.io/OJP/develop/documentation-tables/ojp.html#group_ojp__StopPointGroup
         public let stopPointRef: String
         public let stopPointName: InternationalText
         public let nameSuffix: InternationalText?
@@ -649,7 +649,7 @@ public extension OJPv2 {
 
     /// https://vdvde.github.io/OJP/develop/documentation-tables/ojp.html#type_ojp__LegAlightStructure
     struct LegAlight: Codable, Sendable {
-        /// https://vdvde.github.io/OJP/develop/documentation-tables/ojp.html#type_ojp__StopPointGroup
+        /// https://vdvde.github.io/OJP/develop/documentation-tables/ojp.html#group_ojp__StopPointGroup
         public let stopPointRef: String
         public let stopPointName: InternationalText
         public let nameSuffix: InternationalText?
@@ -685,7 +685,7 @@ public extension OJPv2 {
         }
     }
 
-    /// https://vdvde.github.io/OJP/develop/documentation-tables/ojp.html#type_ojp__StopCallStatusGroup
+    /// https://vdvde.github.io/OJP/develop/documentation-tables/ojp.html#group_ojp__StopCallStatusGroup
     struct StopCallStatus: Codable, Sendable {
         public let order: Int?
         public let requestStop: Bool
@@ -757,7 +757,8 @@ public extension OJPv2 {
         }
     }
 
-    /// https://vdvde.github.io/OJP/develop/documentation-tables/ojp.html#type_ojp__ServiceStatusGroup
+    /// https://vdvde.github.io/OJP/develop/documentation-tables/ojp.html#group_ojp__ServiceStatusGroup
+    /// - WARNING: This is information currently not provided by OJP in Switzerland. See comment on [GitHub](https://github.com/openTdataCH/ojp-sdk/issues/41#issuecomment-2304431303)
     struct ServiceStatusGroup: Codable, Sendable {
         public let unplanned: Bool
         public let cancelled: Bool
@@ -807,6 +808,7 @@ public extension OJPv2 {
         public let destinationText: InternationalText?
         public let destinationStopPointRef: String?
         public let situationFullRefs: SituationFullRefs?
+        /// - WARNING: `serviceStatus` currently not provided by OJP in Switzerland. See comment on [GitHub](https://github.com/openTdataCH/ojp-sdk/issues/41#issuecomment-2304431303)
         public let serviceStatus: ServiceStatusGroup
 
         public enum CodingKeys: String, CodingKey {
@@ -1030,7 +1032,7 @@ public extension OJPv2 {
         }
     }
 
-    /// https://vdvde.github.io/OJP/develop/documentation-tables/ojp.html#type_ojp__PlaceRefGroup
+    /// https://vdvde.github.io/OJP/develop/documentation-tables/ojp.html#group_ojp__PlaceRefGroup
     enum PlaceRefChoice: Codable, Sendable {
         case stopPlaceRef(StopPlaceRef)
         case geoPosition(GeoPositionRef)
@@ -1171,7 +1173,7 @@ public extension OJPv2 {
         }
     }
 
-    /// Convenience enum to define [NumberOfResults](https://vdvde.github.io/OJP/develop/documentation-tables/ojp.html#type_ojp__NumberOfResultsGroup)
+    /// Convenience enum to define [NumberOfResults](https://vdvde.github.io/OJP/develop/documentation-tables/ojp.html#group_ojp__NumberOfResultsGroup)
     enum NumberOfResults: Codable, Sendable {
         case before(Int)
         case after(Int)
