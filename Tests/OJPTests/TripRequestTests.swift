@@ -298,6 +298,25 @@ final class TripRequestTests: XCTestCase {
         }
     }
 
+    func testTripNotServicedStopLegAlightBoard() async throws {
+        let xmlData = try TestHelpers.loadXML(xmlFilename: "tr-leg3-cancellation")
+        do {
+            guard case let .trip(tripDelivery) = try await OJPDecoder.parseXML(xmlData).response?.serviceDelivery.delivery else {
+                return XCTFail("unexpected empty")
+            }
+
+            let firstTrip = try XCTUnwrap(tripDelivery.tripResults.first?.trip)
+            if case let .timed(legWithNotServicedStop) = firstTrip.legs[2].legType {
+                let legBoard = legWithNotServicedStop.legBoard
+                let legAlight = legWithNotServicedStop.legAlight
+                XCTAssertEqual(legBoard.stopCallStatus.notServicedStop, true)
+                XCTAssertEqual(legAlight.stopCallStatus.notServicedStop, true)
+            } else {
+                XCTFail()
+            }
+        }
+    }
+
     func testEmptyTripResultEdgeCase() async throws {
         let xmlData = try TestHelpers.loadXML(xmlFilename: "trip-edgecase-empty-tripresult")
         do {

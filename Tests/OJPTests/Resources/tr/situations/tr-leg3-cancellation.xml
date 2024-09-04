@@ -219,9 +219,7 @@
                                 </Service>
                             </TimedLeg>
                         </Leg>
-                        <Cancelled>true</Cancelled>
                     </Trip>
-                </TripResult>
                 </TripResult>
             </OJPTripDelivery>
         </siri:ServiceDelivery>
