@@ -49,10 +49,12 @@ public struct OJPv2: Codable, Sendable {
         case stopEvent(OJPv2.StopEventServiceDelivery)
         case locationInformation(OJPv2.LocationInformationDelivery)
         case trip(OJPv2.TripDelivery)
+        case tripInfo(OJPv2.TripInfoDelivery)
 
         enum CodingKeys: String, CodingKey {
             case locationInformation = "OJPLocationInformationDelivery"
             case trip = "OJPTripDelivery"
+            case tripInfo = "OJPTripInfoDelivery"
             case stopEvent = "OJPStopEventRequest"
         }
 
@@ -72,6 +74,13 @@ public struct OJPv2: Codable, Sendable {
                         forKey: .trip
                     )
                 )
+            } else if container.contains(.tripInfo) {
+                self = try .tripInfo(
+                    container.decode(
+                        TripInfoDelivery.self,
+                        forKey: .tripInfo
+                    )
+                )
             } else {
                 throw OJPSDKError.notImplemented()
             }
@@ -87,11 +96,21 @@ public struct OJPv2: Codable, Sendable {
     }
 
     public struct ServiceRequest: Codable, Sendable {
+        init(requestContext: OJPv2.ServiceRequestContext, requestTimestamp: Date, requestorRef: String, locationInformationRequest: OJPv2.LocationInformationRequest? = nil, tripRequest: OJPv2.TripRequest? = nil, tripInfoRequest: OJPv2.TripInfoRequest? = nil) {
+            self.requestContext = requestContext
+            self.requestTimestamp = requestTimestamp
+            self.requestorRef = requestorRef
+            self.locationInformationRequest = locationInformationRequest
+            self.tripRequest = tripRequest
+            self.tripInfoRequest = tripInfoRequest
+        }
+
         public let requestContext: ServiceRequestContext
         public let requestTimestamp: Date
         public let requestorRef: String
         public let locationInformationRequest: LocationInformationRequest?
         public let tripRequest: TripRequest?
+        public let tripInfoRequest: TripInfoRequest?
 
         public enum CodingKeys: String, CodingKey {
             case requestContext = "siri:ServiceRequestContext"
@@ -99,6 +118,7 @@ public struct OJPv2: Codable, Sendable {
             case requestorRef = "siri:RequestorRef"
             case locationInformationRequest = "OJPLocationInformationRequest"
             case tripRequest = "OJPTripRequest"
+            case tripInfoRequest = "OJPTripInfoRequest"
         }
     }
 

@@ -19,6 +19,7 @@ struct TripDetailView: View {
             if trip.tripStatus.hasIssue {
                 TripStatusLabel(tripStatus: trip.tripStatus)
             }
+
             List(trip.legs) { leg in
                 switch leg.legType {
                 case let .timed(timedLeg):
@@ -28,6 +29,11 @@ struct TripDetailView: View {
                             Text(timedLeg.service.publishedServiceName.text)
                             if let destination = timedLeg.service.destinationText?.text {
                                 Text("→ \(destination)")
+                            }
+                            Button("Load TripInfo") {
+                                Task {
+                                    try await OJP.configured.requestTripInfo(journeyRef: timedLeg.service.journeyRef, operatingDayRef: timedLeg.service.operatingDayRef)
+                                }
                             }
                         }
                         .bold()

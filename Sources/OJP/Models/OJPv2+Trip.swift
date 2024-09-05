@@ -1100,14 +1100,15 @@ public extension OJPv2 {
         }
     }
 
+    /// [Schema documentation on vdvde.github.io](https://vdvde.github.io/OJP/develop/documentation-tables/ojp.html#type_ojp__UseRealtimeDataEnumeration)
+    enum RealtimeData: String, Sendable, Codable {
+        case explanatory
+        case full
+        case none
+    }
+
     /// https://vdvde.github.io/OJP/develop/documentation-tables/ojp.html#type_ojp__TripParamStructure
     struct TripParams: Codable, Sendable {
-        public enum RealtimeData: String, Sendable, Codable {
-            case explanatory
-            case full
-            case none
-        }
-
         public init(
             numberOfResults: NumberOfResults = .minimum(10),
             includeTrackSections: Bool? = nil,

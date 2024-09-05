@@ -2,7 +2,7 @@
 import XCTest
 
 final class LocationRequestTests: XCTestCase {
-    let locationInformationRequest = OJPHelpers.LocationInformationRequest(language: "de", requesterReference: "")
+    let locationInformationRequest = OJPHelpers.LocationInformationRequest(.init(language: "de", requesterReference: ""))
 
     func testGeoRestrictionHelpers() throws {
         // BBOX with Kleine Schanze as center + width / height of 1km
