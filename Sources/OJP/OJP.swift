@@ -130,9 +130,10 @@ public final class OJP: Sendable {
 
     public func requestTripInfo(
         journeyRef: String,
-        operatingDayRef: String
+        operatingDayRef: String,
+        params: OJPv2.TripInfoParam
     ) async throws -> OJPv2.TripInfoDelivery {
-        let ojp = try await tripInfoRequest.request(journeyRef, operatingDayRef: operatingDayRef)
+        let ojp = try await tripInfoRequest.request(journeyRef, operatingDayRef: operatingDayRef, params: params)
         let serviceDelivery = try await request(with: ojp).serviceDelivery
 
         guard case let .tripInfo(tripInfo) = serviceDelivery.delivery else {

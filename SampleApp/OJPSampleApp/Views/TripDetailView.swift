@@ -32,7 +32,16 @@ struct TripDetailView: View {
                             }
                             Button("Load TripInfo") {
                                 Task {
-                                    try await OJP.configured.requestTripInfo(journeyRef: timedLeg.service.journeyRef, operatingDayRef: timedLeg.service.operatingDayRef)
+                                    do {
+                                        let tripInfo = try await OJP.configured.requestTripInfo(
+                                            journeyRef: timedLeg.service.journeyRef,
+                                            operatingDayRef: timedLeg.service.operatingDayRef,
+                                            params: .init(useRealTimeData: .explanatory)
+                                        )
+                                        dump(tripInfo)
+                                    } catch {
+                                        dump(error)
+                                    }
                                 }
                             }
                         }

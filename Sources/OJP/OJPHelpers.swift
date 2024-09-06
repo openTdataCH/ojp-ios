@@ -223,10 +223,10 @@ enum OJPHelpers {
             requesterReference = configuration.requesterReference
         }
 
-        public func request(_ journeyRef: String, operatingDayRef: String) async throws -> OJPv2 {
+        public func request(_ journeyRef: String, operatingDayRef: String, params: OJPv2.TripInfoParam) async throws -> OJPv2 {
             let requestTimestamp = Date()
 
-            let tripInfoRequest = OJPv2.TripInfoRequest(journeyRef: journeyRef, operatingDayRef: operatingDayRef)
+            let tripInfoRequest = OJPv2.TripInfoRequest(journeyRef: journeyRef, operatingDayRef: operatingDayRef, params: params)
 
             // TODO: - avoid duplication (share this block with "requestWith(bbox: Geo.Bbox")
             let ojp = OJPv2(request: OJPv2.Request(

@@ -134,7 +134,7 @@ struct TripRequestResultView: View {
         },
         content: { t in
             TripRequestResultView(
-                ptSituations: t.tripResponseContext?.situations.ptSituations ?? [],
+                ptSituations: t.tripResponseContext?.situations?.ptSituations ?? [],
                 isLoading: false,
                 results: t.tripResults
             )

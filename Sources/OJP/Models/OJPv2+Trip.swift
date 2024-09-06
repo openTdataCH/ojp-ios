@@ -43,7 +43,7 @@ public extension OJPv2 {
     }
 
     struct TripResponseContext: Codable, Sendable {
-        public let situations: Situation
+        public let situations: Situation?
 
         public enum CodingKeys: String, CodingKey {
             case situations = "Situations"
@@ -1101,7 +1101,7 @@ public extension OJPv2 {
     }
 
     /// [Schema documentation on vdvde.github.io](https://vdvde.github.io/OJP/develop/documentation-tables/ojp.html#type_ojp__UseRealtimeDataEnumeration)
-    enum RealtimeData: String, Sendable, Codable {
+    enum UseRealtimeData: String, Sendable, Codable {
         case explanatory
         case full
         case none
@@ -1116,7 +1116,7 @@ public extension OJPv2 {
             includeTurnDescription: Bool? = nil,
             includeIntermediateStops: Bool? = nil,
             includeAllRestrictedLines: Bool? = nil,
-            useRealtimeData: RealtimeData? = nil,
+            useRealtimeData: UseRealtimeData? = nil,
             modeAndModeOfOperationFilter: ModeAndModeOfOperationFilter? = nil
 
         ) {
@@ -1147,7 +1147,7 @@ public extension OJPv2 {
         let includeTurnDescription: Bool?
         let includeIntermediateStops: Bool?
         let includeAllRestrictedLines: Bool?
-        let useRealtimeData: RealtimeData?
+        let useRealtimeData: UseRealtimeData?
         let modeAndModeOfOperationFilter: ModeAndModeOfOperationFilter?
 
         var numberOfResults: NumberOfResults {

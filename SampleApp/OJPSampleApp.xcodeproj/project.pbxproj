@@ -79,6 +79,7 @@
 		CFBA60D22BBD610F000FF2ED /* OJPSampleAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OJPSampleAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFBA60D62BBD610F000FF2ED /* OJPSampleAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OJPSampleAppUITests.swift; sourceTree = "<group>"; };
 		CFBA60D82BBD610F000FF2ED /* OJPSampleAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OJPSampleAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		CFCD609D2C8AFBEA0044A918 /* tir.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = tir.xml; sourceTree = "<group>"; };
 		CFE465E82C738D4900E5CADB /* tr-fribourg-basel.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "tr-fribourg-basel.xml"; sourceTree = "<group>"; };
 		CFE465EA2C73D8F100E5CADB /* tr-with-cancellations-and-notservicedstops.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "tr-with-cancellations-and-notservicedstops.xml"; sourceTree = "<group>"; };
 		CFE465EC2C76092200E5CADB /* OJP+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OJP+Extensions.swift"; sourceTree = "<group>"; };
@@ -190,6 +191,7 @@
 			children = (
 				CF1C2B6D2C2D94B700B51EFD /* tr-perf-be-zh-20results-projection.xml */,
 				CF52AD012C7F580C000CE7F8 /* tr-fribourg-basel-fake-infolink.xml */,
+				CFCD609D2C8AFBEA0044A918 /* tir.xml */,
 				CF3CD8F52C2DB76500D25994 /* tr-with-transfer-legs.xml */,
 				CFE465EA2C73D8F100E5CADB /* tr-with-cancellations-and-notservicedstops.xml */,
 				CFE465E82C738D4900E5CADB /* tr-fribourg-basel.xml */,

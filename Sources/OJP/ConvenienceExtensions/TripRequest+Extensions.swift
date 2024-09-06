@@ -105,7 +105,7 @@ public extension OJPv2.Trip {
 public extension OJPv2.TripDelivery {
     /// convenience property for ``OJPv2/PTSituation``.
     var ptSituations: [OJPv2.PTSituation] {
-        tripResponseContext?.situations.ptSituations ?? []
+        tripResponseContext?.situations?.ptSituations ?? []
     }
 
     func hasSituation(trip: OJPv2.Trip) -> Bool {
