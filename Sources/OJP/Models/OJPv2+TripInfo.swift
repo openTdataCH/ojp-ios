@@ -59,14 +59,14 @@ public extension OJPv2 {
         public let requestMessageRef: String?
         public let calcTime: Int?
         public let tripInfoResponseContext: TripResponseContext?
-        public internal(set) var tripInfoResults: [TripInfoResult]
+        public internal(set) var tripInfoResult: TripInfoResult?
 
         public enum CodingKeys: String, CodingKey {
             case responseTimestamp = "siri:ResponseTimestamp"
             case requestMessageRef = "siri:RequestMessageRef"
             case calcTime = "CalcTime"
             case tripInfoResponseContext = "TripInfoResponseContext"
-            case tripInfoResults = "TripInfoResult"
+            case tripInfoResult = "TripInfoResult"
         }
 
         public init(from decoder: any Decoder) throws {
@@ -75,20 +75,46 @@ public extension OJPv2 {
             requestMessageRef = try container.decodeIfPresent(String.self, forKey: .requestMessageRef)
             calcTime = try container.decodeIfPresent(Int.self, forKey: .calcTime)
             tripInfoResponseContext = try container.decodeIfPresent(OJPv2.TripResponseContext.self, forKey: .tripInfoResponseContext)
-            tripInfoResults = try (container.decodeIfPresent([OJPv2.TripInfoResult].self, forKey: .tripInfoResults)) ?? [] // tripInfoResults could be optional
+            tripInfoResult = try container.decodeIfPresent(OJPv2.TripInfoResult.self, forKey: .tripInfoResult)
         }
     }
 
     /// [Schema documentation on vdvde.github.io](https://vdvde.github.io/OJP/develop/documentation-tables/ojp.html#type_ojp__TripInfoResultStructure)
     struct TripInfoResult: Codable, Sendable {
-        public let previousCalls: [StopCallStatus]?
-        public let onwardCalls: [StopCallStatus]?
+        public let previousCalls: [CallAtStop]?
+        public let onwardCalls: [CallAtStop]?
         public let service: DatedJourney?
 
         public enum CodingKeys: String, CodingKey {
             case previousCalls = "PreviousCall"
             case onwardCalls = "OnwardCall"
             case service = "Service"
+        }
+    }
+
+    /// [Schema documentation on vdvde.github.io](https://vdvde.github.io/OJP/develop/documentation-tables/ojp.html#type_ojp__CallAtStopStructure)
+    struct CallAtStop: Codable, Sendable, Hashable {
+        public let stopPointRef: String
+        public let stopPointName: InternationalText
+        public let stopCallStatus: StopCallStatus
+        public let serviceArrival: ServiceArrival?
+        public let serviceDeparture: ServiceDeparture?
+
+        public enum CodingKeys: String, CodingKey {
+            case stopPointRef = "siri:StopPointRef"
+            case stopPointName = "StopPointName"
+            case serviceArrival = "ServiceArrival"
+            case serviceDeparture = "ServiceDeparture"
+        }
+
+        public init(from decoder: any Decoder) throws {
+            let container = try decoder.container(keyedBy: CodingKeys.self)
+            stopPointRef = try container.decode(String.self, forKey: .stopPointRef)
+            stopPointName = try container.decode(InternationalText.self, forKey: .stopPointName)
+            serviceArrival = try container.decodeIfPresent(ServiceArrival.self, forKey: .serviceArrival)
+            serviceDeparture = try container.decodeIfPresent(ServiceDeparture.self, forKey: .serviceDeparture)
+
+            stopCallStatus = try StopCallStatus(from: decoder)
         }
     }
 }

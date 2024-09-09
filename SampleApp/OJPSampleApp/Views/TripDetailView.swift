@@ -13,6 +13,7 @@ struct TripDetailView: View {
     let ptSituations: [OJPv2.PTSituation]
 
     @State var selectedPTSituation: OJPv2.PTSituation?
+    @State var selectedTripInfo: OJPv2.TripInfoResult?
 
     var body: some View {
         VStack {
@@ -33,14 +34,13 @@ struct TripDetailView: View {
                             Button("Load TripInfo") {
                                 Task {
                                     do {
-                                        let tripInfo = try await OJP.configured.requestTripInfo(
+                                        selectedTripInfo = try await OJP.configured.requestTripInfo(
                                             journeyRef: timedLeg.service.journeyRef,
                                             operatingDayRef: timedLeg.service.operatingDayRef,
                                             params: .init(useRealTimeData: .explanatory)
-                                        )
-                                        dump(tripInfo)
+                                        ).tripInfoResult
                                     } catch {
-                                        dump(error)
+                                        print(error)
                                     }
                                 }
                             }
@@ -140,6 +140,22 @@ struct TripDetailView: View {
                 ScrollView(.vertical) {
                     PTSituationDetailView(ptSituation: situation)
                 }
+            }.padding()
+                .frame(maxWidth: 960)
+        }
+        .sheet(item: $selectedTripInfo) { tripInfo in
+            VStack {
+                HStack {
+                    Spacer()
+                    Button {
+                        selectedTripInfo = nil
+                    } label: {
+                        Image(systemName: "xmark")
+                    }
+                }
+
+                TripInfoDetailView(tripInfo: tripInfo)
+
             }.padding()
                 .frame(maxWidth: 960)
         }

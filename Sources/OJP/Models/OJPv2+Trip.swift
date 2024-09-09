@@ -550,7 +550,7 @@ public extension OJPv2 {
     }
 
     /// https://vdvde.github.io/OJP/develop/documentation-tables/ojp.html#type_ojp__ServiceArrivalStructure
-    struct ServiceArrival: Codable, Sendable {
+    struct ServiceArrival: Codable, Sendable, Hashable {
         public let timetabledTime: Date
         public let estimatedTime: Date?
 
@@ -561,7 +561,7 @@ public extension OJPv2 {
     }
 
     /// https://vdvde.github.io/OJP/develop/documentation-tables/ojp.html#type_ojp__ServiceDepartureStructure
-    struct ServiceDeparture: Codable, Sendable {
+    struct ServiceDeparture: Codable, Sendable, Hashable {
         public let timetabledTime: Date
         public let estimatedTime: Date?
 
@@ -686,7 +686,7 @@ public extension OJPv2 {
     }
 
     /// https://vdvde.github.io/OJP/develop/documentation-tables/ojp.html#group_ojp__StopCallStatusGroup
-    struct StopCallStatus: Codable, Sendable {
+    struct StopCallStatus: Codable, Sendable, Hashable {
         public let order: Int?
         public let requestStop: Bool
         public let unplannedStop: Bool

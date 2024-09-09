@@ -131,7 +131,7 @@ public struct OJPv2: Codable, Sendable {
     }
 
     /// https://vdvde.github.io/OJP/develop/documentation-tables/ojp.html#type_ojp__InternationalTextStructure
-    public struct InternationalText: Codable, Sendable {
+    public struct InternationalText: Codable, Sendable, Hashable {
         public let text: String
 
         public init(_ text: String = "") {

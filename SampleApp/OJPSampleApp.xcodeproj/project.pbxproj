@@ -23,6 +23,8 @@
 		CF564A322C2D83D600424D91 /* TripRequestResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF564A312C2D83D600424D91 /* TripRequestResultView.swift */; };
 		CF564A342C2D8CFE00424D91 /* LocationSearchByNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF227B42BBD95CF00D3EADF /* LocationSearchByNameView.swift */; };
 		CF71377A2BE5398200D2411E /* DemoEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7137792BE5398200D2411E /* DemoEnvironment.swift */; };
+		CF8982BF2C8EE1AE001895AC /* TripInfoDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8982BE2C8EE1AE001895AC /* TripInfoDetailView.swift */; };
+		CF8982C02C8EF0FB001895AC /* tir.xml in Resources */ = {isa = PBXBuildFile; fileRef = CFCD609D2C8AFBEA0044A918 /* tir.xml */; };
 		CF8F0C8D2C6672AC008BABC6 /* PTSituationDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8F0C8C2C6672AC008BABC6 /* PTSituationDetailView.swift */; };
 		CFBA60BB2BBD6106000FF2ED /* OJPSampleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBA60BA2BBD6106000FF2ED /* OJPSampleApp.swift */; };
 		CFBA60BF2BBD610C000FF2ED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CFBA60BE2BBD610C000FF2ED /* Assets.xcassets */; };
@@ -68,6 +70,7 @@
 		CF52AD012C7F580C000CE7F8 /* tr-fribourg-basel-fake-infolink.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "tr-fribourg-basel-fake-infolink.xml"; sourceTree = "<group>"; };
 		CF564A312C2D83D600424D91 /* TripRequestResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripRequestResultView.swift; sourceTree = "<group>"; };
 		CF7137792BE5398200D2411E /* DemoEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoEnvironment.swift; sourceTree = "<group>"; };
+		CF8982BE2C8EE1AE001895AC /* TripInfoDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripInfoDetailView.swift; sourceTree = "<group>"; };
 		CF8F0C8C2C6672AC008BABC6 /* PTSituationDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PTSituationDetailView.swift; sourceTree = "<group>"; };
 		CFBA60B72BBD6106000FF2ED /* OJPSampleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OJPSampleApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFBA60BA2BBD6106000FF2ED /* OJPSampleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OJPSampleApp.swift; sourceTree = "<group>"; };
@@ -138,6 +141,7 @@
 				CF8F0C8C2C6672AC008BABC6 /* PTSituationDetailView.swift */,
 				CF3CD8FF2C2EA4A800D25994 /* InlineLocationSerachView.swift */,
 				92AEB24F2C328DCF00D5828E /* TripDetailView.swift */,
+				CF8982BE2C8EE1AE001895AC /* TripInfoDetailView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -337,6 +341,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF8982C02C8EF0FB001895AC /* tir.xml in Resources */,
 				CF52AD032C7F581D000CE7F8 /* tr-fribourg-berne.xml in Resources */,
 				CFBA60C32BBD610C000FF2ED /* Preview Assets.xcassets in Resources */,
 				CF3CD8F62C2DB76700D25994 /* tr-with-transfer-legs.xml in Resources */,
@@ -370,6 +375,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				92AEB2502C328DCF00D5828E /* TripDetailView.swift in Sources */,
+				CF8982BF2C8EE1AE001895AC /* TripInfoDetailView.swift in Sources */,
 				CF564A322C2D83D600424D91 /* TripRequestResultView.swift in Sources */,
 				CFF227B82BBDA10800D3EADF /* PlaceDetailView.swift in Sources */,
 				CF564A342C2D8CFE00424D91 /* LocationSearchByNameView.swift in Sources */,
