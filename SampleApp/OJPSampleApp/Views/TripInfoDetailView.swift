@@ -25,19 +25,19 @@ struct TripInfoDetailView: View {
             }
             .bold()
             Divider()
-            if let previousCalls = tripInfo.previousCalls {
-                ForEach(previousCalls, id: \.hashValue) {
-                    call in
-                    StopView(arrivalTime: call.serviceArrival?.arrivalTime, departureTime: call.serviceDeparture?.departureTime, stopCallStatus: call.stopCallStatus, stopPointName: call.stopPointName, isPrevious: true)
-                }.foregroundColor(.gray)
-            }
+            let previousCalls = tripInfo.previousCalls
+            ForEach(previousCalls, id: \.hashValue) {
+                call in
+                StopView(arrivalTime: call.serviceArrival?.arrivalTime, departureTime: call.serviceDeparture?.departureTime, stopCallStatus: call.stopCallStatus, stopPointName: call.stopPointName, isPrevious: true)
+            }.foregroundColor(.gray)
+            
             Divider()
-            if let onwardCalls = tripInfo.onwardCalls {
-                ForEach(onwardCalls, id: \.hashValue) {
-                    call in
-                    StopView(arrivalTime: call.serviceArrival?.arrivalTime, departureTime: call.serviceDeparture?.departureTime, stopCallStatus: call.stopCallStatus, stopPointName: call.stopPointName)
-                }
+            let onwardCalls = tripInfo.onwardCalls 
+            ForEach(onwardCalls, id: \.hashValue) {
+                call in
+                StopView(arrivalTime: call.serviceArrival?.arrivalTime, departureTime: call.serviceDeparture?.departureTime, stopCallStatus: call.stopCallStatus, stopPointName: call.stopPointName)
             }
+            
         }
     }
 }
