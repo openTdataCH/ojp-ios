@@ -93,9 +93,9 @@ public extension OJPv2 {
 
         public init(from decoder: any Decoder) throws {
             let container = try decoder.container(keyedBy: CodingKeys.self)
-            self.previousCalls = (try? container.decode([OJPv2.CallAtStop].self, forKey: OJPv2.TripInfoResult.CodingKeys.previousCalls)) ?? []
-            self.onwardCalls = (try? container.decode([OJPv2.CallAtStop].self, forKey: OJPv2.TripInfoResult.CodingKeys.onwardCalls)) ?? []
-            self.service = try container.decodeIfPresent(OJPv2.DatedJourney.self, forKey: OJPv2.TripInfoResult.CodingKeys.service)
+            previousCalls = (try? container.decode([OJPv2.CallAtStop].self, forKey: OJPv2.TripInfoResult.CodingKeys.previousCalls)) ?? []
+            onwardCalls = (try? container.decode([OJPv2.CallAtStop].self, forKey: OJPv2.TripInfoResult.CodingKeys.onwardCalls)) ?? []
+            service = try container.decodeIfPresent(OJPv2.DatedJourney.self, forKey: OJPv2.TripInfoResult.CodingKeys.service)
         }
     }
 

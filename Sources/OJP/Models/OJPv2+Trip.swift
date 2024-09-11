@@ -53,12 +53,12 @@ public extension OJPv2 {
 
         public init(from decoder: any Decoder) throws {
             let container = try decoder.container(keyedBy: CodingKeys.self)
-            self.situations = try container.decodeIfPresent(OJPv2.Situation.self, forKey: OJPv2.TripResponseContext.CodingKeys.situations)
+            situations = try container.decodeIfPresent(OJPv2.Situation.self, forKey: OJPv2.TripResponseContext.CodingKeys.situations)
             do {
-                self.places = try container.decode(Places.self, forKey: OJPv2.TripResponseContext.CodingKeys.places).places
+                places = try container.decode(Places.self, forKey: OJPv2.TripResponseContext.CodingKeys.places).places
             } catch {
                 debugPrint(error)
-                self.places = []
+                places = []
             }
         }
 
@@ -69,8 +69,6 @@ public extension OJPv2 {
             }
         }
     }
-
-
 
     /// https://vdvde.github.io/OJP/develop/documentation-tables/ojp.html#type_ojp__SituationsStructure
     struct Situation: Codable, Sendable {

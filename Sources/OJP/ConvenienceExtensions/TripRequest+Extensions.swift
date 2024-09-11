@@ -59,7 +59,7 @@ public extension OJPv2.PlaceResult {
     var placeRef: OJPv2.PlaceRefChoice {
         switch place.place {
         case let .stopPoint(stopPoint):
-                .stopPointRef(.init(stopPointRef: stopPoint.stopPointRef, name: stopPoint.stopPointName))
+            .stopPointRef(.init(stopPointRef: stopPoint.stopPointRef, name: stopPoint.stopPointName))
         case let .stopPlace(stopPlace):
             .stopPlaceRef(
                 .init(
@@ -75,7 +75,7 @@ public extension OJPv2.PlaceResult {
                 )
             )
         case let .topographicPlace(topographicPlace):
-                .topographicPlaceRef(topographicPlace.topographicPlaceCode)
+            .topographicPlaceRef(topographicPlace.topographicPlaceCode)
         }
     }
 }

@@ -82,18 +82,19 @@ public extension OJPv2 {
         public init(from decoder: any Decoder) throws {
             let container = try decoder.container(keyedBy: CodingKeys.self)
             if container.contains(.stopPlace) {
-                self = .stopPlace(try container.decode(StopPlace.self, forKey: .stopPlace))
+                self = try .stopPlace(container.decode(StopPlace.self, forKey: .stopPlace))
             } else if container.contains(.stopPoint) {
-                self = .stopPoint(try container.decode(StopPoint.self, forKey: .stopPoint))
+                self = try .stopPoint(container.decode(StopPoint.self, forKey: .stopPoint))
             } else if container.contains(.topographicPlace) {
-                self = .topographicPlace(try container.decode(TopographicPlace.self, forKey: .topographicPlace))
+                self = try .topographicPlace(container.decode(TopographicPlace.self, forKey: .topographicPlace))
             } else if container.contains(.address) {
-                self = .address(try container.decode(Address.self, forKey: .address))
+                self = try .address(container.decode(Address.self, forKey: .address))
             } else {
                 throw OJPSDKError.notImplemented()
             }
         }
     }
+
     /// [Schema documentation on vdvde.github.io](https://vdvde.github.io/OJP/develop/documentation-tables/ojp.html#type_ojp__PlaceStructure)
     struct Place: Codable, Sendable {
         public let place: PlaceTypeChoice
@@ -117,16 +118,16 @@ public extension OJPv2 {
         }
     }
 
-        /// [Schema documentation on vdvde.github.io](https://vdvde.github.io/OJP/develop/documentation-tables/ojp.html#type_ojp__TopographicPlaceStructure)
-        struct TopographicPlace: Codable, Sendable {
-            public let topographicPlaceCode: String
-            public let topographicPlaceName: InternationalText
+    /// [Schema documentation on vdvde.github.io](https://vdvde.github.io/OJP/develop/documentation-tables/ojp.html#type_ojp__TopographicPlaceStructure)
+    struct TopographicPlace: Codable, Sendable {
+        public let topographicPlaceCode: String
+        public let topographicPlaceName: InternationalText
 
-            public enum CodingKeys: String, CodingKey {
-                case topographicPlaceCode = "TopographicPlaceCode"
-                case topographicPlaceName = "TopographicPlaceName"
-            }
+        public enum CodingKeys: String, CodingKey {
+            case topographicPlaceCode = "TopographicPlaceCode"
+            case topographicPlaceName = "TopographicPlaceName"
         }
+    }
 
     /// [Schema documentation on vdvde.github.io](https://vdvde.github.io/OJP/develop/documentation-tables/ojp.html#type_ojp__StopPointStructure)
     struct StopPoint: Codable, Sendable {

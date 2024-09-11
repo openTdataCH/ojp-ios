@@ -30,14 +30,13 @@ struct TripInfoDetailView: View {
                 call in
                 StopView(arrivalTime: call.serviceArrival?.arrivalTime, departureTime: call.serviceDeparture?.departureTime, stopCallStatus: call.stopCallStatus, stopPointName: call.stopPointName, isPrevious: true)
             }.foregroundColor(.gray)
-            
+
             Divider()
-            let onwardCalls = tripInfo.onwardCalls 
+            let onwardCalls = tripInfo.onwardCalls
             ForEach(onwardCalls, id: \.hashValue) {
                 call in
                 StopView(arrivalTime: call.serviceArrival?.arrivalTime, departureTime: call.serviceDeparture?.departureTime, stopCallStatus: call.stopCallStatus, stopPointName: call.stopPointName)
             }
-            
         }
     }
 }
