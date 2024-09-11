@@ -16,6 +16,8 @@ public extension OJPv2.PlaceRefChoice {
             ref.name.text
         case let .stopPlaceRef(ref):
             ref.name.text
+        case let .topographicPlaceRef(topographicPlaceRef):
+            topographicPlaceRef
         }
     }
 }
@@ -34,6 +36,8 @@ extension OJPv2.PlaceRefChoice: Hashable {
             hasher.combine(geoPositionRef.geoPosition.longitude)
         case let .stopPointRef(stopPointRef):
             hasher.combine(stopPointRef.stopPointRef)
+        case let .topographicPlaceRef(topographicPlaceRef):
+            hasher.combine(topographicPlaceRef)
         }
     }
 }
@@ -41,15 +45,21 @@ extension OJPv2.PlaceRefChoice: Hashable {
 public extension OJPv2.PlaceResult {
     var title: String {
         switch place.place {
+        case let .stopPoint(stopPoint):
+            stopPoint.stopPointName.text
         case let .stopPlace(stopPlace):
             stopPlace.stopPlaceName.text
         case let .address(address):
             address.name.text
+        case let .topographicPlace(topographicPlace):
+            topographicPlace.topographicPlaceName.text
         }
     }
 
     var placeRef: OJPv2.PlaceRefChoice {
         switch place.place {
+        case let .stopPoint(stopPoint):
+                .stopPointRef(.init(stopPointRef: stopPoint.stopPointRef, name: stopPoint.stopPointName))
         case let .stopPlace(stopPlace):
             .stopPlaceRef(
                 .init(
@@ -64,6 +74,8 @@ public extension OJPv2.PlaceResult {
                     name: address.name
                 )
             )
+        case let .topographicPlace(topographicPlace):
+                .topographicPlaceRef(topographicPlace.topographicPlaceCode)
         }
     }
 }

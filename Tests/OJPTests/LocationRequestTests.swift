@@ -96,7 +96,7 @@ final class LocationRequestTests: XCTestCase {
             switch lir.placeResults.first!.place.place {
             case let .stopPlace(stopPlace):
                 XCTAssert(stopPlace.stopPlaceRef == "ch:1:sloid:8206")
-            case .address:
+            case .address, .stopPoint, .topographicPlace:
                 XCTFail()
             }
         default:
@@ -117,7 +117,7 @@ final class LocationRequestTests: XCTestCase {
         case let .locationInformation(locationInformation):
             for location in locationInformation.placeResults {
                 switch location.place.place {
-                case .stopPlace:
+                case .stopPlace, .stopPoint, .topographicPlace:
                     XCTFail()
                 case let .address(address):
                     XCTAssert(address.houseNumber == "48")

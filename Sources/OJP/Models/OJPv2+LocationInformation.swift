@@ -67,45 +67,34 @@ public extension OJPv2 {
     }
 
     enum PlaceTypeChoice: Codable, Sendable {
+        case stopPoint(OJPv2.StopPoint)
         case stopPlace(OJPv2.StopPlace)
         case address(OJPv2.Address)
+        case topographicPlace(OJPv2.TopographicPlace)
 
         enum CodingKeys: String, CodingKey {
             case stopPlace = "StopPlace"
             case address = "Address"
+            case stopPoint = "StopPoint"
+            case topographicPlace = "TopographicPlace"
         }
 
         public init(from decoder: any Decoder) throws {
             let container = try decoder.container(keyedBy: CodingKeys.self)
-            if let address = try container.decodeIfPresent(Address.self, forKey: .address) {
-                self = .address(address)
+            if container.contains(.stopPlace) {
+                self = .stopPlace(try container.decode(StopPlace.self, forKey: .stopPlace))
+            } else if container.contains(.stopPoint) {
+                self = .stopPoint(try container.decode(StopPoint.self, forKey: .stopPoint))
+            } else if container.contains(.topographicPlace) {
+                self = .topographicPlace(try container.decode(TopographicPlace.self, forKey: .topographicPlace))
+            } else if container.contains(.address) {
+                self = .address(try container.decode(Address.self, forKey: .address))
             } else {
-                self = try .stopPlace(container.decode(StopPlace.self, forKey: .stopPlace))
+                throw OJPSDKError.notImplemented()
             }
         }
-
-//        public init(from decoder: any Decoder) throws {
-//            let container = try decoder.container(keyedBy: CodingKeys.self)
-//            if container.contains(.stopPlace) {
-//                self = try .stopPlace(
-//                    container.decode(
-//                        StopPlace.self,
-//                        forKey: .stopPlace
-//                    )
-//                )
-//            } else if container.contains(.address) {
-//                self = try .address(
-//                    container.decode(
-//                        Address.self,
-//                        forKey: .address
-//                    )
-//                )
-//            } else {
-//                throw OJPSDKError.notImplemented()
-//            }
-//        }
     }
-
+    /// [Schema documentation on vdvde.github.io](https://vdvde.github.io/OJP/develop/documentation-tables/ojp.html#type_ojp__PlaceStructure)
     struct Place: Codable, Sendable {
         public let place: PlaceTypeChoice
 
@@ -120,13 +109,37 @@ public extension OJPv2 {
         }
 
         public init(from decoder: any Decoder) throws {
-//            let singleValueContainer = try decoder.singleValueContainer()
-//            self.place = try singleValueContainer.decode(OJPv2.PlaceTypeChoice.self)
             place = try PlaceTypeChoice(from: decoder)
             let container = try decoder.container(keyedBy: CodingKeys.self)
             name = try container.decode(InternationalText.self, forKey: .name)
             geoPosition = try container.decode(GeoPosition.self, forKey: .geoPosition)
             modes = try container.decode([Mode].self, forKey: .modes)
+        }
+    }
+
+        /// [Schema documentation on vdvde.github.io](https://vdvde.github.io/OJP/develop/documentation-tables/ojp.html#type_ojp__TopographicPlaceStructure)
+        struct TopographicPlace: Codable, Sendable {
+            public let topographicPlaceCode: String
+            public let topographicPlaceName: InternationalText
+
+            public enum CodingKeys: String, CodingKey {
+                case topographicPlaceCode = "TopographicPlaceCode"
+                case topographicPlaceName = "TopographicPlaceName"
+            }
+        }
+
+    /// [Schema documentation on vdvde.github.io](https://vdvde.github.io/OJP/develop/documentation-tables/ojp.html#type_ojp__StopPointStructure)
+    struct StopPoint: Codable, Sendable {
+        public let stopPointRef: String
+        public let stopPointName: InternationalText
+        public let parentRef: String?
+        public let topographicPlaceRef: String?
+
+        public enum CodingKeys: String, CodingKey {
+            case stopPointRef = "siri:StopPointRef"
+            case stopPointName = "StopPointName"
+            case parentRef = "ParentRef"
+            case topographicPlaceRef = "TopographicPlaceRef"
         }
     }
 
@@ -292,10 +305,14 @@ public extension OJPv2 {
 extension OJPv2.PlaceTypeChoice: Identifiable {
     public var id: String {
         switch self {
+        case let .stopPoint(stopPoint):
+            stopPoint.stopPointRef
         case let .stopPlace(stopPlace):
             stopPlace.stopPlaceRef
         case let .address(address):
             address.publicCode
+        case let .topographicPlace(topographicPlace):
+            topographicPlace.topographicPlaceCode
         }
     }
 }
