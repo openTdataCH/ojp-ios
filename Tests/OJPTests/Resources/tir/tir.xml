@@ -1,0 +1,417 @@
+<OJP xmlns:siri="http://www.siri.org.uk/siri" xmlns="http://www.vdv.de/ojp" version="2.0">
+  <OJPResponse>
+    <siri:ServiceDelivery>
+      <siri:ResponseTimestamp>2024-09-06T10:56:10.3196064+02:00</siri:ResponseTimestamp>
+      <siri:ProducerRef>MENTZ</siri:ProducerRef>
+      <OJPTripInfoDelivery>
+        <siri:ResponseTimestamp>2024-09-06T10:56:10.3196675+02:00</siri:ResponseTimestamp>
+        <siri:RequestMessageRef>35461b89-f0a8-49c2-b55c-ebc0fbeb92c2</siri:RequestMessageRef>
+        <siri:DefaultLanguage>en</siri:DefaultLanguage>
+        <CalcTime>7</CalcTime>
+        <TripInfoResponseContext>
+          <Places>
+            <Place>
+              <StopPlace>
+                <StopPlaceRef>8501609</StopPlaceRef>
+                <StopPlaceName>
+                  <Text xml:lang="en">Brig</Text>
+                </StopPlaceName>
+                <PrivateCode>
+                  <System>EFA</System>
+                  <Value>107458:0:3</Value>
+                </PrivateCode>
+                <TopographicPlaceRef>23024002:1</TopographicPlaceRef>
+              </StopPlace>
+              <Name>
+                <Text xml:lang="en">Brig</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>7.98538</siri:Longitude>
+                <siri:Latitude>46.31961</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <StopPoint>
+                <siri:StopPointRef>ch:1:sloid:1609:2:3</siri:StopPointRef>
+                <StopPointName>
+                  <Text xml:lang="en">Brig</Text>
+                </StopPointName>
+                <PrivateCode>
+                  <System>EFA</System>
+                  <Value>107458:0:3</Value>
+                </PrivateCode>
+                <ParentRef>8501609</ParentRef>
+                <TopographicPlaceRef>23024002:1</TopographicPlaceRef>
+              </StopPoint>
+              <Name>
+                <Text xml:lang="en">Brig</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>7.98538</siri:Longitude>
+                <siri:Latitude>46.31961</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <TopographicPlace>
+                <TopographicPlaceCode>23024002:1</TopographicPlaceCode>
+                <TopographicPlaceName>
+                  <Text xml:lang="en">Brig</Text>
+                </TopographicPlaceName>
+              </TopographicPlace>
+              <Name>
+                <Text xml:lang="en">Brig</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>7.98538</siri:Longitude>
+                <siri:Latitude>46.31961</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <StopPlace>
+                <StopPlaceRef>8506121</StopPlaceRef>
+                <StopPlaceName>
+                  <Text xml:lang="en">Romanshorn</Text>
+                </StopPlaceName>
+                <PrivateCode>
+                  <System>EFA</System>
+                  <Value>110462:0:3</Value>
+                </PrivateCode>
+                <TopographicPlaceRef>23021436:3</TopographicPlaceRef>
+              </StopPlace>
+              <Name>
+                <Text xml:lang="en">Romanshorn</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>9.37933</siri:Longitude>
+                <siri:Latitude>47.56237</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <StopPoint>
+                <siri:StopPointRef>ch:1:sloid:6121:2:3</siri:StopPointRef>
+                <StopPointName>
+                  <Text xml:lang="en">Romanshorn</Text>
+                </StopPointName>
+                <PrivateCode>
+                  <System>EFA</System>
+                  <Value>110462:0:3</Value>
+                </PrivateCode>
+                <ParentRef>8506121</ParentRef>
+                <TopographicPlaceRef>23021436:3</TopographicPlaceRef>
+              </StopPoint>
+              <Name>
+                <Text xml:lang="en">Romanshorn</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>9.37933</siri:Longitude>
+                <siri:Latitude>47.56237</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <TopographicPlace>
+                <TopographicPlaceCode>23021436:3</TopographicPlaceCode>
+                <TopographicPlaceName>
+                  <Text xml:lang="en">Romanshorn</Text>
+                </TopographicPlaceName>
+              </TopographicPlace>
+              <Name>
+                <Text xml:lang="en">Romanshorn</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>9.37933</siri:Longitude>
+                <siri:Latitude>47.56237</siri:Latitude>
+              </GeoPosition>
+            </Place>
+          </Places>
+        </TripInfoResponseContext>
+        <TripInfoResult>
+          <PreviousCall>
+            <siri:StopPointRef>ch:1:sloid:1609:2:3</siri:StopPointRef>
+            <StopPointName>
+              <Text xml:lang="en">Brig</Text>
+            </StopPointName>
+            <NameSuffix>
+              <Text xml:lang="en">NO_DATA</Text>
+            </NameSuffix>
+            <PlannedQuay>
+              <Text xml:lang="en">3</Text>
+            </PlannedQuay>
+            <ServiceDeparture>
+              <TimetabledTime>2024-09-06T07:48:00Z</TimetabledTime>
+              <EstimatedTime>2024-09-06T07:49:12Z</EstimatedTime>
+            </ServiceDeparture>
+            <Order>1</Order>
+          </PreviousCall>
+          <PreviousCall>
+            <siri:StopPointRef>ch:1:sloid:1605:3:4</siri:StopPointRef>
+            <StopPointName>
+              <Text xml:lang="en">Visp</Text>
+            </StopPointName>
+            <NameSuffix>
+              <Text xml:lang="en">NO_DATA</Text>
+            </NameSuffix>
+            <PlannedQuay>
+              <Text xml:lang="en">4</Text>
+            </PlannedQuay>
+            <ServiceArrival>
+              <TimetabledTime>2024-09-06T07:55:00Z</TimetabledTime>
+              <EstimatedTime>2024-09-06T07:55:24Z</EstimatedTime>
+            </ServiceArrival>
+            <ServiceDeparture>
+              <TimetabledTime>2024-09-06T07:57:00Z</TimetabledTime>
+              <EstimatedTime>2024-09-06T07:57:36Z</EstimatedTime>
+            </ServiceDeparture>
+            <Order>2</Order>
+          </PreviousCall>
+          <PreviousCall>
+            <siri:StopPointRef>ch:1:sloid:7483:0:792557</siri:StopPointRef>
+            <StopPointName>
+              <Text xml:lang="en">Spiez</Text>
+            </StopPointName>
+            <NameSuffix>
+              <Text xml:lang="en">NO_DATA</Text>
+            </NameSuffix>
+            <PlannedQuay>
+              <Text xml:lang="en">5</Text>
+            </PlannedQuay>
+            <ServiceArrival>
+              <TimetabledTime>2024-09-06T08:23:00Z</TimetabledTime>
+              <EstimatedTime>2024-09-06T08:28:12Z</EstimatedTime>
+            </ServiceArrival>
+            <ServiceDeparture>
+              <TimetabledTime>2024-09-06T08:23:00Z</TimetabledTime>
+              <EstimatedTime>2024-09-06T08:30:00Z</EstimatedTime>
+            </ServiceDeparture>
+            <Order>3</Order>
+          </PreviousCall>
+          <PreviousCall>
+            <siri:StopPointRef>ch:1:sloid:7100:2:3</siri:StopPointRef>
+            <StopPointName>
+              <Text xml:lang="en">Thun</Text>
+            </StopPointName>
+            <NameSuffix>
+              <Text xml:lang="en">NO_DATA</Text>
+            </NameSuffix>
+            <PlannedQuay>
+              <Text xml:lang="en">3</Text>
+            </PlannedQuay>
+            <EstimatedQuay>
+              <Text xml:lang="en">2</Text>
+            </EstimatedQuay>
+            <ServiceArrival>
+              <TimetabledTime>2024-09-06T08:34:00Z</TimetabledTime>
+              <EstimatedTime>2024-09-06T08:38:24Z</EstimatedTime>
+            </ServiceArrival>
+            <ServiceDeparture>
+              <TimetabledTime>2024-09-06T08:34:00Z</TimetabledTime>
+              <EstimatedTime>2024-09-06T08:39:54Z</EstimatedTime>
+            </ServiceDeparture>
+            <Order>4</Order>
+          </PreviousCall>
+          <OnwardCall>
+            <siri:StopPointRef>ch:1:sloid:7000:1:2</siri:StopPointRef>
+            <StopPointName>
+              <Text xml:lang="en">Bern</Text>
+            </StopPointName>
+            <NameSuffix>
+              <Text xml:lang="en">NO_DATA</Text>
+            </NameSuffix>
+            <PlannedQuay>
+              <Text xml:lang="en">2</Text>
+            </PlannedQuay>
+            <ServiceArrival>
+              <TimetabledTime>2024-09-06T08:54:00Z</TimetabledTime>
+              <EstimatedTime>2024-09-06T08:56:00Z</EstimatedTime>
+            </ServiceArrival>
+            <ServiceDeparture>
+              <TimetabledTime>2024-09-06T09:02:00Z</TimetabledTime>
+              <EstimatedTime>2024-09-06T09:02:30Z</EstimatedTime>
+            </ServiceDeparture>
+            <Order>5</Order>
+          </OnwardCall>
+          <OnwardCall>
+            <siri:StopPointRef>ch:1:sloid:3000:501:33</siri:StopPointRef>
+            <StopPointName>
+              <Text xml:lang="en">Zürich HB</Text>
+            </StopPointName>
+            <NameSuffix>
+              <Text xml:lang="en">NO_DATA</Text>
+            </NameSuffix>
+            <PlannedQuay>
+              <Text xml:lang="en">33</Text>
+            </PlannedQuay>
+            <ServiceArrival>
+              <TimetabledTime>2024-09-06T09:58:00Z</TimetabledTime>
+              <EstimatedTime>2024-09-06T09:58:00Z</EstimatedTime>
+            </ServiceArrival>
+            <ServiceDeparture>
+              <TimetabledTime>2024-09-06T10:05:00Z</TimetabledTime>
+              <EstimatedTime>2024-09-06T10:05:30Z</EstimatedTime>
+            </ServiceDeparture>
+            <Order>6</Order>
+          </OnwardCall>
+          <OnwardCall>
+            <siri:StopPointRef>ch:1:sloid:3016:1:2</siri:StopPointRef>
+            <StopPointName>
+              <Text xml:lang="en">Zürich Flughafen</Text>
+            </StopPointName>
+            <NameSuffix>
+              <Text xml:lang="en">NO_DATA</Text>
+            </NameSuffix>
+            <PlannedQuay>
+              <Text xml:lang="en">2</Text>
+            </PlannedQuay>
+            <ServiceArrival>
+              <TimetabledTime>2024-09-06T10:14:00Z</TimetabledTime>
+              <EstimatedTime>2024-09-06T10:14:00Z</EstimatedTime>
+            </ServiceArrival>
+            <ServiceDeparture>
+              <TimetabledTime>2024-09-06T10:16:00Z</TimetabledTime>
+              <EstimatedTime>2024-09-06T10:16:30Z</EstimatedTime>
+            </ServiceDeparture>
+            <Order>7</Order>
+          </OnwardCall>
+          <OnwardCall>
+            <siri:StopPointRef>ch:1:sloid:6000:4:6</siri:StopPointRef>
+            <StopPointName>
+              <Text xml:lang="en">Winterthur</Text>
+            </StopPointName>
+            <NameSuffix>
+              <Text xml:lang="en">NO_DATA</Text>
+            </NameSuffix>
+            <PlannedQuay>
+              <Text xml:lang="en">6</Text>
+            </PlannedQuay>
+            <ServiceArrival>
+              <TimetabledTime>2024-09-06T10:29:00Z</TimetabledTime>
+              <EstimatedTime>2024-09-06T10:29:06Z</EstimatedTime>
+            </ServiceArrival>
+            <ServiceDeparture>
+              <TimetabledTime>2024-09-06T10:31:00Z</TimetabledTime>
+              <EstimatedTime>2024-09-06T10:31:30Z</EstimatedTime>
+            </ServiceDeparture>
+            <Order>8</Order>
+          </OnwardCall>
+          <OnwardCall>
+            <siri:StopPointRef>ch:1:sloid:6100:2:2</siri:StopPointRef>
+            <StopPointName>
+              <Text xml:lang="en">Frauenfeld</Text>
+            </StopPointName>
+            <NameSuffix>
+              <Text xml:lang="en">NO_DATA</Text>
+            </NameSuffix>
+            <PlannedQuay>
+              <Text xml:lang="en">2</Text>
+            </PlannedQuay>
+            <ServiceArrival>
+              <TimetabledTime>2024-09-06T10:41:00Z</TimetabledTime>
+              <EstimatedTime>2024-09-06T10:41:36Z</EstimatedTime>
+            </ServiceArrival>
+            <ServiceDeparture>
+              <TimetabledTime>2024-09-06T10:42:00Z</TimetabledTime>
+              <EstimatedTime>2024-09-06T10:43:30Z</EstimatedTime>
+            </ServiceDeparture>
+            <Order>9</Order>
+          </OnwardCall>
+          <OnwardCall>
+            <siri:StopPointRef>ch:1:sloid:6105:1:1</siri:StopPointRef>
+            <StopPointName>
+              <Text xml:lang="en">Weinfelden</Text>
+            </StopPointName>
+            <NameSuffix>
+              <Text xml:lang="en">NO_DATA</Text>
+            </NameSuffix>
+            <PlannedQuay>
+              <Text xml:lang="en">1</Text>
+            </PlannedQuay>
+            <ServiceArrival>
+              <TimetabledTime>2024-09-06T10:53:00Z</TimetabledTime>
+              <EstimatedTime>2024-09-06T10:53:36Z</EstimatedTime>
+            </ServiceArrival>
+            <ServiceDeparture>
+              <TimetabledTime>2024-09-06T10:55:00Z</TimetabledTime>
+              <EstimatedTime>2024-09-06T10:55:30Z</EstimatedTime>
+            </ServiceDeparture>
+            <Order>10</Order>
+          </OnwardCall>
+          <OnwardCall>
+            <siri:StopPointRef>ch:1:sloid:6109:2:2</siri:StopPointRef>
+            <StopPointName>
+              <Text xml:lang="en">Amriswil</Text>
+            </StopPointName>
+            <NameSuffix>
+              <Text xml:lang="en">NO_DATA</Text>
+            </NameSuffix>
+            <PlannedQuay>
+              <Text xml:lang="en">2</Text>
+            </PlannedQuay>
+            <ServiceArrival>
+              <TimetabledTime>2024-09-06T11:05:00Z</TimetabledTime>
+              <EstimatedTime>2024-09-06T11:05:18Z</EstimatedTime>
+            </ServiceArrival>
+            <ServiceDeparture>
+              <TimetabledTime>2024-09-06T11:06:00Z</TimetabledTime>
+              <EstimatedTime>2024-09-06T11:06:48Z</EstimatedTime>
+            </ServiceDeparture>
+            <Order>11</Order>
+          </OnwardCall>
+          <OnwardCall>
+            <siri:StopPointRef>ch:1:sloid:6121:2:3</siri:StopPointRef>
+            <StopPointName>
+              <Text xml:lang="en">Romanshorn</Text>
+            </StopPointName>
+            <NameSuffix>
+              <Text xml:lang="en">NO_DATA</Text>
+            </NameSuffix>
+            <PlannedQuay>
+              <Text xml:lang="en">3</Text>
+            </PlannedQuay>
+            <ServiceArrival>
+              <TimetabledTime>2024-09-06T11:12:00Z</TimetabledTime>
+              <EstimatedTime>2024-09-06T11:12:06Z</EstimatedTime>
+            </ServiceArrival>
+            <Order>12</Order>
+          </OnwardCall>
+          <Service>
+            <Mode>
+              <PtMode>rail</PtMode>
+              <siri:RailSubmode>interregionalRail</siri:RailSubmode>
+              <Name>
+                <Text xml:lang="en">Zug</Text>
+              </Name>
+              <ShortName>
+                <Text xml:lang="en">IC</Text>
+              </ShortName>
+            </Mode>
+            <ConventionalModeOfOperation>scheduled</ConventionalModeOfOperation>
+            <TrainNumber>815</TrainNumber>
+            <siri:LineRef>ojp:91008:E</siri:LineRef>
+            <siri:OperatorRef>11</siri:OperatorRef>
+            <PublishedServiceName>
+              <Text xml:lang="en">IC8</Text>
+            </PublishedServiceName>
+            <ProductCategory>
+              <Name>
+                <Text xml:lang="en">Zug</Text>
+              </Name>
+              <ShortName>
+                <Text xml:lang="en">IC</Text>
+              </ShortName>
+              <ProductCategoryRef>23</ProductCategoryRef>
+            </ProductCategory>
+            <siri:DirectionRef>H</siri:DirectionRef>
+            <JourneyRef>ch:1:sjyid:100001:815-001</JourneyRef>
+            <OperatingDayRef>2024-09-06</OperatingDayRef>
+            <DestinationStopPointRef>ch:1:sloid:6121:2:3</DestinationStopPointRef>
+            <OriginText>
+              <Text xml:lang="en">n/a</Text>
+            </OriginText>
+            <DestinationText>
+              <Text xml:lang="en">Romanshorn</Text>
+            </DestinationText>
+          </Service>
+        </TripInfoResult>
+      </OJPTripInfoDelivery>
+    </siri:ServiceDelivery>
+  </OJPResponse>
+</OJP>
