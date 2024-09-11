@@ -160,6 +160,6 @@ extension OJPv2.Trip {
 
 extension OJPv2.TripInfoResult: Identifiable {
     public var id: Int {
-        service?.journeyRef.hashValue ?? ((previousCalls?.hashValue ?? 0) + (onwardCalls?.hashValue ?? 0))
+        service?.journeyRef.hashValue ?? (previousCalls.hashValue + onwardCalls.hashValue)
     }
 }

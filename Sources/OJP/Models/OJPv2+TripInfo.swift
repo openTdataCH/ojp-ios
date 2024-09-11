@@ -81,14 +81,21 @@ public extension OJPv2 {
 
     /// [Schema documentation on vdvde.github.io](https://vdvde.github.io/OJP/develop/documentation-tables/ojp.html#type_ojp__TripInfoResultStructure)
     struct TripInfoResult: Codable, Sendable {
-        public let previousCalls: [CallAtStop]?
-        public let onwardCalls: [CallAtStop]?
+        public let previousCalls: [CallAtStop]
+        public let onwardCalls: [CallAtStop]
         public let service: DatedJourney?
 
         public enum CodingKeys: String, CodingKey {
             case previousCalls = "PreviousCall"
             case onwardCalls = "OnwardCall"
             case service = "Service"
+        }
+
+        public init(from decoder: any Decoder) throws {
+            let container = try decoder.container(keyedBy: CodingKeys.self)
+            self.previousCalls = (try? container.decode([OJPv2.CallAtStop].self, forKey: OJPv2.TripInfoResult.CodingKeys.previousCalls)) ?? []
+            self.onwardCalls = (try? container.decode([OJPv2.CallAtStop].self, forKey: OJPv2.TripInfoResult.CodingKeys.onwardCalls)) ?? []
+            self.service = try container.decodeIfPresent(OJPv2.DatedJourney.self, forKey: OJPv2.TripInfoResult.CodingKeys.service)
         }
     }
 
@@ -97,12 +104,16 @@ public extension OJPv2 {
         public let stopPointRef: String
         public let stopPointName: InternationalText
         public let stopCallStatus: StopCallStatus
+        public let plannedQuay: InternationalText?
+        public let estimatedQuay: InternationalText?
         public let serviceArrival: ServiceArrival?
         public let serviceDeparture: ServiceDeparture?
 
         public enum CodingKeys: String, CodingKey {
             case stopPointRef = "siri:StopPointRef"
             case stopPointName = "StopPointName"
+            case plannedQuay = "PlannedQuay"
+            case estimatedQuay = "EstimatedQuay"
             case serviceArrival = "ServiceArrival"
             case serviceDeparture = "ServiceDeparture"
         }
@@ -111,9 +122,10 @@ public extension OJPv2 {
             let container = try decoder.container(keyedBy: CodingKeys.self)
             stopPointRef = try container.decode(String.self, forKey: .stopPointRef)
             stopPointName = try container.decode(InternationalText.self, forKey: .stopPointName)
+            plannedQuay = try container.decode(InternationalText?.self, forKey: .plannedQuay)
+            estimatedQuay = try container.decode(InternationalText?.self, forKey: .estimatedQuay)
             serviceArrival = try container.decodeIfPresent(ServiceArrival.self, forKey: .serviceArrival)
             serviceDeparture = try container.decodeIfPresent(ServiceDeparture.self, forKey: .serviceDeparture)
-
             stopCallStatus = try StopCallStatus(from: decoder)
         }
     }
