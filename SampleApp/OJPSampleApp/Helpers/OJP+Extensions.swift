@@ -52,6 +52,7 @@ extension OJPv2.LegIntermediate: Identifiable {
 extension OJPv2.PTSituation {
     var allInfos: [String] {
         var infos: [String] = []
+        guard let publishingActions else { return [] }
         for publishingAction in publishingActions.publishingActions {
             for passengerInformationAction in publishingAction.passengerInformationActions {
                 for textualContent in passengerInformationAction.textualContents {

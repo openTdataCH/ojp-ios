@@ -12,7 +12,7 @@ struct PTSituationDetailView: View {
     let ptSituation: OJPv2.PTSituation
 
     var indexSituations: [(Int, OJPv2.PublishingAction)] {
-        ptSituation.publishingActions.publishingActions.enumerated().map { ($0, $1) }
+        ptSituation.publishingActions?.publishingActions.enumerated().map { ($0, $1) } ?? []
     }
 
     var body: some View {
@@ -35,7 +35,7 @@ struct PTSituationDetailView: View {
 
             GridRow {
                 Text("PassengerInformationActions")
-                Text("#\(ptSituation.publishingActions.publishingActions.count)")
+                Text("#\(ptSituation.publishingActions?.publishingActions.count ?? 0)")
             }
 
             ForEach(indexSituations, id: \.0) { _, action in

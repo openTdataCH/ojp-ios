@@ -217,7 +217,7 @@ public extension OJPv2 {
         public let priority: Int
 
         /// Optional according to siri-sx, but mandatory according to [Realisierungsvorgabe Profil CH SIRI-SX/VDV736](https://www.oev-info.ch/de/branchenstandard/technische-standards/ereignisdaten)
-        public let publishingActions: PublishingActions
+        public let publishingActions: PublishingActions?
         public private(set) var planned: Bool? = false
 
         public enum CodingKeys: String, CodingKey {
