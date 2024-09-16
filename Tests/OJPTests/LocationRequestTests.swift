@@ -129,4 +129,11 @@ final class LocationRequestTests: XCTestCase {
             XCTFail()
         }
     }
+
+    func testDifferentLocationTypes() async throws {
+        let xmlData = try TestHelpers.loadXML(xmlFilename: "lir-location-all-types")
+        let locationInformation = try await OJPDecoder.parseXML(xmlData)
+        dump(locationInformation)
+        XCTAssertTrue(true)
+    }
 }
