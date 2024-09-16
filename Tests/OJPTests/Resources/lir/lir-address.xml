@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<OJP xmlns:siri="http://www.siri.org.uk/siri" version="2.0" xmlns="http://www.vdv.de/ojp">
+    <OJPResponse>
+        <siri:ServiceDelivery>
+            <siri:ResponseTimestamp>2024-04-17T14:46:58.9267238+02:00</siri:ResponseTimestamp>
+            <siri:ProducerRef>MENTZ</siri:ProducerRef>
+            <OJPLocationInformationDelivery>
+                <siri:ResponseTimestamp>2024-04-17T14:46:58.9268196+02:00</siri:ResponseTimestamp>
+                <siri:RequestMessageRef>8904d8a6-61fc-4f02-9528-b5c0803fa4e7</siri:RequestMessageRef>
+                <siri:DefaultLanguage>de</siri:DefaultLanguage>
+                <CalcTime>65</CalcTime>
+                <PlaceResult>
+                    <Place>
+                        <Address>
+                            <PublicCode>streetID:1500000051:48:23008220:-1:Route des Russilles:Le Mouret:Route des Russilles::Route des Russilles:1724:ANY:DIVA_SINGLEHOUSE:799722:6098613:MRCV</PublicCode>
+                            <Name>
+                                <Text xml:lang="de">Le Mouret, Route des Russilles 48</Text>
+                            </Name>
+                            <PostCode />
+                            <TopographicPlaceName>Le Mouret</TopographicPlaceName>
+                            <TopographicPlaceRef>23008220:-1</TopographicPlaceRef>
+                            <Street>Route des Russilles</Street>
+                            <HouseNumber>48</HouseNumber>
+                        </Address>
+                        <Name>
+                            <Text xml:lang="de">Route des Russilles 48 (Le Mouret)</Text>
+                        </Name>
+                        <GeoPosition>
+                            <siri:Longitude>7.18402</siri:Longitude>
+                            <siri:Latitude>46.75015</siri:Latitude>
+                        </GeoPosition>
+                    </Place>
+                    <Complete>true</Complete>
+                    <Probability>1</Probability>
+                </PlaceResult>
+            </OJPLocationInformationDelivery>
+        </siri:ServiceDelivery>
+    </OJPResponse>
+</OJP>

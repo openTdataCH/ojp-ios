@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<OJP xmlns:siri="http://www.siri.org.uk/siri" version="2.0" xmlns="http://www.vdv.de/ojp">
+    <OJPResponse>
+        <siri:ServiceDelivery>
+            <siri:ResponseTimestamp>2024-07-23T16:20:09.7543899+02:00</siri:ResponseTimestamp>
+            <siri:ProducerRef>MENTZ</siri:ProducerRef>
+            <OJPTripDelivery>
+                <siri:ResponseTimestamp>2024-07-23T16:20:09.7543914+02:00</siri:ResponseTimestamp>
+                <siri:RequestMessageRef>b15b370c-6f3c-431f-9d17-c01163e621b5</siri:RequestMessageRef>
+                <siri:DefaultLanguage>de</siri:DefaultLanguage>
+                <CalcTime>586</CalcTime>
+                <TripResult>
+                    <Id>ID-3D88D793-6A64-4E83-AFA3-2B2E464B50EF</Id>
+                    <Trip>
+                        <Id>ID-3D88D793-6A64-4E83-AFA3-2B2E464B50EF</Id>
+                        <Duration>PT1H22M36S</Duration>
+                        <StartTime>2024-07-23T15:06:24Z</StartTime>
+                        <EndTime>2024-07-23T16:29:00Z</EndTime>
+                        <Transfers>1</Transfers>
+                        <Leg>
+                            <Id>1</Id>
+                            <Duration>PT4M30S</Duration>
+                            <TimedLeg>
+                                <LegBoard>
+                                    <siri:StopPointRef>ch:1:sloid:3091:0:185066</siri:StopPointRef>
+                                    <StopPointName>
+                                        <Text xml:lang="de">Zürich Giesshübel</Text>
+                                    </StopPointName>
+                                    <PlannedQuay>
+                                        <Text xml:lang="de">1</Text>
+                                    </PlannedQuay>
+                                    <EstimatedQuay>
+                                        <Text xml:lang="de">1</Text>
+                                    </EstimatedQuay>
+                                    <NameSuffix>
+                                        <Text xml:lang="de">PLATFORM_ACCESS_WITHOUT_ASSISTANCE</Text>
+                                    </NameSuffix>
+                                    <ServiceDeparture>
+                                        <TimetabledTime>2024-07-23T15:06:00Z</TimetabledTime>
+                                        <EstimatedTime>2024-07-23T15:06:24Z</EstimatedTime>
+                                    </ServiceDeparture>
+                                    <Order>1</Order>
+                                </LegBoard>
+                                <LegAlight>
+                                    <siri:StopPointRef>ch:1:sloid:3088:0:99992</siri:StopPointRef>
+                                    <StopPointName>
+                                        <Text xml:lang="de">Zürich HB SZU</Text>
+                                    </StopPointName>
+                                    <NameSuffix>
+                                        <Text xml:lang="de">PLATFORM_ACCESS_WITHOUT_ASSISTANCE</Text>
+                                    </NameSuffix>
+                                    <PlannedQuay>
+                                        <Text xml:lang="de">21</Text>
+                                    </PlannedQuay>
+                                    <EstimatedQuay>
+                                        <Text xml:lang="de">21</Text>
+                                    </EstimatedQuay>
+                                    <ServiceArrival>
+                                        <TimetabledTime>2024-07-23T15:11:00Z</TimetabledTime>
+                                        <EstimatedTime>2024-07-23T15:10:54Z</EstimatedTime>
+                                    </ServiceArrival>
+                                    <Order>3</Order>
+                                </LegAlight>
+                                <Service>
+                                    <Mode>
+                                        <PtMode>rail</PtMode>
+                                        <siri:RailSubmode>regionalRail</siri:RailSubmode>
+                                        <Name>
+                                            <Text xml:lang="de">Zug</Text>
+                                        </Name>
+                                        <ShortName>
+                                            <Text xml:lang="de">S</Text>
+                                        </ShortName>
+                                    </Mode>
+                                    <ConventionalModeOfOperation>scheduled</ConventionalModeOfOperation>
+                                    <TrainNumber>12578</TrainNumber>
+                                    <siri:LineRef>ojp:91004:A</siri:LineRef>
+                                    <siri:OperatorRef>78</siri:OperatorRef>
+                                    <PublicCode>Sihltalbahn</PublicCode>
+                                    <PublishedServiceName>
+                                        <Text xml:lang="de">S4</Text>
+                                    </PublishedServiceName>
+                                    <ProductCategory>
+                                        <Name>
+                                            <Text xml:lang="de">Zug</Text>
+                                        </Name>
+                                        <ShortName>
+                                            <Text xml:lang="de">S</Text>
+                                        </ShortName>
+                                        <ProductCategoryRef>27</ProductCategoryRef>
+                                    </ProductCategory>
+                                    <siri:DirectionRef>H</siri:DirectionRef>
+                                    <OperatingDayRef>2024-07-23</OperatingDayRef>
+                                    <DestinationStopPointRef>8503088</DestinationStopPointRef>
+                                    <OriginText>
+                                        <Text xml:lang="de">n/a</Text>
+                                    </OriginText>
+                                    <DestinationText>
+                                        <Text xml:lang="de">Zürich HB SZU</Text>
+                                    </DestinationText>
+                                    <JourneyRef>ch:1:sjyid:100058:12578-002</JourneyRef>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text xml:lang="de">Niederflureinstieg</Text>
+                                        </UserText>
+                                        <Code>A__NF</Code>
+                                    </Attribute>
+                                </Service>
+                            </TimedLeg>
+                        </Leg>
+                        <Leg>
+                            <Id>2</Id>
+                            <Duration>PT7M</Duration>
+                            <TransferLeg>
+                                <TransferType>walk</TransferType>
+                                <LegStart>
+                                    <siri:StopPointRef>8503088</siri:StopPointRef>
+                                    <Name>
+                                        <Text xml:lang="de">Zürich HB SZU</Text>
+                                    </Name>
+                                </LegStart>
+                                <LegEnd>
+                                    <siri:StopPointRef>8503000</siri:StopPointRef>
+                                    <Name>
+                                        <Text xml:lang="de">Zürich HB</Text>
+                                    </Name>
+                                </LegEnd>
+                                <Duration>PT7M</Duration>
+                            </TransferLeg>
+                        </Leg>
+                        <Leg>
+                            <Id>3</Id>
+                            <Duration>PT1H9M</Duration>
+                            <TimedLeg>
+                                <LegBoard>
+                                    <siri:StopPointRef>ch:1:sloid:3000:503:43</siri:StopPointRef>
+                                    <StopPointName>
+                                        <Text xml:lang="de">Zürich HB</Text>
+                                    </StopPointName>
+                                    <PlannedQuay>
+                                        <Text xml:lang="de">43/44</Text>
+                                    </PlannedQuay>
+                                    <NameSuffix>
+                                        <Text xml:lang="de">NO_DATA</Text>
+                                    </NameSuffix>
+                                    <ServiceDeparture>
+                                        <TimetabledTime>2024-07-23T15:20:00Z</TimetabledTime>
+                                    </ServiceDeparture>
+                                    <Order>1</Order>
+                                    <NotServicedStop>true</NotServicedStop>
+                                </LegBoard>
+                                <LegAlight>
+                                    <siri:StopPointRef>ch:1:sloid:6121:3:5</siri:StopPointRef>
+                                    <StopPointName>
+                                        <Text xml:lang="de">Romanshorn</Text>
+                                    </StopPointName>
+                                    <NameSuffix>
+                                        <Text xml:lang="de">NO_DATA</Text>
+                                    </NameSuffix>
+                                    <PlannedQuay>
+                                        <Text xml:lang="de">5</Text>
+                                    </PlannedQuay>
+                                    <ServiceArrival>
+                                        <TimetabledTime>2024-07-23T16:29:00Z</TimetabledTime>
+                                    </ServiceArrival>
+                                    <Order>8</Order>
+                                    <NotServicedStop>true</NotServicedStop>
+                                </LegAlight>
+                                <Service>
+                                    <Mode>
+                                        <PtMode>rail</PtMode>
+                                        <siri:RailSubmode>regionalRail</siri:RailSubmode>
+                                        <Name>
+                                            <Text xml:lang="de">Zug</Text>
+                                        </Name>
+                                        <ShortName>
+                                            <Text xml:lang="de">S</Text>
+                                        </ShortName>
+                                    </Mode>
+                                    <ConventionalModeOfOperation>scheduled</ConventionalModeOfOperation>
+                                    <TrainNumber>19065</TrainNumber>
+                                    <siri:LineRef>ojp:91023:B</siri:LineRef>
+                                    <siri:OperatorRef>11</siri:OperatorRef>
+                                    <PublicCode>S-Bahn</PublicCode>
+                                    <PublishedServiceName>
+                                        <Text xml:lang="de">S23</Text>
+                                    </PublishedServiceName>
+                                    <ProductCategory>
+                                        <Name>
+                                            <Text xml:lang="de">Zug</Text>
+                                        </Name>
+                                        <ShortName>
+                                            <Text xml:lang="de">S</Text>
+                                        </ShortName>
+                                        <ProductCategoryRef>27</ProductCategoryRef>
+                                    </ProductCategory>
+                                    <siri:DirectionRef>R</siri:DirectionRef>
+                                    <OperatingDayRef>2024-07-23</OperatingDayRef>
+                                    <DestinationStopPointRef>8506121</DestinationStopPointRef>
+                                    <OriginText>
+                                        <Text xml:lang="de">n/a</Text>
+                                    </OriginText>
+                                    <DestinationText>
+                                        <Text xml:lang="de">Romanshorn</Text>
+                                    </DestinationText>
+                                    <JourneyRef>ch:1:sjyid:100001:19065-001</JourneyRef>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text xml:lang="de">VELOS: Keine Beförderung möglich</Text>
+                                        </UserText>
+                                        <Code>A__VN</Code>
+                                    </Attribute>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text xml:lang="de">Zug ohne Klimaanlage</Text>
+                                        </UserText>
+                                        <Code>A__HT</Code>
+                                    </Attribute>
+                                </Service>
+                            </TimedLeg>
+                        </Leg>
+                    </Trip>
+                </TripResult>
+            </OJPTripDelivery>
+        </siri:ServiceDelivery>
+    </OJPResponse>
+</OJP>

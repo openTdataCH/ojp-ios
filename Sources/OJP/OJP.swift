@@ -4,7 +4,7 @@
 import Foundation
 import XMLCoder
 
-public typealias Loader = (Data) async throws -> (Data, URLResponse)
+public typealias Loader = @Sendable (Data) async throws -> (Data, URLResponse)
 
 /// Defines the loading strategy. Basically used to switch between HTTP and Mocked-Requests
 public enum LoadingStrategy {
@@ -12,56 +12,68 @@ public enum LoadingStrategy {
     case mock(Loader)
 }
 
-public enum PlaceType: String, Codable {
+// TODO: - find me a better place
+public enum PlaceType: String, Codable, Sendable {
     case stop
     case address
 }
 
+let requestXMLRootAttributes = [
+    "xmlns": "http://www.vdv.de/ojp",
+    "xmlns:siri": "http://www.siri.org.uk/siri",
+    "xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance",
+    "version": "2.0",
+]
+
 /// Entry point to OJP
-public class OJP {
+public final class OJP: Sendable {
     let loader: Loader
     let locationInformationRequest: OJPHelpers.LocationInformationRequest
+    let tripRequest: OJPHelpers.TripRequest
 
     /// Constructor of the OJP class
     /// - Parameter loadingStrategy: Pass a real loader with an API Configuration or a Mock for test purpuse
-    public init(loadingStrategy: LoadingStrategy) {
+    /// - Parameter language: ISO language code. Defaults to the first current preferred localization according to the bundle.
+    public init(
+        loadingStrategy: LoadingStrategy,
+        language: String = Bundle.main.preferredLocalizations.first ?? "de"
+    ) {
         switch loadingStrategy {
         case let .http(apiConfiguration):
             let httpLoader = HTTPLoader(configuration: apiConfiguration)
             loader = httpLoader.load(request:)
-            locationInformationRequest = OJPHelpers.LocationInformationRequest(requesterReference: apiConfiguration.requesterReference)
+            locationInformationRequest = OJPHelpers.LocationInformationRequest(
+                language: language,
+                requesterReference: apiConfiguration.requesterReference
+            )
+            tripRequest = OJPHelpers.TripRequest(
+                language: language,
+                requesterReference: apiConfiguration.requesterReference
+            )
         case let .mock(loader):
             self.loader = loader
-            locationInformationRequest = OJPHelpers.LocationInformationRequest(requesterReference: "Mock_Requestor_Ref")
+            locationInformationRequest = OJPHelpers.LocationInformationRequest(
+                language: language,
+                requesterReference: "Mock_Requestor_Ref"
+            )
+            tripRequest = OJPHelpers.TripRequest(
+                language: language,
+                requesterReference: "Mock_Requestor_Ref"
+            )
         }
     }
-
-    static var requestXMLRootAttributes = [
-        "xmlns": "http://www.vdv.de/ojp",
-        "xmlns:siri": "http://www.siri.org.uk/siri",
-        "xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance",
-        "version": "2.0",
-    ]
 
     private var encoder: XMLEncoder {
         let encoder = XMLEncoder()
         encoder.outputFormatting = .prettyPrinted
+        encoder.dateEncodingStrategy = .iso8601
         return encoder
     }
 
-    private var decoder: XMLDecoder {
-        let decoder = XMLDecoder()
-        decoder.keyDecodingStrategy = .convertFromCapitalized
-        decoder.dateDecodingStrategy = .iso8601
-        decoder.shouldProcessNamespaces = true
-        decoder.keyDecodingStrategy = .useDefaultKeys
-        return decoder
-    }
-
-    /// Request a list of Locations based on the given geographical point
+    /// Request a list of PlaceResults based on the given geographical point
     /// - Parameter coordinates: a geo point with longitude and latitude
-    /// - Returns: List of Locations sorted by the nearest point
-    public func requestLocations(from coordinates: Point) async throws -> [NearbyObject<OJPv2.PlaceResult>] {
+    /// - Returns: List of PlaceResults sorted by the nearest point
+    public func requestPlaceResults(from coordinates: Point) async throws -> [NearbyObject<OJPv2.PlaceResult>] {
         let ojp = locationInformationRequest.requestWithBox(centerLongitude: coordinates.long, centerLatitude: coordinates.lat, boxWidth: 1000.0)
 
         let serviceDelivery = try await request(with: ojp).serviceDelivery
@@ -74,11 +86,11 @@ public class OJP {
         return nearbyObjects
     }
 
-    /// Request a list of Locations based on the given search term
+    /// Request a list of PlaceResults based on the given search term
     /// - Parameter searchTerm: The given term
     /// - Parameter restrictions: filter with a place param
-    /// - Returns: List of Locations that contains the search term
-    public func requestLocations(from searchTerm: String, restrictions: OJPv2.PlaceParam) async throws -> [OJPv2.PlaceResult] {
+    /// - Returns: List of PlaceResults that contains the search term
+    public func requestPlaceResults(from searchTerm: String, restrictions: OJPv2.PlaceParam) async throws -> [OJPv2.PlaceResult] {
         let ojp = locationInformationRequest.requestWithSearchTerm(searchTerm, restrictions: restrictions)
 
         let serviceDelivery = try await request(with: ojp).serviceDelivery
@@ -90,29 +102,63 @@ public class OJP {
         return locationInformationDelivery.placeResults
     }
 
+    public func requestPlaceResults(placeRef: OJPv2.PlaceRefChoice, restrictions: OJPv2.PlaceParam) async throws -> [OJPv2.PlaceResult] {
+        let ojp = locationInformationRequest.request(with: placeRef, restrictions: restrictions)
+
+        let serviceDelivery = try await request(with: ojp).serviceDelivery
+
+        guard case let .locationInformation(locationInformationDelivery) = serviceDelivery.delivery else {
+            throw OJPSDKError.unexpectedEmpty
+        }
+
+        return locationInformationDelivery.placeResults
+    }
+
+    public func requestTrips(
+        from: OJPv2.PlaceRefChoice,
+        to: OJPv2.PlaceRefChoice,
+        via: [OJPv2.PlaceRefChoice]? = nil,
+        at: DepArrTime = .departure(Date()),
+        params: OJPv2.TripParams
+    ) async throws -> OJPv2.TripDelivery {
+        let ojp = tripRequest.requestTrips(from: from, to: to, via: via, at: at, params: params)
+
+        let serviceDelivery = try await request(with: ojp).serviceDelivery
+
+        guard case let .trip(tripDelivery) = serviceDelivery.delivery else {
+            throw OJPSDKError.unexpectedEmpty
+        }
+
+        return tripDelivery
+    }
+
     func request(with ojp: OJPv2) async throws -> OJPv2.Response {
-        let ojpXMLData = try encoder.encode(ojp, withRootKey: "OJP", rootAttributes: OJP.requestXMLRootAttributes)
-        guard String(data: ojpXMLData, encoding: .utf8) != nil else {
+        let ojpXMLData = try encoder.encode(ojp, withRootKey: "OJP", rootAttributes: requestXMLRootAttributes)
+        guard let xmlString = String(data: ojpXMLData, encoding: .utf8) else {
             throw OJPSDKError.encodingFailed
         }
 
         let (data, response): (Data, URLResponse)
         do {
             (data, response) = try await loader(ojpXMLData)
+            debugPrint("--- Request ----")
+            debugPrint(xmlString)
+            if let urlresponse = response as? HTTPURLResponse {
+                debugPrint("--- Response ----")
+                if let xmlResponse = String(data: data, encoding: .utf8) {
+                    debugPrint(xmlResponse)
+                }
+                debugPrint("---")
+            }
         } catch let error as URLError {
             throw OJPSDKError.loadingFailed(error)
-        }
-
-        if let ojpXMLResponse = String(data: data, encoding: .utf8) {
-            debugPrint("Response Body:")
-            debugPrint(ojpXMLResponse)
         }
 
         if let httpResponse = response as? HTTPURLResponse {
             guard httpResponse.statusCode == 200 else {
                 throw OJPSDKError.unexpectedHTTPStatus(httpResponse.statusCode)
             }
-            return try OJPDecoder.response(data)
+            return try await OJPDecoder.response(data)
         } else {
             throw OJPSDKError.unexpectedEmpty
         }

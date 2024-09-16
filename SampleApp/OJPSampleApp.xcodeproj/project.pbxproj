@@ -7,17 +7,33 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		92AEB2502C328DCF00D5828E /* TripDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92AEB24F2C328DCF00D5828E /* TripDetailView.swift */; };
+		92AEB2522C32AA2C00D5828E /* TimeInterval+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92AEB2512C32AA2C00D5828E /* TimeInterval+Extensions.swift */; };
 		CF06B9F32BBE7DD000B60917 /* Pulse in Frameworks */ = {isa = PBXBuildFile; productRef = CF06B9F22BBE7DD000B60917 /* Pulse */; };
 		CF06B9F52BBE7DD000B60917 /* PulseUI in Frameworks */ = {isa = PBXBuildFile; productRef = CF06B9F42BBE7DD000B60917 /* PulseUI */; };
+		CF1A97E02C3533D100FEAEC0 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1A97DF2C3533D100FEAEC0 /* LoadingView.swift */; };
+		CF1C2B6E2C2D964F00B51EFD /* tr-perf-be-zh-20results-projection.xml in Resources */ = {isa = PBXBuildFile; fileRef = CF1C2B6D2C2D94B700B51EFD /* tr-perf-be-zh-20results-projection.xml */; };
+		CF3CD8F62C2DB76700D25994 /* tr-with-transfer-legs.xml in Resources */ = {isa = PBXBuildFile; fileRef = CF3CD8F52C2DB76500D25994 /* tr-with-transfer-legs.xml */; };
+		CF3CD8FA2C2E8F5700D25994 /* PreviewMocker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3CD8F82C2DBABA00D25994 /* PreviewMocker.swift */; };
+		CF3CD8FC2C2E9BC700D25994 /* AsyncView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3CD8FB2C2E9BC700D25994 /* AsyncView.swift */; };
+		CF3CD8FE2C2EA0B200D25994 /* TripRequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3CD8FD2C2EA0B200D25994 /* TripRequestView.swift */; };
+		CF3CD9002C2EA4A800D25994 /* InlineLocationSerachView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3CD8FF2C2EA4A800D25994 /* InlineLocationSerachView.swift */; };
+		CF52AD022C7F580C000CE7F8 /* tr-fribourg-basel-fake-infolink.xml in Resources */ = {isa = PBXBuildFile; fileRef = CF52AD012C7F580C000CE7F8 /* tr-fribourg-basel-fake-infolink.xml */; };
+		CF52AD032C7F581D000CE7F8 /* tr-fribourg-berne.xml in Resources */ = {isa = PBXBuildFile; fileRef = CF52AD002C7F5797000CE7F8 /* tr-fribourg-berne.xml */; };
+		CF564A322C2D83D600424D91 /* TripRequestResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF564A312C2D83D600424D91 /* TripRequestResultView.swift */; };
+		CF564A342C2D8CFE00424D91 /* LocationSearchByNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF227B42BBD95CF00D3EADF /* LocationSearchByNameView.swift */; };
 		CF71377A2BE5398200D2411E /* DemoEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7137792BE5398200D2411E /* DemoEnvironment.swift */; };
+		CF8F0C8D2C6672AC008BABC6 /* PTSituationDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8F0C8C2C6672AC008BABC6 /* PTSituationDetailView.swift */; };
 		CFBA60BB2BBD6106000FF2ED /* OJPSampleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBA60BA2BBD6106000FF2ED /* OJPSampleApp.swift */; };
 		CFBA60BF2BBD610C000FF2ED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CFBA60BE2BBD610C000FF2ED /* Assets.xcassets */; };
 		CFBA60C32BBD610C000FF2ED /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CFBA60C22BBD610C000FF2ED /* Preview Assets.xcassets */; };
 		CFBA60CD2BBD610F000FF2ED /* OJPSampleAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBA60CC2BBD610F000FF2ED /* OJPSampleAppTests.swift */; };
 		CFBA60D72BBD610F000FF2ED /* OJPSampleAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBA60D62BBD610F000FF2ED /* OJPSampleAppUITests.swift */; };
 		CFBA60D92BBD610F000FF2ED /* OJPSampleAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBA60D82BBD610F000FF2ED /* OJPSampleAppUITestsLaunchTests.swift */; };
+		CFE465E92C738D6B00E5CADB /* tr-fribourg-basel.xml in Resources */ = {isa = PBXBuildFile; fileRef = CFE465E82C738D4900E5CADB /* tr-fribourg-basel.xml */; };
+		CFE465EB2C73D92500E5CADB /* tr-with-cancellations-and-notservicedstops.xml in Resources */ = {isa = PBXBuildFile; fileRef = CFE465EA2C73D8F100E5CADB /* tr-with-cancellations-and-notservicedstops.xml */; };
+		CFE465ED2C76092200E5CADB /* OJP+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE465EC2C76092200E5CADB /* OJP+Extensions.swift */; };
 		CFF227B32BBD63AC00D3EADF /* OJP in Frameworks */ = {isa = PBXBuildFile; productRef = CFF227B22BBD63AC00D3EADF /* OJP */; };
-		CFF227B52BBD95CF00D3EADF /* LocationSearchByNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF227B42BBD95CF00D3EADF /* LocationSearchByNameView.swift */; };
 		CFF227B82BBDA10800D3EADF /* PlaceDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF227B72BBDA10800D3EADF /* PlaceDetailView.swift */; };
 /* End PBXBuildFile section */
 
@@ -39,7 +55,20 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		92AEB24F2C328DCF00D5828E /* TripDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripDetailView.swift; sourceTree = "<group>"; };
+		92AEB2512C32AA2C00D5828E /* TimeInterval+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeInterval+Extensions.swift"; sourceTree = "<group>"; };
+		CF1A97DF2C3533D100FEAEC0 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		CF1C2B6D2C2D94B700B51EFD /* tr-perf-be-zh-20results-projection.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "tr-perf-be-zh-20results-projection.xml"; sourceTree = "<group>"; };
+		CF3CD8F52C2DB76500D25994 /* tr-with-transfer-legs.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "tr-with-transfer-legs.xml"; sourceTree = "<group>"; };
+		CF3CD8F82C2DBABA00D25994 /* PreviewMocker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewMocker.swift; sourceTree = "<group>"; };
+		CF3CD8FB2C2E9BC700D25994 /* AsyncView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncView.swift; sourceTree = "<group>"; };
+		CF3CD8FD2C2EA0B200D25994 /* TripRequestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripRequestView.swift; sourceTree = "<group>"; };
+		CF3CD8FF2C2EA4A800D25994 /* InlineLocationSerachView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InlineLocationSerachView.swift; sourceTree = "<group>"; };
+		CF52AD002C7F5797000CE7F8 /* tr-fribourg-berne.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "tr-fribourg-berne.xml"; sourceTree = "<group>"; };
+		CF52AD012C7F580C000CE7F8 /* tr-fribourg-basel-fake-infolink.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "tr-fribourg-basel-fake-infolink.xml"; sourceTree = "<group>"; };
+		CF564A312C2D83D600424D91 /* TripRequestResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripRequestResultView.swift; sourceTree = "<group>"; };
 		CF7137792BE5398200D2411E /* DemoEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoEnvironment.swift; sourceTree = "<group>"; };
+		CF8F0C8C2C6672AC008BABC6 /* PTSituationDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PTSituationDetailView.swift; sourceTree = "<group>"; };
 		CFBA60B72BBD6106000FF2ED /* OJPSampleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OJPSampleApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFBA60BA2BBD6106000FF2ED /* OJPSampleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OJPSampleApp.swift; sourceTree = "<group>"; };
 		CFBA60BE2BBD610C000FF2ED /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -50,6 +79,9 @@
 		CFBA60D22BBD610F000FF2ED /* OJPSampleAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OJPSampleAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFBA60D62BBD610F000FF2ED /* OJPSampleAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OJPSampleAppUITests.swift; sourceTree = "<group>"; };
 		CFBA60D82BBD610F000FF2ED /* OJPSampleAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OJPSampleAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		CFE465E82C738D4900E5CADB /* tr-fribourg-basel.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "tr-fribourg-basel.xml"; sourceTree = "<group>"; };
+		CFE465EA2C73D8F100E5CADB /* tr-with-cancellations-and-notservicedstops.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "tr-with-cancellations-and-notservicedstops.xml"; sourceTree = "<group>"; };
+		CFE465EC2C76092200E5CADB /* OJP+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OJP+Extensions.swift"; sourceTree = "<group>"; };
 		CFF227B02BBD639000D3EADF /* OJP */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = OJP; path = ..; sourceTree = "<group>"; };
 		CFF227B42BBD95CF00D3EADF /* LocationSearchByNameView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationSearchByNameView.swift; sourceTree = "<group>"; };
 		CFF227B72BBDA10800D3EADF /* PlaceDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceDetailView.swift; sourceTree = "<group>"; };
@@ -83,6 +115,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CF3CD8F72C2DBA9D00D25994 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				CF3CD8F82C2DBABA00D25994 /* PreviewMocker.swift */,
+				CF3CD8FB2C2E9BC700D25994 /* AsyncView.swift */,
+				92AEB2512C32AA2C00D5828E /* TimeInterval+Extensions.swift */,
+				CF1A97DF2C3533D100FEAEC0 /* LoadingView.swift */,
+				CFE465EC2C76092200E5CADB /* OJP+Extensions.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		CF564A302C2D83C400424D91 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CFF227B42BBD95CF00D3EADF /* LocationSearchByNameView.swift */,
+				CFF227B72BBDA10800D3EADF /* PlaceDetailView.swift */,
+				CF564A312C2D83D600424D91 /* TripRequestResultView.swift */,
+				CF3CD8FD2C2EA0B200D25994 /* TripRequestView.swift */,
+				CF8F0C8C2C6672AC008BABC6 /* PTSituationDetailView.swift */,
+				CF3CD8FF2C2EA4A800D25994 /* InlineLocationSerachView.swift */,
+				92AEB24F2C328DCF00D5828E /* TripDetailView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		CF7137782BE5396600D2411E /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -116,10 +174,10 @@
 		CFBA60B92BBD6106000FF2ED /* OJPSampleApp */ = {
 			isa = PBXGroup;
 			children = (
+				CF3CD8F72C2DBA9D00D25994 /* Helpers */,
+				CF564A302C2D83C400424D91 /* Views */,
 				CF7137782BE5396600D2411E /* Models */,
 				CFBA60BA2BBD6106000FF2ED /* OJPSampleApp.swift */,
-				CFF227B42BBD95CF00D3EADF /* LocationSearchByNameView.swift */,
-				CFF227B72BBDA10800D3EADF /* PlaceDetailView.swift */,
 				CFBA60BE2BBD610C000FF2ED /* Assets.xcassets */,
 				CFBA60C02BBD610C000FF2ED /* OJPSampleApp.entitlements */,
 				CFBA60C12BBD610C000FF2ED /* Preview Content */,
@@ -130,6 +188,12 @@
 		CFBA60C12BBD610C000FF2ED /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
+				CF1C2B6D2C2D94B700B51EFD /* tr-perf-be-zh-20results-projection.xml */,
+				CF52AD012C7F580C000CE7F8 /* tr-fribourg-basel-fake-infolink.xml */,
+				CF3CD8F52C2DB76500D25994 /* tr-with-transfer-legs.xml */,
+				CFE465EA2C73D8F100E5CADB /* tr-with-cancellations-and-notservicedstops.xml */,
+				CFE465E82C738D4900E5CADB /* tr-fribourg-basel.xml */,
+				CF52AD002C7F5797000CE7F8 /* tr-fribourg-berne.xml */,
 				CFBA60C22BBD610C000FF2ED /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
@@ -228,7 +292,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1530;
-				LastUpgradeCheck = 1530;
+				LastUpgradeCheck = 1540;
 				TargetAttributes = {
 					CFBA60B62BBD6106000FF2ED = {
 						CreatedOnToolsVersion = 15.3;
@@ -271,7 +335,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF52AD032C7F581D000CE7F8 /* tr-fribourg-berne.xml in Resources */,
 				CFBA60C32BBD610C000FF2ED /* Preview Assets.xcassets in Resources */,
+				CF3CD8F62C2DB76700D25994 /* tr-with-transfer-legs.xml in Resources */,
+				CF52AD022C7F580C000CE7F8 /* tr-fribourg-basel-fake-infolink.xml in Resources */,
+				CFE465E92C738D6B00E5CADB /* tr-fribourg-basel.xml in Resources */,
+				CFE465EB2C73D92500E5CADB /* tr-with-cancellations-and-notservicedstops.xml in Resources */,
+				CF1C2B6E2C2D964F00B51EFD /* tr-perf-be-zh-20results-projection.xml in Resources */,
 				CFBA60BF2BBD610C000FF2ED /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -297,9 +367,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CFF227B52BBD95CF00D3EADF /* LocationSearchByNameView.swift in Sources */,
+				92AEB2502C328DCF00D5828E /* TripDetailView.swift in Sources */,
+				CF564A322C2D83D600424D91 /* TripRequestResultView.swift in Sources */,
 				CFF227B82BBDA10800D3EADF /* PlaceDetailView.swift in Sources */,
+				CF564A342C2D8CFE00424D91 /* LocationSearchByNameView.swift in Sources */,
+				CF3CD8FE2C2EA0B200D25994 /* TripRequestView.swift in Sources */,
+				CF8F0C8D2C6672AC008BABC6 /* PTSituationDetailView.swift in Sources */,
+				CF1A97E02C3533D100FEAEC0 /* LoadingView.swift in Sources */,
 				CF71377A2BE5398200D2411E /* DemoEnvironment.swift in Sources */,
+				CF3CD8FA2C2E8F5700D25994 /* PreviewMocker.swift in Sources */,
+				92AEB2522C32AA2C00D5828E /* TimeInterval+Extensions.swift in Sources */,
+				CF3CD9002C2EA4A800D25994 /* InlineLocationSerachView.swift in Sources */,
+				CF3CD8FC2C2E9BC700D25994 /* AsyncView.swift in Sources */,
+				CFE465ED2C76092200E5CADB /* OJP+Extensions.swift in Sources */,
 				CFBA60BB2BBD6106000FF2ED /* OJPSampleApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -371,6 +451,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -395,6 +476,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_STRICT_CONCURRENCY = complete;
 			};
 			name = Debug;
 		};
@@ -432,6 +514,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -448,6 +531,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_STRICT_CONCURRENCY = complete;
 			};
 			name = Release;
 		};
@@ -457,9 +541,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = OJPSampleApp/OJPSampleApp.entitlements;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"OJPSampleApp/Preview Content\"";
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_ASSET_PATHS = "OJPSampleApp/Preview\\ Content/tr-with-transfer-legs.xml OJPSampleApp/Preview\\ Content/tr-perf-be-zh-20results-projection.xml OJPSampleApp/Preview\\ Content";
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
@@ -479,6 +565,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = swiss.opentransportdata.ojp.OJPSampleApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -493,9 +580,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = OJPSampleApp/OJPSampleApp.entitlements;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"OJPSampleApp/Preview Content\"";
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_ASSET_PATHS = "OJPSampleApp/Preview\\ Content/tr-with-transfer-legs.xml OJPSampleApp/Preview\\ Content/tr-perf-be-zh-20results-projection.xml OJPSampleApp/Preview\\ Content";
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
@@ -515,6 +604,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = swiss.opentransportdata.ojp.OJPSampleApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -530,6 +620,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
 				MACOSX_DEPLOYMENT_TARGET = 14.2;
@@ -552,6 +643,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
 				MACOSX_DEPLOYMENT_TARGET = 14.2;
@@ -573,6 +665,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
 				MACOSX_DEPLOYMENT_TARGET = 14.2;
@@ -594,6 +687,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
 				MACOSX_DEPLOYMENT_TARGET = 14.2;

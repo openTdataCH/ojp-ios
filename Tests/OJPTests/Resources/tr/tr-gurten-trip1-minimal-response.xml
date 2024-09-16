@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<OJP xmlns:siri="http://www.siri.org.uk/siri" version="2.0" xmlns="http://www.vdv.de/ojp">
+    <OJPResponse>
+        <siri:ServiceDelivery>
+            <siri:ResponseTimestamp>2024-05-14T17:11:06.6884297+02:00</siri:ResponseTimestamp>
+            <OJPTripDelivery>
+                <siri:ResponseTimestamp>2024-05-14T17:11:06.6884303+02:00</siri:ResponseTimestamp>
+                <siri:RequestMessageRef>8833dd7c-551f-48b3-93df-174cbe48481c</siri:RequestMessageRef>
+                <TripResult>
+                    <Id>ID-E63FDE7C-080D-4FA8-AEC7-EF1C5F31010E</Id>
+                    <Trip>
+                        <Id>ID-E63FDE7C-080D-4FA8-AEC7-EF1C5F31010E</Id>
+                        <Duration>PT8H55M</Duration>
+                        <StartTime>2024-05-14T21:45:00Z</StartTime>
+                        <EndTime>2024-05-15T06:40:00Z</EndTime>
+                        <Transfers>4</Transfers>
+                        <Leg>
+                            <Id>1</Id>
+                            <Duration>PT15M</Duration>
+                            <TimedLeg>
+                                <LegBoard>
+                                    <siri:StopPointRef>8507099</siri:StopPointRef>
+                                    <StopPointName>
+                                        <Text xml:lang="de">Gurten Kulm</Text>
+                                    </StopPointName>
+                                    <ServiceDeparture>
+                                        <TimetabledTime>2024-05-14T21:45:00Z</TimetabledTime>
+                                    </ServiceDeparture>
+                                </LegBoard>
+                                <LegAlight>
+                                    <siri:StopPointRef>8507097</siri:StopPointRef>
+                                    <StopPointName>
+                                        <Text xml:lang="de">Wabern (Gurtenbahn)</Text>
+                                    </StopPointName>
+                                    <ServiceArrival>
+                                        <TimetabledTime>2024-05-14T22:00:00Z</TimetabledTime>
+                                    </ServiceArrival>
+                                    <Order>2</Order>
+                                </LegAlight>
+                                <Service>
+                                    <Mode>
+                                        <PtMode>bus</PtMode>
+                                        <siri:BusSubmode>localBus</siri:BusSubmode>
+                                        <Name>
+                                            <Text xml:lang="de">Bus</Text>
+                                        </Name>
+                                        <ShortName>
+                                            <Text xml:lang="de">B</Text>
+                                        </ShortName>
+                                    </Mode>
+                                    <siri:LineRef>ojp:92235:1</siri:LineRef>
+                                    <PublishedServiceName>
+                                        <Text xml:lang="de">2351</Text>
+                                    </PublishedServiceName>
+                                    <OperatingDayRef>2024-05-14</OperatingDayRef>
+                                    <OriginStopPointRef>8507099</OriginStopPointRef>
+                                    <DestinationStopPointRef>8507097</DestinationStopPointRef>
+                                    <OriginText>
+                                        <Text xml:lang="de">Gurten Kulm</Text>
+                                    </OriginText>
+                                    <DestinationText>
+                                        <Text xml:lang="de">Wabern (Gurtenbahn)</Text>
+                                    </DestinationText>
+                                    <JourneyRef>ojp-92-235-1-j24-1-14-TA</JourneyRef>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text xml:lang="de">VELOS: Keine Beförderung möglich</Text>
+                                        </UserText>
+                                        <Code>A__VN</Code>
+                                    </Attribute>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text xml:lang="de">Niederflureinstieg</Text>
+                                        </UserText>
+                                        <Code>A__NF</Code>
+                                    </Attribute>
+                                </Service>
+                            </TimedLeg>
+                        </Leg>
+                    </Trip>
+                </TripResult>
+            </OJPTripDelivery>
+        </siri:ServiceDelivery>
+    </OJPResponse>
+</OJP>

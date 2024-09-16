@@ -15,18 +15,62 @@ import XCTest
 // without making a big effort.
 final class SystemTests: XCTestCase {
     func testFetchStations() async throws {
-        let ojpSdk = OJP(loadingStrategy: .http(.int))
+        let ojpSdk = await OJP(loadingStrategy: .http(.int))
 
-        let stations = try await ojpSdk.requestLocations(from: "Bern", restrictions: .init(type: [.stop]))
+        let stations = try await ojpSdk.requestPlaceResults(from: "Bern", restrictions: .init(type: [.stop]))
 
         XCTAssert(!stations.isEmpty)
     }
 
     func testFetchNearbyStations() async throws {
-        let ojpSdk = OJP(loadingStrategy: .http(.int))
+        let ojpSdk = await OJP(loadingStrategy: .http(.int))
 
-        let nearbyStations = try await ojpSdk.requestLocations(from: (long: 7.452178, lat: 46.948474))
+        let nearbyStations = try await ojpSdk.requestPlaceResults(from: (long: 7.452178, lat: 46.948474))
 
         XCTAssert(!nearbyStations.isEmpty)
+    }
+
+    func testFetchStationByDidok() async throws {
+        let ojpSdk = await OJP(loadingStrategy: .http(.int))
+
+        let nearbyStations = try await ojpSdk.requestPlaceResults(placeRef: .stopPointRef(.init(stopPointRef: "8507000", name: .init("Bern"))), restrictions: .init(type: [.stop]))
+
+        XCTAssert(!nearbyStations.isEmpty)
+    }
+
+    func testFetchTripWithDidoks() async throws {
+        let ojpSdk = await OJP(loadingStrategy: .http(.int))
+
+        let originDidok = OJPv2.PlaceRefChoice.stopPlaceRef(.init(stopPlaceRef: "8507110", name: .init("8507110")))
+        let destinationDidok = OJPv2.PlaceRefChoice.stopPlaceRef(.init(stopPlaceRef: "8508052", name: .init("8508052")))
+
+        let tripDelivery = try await ojpSdk.requestTrips(from: originDidok, to: destinationDidok, params: .init(includeIntermediateStops: true, includeAllRestrictedLines: true))
+
+        XCTAssert(!tripDelivery.tripResults.isEmpty)
+    }
+
+    func testFetchTripWithDifferentNumberOfResultPolicies() async throws {
+        let ojpSdk = await OJP(loadingStrategy: .http(.int))
+
+        let originDidok = OJPv2.PlaceRefChoice.stopPlaceRef(.init(stopPlaceRef: "8507110", name: .init("8507110")))
+        let destinationDidok = OJPv2.PlaceRefChoice.stopPlaceRef(.init(stopPlaceRef: "8508052", name: .init("8508052")))
+
+        let tripsNow = try await ojpSdk.requestTrips(from: originDidok, to: destinationDidok, params: .init(includeIntermediateStops: true, includeAllRestrictedLines: true)).tripResults
+
+        let tripsBefore = try await ojpSdk.requestTrips(from: originDidok, to: destinationDidok, params: .init(numberOfResults: .before(20), includeIntermediateStops: true)).tripResults
+
+        let tripsAfter = try await ojpSdk.requestTrips(from: originDidok, to: destinationDidok, params: .init(numberOfResults: .after(20), includeIntermediateStops: true)).tripResults
+
+        let beforeDates = tripsBefore.compactMap(\.trip).map(\.startTime)
+        let afterDates = tripsAfter.compactMap(\.trip).map(\.startTime)
+
+        XCTAssertFalse(tripsBefore.isEmpty)
+        XCTAssertFalse(tripsNow.isEmpty)
+        XCTAssertFalse(tripsAfter.isEmpty)
+
+        XCTAssertLessThan(beforeDates.last!, afterDates.first!)
+
+        XCTAssertEqual(beforeDates.sorted(), beforeDates)
+        XCTAssertEqual(afterDates.sorted(), afterDates)
     }
 }
