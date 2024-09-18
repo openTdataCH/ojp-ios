@@ -8,12 +8,12 @@
 import Foundation
 
 /// A  convenience type to define a new TripRequest to be used in the ``PaginatedTripLoader``
-public struct TripRequest: Sendable {
-    let from: OJPv2.PlaceRefChoice
-    let to: OJPv2.PlaceRefChoice
-    let via: [OJPv2.PlaceRefChoice]?
-    var at: DepArrTime
-    var params: OJPv2.TripParams
+public struct TripRequest: Codable, Sendable {
+    public let from: OJPv2.PlaceRefChoice
+    public let to: OJPv2.PlaceRefChoice
+    public let via: [OJPv2.PlaceRefChoice]?
+    public internal(set) var at: DepArrTime
+    public internal(set) var params: OJPv2.TripParams
 
     public init(from: OJPv2.PlaceRefChoice, to: OJPv2.PlaceRefChoice, via: [OJPv2.PlaceRefChoice]? = nil, at: DepArrTime, params: OJPv2.TripParams) {
         self.from = from
