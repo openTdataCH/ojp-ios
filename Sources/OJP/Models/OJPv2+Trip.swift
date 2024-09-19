@@ -427,9 +427,9 @@ public extension OJPv2 {
                     h.combine(timedLeg.service.destinationText?.text)
                     h.combine(timedLeg.legBoard.stopPointName.text)
                     h.combine(timedLeg.legBoard.serviceDeparture.timetabledTime)
-
                     h.combine(timedLeg.legAlight.serviceArrival.timetabledTime)
                     h.combine(timedLeg.legAlight.stopPointName.text)
+                    h.combine(timedLeg.service.trainNumber)
                 case let .transfer(transferLeg):
                     h.combine(transferLeg.transferTypes.hashValue)
                     h.combine(transferLeg.duration)
