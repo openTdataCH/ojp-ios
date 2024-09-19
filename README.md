@@ -16,11 +16,11 @@ For a general introduction to `OJP, consult the [Cookbook](https://opentransport
 
 - [Location Information Request](https://opentransportdata.swiss/en/cookbook/location-information-service/)
 - [Trip Request](https://opentransportdata.swiss/en/cookbook/ojptriprequest/)
+- [TripInfo Request](https://opentransportdata.swiss/en/cookbook/ojptripinforequest/)
 
 ### Soon to be available
 
 - [Stop Event Request](https://opentransportdata.swiss/en/cookbook/ojp-stopeventservice/)
-- [TripInfo Request](https://opentransportdata.swiss/en/cookbook/ojptripinforequest/)
 
 ## Requirements
 
@@ -117,6 +117,19 @@ let previousTripResults = try await paginatedActor.loadPrevious().tripResults
 
 // load future TripResults
 let nextTripResults = try await paginatedActor.loadPrevious().tripResults
+```
+
+#### Load informations to a trip using `TripInformationRequest`
+
+``` swift
+let journeyRef = timedLeg.service.journeyRef
+let operatingDayRef = timedLeg.service.operatingDayRef
+
+let tripInfo = try await OJP.configured.requestTripInfo(
+    journeyRef: journeyRef,
+    operatingDayRef: operatingDayRef,
+    params: .init(useRealTimeData: .explanatory)
+)
 ```
 
 ## Sample App

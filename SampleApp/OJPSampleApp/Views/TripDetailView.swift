@@ -13,12 +13,14 @@ struct TripDetailView: View {
     let ptSituations: [OJPv2.PTSituation]
 
     @State var selectedPTSituation: OJPv2.PTSituation?
+    @State var selectedTripInfo: OJPv2.TripInfoResult?
 
     var body: some View {
         VStack {
             if trip.tripStatus.hasIssue {
                 TripStatusLabel(tripStatus: trip.tripStatus)
             }
+
             List(trip.legs) { leg in
                 switch leg.legType {
                 case let .timed(timedLeg):
@@ -28,6 +30,19 @@ struct TripDetailView: View {
                             Text(timedLeg.service.publishedServiceName.text)
                             if let destination = timedLeg.service.destinationText?.text {
                                 Text("→ \(destination)")
+                            }
+                            Button("Load TripInfo") {
+                                Task {
+                                    do {
+                                        selectedTripInfo = try await OJP.configured.requestTripInfo(
+                                            journeyRef: timedLeg.service.journeyRef,
+                                            operatingDayRef: timedLeg.service.operatingDayRef,
+                                            params: .init(useRealTimeData: .explanatory)
+                                        ).tripInfoResult
+                                    } catch {
+                                        print(error)
+                                    }
+                                }
                             }
                         }
                         .bold()
@@ -125,6 +140,22 @@ struct TripDetailView: View {
                 ScrollView(.vertical) {
                     PTSituationDetailView(ptSituation: situation)
                 }
+            }.padding()
+                .frame(maxWidth: 960)
+        }
+        .sheet(item: $selectedTripInfo) { tripInfo in
+            VStack {
+                HStack {
+                    Spacer()
+                    Button {
+                        selectedTripInfo = nil
+                    } label: {
+                        Image(systemName: "xmark")
+                    }
+                }
+
+                TripInfoDetailView(tripInfo: tripInfo)
+
             }.padding()
                 .frame(maxWidth: 960)
         }
