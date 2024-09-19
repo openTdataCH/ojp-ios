@@ -241,6 +241,24 @@ final class TripRequestTests: XCTestCase {
             "ch:1:sstid:100001:dfc1dfd3-bbe0-441c-89df-7a309eb7b358-1",
         ])
     }
+    
+    func testSituationParsingWithoutSummaryContent() async throws {
+        let xmlData = try TestHelpers.loadXML(xmlFilename: "tr-noSummaryContent")
+        do {
+            guard case let .trip(tripDelivery) = try await OJPDecoder.parseXML(xmlData).response?.serviceDelivery.delivery else {
+                return XCTFail("unexpected empty")
+            }
+            guard let responseContext = tripDelivery.tripResponseContext else {
+                return XCTFail("expected to have a tripResponseContext")
+            }
+            XCTAssertNil(responseContext.situations.ptSituations?.first?.publishingActions)
+            XCTAssertEqual(1, responseContext.situations.ptSituations?.count)
+            dump(responseContext)
+        } catch {
+            print(error)
+            throw error
+        }
+    }
 
     // MARK: - TripStatus
 

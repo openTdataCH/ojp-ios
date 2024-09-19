@@ -1,0 +1,1049 @@
+<OJP xmlns="http://www.vdv.de/ojp" xmlns:siri="http://www.siri.org.uk/siri" version="2.0">
+  <OJPResponse>
+    <siri:ServiceDelivery>
+      <siri:ResponseTimestamp>2024-09-19T09:03:21.6389035+02:00</siri:ResponseTimestamp>
+      <siri:ProducerRef>MENTZ</siri:ProducerRef>
+      <OJPTripDelivery>
+        <siri:ResponseTimestamp>2024-09-19T09:03:21.6389046+02:00</siri:ResponseTimestamp>
+        <siri:RequestMessageRef>46e500b7-49bb-4634-9928-7580d99ad9b2</siri:RequestMessageRef>
+        <siri:DefaultLanguage>en</siri:DefaultLanguage>
+        <CalcTime>63</CalcTime>
+        <TripResponseContext>
+          <Places>
+            <Place>
+              <StopPlace>
+                <StopPlaceRef>8511171</StopPlaceRef>
+                <StopPlaceName>
+                  <Text xml:lang="en">Kandersteg car transport service</Text>
+                </StopPlaceName>
+                <PrivateCode>
+                  <System>EFA</System>
+                  <Value>55400113</Value>
+                </PrivateCode>
+                <TopographicPlaceRef>23006565:1</TopographicPlaceRef>
+              </StopPlace>
+              <Name>
+                <Text xml:lang="en">Kandersteg car transport service</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>7.67022</siri:Longitude>
+                <siri:Latitude>46.49458</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <StopPoint>
+                <siri:StopPointRef>8511171</siri:StopPointRef>
+                <StopPointName>
+                  <Text xml:lang="en">Kandersteg car transport service</Text>
+                </StopPointName>
+                <PrivateCode>
+                  <System>EFA</System>
+                  <Value>55400113</Value>
+                </PrivateCode>
+                <ParentRef>8511171</ParentRef>
+                <TopographicPlaceRef>23006565:1</TopographicPlaceRef>
+              </StopPoint>
+              <Name>
+                <Text xml:lang="en">Kandersteg car transport service</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>7.67022</siri:Longitude>
+                <siri:Latitude>46.49458</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <TopographicPlace>
+                <TopographicPlaceCode>23006565:1</TopographicPlaceCode>
+                <TopographicPlaceName>
+                  <Text xml:lang="en">Kandersteg</Text>
+                </TopographicPlaceName>
+              </TopographicPlace>
+              <Name>
+                <Text xml:lang="en">Kandersteg car transport service</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>7.67022</siri:Longitude>
+                <siri:Latitude>46.49458</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <StopPlace>
+                <StopPlaceRef>8519655</StopPlaceRef>
+                <StopPlaceName>
+                  <Text xml:lang="en">Goppenstein car transport service</Text>
+                </StopPlaceName>
+                <PrivateCode>
+                  <System>EFA</System>
+                  <Value>55400125:0:A84</Value>
+                </PrivateCode>
+                <TopographicPlaceRef>23024195:2</TopographicPlaceRef>
+              </StopPlace>
+              <Name>
+                <Text xml:lang="en">Goppenstein car transport service</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>7.75752</siri:Longitude>
+                <siri:Latitude>46.36329</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <StopPoint>
+                <siri:StopPointRef>8519655</siri:StopPointRef>
+                <StopPointName>
+                  <Text xml:lang="en">Goppenstein car transport service</Text>
+                </StopPointName>
+                <PrivateCode>
+                  <System>EFA</System>
+                  <Value>55400125:0:A84</Value>
+                </PrivateCode>
+                <ParentRef>8519655</ParentRef>
+                <TopographicPlaceRef>23024195:2</TopographicPlaceRef>
+              </StopPoint>
+              <Name>
+                <Text xml:lang="en">Goppenstein car transport service</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>7.75752</siri:Longitude>
+                <siri:Latitude>46.36329</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <TopographicPlace>
+                <TopographicPlaceCode>23024195:2</TopographicPlaceCode>
+                <TopographicPlaceName>
+                  <Text xml:lang="en">Goppenstein</Text>
+                </TopographicPlaceName>
+              </TopographicPlace>
+              <Name>
+                <Text xml:lang="en">Goppenstein car transport service</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>7.75752</siri:Longitude>
+                <siri:Latitude>46.36329</siri:Latitude>
+              </GeoPosition>
+            </Place>
+          </Places>
+          <Situations>
+            <PtSituation>
+              <siri:CreationTime>2024-09-17T12:06:00Z</siri:CreationTime>
+              <siri:ParticipantRef>ch:1:sboid:100016</siri:ParticipantRef>
+              <siri:SituationNumber>ems-2455</siri:SituationNumber>
+              <siri:Version>5</siri:Version>
+              <siri:Source>
+                <siri:SourceType>other</siri:SourceType>
+              </siri:Source>
+              <siri:ValidityPeriod>
+                <siri:StartTime>2024-09-17T12:04:00Z</siri:StartTime>
+                <siri:EndTime>2024-09-22T12:04:00Z</siri:EndTime>
+              </siri:ValidityPeriod>
+              <siri:AlertCause>unknown</siri:AlertCause>
+              <siri:UnknownReason>unknown</siri:UnknownReason>
+              <siri:Priority>3</siri:Priority>
+              <siri:ScopeType>line</siri:ScopeType>
+              <siri:Affects>
+                <siri:StopPoints/>
+                <siri:VehicleJourneys>
+                  <siri:AffectedVehicleJourney>
+                    <siri:LineRef>atv:97003:_x0020_</siri:LineRef>
+                  </siri:AffectedVehicleJourney>
+                  <siri:AffectedVehicleJourney>
+                    <siri:LineRef>atv:97003:_x0020_</siri:LineRef>
+                  </siri:AffectedVehicleJourney>
+                </siri:VehicleJourneys>
+              </siri:Affects>
+              <siri:Consequences>
+                <siri:Consequence>
+                  <siri:Blocking>
+                    <siri:JourneyPlanner>true</siri:JourneyPlanner>
+                  </siri:Blocking>
+                </siri:Consequence>
+              </siri:Consequences>
+              <siri:PublishingActions>
+                <siri:PublishingAction>
+                  <siri:PassengerInformationAction>
+                    <siri:RecordedAtTime>2024-09-17T12:06:00Z</siri:RecordedAtTime>
+                    <siri:TextualContent>
+                      <siri:DescriptionContent/>
+                      <siri:ConsequenceContent/>
+                      <siri:RecommendationContent/>
+                      <siri:DurationContent>
+                        <siri:DurationText xml:lang="en">The restriction lasts until 22.09.2024, 14:00.</siri:DurationText>
+                      </siri:DurationContent>
+                      <siri:RemarkContent>
+                        <siri:Remark xml:lang="en">.</siri:Remark>
+                      </siri:RemarkContent>
+                    </siri:TextualContent>
+                  </siri:PassengerInformationAction>
+                </siri:PublishingAction>
+              </siri:PublishingActions>
+            </PtSituation>
+          </Situations>
+        </TripResponseContext>
+        <TripResult>
+          <Id>ID-00E4271F-27FF-4E8A-88F7-D0DAA33EAAB4</Id>
+          <Trip>
+            <Id>ID-00E4271F-27FF-4E8A-88F7-D0DAA33EAAB4</Id>
+            <Duration>PT16M</Duration>
+            <StartTime>2024-09-19T07:10:00Z</StartTime>
+            <EndTime>2024-09-19T07:26:00Z</EndTime>
+            <Transfers>0</Transfers>
+            <Leg>
+              <Id>1</Id>
+              <Duration>PT16M</Duration>
+              <TimedLeg>
+                <LegBoard>
+                  <siri:StopPointRef>8511171</siri:StopPointRef>
+                  <StopPointName>
+                    <Text xml:lang="en">Kandersteg car transport service</Text>
+                  </StopPointName>
+                  <ServiceDeparture>
+                    <TimetabledTime>2024-09-19T07:10:00Z</TimetabledTime>
+                  </ServiceDeparture>
+                  <Order>1</Order>
+                </LegBoard>
+                <LegAlight>
+                  <siri:StopPointRef>8519655</siri:StopPointRef>
+                  <StopPointName>
+                    <Text xml:lang="en">Goppenstein car transport service</Text>
+                  </StopPointName>
+                  <PlannedQuay>
+                    <Text xml:lang="en">A84</Text>
+                  </PlannedQuay>
+                  <ServiceArrival>
+                    <TimetabledTime>2024-09-19T07:26:00Z</TimetabledTime>
+                  </ServiceArrival>
+                  <Order>2</Order>
+                </LegAlight>
+                <Service>
+                  <Mode>
+                    <PtMode>rail</PtMode>
+                    <siri:RailSubmode>regionalRail</siri:RailSubmode>
+                    <Name>
+                      <Text xml:lang="en">Zug</Text>
+                    </Name>
+                    <ShortName>
+                      <Text xml:lang="en">ATZ</Text>
+                    </ShortName>
+                  </Mode>
+                  <ConventionalModeOfOperation>scheduled</ConventionalModeOfOperation>
+                  <TrainNumber>27517</TrainNumber>
+                  <siri:LineRef>atv:97003:_x0020_</siri:LineRef>
+                  <siri:OperatorRef>33</siri:OperatorRef>
+                  <PublicCode>Car transporter</PublicCode>
+                  <PublishedServiceName>
+                    <Text xml:lang="en">3</Text>
+                  </PublishedServiceName>
+                  <ProductCategory>
+                    <Name>
+                      <Text xml:lang="en">Zug</Text>
+                    </Name>
+                    <ShortName>
+                      <Text xml:lang="en">ATZ</Text>
+                    </ShortName>
+                    <ProductCategoryRef>22</ProductCategoryRef>
+                  </ProductCategory>
+                  <siri:DirectionRef>H</siri:DirectionRef>
+                  <OperatingDayRef>2024-09-19</OperatingDayRef>
+                  <DestinationStopPointRef>8519655</DestinationStopPointRef>
+                  <OriginText>
+                    <Text xml:lang="en">n/a</Text>
+                  </OriginText>
+                  <DestinationText>
+                    <Text xml:lang="en">Goppenstein Autoverlad</Text>
+                  </DestinationText>
+                  <JourneyRef>ch:1:sjyid:100015:27517-002</JourneyRef>
+                  <SituationFullRefs>
+                    <SituationFullRef>
+                      <siri:ParticipantRef>ch:1:sboid:100016</siri:ParticipantRef>
+                      <siri:SituationNumber>ems-2455</siri:SituationNumber>
+                    </SituationFullRef>
+                  </SituationFullRefs>
+                </Service>
+              </TimedLeg>
+            </Leg>
+          </Trip>
+        </TripResult>
+        <TripResult>
+          <Id>ID-245FCCEF-EEBE-440E-A6E3-AD3D4CC781C6</Id>
+          <Trip>
+            <Id>ID-245FCCEF-EEBE-440E-A6E3-AD3D4CC781C6</Id>
+            <Duration>PT16M</Duration>
+            <StartTime>2024-09-19T07:33:00Z</StartTime>
+            <EndTime>2024-09-19T07:49:00Z</EndTime>
+            <Transfers>0</Transfers>
+            <Leg>
+              <Id>1</Id>
+              <Duration>PT16M</Duration>
+              <TimedLeg>
+                <LegBoard>
+                  <siri:StopPointRef>8511171</siri:StopPointRef>
+                  <StopPointName>
+                    <Text xml:lang="en">Kandersteg car transport service</Text>
+                  </StopPointName>
+                  <ServiceDeparture>
+                    <TimetabledTime>2024-09-19T07:33:00Z</TimetabledTime>
+                  </ServiceDeparture>
+                  <Order>1</Order>
+                </LegBoard>
+                <LegAlight>
+                  <siri:StopPointRef>8519655</siri:StopPointRef>
+                  <StopPointName>
+                    <Text xml:lang="en">Goppenstein car transport service</Text>
+                  </StopPointName>
+                  <PlannedQuay>
+                    <Text xml:lang="en">A85</Text>
+                  </PlannedQuay>
+                  <ServiceArrival>
+                    <TimetabledTime>2024-09-19T07:49:00Z</TimetabledTime>
+                  </ServiceArrival>
+                  <Order>2</Order>
+                </LegAlight>
+                <Service>
+                  <Mode>
+                    <PtMode>rail</PtMode>
+                    <siri:RailSubmode>regionalRail</siri:RailSubmode>
+                    <Name>
+                      <Text xml:lang="en">Zug</Text>
+                    </Name>
+                    <ShortName>
+                      <Text xml:lang="en">ATZ</Text>
+                    </ShortName>
+                  </Mode>
+                  <ConventionalModeOfOperation>scheduled</ConventionalModeOfOperation>
+                  <TrainNumber>27119</TrainNumber>
+                  <siri:LineRef>atv:97003:_x0020_</siri:LineRef>
+                  <siri:OperatorRef>33</siri:OperatorRef>
+                  <PublicCode>Car transporter</PublicCode>
+                  <PublishedServiceName>
+                    <Text xml:lang="en">3</Text>
+                  </PublishedServiceName>
+                  <ProductCategory>
+                    <Name>
+                      <Text xml:lang="en">Zug</Text>
+                    </Name>
+                    <ShortName>
+                      <Text xml:lang="en">ATZ</Text>
+                    </ShortName>
+                    <ProductCategoryRef>22</ProductCategoryRef>
+                  </ProductCategory>
+                  <siri:DirectionRef>H</siri:DirectionRef>
+                  <OperatingDayRef>2024-09-19</OperatingDayRef>
+                  <DestinationStopPointRef>8519655</DestinationStopPointRef>
+                  <OriginText>
+                    <Text xml:lang="en">n/a</Text>
+                  </OriginText>
+                  <DestinationText>
+                    <Text xml:lang="en">Goppenstein Autoverlad</Text>
+                  </DestinationText>
+                  <JourneyRef>ch:1:sjyid:100015:27119-001</JourneyRef>
+                  <Attribute>
+                    <UserText>
+                      <Text xml:lang="en">Loading of large vehicles possible</Text>
+                    </UserText>
+                    <Code>A__GF</Code>
+                  </Attribute>
+                  <SituationFullRefs>
+                    <SituationFullRef>
+                      <siri:ParticipantRef>ch:1:sboid:100016</siri:ParticipantRef>
+                      <siri:SituationNumber>ems-2455</siri:SituationNumber>
+                    </SituationFullRef>
+                  </SituationFullRefs>
+                </Service>
+              </TimedLeg>
+            </Leg>
+          </Trip>
+        </TripResult>
+        <TripResult>
+          <Id>ID-60150EE3-9552-4E78-8B93-371AF737C4D2</Id>
+          <Trip>
+            <Id>ID-60150EE3-9552-4E78-8B93-371AF737C4D2</Id>
+            <Duration>PT16M</Duration>
+            <StartTime>2024-09-19T08:10:00Z</StartTime>
+            <EndTime>2024-09-19T08:26:00Z</EndTime>
+            <Transfers>0</Transfers>
+            <Leg>
+              <Id>1</Id>
+              <Duration>PT16M</Duration>
+              <TimedLeg>
+                <LegBoard>
+                  <siri:StopPointRef>8511171</siri:StopPointRef>
+                  <StopPointName>
+                    <Text xml:lang="en">Kandersteg car transport service</Text>
+                  </StopPointName>
+                  <ServiceDeparture>
+                    <TimetabledTime>2024-09-19T08:10:00Z</TimetabledTime>
+                  </ServiceDeparture>
+                  <Order>1</Order>
+                </LegBoard>
+                <LegAlight>
+                  <siri:StopPointRef>8519655</siri:StopPointRef>
+                  <StopPointName>
+                    <Text xml:lang="en">Goppenstein car transport service</Text>
+                  </StopPointName>
+                  <PlannedQuay>
+                    <Text xml:lang="en">A93</Text>
+                  </PlannedQuay>
+                  <ServiceArrival>
+                    <TimetabledTime>2024-09-19T08:26:00Z</TimetabledTime>
+                  </ServiceArrival>
+                  <Order>2</Order>
+                </LegAlight>
+                <Service>
+                  <Mode>
+                    <PtMode>rail</PtMode>
+                    <siri:RailSubmode>regionalRail</siri:RailSubmode>
+                    <Name>
+                      <Text xml:lang="en">Zug</Text>
+                    </Name>
+                    <ShortName>
+                      <Text xml:lang="en">ATZ</Text>
+                    </ShortName>
+                  </Mode>
+                  <ConventionalModeOfOperation>scheduled</ConventionalModeOfOperation>
+                  <TrainNumber>27519</TrainNumber>
+                  <siri:LineRef>atv:97003:_x0020_</siri:LineRef>
+                  <siri:OperatorRef>33</siri:OperatorRef>
+                  <PublicCode>Car transporter</PublicCode>
+                  <PublishedServiceName>
+                    <Text xml:lang="en">3</Text>
+                  </PublishedServiceName>
+                  <ProductCategory>
+                    <Name>
+                      <Text xml:lang="en">Zug</Text>
+                    </Name>
+                    <ShortName>
+                      <Text xml:lang="en">ATZ</Text>
+                    </ShortName>
+                    <ProductCategoryRef>22</ProductCategoryRef>
+                  </ProductCategory>
+                  <siri:DirectionRef>H</siri:DirectionRef>
+                  <OperatingDayRef>2024-09-19</OperatingDayRef>
+                  <DestinationStopPointRef>8519655</DestinationStopPointRef>
+                  <OriginText>
+                    <Text xml:lang="en">n/a</Text>
+                  </OriginText>
+                  <DestinationText>
+                    <Text xml:lang="en">Goppenstein Autoverlad</Text>
+                  </DestinationText>
+                  <JourneyRef>ch:1:sjyid:100015:27519-002</JourneyRef>
+                  <SituationFullRefs>
+                    <SituationFullRef>
+                      <siri:ParticipantRef>ch:1:sboid:100016</siri:ParticipantRef>
+                      <siri:SituationNumber>ems-2455</siri:SituationNumber>
+                    </SituationFullRef>
+                  </SituationFullRefs>
+                </Service>
+              </TimedLeg>
+            </Leg>
+          </Trip>
+        </TripResult>
+        <TripResult>
+          <Id>ID-6EE3DB5F-DFBD-413D-92AB-B5EEEF09CB3C</Id>
+          <Trip>
+            <Id>ID-6EE3DB5F-DFBD-413D-92AB-B5EEEF09CB3C</Id>
+            <Duration>PT16M</Duration>
+            <StartTime>2024-09-19T08:33:00Z</StartTime>
+            <EndTime>2024-09-19T08:49:00Z</EndTime>
+            <Transfers>0</Transfers>
+            <Leg>
+              <Id>1</Id>
+              <Duration>PT16M</Duration>
+              <TimedLeg>
+                <LegBoard>
+                  <siri:StopPointRef>8511171</siri:StopPointRef>
+                  <StopPointName>
+                    <Text xml:lang="en">Kandersteg car transport service</Text>
+                  </StopPointName>
+                  <ServiceDeparture>
+                    <TimetabledTime>2024-09-19T08:33:00Z</TimetabledTime>
+                  </ServiceDeparture>
+                  <Order>1</Order>
+                </LegBoard>
+                <LegAlight>
+                  <siri:StopPointRef>8519655</siri:StopPointRef>
+                  <StopPointName>
+                    <Text xml:lang="en">Goppenstein car transport service</Text>
+                  </StopPointName>
+                  <PlannedQuay>
+                    <Text xml:lang="en">A85</Text>
+                  </PlannedQuay>
+                  <ServiceArrival>
+                    <TimetabledTime>2024-09-19T08:49:00Z</TimetabledTime>
+                  </ServiceArrival>
+                  <Order>2</Order>
+                </LegAlight>
+                <Service>
+                  <Mode>
+                    <PtMode>rail</PtMode>
+                    <siri:RailSubmode>regionalRail</siri:RailSubmode>
+                    <Name>
+                      <Text xml:lang="en">Zug</Text>
+                    </Name>
+                    <ShortName>
+                      <Text xml:lang="en">ATZ</Text>
+                    </ShortName>
+                  </Mode>
+                  <ConventionalModeOfOperation>scheduled</ConventionalModeOfOperation>
+                  <TrainNumber>27121</TrainNumber>
+                  <siri:LineRef>atv:97003:_x0020_</siri:LineRef>
+                  <siri:OperatorRef>33</siri:OperatorRef>
+                  <PublicCode>Car transporter</PublicCode>
+                  <PublishedServiceName>
+                    <Text xml:lang="en">3</Text>
+                  </PublishedServiceName>
+                  <ProductCategory>
+                    <Name>
+                      <Text xml:lang="en">Zug</Text>
+                    </Name>
+                    <ShortName>
+                      <Text xml:lang="en">ATZ</Text>
+                    </ShortName>
+                    <ProductCategoryRef>22</ProductCategoryRef>
+                  </ProductCategory>
+                  <siri:DirectionRef>H</siri:DirectionRef>
+                  <OperatingDayRef>2024-09-19</OperatingDayRef>
+                  <DestinationStopPointRef>8519655</DestinationStopPointRef>
+                  <OriginText>
+                    <Text xml:lang="en">n/a</Text>
+                  </OriginText>
+                  <DestinationText>
+                    <Text xml:lang="en">Goppenstein Autoverlad</Text>
+                  </DestinationText>
+                  <JourneyRef>ch:1:sjyid:100015:27121-001</JourneyRef>
+                  <Attribute>
+                    <UserText>
+                      <Text xml:lang="en">Loading of large vehicles possible</Text>
+                    </UserText>
+                    <Code>A__GF</Code>
+                  </Attribute>
+                  <SituationFullRefs>
+                    <SituationFullRef>
+                      <siri:ParticipantRef>ch:1:sboid:100016</siri:ParticipantRef>
+                      <siri:SituationNumber>ems-2455</siri:SituationNumber>
+                    </SituationFullRef>
+                  </SituationFullRefs>
+                </Service>
+              </TimedLeg>
+            </Leg>
+          </Trip>
+        </TripResult>
+        <TripResult>
+          <Id>ID-9B085C4F-5DA4-4D8F-B62D-30C92F73B141</Id>
+          <Trip>
+            <Id>ID-9B085C4F-5DA4-4D8F-B62D-30C92F73B141</Id>
+            <Duration>PT16M</Duration>
+            <StartTime>2024-09-19T08:36:00Z</StartTime>
+            <EndTime>2024-09-19T08:52:00Z</EndTime>
+            <Transfers>0</Transfers>
+            <Leg>
+              <Id>1</Id>
+              <Duration>PT16M</Duration>
+              <TimedLeg>
+                <LegBoard>
+                  <siri:StopPointRef>8511171</siri:StopPointRef>
+                  <StopPointName>
+                    <Text xml:lang="en">Kandersteg car transport service</Text>
+                  </StopPointName>
+                  <ServiceDeparture>
+                    <TimetabledTime>2024-09-19T08:36:00Z</TimetabledTime>
+                  </ServiceDeparture>
+                  <Order>1</Order>
+                </LegBoard>
+                <LegAlight>
+                  <siri:StopPointRef>8519655</siri:StopPointRef>
+                  <StopPointName>
+                    <Text xml:lang="en">Goppenstein car transport service</Text>
+                  </StopPointName>
+                  <PlannedQuay>
+                    <Text xml:lang="en">A84</Text>
+                  </PlannedQuay>
+                  <ServiceArrival>
+                    <TimetabledTime>2024-09-19T08:52:00Z</TimetabledTime>
+                  </ServiceArrival>
+                  <Order>2</Order>
+                </LegAlight>
+                <Service>
+                  <Mode>
+                    <PtMode>rail</PtMode>
+                    <siri:RailSubmode>regionalRail</siri:RailSubmode>
+                    <Name>
+                      <Text xml:lang="en">Zug</Text>
+                    </Name>
+                    <ShortName>
+                      <Text xml:lang="en">ATZ</Text>
+                    </ShortName>
+                  </Mode>
+                  <ConventionalModeOfOperation>scheduled</ConventionalModeOfOperation>
+                  <TrainNumber>27419</TrainNumber>
+                  <siri:LineRef>atv:97003:_x0020_</siri:LineRef>
+                  <siri:OperatorRef>33</siri:OperatorRef>
+                  <PublicCode>Car transporter</PublicCode>
+                  <PublishedServiceName>
+                    <Text xml:lang="en">3</Text>
+                  </PublishedServiceName>
+                  <ProductCategory>
+                    <Name>
+                      <Text xml:lang="en">Zug</Text>
+                    </Name>
+                    <ShortName>
+                      <Text xml:lang="en">ATZ</Text>
+                    </ShortName>
+                    <ProductCategoryRef>22</ProductCategoryRef>
+                  </ProductCategory>
+                  <siri:DirectionRef>H</siri:DirectionRef>
+                  <OperatingDayRef>2024-09-19</OperatingDayRef>
+                  <DestinationStopPointRef>8519655</DestinationStopPointRef>
+                  <OriginText>
+                    <Text xml:lang="en">n/a</Text>
+                  </OriginText>
+                  <DestinationText>
+                    <Text xml:lang="en">Goppenstein Autoverlad</Text>
+                  </DestinationText>
+                  <JourneyRef>ch:1:sjyid:100015:27419-002</JourneyRef>
+                  <SituationFullRefs>
+                    <SituationFullRef>
+                      <siri:ParticipantRef>ch:1:sboid:100016</siri:ParticipantRef>
+                      <siri:SituationNumber>ems-2455</siri:SituationNumber>
+                    </SituationFullRef>
+                  </SituationFullRefs>
+                </Service>
+              </TimedLeg>
+            </Leg>
+          </Trip>
+        </TripResult>
+        <TripResult>
+          <Id>ID-7F9F51B3-3D1F-43D2-9C85-5585C21C7C16</Id>
+          <Trip>
+            <Id>ID-7F9F51B3-3D1F-43D2-9C85-5585C21C7C16</Id>
+            <Duration>PT16M</Duration>
+            <StartTime>2024-09-19T09:10:00Z</StartTime>
+            <EndTime>2024-09-19T09:26:00Z</EndTime>
+            <Transfers>0</Transfers>
+            <Leg>
+              <Id>1</Id>
+              <Duration>PT16M</Duration>
+              <TimedLeg>
+                <LegBoard>
+                  <siri:StopPointRef>8511171</siri:StopPointRef>
+                  <StopPointName>
+                    <Text xml:lang="en">Kandersteg car transport service</Text>
+                  </StopPointName>
+                  <ServiceDeparture>
+                    <TimetabledTime>2024-09-19T09:10:00Z</TimetabledTime>
+                  </ServiceDeparture>
+                  <Order>1</Order>
+                </LegBoard>
+                <LegAlight>
+                  <siri:StopPointRef>8519655</siri:StopPointRef>
+                  <StopPointName>
+                    <Text xml:lang="en">Goppenstein car transport service</Text>
+                  </StopPointName>
+                  <PlannedQuay>
+                    <Text xml:lang="en">A93</Text>
+                  </PlannedQuay>
+                  <ServiceArrival>
+                    <TimetabledTime>2024-09-19T09:26:00Z</TimetabledTime>
+                  </ServiceArrival>
+                  <Order>2</Order>
+                </LegAlight>
+                <Service>
+                  <Mode>
+                    <PtMode>rail</PtMode>
+                    <siri:RailSubmode>regionalRail</siri:RailSubmode>
+                    <Name>
+                      <Text xml:lang="en">Zug</Text>
+                    </Name>
+                    <ShortName>
+                      <Text xml:lang="en">ATZ</Text>
+                    </ShortName>
+                  </Mode>
+                  <ConventionalModeOfOperation>scheduled</ConventionalModeOfOperation>
+                  <TrainNumber>27521</TrainNumber>
+                  <siri:LineRef>atv:97003:_x0020_</siri:LineRef>
+                  <siri:OperatorRef>33</siri:OperatorRef>
+                  <PublicCode>Car transporter</PublicCode>
+                  <PublishedServiceName>
+                    <Text xml:lang="en">3</Text>
+                  </PublishedServiceName>
+                  <ProductCategory>
+                    <Name>
+                      <Text xml:lang="en">Zug</Text>
+                    </Name>
+                    <ShortName>
+                      <Text xml:lang="en">ATZ</Text>
+                    </ShortName>
+                    <ProductCategoryRef>22</ProductCategoryRef>
+                  </ProductCategory>
+                  <siri:DirectionRef>H</siri:DirectionRef>
+                  <OperatingDayRef>2024-09-19</OperatingDayRef>
+                  <DestinationStopPointRef>8519655</DestinationStopPointRef>
+                  <OriginText>
+                    <Text xml:lang="en">n/a</Text>
+                  </OriginText>
+                  <DestinationText>
+                    <Text xml:lang="en">Goppenstein Autoverlad</Text>
+                  </DestinationText>
+                  <JourneyRef>ch:1:sjyid:100015:27521-002</JourneyRef>
+                  <SituationFullRefs>
+                    <SituationFullRef>
+                      <siri:ParticipantRef>ch:1:sboid:100016</siri:ParticipantRef>
+                      <siri:SituationNumber>ems-2455</siri:SituationNumber>
+                    </SituationFullRef>
+                  </SituationFullRefs>
+                </Service>
+              </TimedLeg>
+            </Leg>
+          </Trip>
+        </TripResult>
+        <TripResult>
+          <Id>ID-D276A808-4C0F-48F1-8108-6CD88F526FE0</Id>
+          <Trip>
+            <Id>ID-D276A808-4C0F-48F1-8108-6CD88F526FE0</Id>
+            <Duration>PT16M</Duration>
+            <StartTime>2024-09-19T09:33:00Z</StartTime>
+            <EndTime>2024-09-19T09:49:00Z</EndTime>
+            <Transfers>0</Transfers>
+            <Leg>
+              <Id>1</Id>
+              <Duration>PT16M</Duration>
+              <TimedLeg>
+                <LegBoard>
+                  <siri:StopPointRef>8511171</siri:StopPointRef>
+                  <StopPointName>
+                    <Text xml:lang="en">Kandersteg car transport service</Text>
+                  </StopPointName>
+                  <ServiceDeparture>
+                    <TimetabledTime>2024-09-19T09:33:00Z</TimetabledTime>
+                  </ServiceDeparture>
+                  <Order>1</Order>
+                </LegBoard>
+                <LegAlight>
+                  <siri:StopPointRef>8519655</siri:StopPointRef>
+                  <StopPointName>
+                    <Text xml:lang="en">Goppenstein car transport service</Text>
+                  </StopPointName>
+                  <PlannedQuay>
+                    <Text xml:lang="en">A85</Text>
+                  </PlannedQuay>
+                  <ServiceArrival>
+                    <TimetabledTime>2024-09-19T09:49:00Z</TimetabledTime>
+                  </ServiceArrival>
+                  <Order>2</Order>
+                </LegAlight>
+                <Service>
+                  <Mode>
+                    <PtMode>rail</PtMode>
+                    <siri:RailSubmode>regionalRail</siri:RailSubmode>
+                    <Name>
+                      <Text xml:lang="en">Zug</Text>
+                    </Name>
+                    <ShortName>
+                      <Text xml:lang="en">ATZ</Text>
+                    </ShortName>
+                  </Mode>
+                  <ConventionalModeOfOperation>scheduled</ConventionalModeOfOperation>
+                  <TrainNumber>27123</TrainNumber>
+                  <siri:LineRef>atv:97003:_x0020_</siri:LineRef>
+                  <siri:OperatorRef>33</siri:OperatorRef>
+                  <PublicCode>Car transporter</PublicCode>
+                  <PublishedServiceName>
+                    <Text xml:lang="en">3</Text>
+                  </PublishedServiceName>
+                  <ProductCategory>
+                    <Name>
+                      <Text xml:lang="en">Zug</Text>
+                    </Name>
+                    <ShortName>
+                      <Text xml:lang="en">ATZ</Text>
+                    </ShortName>
+                    <ProductCategoryRef>22</ProductCategoryRef>
+                  </ProductCategory>
+                  <siri:DirectionRef>H</siri:DirectionRef>
+                  <OperatingDayRef>2024-09-19</OperatingDayRef>
+                  <DestinationStopPointRef>8519655</DestinationStopPointRef>
+                  <OriginText>
+                    <Text xml:lang="en">n/a</Text>
+                  </OriginText>
+                  <DestinationText>
+                    <Text xml:lang="en">Goppenstein Autoverlad</Text>
+                  </DestinationText>
+                  <JourneyRef>ch:1:sjyid:100015:27123-001</JourneyRef>
+                  <Attribute>
+                    <UserText>
+                      <Text xml:lang="en">Loading of large vehicles possible</Text>
+                    </UserText>
+                    <Code>A__GF</Code>
+                  </Attribute>
+                  <SituationFullRefs>
+                    <SituationFullRef>
+                      <siri:ParticipantRef>ch:1:sboid:100016</siri:ParticipantRef>
+                      <siri:SituationNumber>ems-2455</siri:SituationNumber>
+                    </SituationFullRef>
+                  </SituationFullRefs>
+                </Service>
+              </TimedLeg>
+            </Leg>
+          </Trip>
+        </TripResult>
+        <TripResult>
+          <Id>ID-E5DFC366-8982-4E91-BE48-7D6CC0233DAF</Id>
+          <Trip>
+            <Id>ID-E5DFC366-8982-4E91-BE48-7D6CC0233DAF</Id>
+            <Duration>PT16M</Duration>
+            <StartTime>2024-09-19T09:36:00Z</StartTime>
+            <EndTime>2024-09-19T09:52:00Z</EndTime>
+            <Transfers>0</Transfers>
+            <Leg>
+              <Id>1</Id>
+              <Duration>PT16M</Duration>
+              <TimedLeg>
+                <LegBoard>
+                  <siri:StopPointRef>8511171</siri:StopPointRef>
+                  <StopPointName>
+                    <Text xml:lang="en">Kandersteg car transport service</Text>
+                  </StopPointName>
+                  <ServiceDeparture>
+                    <TimetabledTime>2024-09-19T09:36:00Z</TimetabledTime>
+                  </ServiceDeparture>
+                  <Order>1</Order>
+                </LegBoard>
+                <LegAlight>
+                  <siri:StopPointRef>8519655</siri:StopPointRef>
+                  <StopPointName>
+                    <Text xml:lang="en">Goppenstein car transport service</Text>
+                  </StopPointName>
+                  <PlannedQuay>
+                    <Text xml:lang="en">A84</Text>
+                  </PlannedQuay>
+                  <ServiceArrival>
+                    <TimetabledTime>2024-09-19T09:52:00Z</TimetabledTime>
+                  </ServiceArrival>
+                  <Order>2</Order>
+                </LegAlight>
+                <Service>
+                  <Mode>
+                    <PtMode>rail</PtMode>
+                    <siri:RailSubmode>regionalRail</siri:RailSubmode>
+                    <Name>
+                      <Text xml:lang="en">Zug</Text>
+                    </Name>
+                    <ShortName>
+                      <Text xml:lang="en">ATZ</Text>
+                    </ShortName>
+                  </Mode>
+                  <ConventionalModeOfOperation>scheduled</ConventionalModeOfOperation>
+                  <TrainNumber>27421</TrainNumber>
+                  <siri:LineRef>atv:97003:_x0020_</siri:LineRef>
+                  <siri:OperatorRef>33</siri:OperatorRef>
+                  <PublicCode>Car transporter</PublicCode>
+                  <PublishedServiceName>
+                    <Text xml:lang="en">3</Text>
+                  </PublishedServiceName>
+                  <ProductCategory>
+                    <Name>
+                      <Text xml:lang="en">Zug</Text>
+                    </Name>
+                    <ShortName>
+                      <Text xml:lang="en">ATZ</Text>
+                    </ShortName>
+                    <ProductCategoryRef>22</ProductCategoryRef>
+                  </ProductCategory>
+                  <siri:DirectionRef>H</siri:DirectionRef>
+                  <OperatingDayRef>2024-09-19</OperatingDayRef>
+                  <DestinationStopPointRef>8519655</DestinationStopPointRef>
+                  <OriginText>
+                    <Text xml:lang="en">n/a</Text>
+                  </OriginText>
+                  <DestinationText>
+                    <Text xml:lang="en">Goppenstein Autoverlad</Text>
+                  </DestinationText>
+                  <JourneyRef>ch:1:sjyid:100015:27421-002</JourneyRef>
+                  <SituationFullRefs>
+                    <SituationFullRef>
+                      <siri:ParticipantRef>ch:1:sboid:100016</siri:ParticipantRef>
+                      <siri:SituationNumber>ems-2455</siri:SituationNumber>
+                    </SituationFullRef>
+                  </SituationFullRefs>
+                </Service>
+              </TimedLeg>
+            </Leg>
+          </Trip>
+        </TripResult>
+        <TripResult>
+          <Id>ID-4CAE530A-C6E3-4C10-ABB2-FC37D9340D48</Id>
+          <Trip>
+            <Id>ID-4CAE530A-C6E3-4C10-ABB2-FC37D9340D48</Id>
+            <Duration>PT16M</Duration>
+            <StartTime>2024-09-19T10:10:00Z</StartTime>
+            <EndTime>2024-09-19T10:26:00Z</EndTime>
+            <Transfers>0</Transfers>
+            <Leg>
+              <Id>1</Id>
+              <Duration>PT16M</Duration>
+              <TimedLeg>
+                <LegBoard>
+                  <siri:StopPointRef>8511171</siri:StopPointRef>
+                  <StopPointName>
+                    <Text xml:lang="en">Kandersteg car transport service</Text>
+                  </StopPointName>
+                  <ServiceDeparture>
+                    <TimetabledTime>2024-09-19T10:10:00Z</TimetabledTime>
+                  </ServiceDeparture>
+                  <Order>1</Order>
+                </LegBoard>
+                <LegAlight>
+                  <siri:StopPointRef>8519655</siri:StopPointRef>
+                  <StopPointName>
+                    <Text xml:lang="en">Goppenstein car transport service</Text>
+                  </StopPointName>
+                  <PlannedQuay>
+                    <Text xml:lang="en">A93</Text>
+                  </PlannedQuay>
+                  <ServiceArrival>
+                    <TimetabledTime>2024-09-19T10:26:00Z</TimetabledTime>
+                  </ServiceArrival>
+                  <Order>2</Order>
+                </LegAlight>
+                <Service>
+                  <Mode>
+                    <PtMode>rail</PtMode>
+                    <siri:RailSubmode>regionalRail</siri:RailSubmode>
+                    <Name>
+                      <Text xml:lang="en">Zug</Text>
+                    </Name>
+                    <ShortName>
+                      <Text xml:lang="en">ATZ</Text>
+                    </ShortName>
+                  </Mode>
+                  <ConventionalModeOfOperation>scheduled</ConventionalModeOfOperation>
+                  <TrainNumber>27523</TrainNumber>
+                  <siri:LineRef>atv:97003:_x0020_</siri:LineRef>
+                  <siri:OperatorRef>33</siri:OperatorRef>
+                  <PublicCode>Car transporter</PublicCode>
+                  <PublishedServiceName>
+                    <Text xml:lang="en">3</Text>
+                  </PublishedServiceName>
+                  <ProductCategory>
+                    <Name>
+                      <Text xml:lang="en">Zug</Text>
+                    </Name>
+                    <ShortName>
+                      <Text xml:lang="en">ATZ</Text>
+                    </ShortName>
+                    <ProductCategoryRef>22</ProductCategoryRef>
+                  </ProductCategory>
+                  <siri:DirectionRef>H</siri:DirectionRef>
+                  <OperatingDayRef>2024-09-19</OperatingDayRef>
+                  <DestinationStopPointRef>8519655</DestinationStopPointRef>
+                  <OriginText>
+                    <Text xml:lang="en">n/a</Text>
+                  </OriginText>
+                  <DestinationText>
+                    <Text xml:lang="en">Goppenstein Autoverlad</Text>
+                  </DestinationText>
+                  <JourneyRef>ch:1:sjyid:100015:27523-003</JourneyRef>
+                  <SituationFullRefs>
+                    <SituationFullRef>
+                      <siri:ParticipantRef>ch:1:sboid:100016</siri:ParticipantRef>
+                      <siri:SituationNumber>ems-2455</siri:SituationNumber>
+                    </SituationFullRef>
+                  </SituationFullRefs>
+                </Service>
+              </TimedLeg>
+            </Leg>
+          </Trip>
+        </TripResult>
+        <TripResult>
+          <Id>ID-E3518CA7-864F-4765-8CBB-2C9387A9841F</Id>
+          <Trip>
+            <Id>ID-E3518CA7-864F-4765-8CBB-2C9387A9841F</Id>
+            <Duration>PT16M</Duration>
+            <StartTime>2024-09-19T10:33:00Z</StartTime>
+            <EndTime>2024-09-19T10:49:00Z</EndTime>
+            <Transfers>0</Transfers>
+            <Leg>
+              <Id>1</Id>
+              <Duration>PT16M</Duration>
+              <TimedLeg>
+                <LegBoard>
+                  <siri:StopPointRef>8511171</siri:StopPointRef>
+                  <StopPointName>
+                    <Text xml:lang="en">Kandersteg car transport service</Text>
+                  </StopPointName>
+                  <ServiceDeparture>
+                    <TimetabledTime>2024-09-19T10:33:00Z</TimetabledTime>
+                  </ServiceDeparture>
+                  <Order>1</Order>
+                </LegBoard>
+                <LegAlight>
+                  <siri:StopPointRef>8519655</siri:StopPointRef>
+                  <StopPointName>
+                    <Text xml:lang="en">Goppenstein car transport service</Text>
+                  </StopPointName>
+                  <PlannedQuay>
+                    <Text xml:lang="en">A85</Text>
+                  </PlannedQuay>
+                  <ServiceArrival>
+                    <TimetabledTime>2024-09-19T10:49:00Z</TimetabledTime>
+                  </ServiceArrival>
+                  <Order>2</Order>
+                </LegAlight>
+                <Service>
+                  <Mode>
+                    <PtMode>rail</PtMode>
+                    <siri:RailSubmode>regionalRail</siri:RailSubmode>
+                    <Name>
+                      <Text xml:lang="en">Zug</Text>
+                    </Name>
+                    <ShortName>
+                      <Text xml:lang="en">ATZ</Text>
+                    </ShortName>
+                  </Mode>
+                  <ConventionalModeOfOperation>scheduled</ConventionalModeOfOperation>
+                  <TrainNumber>27125</TrainNumber>
+                  <siri:LineRef>atv:97003:_x0020_</siri:LineRef>
+                  <siri:OperatorRef>33</siri:OperatorRef>
+                  <PublicCode>Car transporter</PublicCode>
+                  <PublishedServiceName>
+                    <Text xml:lang="en">3</Text>
+                  </PublishedServiceName>
+                  <ProductCategory>
+                    <Name>
+                      <Text xml:lang="en">Zug</Text>
+                    </Name>
+                    <ShortName>
+                      <Text xml:lang="en">ATZ</Text>
+                    </ShortName>
+                    <ProductCategoryRef>22</ProductCategoryRef>
+                  </ProductCategory>
+                  <siri:DirectionRef>H</siri:DirectionRef>
+                  <OperatingDayRef>2024-09-19</OperatingDayRef>
+                  <DestinationStopPointRef>8519655</DestinationStopPointRef>
+                  <OriginText>
+                    <Text xml:lang="en">n/a</Text>
+                  </OriginText>
+                  <DestinationText>
+                    <Text xml:lang="en">Goppenstein Autoverlad</Text>
+                  </DestinationText>
+                  <JourneyRef>ch:1:sjyid:100015:27125-001</JourneyRef>
+                  <Attribute>
+                    <UserText>
+                      <Text xml:lang="en">Loading of large vehicles possible</Text>
+                    </UserText>
+                    <Code>A__GF</Code>
+                  </Attribute>
+                  <SituationFullRefs>
+                    <SituationFullRef>
+                      <siri:ParticipantRef>ch:1:sboid:100016</siri:ParticipantRef>
+                      <siri:SituationNumber>ems-2455</siri:SituationNumber>
+                    </SituationFullRef>
+                  </SituationFullRefs>
+                </Service>
+              </TimedLeg>
+            </Leg>
+          </Trip>
+        </TripResult>
+      </OJPTripDelivery>
+    </siri:ServiceDelivery>
+  </OJPResponse>
+</OJP>
