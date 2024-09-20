@@ -251,8 +251,8 @@ final class TripRequestTests: XCTestCase {
             guard let responseContext = tripDelivery.tripResponseContext else {
                 return XCTFail("expected to have a tripResponseContext")
             }
-            XCTAssertNil(responseContext.situations.ptSituations?.first?.publishingActions)
-            XCTAssertEqual(1, responseContext.situations.ptSituations?.count)
+            XCTAssertNil(responseContext.situations?.ptSituations?.first?.publishingActions)
+            XCTAssertEqual(1, responseContext.situations?.ptSituations?.count)
             dump(responseContext)
         } catch {
             print(error)
