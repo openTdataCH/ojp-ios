@@ -54,4 +54,11 @@ actor PreviewMocker {
             params: .init()
         )
     }
+
+    func loadLoadTripInfo(xmlFileName: String = "tir") async throws -> OJPv2.TripInfoDelivery {
+        try await OJP(
+            loadingStrategy: Self.mockLoader(xmlFilename: xmlFileName)
+        )
+        .requestTripInfo(journeyRef: "", operatingDayRef: "", params: .init())
+    }
 }

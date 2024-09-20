@@ -48,6 +48,29 @@ struct InlineLocationSerachView: View {
                                 selectedPlace = stop
                                 results = []
                             }
+                        case let .stopPoint(stopPoint):
+                            HStack {
+                                Image(systemName: "tram")
+                                Text(stopPoint.stopPointName.text)
+                                Spacer()
+                            }
+                            .background(Color.listBackground)
+                            .frame(maxHeight: .infinity)
+                            .onTapGesture {
+                                selectedPlace = stop
+                                results = []
+                            }
+                        case let .topographicPlace(topographicPlace):
+                            HStack {
+                                Image(systemName: "mountain.2")
+                                Text(topographicPlace.topographicPlaceName.text)
+                                Spacer()
+                            }
+                            .background(Color.listBackground)
+                            .onTapGesture {
+                                selectedPlace = stop
+                                results = []
+                            }
                         }
                     }
                 }

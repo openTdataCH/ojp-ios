@@ -70,6 +70,22 @@ struct LocationSearchByNameView: View {
                         .onTapGesture {
                             selectetedPlace = stop
                         }
+                    case let .stopPoint(stopPoint):
+                        HStack {
+                            Image(systemName: "tram")
+                            Text(stopPoint.stopPointName.text)
+                        }
+                        .onTapGesture {
+                            selectetedPlace = stop
+                        }
+                    case let .topographicPlace(topographicPlace):
+                        HStack {
+                            Image(systemName: "mountain.2")
+                            Text(topographicPlace.topographicPlaceName.text)
+                        }
+                        .onTapGesture {
+                            selectetedPlace = stop
+                        }
                     case let .address(address):
                         HStack {
                             Image(systemName: "location")
@@ -114,22 +130,9 @@ struct LocationSearchByNameView: View {
     }
 
     func annotation(for result: OJPv2.PlaceResult) -> Annotation<some View, some View> {
-        switch result.place.place {
-        case let .stopPlace(stopPlace):
-            Annotation(stopPlace.stopPlaceName.text,
-                       coordinate: result.place.geoPosition.coordinates)
-            {
-                Circle().onTapGesture {
-                    selectetedPlace = result
-                }
-            }
-        case let .address(address):
-            Annotation(address.name.text,
-                       coordinate: result.place.geoPosition.coordinates)
-            {
-                Circle().onTapGesture {
-                    selectetedPlace = result
-                }
+        Annotation(result.place.name.text, coordinate: result.geoPosition.coordinates) {
+            Circle().onTapGesture {
+                selectetedPlace = result
             }
         }
     }

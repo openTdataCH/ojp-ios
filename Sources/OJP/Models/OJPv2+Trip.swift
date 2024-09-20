@@ -43,10 +43,30 @@ public extension OJPv2 {
     }
 
     struct TripResponseContext: Codable, Sendable {
-        public let situations: Situation
+        public let situations: Situation?
+        public let places: [Place]
 
         public enum CodingKeys: String, CodingKey {
             case situations = "Situations"
+            case places = "Places"
+        }
+
+        public init(from decoder: any Decoder) throws {
+            let container = try decoder.container(keyedBy: CodingKeys.self)
+            situations = try container.decodeIfPresent(OJPv2.Situation.self, forKey: OJPv2.TripResponseContext.CodingKeys.situations)
+            do {
+                places = try container.decode(Places.self, forKey: OJPv2.TripResponseContext.CodingKeys.places).places
+            } catch {
+                debugPrint(error)
+                places = []
+            }
+        }
+
+        struct Places: Codable, Sendable {
+            fileprivate let places: [Place]
+            fileprivate enum CodingKeys: String, CodingKey {
+                case places = "Place"
+            }
         }
     }
 
@@ -550,7 +570,7 @@ public extension OJPv2 {
     }
 
     /// https://vdvde.github.io/OJP/develop/documentation-tables/ojp.html#type_ojp__ServiceArrivalStructure
-    struct ServiceArrival: Codable, Sendable {
+    struct ServiceArrival: Codable, Sendable, Hashable {
         public let timetabledTime: Date
         public let estimatedTime: Date?
 
@@ -561,7 +581,7 @@ public extension OJPv2 {
     }
 
     /// https://vdvde.github.io/OJP/develop/documentation-tables/ojp.html#type_ojp__ServiceDepartureStructure
-    struct ServiceDeparture: Codable, Sendable {
+    struct ServiceDeparture: Codable, Sendable, Hashable {
         public let timetabledTime: Date
         public let estimatedTime: Date?
 
@@ -686,7 +706,7 @@ public extension OJPv2 {
     }
 
     /// https://vdvde.github.io/OJP/develop/documentation-tables/ojp.html#group_ojp__StopCallStatusGroup
-    struct StopCallStatus: Codable, Sendable {
+    struct StopCallStatus: Codable, Sendable, Hashable {
         public let order: Int?
         public let requestStop: Bool
         public let unplannedStop: Bool
@@ -1037,11 +1057,13 @@ public extension OJPv2 {
         case stopPlaceRef(StopPlaceRef)
         case geoPosition(GeoPositionRef)
         case stopPointRef(StopPointRef)
+        case topographicPlaceRef(String)
 
         enum CodingKeys: String, CodingKey {
-            case stopPlaceRef = "StopPlaceRef"
-            case stopPointRef = "siri:StopPointRef"
-            case name = "Name"
+//            case stopPlaceRef = "StopPlaceRef"
+//            case stopPointRef = "siri:StopPointRef"
+//            case name = "Name"
+            case topographicPlaceRef = "TopographicPlaceRef"
         }
 
         public func encode(to encoder: Encoder) throws {
@@ -1053,6 +1075,8 @@ public extension OJPv2 {
                 try svc.encode(stopPointRef)
             case let .geoPosition(geoPositionRef):
                 try svc.encode(geoPositionRef)
+            case let .topographicPlaceRef(topographicPlaceRef):
+                try svc.encode(topographicPlaceRef)
             }
         }
 
@@ -1078,6 +1102,13 @@ public extension OJPv2 {
                 self = try .geoPosition(
                     svc.decode(GeoPositionRef.self)
                 )
+            } else if try decoder.container(keyedBy: PlaceRefChoice.CodingKeys.self)
+                .contains(.topographicPlaceRef)
+            {
+                self = try .topographicPlaceRef(
+                    svc.decode(String.self)
+                )
+
             } else {
                 throw OJPSDKError.notImplemented()
             }
@@ -1100,14 +1131,15 @@ public extension OJPv2 {
         }
     }
 
+    /// [Schema documentation on vdvde.github.io](https://vdvde.github.io/OJP/develop/documentation-tables/ojp.html#type_ojp__UseRealtimeDataEnumeration)
+    enum UseRealtimeData: String, Sendable, Codable {
+        case explanatory
+        case full
+        case none
+    }
+
     /// https://vdvde.github.io/OJP/develop/documentation-tables/ojp.html#type_ojp__TripParamStructure
     struct TripParams: Codable, Sendable {
-        public enum RealtimeData: String, Sendable, Codable {
-            case explanatory
-            case full
-            case none
-        }
-
         public init(
             numberOfResults: NumberOfResults = .minimum(10),
             includeTrackSections: Bool? = nil,
@@ -1115,7 +1147,7 @@ public extension OJPv2 {
             includeTurnDescription: Bool? = nil,
             includeIntermediateStops: Bool? = nil,
             includeAllRestrictedLines: Bool? = nil,
-            useRealtimeData: RealtimeData? = nil,
+            useRealtimeData: UseRealtimeData? = nil,
             modeAndModeOfOperationFilter: ModeAndModeOfOperationFilter? = nil
 
         ) {
@@ -1146,7 +1178,7 @@ public extension OJPv2 {
         let includeTurnDescription: Bool?
         let includeIntermediateStops: Bool?
         let includeAllRestrictedLines: Bool?
-        let useRealtimeData: RealtimeData?
+        let useRealtimeData: UseRealtimeData?
         let modeAndModeOfOperationFilter: ModeAndModeOfOperationFilter?
 
         var numberOfResults: NumberOfResults {

@@ -166,7 +166,7 @@ final class TripRequestTests: XCTestCase {
         }
         let ptSituations = tripDelivery.ptSituations
         XCTAssertEqual(ptSituations.count, 2)
-        XCTAssertEqual(ptSituations.map(\.situationNumber), responseContext.situations.ptSituations?.map(\.situationNumber))
+        XCTAssertEqual(ptSituations.map(\.situationNumber), responseContext.situations?.ptSituations?.map(\.situationNumber))
 
         if let firstTrip = tripDelivery.tripResults.first?.trip {
             if case let .timed(firstLeg) = firstTrip.legs.first?.legType {
@@ -201,8 +201,8 @@ final class TripRequestTests: XCTestCase {
         }
         let ptSituations = tripDelivery.ptSituations
         XCTAssertEqual(ptSituations.count, 2)
-        XCTAssertEqual(ptSituations.map(\.situationNumber), responseContext.situations.ptSituations?.map(\.situationNumber))
-        let situations = try XCTUnwrap(responseContext.situations.ptSituations)
+        XCTAssertEqual(ptSituations.map(\.situationNumber), responseContext.situations?.ptSituations?.map(\.situationNumber))
+        let situations = try XCTUnwrap(responseContext.situations?.ptSituations)
         let duplicateSituations = situations + situations
         XCTAssertEqual(duplicateSituations.count, 4)
 
@@ -228,7 +228,7 @@ final class TripRequestTests: XCTestCase {
         }
         let ptSituations = tripDelivery.ptSituations
         XCTAssertEqual(ptSituations.count, 2)
-        XCTAssertEqual(ptSituations.map(\.situationNumber), responseContext.situations.ptSituations?.map(\.situationNumber))
+        XCTAssertEqual(ptSituations.map(\.situationNumber), responseContext.situations?.ptSituations?.map(\.situationNumber))
 
         let firstTrip = try XCTUnwrap(tripDelivery.tripResults.first?.trip)
 

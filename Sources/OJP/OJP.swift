@@ -30,6 +30,7 @@ public final class OJP: Sendable {
     let loader: Loader
     let locationInformationRequest: OJPHelpers.LocationInformationRequest
     let tripRequest: OJPHelpers.TripRequest
+    let tripInfoRequest: OJPHelpers.TripInfoRequest
 
     /// Constructor of the OJP class
     /// - Parameter loadingStrategy: Pass a real loader with an API Configuration or a Mock for test purpuse
@@ -38,29 +39,24 @@ public final class OJP: Sendable {
         loadingStrategy: LoadingStrategy,
         language: String = Bundle.main.preferredLocalizations.first ?? "de"
     ) {
+        let requestConfiguration: OJPHelpers.RequestConfiguration
+
         switch loadingStrategy {
         case let .http(apiConfiguration):
             let httpLoader = HTTPLoader(configuration: apiConfiguration)
             loader = httpLoader.load(request:)
-            locationInformationRequest = OJPHelpers.LocationInformationRequest(
-                language: language,
-                requesterReference: apiConfiguration.requesterReference
-            )
-            tripRequest = OJPHelpers.TripRequest(
+            requestConfiguration = .init(
                 language: language,
                 requesterReference: apiConfiguration.requesterReference
             )
         case let .mock(loader):
             self.loader = loader
-            locationInformationRequest = OJPHelpers.LocationInformationRequest(
-                language: language,
-                requesterReference: "Mock_Requestor_Ref"
-            )
-            tripRequest = OJPHelpers.TripRequest(
-                language: language,
-                requesterReference: "Mock_Requestor_Ref"
-            )
+            requestConfiguration = .init(language: language, requesterReference: "Mock_Requestor_Ref")
         }
+
+        locationInformationRequest = .init(requestConfiguration)
+        tripRequest = .init(requestConfiguration)
+        tripInfoRequest = .init(requestConfiguration)
     }
 
     private var encoder: XMLEncoder {
@@ -130,6 +126,20 @@ public final class OJP: Sendable {
         }
 
         return tripDelivery
+    }
+
+    public func requestTripInfo(
+        journeyRef: String,
+        operatingDayRef: String,
+        params: OJPv2.TripInfoParam
+    ) async throws -> OJPv2.TripInfoDelivery {
+        let ojp = try await tripInfoRequest.request(journeyRef, operatingDayRef: operatingDayRef, params: params)
+        let serviceDelivery = try await request(with: ojp).serviceDelivery
+
+        guard case let .tripInfo(tripInfo) = serviceDelivery.delivery else {
+            throw OJPSDKError.unexpectedEmpty
+        }
+        return tripInfo
     }
 
     func request(with ojp: OJPv2) async throws -> OJPv2.Response {

@@ -24,10 +24,24 @@ public enum DepArrTime: Sendable {
 }
 
 enum OJPHelpers {
-    struct TripRequest: Sendable {
-        init(language: String, requesterReference: String) {
-            requestContext = .init(language: language)
+    struct RequestConfiguration: Sendable {
+        let requestContext: OJPv2.ServiceRequestContext
+        let requesterReference: String
+
+        init(requestContext: OJPv2.ServiceRequestContext, requesterReference: String) {
+            self.requestContext = requestContext
             self.requesterReference = requesterReference
+        }
+
+        init(language: String, requesterReference: String) {
+            self.init(requestContext: .init(language: language), requesterReference: requesterReference)
+        }
+    }
+
+    struct TripRequest: Sendable {
+        init(_ configuration: RequestConfiguration) {
+            requestContext = configuration.requestContext
+            requesterReference = configuration.requesterReference
         }
 
         let requestContext: OJPv2.ServiceRequestContext
@@ -73,13 +87,13 @@ enum OJPHelpers {
     }
 
     struct LocationInformationRequest: Sendable {
-        init(language: String, requesterReference: String) {
-            requestContext = .init(language: language)
-            self.requesterReference = requesterReference
-        }
-
         let requestContext: OJPv2.ServiceRequestContext
         let requesterReference: String
+
+        init(_ configuration: RequestConfiguration) {
+            requestContext = configuration.requestContext
+            requesterReference = configuration.requesterReference
+        }
 
         /// Creates a new OJP LocationInformationRequest with bounding box
         /// - Parameters
@@ -191,8 +205,36 @@ enum OJPHelpers {
                     requestContext: requestContext,
                     requestTimestamp: requestTimestamp,
                     requestorRef: requesterReference,
-                    locationInformationRequest: locationInformationRequest,
-                    tripRequest: nil
+                    locationInformationRequest: locationInformationRequest
+                )
+            ),
+            response: nil)
+
+            return ojp
+        }
+    }
+
+    struct TripInfoRequest: Sendable {
+        let requestContext: OJPv2.ServiceRequestContext
+        let requesterReference: String
+
+        init(_ configuration: RequestConfiguration) {
+            requestContext = configuration.requestContext
+            requesterReference = configuration.requesterReference
+        }
+
+        public func request(_ journeyRef: String, operatingDayRef: String, params: OJPv2.TripInfoParam) async throws -> OJPv2 {
+            let requestTimestamp = Date()
+
+            let tripInfoRequest = OJPv2.TripInfoRequest(journeyRef: journeyRef, operatingDayRef: operatingDayRef, params: params)
+
+            // TODO: - avoid duplication (share this block with "requestWith(bbox: Geo.Bbox")
+            let ojp = OJPv2(request: OJPv2.Request(
+                serviceRequest: OJPv2.ServiceRequest(
+                    requestContext: requestContext,
+                    requestTimestamp: requestTimestamp,
+                    requestorRef: requesterReference,
+                    tripInfoRequest: tripInfoRequest
                 )
             ),
             response: nil)

@@ -158,3 +158,9 @@ extension OJPv2.Trip {
         ).last
     }
 }
+
+extension OJPv2.TripInfoResult: Identifiable {
+    public var id: Int {
+        service?.journeyRef.hashValue ?? (previousCalls.hashValue + onwardCalls.hashValue)
+    }
+}
