@@ -242,8 +242,8 @@ final class TripRequestTests: XCTestCase {
         ])
     }
     
-    func testSituationParsingWithoutSummaryContent() async throws {
-        let xmlData = try TestHelpers.loadXML(xmlFilename: "tr-noSummaryContent")
+    func testSituationParsingWithoutPublishingActions() async throws {
+        let xmlData = try TestHelpers.loadXML(xmlFilename: "tr-noPublishingActions")
         do {
             guard case let .trip(tripDelivery) = try await OJPDecoder.parseXML(xmlData).response?.serviceDelivery.delivery else {
                 return XCTFail("unexpected empty")

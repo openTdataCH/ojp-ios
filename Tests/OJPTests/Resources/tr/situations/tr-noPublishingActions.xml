@@ -158,24 +158,6 @@
                   </siri:Blocking>
                 </siri:Consequence>
               </siri:Consequences>
-              <siri:PublishingActions>
-                <siri:PublishingAction>
-                  <siri:PassengerInformationAction>
-                    <siri:RecordedAtTime>2024-09-17T12:06:00Z</siri:RecordedAtTime>
-                    <siri:TextualContent>
-                      <siri:DescriptionContent/>
-                      <siri:ConsequenceContent/>
-                      <siri:RecommendationContent/>
-                      <siri:DurationContent>
-                        <siri:DurationText xml:lang="en">The restriction lasts until 22.09.2024, 14:00.</siri:DurationText>
-                      </siri:DurationContent>
-                      <siri:RemarkContent>
-                        <siri:Remark xml:lang="en">.</siri:Remark>
-                      </siri:RemarkContent>
-                    </siri:TextualContent>
-                  </siri:PassengerInformationAction>
-                </siri:PublishingAction>
-              </siri:PublishingActions>
             </PtSituation>
           </Situations>
         </TripResponseContext>

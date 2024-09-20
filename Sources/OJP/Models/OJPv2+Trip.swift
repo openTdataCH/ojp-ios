@@ -232,23 +232,6 @@ public extension OJPv2 {
             case priority = "siri:Priority"
             case planned = "siri:Planned"
         }
-        
-        public init(from decoder: any Decoder) throws {
-            let container: KeyedDecodingContainer<CodingKeys> = try decoder.container(keyedBy: CodingKeys.self)
-            self.situationNumber = try container.decode(String.self, forKey: .situationNumber)
-            self.creationTime = try container.decode(Date.self, forKey: .creationTime)
-            self.participantRef = try container.decode(String.self, forKey: .participantRef)
-            self.validityPeriod = try container.decode([OJPv2.ValidityPeriod].self, forKey: .validityPeriod)
-            self.affects = try container.decodeIfPresent(OJPv2.Affects.self, forKey: .affects)
-            // fallback: we receive in some cases invalid responses (without publishingActions or without summaryContent.
-            // https://github.com/openTdataCH/ojp-sdk/issues/128
-            self.publishingActions = try? container.decodeIfPresent(OJPv2.PublishingActions.self, forKey: .publishingActions)
-            self.alertCause = try container.decode(OJPv2.AlertCause.self, forKey: .alertCause)
-            self.version = try container.decode(Int.self, forKey: .version)
-            self.priority = try container.decode(Int.self, forKey: .priority)
-            self.planned = try container.decodeIfPresent(Bool.self, forKey: .planned)
-        }
-        
     }
 
     struct Affects: Codable, Sendable {
