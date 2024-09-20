@@ -18,7 +18,7 @@ extension Double {
     }
 }
 
-public enum DepArrTime: Sendable {
+public enum DepArrTime: Codable, Sendable {
     case departure(Date)
     case arrival(Date)
 }
