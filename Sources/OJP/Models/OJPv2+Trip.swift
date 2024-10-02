@@ -125,7 +125,7 @@ public extension OJPv2 {
         public let remarkText: String
 
         public enum CodingKeys: String, CodingKey {
-            case remarkText = "siri:RemarkText"
+            case remarkText = "siri:Remark"
         }
     }
 
