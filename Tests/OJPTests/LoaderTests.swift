@@ -44,7 +44,7 @@ final class LoaderTests: XCTestCase {
         }
 
         let ojp = OJP(loadingStrategy: mock)
-        let (data, response) = try await ojp.loader(body)
+        let (data, _) = try await ojp.loader(body)
 
         guard case let .locationInformation(locationInformation) = try await OJPDecoder.response(data).serviceDelivery.delivery else {
             XCTFail()

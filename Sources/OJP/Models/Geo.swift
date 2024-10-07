@@ -9,7 +9,7 @@ import Foundation
 
 public typealias Point = (long: Double, lat: Double)
 
-public struct Geo {
+public struct Geo: Sendable {
     public struct Bbox {
         public let minX: Double
         public let minY: Double
@@ -29,11 +29,11 @@ public struct Geo {
     }
 }
 
-public struct NearbyObject<T> {
+public struct NearbyObject<T: Sendable> {
     public var object: T
     public var distance: Double
 }
 
-public protocol GeoAware {
+public protocol GeoAware: Sendable {
     var geoPosition: OJPv2.GeoPosition { get }
 }

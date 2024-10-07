@@ -15,7 +15,7 @@ final class OjpSDKTests: XCTestCase {
 
     @DecoderActor func testParseXML() throws {
         let xmlData = try TestHelpers.loadXML()
-        guard let locationInformationDelivery = try OJPDecoder.parseXML(xmlData).response?.serviceDelivery.delivery else {
+        guard let _ = try OJPDecoder.parseXML(xmlData).response?.serviceDelivery.delivery else {
             return XCTFail("unexpected empty")
         }
         XCTAssertTrue(true)
@@ -23,7 +23,7 @@ final class OjpSDKTests: XCTestCase {
 
     @DecoderActor func testParseXMLWithSiriDefaultNamespace() throws {
         let xmlData = try TestHelpers.loadXML(xmlFilename: "lir-be-bbox-ns")
-        guard let locationInformationDelivery = try OJPDecoder.parseXML(xmlData).response?.serviceDelivery.delivery else {
+        guard let _ = try OJPDecoder.parseXML(xmlData).response?.serviceDelivery.delivery else {
             return XCTFail("unexpected empty")
         }
         XCTAssertTrue(true)
@@ -31,7 +31,7 @@ final class OjpSDKTests: XCTestCase {
 
     @DecoderActor func testParseXMLWithCustomOjpSiriNamespaces() throws {
         let xmlData = try TestHelpers.loadXML(xmlFilename: "lir-be-bbox-ns-both")
-        guard let locationInformationDelivery = try OJPDecoder.parseXML(xmlData).response?.serviceDelivery.delivery else {
+        guard let _ = try OJPDecoder.parseXML(xmlData).response?.serviceDelivery.delivery else {
             return XCTFail("unexpected empty")
         }
         XCTAssertTrue(true)

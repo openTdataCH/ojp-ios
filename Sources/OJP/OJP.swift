@@ -153,7 +153,7 @@ public final class OJP: Sendable {
             (data, response) = try await loader(ojpXMLData)
             debugPrint("--- Request ----")
             debugPrint(xmlString)
-            if let urlresponse = response as? HTTPURLResponse {
+            if let _ = response as? HTTPURLResponse {
                 debugPrint("--- Response ----")
                 if let xmlResponse = String(data: data, encoding: .utf8) {
                     debugPrint(xmlResponse)
