@@ -10,10 +10,10 @@ import Foundation
 import XMLCoder
 
 // TODO: can be removed as soon as Duration conforms to Sendable
-extension Duration: @unchecked Sendable {}
+extension Duration: @unchecked @retroactive Sendable {}
 
 // TODO: can be removed as soon as XMLCoder conforms to Sendable
-extension XMLEncoder.OutputFormatting: @unchecked Sendable {}
+extension XMLEncoder.OutputFormatting: @unchecked @retroactive Sendable {}
 
 public extension OJPv2 {
     /// [Schema documentation on vdvde.github.io](https://vdvde.github.io/OJP/develop/documentation-tables/ojp.html#type_ojp__OJPTripDeliveryStructure)
