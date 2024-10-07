@@ -10,14 +10,14 @@ import Foundation
 import XMLCoder
 
 // TODO: can be removed as soon as Duration conforms to Sendable
-#if swift(>=5.10)
+#if swift(>=6.0)
 extension Duration: @unchecked @retroactive Sendable {}
 #else
 extension Duration: @unchecked Sendable {}
 #endif
 
 // TODO: can be removed as soon as XMLCoder conforms to Sendable
-#if swift(>=5.10)
+#if swift(>=6.0)
 extension XMLEncoder.OutputFormatting: @unchecked @retroactive Sendable {}
 #else
 extension XMLEncoder.OutputFormatting: @unchecked Sendable {}
