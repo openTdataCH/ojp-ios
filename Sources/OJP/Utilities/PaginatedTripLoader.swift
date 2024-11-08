@@ -53,7 +53,7 @@ public actor PaginatedTripLoader {
 
         switch numberOfResults {
         case let .numbers(before: before, after: after):
-            pageSize = before + after
+            pageSize = before + 1 + after
         case let .standard(amount):
             pageSize = amount
         }
