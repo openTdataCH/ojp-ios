@@ -241,7 +241,7 @@ final class TripRequestTests: XCTestCase {
             "ch:1:sstid:100001:dfc1dfd3-bbe0-441c-89df-7a309eb7b358-1",
         ])
     }
-    
+
     func testSituationParsingWithoutPublishingActions() async throws {
         let xmlData = try TestHelpers.loadXML(xmlFilename: "tr-noPublishingActions")
         do {
