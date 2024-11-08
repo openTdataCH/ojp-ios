@@ -60,7 +60,7 @@ final class LocationRequestTests: XCTestCase {
 
     @DecoderActor func testParseMinimumRequiredLIRResponse() throws {
         let xmlData = try TestHelpers.loadXML(xmlFilename: "lir-minimum-response")
-        guard let locationInformationDelivery = try OJPDecoder.parseXML(xmlData).response?.serviceDelivery.delivery else {
+        guard let _ = try OJPDecoder.parseXML(xmlData).response?.serviceDelivery.delivery else {
             return XCTFail("unexpected empty")
         }
         XCTAssertTrue(true)
