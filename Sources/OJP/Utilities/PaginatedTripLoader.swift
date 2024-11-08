@@ -48,11 +48,13 @@ public actor PaginatedTripLoader {
     ///   - request: ``TripRequest`` is a conve
     ///   - numberOfResults: amount of results to be returned. Usually ``OJPv2/NumberOfResults/minimum(_:)`` should be used. The associated value is reused as a page size in ``loadNext()`` and ``loadPrevious()``
     /// - Returns: ``OJPv2/TripDelivery`` containing the ``OJPv2/TripResult``
-    public func loadTrips(for request: TripRequest, numberOfResults: OJPv2.NumberOfResults = .minimum(6)) async throws -> OJPv2.TripDelivery {
+    public func loadTrips(for request: TripRequest, numberOfResults: OJPv2.NumberOfResults = .standard(6)) async throws -> OJPv2.TripDelivery {
         reset()
 
         switch numberOfResults {
-        case let .before(amount), let .after(amount), let .minimum(amount):
+        case let .numbers(before: before, after: after):
+            pageSize = before + 1 + after
+        case let .standard(amount):
             pageSize = amount
         }
 
@@ -66,7 +68,7 @@ public actor PaginatedTripLoader {
             throw OJPSDKError.notImplemented()
         }
         request.at = .departure(minDate)
-        return try await load(request: request, numberOfResults: .before(pageSize))
+        return try await load(request: request, numberOfResults: .numbers(before: pageSize, after: 0))
     }
 
     /// Based on the currently already loaded trip results, load the future trips. Potential duplicates are filtered using  ``OJPv2/Trip/tripHash``.
@@ -76,7 +78,7 @@ public actor PaginatedTripLoader {
             throw OJPSDKError.notImplemented()
         }
         request.at = .departure(maxDate)
-        return try await load(request: request, numberOfResults: .after(pageSize))
+        return try await load(request: request, numberOfResults: .numbers(before: 0, after: pageSize))
     }
 
     private func reset() {

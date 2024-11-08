@@ -1149,7 +1149,7 @@ public extension OJPv2 {
     /// https://vdvde.github.io/OJP/develop/documentation-tables/ojp.html#type_ojp__TripParamStructure
     struct TripParams: Codable, Sendable {
         public init(
-            numberOfResults: NumberOfResults = .minimum(10),
+            numberOfResults: NumberOfResults = .standard(10),
             includeTrackSections: Bool? = nil,
             includeLegProjection: Bool? = nil,
             includeTurnDescription: Bool? = nil,
@@ -1160,11 +1160,10 @@ public extension OJPv2 {
 
         ) {
             switch numberOfResults {
-            case let .before(numberOfResults):
-                numberOfResultsBefore = numberOfResults
-            case let .after(numberOfResults):
-                numberOfResultsAfter = numberOfResults
-            case let .minimum(count):
+            case let .numbers(before: before, after: after):
+                numberOfResultsBefore = before > 0 ? before : nil
+                numberOfResultsAfter = after > 0 ? after : nil
+            case let .standard(count):
                 _numberOfResults = count
             }
 
@@ -1190,13 +1189,13 @@ public extension OJPv2 {
         let modeAndModeOfOperationFilter: ModeAndModeOfOperationFilter?
 
         var numberOfResults: NumberOfResults {
-            if let numberOfResultsBefore {
-                return .before(numberOfResultsBefore)
+            if numberOfResultsAfter != nil || numberOfResultsBefore != nil {
+                return .numbers(
+                    before: numberOfResultsBefore ?? 0,
+                    after: numberOfResultsAfter ?? 0
+                )
             }
-            if let numberOfResultsAfter {
-                return .after(numberOfResultsAfter)
-            }
-            return .minimum(_numberOfResults ?? 10)
+            return .standard(_numberOfResults ?? 10)
         }
 
         public enum CodingKeys: String, CodingKey {
@@ -1215,9 +1214,8 @@ public extension OJPv2 {
 
     /// Convenience enum to define [NumberOfResults](https://vdvde.github.io/OJP/develop/documentation-tables/ojp.html#group_ojp__NumberOfResultsGroup)
     enum NumberOfResults: Codable, Sendable {
-        case before(Int)
-        case after(Int)
-        case minimum(Int)
+        case numbers(before: Int, after: Int)
+        case standard(Int)
     }
 }
 

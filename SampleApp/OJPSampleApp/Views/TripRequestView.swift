@@ -80,7 +80,7 @@ struct TripRequestView: View {
                                                     includeIntermediateStops: true,
                                                     useRealtimeData: .explanatory
                                                 )),
-                                    numberOfResults: .minimum(6))
+                                    numberOfResults: .standard(6))
                                 tripResults = tripDelivery.tripResults
                                 ptSituations = Set(tripDelivery.ptSituations)
                             } catch {
