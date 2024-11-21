@@ -795,7 +795,7 @@ public extension OJPv2 {
 
         public enum CodingKeys: String, CodingKey {
             case unplanned = "Unplanned"
-            case cancelled
+            case cancelled = "Cancelled"
             case deviation = "Deviation"
             case undefinedDelay = "UndefinedDelay"
         }
