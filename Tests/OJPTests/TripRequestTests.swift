@@ -286,6 +286,19 @@ final class TripRequestTests: XCTestCase {
         }
     }
 
+    func testTripServiceStatusCancelled() async throws {
+        let xmlData = try TestHelpers.loadXML(xmlFilename: "tr-cancellation-winter")
+        do {
+            guard case let .trip(tripDelivery) = try await OJPDecoder.parseXML(xmlData).response?.serviceDelivery.delivery else {
+                return XCTFail("unexpected empty")
+            }
+
+            let cancelledTrip = try XCTUnwrap(tripDelivery.tripResults[1].trip)
+            let firstLeg = try XCTUnwrap(cancelledTrip.timedLegs.first)
+            XCTAssertEqual(firstLeg.service.serviceStatus.cancelled, true)
+        }
+    }
+
     func testTripStatusDeviation() async throws {
         let xmlData = try TestHelpers.loadXML(xmlFilename: "tr-deviation-notActuallyALiveExample")
         do {
