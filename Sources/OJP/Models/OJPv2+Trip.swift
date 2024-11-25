@@ -11,16 +11,16 @@ import XMLCoder
 
 // TODO: can be removed as soon as Duration conforms to Sendable
 #if swift(>=6.0)
-extension Duration: @unchecked @retroactive Sendable {}
+    extension Duration: @unchecked @retroactive Sendable {}
 #else
-extension Duration: @unchecked Sendable {}
+    extension Duration: @unchecked Sendable {}
 #endif
 
 // TODO: can be removed as soon as XMLCoder conforms to Sendable
 #if swift(>=6.0)
-extension XMLEncoder.OutputFormatting: @unchecked @retroactive Sendable {}
+    extension XMLEncoder.OutputFormatting: @unchecked @retroactive Sendable {}
 #else
-extension XMLEncoder.OutputFormatting: @unchecked Sendable {}
+    extension XMLEncoder.OutputFormatting: @unchecked Sendable {}
 #endif
 
 public extension OJPv2 {
