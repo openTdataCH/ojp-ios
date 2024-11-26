@@ -14,6 +14,27 @@ import XCTest
 // I know that this is an anti-pattern but it's an easy solution in order to have quick results
 // without making a big effort.
 final class SystemTests: XCTestCase {
+    func testFetchStopEventRequest() async throws {
+        let location = OJPv2.PlaceContext(
+            placeRef: .stopPointRef(
+                .init(
+                    stopPointRef: "8507000",
+                    name: .init("Bern")
+                )
+            ),
+            depArrTime: nil
+        )
+
+        let ojpSdk = await OJP(loadingStrategy: .http(.int))
+
+        let stopEvents = try await ojpSdk.requestStopEvent(
+            location: location,
+            params: nil
+        )
+
+        XCTAssert(!stopEvents.stopEventResult.isEmpty)
+    }
+
     func testFetchStations() async throws {
         let ojpSdk = await OJP(loadingStrategy: .http(.int))
 

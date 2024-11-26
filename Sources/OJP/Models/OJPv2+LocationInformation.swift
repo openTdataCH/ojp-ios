@@ -9,35 +9,6 @@ import Foundation
 import XMLCoder
 
 public extension OJPv2 {
-    struct StopEventServiceDelivery: Codable, Sendable {
-        let responseTimestamp: String
-        let producerRef: String
-        let stopEventDelivery: StopEventDelivery
-
-        public enum CodingKeys: String, CodingKey {
-            case responseTimestamp = "siri:ResponseTimestamp"
-            case producerRef = "siri:ProducerRef"
-            case stopEventDelivery = "OJPStopEventDelivery"
-        }
-    }
-
-    struct StopEventDelivery: Codable, Sendable {
-        let places: [Place]
-    }
-
-    // TODO: where is that used?
-    struct LocationInformationServiceDelivery: Codable {
-        public let responseTimestamp: String
-        public let producerRef: String
-        public let locationInformationDelivery: LocationInformationDelivery
-
-        public enum CodingKeys: String, CodingKey {
-            case responseTimestamp = "siri:ResponseTimestamp"
-            case producerRef = "siri:ProducerRef"
-            case locationInformationDelivery = "OJPLocationInformationDelivery"
-        }
-    }
-
     struct LocationInformationDelivery: Codable, Sendable {
         public let responseTimestamp: String
         public let requestMessageRef: String?

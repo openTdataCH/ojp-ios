@@ -11,16 +11,16 @@ import XMLCoder
 
 // TODO: can be removed as soon as Duration conforms to Sendable
 #if swift(>=6.0)
-extension Duration: @unchecked @retroactive Sendable {}
+    extension Duration: @unchecked @retroactive Sendable {}
 #else
-extension Duration: @unchecked Sendable {}
+    extension Duration: @unchecked Sendable {}
 #endif
 
 // TODO: can be removed as soon as XMLCoder conforms to Sendable
 #if swift(>=6.0)
-extension XMLEncoder.OutputFormatting: @unchecked @retroactive Sendable {}
+    extension XMLEncoder.OutputFormatting: @unchecked @retroactive Sendable {}
 #else
-extension XMLEncoder.OutputFormatting: @unchecked Sendable {}
+    extension XMLEncoder.OutputFormatting: @unchecked Sendable {}
 #endif
 
 public extension OJPv2 {
@@ -29,7 +29,7 @@ public extension OJPv2 {
         public let responseTimestamp: String
         public let requestMessageRef: String?
         public let calcTime: Int?
-        public let tripResponseContext: TripResponseContext?
+        public let tripResponseContext: ResponseContext?
         public internal(set) var tripResults: [TripResult]
 
         public enum CodingKeys: String, CodingKey {
@@ -45,12 +45,13 @@ public extension OJPv2 {
             responseTimestamp = try container.decode(String.self, forKey: .responseTimestamp)
             requestMessageRef = try container.decodeIfPresent(String.self, forKey: .requestMessageRef)
             calcTime = try container.decodeIfPresent(Int.self, forKey: .calcTime)
-            tripResponseContext = try container.decodeIfPresent(OJPv2.TripResponseContext.self, forKey: .tripResponseContext)
+            tripResponseContext = try container.decodeIfPresent(OJPv2.ResponseContext.self, forKey: .tripResponseContext)
             tripResults = try (container.decodeIfPresent([OJPv2.TripResult].self, forKey: .tripResults)) ?? [] // tripResults could be optional
         }
     }
 
-    struct TripResponseContext: Codable, Sendable {
+    /// [Schema documentation on vdvde.github.io](https://vdvde.github.io/OJP/develop/documentation-tables/ojp.html#type_ojp__ResponseContextStructure)
+    struct ResponseContext: Codable, Sendable {
         public let situations: Situation?
         public let places: [Place]
 
@@ -61,9 +62,9 @@ public extension OJPv2 {
 
         public init(from decoder: any Decoder) throws {
             let container = try decoder.container(keyedBy: CodingKeys.self)
-            situations = try container.decodeIfPresent(OJPv2.Situation.self, forKey: OJPv2.TripResponseContext.CodingKeys.situations)
+            situations = try container.decodeIfPresent(OJPv2.Situation.self, forKey: OJPv2.ResponseContext.CodingKeys.situations)
             do {
-                places = try container.decode(Places.self, forKey: OJPv2.TripResponseContext.CodingKeys.places).places
+                places = try container.decode(Places.self, forKey: OJPv2.ResponseContext.CodingKeys.places).places
             } catch {
                 debugPrint(error)
                 places = []
@@ -1000,6 +1001,10 @@ public extension OJPv2 {
     struct PlaceContext: Codable, Sendable {
         public let placeRef: PlaceRefChoice
         public let depArrTime: Date?
+        public init(placeRef: PlaceRefChoice, depArrTime: Date?) {
+            self.placeRef = placeRef
+            self.depArrTime = depArrTime
+        }
 
         public enum CodingKeys: String, CodingKey {
             case placeRef = "PlaceRef"
