@@ -11,7 +11,7 @@
 		92AEB2522C32AA2C00D5828E /* TimeInterval+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92AEB2512C32AA2C00D5828E /* TimeInterval+Extensions.swift */; };
 		CF06B9F32BBE7DD000B60917 /* Pulse in Frameworks */ = {isa = PBXBuildFile; productRef = CF06B9F22BBE7DD000B60917 /* Pulse */; };
 		CF06B9F52BBE7DD000B60917 /* PulseUI in Frameworks */ = {isa = PBXBuildFile; productRef = CF06B9F42BBE7DD000B60917 /* PulseUI */; };
-		CF0D36BE2CF661F300AF5C0F /* StopEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0D36BD2CF661F300AF5C0F /* StopEventView.swift */; };
+		CF0D36BE2CF661F300AF5C0F /* StopEventResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0D36BD2CF661F300AF5C0F /* StopEventResultsView.swift */; };
 		CF1A97E02C3533D100FEAEC0 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1A97DF2C3533D100FEAEC0 /* LoadingView.swift */; };
 		CF1C2B6E2C2D964F00B51EFD /* tr-perf-be-zh-20results-projection.xml in Resources */ = {isa = PBXBuildFile; fileRef = CF1C2B6D2C2D94B700B51EFD /* tr-perf-be-zh-20results-projection.xml */; };
 		CF3CD8F62C2DB76700D25994 /* tr-with-transfer-legs.xml in Resources */ = {isa = PBXBuildFile; fileRef = CF3CD8F52C2DB76500D25994 /* tr-with-transfer-legs.xml */; };
@@ -60,7 +60,7 @@
 /* Begin PBXFileReference section */
 		92AEB24F2C328DCF00D5828E /* TripDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripDetailView.swift; sourceTree = "<group>"; };
 		92AEB2512C32AA2C00D5828E /* TimeInterval+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeInterval+Extensions.swift"; sourceTree = "<group>"; };
-		CF0D36BD2CF661F300AF5C0F /* StopEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopEventView.swift; sourceTree = "<group>"; };
+		CF0D36BD2CF661F300AF5C0F /* StopEventResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopEventResultsView.swift; sourceTree = "<group>"; };
 		CF1A97DF2C3533D100FEAEC0 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		CF1C2B6D2C2D94B700B51EFD /* tr-perf-be-zh-20results-projection.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "tr-perf-be-zh-20results-projection.xml"; sourceTree = "<group>"; };
 		CF3CD8F52C2DB76500D25994 /* tr-with-transfer-legs.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "tr-with-transfer-legs.xml"; sourceTree = "<group>"; };
@@ -144,7 +144,7 @@
 				CF3CD8FF2C2EA4A800D25994 /* InlineLocationSerachView.swift */,
 				92AEB24F2C328DCF00D5828E /* TripDetailView.swift */,
 				CF8982BE2C8EE1AE001895AC /* TripInfoDetailView.swift */,
-				CF0D36BD2CF661F300AF5C0F /* StopEventView.swift */,
+				CF0D36BD2CF661F300AF5C0F /* StopEventResultsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -378,7 +378,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				92AEB2502C328DCF00D5828E /* TripDetailView.swift in Sources */,
-				CF0D36BE2CF661F300AF5C0F /* StopEventView.swift in Sources */,
+				CF0D36BE2CF661F300AF5C0F /* StopEventResultsView.swift in Sources */,
 				CF8982BF2C8EE1AE001895AC /* TripInfoDetailView.swift in Sources */,
 				CF564A322C2D83D600424D91 /* TripRequestResultView.swift in Sources */,
 				CFF227B82BBDA10800D3EADF /* PlaceDetailView.swift in Sources */,
