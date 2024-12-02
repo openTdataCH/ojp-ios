@@ -42,7 +42,7 @@ public extension OJPv2 {
             case numberOfResults = "NumberOfResults"
         }
 
-        public init(includeRealtimeData: Bool?, includeOnwardCalls: Bool?, includePreviousCalls: Bool?, useRealtimeData: UseRealtimeData?, stopEventType: StopEventType?, numberOfResults: Int?) {
+        public init(includeRealtimeData: Bool? = true, includeOnwardCalls: Bool? = false, includePreviousCalls: Bool? = false, useRealtimeData: UseRealtimeData? = .explanatory, stopEventType: StopEventType?, numberOfResults: Int?) {
             self.includeRealtimeData = includeRealtimeData
             self.includeOnwardCalls = includeOnwardCalls
             self.includePreviousCalls = includePreviousCalls

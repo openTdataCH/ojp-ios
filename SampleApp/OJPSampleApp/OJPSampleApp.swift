@@ -32,11 +32,11 @@ enum AppSection: CaseIterable, Identifiable {
     var image: Image {
         switch self {
         case .locationInformationRequest:
-            .init(systemName: "mappin.and.ellipse.circle.fill")
+            Pictograms.stands_l_en_small
         case .tripRequest:
-            .init(systemName: "calendar.circle.fill")
+            Pictograms.stands_t_en_small
         case .stopEventRequest:
-            Pictograms.stands_s_de_small
+            Pictograms.stands_s_en_small
         }
     }
 }

@@ -12,32 +12,72 @@ struct StopEventResultsView: View {
     let ojp: OJP
 
     @State var origin: OJPv2.PlaceResult?
-
-    @State var stopEventResults: [OJPv2.StopEventResult]?
+    @State var stopEventResults: [String: [OJPv2.StopEventResult]]?
+    @State var mode: StopEventMode = .departure
 
     var body: some View {
         VStack {
-            InlineLocationSerachView(
-                ojp: ojp,
-                textLabel: "Station",
-                selectedPlace: $origin
-            )
-            if let stopEventResults {
-                List(stopEventResults) { e in
-                    StopEventView(stopEvent: e.stopEvent, mode: .departure)
+            HStack(alignment: .top) {
+                InlineLocationSerachView(
+                    ojp: ojp,
+                    textLabel: "Station",
+                    selectedPlace: $origin
+                )
+                Picker("Mode", selection: $mode) {
+                    ForEach([StopEventMode.departure, .arrival], id: \.self) {
+                        Text("\($0.rawValue)").tag($0)
+                    }
+                }
+                .frame(width: 150)
+            }
+            if let results = stopEventResults,
+               let stops = stopEventResults?.keys.map({ String($0) })
+            {
+                List(stops, id: \.self) { title in
+                    Section(title) {
+                        ForEach(results[title]!) { stopEvent in
+                            StopEventView(
+                                stopEvent: stopEvent.stopEvent,
+                                mode: mode
+                            )
+                        }
+                    }
                 }
             }
             Spacer()
-            Button {
-                Task {
-                    guard let origin else { return }
-                    let stopEventDelivery = try await ojp.requestStopEvent(location: .init(placeRef: origin.placeRef, depArrTime: nil), params: nil)
-                    stopEventResults = stopEventDelivery.stopEventResults
-                }
-            } label: {
-                Text("Search")
+        }
+        .onChange(of: origin) {
+            Task {
+                try await loadStopEvents()
             }
         }
+        .onChange(of: mode) {
+            Task {
+                try await loadStopEvents()
+            }
+        }
+    }
+
+    func loadStopEvents() async throws {
+        guard let origin else { return }
+        stopEventResults = nil
+        let stopEventDelivery = try await ojp.requestStopEvent(
+            location: .init(
+                placeRef: origin.placeRef,
+                depArrTime: nil
+            ),
+            params: .init(
+                stopEventType: mode.ojpType,
+                numberOfResults: nil
+            )
+        )
+        stopEventResults = stopEventDelivery.stopEventsGroupedByStation
+    }
+}
+
+extension OJPv2.PlaceResult: @retroactive Equatable {
+    public static func == (lhs: OJPv2.PlaceResult, rhs: OJPv2.PlaceResult) -> Bool {
+        lhs.placeRef == rhs.placeRef
     }
 }
 

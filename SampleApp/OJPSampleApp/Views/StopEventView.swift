@@ -19,9 +19,18 @@ struct StationTimeView: View {
     }
 }
 
-enum StopEventMode {
-    case arrival
-    case departure
+enum StopEventMode: String {
+    case arrival = "Arrival"
+    case departure = "Departure"
+
+    var ojpType: OJPv2.StopEventType {
+        switch self {
+        case .arrival:
+            .arrival
+        case .departure:
+            .departure
+        }
+    }
 }
 
 struct StopEventView: View {
@@ -35,6 +44,11 @@ struct StopEventView: View {
         case .departure:
             stopEvent.thisCall.callAtStop.serviceDeparture?.departureTime
         }
+    }
+
+    var title: String {
+        let station = mode == .departure ? stopEvent.service.destinationText?.text : stopEvent.service.originText.text
+        return station ?? ""
     }
 
     var body: some View {
@@ -53,8 +67,10 @@ struct StopEventView: View {
                 if let stationTime {
                     StationTimeView(stationTime: stationTime)
                 }
-            }.frame(maxWidth: 100, alignment: .leading)
-            Text(stopEvent.service.destinationText?.text ?? "").font(.title)
+            }
+            .frame(maxWidth: 100, alignment: .leading)
+
+            Text(title).font(.title)
             Spacer()
             Text(stopEvent.thisCall.callAtStop.plannedQuay?.text ?? "").font(.title)
         }

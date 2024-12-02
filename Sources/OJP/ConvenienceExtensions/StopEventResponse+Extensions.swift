@@ -7,19 +7,19 @@
 
 import Foundation
 
-extension OJPv2.CallAtStop {
+public extension OJPv2.CallAtStop {
     var stopPoint: OJPv2.StopPoint {
         .init(stopPointRef: stopPointRef, stopPointName: stopPointName, parentRef: nil, topographicPlaceRef: nil)
     }
 }
 
-extension OJPv2.CallAtNearStop {
+public extension OJPv2.CallAtNearStop {
     var stopPoint: OJPv2.StopPoint {
         callAtStop.stopPoint
     }
 }
 
-extension OJPv2.StopEventDelivery {
+public extension OJPv2.StopEventDelivery {
     /// Groups StopEvents by `stopPointName`
     var stopEventsGroupedByStation: [String: [OJPv2.StopEventResult]] {
         stopEventResults.reduce(into: [:]) { partialResult, stopEventResult in
