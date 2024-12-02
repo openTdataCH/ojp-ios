@@ -22,7 +22,7 @@ extension OJPv2.CallAtNearStop {
 extension OJPv2.StopEventDelivery {
     /// Groups StopEvents by `stopPointName`
     var stopEventsGroupedByStation: [String: [OJPv2.StopEventResult]] {
-        stopEventResult.reduce(into: [:]) { partialResult, stopEventResult in
+        stopEventResults.reduce(into: [:]) { partialResult, stopEventResult in
             let currentStop = stopEventResult.stopEvent.thisCall.stopPoint.stopPointName.text
             if var current = partialResult[currentStop] {
                 current.append(stopEventResult)
@@ -34,6 +34,6 @@ extension OJPv2.StopEventDelivery {
     }
 
     var isSameStop: Bool {
-        Set(stopEventResult.map(\.stopEvent.thisCall.stopPoint.stopPointName)).count == 1
+        Set(stopEventResults.map(\.stopEvent.thisCall.stopPoint.stopPointName)).count == 1
     }
 }

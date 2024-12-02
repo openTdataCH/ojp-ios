@@ -32,7 +32,7 @@ final class SystemTests: XCTestCase {
             params: nil
         )
 
-        XCTAssert(!stopEvents.stopEventResult.isEmpty)
+        XCTAssert(!stopEvents.stopEventResults.isEmpty)
     }
 
     func testFetchStations() async throws {

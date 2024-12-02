@@ -29,6 +29,8 @@ public extension OJPv2 {
         public let includeOnwardCalls: Bool?
         public let includePreviousCalls: Bool?
         public let useRealtimeData: UseRealtimeData?
+        public let stopEventType: StopEventType?
+        public let numberOfResults: Int?
 
         public enum CodingKeys: String, CodingKey {
             case includeRealtimeData = "IncludeRealtimeData"
@@ -36,30 +38,34 @@ public extension OJPv2 {
             case includePreviousCalls = "IncludePreviousCalls"
 //            case modeFilter = "ModeFilter"
             case useRealtimeData = "UseRealtimeData"
+            case stopEventType = "StopEventType"
+            case numberOfResults = "NumberOfResults"
         }
 
-        public init(includeRealtimeData: Bool?, includeOnwardCalls: Bool?, includePreviousCalls: Bool?, useRealtimeData: UseRealtimeData?) {
+        public init(includeRealtimeData: Bool?, includeOnwardCalls: Bool?, includePreviousCalls: Bool?, useRealtimeData: UseRealtimeData?, stopEventType: StopEventType?, numberOfResults: Int?) {
             self.includeRealtimeData = includeRealtimeData
             self.includeOnwardCalls = includeOnwardCalls
             self.includePreviousCalls = includePreviousCalls
             self.useRealtimeData = useRealtimeData
+            self.stopEventType = stopEventType
+            self.numberOfResults = numberOfResults
         }
     }
 
     /// [Schema documentation on vdvde.github.io](https://vdvde.github.io/OJP/develop/documentation-tables/ojp.html#type_ojp__OJPStopEventDeliveryStructure)
     struct StopEventDelivery: Codable, Sendable {
         public let stopEventResponseContext: ResponseContext?
-        public let stopEventResult: [StopEventResult] // TODO: rename it to stopEventResults?
+        public let stopEventResults: [StopEventResult]
 
         public enum CodingKeys: String, CodingKey {
             case stopEventResponseContext = "StopEventResponseContext"
-            case stopEventResult = "StopEventResult"
+            case stopEventResults = "StopEventResult"
         }
 
         public init(from decoder: any Decoder) throws {
             let container = try decoder.container(keyedBy: CodingKeys.self)
             stopEventResponseContext = try container.decodeIfPresent(ResponseContext.self, forKey: .stopEventResponseContext)
-            stopEventResult = (try? container.decode([OJPv2.StopEventResult].self, forKey: .stopEventResult)) ?? []
+            stopEventResults = (try? container.decode([OJPv2.StopEventResult].self, forKey: .stopEventResults)) ?? []
         }
     }
 
@@ -75,6 +81,7 @@ public extension OJPv2 {
         }
     }
 
+    /// [Schema documentation on vdvde.github.io](https://vdvde.github.io/OJP/develop/documentation-tables/ojp.html#type_ojp__StopEventTypeEnumeration)
     enum StopEventType: String, Codable, Sendable {
         case departure
         case arrival
@@ -96,6 +103,7 @@ public extension OJPv2 {
         }
     }
 
+    /// [Schema documentation on vdvde.github.io](https://vdvde.github.io/OJP/develop/documentation-tables/ojp.html#type_ojp__CallAtNearStopStructure)
     struct CallAtNearStop: Codable, Sendable {
         public let callAtStop: CallAtStop
         public let walkDistance: Int?

@@ -5,6 +5,7 @@
 //  Created by Lehnherr Reto on 03.04.2024.
 //
 
+import OEVIcons
 import OJP
 import Pulse
 import PulseUI
@@ -13,6 +14,7 @@ import SwiftUI
 enum AppSection: CaseIterable, Identifiable {
     case locationInformationRequest
     case tripRequest
+    case stopEventRequest
 
     var id: Self { self }
 
@@ -22,6 +24,8 @@ enum AppSection: CaseIterable, Identifiable {
             "LocationInformationRequest"
         case .tripRequest:
             "TripRequest"
+        case .stopEventRequest:
+            "StopEventRequest"
         }
     }
 
@@ -31,6 +35,8 @@ enum AppSection: CaseIterable, Identifiable {
             .init(systemName: "mappin.and.ellipse.circle.fill")
         case .tripRequest:
             .init(systemName: "calendar.circle.fill")
+        case .stopEventRequest:
+            Pictograms.stands_s_de_small
         }
     }
 }
@@ -78,6 +84,8 @@ struct OJPSampleApp: App {
                         LocationSearchByNameView()
                     case .tripRequest:
                         TripRequestView(ojp: OJP.configured)
+                    case .stopEventRequest:
+                        StopEventResultsView(ojp: OJP.configured)
                     }
                 }
             }).toolbar {

@@ -24,7 +24,7 @@ struct StopEventResultsView: View {
             )
             if let stopEventResults {
                 List(stopEventResults) { e in
-                    Text(e.stopEvent.service.destinationText?.text ?? "")
+                    StopEventView(stopEvent: e.stopEvent, mode: .departure)
                 }
             }
             Spacer()
@@ -32,7 +32,7 @@ struct StopEventResultsView: View {
                 Task {
                     guard let origin else { return }
                     let stopEventDelivery = try await ojp.requestStopEvent(location: .init(placeRef: origin.placeRef, depArrTime: nil), params: nil)
-                    stopEventResults = stopEventDelivery.stopEventResult
+                    stopEventResults = stopEventDelivery.stopEventResults
                 }
             } label: {
                 Text("Search")
