@@ -25,6 +25,7 @@ public extension OJPv2 {
     /// [Schema documentation on vdvde.github.io](https://vdvde.github.io/OJP/develop/documentation-tables/ojp.html#type_ojp__StopEventParamStructure)
     struct StopEventParam: Codable, Sendable {
 //        public let modeFilter: ModeFilter
+        public let includeAllRestrictedLines: Bool?
         public let includeRealtimeData: Bool?
         public let includeOnwardCalls: Bool?
         public let includePreviousCalls: Bool?
@@ -33,6 +34,7 @@ public extension OJPv2 {
         public let numberOfResults: Int?
 
         public enum CodingKeys: String, CodingKey {
+            case includeAllRestrictedLines = "IncludeAllRestrictedLines"
             case includeRealtimeData = "IncludeRealtimeData"
             case includeOnwardCalls = "IncludeOnwardCalls"
             case includePreviousCalls = "IncludePreviousCalls"
@@ -42,7 +44,8 @@ public extension OJPv2 {
             case numberOfResults = "NumberOfResults"
         }
 
-        public init(includeRealtimeData: Bool? = true, includeOnwardCalls: Bool? = false, includePreviousCalls: Bool? = false, useRealtimeData: UseRealtimeData? = .explanatory, stopEventType: StopEventType?, numberOfResults: Int?) {
+        public init(includeAllRestrictedLines: Bool? = true, includeRealtimeData: Bool? = true, includeOnwardCalls: Bool? = false, includePreviousCalls: Bool? = false, useRealtimeData: UseRealtimeData? = .explanatory, stopEventType: StopEventType?, numberOfResults: Int?) {
+            self.includeAllRestrictedLines = includeAllRestrictedLines
             self.includeRealtimeData = includeRealtimeData
             self.includeOnwardCalls = includeOnwardCalls
             self.includePreviousCalls = includePreviousCalls
