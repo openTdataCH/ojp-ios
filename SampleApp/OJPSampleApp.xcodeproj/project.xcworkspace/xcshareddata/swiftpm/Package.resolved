@@ -6,7 +6,7 @@
       "location" : "https://github.com/r3to/OeVIconsSwift",
       "state" : {
         "branch" : "main",
-        "revision" : "3cfe66c00e4b151c678c5a8a5839f2788676eea5"
+        "revision" : "9cafaa912c155cecf775e36ef94971e651773d09"
       }
     },
     {
@@ -42,7 +42,7 @@
       "location" : "https://github.com/swiftlang/swift-testing.git",
       "state" : {
         "branch" : "main",
-        "revision" : "8db108c11fdc972ef7a7b7d782e29e47124aeda4"
+        "revision" : "8fb3f68a522e9d6dc00dcc90828bf39224327e8c"
       }
     },
     {

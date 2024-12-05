@@ -57,9 +57,16 @@ struct StopEventView: View {
                 Pictograms.picto(mode: stopEvent.service.mode)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                OEVIcons.serviceIcon(stopEvent.service)
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
+                if let icon = OEVIcons.serviceIcon(stopEvent.service) {
+                    icon
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                } else {
+                    Text(stopEvent.service.publishedServiceName.text)
+                        .font(.title)
+                        .bold()
+                        .frame(width: 36, alignment: .leading)
+                }
             }
             .frame(height: 21)
 
@@ -152,11 +159,11 @@ extension OEVIcons {
         }
     }
 
-    static func serviceIcon(_ service: OJPv2.DatedJourney) -> Image {
+    static func serviceIcon(_ service: OJPv2.DatedJourney) -> Image? {
         guard let shortName = service.mode.shortName?.text,
               let serviceType = ServiceType(rawValue: shortName.lowercased())
         else {
-            return OEVIcons.add_stop // TODO: CHANGE
+            return nil
         }
         let lineNumber = service.publishedServiceName.text.replacingOccurrences(of: shortName, with: "")
 
@@ -167,6 +174,6 @@ extension OEVIcons {
             return Image("\(serviceType.rawValue)-\(lineNumber)", bundle: OEVIcons.bundle)
         }
 
-        return Image(serviceType.rawValue, bundle: OEVIcons.bundle)
+        return nil
     }
 }
