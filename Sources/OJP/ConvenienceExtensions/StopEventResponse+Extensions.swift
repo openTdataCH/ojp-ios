@@ -20,6 +20,11 @@ public extension OJPv2.CallAtNearStop {
 }
 
 public extension OJPv2.StopEventDelivery {
+    /// convenience property for ``OJPv2/PTSituation``.
+    var ptSituations: [OJPv2.PTSituation] {
+        stopEventResponseContext?.situations?.ptSituations ?? []
+    }
+
     /// Groups StopEvents by `stopPointName`
     var stopEventsGroupedByStation: [String: [OJPv2.StopEventResult]] {
         stopEventResults.reduce(into: [:]) { partialResult, stopEventResult in
@@ -33,7 +38,22 @@ public extension OJPv2.StopEventDelivery {
         }
     }
 
+    /// Use `stopPointName` to group StopEvents by stations as different quays of the same Stop have different ids
     var isSameStop: Bool {
         Set(stopEventResults.map(\.stopEvent.thisCall.stopPoint.stopPointName)).count == 1
+    }
+}
+
+public extension OJPv2.StopEvent {
+    func relevantPtSituations(allPtSituations: [OJPv2.PTSituation]) -> [OJPv2.PTSituation] {
+        let uniqueSituations = allPtSituations.unique(by: \.situationNumber)
+        guard !uniqueSituations.isEmpty else { return [] }
+        return service.situationFullRefs?.situationFullRefs.flatMap { serviceSituationRef in
+            uniqueSituations.filter { $0.situationNumber == serviceSituationRef.situationNumber }
+        } ?? []
+    }
+
+    func hasSituation(allPtSituations: [OJPv2.PTSituation]) -> Bool {
+        !relevantPtSituations(allPtSituations: allPtSituations).isEmpty
     }
 }

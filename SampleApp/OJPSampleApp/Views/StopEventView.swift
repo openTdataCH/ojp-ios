@@ -35,6 +35,8 @@ enum StopEventMode: String {
 
 struct StopEventView: View {
     let stopEvent: OJPv2.StopEvent
+    let ptSituations: [OJPv2.PTSituation]
+    @State var selectedPtSituation: OJPv2.PTSituation?
     let mode: StopEventMode
 
     var stationTime: StationTime? {
@@ -52,34 +54,63 @@ struct StopEventView: View {
     }
 
     var body: some View {
-        HStack {
-            HStack(spacing: 4) {
-                Pictograms.picto(mode: stopEvent.service.mode)
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                if let icon = OEVIcons.serviceIcon(stopEvent.service) {
-                    icon
+        VStack(alignment: .leading, spacing: 0) {
+            HStack {
+                HStack(spacing: 4) {
+                    Pictograms.picto(mode: stopEvent.service.mode)
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                } else {
-                    Text(stopEvent.service.publishedServiceName.text)
-                        .font(.title)
-                        .bold()
-                        .frame(width: 36, alignment: .leading)
+                    Group {
+                        if let icon = OEVIcons.serviceIcon(stopEvent.service) {
+                            icon
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                        } else {
+                            Text(stopEvent.service.publishedServiceName.text)
+                                .font(.title)
+                                .bold()
+                        }
+                    }.frame(width: 60, alignment: .leading)
+                }
+                .frame(height: 21)
+
+                Group {
+                    if let stationTime {
+                        StationTimeView(stationTime: stationTime)
+                    }
+                }
+                .frame(maxWidth: 100, alignment: .leading)
+
+                Text(title).font(.title)
+                ForEach(ptSituations) { ptSituation in
+                    OEVIcons.disruption
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(height: 21)
+                        .onTapGesture {
+                            selectedPtSituation = ptSituation
+                        }
+                }
+                Spacer()
+                Text(stopEvent.thisCall.callAtStop.plannedQuay?.text ?? "").font(.title)
+            }
+
+            if let selectedPtSituation, let publishingAction = selectedPtSituation.publishingActions?.publishingActions.first {
+                ZStack {
+                    Color.disturbation
+                    HStack {
+                        Text(publishingAction.passengerInformationActions.first?.textualContents.first?.summaryContent.summaryText ?? "")
+                            .font(.title2)
+                            .foregroundStyle(.white)
+
+                        Spacer()
+                    }
+                    .padding()
                 }
             }
-            .frame(height: 21)
-
-            Group {
-                if let stationTime {
-                    StationTimeView(stationTime: stationTime)
-                }
-            }
-            .frame(maxWidth: 100, alignment: .leading)
-
-            Text(title).font(.title)
-            Spacer()
-            Text(stopEvent.thisCall.callAtStop.plannedQuay?.text ?? "").font(.title)
+        }
+        .onTapGesture {
+            selectedPtSituation = nil
         }
     }
 }
@@ -90,10 +121,13 @@ struct StopEventView: View {
             try await PreviewMocker.shared.loadStopEvents()
         },
         content: { stopEventDelivery in
-            let stopEvents = stopEventDelivery.stopEventResults
-            ForEach(stopEvents) { stopEvent in
+            let results = stopEventDelivery.stopEventResults
+            ForEach(results) { stopEventResult in
+                let event = stopEventResult.stopEvent
+                let situations = event.relevantPtSituations(allPtSituations: stopEventDelivery.ptSituations)
                 StopEventView(
-                    stopEvent: stopEvent.stopEvent,
+                    stopEvent: event,
+                    ptSituations: situations,
                     mode: .departure
                 )
             }
@@ -124,7 +158,7 @@ extension Pictograms {
 
 extension OEVIcons {
     enum ServiceType: String {
-        case regio = "r"
+        // case regio = "r" // -> no icon available
         case regioExpress = "re"
         case interCity = "ic"
         case interRegio = "ir"
@@ -151,7 +185,7 @@ extension OEVIcons {
 
         var supportsNumbers: Bool {
             switch self {
-            case .regio, .regioExpress, .interCity, .interRegio, .sBahn, .ersatz, .pe, .sn:
+            case .regioExpress, .interCity, .interRegio, .sBahn, .ersatz, .pe, .sn:
                 true
             default:
                 false
@@ -173,7 +207,6 @@ extension OEVIcons {
         {
             return Image("\(serviceType.rawValue)-\(lineNumber)", bundle: OEVIcons.bundle)
         }
-
-        return nil
+        return Image("\(serviceType.rawValue)", bundle: OEVIcons.bundle)
     }
 }

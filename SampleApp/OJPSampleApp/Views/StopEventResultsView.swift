@@ -14,6 +14,7 @@ struct StopEventResultsView: View {
     @State var origin: OJPv2.PlaceResult?
     @State var stopEventResults: [String: [OJPv2.StopEventResult]]?
     @State var mode: StopEventMode = .departure
+    @State var ptSituations: [OJPv2.PTSituation] = []
 
     var body: some View {
         VStack {
@@ -35,9 +36,11 @@ struct StopEventResultsView: View {
             {
                 List(stops, id: \.self) { title in
                     Section(title) {
-                        ForEach(results[title]!) { stopEvent in
+                        ForEach(results[title]!) { stopEventResult in
+                            let stopEvent = stopEventResult.stopEvent
                             StopEventView(
-                                stopEvent: stopEvent.stopEvent,
+                                stopEvent: stopEvent,
+                                ptSituations: stopEvent.relevantPtSituations(allPtSituations: ptSituations),
                                 mode: mode
                             )
                         }
@@ -72,6 +75,7 @@ struct StopEventResultsView: View {
             )
         )
         stopEventResults = stopEventDelivery.stopEventsGroupedByStation
+        ptSituations = stopEventDelivery.ptSituations
     }
 }
 
