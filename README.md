@@ -1,12 +1,10 @@
-# Open Journey Planner SDK for iOS
+# Open Journey Planner SDK for iOS and macOS
 
 ## Overview
 
-
-
 This SDK is targeting iOS applications seeking to integrate [Open Journey Planner (OJP) V2 APIs](https://opentdatach.github.io/ojp-ios/documentation/ojp/) to support distributed journey planning according to the European (CEN) Technical Specification entitled “Intelligent transport systems – Public transport – Open API for distributed journey planning”.
 
-For a general introduction to `OJP, consult the [Cookbook](https://opentransportdata.swiss/de/cookbook/open-journey-planner-ojp/) on [opentransportdata.swiss](https://opentransportdata.swiss). Visit [vdvde.github.io/OJP](https://vdvde.github.io/OJP/develop/documentation-tables/ojp.html) for the documentation of the XML Schema of OJP.
+For a general introduction to `OJP`, consult the [Cookbook](https://opentransportdata.swiss/de/cookbook/open-journey-planner-ojp/) on [opentransportdata.swiss](https://opentransportdata.swiss). Visit [vdvde.github.io/OJP](https://vdvde.github.io/OJP/develop/documentation-tables/ojp.html) for the documentation of the XML Schema of OJP.
 
 🚧 Currently this SDK is **under construction.** Note that APIs may still change. 🚧
 
