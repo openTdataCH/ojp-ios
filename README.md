@@ -8,7 +8,7 @@ This SDK is targeting iOS applications seeking to integrate [Open Journey Planne
 
 For a general introduction to `OJP, consult the [Cookbook](https://opentransportdata.swiss/de/cookbook/open-journey-planner-ojp/) on [opentransportdata.swiss](https://opentransportdata.swiss). Visit [vdvde.github.io/OJP](https://vdvde.github.io/OJP/develop/documentation-tables/ojp.html) for the documentation of the XML Schema of OJP.
 
-🚧 Currently this SDK is **under construction.** There is **not yet a stable version** and the APIs may change. 🚧
+🚧 Currently this SDK is **under construction.** Note that APIs may still change. 🚧
 
 ### Features
 
@@ -17,9 +17,6 @@ For a general introduction to `OJP, consult the [Cookbook](https://opentransport
 - [Location Information Request](https://opentransportdata.swiss/en/cookbook/location-information-service/)
 - [Trip Request](https://opentransportdata.swiss/en/cookbook/ojptriprequest/)
 - [TripInfo Request](https://opentransportdata.swiss/en/cookbook/ojptripinforequest/)
-
-### Soon to be available
-
 - [Stop Event Request](https://opentransportdata.swiss/en/cookbook/ojp-stopeventservice/)
 
 ## Requirements
@@ -33,11 +30,6 @@ For a general introduction to `OJP, consult the [Cookbook](https://opentransport
 ## Usage
 
 ### Initializing
-
-TBA
-- endpoints configuration
-- requesterReference
-- authBearerToken - where to get it from
 
 ``` swift
 import OJP
