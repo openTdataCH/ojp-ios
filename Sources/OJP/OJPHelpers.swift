@@ -86,6 +86,39 @@ enum OJPHelpers {
         }
     }
 
+    struct StopEventRequest: Sendable {
+        init(_ configuration: RequestConfiguration) {
+            requestContext = configuration.requestContext
+            requesterReference = configuration.requesterReference
+        }
+
+        let requestContext: OJPv2.ServiceRequestContext
+        let requesterReference: String
+
+        public func requestStopEvents(location: OJPv2.PlaceContext, params: OJPv2.StopEventParam?) -> OJPv2 {
+            let requestTimestamp = Date()
+
+            let stopEventRequest = OJPv2.StopEventRequest(
+                requestTimestamp: requestTimestamp,
+                location: location,
+                params: params
+            )
+
+            let ojp = OJPv2(
+                request: OJPv2.Request(
+                    serviceRequest: OJPv2.ServiceRequest(
+                        requestContext: requestContext,
+                        requestTimestamp: requestTimestamp,
+                        requestorRef: requesterReference,
+                        stopEventRequest: stopEventRequest
+                    )
+                ), response: nil
+            )
+
+            return ojp
+        }
+    }
+
     struct LocationInformationRequest: Sendable {
         let requestContext: OJPv2.ServiceRequestContext
         let requesterReference: String
@@ -223,7 +256,7 @@ enum OJPHelpers {
             requesterReference = configuration.requesterReference
         }
 
-        public func request(_ journeyRef: String, operatingDayRef: String, params: OJPv2.TripInfoParam) async throws -> OJPv2 {
+        public func request(_ journeyRef: String, operatingDayRef: String, params: OJPv2.TripInfoParam) -> OJPv2 {
             let requestTimestamp = Date()
 
             let tripInfoRequest = OJPv2.TripInfoRequest(journeyRef: journeyRef, operatingDayRef: operatingDayRef, params: params)

@@ -15,6 +15,8 @@ struct InlineLocationSerachView: View {
     @State private var results: [OJPv2.PlaceResult] = []
     @State private var currentTask: Task<Void, Never>? = nil
 
+    @State private var ignoreUpdate: Bool = false
+
     var textLabel: String
     @Binding var selectedPlace: OJPv2.PlaceResult?
 
@@ -34,8 +36,7 @@ struct InlineLocationSerachView: View {
                             .background(Color.listBackground)
                             .frame(maxHeight: .infinity)
                             .onTapGesture {
-                                selectedPlace = stop
-                                results = []
+                                handleTap(selectedPlace: stop)
                             }
                         case let .address(address):
                             HStack {
@@ -45,8 +46,7 @@ struct InlineLocationSerachView: View {
                             }
                             .background(Color.listBackground)
                             .onTapGesture {
-                                selectedPlace = stop
-                                results = []
+                                handleTap(selectedPlace: stop)
                             }
                         case let .stopPoint(stopPoint):
                             HStack {
@@ -57,8 +57,7 @@ struct InlineLocationSerachView: View {
                             .background(Color.listBackground)
                             .frame(maxHeight: .infinity)
                             .onTapGesture {
-                                selectedPlace = stop
-                                results = []
+                                handleTap(selectedPlace: stop)
                             }
                         case let .topographicPlace(topographicPlace):
                             HStack {
@@ -68,14 +67,17 @@ struct InlineLocationSerachView: View {
                             }
                             .background(Color.listBackground)
                             .onTapGesture {
-                                selectedPlace = stop
-                                results = []
+                                handleTap(selectedPlace: stop)
                             }
                         }
                     }
                 }
             }
-        }.onChange(of: searchText) { _, _ in
+        }.onChange(of: searchText) { old, new in
+            guard old != new, !ignoreUpdate else {
+                ignoreUpdate = false
+                return
+            }
             currentTask?.cancel()
             currentTask = Task { @MainActor in
                 do {
@@ -84,6 +86,15 @@ struct InlineLocationSerachView: View {
                     print(error)
                 }
             }
+        }
+    }
+
+    func handleTap(selectedPlace: OJPv2.PlaceResult?) {
+        results = []
+        self.selectedPlace = selectedPlace
+        ignoreUpdate = true
+        if let title = selectedPlace?.title {
+            searchText = title
         }
     }
 }

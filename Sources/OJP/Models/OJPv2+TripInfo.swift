@@ -58,7 +58,7 @@ public extension OJPv2 {
         public let responseTimestamp: String
         public let requestMessageRef: String?
         public let calcTime: Int?
-        public let tripInfoResponseContext: TripResponseContext?
+        public let tripInfoResponseContext: ResponseContext?
         public internal(set) var tripInfoResult: TripInfoResult?
 
         public enum CodingKeys: String, CodingKey {
@@ -74,7 +74,7 @@ public extension OJPv2 {
             responseTimestamp = try container.decode(String.self, forKey: .responseTimestamp)
             requestMessageRef = try container.decodeIfPresent(String.self, forKey: .requestMessageRef)
             calcTime = try container.decodeIfPresent(Int.self, forKey: .calcTime)
-            tripInfoResponseContext = try container.decodeIfPresent(OJPv2.TripResponseContext.self, forKey: .tripInfoResponseContext)
+            tripInfoResponseContext = try container.decodeIfPresent(OJPv2.ResponseContext.self, forKey: .tripInfoResponseContext)
             tripInfoResult = try container.decodeIfPresent(OJPv2.TripInfoResult.self, forKey: .tripInfoResult)
         }
     }
@@ -93,9 +93,9 @@ public extension OJPv2 {
 
         public init(from decoder: any Decoder) throws {
             let container = try decoder.container(keyedBy: CodingKeys.self)
-            previousCalls = (try? container.decode([OJPv2.CallAtStop].self, forKey: OJPv2.TripInfoResult.CodingKeys.previousCalls)) ?? []
-            onwardCalls = (try? container.decode([OJPv2.CallAtStop].self, forKey: OJPv2.TripInfoResult.CodingKeys.onwardCalls)) ?? []
-            service = try container.decodeIfPresent(OJPv2.DatedJourney.self, forKey: OJPv2.TripInfoResult.CodingKeys.service)
+            previousCalls = (try? container.decode([OJPv2.CallAtStop].self, forKey: .previousCalls)) ?? []
+            onwardCalls = (try? container.decode([OJPv2.CallAtStop].self, forKey: .onwardCalls)) ?? []
+            service = try container.decodeIfPresent(OJPv2.DatedJourney.self, forKey: .service)
         }
     }
 

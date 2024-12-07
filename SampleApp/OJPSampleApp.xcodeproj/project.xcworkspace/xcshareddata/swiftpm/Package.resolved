@@ -1,12 +1,21 @@
 {
   "pins" : [
     {
+      "identity" : "oeviconsswift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/r3to/OeVIconsSwift",
+      "state" : {
+        "branch" : "main",
+        "revision" : "9cafaa912c155cecf775e36ef94971e651773d09"
+      }
+    },
+    {
       "identity" : "pulse",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/kean/Pulse",
       "state" : {
-        "revision" : "d647e99f06abc94d63579e335ad4ce368195c149",
-        "version" : "4.0.5"
+        "revision" : "3ac5ee35ab233e900aa484919803d51791d1e351",
+        "version" : "4.2.7"
       }
     },
     {
@@ -19,12 +28,30 @@
       }
     },
     {
+      "identity" : "swift-syntax",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/swiftlang/swift-syntax.git",
+      "state" : {
+        "revision" : "0687f71944021d616d34d922343dcef086855920",
+        "version" : "600.0.1"
+      }
+    },
+    {
+      "identity" : "swift-testing",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/swiftlang/swift-testing.git",
+      "state" : {
+        "branch" : "main",
+        "revision" : "8fb3f68a522e9d6dc00dcc90828bf39224327e8c"
+      }
+    },
+    {
       "identity" : "swiftformat",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/nicklockwood/SwiftFormat",
       "state" : {
-        "revision" : "9e5d0d588ab6e271fe9887ec3dde21d544d4b080",
-        "version" : "0.53.5"
+        "revision" : "2d5a2b6bde636c1feae2c852ab9a50f221e98c66",
+        "version" : "0.55.3"
       }
     },
     {

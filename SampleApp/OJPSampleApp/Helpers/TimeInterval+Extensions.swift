@@ -7,8 +7,6 @@
 
 import Foundation
 
-import Foundation
-
 extension TimeInterval {
     @available(*, deprecated, message: "use a localizable time formatter instead")
     var hoursMinutesSeconds: String {

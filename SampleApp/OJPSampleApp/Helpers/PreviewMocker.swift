@@ -61,4 +61,18 @@ actor PreviewMocker {
         )
         .requestTripInfo(journeyRef: "", operatingDayRef: "", params: .init())
     }
+
+    func loadStopEvents(xmlFileName: String = "ser-two-results") async throws -> OJPv2.StopEventDelivery {
+        try await OJP(
+            loadingStrategy: Self.mockLoader(xmlFilename: xmlFileName)
+        ).requestStopEvent(
+            location: .init(
+                placeRef: .stopPlaceRef(
+                    .init(stopPlaceRef: "", name: .init(""))
+                ),
+                depArrTime: nil
+            ),
+            params: nil
+        )
+    }
 }
