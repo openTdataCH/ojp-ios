@@ -48,7 +48,7 @@ let ojpSdk = OJP(
 
 ### Basic Usage
 
-#### Get a list of PlaceResults from a keyword
+#### Get a list of `PlaceResult` from a keyword
 
 ``` swift
 import OJP
@@ -120,6 +120,28 @@ let tripInfo = try await OJP.configured.requestTripInfo(
     operatingDayRef: operatingDayRef,
     params: .init(useRealTimeData: .explanatory)
 )
+```
+
+#### Load current departures using `StopEventRequest`
+
+``` swift
+let stopEventDelivery = try await ojp.requestStopEvent(
+    location: .init(
+        placeRef: origin.placeRef,
+        depArrTime: nil
+    ),
+    params: .init(
+        stopEventType: .departure,
+        numberOfResults: 15
+    )
+)
+
+// if the requests `OJPv2.PlaceContext` is not of type `.stopPlace` or `.stopPoint`, it can return departures of multiple nearby Stops
+let groupedStopEvents: [String: [OJPv2.StopEventResult]] = stopEventDelivery.stopEventsGroupedByStation
+let ptSituations = stopEventDelivery.ptSituations
+
+// otherwise you can directly reference the stopEventResults
+let stops = stopEventDelivery.stopEventResult
 ```
 
 ## Sample App
