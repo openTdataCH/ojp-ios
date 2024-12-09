@@ -212,11 +212,54 @@ public extension OJPv2 {
         }
     }
 
+    /// https://vdvde.github.io/OJP/develop/documentation-tables/siri.html#type_siri__PublishingActionStructure
     struct PublishingAction: Codable, Sendable {
+        /// mandatory in schema, but currently optional here for backwards compatibilty. Will change in the future.
+        public let publishAtScope: PublishAtScope?
         public let passengerInformationActions: [PassengerInformationAction]
 
         public enum CodingKeys: String, CodingKey {
+            case publishAtScope = "siri:PublishAtScope"
             case passengerInformationActions = "siri:PassengerInformationAction"
+        }
+    }
+
+    struct PublishAtScope: Codable, Sendable {
+        public let scopeType: ScopeType
+        public let affects: Affects
+
+        public enum CodingKeys: String, CodingKey {
+            case scopeType = "siri:ScopeType"
+            case affects = "siri:Affects"
+        }
+    }
+
+    /// https://vdvde.github.io/OJP/develop/documentation-tables/siri.html#local_type_typedef_16_4
+    enum ScopeType: String, Codable, Sendable, Equatable {
+        case unknown
+        case stopPlace
+        case line
+        case route
+        case publicTransportService
+        case `operator`
+        case city
+        case area
+        case stopPoint
+        case stopPlaceComponent
+        case place
+        case network
+        case vehicleJourney
+        case datedVehicleJourney
+        case connectionLink
+        case interchange
+        case allPT
+        case general
+        case road
+        case undefined
+
+        public init(from decoder: any Decoder) throws {
+            let svc = try decoder.singleValueContainer()
+            self = try .init(rawValue: svc.decode(String.self)) ?? .unknown
         }
     }
 
@@ -235,7 +278,6 @@ public extension OJPv2 {
         public let participantRef: String
         public let situationNumber: String
         public let validityPeriod: [ValidityPeriod]
-        public let affects: Affects?
 
         /// Profil CH
         /// - 1 = Notfall
@@ -254,7 +296,6 @@ public extension OJPv2 {
             case creationTime = "siri:CreationTime"
             case participantRef = "siri:ParticipantRef"
             case validityPeriod = "siri:ValidityPeriod"
-            case affects = "siri:Affects"
             case publishingActions = "siri:PublishingActions"
             case alertCause = "siri:AlertCause"
             case version = "siri:Version"
@@ -263,6 +304,7 @@ public extension OJPv2 {
         }
     }
 
+    /// https://vdvde.github.io/OJP/develop/documentation-tables/siri.html#type_siri__AffectsScopeStructure
     struct Affects: Codable, Sendable {
         let stopPoints: [AffectedStopPoint]
 
@@ -271,6 +313,7 @@ public extension OJPv2 {
         }
     }
 
+    /// https://vdvde.github.io/OJP/develop/documentation-tables/siri.html#type_siri__AffectedStopPointStructure
     struct AffectedStopPoint: Codable, Sendable {
         let stopPointRef: String
 
@@ -1246,6 +1289,12 @@ extension OJPv2.PublishingActions: Hashable {
         }
     }
 }
+
+extension OJPv2.PublishAtScope: Hashable {}
+
+extension OJPv2.Affects: Hashable {}
+
+extension OJPv2.AffectedStopPoint: Hashable {}
 
 extension OJPv2.PublishingAction: Hashable {
     public func hash(into hasher: inout Hasher) {
