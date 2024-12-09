@@ -1001,10 +1001,6 @@ public extension OJPv2 {
     struct PlaceContext: Codable, Sendable {
         public let placeRef: PlaceRefChoice
         public let depArrTime: Date?
-        public init(placeRef: PlaceRefChoice, depArrTime: Date?) {
-            self.placeRef = placeRef
-            self.depArrTime = depArrTime
-        }
 
         public init(placeRef: PlaceRefChoice, depArrTime: Date?) {
             self.placeRef = placeRef
