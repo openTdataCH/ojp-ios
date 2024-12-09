@@ -213,6 +213,7 @@ public extension OJPv2 {
 
     /// https://vdvde.github.io/OJP/develop/documentation-tables/siri.html#type_siri__PublishingActionStructure
     struct PublishingAction: Codable, Sendable {
+        /// mandatory in schema, but currently optional here for backwards compatibilty. Will change in the future.
         public let publishAtScope: PublishAtScope?
         public let passengerInformationActions: [PassengerInformationAction]
 
