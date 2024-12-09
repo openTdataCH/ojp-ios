@@ -18,14 +18,14 @@ jobs:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: macos-14
+    runs-on: macos-15
     steps:
     - name: Setup Xcode
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
     - name: Setup Xcode version
       uses: maxim-lobanov/setup-xcode@v1 # Xcode
       with:
-        xcode-version: '15.3'
+        xcode-version: 'latest-stable'
     - name: Build DocC
       run: |
         xcodebuild docbuild -scheme OJP \

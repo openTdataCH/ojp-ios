@@ -1,14 +1,12 @@
-# Open Journey Planner SDK for iOS
+# Open Journey Planner SDK for iOS and macOS
 
 ## Overview
 
-
-
 This SDK is targeting iOS applications seeking to integrate [Open Journey Planner (OJP) V2 APIs](https://opentdatach.github.io/ojp-ios/documentation/ojp/) to support distributed journey planning according to the European (CEN) Technical Specification entitled “Intelligent transport systems – Public transport – Open API for distributed journey planning”.
 
-For a general introduction to `OJP, consult the [Cookbook](https://opentransportdata.swiss/de/cookbook/open-journey-planner-ojp/) on [opentransportdata.swiss](https://opentransportdata.swiss). Visit [vdvde.github.io/OJP](https://vdvde.github.io/OJP/develop/documentation-tables/ojp.html) for the documentation of the XML Schema of OJP.
+For a general introduction to `OJP`, consult the [Cookbook](https://opentransportdata.swiss/de/cookbook/open-journey-planner-ojp/) on [opentransportdata.swiss](https://opentransportdata.swiss). Visit [vdvde.github.io/OJP](https://vdvde.github.io/OJP/develop/documentation-tables/ojp.html) for the documentation of the XML Schema of OJP.
 
-🚧 Currently this SDK is **under construction.** There is **not yet a stable version** and the APIs may change. 🚧
+🚧 Currently this SDK is **under construction.** Note that APIs may still change. 🚧
 
 ### Features
 
@@ -17,9 +15,6 @@ For a general introduction to `OJP, consult the [Cookbook](https://opentransport
 - [Location Information Request](https://opentransportdata.swiss/en/cookbook/location-information-service/)
 - [Trip Request](https://opentransportdata.swiss/en/cookbook/ojptriprequest/)
 - [TripInfo Request](https://opentransportdata.swiss/en/cookbook/ojptripinforequest/)
-
-### Soon to be available
-
 - [Stop Event Request](https://opentransportdata.swiss/en/cookbook/ojp-stopeventservice/)
 
 ## Requirements
@@ -33,11 +28,6 @@ For a general introduction to `OJP, consult the [Cookbook](https://opentransport
 ## Usage
 
 ### Initializing
-
-TBA
-- endpoints configuration
-- requesterReference
-- authBearerToken - where to get it from
 
 ``` swift
 import OJP
@@ -58,7 +48,7 @@ let ojpSdk = OJP(
 
 ### Basic Usage
 
-#### Get a list of PlaceResults from a keyword
+#### Get a list of `PlaceResult` from a keyword
 
 ``` swift
 import OJP
@@ -130,6 +120,28 @@ let tripInfo = try await OJP.configured.requestTripInfo(
     operatingDayRef: operatingDayRef,
     params: .init(useRealTimeData: .explanatory)
 )
+```
+
+#### Load current departures using `StopEventRequest`
+
+``` swift
+let stopEventDelivery = try await ojp.requestStopEvent(
+    location: .init(
+        placeRef: origin.placeRef,
+        depArrTime: nil
+    ),
+    params: .init(
+        stopEventType: .departure,
+        numberOfResults: 15
+    )
+)
+
+// if the requests `OJPv2.PlaceContext` is not of type `.stopPlace` or `.stopPoint`, it can return departures of multiple nearby Stops
+let groupedStopEvents: [String: [OJPv2.StopEventResult]] = stopEventDelivery.stopEventsGroupedByStation
+let ptSituations = stopEventDelivery.ptSituations
+
+// otherwise you can directly reference the stopEventResults
+let stops = stopEventDelivery.stopEventResult
 ```
 
 ## Sample App

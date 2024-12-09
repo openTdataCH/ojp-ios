@@ -11,7 +11,10 @@
 		92AEB2522C32AA2C00D5828E /* TimeInterval+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92AEB2512C32AA2C00D5828E /* TimeInterval+Extensions.swift */; };
 		CF06B9F32BBE7DD000B60917 /* Pulse in Frameworks */ = {isa = PBXBuildFile; productRef = CF06B9F22BBE7DD000B60917 /* Pulse */; };
 		CF06B9F52BBE7DD000B60917 /* PulseUI in Frameworks */ = {isa = PBXBuildFile; productRef = CF06B9F42BBE7DD000B60917 /* PulseUI */; };
+		CF0D36BE2CF661F300AF5C0F /* StopEventResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0D36BD2CF661F300AF5C0F /* StopEventResultsView.swift */; };
 		CF1A97E02C3533D100FEAEC0 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1A97DF2C3533D100FEAEC0 /* LoadingView.swift */; };
+		CF1C06922CF9C8810041D389 /* StopEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1C06912CF9C8810041D389 /* StopEventView.swift */; };
+		CF1C06942CF9D0480041D389 /* ser-two-results.xml in Resources */ = {isa = PBXBuildFile; fileRef = CF1C06932CF9D0480041D389 /* ser-two-results.xml */; };
 		CF1C2B6E2C2D964F00B51EFD /* tr-perf-be-zh-20results-projection.xml in Resources */ = {isa = PBXBuildFile; fileRef = CF1C2B6D2C2D94B700B51EFD /* tr-perf-be-zh-20results-projection.xml */; };
 		CF3CD8F62C2DB76700D25994 /* tr-with-transfer-legs.xml in Resources */ = {isa = PBXBuildFile; fileRef = CF3CD8F52C2DB76500D25994 /* tr-with-transfer-legs.xml */; };
 		CF3CD8FA2C2E8F5700D25994 /* PreviewMocker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3CD8F82C2DBABA00D25994 /* PreviewMocker.swift */; };
@@ -37,6 +40,8 @@
 		CFE465ED2C76092200E5CADB /* OJP+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE465EC2C76092200E5CADB /* OJP+Extensions.swift */; };
 		CFF227B32BBD63AC00D3EADF /* OJP in Frameworks */ = {isa = PBXBuildFile; productRef = CFF227B22BBD63AC00D3EADF /* OJP */; };
 		CFF227B82BBDA10800D3EADF /* PlaceDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF227B72BBDA10800D3EADF /* PlaceDetailView.swift */; };
+		CFFB00A62CFDE60D007D3ED2 /* OEVIcons in Frameworks */ = {isa = PBXBuildFile; productRef = CFFB00A52CFDE60D007D3ED2 /* OEVIcons */; };
+		CFFB00A92CFDEED9007D3ED2 /* OEVIcons in Frameworks */ = {isa = PBXBuildFile; productRef = CFFB00A82CFDEED9007D3ED2 /* OEVIcons */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,7 +64,10 @@
 /* Begin PBXFileReference section */
 		92AEB24F2C328DCF00D5828E /* TripDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripDetailView.swift; sourceTree = "<group>"; };
 		92AEB2512C32AA2C00D5828E /* TimeInterval+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeInterval+Extensions.swift"; sourceTree = "<group>"; };
+		CF0D36BD2CF661F300AF5C0F /* StopEventResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopEventResultsView.swift; sourceTree = "<group>"; };
 		CF1A97DF2C3533D100FEAEC0 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		CF1C06912CF9C8810041D389 /* StopEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopEventView.swift; sourceTree = "<group>"; };
+		CF1C06932CF9D0480041D389 /* ser-two-results.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "ser-two-results.xml"; sourceTree = "<group>"; };
 		CF1C2B6D2C2D94B700B51EFD /* tr-perf-be-zh-20results-projection.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "tr-perf-be-zh-20results-projection.xml"; sourceTree = "<group>"; };
 		CF3CD8F52C2DB76500D25994 /* tr-with-transfer-legs.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "tr-with-transfer-legs.xml"; sourceTree = "<group>"; };
 		CF3CD8F82C2DBABA00D25994 /* PreviewMocker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewMocker.swift; sourceTree = "<group>"; };
@@ -97,7 +105,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				CF06B9F52BBE7DD000B60917 /* PulseUI in Frameworks */,
+				CFFB00A92CFDEED9007D3ED2 /* OEVIcons in Frameworks */,
 				CF06B9F32BBE7DD000B60917 /* Pulse in Frameworks */,
+				CFFB00A62CFDE60D007D3ED2 /* OEVIcons in Frameworks */,
 				CFF227B32BBD63AC00D3EADF /* OJP in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -142,6 +152,8 @@
 				CF3CD8FF2C2EA4A800D25994 /* InlineLocationSerachView.swift */,
 				92AEB24F2C328DCF00D5828E /* TripDetailView.swift */,
 				CF8982BE2C8EE1AE001895AC /* TripInfoDetailView.swift */,
+				CF0D36BD2CF661F300AF5C0F /* StopEventResultsView.swift */,
+				CF1C06912CF9C8810041D389 /* StopEventView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -193,6 +205,7 @@
 		CFBA60C12BBD610C000FF2ED /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
+				CF1C06932CF9D0480041D389 /* ser-two-results.xml */,
 				CF1C2B6D2C2D94B700B51EFD /* tr-perf-be-zh-20results-projection.xml */,
 				CF52AD012C7F580C000CE7F8 /* tr-fribourg-basel-fake-infolink.xml */,
 				CFCD609D2C8AFBEA0044A918 /* tir.xml */,
@@ -249,6 +262,8 @@
 				CFF227B22BBD63AC00D3EADF /* OJP */,
 				CF06B9F22BBE7DD000B60917 /* Pulse */,
 				CF06B9F42BBE7DD000B60917 /* PulseUI */,
+				CFFB00A52CFDE60D007D3ED2 /* OEVIcons */,
+				CFFB00A82CFDEED9007D3ED2 /* OEVIcons */,
 			);
 			productName = SampleApp;
 			productReference = CFBA60B72BBD6106000FF2ED /* OJPSampleApp.app */;
@@ -324,6 +339,7 @@
 			mainGroup = CFBA60AE2BBD6106000FF2ED;
 			packageReferences = (
 				CF06B9F12BBE7DD000B60917 /* XCRemoteSwiftPackageReference "Pulse" */,
+				CFFB00A72CFDEED9007D3ED2 /* XCRemoteSwiftPackageReference "OeVIconsSwift" */,
 			);
 			productRefGroup = CFBA60B82BBD6106000FF2ED /* Products */;
 			projectDirPath = "";
@@ -343,6 +359,7 @@
 			files = (
 				CF8982C02C8EF0FB001895AC /* tir.xml in Resources */,
 				CF52AD032C7F581D000CE7F8 /* tr-fribourg-berne.xml in Resources */,
+				CF1C06942CF9D0480041D389 /* ser-two-results.xml in Resources */,
 				CFBA60C32BBD610C000FF2ED /* Preview Assets.xcassets in Resources */,
 				CF3CD8F62C2DB76700D25994 /* tr-with-transfer-legs.xml in Resources */,
 				CF52AD022C7F580C000CE7F8 /* tr-fribourg-basel-fake-infolink.xml in Resources */,
@@ -375,6 +392,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				92AEB2502C328DCF00D5828E /* TripDetailView.swift in Sources */,
+				CF0D36BE2CF661F300AF5C0F /* StopEventResultsView.swift in Sources */,
 				CF8982BF2C8EE1AE001895AC /* TripInfoDetailView.swift in Sources */,
 				CF564A322C2D83D600424D91 /* TripRequestResultView.swift in Sources */,
 				CFF227B82BBDA10800D3EADF /* PlaceDetailView.swift in Sources */,
@@ -383,6 +401,7 @@
 				CF8F0C8D2C6672AC008BABC6 /* PTSituationDetailView.swift in Sources */,
 				CF1A97E02C3533D100FEAEC0 /* LoadingView.swift in Sources */,
 				CF71377A2BE5398200D2411E /* DemoEnvironment.swift in Sources */,
+				CF1C06922CF9C8810041D389 /* StopEventView.swift in Sources */,
 				CF3CD8FA2C2E8F5700D25994 /* PreviewMocker.swift in Sources */,
 				92AEB2522C32AA2C00D5828E /* TimeInterval+Extensions.swift in Sources */,
 				CF3CD9002C2EA4A800D25994 /* InlineLocationSerachView.swift in Sources */,
@@ -761,6 +780,14 @@
 				minimumVersion = 4.0.5;
 			};
 		};
+		CFFB00A72CFDEED9007D3ED2 /* XCRemoteSwiftPackageReference "OeVIconsSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/r3to/OeVIconsSwift";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -777,6 +804,15 @@
 		CFF227B22BBD63AC00D3EADF /* OJP */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = OJP;
+		};
+		CFFB00A52CFDE60D007D3ED2 /* OEVIcons */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = OEVIcons;
+		};
+		CFFB00A82CFDEED9007D3ED2 /* OEVIcons */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CFFB00A72CFDEED9007D3ED2 /* XCRemoteSwiftPackageReference "OeVIconsSwift" */;
+			productName = OEVIcons;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

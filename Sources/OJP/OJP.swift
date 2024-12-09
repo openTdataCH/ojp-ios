@@ -31,6 +31,7 @@ public final class OJP: Sendable {
     let locationInformationRequest: OJPHelpers.LocationInformationRequest
     let tripRequest: OJPHelpers.TripRequest
     let tripInfoRequest: OJPHelpers.TripInfoRequest
+    let stopEventRequest: OJPHelpers.StopEventRequest
 
     /// Constructor of the OJP class
     /// - Parameter loadingStrategy: Pass a real loader with an API Configuration or a Mock for test purpuse
@@ -57,6 +58,7 @@ public final class OJP: Sendable {
         locationInformationRequest = .init(requestConfiguration)
         tripRequest = .init(requestConfiguration)
         tripInfoRequest = .init(requestConfiguration)
+        stopEventRequest = .init(requestConfiguration)
     }
 
     private var encoder: XMLEncoder {
@@ -133,13 +135,26 @@ public final class OJP: Sendable {
         operatingDayRef: String,
         params: OJPv2.TripInfoParam
     ) async throws -> OJPv2.TripInfoDelivery {
-        let ojp = try await tripInfoRequest.request(journeyRef, operatingDayRef: operatingDayRef, params: params)
+        let ojp = tripInfoRequest.request(journeyRef, operatingDayRef: operatingDayRef, params: params)
         let serviceDelivery = try await request(with: ojp).serviceDelivery
 
         guard case let .tripInfo(tripInfo) = serviceDelivery.delivery else {
             throw OJPSDKError.unexpectedEmpty
         }
         return tripInfo
+    }
+
+    public func requestStopEvent(
+        location: OJPv2.PlaceContext,
+        params: OJPv2.StopEventParam?
+    ) async throws -> OJPv2.StopEventDelivery {
+        let ojp = stopEventRequest.requestStopEvents(location: location, params: params)
+        let serviceDelivery = try await request(with: ojp).serviceDelivery
+
+        guard case let .stopEvent(stopEvent) = serviceDelivery.delivery else {
+            throw OJPSDKError.unexpectedEmpty
+        }
+        return stopEvent
     }
 
     func request(with ojp: OJPv2) async throws -> OJPv2.Response {
