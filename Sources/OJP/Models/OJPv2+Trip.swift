@@ -1006,6 +1006,11 @@ public extension OJPv2 {
             self.depArrTime = depArrTime
         }
 
+        public init(placeRef: PlaceRefChoice, depArrTime: Date?) {
+            self.placeRef = placeRef
+            self.depArrTime = depArrTime
+        }
+
         public enum CodingKeys: String, CodingKey {
             case placeRef = "PlaceRef"
             case depArrTime = "DepArrTime"
