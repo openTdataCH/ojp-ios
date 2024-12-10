@@ -79,102 +79,7 @@ let nearbyStops = try await ojpSdk.requestPlaceResults(
 )
 ```
 
-#### Get a List of Trips between two Places
-
-``` swift
-import OJP
-
-let origin = try await ojpSdk.requestPlaceResults(
-    from: "Bern", 
-    restrictions: .init(type: [.stop])
-).first!
-
-let via = try await ojpSdk.requestPlaceResults(
-    from: "Luzern", 
-    restrictions: .init(type: [.stop])
-).first!
-
-let destination = try await ojpSdk.requestPlaceResults(
-    from: "Zurich HB", 
-    restrictions: .init(type: [.stop])
-).first!
-
-let tripDelivery = try await ojp.requestTrips(
-    from: origin.placeRef, 
-    to: destination.placeRef, 
-    via: via.placeRef,
-    params: .init(includeTrackSections: true, includeIntermediateStops: true)
-)
-```
-
-#### Use `PaginatedTripLoader` to load previous and upcoming TripResults
-
-``` swift
-// create a new PaginatedTripLoader
-let paginatedActor = PaginatedTripLoader(ojp: ojp)
-
-// load the initial trips
-let tripRequest = TripRequest(
-    from: origin.placeRef,
-    to: destination.placeRef,
-    via: via != nil ? [via!.placeRef] : nil,
-    at: .departure(Date()),
-    params: .init(
-        includeTrackSections: true,
-        includeIntermediateStops: true
-    )
-)
-let tripDelivery = try await paginatedActor!.loadTrips(
-    for: tripRequest,
-    numberOfResults: .minimum(6)
-)
-let tripResults = tripDelivery.tripResults
-
-// load previous TripResults
-let previousTripResults = try await paginatedActor
-    .loadPrevious()
-    .tripResults
-
-// load future TripResults
-let nextTripResults = try await paginatedActor
-    .loadPrevious()
-    .tripResults
-```
-
-#### Load informations to a trip using `TripInformationRequest`
-
-``` swift
-let journeyRef = timedLeg.service.journeyRef
-let operatingDayRef = timedLeg.service.operatingDayRef
-
-let tripInfo = try await OJP.configured.requestTripInfo(
-    journeyRef: journeyRef,
-    operatingDayRef: operatingDayRef,
-    params: .init(useRealTimeData: .explanatory)
-)
-```
-
-#### Load current departures using `StopEventRequest`
-
-``` swift
-let stopEventDelivery = try await ojp.requestStopEvent(
-    location: .init(
-        placeRef: origin.placeRef,
-        depArrTime: nil
-    ),
-    params: .init(
-        stopEventType: .departure,
-        numberOfResults: 15
-    )
-)
-
-// if the requests `OJPv2.PlaceContext` is not of type `.stopPlace` or `.stopPoint`, it can return departures of multiple nearby Stops
-let groupedStopEvents: [String: [OJPv2.StopEventResult]] = stopEventDelivery.stopEventsGroupedByStation
-let ptSituations = stopEventDelivery.ptSituations
-
-// otherwise you can directly reference the stopEventResults
-let stops = stopEventDelivery.stopEventResult
-```
+For a better introduction head over to the [Getting Started](https://opentdatach.github.io/ojp-ios/documentation/ojp/gettingstarted) article in the documentation.
 
 ## Sample App
 
@@ -182,7 +87,7 @@ There is an experimental [Sample App](./SamplApp) to showcase and test the SDK. 
 
 ## Documentation
 
-- [Documentation of the iOS Library](https://opentdatach.github.io/ojp-ios/documentation/ojp/)
+- [Documentation of the Swift Library](https://opentdatach.github.io/ojp-ios/documentation/ojp/)
 - run `format-code.sh` to execute swiftformat on the library
 
 ## Releases
