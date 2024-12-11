@@ -59,7 +59,7 @@ actor PreviewMocker {
         try await OJP(
             loadingStrategy: Self.mockLoader(xmlFilename: xmlFileName)
         )
-        .requestTripInfo(journeyRef: "", operatingDayRef: "", params: .init())
+        .requestTripInfo(journeyRef: "", operatingDayRef: "")
     }
 
     func loadStopEvents(xmlFileName: String = "ser-two-results") async throws -> OJPv2.StopEventDelivery {

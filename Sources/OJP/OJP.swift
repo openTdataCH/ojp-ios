@@ -133,7 +133,7 @@ public final class OJP: Sendable {
     public func requestTripInfo(
         journeyRef: String,
         operatingDayRef: String,
-        params: OJPv2.TripInfoParam
+        params: OJPv2.TripInfoParam = .init()
     ) async throws -> OJPv2.TripInfoDelivery {
         let ojp = tripInfoRequest.request(journeyRef, operatingDayRef: operatingDayRef, params: params)
         let serviceDelivery = try await request(with: ojp).serviceDelivery
