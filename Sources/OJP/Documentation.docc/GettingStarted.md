@@ -78,7 +78,10 @@ let tripDelivery = try await ojp.requestTrips(
     from: origin.placeRef, 
     to: destination.placeRef, 
     via: via.placeRef,
-    params: .init(includeTrackSections: true, includeIntermediateStops: true)
+    params: .init(
+        includeTrackSections: true, 
+        includeIntermediateStops: true
+    )
 )
 ```
 
