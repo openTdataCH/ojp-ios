@@ -9,7 +9,7 @@ let settings: [SwiftSetting] = [
 
 let package = Package(
     name: "OJP",
-    platforms: [.iOS(.v15), .macOS(.v14)],
+    platforms: [.iOS(.v15), .macOS(.v14), .watchOS(.v9), .tvOS(.v15)],
     products: [
         // Products define the executables and libraries a package produces, making them visible to other packages.
         .library(

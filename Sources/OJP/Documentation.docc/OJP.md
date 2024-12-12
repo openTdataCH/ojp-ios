@@ -1,6 +1,6 @@
 # ``OJP``
 
-iOS SDK for Open Journey Planner Service (OJP) provided by SKI+
+Swift SDK for Open Journey Planner Service (OJP) provided by [SKI+](https://opentransportdata.swiss/de/)
 
 ## Overview
 
