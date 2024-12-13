@@ -3,7 +3,6 @@ name: Generate version file
 on:
   pull_request:
     branches:
-      - main
       - 'release/**'
 
 permissions:
