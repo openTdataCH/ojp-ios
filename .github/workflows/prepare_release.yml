@@ -1,7 +1,7 @@
 name: Generate version file
 
 on:
-  pull_request:
+  push:
     branches:
       - 'release/**'
 
