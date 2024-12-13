@@ -1,5 +1,7 @@
 # Open Journey Planner SDK for iOS and macOS
 
+[![swift version shield](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2FopenTdataCH%2Fojp-ios%2Fbadge%3Ftype%3Dswift-versions)](https://swiftpackageindex.com/openTdataCH/ojp-ios) [![platforms shield](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2FopenTdataCH%2Fojp-ios%2Fbadge%3Ftype%3Dplatforms)](https://swiftpackageindex.com/openTdataCH/ojp-ios)
+
 ## Overview
 
 This SDK is enabling Swift applications to integrate [Open Journey Planner (OJP) V2 APIs](https://opentdatach.github.io/ojp-ios/documentation/ojp/) to support distributed journey planning according to the European (CEN) Technical Specification entitled “Intelligent transport systems – Public transport – Open API for distributed journey planning”.
@@ -42,13 +44,13 @@ let apiConfiguration = APIConfiguration(
     requesterReference: "your request reference", 
     additionalHeaders: [
         "Authorization": "Bearer yourBearerToken"
-        ]
-    )
+    ]
+)
 
 let ojpSdk = OJP(
     loadingStrategy: .http(apiConfiguration),
     language: "de" // optional ISO language code. Defaults to the preferred localization. 
-    )
+)
 ```
 
 ### Basic Usage
@@ -56,8 +58,6 @@ let ojpSdk = OJP(
 #### Get a list of `PlaceResult` from a keyword
 
 ``` swift
-import OJP
-        
 // get only stops
 let stops = try await ojpSdk.requestPlaceResults(
     from: "Bern",
@@ -71,8 +71,6 @@ let addresses = try await ojpSdk.requestPlaceResults(from: "Bern", restrictions:
 #### Get a List of PlaceResults around a Place using Longitude and Latitude
 
 ``` swift
-import OJP
-
 let nearbyStops = try await ojpSdk.requestPlaceResults(
     from: Point(long: 5.6, lat: 2.3), 
     restrictions: .init(type: [.stop])
