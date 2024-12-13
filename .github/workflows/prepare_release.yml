@@ -3,8 +3,7 @@ name: Generate version file
 on:
   pull_request:
     branches:
-      - main
-      - 'releases/**'
+      - 'release/**'
 
 permissions:
   contents: read
