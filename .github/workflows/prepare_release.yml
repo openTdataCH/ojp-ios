@@ -6,15 +6,13 @@ on:
       - 'release/**'
 
 permissions:
-  contents: read
-  pages: write
-  id-token: write
+  contents: write
 
 jobs:
   build:
     environment:
     runs-on: macos-14
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - run: ${PWD}/generate-version-file.sh
       
