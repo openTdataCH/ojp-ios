@@ -29,7 +29,7 @@ public struct Geo: Sendable {
     }
 }
 
-public struct NearbyObject<T: Sendable> {
+public struct NearbyObject<T: Sendable>: Sendable {
     public var object: T
     public var distance: Double
 }
