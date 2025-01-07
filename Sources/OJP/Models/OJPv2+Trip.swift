@@ -889,7 +889,7 @@ public extension OJPv2 {
             case journeyRef = "JourneyRef"
             case publicCode = "PublicCode"
             case lineRef = "siri:LineRef"
-            case directionRef = "DirectionRef"
+            case directionRef = "siri:DirectionRef"
             case mode = "Mode"
             case productCategory = "ProductCategory"
             case publishedServiceName = "PublishedServiceName"
