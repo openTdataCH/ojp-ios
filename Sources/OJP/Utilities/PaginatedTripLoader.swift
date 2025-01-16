@@ -63,22 +63,24 @@ public actor PaginatedTripLoader {
 
     /// Based on the currently already loaded trip results, load the previous trips. Potential duplicates are filtered using  ``OJPv2/Trip/tripHash``.
     /// - Returns: new ``OJPv2/TripDelivery`` with ``OJPv2/NumberOfResults/before(_:)`` and the current lowest date as departure time.
-    public func loadPrevious() async throws -> OJPv2.TripDelivery {
+    public func loadPrevious(_ count: Int = 0) async throws -> OJPv2.TripDelivery {
         guard var request, let minDate else {
             throw OJPSDKError.notImplemented()
         }
+        let amount = count > 0 ? count : pageSize
         request.at = .departure(minDate)
-        return try await load(request: request, numberOfResults: .numbers(before: pageSize, after: 0))
+        return try await load(request: request, numberOfResults: .numbers(before: amount, after: 0))
     }
 
     /// Based on the currently already loaded trip results, load the future trips. Potential duplicates are filtered using  ``OJPv2/Trip/tripHash``.
     /// - Returns: new ``OJPv2/TripDelivery`` with ``OJPv2/NumberOfResults/after(_:)`` and the current highest date as departure time.
-    public func loadNext() async throws -> OJPv2.TripDelivery {
+    public func loadNext(_ count: Int = 0) async throws -> OJPv2.TripDelivery {
         guard var request, let maxDate else {
             throw OJPSDKError.notImplemented()
         }
         request.at = .departure(maxDate)
-        return try await load(request: request, numberOfResults: .numbers(before: 0, after: pageSize))
+        let amount = count > 0 ? count : pageSize
+        return try await load(request: request, numberOfResults: .numbers(before: 0, after: amount))
     }
 
     private func reset() {

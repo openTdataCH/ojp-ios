@@ -19,6 +19,7 @@ struct TripRequestView: View {
     @State private var departureDateTime = Date.now
     @State var isLoading: Bool = false
     @State var paginatedActor: PaginatedTripLoader?
+    @State var pageSize: Int = 6
 
     var body: some View {
         VStack {
@@ -80,7 +81,7 @@ struct TripRequestView: View {
                                                     includeIntermediateStops: true,
                                                     useRealtimeData: .explanatory
                                                 )),
-                                    numberOfResults: .standard(6))
+                                    numberOfResults: .standard(pageSize))
                                 tripResults = tripDelivery.tripResults
                                 ptSituations = Set(tripDelivery.ptSituations)
                             } catch {
@@ -92,7 +93,14 @@ struct TripRequestView: View {
                     Text("Search")
                 }
             }
-            DatePicker("Departure", selection: $departureDateTime)
+            HStack(spacing: 20) {
+                DatePicker("", selection: $departureDateTime)
+                HStack {
+                    Text("Page Size")
+                    TextField("Page Size", value: $pageSize, formatter: NumberFormatter())
+                        .frame(maxWidth: 30)
+                }
+            }
             TripRequestResultView(
                 ptSituations: Array(ptSituations),
                 isLoading: isLoading,
@@ -102,7 +110,7 @@ struct TripRequestView: View {
                     isLoading = true
                     Task { @MainActor in
                         guard let paginatedActor else { return }
-                        let prev = try await paginatedActor.loadPrevious()
+                        let prev = try await paginatedActor.loadPrevious(pageSize)
                         tripResults = prev.tripResults + tripResults
                         ptSituations = ptSituations.union(prev.ptSituations)
                         isLoading = false
@@ -113,7 +121,7 @@ struct TripRequestView: View {
                     isLoading = true
                     Task { @MainActor in
                         guard let paginatedActor else { return }
-                        let next = try await paginatedActor.loadNext()
+                        let next = try await paginatedActor.loadNext(pageSize)
                         tripResults = tripResults + next.tripResults
                         ptSituations = ptSituations.union(next.ptSituations)
                         isLoading = false
