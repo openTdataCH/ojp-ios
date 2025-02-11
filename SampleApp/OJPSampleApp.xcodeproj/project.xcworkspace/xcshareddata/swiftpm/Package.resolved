@@ -1,12 +1,12 @@
 {
   "pins" : [
     {
-      "identity" : "oeviconsswift",
+      "identity" : "oev-icons-swift",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/r3to/OeVIconsSwift",
+      "location" : "https://github.com/openTdataCH/oev-icons-swift.git",
       "state" : {
         "branch" : "main",
-        "revision" : "9cafaa912c155cecf775e36ef94971e651773d09"
+        "revision" : "46611d3928fb471f5c4f863b2d6549bd069a9158"
       }
     },
     {
