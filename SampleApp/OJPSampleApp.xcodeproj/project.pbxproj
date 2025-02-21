@@ -339,7 +339,7 @@
 			mainGroup = CFBA60AE2BBD6106000FF2ED;
 			packageReferences = (
 				CF06B9F12BBE7DD000B60917 /* XCRemoteSwiftPackageReference "Pulse" */,
-				CFFB00A72CFDEED9007D3ED2 /* XCRemoteSwiftPackageReference "OeVIconsSwift" */,
+				CFFB00A72CFDEED9007D3ED2 /* XCRemoteSwiftPackageReference "oev-icons-swift" */,
 			);
 			productRefGroup = CFBA60B82BBD6106000FF2ED /* Products */;
 			projectDirPath = "";
@@ -780,9 +780,9 @@
 				minimumVersion = 4.0.5;
 			};
 		};
-		CFFB00A72CFDEED9007D3ED2 /* XCRemoteSwiftPackageReference "OeVIconsSwift" */ = {
+		CFFB00A72CFDEED9007D3ED2 /* XCRemoteSwiftPackageReference "oev-icons-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/r3to/OeVIconsSwift";
+			repositoryURL = "https://github.com/openTdataCH/oev-icons-swift.git";
 			requirement = {
 				branch = main;
 				kind = branch;
@@ -811,7 +811,7 @@
 		};
 		CFFB00A82CFDEED9007D3ED2 /* OEVIcons */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = CFFB00A72CFDEED9007D3ED2 /* XCRemoteSwiftPackageReference "OeVIconsSwift" */;
+			package = CFFB00A72CFDEED9007D3ED2 /* XCRemoteSwiftPackageReference "oev-icons-swift" */;
 			productName = OEVIcons;
 		};
 /* End XCSwiftPackageProductDependency section */
