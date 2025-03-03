@@ -86,6 +86,34 @@ enum OJPHelpers {
         }
     }
 
+    struct TripRefineRequest: Sendable {
+        init(_ configuration: RequestConfiguration) {
+            requestContext = configuration.requestContext
+            requesterReference = configuration.requesterReference
+        }
+
+        let requestContext: OJPv2.ServiceRequestContext
+        let requesterReference: String
+
+        public func refineTrip(_ tripResult: OJPv2.TripResult) -> OJPv2 {
+            let requestTimestamp = Date()
+            let tripRefineRequest = OJPv2.TripRefineRequest(requestTimestamp: requestTimestamp, tripResult: tripResult)
+            let ojp = OJPv2(
+                request: OJPv2.Request(
+                    serviceRequest: OJPv2.ServiceRequest(
+                        requestContext: requestContext,
+                        requestTimestamp: requestTimestamp,
+                        requestorRef: requesterReference,
+                        locationInformationRequest: nil,
+                        tripRefineRequest: tripRefineRequest
+                    )
+                ), response: nil
+            )
+
+            return ojp
+        }
+    }
+
     struct StopEventRequest: Sendable {
         init(_ configuration: RequestConfiguration) {
             requestContext = configuration.requestContext

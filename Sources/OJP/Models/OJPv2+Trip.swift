@@ -24,6 +24,34 @@ import XMLCoder
 #endif
 
 public extension OJPv2 {
+
+    /// [Schema documentation on vdvde.github.io](https://vdvde.github.io/OJP/develop/documentation-tables/ojp.html#type_ojp__OJPTripRefineDeliveryStructure)
+    struct TripRefineDelivery: Codable, Sendable {
+        // TODO: Add custom props
+        public let responseTimestamp: String
+        public let requestMessageRef: String?
+        public let calcTime: Int?
+        public let tripResponseContext: ResponseContext?
+        public internal(set) var tripResults: [TripResult]
+
+        public enum CodingKeys: String, CodingKey {
+            case responseTimestamp = "siri:ResponseTimestamp"
+            case requestMessageRef = "siri:RequestMessageRef"
+            case calcTime = "CalcTime"
+            case tripResponseContext = "TripResponseContext"
+            case tripResults = "TripResult"
+        }
+
+        public init(from decoder: any Decoder) throws {
+            let container = try decoder.container(keyedBy: CodingKeys.self)
+            responseTimestamp = try container.decode(String.self, forKey: .responseTimestamp)
+            requestMessageRef = try container.decodeIfPresent(String.self, forKey: .requestMessageRef)
+            calcTime = try container.decodeIfPresent(Int.self, forKey: .calcTime)
+            tripResponseContext = try container.decodeIfPresent(OJPv2.ResponseContext.self, forKey: .tripResponseContext)
+            tripResults = try (container.decodeIfPresent([OJPv2.TripResult].self, forKey: .tripResults)) ?? [] // tripResults could be optional
+        }
+    }
+
     /// [Schema documentation on vdvde.github.io](https://vdvde.github.io/OJP/develop/documentation-tables/ojp.html#type_ojp__OJPTripDeliveryStructure)
     struct TripDelivery: Codable, Sendable {
         public let responseTimestamp: String
@@ -359,6 +387,7 @@ public extension OJPv2 {
         public let isAlternativeOption: Bool?
 
         public enum CodingKeys: String, CodingKey {
+            case _0
             case id = "Id"
             case tripFares = "TripFare"
             case isAlternativeOption = "IsAlternativeOption"
@@ -371,6 +400,19 @@ public extension OJPv2 {
             id = try container.decode(String.self, forKey: .id)
             tripFares = try container.decode([TripFare].self, forKey: .tripFares)
             isAlternativeOption = try? container.decode(Bool.self, forKey: .isAlternativeOption)
+        }
+
+        public init(trip: OJPv2.Trip) { // TODO: maybe hide
+            tripType = .trip(trip)
+            id = trip.id
+            tripFares = []
+            isAlternativeOption = nil
+        }
+
+        public func encode(to encoder: any Encoder) throws {
+            var svc = encoder.singleValueContainer()
+            try svc.encode(tripType)
+            // TODO: decide about id and other properties
         }
 
         public enum TripTypeChoice: Codable, Sendable {
@@ -400,6 +442,16 @@ public extension OJPv2 {
                     )
                 } else {
                     throw OJPSDKError.notImplemented()
+                }
+            }
+
+            public func encode(to encoder: any Encoder) throws {
+                var container = encoder.container(keyedBy: CodingKeys.self)
+                switch self {
+                case .trip(let trip):
+                    try container.encode(trip, forKey: .trip)
+                case .tripSummary(let tripSummary):
+                    try container.encode(tripSummary, forKey: .tripSummary)
                 }
             }
         }
@@ -520,6 +572,7 @@ public extension OJPv2 {
         enum CodingKeys: String, CodingKey {
             case id = "Id"
             case duration = "Duration"
+            case _0 = ""
         }
 
         public init(from decoder: any Decoder) throws {
@@ -528,6 +581,16 @@ public extension OJPv2 {
             let container = try decoder.container(keyedBy: CodingKeys.self)
             id = try container.decode(Int.self, forKey: .id)
             duration = try container.decodeIfPresent(Duration.self, forKey: .duration)
+        }
+
+        public func encode(to encoder: any Encoder) throws {
+//            var svc = encoder.singleValueContainer() // TODO: find a solution, that is not fixed to that order (so we could move id to the first place)
+//            try svc.encode(legType)
+
+            var container = encoder.container(keyedBy: CodingKeys.self)
+            try container.encode(id, forKey: .id)
+            try container.encodeIfPresent(duration, forKey: .duration)
+            try container.encode(legType, forKey: ._0)
         }
 
         public enum LegTypeChoice: Codable, Sendable {
@@ -568,7 +631,21 @@ public extension OJPv2 {
                     throw OJPSDKError.notImplemented()
                 }
             }
+
+            public func encode(to encoder: any Encoder) throws {
+                var container = encoder.container(keyedBy: CodingKeys.self)
+                switch self {
+                case .continous(let continuousLeg):
+                    try container.encode(continuousLeg, forKey: CodingKeys.continous)
+                case .timed(let timedLeg):
+                    try container.encode(timedLeg, forKey: CodingKeys.timed)
+                case .transfer(let transferLeg):
+                    try container.encode(transferLeg, forKey: CodingKeys.transfer)
+                }
+            }
         }
+
+
     }
 
     /// https://vdvde.github.io/OJP/develop/documentation-tables/ojp.html#type_ojp__TransferTypeEnumeration

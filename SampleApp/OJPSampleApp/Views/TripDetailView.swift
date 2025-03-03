@@ -44,6 +44,16 @@ struct TripDetailView: View {
                                     }
                                 }
                             }
+                            Button("Refine Trip") {
+                                Task {
+                                    do {
+                                        let result = try await OJP.configured.requestTripRefinement(tripResult: .init(trip: trip))
+                                        print(result)
+                                    } catch {
+                                        print(error)
+                                    }
+                                }
+                            }
                         }
                         .bold()
                         Divider()

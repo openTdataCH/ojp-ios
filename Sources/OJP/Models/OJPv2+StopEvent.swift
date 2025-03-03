@@ -22,6 +22,17 @@ public extension OJPv2 {
         }
     }
 
+    struct TripRefineRequest: Codable, Sendable {
+        public let requestTimestamp: Date
+// TODO: Params
+        public let tripResult: OJPv2.TripResult
+
+        public enum CodingKeys: String, CodingKey {
+            case requestTimestamp = "siri:RequestTimestamp"
+            case tripResult = "TripResult"
+        }
+    }
+
     /// [Schema documentation on vdvde.github.io](https://vdvde.github.io/OJP/develop/documentation-tables/ojp.html#type_ojp__StopEventParamStructure)
     struct StopEventParam: Codable, Sendable {
 //        public let modeFilter: ModeFilter
