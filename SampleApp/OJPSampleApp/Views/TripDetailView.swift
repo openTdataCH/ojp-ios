@@ -20,7 +20,16 @@ struct TripDetailView: View {
             if trip.tripStatus.hasIssue {
                 TripStatusLabel(tripStatus: trip.tripStatus)
             }
-
+            Button("Refine Trip") {
+                Task {
+                    do {
+                        let result = try await OJP.configured.requestTripRefinement(tripResult: .init(trip: trip))
+                        print(result)
+                    } catch {
+                        print(error)
+                    }
+                }
+            }
             List(trip.legs) { leg in
                 switch leg.legType {
                 case let .timed(timedLeg):
@@ -39,16 +48,6 @@ struct TripDetailView: View {
                                             operatingDayRef: timedLeg.service.operatingDayRef,
                                             params: .init(useRealTimeData: .explanatory)
                                         ).tripInfoResult
-                                    } catch {
-                                        print(error)
-                                    }
-                                }
-                            }
-                            Button("Refine Trip") {
-                                Task {
-                                    do {
-                                        let result = try await OJP.configured.requestTripRefinement(tripResult: .init(trip: trip))
-                                        print(result)
                                     } catch {
                                         print(error)
                                     }
