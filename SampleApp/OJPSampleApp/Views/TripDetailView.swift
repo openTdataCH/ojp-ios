@@ -9,8 +9,8 @@ import OJP
 import SwiftUI
 
 struct TripDetailView: View {
-    let trip: OJPv2.Trip
-    let ptSituations: [OJPv2.PTSituation]
+    @State private(set) var trip: OJPv2.Trip
+    @State private(set) var ptSituations: [OJPv2.PTSituation]
 
     @State var selectedPTSituation: OJPv2.PTSituation?
     @State var selectedTripInfo: OJPv2.TripInfoResult?
@@ -23,8 +23,28 @@ struct TripDetailView: View {
             Button("Refine Trip") {
                 Task {
                     do {
-                        let result = try await OJP.configured.requestTripRefinement(tripResult: .init(trip: trip))
-                        print(result)
+                        let tripRefineDelivery = try await OJP.configured.requestTripRefinement(tripResult: .init(trip: trip))
+                        print(tripRefineDelivery)
+
+                        guard let newTrip = tripRefineDelivery.tripResults.first?.trip else {
+                            print("NO TRIP REFINED!")
+                            return
+                        }
+
+                        var newPTSituations: [OJPv2.PTSituation] = []
+                        for ptSituation in tripRefineDelivery.tripResponseContext?.situations?.ptSituations ?? [] {
+                            if let idx = ptSituations.firstIndex(where: { $0.id == ptSituation.id }) {
+                                // Updating existing
+                                ptSituations[idx] = ptSituation
+                            } else {
+                                newPTSituations.append(ptSituation)
+                            }
+                        }
+                        if !newPTSituations.isEmpty {
+                            ptSituations = newPTSituations + ptSituations
+                        }
+                        self.trip = newTrip
+
                     } catch {
                         print(error)
                     }
@@ -153,20 +173,11 @@ struct TripDetailView: View {
                 .frame(maxWidth: 960)
         }
         .sheet(item: $selectedTripInfo) { tripInfo in
-            VStack {
-                HStack {
-                    Spacer()
-                    Button {
-                        selectedTripInfo = nil
-                    } label: {
-                        Image(systemName: "xmark")
-                    }
-                }
-
+            ClosableSheetView {
                 TripInfoDetailView(tripInfo: tripInfo)
-
-            }.padding()
-                .frame(maxWidth: 960)
+            } close: {
+                selectedTripInfo = nil
+            }
         }
     }
 }
@@ -177,11 +188,28 @@ struct TripDetailView: View {
             try await PreviewMocker.shared.loadTrips(xmlFileName: "tr-fribourg-basel")
         },
         content: { tripDelivery in
-            if let trip = tripDelivery.tripResults.first {
-                TripDetailView(trip: trip.trip!, ptSituations: tripDelivery.ptSituations)
+            if let trip = tripDelivery.tripResults.first?.trip {
+                TripDetailView(trip: trip, ptSituations: tripDelivery.ptSituations)
             } else {
                 Text("No Trip")
             }
         }
     )
+}
+
+struct ClosableSheetView<Content: View>: View {
+    @ViewBuilder let content: () -> Content
+    let close: () -> Void
+    var body: some View {
+        VStack {
+            HStack {
+                Spacer()
+                Button(action: close) {
+                    Image(systemName: "xmark")
+                }
+            }
+            content()
+        }.padding()
+            .frame(maxWidth: 960)
+    }
 }

@@ -95,9 +95,13 @@ enum OJPHelpers {
         let requestContext: OJPv2.ServiceRequestContext
         let requesterReference: String
 
-        public func refineTrip(_ tripResult: OJPv2.TripResult) -> OJPv2 {
+        public func refineTrip(_ tripResult: OJPv2.TripResult, params: OJPv2.TripRefineParams) -> OJPv2 {
             let requestTimestamp = Date()
-            let tripRefineRequest = OJPv2.TripRefineRequest(requestTimestamp: requestTimestamp, tripResult: tripResult)
+            let tripRefineRequest = OJPv2.TripRefineRequest(
+                requestTimestamp: requestTimestamp,
+                params: params,
+                tripResult: tripResult
+            )
             let ojp = OJPv2(
                 request: OJPv2.Request(
                     serviceRequest: OJPv2.ServiceRequest(

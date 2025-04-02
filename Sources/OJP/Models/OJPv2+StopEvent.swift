@@ -24,12 +24,14 @@ public extension OJPv2 {
 
     struct TripRefineRequest: Codable, Sendable {
         public let requestTimestamp: Date
-// TODO: Params
+        public let params: TripRefineParams
+
         public let tripResult: OJPv2.TripResult
 
         public enum CodingKeys: String, CodingKey {
             case requestTimestamp = "siri:RequestTimestamp"
             case tripResult = "TripResult"
+            case params = "Params"
         }
     }
 

@@ -24,6 +24,33 @@ import XMLCoder
 #endif
 
 public extension OJPv2 {
+    /// [Schema documentation on vdvde.github.io](https://vdvde.github.io/OJP/develop/documentation-tables/ojp.html#type_ojp__TripRefineParamStructure)
+    struct TripRefineParams: Codable, Sendable {
+        public init(includeTrackSections: Bool? = false, includeLegProjection: Bool? = false, includeTurnDescription: Bool? = false, includeIntermediateStops: Bool? = true, includeAllRestrictedLines: Bool? = true, useRealtimeData: UseRealtimeData? = .explanatory) {
+            self.includeTrackSections = includeTrackSections
+            self.includeLegProjection = includeLegProjection
+            self.includeTurnDescription = includeTurnDescription
+            self.includeIntermediateStops = includeIntermediateStops
+            self.includeAllRestrictedLines = includeAllRestrictedLines
+            self.useRealtimeData = useRealtimeData
+        }
+
+        public enum CodingKeys: String, CodingKey {
+            case includeTrackSections = "IncludeTrackSections"
+            case includeLegProjection = "IncludeLegProjection"
+            case includeTurnDescription = "IncludeTurnDescription"
+            case includeIntermediateStops = "IncludeIntermediateStops"
+            case includeAllRestrictedLines = "IncludeAllRestrictedLines"
+            case useRealtimeData = "UseRealtimeData"
+        }
+
+        public let includeTrackSections: Bool?
+        public let includeLegProjection: Bool?
+        public let includeTurnDescription: Bool?
+        public let includeIntermediateStops: Bool?
+        public let includeAllRestrictedLines: Bool?
+        public let useRealtimeData: UseRealtimeData?
+    }
 
     /// [Schema documentation on vdvde.github.io](https://vdvde.github.io/OJP/develop/documentation-tables/ojp.html#type_ojp__OJPTripRefineDeliveryStructure)
     struct TripRefineDelivery: Codable, Sendable {
@@ -448,9 +475,9 @@ public extension OJPv2 {
             public func encode(to encoder: any Encoder) throws {
                 var container = encoder.container(keyedBy: CodingKeys.self)
                 switch self {
-                case .trip(let trip):
+                case let .trip(trip):
                     try container.encode(trip, forKey: .trip)
-                case .tripSummary(let tripSummary):
+                case let .tripSummary(tripSummary):
                     try container.encode(tripSummary, forKey: .tripSummary)
                 }
             }
@@ -635,17 +662,15 @@ public extension OJPv2 {
             public func encode(to encoder: any Encoder) throws {
                 var container = encoder.container(keyedBy: CodingKeys.self)
                 switch self {
-                case .continous(let continuousLeg):
+                case let .continous(continuousLeg):
                     try container.encode(continuousLeg, forKey: CodingKeys.continous)
-                case .timed(let timedLeg):
+                case let .timed(timedLeg):
                     try container.encode(timedLeg, forKey: CodingKeys.timed)
-                case .transfer(let transferLeg):
+                case let .transfer(transferLeg):
                     try container.encode(transferLeg, forKey: CodingKeys.transfer)
                 }
             }
         }
-
-
     }
 
     /// https://vdvde.github.io/OJP/develop/documentation-tables/ojp.html#type_ojp__TransferTypeEnumeration
