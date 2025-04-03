@@ -411,7 +411,7 @@ public extension OJPv2 {
         public let id: String
         public let tripType: TripTypeChoice
         public let tripFares: [TripFare]
-        public let isAlternativeOption: Bool?
+        public private(set) var isAlternativeOption: Bool?
 
         public enum CodingKeys: String, CodingKey {
             case _0
@@ -429,7 +429,7 @@ public extension OJPv2 {
             isAlternativeOption = try? container.decode(Bool.self, forKey: .isAlternativeOption)
         }
 
-        public init(trip: OJPv2.Trip) { // TODO: maybe hide
+        public init(trip: OJPv2.Trip) {
             tripType = .trip(trip)
             id = trip.id
             tripFares = []
@@ -517,6 +517,12 @@ public extension OJPv2 {
 //            self.delayed = try container.decode(Bool?.self, forKey: .delayed) ?? false
             infeasible = try container.decode(Bool?.self, forKey: .infeasible) ?? false
         }
+
+        public init(cancelled: Bool, deviation: Bool, infeasible: Bool) {
+            self.cancelled = cancelled
+            self.deviation = deviation
+            self.infeasible = infeasible
+        }
     }
 
     /// https://vdvde.github.io/OJP/develop/documentation-tables/ojp.html#type_ojp__TripStructure
@@ -555,6 +561,26 @@ public extension OJPv2 {
             distance = try container.decodeIfPresent(Double.self, forKey: .distance)
             legs = try container.decode([OJPv2.Leg].self, forKey: .legs)
             tripStatus = try TripStatus(from: decoder)
+        }
+
+        public init(
+            id: String,
+            duration: Duration,
+            startTime: Date,
+            endTime: Date,
+            transfers: Int,
+            distance: Double? = nil,
+            legs: [Leg],
+            tripStatus: TripStatus
+        ) {
+            self.id = id
+            self.duration = duration
+            self.startTime = startTime
+            self.endTime = endTime
+            self.transfers = transfers
+            self.distance = distance
+            self.legs = legs
+            self.tripStatus = tripStatus
         }
 
         /// Trip hash similar to the implementation in the JS SDK.
@@ -608,6 +634,12 @@ public extension OJPv2 {
             let container = try decoder.container(keyedBy: CodingKeys.self)
             id = try container.decode(Int.self, forKey: .id)
             duration = try container.decodeIfPresent(Duration.self, forKey: .duration)
+        }
+
+        public init(id: Int, duration: Duration?, legType: LegTypeChoice) {
+            self.id = id
+            self.duration = duration
+            self.legType = legType
         }
 
         public func encode(to encoder: any Encoder) throws {
@@ -704,6 +736,13 @@ public extension OJPv2 {
             case legStart = "LegStart"
             case legEnd = "LegEnd"
         }
+
+        public init(transferTypes: [TransferType], legStart: PlaceRefChoice, legEnd: PlaceRefChoice, duration: Duration) {
+            self.transferTypes = transferTypes
+            self.legStart = legStart
+            self.legEnd = legEnd
+            self.duration = duration
+        }
     }
 
     /// https://vdvde.github.io/OJP/develop/documentation-tables/ojp.html#type_ojp__TimedLegStructure
@@ -721,6 +760,14 @@ public extension OJPv2 {
             case service = "Service"
             case legTrack = "LegTrack"
         }
+
+        public init(legBoard: LegBoard, legsIntermediate: [LegIntermediate] = [], legAlight: LegAlight, service: DatedJourney, legTrack: LegTrack? = nil) {
+            self.legBoard = legBoard
+            self.legsIntermediate = legsIntermediate
+            self.legAlight = legAlight
+            self.service = service
+            self.legTrack = legTrack
+        }
     }
 
     /// https://vdvde.github.io/OJP/develop/documentation-tables/ojp.html#type_ojp__ServiceArrivalStructure
@@ -732,6 +779,11 @@ public extension OJPv2 {
             case timetabledTime = "TimetabledTime"
             case estimatedTime = "EstimatedTime"
         }
+
+        init(timetabledTime: Date, estimatedTime: Date? = nil) {
+            self.timetabledTime = timetabledTime
+            self.estimatedTime = estimatedTime
+        }
     }
 
     /// https://vdvde.github.io/OJP/develop/documentation-tables/ojp.html#type_ojp__ServiceDepartureStructure
@@ -742,6 +794,11 @@ public extension OJPv2 {
         enum CodingKeys: String, CodingKey {
             case timetabledTime = "TimetabledTime"
             case estimatedTime = "EstimatedTime"
+        }
+
+        init(timetabledTime: Date, estimatedTime: Date? = nil) {
+            self.timetabledTime = timetabledTime
+            self.estimatedTime = estimatedTime
         }
     }
 
@@ -780,6 +837,26 @@ public extension OJPv2 {
             serviceArrival = try container.decode(ServiceArrival?.self, forKey: .serviceArrival)
             serviceDeparture = try container.decode(ServiceDeparture.self, forKey: .serviceDeparture)
             stopCallStatus = try StopCallStatus(from: decoder)
+        }
+
+        public init(
+            stopPointRef: String,
+            stopPointName: InternationalText,
+            nameSuffix: InternationalText? = nil,
+            plannedQuay: InternationalText? = nil,
+            estimatedQuay: InternationalText? = nil,
+            serviceArrival: ServiceArrival? = nil,
+            serviceDeparture: ServiceDeparture,
+            stopCallStatus: StopCallStatus
+        ) {
+            self.stopPointRef = stopPointRef
+            self.stopPointName = stopPointName
+            self.nameSuffix = nameSuffix
+            self.plannedQuay = plannedQuay
+            self.estimatedQuay = estimatedQuay
+            self.serviceArrival = serviceArrival
+            self.serviceDeparture = serviceDeparture
+            self.stopCallStatus = stopCallStatus
         }
     }
 
@@ -856,6 +933,26 @@ public extension OJPv2 {
             serviceArrival = try container.decode(ServiceArrival.self, forKey: .serviceArrival)
             serviceDeparture = try container.decode(ServiceDeparture?.self, forKey: .serviceDeparture)
             stopCallStatus = try StopCallStatus(from: decoder)
+        }
+
+        public init(
+            stopPointRef: String,
+            stopPointName: InternationalText,
+            nameSuffix: InternationalText? = nil,
+            plannedQuay: InternationalText? = nil,
+            estimatedQuay: InternationalText? = nil,
+            serviceArrival: ServiceArrival,
+            serviceDeparture: ServiceDeparture? = nil,
+            stopCallStatus: StopCallStatus
+        ) {
+            self.stopPointRef = stopPointRef
+            self.stopPointName = stopPointName
+            self.nameSuffix = nameSuffix
+            self.plannedQuay = plannedQuay
+            self.estimatedQuay = estimatedQuay
+            self.serviceArrival = serviceArrival
+            self.serviceDeparture = serviceDeparture
+            self.stopCallStatus = stopCallStatus
         }
     }
 
@@ -1041,6 +1138,48 @@ public extension OJPv2 {
             situationFullRefs = try container.decodeIfPresent(OJPv2.SituationFullRefs.self, forKey: .situationFullRefs)
             serviceStatus = try ServiceStatusGroup(from: decoder)
         }
+
+        public init(
+            conventionalModeOfOperation: ConventionalModesOfOperation? = nil,
+            operatingDayRef: String,
+            journeyRef: String,
+            publicCode: String? = nil,
+            lineRef: String,
+            directionRef: String? = nil,
+            mode: Mode,
+            productCategory: ProductCategory? = nil,
+            publishedServiceName: InternationalText,
+            trainNumber: String? = nil,
+            vehicleRef: String? = nil,
+            attributes: [Attribute] = [],
+            operatorRef: String? = nil,
+            originText: InternationalText,
+            originStopPointRef: String? = nil,
+            destinationText: InternationalText? = nil,
+            destinationStopPointRef: String? = nil,
+            situationFullRefs: SituationFullRefs? = nil,
+            serviceStatus: ServiceStatusGroup
+        ) {
+            self.conventionalModeOfOperation = conventionalModeOfOperation
+            self.operatingDayRef = operatingDayRef
+            self.journeyRef = journeyRef
+            self.publicCode = publicCode
+            self.lineRef = lineRef
+            self.directionRef = directionRef
+            self.mode = mode
+            self.productCategory = productCategory
+            self.publishedServiceName = publishedServiceName
+            self.trainNumber = trainNumber
+            self.vehicleRef = vehicleRef
+            self.attributes = attributes
+            self.operatorRef = operatorRef
+            self.originText = originText
+            self.originStopPointRef = originStopPointRef
+            self.destinationText = destinationText
+            self.destinationStopPointRef = destinationStopPointRef
+            self.situationFullRefs = situationFullRefs
+            self.serviceStatus = serviceStatus
+        }
     }
 
     /// https://vdvde.github.io/OJP/develop/documentation-tables/ojp.html#type_ojp__LinearShapeStructure
@@ -1088,6 +1227,13 @@ public extension OJPv2 {
             case duration = "Duration"
             case service = "Service"
         }
+
+        public init(legStart: PlaceRefChoice, legEnd: PlaceRefChoice, duration: Duration, service: ContinuousService) {
+            self.legStart = legStart
+            self.legEnd = legEnd
+            self.duration = duration
+            self.service = service
+        }
     }
 
     struct PersonalService: Codable, Sendable {
@@ -1119,6 +1265,10 @@ public extension OJPv2 {
 
         public init(from decoder: any Decoder) throws {
             type = try ContinuousServiceTypeChoice(from: decoder)
+        }
+
+        public init(type: ContinuousServiceTypeChoice) {
+            self.type = type
         }
     }
 

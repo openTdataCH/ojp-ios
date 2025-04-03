@@ -23,7 +23,7 @@ struct TripDetailView: View {
             Button("Refine Trip") {
                 Task {
                     do {
-                        let tripRefineDelivery = try await OJP.configured.requestTripRefinement(tripResult: .init(trip: trip))
+                        let tripRefineDelivery = try await OJP.configured.requestTripRefinement(tripResult: .init(trip: trip).minimalTripResult)
                         print(tripRefineDelivery)
 
                         guard let newTrip = tripRefineDelivery.tripResults.first?.trip else {
@@ -43,7 +43,7 @@ struct TripDetailView: View {
                         if !newPTSituations.isEmpty {
                             ptSituations = newPTSituations + ptSituations
                         }
-                        self.trip = newTrip
+                        trip = newTrip
 
                     } catch {
                         print(error)
