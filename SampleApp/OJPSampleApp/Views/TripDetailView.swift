@@ -90,7 +90,7 @@ struct TripDetailView: View {
                                 Text(legBoard.stopPointName.text).bold()
                                 Text(legBoard.estimatedQuay?.text ?? legBoard.plannedQuay?.text ?? "")
                                     .foregroundStyle(changedTrack ? .red : Color.label)
-                            }.foregroundColor(timedLeg.legBoard.stopCallStatus.notServicedStop ? .red : .label)
+                            }.foregroundColor(timedLeg.legBoard.stopCallStatus?.notServicedStop == true ? .red : .label)
                             VStack(spacing: 4) {
                                 ForEach(timedLeg.legsIntermediate) { legIntermediate in
                                     VStack(spacing: 0) {
@@ -112,7 +112,7 @@ struct TripDetailView: View {
                                             Text(legIntermediate.stopPointName.text)
                                             Spacer()
                                         }
-                                    }.foregroundStyle(legIntermediate.stopCallStatus.notServicedStop ? .red : Color.label)
+                                    }.foregroundStyle(legIntermediate.stopCallStatus?.notServicedStop == true ? .red : Color.label)
                                 }
                             }
                             .padding(.vertical, 2)
@@ -130,7 +130,7 @@ struct TripDetailView: View {
                                 Text(legAlight.estimatedQuay?.text ?? legAlight.plannedQuay?.text ?? "")
                                     .foregroundStyle(changedTrack ? .red : Color.label)
                             }
-                            .foregroundColor(timedLeg.legAlight.stopCallStatus.notServicedStop ? .red : .label)
+                            .foregroundColor(timedLeg.legAlight.stopCallStatus?.notServicedStop == true ? .red : .label)
 
                             ForEach(timedLeg.relevantPtSituations(allPtSituations: ptSituations)) { ptSituation in
                                 Divider()

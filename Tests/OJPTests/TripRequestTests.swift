@@ -321,7 +321,7 @@ final class TripRequestTests: XCTestCase {
             let firstTrip = try XCTUnwrap(tripDelivery.tripResults.first?.trip)
             if case let .timed(legWithNotServicedStop) = firstTrip.legs[1].legType {
                 for leg in legWithNotServicedStop.legsIntermediate {
-                    XCTAssertEqual(leg.stopCallStatus.notServicedStop, leg.stopPointName.text == "Neuchâtel, Gouttes d'or")
+                    XCTAssertEqual(leg.stopCallStatus?.notServicedStop, leg.stopPointName.text == "Neuchâtel, Gouttes d'or")
                 }
             } else {
                 XCTFail()
@@ -340,8 +340,8 @@ final class TripRequestTests: XCTestCase {
             if case let .timed(legWithNotServicedStop) = firstTrip.legs[2].legType {
                 let legBoard = legWithNotServicedStop.legBoard
                 let legAlight = legWithNotServicedStop.legAlight
-                XCTAssertEqual(legBoard.stopCallStatus.notServicedStop, true)
-                XCTAssertEqual(legAlight.stopCallStatus.notServicedStop, true)
+                XCTAssertEqual(legBoard.stopCallStatus?.notServicedStop, true)
+                XCTAssertEqual(legAlight.stopCallStatus?.notServicedStop, true)
             } else {
                 XCTFail()
             }

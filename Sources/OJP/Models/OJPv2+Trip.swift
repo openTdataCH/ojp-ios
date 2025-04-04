@@ -814,7 +814,7 @@ public extension OJPv2 {
         public let serviceArrival: ServiceArrival?
         public let serviceDeparture: ServiceDeparture
 
-        public let stopCallStatus: StopCallStatus
+        public let stopCallStatus: StopCallStatus?
 
         enum CodingKeys: String, CodingKey {
             case stopPointRef = "siri:StopPointRef"
@@ -824,7 +824,7 @@ public extension OJPv2 {
             case estimatedQuay = "EstimatedQuay"
             case serviceArrival = "ServiceArrival"
             case serviceDeparture = "ServiceDeparture"
-            case stopCallStatus
+            case stopCallStatus = "StopCallStatus"
         }
 
         public init(from decoder: any Decoder) throws {
@@ -847,7 +847,7 @@ public extension OJPv2 {
             estimatedQuay: InternationalText? = nil,
             serviceArrival: ServiceArrival? = nil,
             serviceDeparture: ServiceDeparture,
-            stopCallStatus: StopCallStatus
+            stopCallStatus: StopCallStatus? = nil
         ) {
             self.stopPointRef = stopPointRef
             self.stopPointName = stopPointName
@@ -872,7 +872,7 @@ public extension OJPv2 {
         public let serviceArrival: ServiceArrival? // Set as optional until https://github.com/openTdataCH/ojp-sdk/issues/42 is fixed
         public let serviceDeparture: ServiceDeparture? // Set as optional until https://github.com/openTdataCH/ojp-sdk/issues/42 is fixed
 
-        public let stopCallStatus: StopCallStatus
+        public let stopCallStatus: StopCallStatus?
 
         enum CodingKeys: String, CodingKey {
             case stopPointRef = "siri:StopPointRef"
@@ -882,7 +882,7 @@ public extension OJPv2 {
             case estimatedQuay = "EstimatedQuay"
             case serviceArrival = "ServiceArrival"
             case serviceDeparture = "ServiceDeparture"
-            case stopCallStatus
+            case stopCallStatus = "StopCallStatus"
         }
 
         public init(from decoder: any Decoder) throws {
@@ -910,7 +910,7 @@ public extension OJPv2 {
         public let serviceArrival: ServiceArrival
         public let serviceDeparture: ServiceDeparture?
 
-        public let stopCallStatus: StopCallStatus
+        public let stopCallStatus: StopCallStatus?
 
         enum CodingKeys: String, CodingKey {
             case stopPointRef = "siri:StopPointRef"
@@ -920,7 +920,7 @@ public extension OJPv2 {
             case estimatedQuay = "EstimatedQuay"
             case serviceArrival = "ServiceArrival"
             case serviceDeparture = "ServiceDeparture"
-            case stopCallStatus
+            case stopCallStatus = "StopCallStatus"
         }
 
         public init(from decoder: any Decoder) throws {
@@ -943,7 +943,7 @@ public extension OJPv2 {
             estimatedQuay: InternationalText? = nil,
             serviceArrival: ServiceArrival,
             serviceDeparture: ServiceDeparture? = nil,
-            stopCallStatus: StopCallStatus
+            stopCallStatus: StopCallStatus? = nil
         ) {
             self.stopPointRef = stopPointRef
             self.stopPointName = stopPointName
