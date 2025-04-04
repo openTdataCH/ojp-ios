@@ -270,7 +270,7 @@ final class TripRequestTests: XCTestCase {
             }
 
             let infeasibleTrip = tripDelivery.tripResults.first
-            XCTAssertEqual(infeasibleTrip?.trip?.tripStatus.infeasible, true)
+            XCTAssertEqual(infeasibleTrip?.trip?.tripStatus?.infeasible, true)
         }
     }
 
@@ -282,7 +282,7 @@ final class TripRequestTests: XCTestCase {
             }
 
             let cancelledTrip = try XCTUnwrap(tripDelivery.tripResults[1].trip)
-            XCTAssertEqual(cancelledTrip.tripStatus.cancelled, true)
+            XCTAssertEqual(cancelledTrip.tripStatus?.cancelled, true)
         }
     }
 
@@ -295,7 +295,7 @@ final class TripRequestTests: XCTestCase {
 
             let cancelledTrip = try XCTUnwrap(tripDelivery.tripResults[1].trip)
             let firstLeg = try XCTUnwrap(cancelledTrip.timedLegs.first)
-            XCTAssertEqual(firstLeg.service.serviceStatus.cancelled, true)
+            XCTAssertEqual(firstLeg.service.serviceStatus?.cancelled, true)
         }
     }
 
@@ -307,7 +307,7 @@ final class TripRequestTests: XCTestCase {
             }
 
             let cancelledTrip = try XCTUnwrap(tripDelivery.tripResults[1].trip)
-            XCTAssertEqual(cancelledTrip.tripStatus.deviation, true)
+            XCTAssertEqual(cancelledTrip.tripStatus?.deviation, true)
         }
     }
 

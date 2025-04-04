@@ -65,8 +65,8 @@ struct TripRequestResultView: View {
                                             Text(DurationFormatter.string(for: trip.duration))
                                         }
 
-                                        if trip.tripStatus.hasIssue {
-                                            TripStatusLabel(tripStatus: trip.tripStatus)
+                                        if let tripStatus = trip.tripStatus, tripStatus.hasIssue {
+                                            TripStatusLabel(tripStatus: tripStatus)
                                         } else if trip.hasSituation(allPtSituations: ptSituations) {
                                             Image(systemName: "bolt.circle.fill")
                                                 .foregroundStyle(.red)
@@ -83,7 +83,7 @@ struct TripRequestResultView: View {
                                             ).formatted()
                                         )
                                     }
-                                }.foregroundStyle(trip.tripStatus.cancelled == true ? .red : Color.label)
+                                }.foregroundStyle(trip.tripStatus?.cancelled == true ? .red : Color.label)
                                     .padding()
                             } else { Text("No Trips found") }
                         }

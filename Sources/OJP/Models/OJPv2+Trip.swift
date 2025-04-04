@@ -538,7 +538,7 @@ public extension OJPv2 {
         public let transfers: Int
         public let distance: Double?
         public let legs: [Leg]
-        public let tripStatus: TripStatus
+        public let tripStatus: TripStatus?
 
         enum CodingKeys: String, CodingKey {
             case id = "Id"
@@ -548,7 +548,7 @@ public extension OJPv2 {
             case transfers = "Transfers"
             case distance = "Distance"
             case legs = "Leg"
-            case tripStatus
+            case tripStatus = "TripStatus"
         }
 
         public init(from decoder: any Decoder) throws {
@@ -571,7 +571,7 @@ public extension OJPv2 {
             transfers: Int,
             distance: Double? = nil,
             legs: [Leg],
-            tripStatus: TripStatus
+            tripStatus: TripStatus? = nil
         ) {
             self.id = id
             self.duration = duration
@@ -1079,8 +1079,7 @@ public extension OJPv2 {
         public let destinationText: InternationalText?
         public let destinationStopPointRef: String?
         public let situationFullRefs: SituationFullRefs?
-        /// - WARNING: `serviceStatus` currently not provided by OJP in Switzerland. See comment on [GitHub](https://github.com/openTdataCH/ojp-sdk/issues/41#issuecomment-2304431303)
-        public let serviceStatus: ServiceStatusGroup
+        public let serviceStatus: ServiceStatusGroup?
 
         public enum CodingKeys: String, CodingKey {
             case conventionalModeOfOperation = "ConventionalModeOfOperation"
@@ -1101,7 +1100,7 @@ public extension OJPv2 {
             case destinationText = "DestinationText"
             case destinationStopPointRef = "DestinationStopPointRef"
             case situationFullRefs = "SituationFullRefs"
-            case serviceStatus
+            case serviceStatus = "ServiceStatus"
         }
 
         public enum ConventionalModesOfOperation: String, Codable, Sendable {
@@ -1158,7 +1157,7 @@ public extension OJPv2 {
             destinationText: InternationalText? = nil,
             destinationStopPointRef: String? = nil,
             situationFullRefs: SituationFullRefs? = nil,
-            serviceStatus: ServiceStatusGroup
+            serviceStatus: ServiceStatusGroup? = nil
         ) {
             self.conventionalModeOfOperation = conventionalModeOfOperation
             self.operatingDayRef = operatingDayRef

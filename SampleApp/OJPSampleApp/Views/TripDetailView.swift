@@ -18,8 +18,8 @@ struct TripDetailView: View {
     var body: some View {
         VStack {
             if let trip {
-                if trip.tripStatus.hasIssue {
-                    TripStatusLabel(tripStatus: trip.tripStatus)
+                if let tripStatus = trip.tripStatus, tripStatus.hasIssue {
+                    TripStatusLabel(tripStatus: tripStatus)
                 }
                 Button("Refine Trip") {
                     Task {

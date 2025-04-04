@@ -24,8 +24,8 @@ extension OJPv2.Trip {
               startTime: startTime,
               endTime: endTime,
               transfers: transfers,
-              legs: legs.map(\.minimalCopy),
-              tripStatus: tripStatus)
+              legs: legs.map(\.minimalCopy)
+        )
     }
 }
 
@@ -96,12 +96,12 @@ extension OJPv2.DatedJourney {
 //            vehicleRef: vehicleRef,
             attributes: attributes,
 //            operatorRef: operatorRef,
-            originText: originText,
+            originText: originText
 //            originStopPointRef: originStopPointRef,
 //            destinationText: destinationText,
 //            destinationStopPointRef: destinationStopPointRef,
 //            situationFullRefs: situationFullRefs,
-            serviceStatus: serviceStatus
+//            serviceStatus: serviceStatus
         )
     }
 }
@@ -122,8 +122,7 @@ public extension OJPv2.LegBoard {
         .init(
             stopPointRef: stopPointRef,
             stopPointName: stopPointName,
-            serviceDeparture: .init(timetabledTime: serviceDeparture.timetabledTime),
-            stopCallStatus: stopCallStatus
+            serviceDeparture: .init(timetabledTime: serviceDeparture.timetabledTime)
         )
     }
 }
@@ -133,8 +132,7 @@ extension OJPv2.LegAlight {
         .init(
             stopPointRef: stopPointRef,
             stopPointName: stopPointName,
-            serviceArrival: .init(timetabledTime: serviceArrival.timetabledTime),
-            stopCallStatus: stopCallStatus
+            serviceArrival: .init(timetabledTime: serviceArrival.timetabledTime)
         )
     }
 }
