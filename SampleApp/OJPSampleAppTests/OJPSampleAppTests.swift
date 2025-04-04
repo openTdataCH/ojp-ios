@@ -20,7 +20,7 @@ final class OJPSampleAppTests: XCTestCase {
 
     @MainActor
     func testMinimalTRR_Bern_Brig_StMoritz() async throws {
-        _ = OJPHelper(environment: .prod)
+        _ = OJPHelper(environment: .int)
         let ojp = OJPHelper.ojp
         let trips = try await ojp.requestTrips(
             from: .stopPlaceRef(
@@ -47,7 +47,8 @@ final class OJPSampleAppTests: XCTestCase {
 
     @MainActor
     func testMinimalTRR_KoenizGeoPosition_Brig() async throws {
-        _ = OJPHelper(environment: .prod)
+        // CURRENTLY FAILING. Reported issue here: https://github.com/openTdataCH/ojp-sdk/issues/227#issuecomment-2778012964
+        _ = OJPHelper(environment: .test)
 
         let ojp = OJPHelper.ojp
         let trips = try await ojp.requestTrips(
@@ -69,12 +70,5 @@ final class OJPSampleAppTests: XCTestCase {
         // assert triprefinement with full request
         let refinedMinmal = try await ojp.requestTripRefinement(tripResult: tripResult.minimalTripResult)
         _ = try XCTUnwrap(refinedMinmal.tripResults.first)
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        measure {
-            // Put the code you want to measure the time of here.
-        }
     }
 }
