@@ -105,8 +105,8 @@ struct TripRequestResultView: View {
                 }
             }
 
-            if let selectedTrip {
-                TripDetailView(trip: selectedTrip, ptSituations: ptSituations)
+            if selectedTrip != nil {
+                TripDetailView(trip: $selectedTrip, ptSituations: ptSituations)
                     .padding()
                     .frame(maxWidth: 400)
             }
