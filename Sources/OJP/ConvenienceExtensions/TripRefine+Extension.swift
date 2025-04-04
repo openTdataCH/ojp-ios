@@ -19,13 +19,23 @@ public extension OJPv2.TripResult {
 
 extension OJPv2.Trip {
     var minimalCopy: Self {
-        .init(id: id, duration: duration, startTime: startTime, endTime: endTime, transfers: transfers, legs: legs.map(\.minimalCopy), tripStatus: tripStatus)
+        .init(id: id,
+              duration: duration,
+              startTime: startTime,
+              endTime: endTime,
+              transfers: transfers,
+              legs: legs.map(\.minimalCopy),
+              tripStatus: tripStatus)
     }
 }
 
 extension OJPv2.Leg {
     var minimalCopy: Self {
-        .init(id: id, duration: nil, legType: legType.minimalCopy)
+        .init(
+            id: id,
+            duration: duration, // optional but required
+            legType: legType.minimalCopy
+        )
     }
 }
 
@@ -46,6 +56,7 @@ extension OJPv2.TimedLeg {
     var minimalCopy: Self {
         .init(
             legBoard: legBoard.minimalCopy,
+            legsIntermediate: [], // legsIntermediate,
             legAlight: legAlight.minimalCopy,
             service: service.minimalCopy
         )
@@ -54,7 +65,12 @@ extension OJPv2.TimedLeg {
 
 extension OJPv2.ContinuousLeg {
     var minimalCopy: Self {
-        .init(legStart: legStart, legEnd: legEnd, duration: duration, service: service.minimalCopy)
+        .init(
+            legStart: legStart,
+            legEnd: legEnd,
+            duration: duration,
+            service: service.minimalCopy
+        )
     }
 }
 
@@ -67,12 +83,24 @@ extension OJPv2.ContinuousService {
 extension OJPv2.DatedJourney {
     var minimalCopy: OJPv2.DatedJourney {
         .init(
+            //            conventionalModeOfOperation: conventionalModeOfOperation,
             operatingDayRef: operatingDayRef,
             journeyRef: journeyRef,
+//            publicCode: publicCode,
             lineRef: lineRef,
+//            directionRef: directionRef,
             mode: mode,
+            productCategory: productCategory,
             publishedServiceName: publishedServiceName,
+//            trainNumber: trainNumber,
+//            vehicleRef: vehicleRef,
+            attributes: attributes,
+//            operatorRef: operatorRef,
             originText: originText,
+//            originStopPointRef: originStopPointRef,
+//            destinationText: destinationText,
+//            destinationStopPointRef: destinationStopPointRef,
+//            situationFullRefs: situationFullRefs,
             serviceStatus: serviceStatus
         )
     }

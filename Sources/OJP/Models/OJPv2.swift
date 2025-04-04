@@ -190,7 +190,7 @@ public struct OJPv2: Codable, Sendable {
         }
     }
 
-    //// https://vdvde.github.io/OJP/develop/documentation-tables/ojp.html#type_ojp__ModeStructure
+    /// https://vdvde.github.io/OJP/develop/documentation-tables/ojp.html#type_ojp__ModeStructure
     public struct Mode: Codable, Sendable {
         public let ptMode: PtMode
 

@@ -636,7 +636,7 @@ public extension OJPv2 {
             duration = try container.decodeIfPresent(Duration.self, forKey: .duration)
         }
 
-        public init(id: Int, duration: Duration?, legType: LegTypeChoice) {
+        public init(id: Int, duration: Duration? = nil, legType: LegTypeChoice) {
             self.id = id
             self.duration = duration
             self.legType = legType
