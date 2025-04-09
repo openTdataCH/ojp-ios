@@ -148,7 +148,7 @@ public final class OJP: Sendable {
 
     public func requestTripRefinement(
         tripResult: OJPv2.TripResult,
-        params: OJPv2.TripRefineParams = .init()
+        params: OJPv2.TripRefineParams = .defaultTripRefineParams
     ) async throws -> OJPv2.TripRefineDelivery {
         let ojp = tripRefineRequest.refineTrip(tripResult, params: params)
         let serviceDelivery = try await request(with: ojp).serviceDelivery

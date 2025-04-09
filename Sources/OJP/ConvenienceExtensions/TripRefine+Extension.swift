@@ -24,8 +24,7 @@ extension OJPv2.Trip {
               startTime: startTime,
               endTime: endTime,
               transfers: transfers,
-              legs: legs.map(\.minimalCopy)
-        )
+              legs: legs.map(\.minimalCopy))
     }
 }
 
