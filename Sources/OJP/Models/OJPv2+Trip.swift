@@ -1167,19 +1167,22 @@ public extension OJPv2 {
         public let legEnd: PlaceRefChoice
         public let duration: Duration
         public let service: ContinuousService
+        public let legTrack: LegTrack?
 
         enum CodingKeys: String, CodingKey {
             case legStart = "LegStart"
             case legEnd = "LegEnd"
             case duration = "Duration"
             case service = "Service"
+            case legTrack = "LegTrack"
         }
 
-        public init(legStart: PlaceRefChoice, legEnd: PlaceRefChoice, duration: Duration, service: ContinuousService) {
+        public init(legStart: PlaceRefChoice, legEnd: PlaceRefChoice, duration: Duration, service: ContinuousService, legTrack: LegTrack? = nil) {
             self.legStart = legStart
             self.legEnd = legEnd
             self.duration = duration
             self.service = service
+            self.legTrack = legTrack
         }
     }
 
