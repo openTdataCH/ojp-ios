@@ -6,23 +6,24 @@
             <siri:ServiceRequestContext>
                 <siri:Language>en</siri:Language>
             </siri:ServiceRequestContext>
-            <siri:RequestTimestamp>2025-04-04T12:20:10Z</siri:RequestTimestamp>
+            <siri:RequestTimestamp>2025-04-09T11:18:44Z</siri:RequestTimestamp>
             <siri:RequestorRef>BLS_DemoApp_IOS_SDK_1.1.1</siri:RequestorRef>
             <OJPTripRefineRequest>
-                <siri:RequestTimestamp>2025-04-04T12:20:10Z</siri:RequestTimestamp>
+                <siri:RequestTimestamp>2025-04-09T11:18:44Z</siri:RequestTimestamp>
                 <TripResult>
+                    <Id>ID-B21CAB4C-706E-4275-B9D9-B57570F98D4C</Id>
                     <Trip>
-                        <Id>ID-5A2207C1-3218-4C65-B580-20E9B4694F5C</Id>
-                        <Duration>PT7H23M30S</Duration>
-                        <StartTime>2025-04-04T13:34:30Z</StartTime>
-                        <EndTime>2025-04-04T20:58:00Z</EndTime>
+                        <Id>ID-B21CAB4C-706E-4275-B9D9-B57570F98D4C</Id>
+                        <Duration>PT6H40M</Duration>
+                        <StartTime>2025-04-09T11:34:00Z</StartTime>
+                        <EndTime>2025-04-09T18:14:00Z</EndTime>
                         <Transfers>3</Transfers>
                         <Leg>
                             <Id>1</Id>
-                            <Duration>PT1H6M12S</Duration>
+                            <Duration>PT1H7M</Duration>
                             <TimedLeg>
                                 <LegBoard>
-                                    <siri:StopPointRef>ch:1:sloid:7000:4:7</siri:StopPointRef>
+                                    <siri:StopPointRef>ch:1:sloid:7000:4:8</siri:StopPointRef>
                                     <StopPointName>
                                         <Text>Bern</Text>
                                     </StopPointName>
@@ -30,14 +31,10 @@
                                         <Text>PLATFORM_NOT_WHEELCHAIR_ACCESSIBLE</Text>
                                     </NameSuffix>
                                     <PlannedQuay>
-                                        <Text>7</Text>
+                                        <Text>8</Text>
                                     </PlannedQuay>
-                                    <EstimatedQuay>
-                                        <Text>7</Text>
-                                    </EstimatedQuay>
                                     <ServiceDeparture>
-                                        <TimetabledTime>2025-04-04T13:34:00Z</TimetabledTime>
-                                        <EstimatedTime>2025-04-04T13:34:30Z</EstimatedTime>
+                                        <TimetabledTime>2025-04-09T11:34:00Z</TimetabledTime>
                                     </ServiceDeparture>
                                     <StopCallStatus>
                                         <Order>1</Order>
@@ -59,16 +56,11 @@
                                     <PlannedQuay>
                                         <Text>1</Text>
                                     </PlannedQuay>
-                                    <EstimatedQuay>
-                                        <Text>1</Text>
-                                    </EstimatedQuay>
                                     <ServiceArrival>
-                                        <TimetabledTime>2025-04-04T13:53:00Z</TimetabledTime>
-                                        <EstimatedTime>2025-04-04T13:53:00Z</EstimatedTime>
+                                        <TimetabledTime>2025-04-09T11:53:00Z</TimetabledTime>
                                     </ServiceArrival>
                                     <ServiceDeparture>
-                                        <TimetabledTime>2025-04-04T13:54:00Z</TimetabledTime>
-                                        <EstimatedTime>2025-04-04T13:55:00Z</EstimatedTime>
+                                        <TimetabledTime>2025-04-09T11:54:00Z</TimetabledTime>
                                     </ServiceDeparture>
                                     <StopCallStatus>
                                         <Order>2</Order>
@@ -90,16 +82,11 @@
                                     <PlannedQuay>
                                         <Text>3</Text>
                                     </PlannedQuay>
-                                    <EstimatedQuay>
-                                        <Text>3</Text>
-                                    </EstimatedQuay>
                                     <ServiceArrival>
-                                        <TimetabledTime>2025-04-04T14:03:00Z</TimetabledTime>
-                                        <EstimatedTime>2025-04-04T14:03:42Z</EstimatedTime>
+                                        <TimetabledTime>2025-04-09T12:03:00Z</TimetabledTime>
                                     </ServiceArrival>
                                     <ServiceDeparture>
-                                        <TimetabledTime>2025-04-04T14:05:00Z</TimetabledTime>
-                                        <EstimatedTime>2025-04-04T14:06:00Z</EstimatedTime>
+                                        <TimetabledTime>2025-04-09T12:05:00Z</TimetabledTime>
                                     </ServiceDeparture>
                                     <StopCallStatus>
                                         <Order>3</Order>
@@ -121,16 +108,11 @@
                                     <PlannedQuay>
                                         <Text>7</Text>
                                     </PlannedQuay>
-                                    <EstimatedQuay>
-                                        <Text>7</Text>
-                                    </EstimatedQuay>
                                     <ServiceArrival>
-                                        <TimetabledTime>2025-04-04T14:31:00Z</TimetabledTime>
-                                        <EstimatedTime>2025-04-04T14:31:00Z</EstimatedTime>
+                                        <TimetabledTime>2025-04-09T12:31:00Z</TimetabledTime>
                                     </ServiceArrival>
                                     <ServiceDeparture>
-                                        <TimetabledTime>2025-04-04T14:33:00Z</TimetabledTime>
-                                        <EstimatedTime>2025-04-04T14:33:30Z</EstimatedTime>
+                                        <TimetabledTime>2025-04-09T12:33:00Z</TimetabledTime>
                                     </ServiceDeparture>
                                     <StopCallStatus>
                                         <Order>4</Order>
@@ -142,7 +124,7 @@
                                     </StopCallStatus>
                                 </LegIntermediate>
                                 <LegAlight>
-                                    <siri:StopPointRef>ch:1:sloid:1609:3:6</siri:StopPointRef>
+                                    <siri:StopPointRef>ch:1:sloid:1609:0:31</siri:StopPointRef>
                                     <StopPointName>
                                         <Text>Brig</Text>
                                     </StopPointName>
@@ -150,14 +132,10 @@
                                         <Text>PLATFORM_NOT_WHEELCHAIR_ACCESSIBLE</Text>
                                     </NameSuffix>
                                     <PlannedQuay>
-                                        <Text>6</Text>
+                                        <Text>4</Text>
                                     </PlannedQuay>
-                                    <EstimatedQuay>
-                                        <Text>6</Text>
-                                    </EstimatedQuay>
                                     <ServiceArrival>
-                                        <TimetabledTime>2025-04-04T14:40:00Z</TimetabledTime>
-                                        <EstimatedTime>2025-04-04T14:40:42Z</EstimatedTime>
+                                        <TimetabledTime>2025-04-09T12:41:00Z</TimetabledTime>
                                     </ServiceArrival>
                                     <StopCallStatus>
                                         <Order>6</Order>
@@ -169,19 +147,19 @@
                                     </StopCallStatus>
                                 </LegAlight>
                                 <Service>
-                                    <OperatingDayRef>2025-04-04</OperatingDayRef>
-                                    <JourneyRef>ch:1:sjyid:100001:625-001</JourneyRef>
-                                    <PublicCode>InterCity</PublicCode>
-                                    <siri:LineRef>ojp:91006:H</siri:LineRef>
-                                    <siri:DirectionRef>R</siri:DirectionRef>
+                                    <OperatingDayRef>2025-04-09</OperatingDayRef>
+                                    <JourneyRef>ch:1:sjyid:100001:65-001</JourneyRef>
+                                    <PublicCode>EuroCity</PublicCode>
+                                    <siri:LineRef>ojp:9102W:Y</siri:LineRef>
+                                    <siri:DirectionRef>H</siri:DirectionRef>
                                     <Mode>
                                         <PtMode>rail</PtMode>
-                                        <siri:RailSubmode>interregionalRail</siri:RailSubmode>
+                                        <siri:RailSubmode>international</siri:RailSubmode>
                                         <Name>
                                             <Text>Train</Text>
                                         </Name>
                                         <ShortName>
-                                            <Text>IC</Text>
+                                            <Text>EC</Text>
                                         </ShortName>
                                     </Mode>
                                     <ProductCategory>
@@ -189,43 +167,25 @@
                                             <Text>Train</Text>
                                         </Name>
                                         <ShortName>
-                                            <Text>IC</Text>
+                                            <Text>EC</Text>
                                         </ShortName>
-                                        <ProductCategoryRef>23</ProductCategoryRef>
+                                        <ProductCategoryRef>21</ProductCategoryRef>
                                     </ProductCategory>
                                     <PublishedServiceName>
-                                        <Text>IC6</Text>
+                                        <Text>EC</Text>
                                     </PublishedServiceName>
-                                    <TrainNumber>625</TrainNumber>
-                                    <Attribute>
-                                        <UserText>
-                                            <Text>Free Internet with the SBB FreeSurf app</Text>
-                                        </UserText>
-                                        <Code>A__FS</Code>
-                                    </Attribute>
-                                    <Attribute>
-                                        <UserText>
-                                            <Text>Access with step</Text>
-                                        </UserText>
-                                        <Code>A__PH</Code>
-                                    </Attribute>
-                                    <Attribute>
-                                        <UserText>
-                                            <Text>Quiet zone in 1st class</Text>
-                                        </UserText>
-                                        <Code>A__RZ</Code>
-                                    </Attribute>
-                                    <Attribute>
-                                        <UserText>
-                                            <Text>Family zone without play area</Text>
-                                        </UserText>
-                                        <Code>A__FZ</Code>
-                                    </Attribute>
+                                    <TrainNumber>65</TrainNumber>
                                     <Attribute>
                                         <UserText>
                                             <Text>Place reservation possible</Text>
                                         </UserText>
                                         <Code>A___R</Code>
+                                    </Attribute>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text>BICYCLES: Limited number of places</Text>
+                                        </UserText>
+                                        <Code>A__VB</Code>
                                     </Attribute>
                                     <Attribute>
                                         <UserText>
@@ -235,33 +195,56 @@
                                     </Attribute>
                                     <Attribute>
                                         <UserText>
-                                            <Text>Aussteigeseite: Rechts</Text>
+                                            <Text>Family zone without play area</Text>
                                         </UserText>
-                                        <Code>ojp91006HR_InfoCall908_111055_1</Code>
+                                        <Code>A__FZ</Code>
+                                    </Attribute>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text>Tilting train</Text>
+                                        </UserText>
+                                        <Code>A__TT</Code>
+                                    </Attribute>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text>Restaurant</Text>
+                                        </UserText>
+                                        <Code>A__WR</Code>
+                                    </Attribute>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text>Access with step</Text>
+                                        </UserText>
+                                        <Code>A__PH</Code>
                                     </Attribute>
                                     <Attribute>
                                         <UserText>
                                             <Text>Aussteigeseite: Links</Text>
                                         </UserText>
-                                        <Code>ojp91006HR_InfoCall908_107458_1</Code>
+                                        <Code>ojp9102WYH_InfoCall26_111055_1</Code>
+                                    </Attribute>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text>Aussteigeseite: Rechts</Text>
+                                        </UserText>
+                                        <Code>ojp9102WYH_InfoCall26_107458_1</Code>
                                     </Attribute>
                                     <siri:OperatorRef>11</siri:OperatorRef>
                                     <OriginText>
                                         <Text>n/a</Text>
                                     </OriginText>
                                     <DestinationText>
-                                        <Text>Domodossola (I)</Text>
+                                        <Text>Milano Centrale</Text>
                                     </DestinationText>
-                                    <DestinationStopPointRef>8501609</DestinationStopPointRef>
+                                    <DestinationStopPointRef>8301003</DestinationStopPointRef>
                                     <ServiceStatus>
                                         <Unplanned>false</Unplanned>
                                         <Cancelled>false</Cancelled>
-                                        <Deviation>false</Deviation>
+                                        <Deviation>true</Deviation>
                                         <UndefinedDelay>false</UndefinedDelay>
                                     </ServiceStatus>
                                 </Service>
                             </TimedLeg>
-
                         </Leg>
                         <Leg>
                             <Id>2</Id>
@@ -282,11 +265,10 @@
                                     </Name>
                                 </LegEnd>
                             </TransferLeg>
-
                         </Leg>
                         <Leg>
                             <Id>3</Id>
-                            <Duration>PT2H13M</Duration>
+                            <Duration>PT2H12M</Duration>
                             <TimedLeg>
                                 <LegBoard>
                                     <siri:StopPointRef>ch:1:sloid:1609:2:3</siri:StopPointRef>
@@ -299,8 +281,12 @@
                                     <PlannedQuay>
                                         <Text>3</Text>
                                     </PlannedQuay>
+                                    <EstimatedQuay>
+                                        <Text>3</Text>
+                                    </EstimatedQuay>
                                     <ServiceDeparture>
-                                        <TimetabledTime>2025-04-04T14:45:00Z</TimetabledTime>
+                                        <TimetabledTime>2025-04-09T12:45:00Z</TimetabledTime>
+                                        <EstimatedTime>2025-04-09T12:45:30Z</EstimatedTime>
                                     </ServiceDeparture>
                                     <StopCallStatus>
                                         <Order>1</Order>
@@ -322,11 +308,16 @@
                                     <PlannedQuay>
                                         <Text>4</Text>
                                     </PlannedQuay>
+                                    <EstimatedQuay>
+                                        <Text>4</Text>
+                                    </EstimatedQuay>
                                     <ServiceArrival>
-                                        <TimetabledTime>2025-04-04T14:52:00Z</TimetabledTime>
+                                        <TimetabledTime>2025-04-09T12:52:00Z</TimetabledTime>
+                                        <EstimatedTime>2025-04-09T12:52:00Z</EstimatedTime>
                                     </ServiceArrival>
                                     <ServiceDeparture>
-                                        <TimetabledTime>2025-04-04T14:54:00Z</TimetabledTime>
+                                        <TimetabledTime>2025-04-09T12:54:00Z</TimetabledTime>
+                                        <EstimatedTime>2025-04-09T12:54:30Z</EstimatedTime>
                                     </ServiceDeparture>
                                     <StopCallStatus>
                                         <Order>2</Order>
@@ -348,11 +339,16 @@
                                     <PlannedQuay>
                                         <Text>5</Text>
                                     </PlannedQuay>
+                                    <EstimatedQuay>
+                                        <Text>5</Text>
+                                    </EstimatedQuay>
                                     <ServiceArrival>
-                                        <TimetabledTime>2025-04-04T15:21:00Z</TimetabledTime>
+                                        <TimetabledTime>2025-04-09T13:21:00Z</TimetabledTime>
+                                        <EstimatedTime>2025-04-09T13:20:06Z</EstimatedTime>
                                     </ServiceArrival>
                                     <ServiceDeparture>
-                                        <TimetabledTime>2025-04-04T15:22:00Z</TimetabledTime>
+                                        <TimetabledTime>2025-04-09T13:22:00Z</TimetabledTime>
+                                        <EstimatedTime>2025-04-09T13:22:48Z</EstimatedTime>
                                     </ServiceDeparture>
                                     <StopCallStatus>
                                         <Order>3</Order>
@@ -364,21 +360,26 @@
                                     </StopCallStatus>
                                 </LegIntermediate>
                                 <LegIntermediate>
-                                    <siri:StopPointRef>ch:1:sloid:7100:2:2</siri:StopPointRef>
+                                    <siri:StopPointRef>ch:1:sloid:7100:2:3</siri:StopPointRef>
                                     <StopPointName>
                                         <Text>Thun</Text>
                                     </StopPointName>
                                     <NameSuffix>
-                                        <Text>PLATFORM_ACCESS_WITH_ASSISTANCE_WHEN_NOTIFIED</Text>
+                                        <Text>PLATFORM_ACCESS_WITHOUT_ASSISTANCE</Text>
                                     </NameSuffix>
                                     <PlannedQuay>
-                                        <Text>2</Text>
+                                        <Text>3</Text>
                                     </PlannedQuay>
+                                    <EstimatedQuay>
+                                        <Text>3</Text>
+                                    </EstimatedQuay>
                                     <ServiceArrival>
-                                        <TimetabledTime>2025-04-04T15:31:00Z</TimetabledTime>
+                                        <TimetabledTime>2025-04-09T13:31:00Z</TimetabledTime>
+                                        <EstimatedTime>2025-04-09T13:31:30Z</EstimatedTime>
                                     </ServiceArrival>
                                     <ServiceDeparture>
-                                        <TimetabledTime>2025-04-04T15:33:00Z</TimetabledTime>
+                                        <TimetabledTime>2025-04-09T13:33:00Z</TimetabledTime>
+                                        <EstimatedTime>2025-04-09T13:34:00Z</EstimatedTime>
                                     </ServiceDeparture>
                                     <StopCallStatus>
                                         <Order>4</Order>
@@ -400,11 +401,16 @@
                                     <PlannedQuay>
                                         <Text>2</Text>
                                     </PlannedQuay>
+                                    <EstimatedQuay>
+                                        <Text>2</Text>
+                                    </EstimatedQuay>
                                     <ServiceArrival>
-                                        <TimetabledTime>2025-04-04T15:53:00Z</TimetabledTime>
+                                        <TimetabledTime>2025-04-09T13:53:00Z</TimetabledTime>
+                                        <EstimatedTime>2025-04-09T13:53:12Z</EstimatedTime>
                                     </ServiceArrival>
                                     <ServiceDeparture>
-                                        <TimetabledTime>2025-04-04T16:02:00Z</TimetabledTime>
+                                        <TimetabledTime>2025-04-09T14:02:00Z</TimetabledTime>
+                                        <EstimatedTime>2025-04-09T14:02:30Z</EstimatedTime>
                                     </ServiceDeparture>
                                     <StopCallStatus>
                                         <Order>5</Order>
@@ -426,8 +432,12 @@
                                     <PlannedQuay>
                                         <Text>34</Text>
                                     </PlannedQuay>
+                                    <EstimatedQuay>
+                                        <Text>34</Text>
+                                    </EstimatedQuay>
                                     <ServiceArrival>
-                                        <TimetabledTime>2025-04-04T16:58:00Z</TimetabledTime>
+                                        <TimetabledTime>2025-04-09T14:58:00Z</TimetabledTime>
+                                        <EstimatedTime>2025-04-09T14:57:30Z</EstimatedTime>
                                     </ServiceArrival>
                                     <StopCallStatus>
                                         <Order>8</Order>
@@ -439,8 +449,8 @@
                                     </StopCallStatus>
                                 </LegAlight>
                                 <Service>
-                                    <OperatingDayRef>2025-04-04</OperatingDayRef>
-                                    <JourneyRef>ch:1:sjyid:100001:829-001</JourneyRef>
+                                    <OperatingDayRef>2025-04-09</OperatingDayRef>
+                                    <JourneyRef>ch:1:sjyid:100001:825-001</JourneyRef>
                                     <PublicCode>InterCity</PublicCode>
                                     <siri:LineRef>ojp:91008:E</siri:LineRef>
                                     <siri:DirectionRef>H</siri:DirectionRef>
@@ -466,7 +476,7 @@
                                     <PublishedServiceName>
                                         <Text>IC8</Text>
                                     </PublishedServiceName>
-                                    <TrainNumber>829</TrainNumber>
+                                    <TrainNumber>825</TrainNumber>
                                     <Attribute>
                                         <UserText>
                                             <Text>Place reservation possible</Text>
@@ -475,15 +485,9 @@
                                     </Attribute>
                                     <Attribute>
                                         <UserText>
-                                            <Text>BICYCLES: Reservation required</Text>
+                                            <Text>Quiet zone in 1st class</Text>
                                         </UserText>
-                                        <Code>A__VR</Code>
-                                    </Attribute>
-                                    <Attribute>
-                                        <UserText>
-                                            <Text>Free Internet with the SBB FreeSurf app</Text>
-                                        </UserText>
-                                        <Code>A__FS</Code>
+                                        <Code>A__RZ</Code>
                                     </Attribute>
                                     <Attribute>
                                         <UserText>
@@ -493,9 +497,9 @@
                                     </Attribute>
                                     <Attribute>
                                         <UserText>
-                                            <Text>Quiet zone in 1st class</Text>
+                                            <Text>Free Internet with the SBB FreeSurf app</Text>
                                         </UserText>
-                                        <Code>A__RZ</Code>
+                                        <Code>A__FS</Code>
                                     </Attribute>
                                     <Attribute>
                                         <UserText>
@@ -519,7 +523,7 @@
                                         <UserText>
                                             <Text>Aussteigeseite: Rechts</Text>
                                         </UserText>
-                                        <Code>ojp91008EH_InfoCall230_108276_1</Code>
+                                        <Code>ojp91008EH_InfoCall285_108276_1</Code>
                                     </Attribute>
                                     <siri:OperatorRef>11</siri:OperatorRef>
                                     <OriginText>
@@ -537,7 +541,6 @@
                                     </ServiceStatus>
                                 </Service>
                             </TimedLeg>
-
                         </Leg>
                         <Leg>
                             <Id>4</Id>
@@ -558,14 +561,13 @@
                                     </Name>
                                 </LegEnd>
                             </TransferLeg>
-
                         </Leg>
                         <Leg>
                             <Id>5</Id>
-                            <Duration>PT1H14M</Duration>
+                            <Duration>PT1H4M</Duration>
                             <TimedLeg>
                                 <LegBoard>
-                                    <siri:StopPointRef>ch:1:sloid:3000:3:5</siri:StopPointRef>
+                                    <siri:StopPointRef>ch:1:sloid:3000:5:9</siri:StopPointRef>
                                     <StopPointName>
                                         <Text>Zürich HB</Text>
                                     </StopPointName>
@@ -573,10 +575,10 @@
                                         <Text>PLATFORM_NOT_WHEELCHAIR_ACCESSIBLE</Text>
                                     </NameSuffix>
                                     <PlannedQuay>
-                                        <Text>5</Text>
+                                        <Text>9</Text>
                                     </PlannedQuay>
                                     <ServiceDeparture>
-                                        <TimetabledTime>2025-04-04T17:38:00Z</TimetabledTime>
+                                        <TimetabledTime>2025-04-09T15:07:00Z</TimetabledTime>
                                     </ServiceDeparture>
                                     <StopCallStatus>
                                         <Order>1</Order>
@@ -588,7 +590,7 @@
                                     </StopCallStatus>
                                 </LegBoard>
                                 <LegIntermediate>
-                                    <siri:StopPointRef>ch:1:sloid:9411:3:5</siri:StopPointRef>
+                                    <siri:StopPointRef>ch:1:sloid:9411:2:3</siri:StopPointRef>
                                     <StopPointName>
                                         <Text>Sargans</Text>
                                     </StopPointName>
@@ -596,13 +598,13 @@
                                         <Text>PLATFORM_NOT_WHEELCHAIR_ACCESSIBLE</Text>
                                     </NameSuffix>
                                     <PlannedQuay>
-                                        <Text>5</Text>
+                                        <Text>3</Text>
                                     </PlannedQuay>
                                     <ServiceArrival>
-                                        <TimetabledTime>2025-04-04T18:32:00Z</TimetabledTime>
+                                        <TimetabledTime>2025-04-09T16:02:00Z</TimetabledTime>
                                     </ServiceArrival>
                                     <ServiceDeparture>
-                                        <TimetabledTime>2025-04-04T18:33:00Z</TimetabledTime>
+                                        <TimetabledTime>2025-04-09T16:03:00Z</TimetabledTime>
                                     </ServiceDeparture>
                                     <StopCallStatus>
                                         <Order>2</Order>
@@ -613,7 +615,7 @@
                                         <NoAlightingAtStop>false</NoAlightingAtStop>
                                     </StopCallStatus>
                                 </LegIntermediate>
-                                <LegIntermediate>
+                                <LegAlight>
                                     <siri:StopPointRef>ch:1:sloid:9002:0:793932</siri:StopPointRef>
                                     <StopPointName>
                                         <Text>Landquart</Text>
@@ -625,36 +627,10 @@
                                         <Text>2</Text>
                                     </PlannedQuay>
                                     <ServiceArrival>
-                                        <TimetabledTime>2025-04-04T18:41:00Z</TimetabledTime>
-                                    </ServiceArrival>
-                                    <ServiceDeparture>
-                                        <TimetabledTime>2025-04-04T18:42:00Z</TimetabledTime>
-                                    </ServiceDeparture>
-                                    <StopCallStatus>
-                                        <Order>3</Order>
-                                        <RequestStop>false</RequestStop>
-                                        <UnplannedStop>false</UnplannedStop>
-                                        <NotServicedStop>false</NotServicedStop>
-                                        <NoBoardingAtStop>false</NoBoardingAtStop>
-                                        <NoAlightingAtStop>false</NoAlightingAtStop>
-                                    </StopCallStatus>
-                                </LegIntermediate>
-                                <LegAlight>
-                                    <siri:StopPointRef>ch:1:sloid:9000:5:9</siri:StopPointRef>
-                                    <StopPointName>
-                                        <Text>Chur</Text>
-                                    </StopPointName>
-                                    <NameSuffix>
-                                        <Text>PLATFORM_NOT_WHEELCHAIR_ACCESSIBLE</Text>
-                                    </NameSuffix>
-                                    <PlannedQuay>
-                                        <Text>9</Text>
-                                    </PlannedQuay>
-                                    <ServiceArrival>
-                                        <TimetabledTime>2025-04-04T18:52:00Z</TimetabledTime>
+                                        <TimetabledTime>2025-04-09T16:11:00Z</TimetabledTime>
                                     </ServiceArrival>
                                     <StopCallStatus>
-                                        <Order>5</Order>
+                                        <Order>4</Order>
                                         <RequestStop>false</RequestStop>
                                         <UnplannedStop>false</UnplannedStop>
                                         <NotServicedStop>false</NotServicedStop>
@@ -663,8 +639,8 @@
                                     </StopCallStatus>
                                 </LegAlight>
                                 <Service>
-                                    <OperatingDayRef>2025-04-04</OperatingDayRef>
-                                    <JourneyRef>ch:1:sjyid:100001:583-001</JourneyRef>
+                                    <OperatingDayRef>2025-04-09</OperatingDayRef>
+                                    <JourneyRef>ch:1:sjyid:100001:931-001</JourneyRef>
                                     <PublicCode>InterCity</PublicCode>
                                     <siri:LineRef>ojp:91003:C</siri:LineRef>
                                     <siri:DirectionRef>R</siri:DirectionRef>
@@ -690,7 +666,13 @@
                                     <PublishedServiceName>
                                         <Text>IC3</Text>
                                     </PublishedServiceName>
-                                    <TrainNumber>583</TrainNumber>
+                                    <TrainNumber>931</TrainNumber>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text>Family zone without play area</Text>
+                                        </UserText>
+                                        <Code>A__FZ</Code>
+                                    </Attribute>
                                     <Attribute>
                                         <UserText>
                                             <Text>Free Internet with the SBB FreeSurf app</Text>
@@ -705,33 +687,9 @@
                                     </Attribute>
                                     <Attribute>
                                         <UserText>
-                                            <Text>Restaurant</Text>
-                                        </UserText>
-                                        <Code>A__WR</Code>
-                                    </Attribute>
-                                    <Attribute>
-                                        <UserText>
-                                            <Text>Place reservation possible</Text>
-                                        </UserText>
-                                        <Code>A___R</Code>
-                                    </Attribute>
-                                    <Attribute>
-                                        <UserText>
-                                            <Text>Quiet zone in 1st class</Text>
-                                        </UserText>
-                                        <Code>A__RZ</Code>
-                                    </Attribute>
-                                    <Attribute>
-                                        <UserText>
-                                            <Text>BICYCLES: Reservation required</Text>
-                                        </UserText>
-                                        <Code>A__VR</Code>
-                                    </Attribute>
-                                    <Attribute>
-                                        <UserText>
                                             <Text>Aussteigeseite: Rechts</Text>
                                         </UserText>
-                                        <Code>ojp91003CR_InfoCall1344_108276_1</Code>
+                                        <Code>ojp91003CR_InfoCall1439_112214_1</Code>
                                     </Attribute>
                                     <siri:OperatorRef>11</siri:OperatorRef>
                                     <OriginText>
@@ -749,46 +707,44 @@
                                     </ServiceStatus>
                                 </Service>
                             </TimedLeg>
-
                         </Leg>
                         <Leg>
                             <Id>6</Id>
-                            <Duration>PT3M</Duration>
+                            <Duration>PT4M</Duration>
                             <TransferLeg>
                                 <TransferType>walk</TransferType>
-                                <Duration>PT3M</Duration>
+                                <Duration>PT4M</Duration>
                                 <LegStart>
-                                    <siri:StopPointRef>8509000</siri:StopPointRef>
+                                    <siri:StopPointRef>8509002</siri:StopPointRef>
                                     <Name>
-                                        <Text>Chur</Text>
+                                        <Text>Landquart</Text>
                                     </Name>
                                 </LegStart>
                                 <LegEnd>
-                                    <siri:StopPointRef>8509000</siri:StopPointRef>
+                                    <siri:StopPointRef>8509002</siri:StopPointRef>
                                     <Name>
-                                        <Text>Chur</Text>
+                                        <Text>Landquart</Text>
                                     </Name>
                                 </LegEnd>
                             </TransferLeg>
-
                         </Leg>
                         <Leg>
                             <Id>7</Id>
-                            <Duration>PT2H3M</Duration>
+                            <Duration>PT38M</Duration>
                             <TimedLeg>
                                 <LegBoard>
-                                    <siri:StopPointRef>8509000</siri:StopPointRef>
+                                    <siri:StopPointRef>8509002</siri:StopPointRef>
                                     <StopPointName>
-                                        <Text>Chur</Text>
+                                        <Text>Landquart</Text>
                                     </StopPointName>
                                     <NameSuffix>
-                                        <Text>PLATFORM_NOT_WHEELCHAIR_ACCESSIBLE</Text>
+                                        <Text>PLATFORM_ACCESS_WITHOUT_ASSISTANCE</Text>
                                     </NameSuffix>
                                     <PlannedQuay>
-                                        <Text>10</Text>
+                                        <Text>6</Text>
                                     </PlannedQuay>
                                     <ServiceDeparture>
-                                        <TimetabledTime>2025-04-04T18:55:00Z</TimetabledTime>
+                                        <TimetabledTime>2025-04-09T16:20:00Z</TimetabledTime>
                                     </ServiceDeparture>
                                     <StopCallStatus>
                                         <Order>1</Order>
@@ -800,21 +756,21 @@
                                     </StopCallStatus>
                                 </LegBoard>
                                 <LegIntermediate>
-                                    <siri:StopPointRef>8509050</siri:StopPointRef>
+                                    <siri:StopPointRef>8509060</siri:StopPointRef>
                                     <StopPointName>
-                                        <Text>Chur West</Text>
+                                        <Text>Schiers</Text>
                                     </StopPointName>
                                     <NameSuffix>
-                                        <Text>PLATFORM_NOT_WHEELCHAIR_ACCESSIBLE</Text>
+                                        <Text>PLATFORM_ACCESS_WITHOUT_ASSISTANCE</Text>
                                     </NameSuffix>
                                     <PlannedQuay>
-                                        <Text>1</Text>
+                                        <Text>2</Text>
                                     </PlannedQuay>
                                     <ServiceArrival>
-                                        <TimetabledTime>2025-04-04T18:57:00Z</TimetabledTime>
+                                        <TimetabledTime>2025-04-09T16:30:00Z</TimetabledTime>
                                     </ServiceArrival>
                                     <ServiceDeparture>
-                                        <TimetabledTime>2025-04-04T18:57:00Z</TimetabledTime>
+                                        <TimetabledTime>2025-04-09T16:31:00Z</TimetabledTime>
                                     </ServiceDeparture>
                                     <StopCallStatus>
                                         <Order>2</Order>
@@ -826,21 +782,236 @@
                                     </StopCallStatus>
                                 </LegIntermediate>
                                 <LegIntermediate>
-                                    <siri:StopPointRef>8509180</siri:StopPointRef>
+                                    <siri:StopPointRef>8509064</siri:StopPointRef>
                                     <StopPointName>
-                                        <Text>Felsberg</Text>
+                                        <Text>Küblis</Text>
                                     </StopPointName>
                                     <NameSuffix>
-                                        <Text>PLATFORM_NOT_WHEELCHAIR_ACCESSIBLE</Text>
+                                        <Text>PLATFORM_ACCESS_WITHOUT_ASSISTANCE</Text>
+                                    </NameSuffix>
+                                    <PlannedQuay>
+                                        <Text>1</Text>
+                                    </PlannedQuay>
+                                    <ServiceArrival>
+                                        <TimetabledTime>2025-04-09T16:40:00Z</TimetabledTime>
+                                    </ServiceArrival>
+                                    <ServiceDeparture>
+                                        <TimetabledTime>2025-04-09T16:41:00Z</TimetabledTime>
+                                    </ServiceDeparture>
+                                    <StopCallStatus>
+                                        <Order>3</Order>
+                                        <RequestStop>false</RequestStop>
+                                        <UnplannedStop>false</UnplannedStop>
+                                        <NotServicedStop>false</NotServicedStop>
+                                        <NoBoardingAtStop>false</NoBoardingAtStop>
+                                        <NoAlightingAtStop>false</NoAlightingAtStop>
+                                    </StopCallStatus>
+                                </LegIntermediate>
+                                <LegIntermediate>
+                                    <siri:StopPointRef>8509065</siri:StopPointRef>
+                                    <StopPointName>
+                                        <Text>Saas im Prättigau</Text>
+                                    </StopPointName>
+                                    <NameSuffix>
+                                        <Text>PLATFORM_ACCESS_WITHOUT_ASSISTANCE</Text>
+                                    </NameSuffix>
+                                    <PlannedQuay>
+                                        <Text>1</Text>
+                                    </PlannedQuay>
+                                    <ServiceArrival>
+                                        <TimetabledTime>2025-04-09T16:47:00Z</TimetabledTime>
+                                    </ServiceArrival>
+                                    <ServiceDeparture>
+                                        <TimetabledTime>2025-04-09T16:47:00Z</TimetabledTime>
+                                    </ServiceDeparture>
+                                    <StopCallStatus>
+                                        <Order>4</Order>
+                                        <RequestStop>true</RequestStop>
+                                        <UnplannedStop>false</UnplannedStop>
+                                        <NotServicedStop>false</NotServicedStop>
+                                        <NoBoardingAtStop>false</NoBoardingAtStop>
+                                        <NoAlightingAtStop>false</NoAlightingAtStop>
+                                    </StopCallStatus>
+                                </LegIntermediate>
+                                <LegAlight>
+                                    <siri:StopPointRef>8509068</siri:StopPointRef>
+                                    <StopPointName>
+                                        <Text>Klosters Platz</Text>
+                                    </StopPointName>
+                                    <NameSuffix>
+                                        <Text>PLATFORM_ACCESS_WITHOUT_ASSISTANCE</Text>
                                     </NameSuffix>
                                     <PlannedQuay>
                                         <Text>3</Text>
                                     </PlannedQuay>
                                     <ServiceArrival>
-                                        <TimetabledTime>2025-04-04T19:00:00Z</TimetabledTime>
+                                        <TimetabledTime>2025-04-09T16:58:00Z</TimetabledTime>
+                                    </ServiceArrival>
+                                    <StopCallStatus>
+                                        <Order>5</Order>
+                                        <RequestStop>false</RequestStop>
+                                        <UnplannedStop>false</UnplannedStop>
+                                        <NotServicedStop>false</NotServicedStop>
+                                        <NoBoardingAtStop>false</NoBoardingAtStop>
+                                        <NoAlightingAtStop>false</NoAlightingAtStop>
+                                    </StopCallStatus>
+                                </LegAlight>
+                                <Service>
+                                    <OperatingDayRef>2025-04-09</OperatingDayRef>
+                                    <JourneyRef>ojp-91-13-C-j25-1-112-TA</JourneyRef>
+                                    <PublicCode>RegioExpress</PublicCode>
+                                    <siri:LineRef>ojp:91013:C</siri:LineRef>
+                                    <siri:DirectionRef>R</siri:DirectionRef>
+                                    <Mode>
+                                        <PtMode>rail</PtMode>
+                                        <siri:RailSubmode>regionalRail</siri:RailSubmode>
+                                        <Name>
+                                            <Text>Train</Text>
+                                        </Name>
+                                        <ShortName>
+                                            <Text>RE</Text>
+                                        </ShortName>
+                                    </Mode>
+                                    <ProductCategory>
+                                        <Name>
+                                            <Text>Train</Text>
+                                        </Name>
+                                        <ShortName>
+                                            <Text>RE</Text>
+                                        </ShortName>
+                                        <ProductCategoryRef>24</ProductCategoryRef>
+                                    </ProductCategory>
+                                    <PublishedServiceName>
+                                        <Text>RE13</Text>
+                                    </PublishedServiceName>
+                                    <TrainNumber>1063</TrainNumber>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text>GROUPS: reservation compulsory</Text>
+                                        </UserText>
+                                        <Code>A__GR</Code>
+                                    </Attribute>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text>Low-floor access</Text>
+                                        </UserText>
+                                        <Code>A__NF</Code>
+                                    </Attribute>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text>Train with multiple destinations: Pls. observe indications on coaches</Text>
+                                        </UserText>
+                                        <Code>A__FL</Code>
+                                    </Attribute>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text>Aussteigeseite: Links</Text>
+                                        </UserText>
+                                        <Code>ojp91013CR_InfoCall71_112237_1</Code>
+                                    </Attribute>
+                                    <siri:OperatorRef>72</siri:OperatorRef>
+                                    <OriginText>
+                                        <Text>n/a</Text>
+                                    </OriginText>
+                                    <DestinationText>
+                                        <Text>Davos Platz/St. Moritz</Text>
+                                    </DestinationText>
+                                    <DestinationStopPointRef>8509068</DestinationStopPointRef>
+                                    <ServiceStatus>
+                                        <Unplanned>false</Unplanned>
+                                        <Cancelled>false</Cancelled>
+                                        <Deviation>false</Deviation>
+                                        <UndefinedDelay>false</UndefinedDelay>
+                                    </ServiceStatus>
+                                </Service>
+                            </TimedLeg>
+                        </Leg>
+                        <Leg>
+                            <Id>8</Id>
+                            <Duration>PT4M</Duration>
+                            <TransferLeg>
+                                <TransferType>changeWithinVehicle</TransferType>
+                                <Duration>PT4M</Duration>
+                                <LegStart>
+                                    <siri:StopPointRef>8509068</siri:StopPointRef>
+                                    <Name>
+                                        <Text>Klosters Platz</Text>
+                                    </Name>
+                                </LegStart>
+                                <LegEnd>
+                                    <siri:StopPointRef>8509068</siri:StopPointRef>
+                                    <Name>
+                                        <Text>Klosters Platz</Text>
+                                    </Name>
+                                </LegEnd>
+                            </TransferLeg>
+                        </Leg>
+                        <Leg>
+                            <Id>9</Id>
+                            <Duration>PT1H12M</Duration>
+                            <TimedLeg>
+                                <LegBoard>
+                                    <siri:StopPointRef>8509068</siri:StopPointRef>
+                                    <StopPointName>
+                                        <Text>Klosters Platz</Text>
+                                    </StopPointName>
+                                    <NameSuffix>
+                                        <Text>PLATFORM_ACCESS_WITHOUT_ASSISTANCE</Text>
+                                    </NameSuffix>
+                                    <PlannedQuay>
+                                        <Text>3C</Text>
+                                    </PlannedQuay>
+                                    <ServiceDeparture>
+                                        <TimetabledTime>2025-04-09T17:02:00Z</TimetabledTime>
+                                    </ServiceDeparture>
+                                    <StopCallStatus>
+                                        <Order>1</Order>
+                                        <RequestStop>false</RequestStop>
+                                        <UnplannedStop>false</UnplannedStop>
+                                        <NotServicedStop>false</NotServicedStop>
+                                        <NoBoardingAtStop>false</NoBoardingAtStop>
+                                        <NoAlightingAtStop>false</NoAlightingAtStop>
+                                    </StopCallStatus>
+                                </LegBoard>
+                                <LegIntermediate>
+                                    <siri:StopPointRef>8509262</siri:StopPointRef>
+                                    <StopPointName>
+                                        <Text>Zernez</Text>
+                                    </StopPointName>
+                                    <NameSuffix>
+                                        <Text>PLATFORM_ACCESS_WITHOUT_ASSISTANCE</Text>
+                                    </NameSuffix>
+                                    <PlannedQuay>
+                                        <Text>1</Text>
+                                    </PlannedQuay>
+                                    <ServiceArrival>
+                                        <TimetabledTime>2025-04-09T17:28:00Z</TimetabledTime>
                                     </ServiceArrival>
                                     <ServiceDeparture>
-                                        <TimetabledTime>2025-04-04T19:00:00Z</TimetabledTime>
+                                        <TimetabledTime>2025-04-09T17:30:00Z</TimetabledTime>
+                                    </ServiceDeparture>
+                                    <StopCallStatus>
+                                        <Order>2</Order>
+                                        <RequestStop>false</RequestStop>
+                                        <UnplannedStop>false</UnplannedStop>
+                                        <NotServicedStop>false</NotServicedStop>
+                                        <NoBoardingAtStop>false</NoBoardingAtStop>
+                                        <NoAlightingAtStop>false</NoAlightingAtStop>
+                                    </StopCallStatus>
+                                </LegIntermediate>
+                                <LegIntermediate>
+                                    <siri:StopPointRef>8509259</siri:StopPointRef>
+                                    <StopPointName>
+                                        <Text>S-chanf</Text>
+                                    </StopPointName>
+                                    <NameSuffix>
+                                        <Text>ALTERNATIVE_TRANSPORT</Text>
+                                    </NameSuffix>
+                                    <ServiceArrival>
+                                        <TimetabledTime>2025-04-09T17:44:00Z</TimetabledTime>
+                                    </ServiceArrival>
+                                    <ServiceDeparture>
+                                        <TimetabledTime>2025-04-09T17:44:00Z</TimetabledTime>
                                     </ServiceDeparture>
                                     <StopCallStatus>
                                         <Order>3</Order>
@@ -852,21 +1023,18 @@
                                     </StopCallStatus>
                                 </LegIntermediate>
                                 <LegIntermediate>
-                                    <siri:StopPointRef>8509181</siri:StopPointRef>
+                                    <siri:StopPointRef>8509258</siri:StopPointRef>
                                     <StopPointName>
-                                        <Text>Domat/Ems</Text>
+                                        <Text>Zuoz</Text>
                                     </StopPointName>
                                     <NameSuffix>
-                                        <Text>PLATFORM_NOT_WHEELCHAIR_ACCESSIBLE</Text>
+                                        <Text>ALTERNATIVE_TRANSPORT</Text>
                                     </NameSuffix>
-                                    <PlannedQuay>
-                                        <Text>2</Text>
-                                    </PlannedQuay>
                                     <ServiceArrival>
-                                        <TimetabledTime>2025-04-04T19:03:00Z</TimetabledTime>
+                                        <TimetabledTime>2025-04-09T17:48:00Z</TimetabledTime>
                                     </ServiceArrival>
                                     <ServiceDeparture>
-                                        <TimetabledTime>2025-04-04T19:03:00Z</TimetabledTime>
+                                        <TimetabledTime>2025-04-09T17:49:00Z</TimetabledTime>
                                     </ServiceDeparture>
                                     <StopCallStatus>
                                         <Order>4</Order>
@@ -878,21 +1046,18 @@
                                     </StopCallStatus>
                                 </LegIntermediate>
                                 <LegIntermediate>
-                                    <siri:StopPointRef>8509182</siri:StopPointRef>
+                                    <siri:StopPointRef>8509257</siri:StopPointRef>
                                     <StopPointName>
-                                        <Text>Domat/Ems Werk</Text>
+                                        <Text>Madulain</Text>
                                     </StopPointName>
                                     <NameSuffix>
-                                        <Text>PLATFORM_NOT_WHEELCHAIR_ACCESSIBLE</Text>
+                                        <Text>PLATFORM_ACCESS_WITHOUT_ASSISTANCE</Text>
                                     </NameSuffix>
-                                    <PlannedQuay>
-                                        <Text>1</Text>
-                                    </PlannedQuay>
                                     <ServiceArrival>
-                                        <TimetabledTime>2025-04-04T19:05:00Z</TimetabledTime>
+                                        <TimetabledTime>2025-04-09T17:51:00Z</TimetabledTime>
                                     </ServiceArrival>
                                     <ServiceDeparture>
-                                        <TimetabledTime>2025-04-04T19:05:00Z</TimetabledTime>
+                                        <TimetabledTime>2025-04-09T17:51:00Z</TimetabledTime>
                                     </ServiceDeparture>
                                     <StopCallStatus>
                                         <Order>5</Order>
@@ -904,341 +1069,21 @@
                                     </StopCallStatus>
                                 </LegIntermediate>
                                 <LegIntermediate>
-                                    <siri:StopPointRef>8509183</siri:StopPointRef>
+                                    <siri:StopPointRef>8509256</siri:StopPointRef>
                                     <StopPointName>
-                                        <Text>Reichenau-Tamins</Text>
+                                        <Text>La Punt Chamues-ch</Text>
                                     </StopPointName>
                                     <NameSuffix>
-                                        <Text>PLATFORM_NOT_WHEELCHAIR_ACCESSIBLE</Text>
+                                        <Text>ALTERNATIVE_TRANSPORT</Text>
                                     </NameSuffix>
-                                    <PlannedQuay>
-                                        <Text>4</Text>
-                                    </PlannedQuay>
                                     <ServiceArrival>
-                                        <TimetabledTime>2025-04-04T19:08:00Z</TimetabledTime>
+                                        <TimetabledTime>2025-04-09T17:54:00Z</TimetabledTime>
                                     </ServiceArrival>
                                     <ServiceDeparture>
-                                        <TimetabledTime>2025-04-04T19:08:00Z</TimetabledTime>
+                                        <TimetabledTime>2025-04-09T17:54:00Z</TimetabledTime>
                                     </ServiceDeparture>
                                     <StopCallStatus>
                                         <Order>6</Order>
-                                        <RequestStop>false</RequestStop>
-                                        <UnplannedStop>false</UnplannedStop>
-                                        <NotServicedStop>false</NotServicedStop>
-                                        <NoBoardingAtStop>false</NoBoardingAtStop>
-                                        <NoAlightingAtStop>false</NoAlightingAtStop>
-                                    </StopCallStatus>
-                                </LegIntermediate>
-                                <LegIntermediate>
-                                    <siri:StopPointRef>8509184</siri:StopPointRef>
-                                    <StopPointName>
-                                        <Text>Bonaduz</Text>
-                                    </StopPointName>
-                                    <NameSuffix>
-                                        <Text>PLATFORM_NOT_WHEELCHAIR_ACCESSIBLE</Text>
-                                    </NameSuffix>
-                                    <PlannedQuay>
-                                        <Text>1</Text>
-                                    </PlannedQuay>
-                                    <ServiceArrival>
-                                        <TimetabledTime>2025-04-04T19:13:00Z</TimetabledTime>
-                                    </ServiceArrival>
-                                    <ServiceDeparture>
-                                        <TimetabledTime>2025-04-04T19:13:00Z</TimetabledTime>
-                                    </ServiceDeparture>
-                                    <StopCallStatus>
-                                        <Order>7</Order>
-                                        <RequestStop>false</RequestStop>
-                                        <UnplannedStop>false</UnplannedStop>
-                                        <NotServicedStop>false</NotServicedStop>
-                                        <NoBoardingAtStop>false</NoBoardingAtStop>
-                                        <NoAlightingAtStop>false</NoAlightingAtStop>
-                                    </StopCallStatus>
-                                </LegIntermediate>
-                                <LegIntermediate>
-                                    <siri:StopPointRef>8509185</siri:StopPointRef>
-                                    <StopPointName>
-                                        <Text>Rhäzüns</Text>
-                                    </StopPointName>
-                                    <NameSuffix>
-                                        <Text>PLATFORM_NOT_WHEELCHAIR_ACCESSIBLE</Text>
-                                    </NameSuffix>
-                                    <PlannedQuay>
-                                        <Text>1</Text>
-                                    </PlannedQuay>
-                                    <ServiceArrival>
-                                        <TimetabledTime>2025-04-04T19:15:00Z</TimetabledTime>
-                                    </ServiceArrival>
-                                    <ServiceDeparture>
-                                        <TimetabledTime>2025-04-04T19:15:00Z</TimetabledTime>
-                                    </ServiceDeparture>
-                                    <StopCallStatus>
-                                        <Order>8</Order>
-                                        <RequestStop>false</RequestStop>
-                                        <UnplannedStop>false</UnplannedStop>
-                                        <NotServicedStop>false</NotServicedStop>
-                                        <NoBoardingAtStop>false</NoBoardingAtStop>
-                                        <NoAlightingAtStop>false</NoAlightingAtStop>
-                                    </StopCallStatus>
-                                </LegIntermediate>
-                                <LegIntermediate>
-                                    <siri:StopPointRef>8509186</siri:StopPointRef>
-                                    <StopPointName>
-                                        <Text>Rothenbrunnen</Text>
-                                    </StopPointName>
-                                    <NameSuffix>
-                                        <Text>ALTERNATIVE_TRANSPORT</Text>
-                                    </NameSuffix>
-                                    <ServiceArrival>
-                                        <TimetabledTime>2025-04-04T19:20:00Z</TimetabledTime>
-                                    </ServiceArrival>
-                                    <ServiceDeparture>
-                                        <TimetabledTime>2025-04-04T19:20:00Z</TimetabledTime>
-                                    </ServiceDeparture>
-                                    <StopCallStatus>
-                                        <Order>9</Order>
-                                        <RequestStop>true</RequestStop>
-                                        <UnplannedStop>false</UnplannedStop>
-                                        <NotServicedStop>false</NotServicedStop>
-                                        <NoBoardingAtStop>false</NoBoardingAtStop>
-                                        <NoAlightingAtStop>false</NoAlightingAtStop>
-                                    </StopCallStatus>
-                                </LegIntermediate>
-                                <LegIntermediate>
-                                    <siri:StopPointRef>8509187</siri:StopPointRef>
-                                    <StopPointName>
-                                        <Text>Rodels-Realta</Text>
-                                    </StopPointName>
-                                    <NameSuffix>
-                                        <Text>PLATFORM_NOT_WHEELCHAIR_ACCESSIBLE</Text>
-                                    </NameSuffix>
-                                    <ServiceArrival>
-                                        <TimetabledTime>2025-04-04T19:24:00Z</TimetabledTime>
-                                    </ServiceArrival>
-                                    <ServiceDeparture>
-                                        <TimetabledTime>2025-04-04T19:24:00Z</TimetabledTime>
-                                    </ServiceDeparture>
-                                    <StopCallStatus>
-                                        <Order>10</Order>
-                                        <RequestStop>true</RequestStop>
-                                        <UnplannedStop>false</UnplannedStop>
-                                        <NotServicedStop>false</NotServicedStop>
-                                        <NoBoardingAtStop>false</NoBoardingAtStop>
-                                        <NoAlightingAtStop>false</NoAlightingAtStop>
-                                    </StopCallStatus>
-                                </LegIntermediate>
-                                <LegIntermediate>
-                                    <siri:StopPointRef>8509188</siri:StopPointRef>
-                                    <StopPointName>
-                                        <Text>Cazis</Text>
-                                    </StopPointName>
-                                    <NameSuffix>
-                                        <Text>PLATFORM_NOT_WHEELCHAIR_ACCESSIBLE</Text>
-                                    </NameSuffix>
-                                    <ServiceArrival>
-                                        <TimetabledTime>2025-04-04T19:26:00Z</TimetabledTime>
-                                    </ServiceArrival>
-                                    <ServiceDeparture>
-                                        <TimetabledTime>2025-04-04T19:27:00Z</TimetabledTime>
-                                    </ServiceDeparture>
-                                    <StopCallStatus>
-                                        <Order>11</Order>
-                                        <RequestStop>false</RequestStop>
-                                        <UnplannedStop>false</UnplannedStop>
-                                        <NotServicedStop>false</NotServicedStop>
-                                        <NoBoardingAtStop>false</NoBoardingAtStop>
-                                        <NoAlightingAtStop>false</NoAlightingAtStop>
-                                    </StopCallStatus>
-                                </LegIntermediate>
-                                <LegIntermediate>
-                                    <siri:StopPointRef>8509189</siri:StopPointRef>
-                                    <StopPointName>
-                                        <Text>Thusis</Text>
-                                    </StopPointName>
-                                    <NameSuffix>
-                                        <Text>PLATFORM_NOT_WHEELCHAIR_ACCESSIBLE</Text>
-                                    </NameSuffix>
-                                    <PlannedQuay>
-                                        <Text>3</Text>
-                                    </PlannedQuay>
-                                    <ServiceArrival>
-                                        <TimetabledTime>2025-04-04T19:30:00Z</TimetabledTime>
-                                    </ServiceArrival>
-                                    <ServiceDeparture>
-                                        <TimetabledTime>2025-04-04T19:32:00Z</TimetabledTime>
-                                    </ServiceDeparture>
-                                    <StopCallStatus>
-                                        <Order>12</Order>
-                                        <RequestStop>false</RequestStop>
-                                        <UnplannedStop>false</UnplannedStop>
-                                        <NotServicedStop>false</NotServicedStop>
-                                        <NoBoardingAtStop>false</NoBoardingAtStop>
-                                        <NoAlightingAtStop>false</NoAlightingAtStop>
-                                    </StopCallStatus>
-                                </LegIntermediate>
-                                <LegIntermediate>
-                                    <siri:StopPointRef>8509192</siri:StopPointRef>
-                                    <StopPointName>
-                                        <Text>Tiefencastel</Text>
-                                    </StopPointName>
-                                    <NameSuffix>
-                                        <Text>PLATFORM_NOT_WHEELCHAIR_ACCESSIBLE</Text>
-                                    </NameSuffix>
-                                    <ServiceArrival>
-                                        <TimetabledTime>2025-04-04T19:47:00Z</TimetabledTime>
-                                    </ServiceArrival>
-                                    <ServiceDeparture>
-                                        <TimetabledTime>2025-04-04T19:47:00Z</TimetabledTime>
-                                    </ServiceDeparture>
-                                    <StopCallStatus>
-                                        <Order>13</Order>
-                                        <RequestStop>false</RequestStop>
-                                        <UnplannedStop>false</UnplannedStop>
-                                        <NotServicedStop>false</NotServicedStop>
-                                        <NoBoardingAtStop>false</NoBoardingAtStop>
-                                        <NoAlightingAtStop>false</NoAlightingAtStop>
-                                    </StopCallStatus>
-                                </LegIntermediate>
-                                <LegIntermediate>
-                                    <siri:StopPointRef>8509193</siri:StopPointRef>
-                                    <StopPointName>
-                                        <Text>Surava</Text>
-                                    </StopPointName>
-                                    <NameSuffix>
-                                        <Text>ALTERNATIVE_TRANSPORT</Text>
-                                    </NameSuffix>
-                                    <ServiceArrival>
-                                        <TimetabledTime>2025-04-04T19:54:00Z</TimetabledTime>
-                                    </ServiceArrival>
-                                    <ServiceDeparture>
-                                        <TimetabledTime>2025-04-04T19:54:00Z</TimetabledTime>
-                                    </ServiceDeparture>
-                                    <StopCallStatus>
-                                        <Order>14</Order>
-                                        <RequestStop>true</RequestStop>
-                                        <UnplannedStop>false</UnplannedStop>
-                                        <NotServicedStop>false</NotServicedStop>
-                                        <NoBoardingAtStop>false</NoBoardingAtStop>
-                                        <NoAlightingAtStop>false</NoAlightingAtStop>
-                                    </StopCallStatus>
-                                </LegIntermediate>
-                                <LegIntermediate>
-                                    <siri:StopPointRef>8509194</siri:StopPointRef>
-                                    <StopPointName>
-                                        <Text>Alvaneu</Text>
-                                    </StopPointName>
-                                    <NameSuffix>
-                                        <Text>ALTERNATIVE_TRANSPORT</Text>
-                                    </NameSuffix>
-                                    <ServiceArrival>
-                                        <TimetabledTime>2025-04-04T19:58:00Z</TimetabledTime>
-                                    </ServiceArrival>
-                                    <ServiceDeparture>
-                                        <TimetabledTime>2025-04-04T19:58:00Z</TimetabledTime>
-                                    </ServiceDeparture>
-                                    <StopCallStatus>
-                                        <Order>15</Order>
-                                        <RequestStop>true</RequestStop>
-                                        <UnplannedStop>false</UnplannedStop>
-                                        <NotServicedStop>false</NotServicedStop>
-                                        <NoBoardingAtStop>false</NoBoardingAtStop>
-                                        <NoAlightingAtStop>false</NoAlightingAtStop>
-                                    </StopCallStatus>
-                                </LegIntermediate>
-                                <LegIntermediate>
-                                    <siri:StopPointRef>8509195</siri:StopPointRef>
-                                    <StopPointName>
-                                        <Text>Filisur</Text>
-                                    </StopPointName>
-                                    <NameSuffix>
-                                        <Text>PLATFORM_NOT_WHEELCHAIR_ACCESSIBLE</Text>
-                                    </NameSuffix>
-                                    <PlannedQuay>
-                                        <Text>2</Text>
-                                    </PlannedQuay>
-                                    <ServiceArrival>
-                                        <TimetabledTime>2025-04-04T20:04:00Z</TimetabledTime>
-                                    </ServiceArrival>
-                                    <ServiceDeparture>
-                                        <TimetabledTime>2025-04-04T20:05:00Z</TimetabledTime>
-                                    </ServiceDeparture>
-                                    <StopCallStatus>
-                                        <Order>16</Order>
-                                        <RequestStop>false</RequestStop>
-                                        <UnplannedStop>false</UnplannedStop>
-                                        <NotServicedStop>false</NotServicedStop>
-                                        <NoBoardingAtStop>false</NoBoardingAtStop>
-                                        <NoAlightingAtStop>false</NoAlightingAtStop>
-                                    </StopCallStatus>
-                                </LegIntermediate>
-                                <LegIntermediate>
-                                    <siri:StopPointRef>8509197</siri:StopPointRef>
-                                    <StopPointName>
-                                        <Text>Bergün/Bravuogn</Text>
-                                    </StopPointName>
-                                    <NameSuffix>
-                                        <Text>PLATFORM_NOT_WHEELCHAIR_ACCESSIBLE</Text>
-                                    </NameSuffix>
-                                    <ServiceArrival>
-                                        <TimetabledTime>2025-04-04T20:17:00Z</TimetabledTime>
-                                    </ServiceArrival>
-                                    <ServiceDeparture>
-                                        <TimetabledTime>2025-04-04T20:17:00Z</TimetabledTime>
-                                    </ServiceDeparture>
-                                    <StopCallStatus>
-                                        <Order>17</Order>
-                                        <RequestStop>false</RequestStop>
-                                        <UnplannedStop>false</UnplannedStop>
-                                        <NotServicedStop>false</NotServicedStop>
-                                        <NoBoardingAtStop>false</NoBoardingAtStop>
-                                        <NoAlightingAtStop>false</NoAlightingAtStop>
-                                    </StopCallStatus>
-                                </LegIntermediate>
-                                <LegIntermediate>
-                                    <siri:StopPointRef>8509198</siri:StopPointRef>
-                                    <StopPointName>
-                                        <Text>Preda</Text>
-                                    </StopPointName>
-                                    <NameSuffix>
-                                        <Text>PLATFORM_NOT_WHEELCHAIR_ACCESSIBLE</Text>
-                                    </NameSuffix>
-                                    <PlannedQuay>
-                                        <Text>2</Text>
-                                    </PlannedQuay>
-                                    <ServiceArrival>
-                                        <TimetabledTime>2025-04-04T20:34:00Z</TimetabledTime>
-                                    </ServiceArrival>
-                                    <ServiceDeparture>
-                                        <TimetabledTime>2025-04-04T20:34:00Z</TimetabledTime>
-                                    </ServiceDeparture>
-                                    <StopCallStatus>
-                                        <Order>18</Order>
-                                        <RequestStop>false</RequestStop>
-                                        <UnplannedStop>false</UnplannedStop>
-                                        <NotServicedStop>false</NotServicedStop>
-                                        <NoBoardingAtStop>false</NoBoardingAtStop>
-                                        <NoAlightingAtStop>false</NoAlightingAtStop>
-                                    </StopCallStatus>
-                                </LegIntermediate>
-                                <LegIntermediate>
-                                    <siri:StopPointRef>8509199</siri:StopPointRef>
-                                    <StopPointName>
-                                        <Text>Spinas</Text>
-                                    </StopPointName>
-                                    <NameSuffix>
-                                        <Text>PLATFORM_NOT_WHEELCHAIR_ACCESSIBLE</Text>
-                                    </NameSuffix>
-                                    <PlannedQuay>
-                                        <Text>1</Text>
-                                    </PlannedQuay>
-                                    <ServiceArrival>
-                                        <TimetabledTime>2025-04-04T20:39:00Z</TimetabledTime>
-                                    </ServiceArrival>
-                                    <ServiceDeparture>
-                                        <TimetabledTime>2025-04-04T20:39:00Z</TimetabledTime>
-                                    </ServiceDeparture>
-                                    <StopCallStatus>
-                                        <Order>19</Order>
                                         <RequestStop>true</RequestStop>
                                         <UnplannedStop>false</UnplannedStop>
                                         <NotServicedStop>false</NotServicedStop>
@@ -1252,19 +1097,19 @@
                                         <Text>Bever</Text>
                                     </StopPointName>
                                     <NameSuffix>
-                                        <Text>PLATFORM_NOT_WHEELCHAIR_ACCESSIBLE</Text>
+                                        <Text>PLATFORM_ACCESS_WITHOUT_ASSISTANCE</Text>
                                     </NameSuffix>
                                     <PlannedQuay>
-                                        <Text>2</Text>
+                                        <Text>3</Text>
                                     </PlannedQuay>
                                     <ServiceArrival>
-                                        <TimetabledTime>2025-04-04T20:44:00Z</TimetabledTime>
+                                        <TimetabledTime>2025-04-09T17:59:00Z</TimetabledTime>
                                     </ServiceArrival>
                                     <ServiceDeparture>
-                                        <TimetabledTime>2025-04-04T20:45:00Z</TimetabledTime>
+                                        <TimetabledTime>2025-04-09T17:59:00Z</TimetabledTime>
                                     </ServiceDeparture>
                                     <StopCallStatus>
-                                        <Order>20</Order>
+                                        <Order>7</Order>
                                         <RequestStop>false</RequestStop>
                                         <UnplannedStop>false</UnplannedStop>
                                         <NotServicedStop>false</NotServicedStop>
@@ -1278,19 +1123,19 @@
                                         <Text>Samedan</Text>
                                     </StopPointName>
                                     <NameSuffix>
-                                        <Text>PLATFORM_NOT_WHEELCHAIR_ACCESSIBLE</Text>
+                                        <Text>PLATFORM_ACCESS_WITH_ASSISTANCE</Text>
                                     </NameSuffix>
                                     <PlannedQuay>
-                                        <Text>2</Text>
+                                        <Text>3</Text>
                                     </PlannedQuay>
                                     <ServiceArrival>
-                                        <TimetabledTime>2025-04-04T20:48:00Z</TimetabledTime>
+                                        <TimetabledTime>2025-04-09T18:02:00Z</TimetabledTime>
                                     </ServiceArrival>
                                     <ServiceDeparture>
-                                        <TimetabledTime>2025-04-04T20:50:00Z</TimetabledTime>
+                                        <TimetabledTime>2025-04-09T18:05:00Z</TimetabledTime>
                                     </ServiceDeparture>
                                     <StopCallStatus>
-                                        <Order>21</Order>
+                                        <Order>8</Order>
                                         <RequestStop>false</RequestStop>
                                         <UnplannedStop>false</UnplannedStop>
                                         <NotServicedStop>false</NotServicedStop>
@@ -1307,13 +1152,13 @@
                                         <Text>ALTERNATIVE_TRANSPORT</Text>
                                     </NameSuffix>
                                     <ServiceArrival>
-                                        <TimetabledTime>2025-04-04T20:53:00Z</TimetabledTime>
+                                        <TimetabledTime>2025-04-09T18:08:00Z</TimetabledTime>
                                     </ServiceArrival>
                                     <ServiceDeparture>
-                                        <TimetabledTime>2025-04-04T20:53:00Z</TimetabledTime>
+                                        <TimetabledTime>2025-04-09T18:10:00Z</TimetabledTime>
                                     </ServiceDeparture>
                                     <StopCallStatus>
-                                        <Order>22</Order>
+                                        <Order>9</Order>
                                         <RequestStop>false</RequestStop>
                                         <UnplannedStop>false</UnplannedStop>
                                         <NotServicedStop>false</NotServicedStop>
@@ -1327,16 +1172,16 @@
                                         <Text>St. Moritz</Text>
                                     </StopPointName>
                                     <NameSuffix>
-                                        <Text>PLATFORM_NOT_WHEELCHAIR_ACCESSIBLE</Text>
+                                        <Text>PLATFORM_ACCESS_WITHOUT_ASSISTANCE</Text>
                                     </NameSuffix>
                                     <PlannedQuay>
-                                        <Text>1</Text>
+                                        <Text>3</Text>
                                     </PlannedQuay>
                                     <ServiceArrival>
-                                        <TimetabledTime>2025-04-04T20:58:00Z</TimetabledTime>
+                                        <TimetabledTime>2025-04-09T18:14:00Z</TimetabledTime>
                                     </ServiceArrival>
                                     <StopCallStatus>
-                                        <Order>24</Order>
+                                        <Order>11</Order>
                                         <RequestStop>false</RequestStop>
                                         <UnplannedStop>false</UnplannedStop>
                                         <NotServicedStop>false</NotServicedStop>
@@ -1345,11 +1190,11 @@
                                     </StopCallStatus>
                                 </LegAlight>
                                 <Service>
-                                    <OperatingDayRef>2025-04-04</OperatingDayRef>
-                                    <JourneyRef>ojp-91-38-A-j25-1-30-TA</JourneyRef>
-                                    <PublicCode>Regio</PublicCode>
-                                    <siri:LineRef>ojp:91038:A</siri:LineRef>
-                                    <siri:DirectionRef>H</siri:DirectionRef>
+                                    <OperatingDayRef>2025-04-09</OperatingDayRef>
+                                    <JourneyRef>ojp-91-3-U-j25-1-169-TA</JourneyRef>
+                                    <PublicCode>RegioExpress</PublicCode>
+                                    <siri:LineRef>ojp:91003:U</siri:LineRef>
+                                    <siri:DirectionRef>R</siri:DirectionRef>
                                     <Mode>
                                         <PtMode>rail</PtMode>
                                         <siri:RailSubmode>regionalRail</siri:RailSubmode>
@@ -1357,7 +1202,7 @@
                                             <Text>Train</Text>
                                         </Name>
                                         <ShortName>
-                                            <Text>R</Text>
+                                            <Text>RE</Text>
                                         </ShortName>
                                     </Mode>
                                     <ProductCategory>
@@ -1365,14 +1210,14 @@
                                             <Text>Train</Text>
                                         </Name>
                                         <ShortName>
-                                            <Text>R</Text>
+                                            <Text>RE</Text>
                                         </ShortName>
                                         <ProductCategoryRef>24</ProductCategoryRef>
                                     </ProductCategory>
                                     <PublishedServiceName>
-                                        <Text>R38</Text>
+                                        <Text>RE3</Text>
                                     </PublishedServiceName>
-                                    <TrainNumber>1173</TrainNumber>
+                                    <TrainNumber>1363</TrainNumber>
                                     <Attribute>
                                         <UserText>
                                             <Text>GROUPS: reservation compulsory</Text>
@@ -1381,15 +1226,9 @@
                                     </Attribute>
                                     <Attribute>
                                         <UserText>
-                                            <Text>Access with step</Text>
+                                            <Text>Low-floor access</Text>
                                         </UserText>
-                                        <Code>A__PH</Code>
-                                    </Attribute>
-                                    <Attribute>
-                                        <UserText>
-                                            <Text>Für einsteigende Fahrgäste in Surava und Alvaneu ist eine Voranmeldung bis 10 Min vor Abfahrt erforderlich Tel. +41 81 288 26 26</Text>
-                                        </UserText>
-                                        <Code>I_1OO</Code>
+                                        <Code>A__NF</Code>
                                     </Attribute>
                                     <siri:OperatorRef>72</siri:OperatorRef>
                                     <OriginText>
@@ -1407,7 +1246,6 @@
                                     </ServiceStatus>
                                 </Service>
                             </TimedLeg>
-
                         </Leg>
                         <TripStatus>
                             <Cancelled>false</Cancelled>
@@ -1417,9 +1255,7 @@
                     </Trip>
                 </TripResult>
                 <Params>
-                    <IncludeTrackSections>false</IncludeTrackSections>
-                    <IncludeLegProjection>false</IncludeLegProjection>
-                    <IncludeTurnDescription>false</IncludeTurnDescription>
+                    <NumberOfResults>10</NumberOfResults>
                     <IncludeIntermediateStops>true</IncludeIntermediateStops>
                     <IncludeAllRestrictedLines>true</IncludeAllRestrictedLines>
                     <UseRealtimeData>explanatory</UseRealtimeData>

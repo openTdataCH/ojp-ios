@@ -24,7 +24,6 @@ import XMLCoder
 #endif
 
 public extension OJPv2 {
-
     /// [Schema documentation on vdvde.github.io](https://vdvde.github.io/OJP/develop/documentation-tables/ojp.html#type_ojp__OJPTripDeliveryStructure)
     struct TripDelivery: Codable, Sendable {
         public let responseTimestamp: String
@@ -360,7 +359,7 @@ public extension OJPv2 {
         public private(set) var isAlternativeOption: Bool?
 
         public enum CodingKeys: String, CodingKey {
-            case _0
+            case _0 = ""
             case id = "Id"
             case tripFares = "TripFare"
             case isAlternativeOption = "IsAlternativeOption"
@@ -383,9 +382,15 @@ public extension OJPv2 {
         }
 
         public func encode(to encoder: any Encoder) throws {
-            var svc = encoder.singleValueContainer()
-            try svc.encode(tripType)
-            // TODO: decide about id and other properties
+            var container = encoder.container(keyedBy: CodingKeys.self)
+            try container.encode(id, forKey: .id)
+            try container.encode(tripType, forKey: ._0)
+            if let isAlternativeOption {
+                try container.encode(isAlternativeOption, forKey: .isAlternativeOption)
+            }
+            if !tripFares.isEmpty {
+                try container.encode(tripFares, forKey: .tripFares)
+            }
         }
 
         public enum TripTypeChoice: Codable, Sendable {
@@ -589,9 +594,6 @@ public extension OJPv2 {
         }
 
         public func encode(to encoder: any Encoder) throws {
-//            var svc = encoder.singleValueContainer() // TODO: find a solution, that is not fixed to that order (so we could move id to the first place)
-//            try svc.encode(legType)
-
             var container = encoder.container(keyedBy: CodingKeys.self)
             try container.encode(id, forKey: .id)
             try container.encodeIfPresent(duration, forKey: .duration)

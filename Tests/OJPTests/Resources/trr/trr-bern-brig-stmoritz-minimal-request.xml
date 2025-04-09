@@ -1,72 +1,57 @@
-<OJP xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns="http://www.vdv.de/ojp"
-    xmlns:siri="http://www.siri.org.uk/siri" version="2.0">
+<OJP xmlns="http://www.vdv.de/ojp"
+    xmlns:siri="http://www.siri.org.uk/siri"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.0">
     <OJPRequest>
         <siri:ServiceRequest>
             <siri:ServiceRequestContext>
                 <siri:Language>en</siri:Language>
             </siri:ServiceRequestContext>
-            <siri:RequestTimestamp>2025-04-04T12:17:09Z</siri:RequestTimestamp>
+            <siri:RequestTimestamp>2025-04-09T11:18:44Z</siri:RequestTimestamp>
             <siri:RequestorRef>BLS_DemoApp_IOS_SDK_1.1.1</siri:RequestorRef>
             <OJPTripRefineRequest>
-                <siri:RequestTimestamp>2025-04-04T12:17:09Z</siri:RequestTimestamp>
+                <siri:RequestTimestamp>2025-04-09T11:18:44Z</siri:RequestTimestamp>
                 <TripResult>
+                    <Id>ID-B21CAB4C-706E-4275-B9D9-B57570F98D4C</Id>
                     <Trip>
-                        <Id>ID-74A40993-8373-419C-B650-04280FAEC246</Id>
-                        <Duration>PT7H23M30S</Duration>
-                        <StartTime>2025-04-04T13:34:30Z</StartTime>
-                        <EndTime>2025-04-04T20:58:00Z</EndTime>
+                        <Id>ID-B21CAB4C-706E-4275-B9D9-B57570F98D4C</Id>
+                        <Duration>PT6H40M</Duration>
+                        <StartTime>2025-04-09T11:34:00Z</StartTime>
+                        <EndTime>2025-04-09T18:14:00Z</EndTime>
                         <Transfers>3</Transfers>
                         <Leg>
                             <Id>1</Id>
-                            <Duration>PT1H6M12S</Duration>
+                            <Duration>PT1H7M</Duration>
                             <TimedLeg>
                                 <LegBoard>
-                                    <siri:StopPointRef>ch:1:sloid:7000:4:7</siri:StopPointRef>
+                                    <siri:StopPointRef>ch:1:sloid:7000:4:8</siri:StopPointRef>
                                     <StopPointName>
                                         <Text>Bern</Text>
                                     </StopPointName>
                                     <ServiceDeparture>
-                                        <TimetabledTime>2025-04-04T13:34:00Z</TimetabledTime>
+                                        <TimetabledTime>2025-04-09T11:34:00Z</TimetabledTime>
                                     </ServiceDeparture>
-                                    <StopCallStatus>
-                                        <Order>1</Order>
-                                        <RequestStop>false</RequestStop>
-                                        <UnplannedStop>false</UnplannedStop>
-                                        <NotServicedStop>false</NotServicedStop>
-                                        <NoBoardingAtStop>false</NoBoardingAtStop>
-                                        <NoAlightingAtStop>false</NoAlightingAtStop>
-                                    </StopCallStatus>
                                 </LegBoard>
                                 <LegAlight>
-                                    <siri:StopPointRef>ch:1:sloid:1609:3:6</siri:StopPointRef>
+                                    <siri:StopPointRef>ch:1:sloid:1609:0:31</siri:StopPointRef>
                                     <StopPointName>
                                         <Text>Brig</Text>
                                     </StopPointName>
                                     <ServiceArrival>
-                                        <TimetabledTime>2025-04-04T14:40:00Z</TimetabledTime>
+                                        <TimetabledTime>2025-04-09T12:41:00Z</TimetabledTime>
                                     </ServiceArrival>
-                                    <StopCallStatus>
-                                        <Order>6</Order>
-                                        <RequestStop>false</RequestStop>
-                                        <UnplannedStop>false</UnplannedStop>
-                                        <NotServicedStop>false</NotServicedStop>
-                                        <NoBoardingAtStop>false</NoBoardingAtStop>
-                                        <NoAlightingAtStop>false</NoAlightingAtStop>
-                                    </StopCallStatus>
                                 </LegAlight>
                                 <Service>
-                                    <OperatingDayRef>2025-04-04</OperatingDayRef>
-                                    <JourneyRef>ch:1:sjyid:100001:625-001</JourneyRef>
-                                    <siri:LineRef>ojp:91006:H</siri:LineRef>
+                                    <OperatingDayRef>2025-04-09</OperatingDayRef>
+                                    <JourneyRef>ch:1:sjyid:100001:65-001</JourneyRef>
+                                    <siri:LineRef>ojp:9102W:Y</siri:LineRef>
                                     <Mode>
                                         <PtMode>rail</PtMode>
-                                        <siri:RailSubmode>interregionalRail</siri:RailSubmode>
+                                        <siri:RailSubmode>international</siri:RailSubmode>
                                         <Name>
                                             <Text>Train</Text>
                                         </Name>
                                         <ShortName>
-                                            <Text>IC</Text>
+                                            <Text>EC</Text>
                                         </ShortName>
                                     </Mode>
                                     <ProductCategory>
@@ -74,42 +59,24 @@
                                             <Text>Train</Text>
                                         </Name>
                                         <ShortName>
-                                            <Text>IC</Text>
+                                            <Text>EC</Text>
                                         </ShortName>
-                                        <ProductCategoryRef>23</ProductCategoryRef>
+                                        <ProductCategoryRef>21</ProductCategoryRef>
                                     </ProductCategory>
                                     <PublishedServiceName>
-                                        <Text>IC6</Text>
+                                        <Text>EC</Text>
                                     </PublishedServiceName>
-                                    <Attribute>
-                                        <UserText>
-                                            <Text>Free Internet with the SBB FreeSurf app</Text>
-                                        </UserText>
-                                        <Code>A__FS</Code>
-                                    </Attribute>
-                                    <Attribute>
-                                        <UserText>
-                                            <Text>Access with step</Text>
-                                        </UserText>
-                                        <Code>A__PH</Code>
-                                    </Attribute>
-                                    <Attribute>
-                                        <UserText>
-                                            <Text>Quiet zone in 1st class</Text>
-                                        </UserText>
-                                        <Code>A__RZ</Code>
-                                    </Attribute>
-                                    <Attribute>
-                                        <UserText>
-                                            <Text>Family zone without play area</Text>
-                                        </UserText>
-                                        <Code>A__FZ</Code>
-                                    </Attribute>
                                     <Attribute>
                                         <UserText>
                                             <Text>Place reservation possible</Text>
                                         </UserText>
                                         <Code>A___R</Code>
+                                    </Attribute>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text>BICYCLES: Limited number of places</Text>
+                                        </UserText>
+                                        <Code>A__VB</Code>
                                     </Attribute>
                                     <Attribute>
                                         <UserText>
@@ -119,22 +86,45 @@
                                     </Attribute>
                                     <Attribute>
                                         <UserText>
-                                            <Text>Aussteigeseite: Rechts</Text>
+                                            <Text>Family zone without play area</Text>
                                         </UserText>
-                                        <Code>ojp91006HR_InfoCall908_111055_1</Code>
+                                        <Code>A__FZ</Code>
+                                    </Attribute>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text>Tilting train</Text>
+                                        </UserText>
+                                        <Code>A__TT</Code>
+                                    </Attribute>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text>Restaurant</Text>
+                                        </UserText>
+                                        <Code>A__WR</Code>
+                                    </Attribute>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text>Access with step</Text>
+                                        </UserText>
+                                        <Code>A__PH</Code>
                                     </Attribute>
                                     <Attribute>
                                         <UserText>
                                             <Text>Aussteigeseite: Links</Text>
                                         </UserText>
-                                        <Code>ojp91006HR_InfoCall908_107458_1</Code>
+                                        <Code>ojp9102WYH_InfoCall26_111055_1</Code>
+                                    </Attribute>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text>Aussteigeseite: Rechts</Text>
+                                        </UserText>
+                                        <Code>ojp9102WYH_InfoCall26_107458_1</Code>
                                     </Attribute>
                                     <OriginText>
                                         <Text>n/a</Text>
                                     </OriginText>
                                 </Service>
                             </TimedLeg>
-
                         </Leg>
                         <Leg>
                             <Id>2</Id>
@@ -155,11 +145,10 @@
                                     </Name>
                                 </LegEnd>
                             </TransferLeg>
-
                         </Leg>
                         <Leg>
                             <Id>3</Id>
-                            <Duration>PT2H13M</Duration>
+                            <Duration>PT2H12M</Duration>
                             <TimedLeg>
                                 <LegBoard>
                                     <siri:StopPointRef>ch:1:sloid:1609:2:3</siri:StopPointRef>
@@ -167,16 +156,8 @@
                                         <Text>Brig</Text>
                                     </StopPointName>
                                     <ServiceDeparture>
-                                        <TimetabledTime>2025-04-04T14:45:00Z</TimetabledTime>
+                                        <TimetabledTime>2025-04-09T12:45:00Z</TimetabledTime>
                                     </ServiceDeparture>
-                                    <StopCallStatus>
-                                        <Order>1</Order>
-                                        <RequestStop>false</RequestStop>
-                                        <UnplannedStop>false</UnplannedStop>
-                                        <NotServicedStop>false</NotServicedStop>
-                                        <NoBoardingAtStop>false</NoBoardingAtStop>
-                                        <NoAlightingAtStop>false</NoAlightingAtStop>
-                                    </StopCallStatus>
                                 </LegBoard>
                                 <LegAlight>
                                     <siri:StopPointRef>ch:1:sloid:3000:501:34</siri:StopPointRef>
@@ -184,20 +165,12 @@
                                         <Text>Zürich HB</Text>
                                     </StopPointName>
                                     <ServiceArrival>
-                                        <TimetabledTime>2025-04-04T16:58:00Z</TimetabledTime>
+                                        <TimetabledTime>2025-04-09T14:58:00Z</TimetabledTime>
                                     </ServiceArrival>
-                                    <StopCallStatus>
-                                        <Order>8</Order>
-                                        <RequestStop>false</RequestStop>
-                                        <UnplannedStop>false</UnplannedStop>
-                                        <NotServicedStop>false</NotServicedStop>
-                                        <NoBoardingAtStop>false</NoBoardingAtStop>
-                                        <NoAlightingAtStop>false</NoAlightingAtStop>
-                                    </StopCallStatus>
                                 </LegAlight>
                                 <Service>
-                                    <OperatingDayRef>2025-04-04</OperatingDayRef>
-                                    <JourneyRef>ch:1:sjyid:100001:829-001</JourneyRef>
+                                    <OperatingDayRef>2025-04-09</OperatingDayRef>
+                                    <JourneyRef>ch:1:sjyid:100001:825-001</JourneyRef>
                                     <siri:LineRef>ojp:91008:E</siri:LineRef>
                                     <Mode>
                                         <PtMode>rail</PtMode>
@@ -229,15 +202,9 @@
                                     </Attribute>
                                     <Attribute>
                                         <UserText>
-                                            <Text>BICYCLES: Reservation required</Text>
+                                            <Text>Quiet zone in 1st class</Text>
                                         </UserText>
-                                        <Code>A__VR</Code>
-                                    </Attribute>
-                                    <Attribute>
-                                        <UserText>
-                                            <Text>Free Internet with the SBB FreeSurf app</Text>
-                                        </UserText>
-                                        <Code>A__FS</Code>
+                                        <Code>A__RZ</Code>
                                     </Attribute>
                                     <Attribute>
                                         <UserText>
@@ -247,9 +214,9 @@
                                     </Attribute>
                                     <Attribute>
                                         <UserText>
-                                            <Text>Quiet zone in 1st class</Text>
+                                            <Text>Free Internet with the SBB FreeSurf app</Text>
                                         </UserText>
-                                        <Code>A__RZ</Code>
+                                        <Code>A__FS</Code>
                                     </Attribute>
                                     <Attribute>
                                         <UserText>
@@ -273,14 +240,13 @@
                                         <UserText>
                                             <Text>Aussteigeseite: Rechts</Text>
                                         </UserText>
-                                        <Code>ojp91008EH_InfoCall230_108276_1</Code>
+                                        <Code>ojp91008EH_InfoCall285_108276_1</Code>
                                     </Attribute>
                                     <OriginText>
                                         <Text>n/a</Text>
                                     </OriginText>
                                 </Service>
                             </TimedLeg>
-
                         </Leg>
                         <Leg>
                             <Id>4</Id>
@@ -301,49 +267,32 @@
                                     </Name>
                                 </LegEnd>
                             </TransferLeg>
-
                         </Leg>
                         <Leg>
                             <Id>5</Id>
-                            <Duration>PT1H14M</Duration>
+                            <Duration>PT1H4M</Duration>
                             <TimedLeg>
                                 <LegBoard>
-                                    <siri:StopPointRef>ch:1:sloid:3000:3:5</siri:StopPointRef>
+                                    <siri:StopPointRef>ch:1:sloid:3000:5:9</siri:StopPointRef>
                                     <StopPointName>
                                         <Text>Zürich HB</Text>
                                     </StopPointName>
                                     <ServiceDeparture>
-                                        <TimetabledTime>2025-04-04T17:38:00Z</TimetabledTime>
+                                        <TimetabledTime>2025-04-09T15:07:00Z</TimetabledTime>
                                     </ServiceDeparture>
-                                    <StopCallStatus>
-                                        <Order>1</Order>
-                                        <RequestStop>false</RequestStop>
-                                        <UnplannedStop>false</UnplannedStop>
-                                        <NotServicedStop>false</NotServicedStop>
-                                        <NoBoardingAtStop>false</NoBoardingAtStop>
-                                        <NoAlightingAtStop>false</NoAlightingAtStop>
-                                    </StopCallStatus>
                                 </LegBoard>
                                 <LegAlight>
-                                    <siri:StopPointRef>ch:1:sloid:9000:5:9</siri:StopPointRef>
+                                    <siri:StopPointRef>ch:1:sloid:9002:0:793932</siri:StopPointRef>
                                     <StopPointName>
-                                        <Text>Chur</Text>
+                                        <Text>Landquart</Text>
                                     </StopPointName>
                                     <ServiceArrival>
-                                        <TimetabledTime>2025-04-04T18:52:00Z</TimetabledTime>
+                                        <TimetabledTime>2025-04-09T16:11:00Z</TimetabledTime>
                                     </ServiceArrival>
-                                    <StopCallStatus>
-                                        <Order>5</Order>
-                                        <RequestStop>false</RequestStop>
-                                        <UnplannedStop>false</UnplannedStop>
-                                        <NotServicedStop>false</NotServicedStop>
-                                        <NoBoardingAtStop>false</NoBoardingAtStop>
-                                        <NoAlightingAtStop>false</NoAlightingAtStop>
-                                    </StopCallStatus>
                                 </LegAlight>
                                 <Service>
-                                    <OperatingDayRef>2025-04-04</OperatingDayRef>
-                                    <JourneyRef>ch:1:sjyid:100001:583-001</JourneyRef>
+                                    <OperatingDayRef>2025-04-09</OperatingDayRef>
+                                    <JourneyRef>ch:1:sjyid:100001:931-001</JourneyRef>
                                     <siri:LineRef>ojp:91003:C</siri:LineRef>
                                     <Mode>
                                         <PtMode>rail</PtMode>
@@ -369,6 +318,12 @@
                                     </PublishedServiceName>
                                     <Attribute>
                                         <UserText>
+                                            <Text>Family zone without play area</Text>
+                                        </UserText>
+                                        <Code>A__FZ</Code>
+                                    </Attribute>
+                                    <Attribute>
+                                        <UserText>
                                             <Text>Free Internet with the SBB FreeSurf app</Text>
                                         </UserText>
                                         <Code>A__FS</Code>
@@ -381,104 +336,62 @@
                                     </Attribute>
                                     <Attribute>
                                         <UserText>
-                                            <Text>Restaurant</Text>
-                                        </UserText>
-                                        <Code>A__WR</Code>
-                                    </Attribute>
-                                    <Attribute>
-                                        <UserText>
-                                            <Text>Place reservation possible</Text>
-                                        </UserText>
-                                        <Code>A___R</Code>
-                                    </Attribute>
-                                    <Attribute>
-                                        <UserText>
-                                            <Text>Quiet zone in 1st class</Text>
-                                        </UserText>
-                                        <Code>A__RZ</Code>
-                                    </Attribute>
-                                    <Attribute>
-                                        <UserText>
-                                            <Text>BICYCLES: Reservation required</Text>
-                                        </UserText>
-                                        <Code>A__VR</Code>
-                                    </Attribute>
-                                    <Attribute>
-                                        <UserText>
                                             <Text>Aussteigeseite: Rechts</Text>
                                         </UserText>
-                                        <Code>ojp91003CR_InfoCall1344_108276_1</Code>
+                                        <Code>ojp91003CR_InfoCall1439_112214_1</Code>
                                     </Attribute>
                                     <OriginText>
                                         <Text>n/a</Text>
                                     </OriginText>
                                 </Service>
                             </TimedLeg>
-
                         </Leg>
                         <Leg>
                             <Id>6</Id>
-                            <Duration>PT3M</Duration>
+                            <Duration>PT4M</Duration>
                             <TransferLeg>
                                 <TransferType>walk</TransferType>
-                                <Duration>PT3M</Duration>
+                                <Duration>PT4M</Duration>
                                 <LegStart>
-                                    <siri:StopPointRef>8509000</siri:StopPointRef>
+                                    <siri:StopPointRef>8509002</siri:StopPointRef>
                                     <Name>
-                                        <Text>Chur</Text>
+                                        <Text>Landquart</Text>
                                     </Name>
                                 </LegStart>
                                 <LegEnd>
-                                    <siri:StopPointRef>8509000</siri:StopPointRef>
+                                    <siri:StopPointRef>8509002</siri:StopPointRef>
                                     <Name>
-                                        <Text>Chur</Text>
+                                        <Text>Landquart</Text>
                                     </Name>
                                 </LegEnd>
                             </TransferLeg>
-
                         </Leg>
                         <Leg>
                             <Id>7</Id>
-                            <Duration>PT2H3M</Duration>
+                            <Duration>PT38M</Duration>
                             <TimedLeg>
                                 <LegBoard>
-                                    <siri:StopPointRef>8509000</siri:StopPointRef>
+                                    <siri:StopPointRef>8509002</siri:StopPointRef>
                                     <StopPointName>
-                                        <Text>Chur</Text>
+                                        <Text>Landquart</Text>
                                     </StopPointName>
                                     <ServiceDeparture>
-                                        <TimetabledTime>2025-04-04T18:55:00Z</TimetabledTime>
+                                        <TimetabledTime>2025-04-09T16:20:00Z</TimetabledTime>
                                     </ServiceDeparture>
-                                    <StopCallStatus>
-                                        <Order>1</Order>
-                                        <RequestStop>false</RequestStop>
-                                        <UnplannedStop>false</UnplannedStop>
-                                        <NotServicedStop>false</NotServicedStop>
-                                        <NoBoardingAtStop>false</NoBoardingAtStop>
-                                        <NoAlightingAtStop>false</NoAlightingAtStop>
-                                    </StopCallStatus>
                                 </LegBoard>
                                 <LegAlight>
-                                    <siri:StopPointRef>8509253</siri:StopPointRef>
+                                    <siri:StopPointRef>8509068</siri:StopPointRef>
                                     <StopPointName>
-                                        <Text>St. Moritz</Text>
+                                        <Text>Klosters Platz</Text>
                                     </StopPointName>
                                     <ServiceArrival>
-                                        <TimetabledTime>2025-04-04T20:58:00Z</TimetabledTime>
+                                        <TimetabledTime>2025-04-09T16:58:00Z</TimetabledTime>
                                     </ServiceArrival>
-                                    <StopCallStatus>
-                                        <Order>24</Order>
-                                        <RequestStop>false</RequestStop>
-                                        <UnplannedStop>false</UnplannedStop>
-                                        <NotServicedStop>false</NotServicedStop>
-                                        <NoBoardingAtStop>false</NoBoardingAtStop>
-                                        <NoAlightingAtStop>false</NoAlightingAtStop>
-                                    </StopCallStatus>
                                 </LegAlight>
                                 <Service>
-                                    <OperatingDayRef>2025-04-04</OperatingDayRef>
-                                    <JourneyRef>ojp-91-38-A-j25-1-30-TA</JourneyRef>
-                                    <siri:LineRef>ojp:91038:A</siri:LineRef>
+                                    <OperatingDayRef>2025-04-09</OperatingDayRef>
+                                    <JourneyRef>ojp-91-13-C-j25-1-112-TA</JourneyRef>
+                                    <siri:LineRef>ojp:91013:C</siri:LineRef>
                                     <Mode>
                                         <PtMode>rail</PtMode>
                                         <siri:RailSubmode>regionalRail</siri:RailSubmode>
@@ -486,7 +399,7 @@
                                             <Text>Train</Text>
                                         </Name>
                                         <ShortName>
-                                            <Text>R</Text>
+                                            <Text>RE</Text>
                                         </ShortName>
                                     </Mode>
                                     <ProductCategory>
@@ -494,12 +407,12 @@
                                             <Text>Train</Text>
                                         </Name>
                                         <ShortName>
-                                            <Text>R</Text>
+                                            <Text>RE</Text>
                                         </ShortName>
                                         <ProductCategoryRef>24</ProductCategoryRef>
                                     </ProductCategory>
                                     <PublishedServiceName>
-                                        <Text>R38</Text>
+                                        <Text>RE13</Text>
                                     </PublishedServiceName>
                                     <Attribute>
                                         <UserText>
@@ -509,29 +422,118 @@
                                     </Attribute>
                                     <Attribute>
                                         <UserText>
-                                            <Text>Access with step</Text>
+                                            <Text>Low-floor access</Text>
                                         </UserText>
-                                        <Code>A__PH</Code>
+                                        <Code>A__NF</Code>
                                     </Attribute>
                                     <Attribute>
                                         <UserText>
-                                            <Text>Für einsteigende Fahrgäste in Surava und Alvaneu ist eine Voranmeldung bis 10 Min vor Abfahrt erforderlich Tel. +41 81 288 26 26</Text>
+                                            <Text>Train with multiple destinations: Pls. observe indications on coaches</Text>
                                         </UserText>
-                                        <Code>I_1OO</Code>
+                                        <Code>A__FL</Code>
+                                    </Attribute>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text>Aussteigeseite: Links</Text>
+                                        </UserText>
+                                        <Code>ojp91013CR_InfoCall71_112237_1</Code>
                                     </Attribute>
                                     <OriginText>
                                         <Text>n/a</Text>
                                     </OriginText>
                                 </Service>
                             </TimedLeg>
-
+                        </Leg>
+                        <Leg>
+                            <Id>8</Id>
+                            <Duration>PT4M</Duration>
+                            <TransferLeg>
+                                <TransferType>changeWithinVehicle</TransferType>
+                                <Duration>PT4M</Duration>
+                                <LegStart>
+                                    <siri:StopPointRef>8509068</siri:StopPointRef>
+                                    <Name>
+                                        <Text>Klosters Platz</Text>
+                                    </Name>
+                                </LegStart>
+                                <LegEnd>
+                                    <siri:StopPointRef>8509068</siri:StopPointRef>
+                                    <Name>
+                                        <Text>Klosters Platz</Text>
+                                    </Name>
+                                </LegEnd>
+                            </TransferLeg>
+                        </Leg>
+                        <Leg>
+                            <Id>9</Id>
+                            <Duration>PT1H12M</Duration>
+                            <TimedLeg>
+                                <LegBoard>
+                                    <siri:StopPointRef>8509068</siri:StopPointRef>
+                                    <StopPointName>
+                                        <Text>Klosters Platz</Text>
+                                    </StopPointName>
+                                    <ServiceDeparture>
+                                        <TimetabledTime>2025-04-09T17:02:00Z</TimetabledTime>
+                                    </ServiceDeparture>
+                                </LegBoard>
+                                <LegAlight>
+                                    <siri:StopPointRef>8509253</siri:StopPointRef>
+                                    <StopPointName>
+                                        <Text>St. Moritz</Text>
+                                    </StopPointName>
+                                    <ServiceArrival>
+                                        <TimetabledTime>2025-04-09T18:14:00Z</TimetabledTime>
+                                    </ServiceArrival>
+                                </LegAlight>
+                                <Service>
+                                    <OperatingDayRef>2025-04-09</OperatingDayRef>
+                                    <JourneyRef>ojp-91-3-U-j25-1-169-TA</JourneyRef>
+                                    <siri:LineRef>ojp:91003:U</siri:LineRef>
+                                    <Mode>
+                                        <PtMode>rail</PtMode>
+                                        <siri:RailSubmode>regionalRail</siri:RailSubmode>
+                                        <Name>
+                                            <Text>Train</Text>
+                                        </Name>
+                                        <ShortName>
+                                            <Text>RE</Text>
+                                        </ShortName>
+                                    </Mode>
+                                    <ProductCategory>
+                                        <Name>
+                                            <Text>Train</Text>
+                                        </Name>
+                                        <ShortName>
+                                            <Text>RE</Text>
+                                        </ShortName>
+                                        <ProductCategoryRef>24</ProductCategoryRef>
+                                    </ProductCategory>
+                                    <PublishedServiceName>
+                                        <Text>RE3</Text>
+                                    </PublishedServiceName>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text>GROUPS: reservation compulsory</Text>
+                                        </UserText>
+                                        <Code>A__GR</Code>
+                                    </Attribute>
+                                    <Attribute>
+                                        <UserText>
+                                            <Text>Low-floor access</Text>
+                                        </UserText>
+                                        <Code>A__NF</Code>
+                                    </Attribute>
+                                    <OriginText>
+                                        <Text>n/a</Text>
+                                    </OriginText>
+                                </Service>
+                            </TimedLeg>
                         </Leg>
                     </Trip>
                 </TripResult>
                 <Params>
-                    <IncludeTrackSections>false</IncludeTrackSections>
-                    <IncludeLegProjection>false</IncludeLegProjection>
-                    <IncludeTurnDescription>false</IncludeTurnDescription>
+                    <NumberOfResults>10</NumberOfResults>
                     <IncludeIntermediateStops>true</IncludeIntermediateStops>
                     <IncludeAllRestrictedLines>true</IncludeAllRestrictedLines>
                     <UseRealtimeData>explanatory</UseRealtimeData>
