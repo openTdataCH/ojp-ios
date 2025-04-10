@@ -1,0 +1,3212 @@
+<OJP xmlns:siri="http://www.siri.org.uk/siri"
+  xmlns="http://www.vdv.de/ojp" version="2.0">
+  <OJPResponse>
+    <siri:ServiceDelivery>
+      <siri:ResponseTimestamp>2025-04-10T10:31:49.6526942+02:00</siri:ResponseTimestamp>
+      <siri:ProducerRef>MENTZ</siri:ProducerRef>
+      <OJPTripRefineDelivery>
+        <siri:ResponseTimestamp>2025-04-10T10:31:49.6526969+02:00</siri:ResponseTimestamp>
+        <siri:RequestMessageRef>c6c1ca06-ccf2-482a-922a-f64eefe90a6c</siri:RequestMessageRef>
+        <siri:DefaultLanguage>en</siri:DefaultLanguage>
+        <CalcTime>8</CalcTime>
+        <TripResponseContext>
+          <Places>
+            <Place>
+              <StopPlace>
+                <StopPlaceRef>8507000</StopPlaceRef>
+                <StopPlaceName>
+                  <Text xml:lang="en">Bern</Text>
+                </StopPlaceName>
+                <PrivateCode>
+                  <System>EFA</System>
+                  <Value>111055:0:50</Value>
+                </PrivateCode>
+                <TopographicPlaceRef>23006351:1</TopographicPlaceRef>
+              </StopPlace>
+              <Name>
+                <Text xml:lang="en">Bern</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>7.43356</siri:Longitude>
+                <siri:Latitude>46.94831</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <StopPoint>
+                <siri:StopPointRef>ch:1:sloid:7000:55:50</siri:StopPointRef>
+                <StopPointName>
+                  <Text xml:lang="en">Bern</Text>
+                </StopPointName>
+                <PrivateCode>
+                  <System>EFA</System>
+                  <Value>111055:0:50</Value>
+                </PrivateCode>
+                <ParentRef>8507000</ParentRef>
+                <TopographicPlaceRef>23006351:1</TopographicPlaceRef>
+              </StopPoint>
+              <Name>
+                <Text xml:lang="en">Bern</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>7.43356</siri:Longitude>
+                <siri:Latitude>46.94831</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <TopographicPlace>
+                <TopographicPlaceCode>23006351:1</TopographicPlaceCode>
+                <TopographicPlaceName>
+                  <Text xml:lang="en">Bern</Text>
+                </TopographicPlaceName>
+              </TopographicPlace>
+              <Name>
+                <Text xml:lang="en">Bern</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>7.43356</siri:Longitude>
+                <siri:Latitude>46.94831</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <StopPlace>
+                <StopPlaceRef>8508005</StopPlaceRef>
+                <StopPlaceName>
+                  <Text xml:lang="en">Burgdorf</Text>
+                </StopPlaceName>
+                <PrivateCode>
+                  <System>EFA</System>
+                  <Value>111685:0:3</Value>
+                </PrivateCode>
+                <TopographicPlaceRef>23006404:2</TopographicPlaceRef>
+              </StopPlace>
+              <Name>
+                <Text xml:lang="en">Burgdorf</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>7.62177</siri:Longitude>
+                <siri:Latitude>47.06087</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <StopPoint>
+                <siri:StopPointRef>ch:1:sloid:8005:2:3</siri:StopPointRef>
+                <StopPointName>
+                  <Text xml:lang="en">Burgdorf</Text>
+                </StopPointName>
+                <PrivateCode>
+                  <System>EFA</System>
+                  <Value>111685:0:3</Value>
+                </PrivateCode>
+                <ParentRef>8508005</ParentRef>
+                <TopographicPlaceRef>23006404:2</TopographicPlaceRef>
+              </StopPoint>
+              <Name>
+                <Text xml:lang="en">Burgdorf</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>7.62177</siri:Longitude>
+                <siri:Latitude>47.06087</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <TopographicPlace>
+                <TopographicPlaceCode>23006404:2</TopographicPlaceCode>
+                <TopographicPlaceName>
+                  <Text xml:lang="en">Burgdorf (BE)</Text>
+                </TopographicPlaceName>
+              </TopographicPlace>
+              <Name>
+                <Text xml:lang="en">Burgdorf</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>7.62177</siri:Longitude>
+                <siri:Latitude>47.06087</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <StopPlace>
+                <StopPlaceRef>8508008</StopPlaceRef>
+                <StopPlaceName>
+                  <Text xml:lang="en">Herzogenbuchsee</Text>
+                </StopPlaceName>
+                <PrivateCode>
+                  <System>EFA</System>
+                  <Value>111687:0:2</Value>
+                </PrivateCode>
+                <TopographicPlaceRef>23006979:1</TopographicPlaceRef>
+              </StopPlace>
+              <Name>
+                <Text xml:lang="en">Herzogenbuchsee</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>7.7007</siri:Longitude>
+                <siri:Latitude>47.18774</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <StopPoint>
+                <siri:StopPointRef>ch:1:sloid:8008:2:2</siri:StopPointRef>
+                <StopPointName>
+                  <Text xml:lang="en">Herzogenbuchsee</Text>
+                </StopPointName>
+                <PrivateCode>
+                  <System>EFA</System>
+                  <Value>111687:0:2</Value>
+                </PrivateCode>
+                <ParentRef>8508008</ParentRef>
+                <TopographicPlaceRef>23006979:1</TopographicPlaceRef>
+              </StopPoint>
+              <Name>
+                <Text xml:lang="en">Herzogenbuchsee</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>7.7007</siri:Longitude>
+                <siri:Latitude>47.18774</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <TopographicPlace>
+                <TopographicPlaceCode>23006979:1</TopographicPlaceCode>
+                <TopographicPlaceName>
+                  <Text xml:lang="en">Herzogenbuchsee</Text>
+                </TopographicPlaceName>
+              </TopographicPlace>
+              <Name>
+                <Text xml:lang="en">Herzogenbuchsee</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>7.7007</siri:Longitude>
+                <siri:Latitude>47.18774</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <StopPlace>
+                <StopPlaceRef>8508100</StopPlaceRef>
+                <StopPlaceName>
+                  <Text xml:lang="en">Langenthal</Text>
+                </StopPlaceName>
+                <PrivateCode>
+                  <System>EFA</System>
+                  <Value>111751:0:2</Value>
+                </PrivateCode>
+                <TopographicPlaceRef>23006329:1</TopographicPlaceRef>
+              </StopPlace>
+              <Name>
+                <Text xml:lang="en">Langenthal</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>7.78391</siri:Longitude>
+                <siri:Latitude>47.21698</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <StopPoint>
+                <siri:StopPointRef>ch:1:sloid:8100:2:2</siri:StopPointRef>
+                <StopPointName>
+                  <Text xml:lang="en">Langenthal</Text>
+                </StopPointName>
+                <PrivateCode>
+                  <System>EFA</System>
+                  <Value>111751:0:2</Value>
+                </PrivateCode>
+                <ParentRef>8508100</ParentRef>
+                <TopographicPlaceRef>23006329:1</TopographicPlaceRef>
+              </StopPoint>
+              <Name>
+                <Text xml:lang="en">Langenthal</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>7.78391</siri:Longitude>
+                <siri:Latitude>47.21698</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <TopographicPlace>
+                <TopographicPlaceCode>23006329:1</TopographicPlaceCode>
+                <TopographicPlaceName>
+                  <Text xml:lang="en">Langenthal (CH)</Text>
+                </TopographicPlaceName>
+              </TopographicPlace>
+              <Name>
+                <Text xml:lang="en">Langenthal</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>7.78391</siri:Longitude>
+                <siri:Latitude>47.21698</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <StopPlace>
+                <StopPlaceRef>8500218</StopPlaceRef>
+                <StopPlaceName>
+                  <Text xml:lang="en">Olten</Text>
+                </StopPlaceName>
+                <PrivateCode>
+                  <System>EFA</System>
+                  <Value>106652:0:4</Value>
+                </PrivateCode>
+                <TopographicPlaceRef>23019581:1</TopographicPlaceRef>
+              </StopPlace>
+              <Name>
+                <Text xml:lang="en">Olten</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>7.90744</siri:Longitude>
+                <siri:Latitude>47.35206</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <StopPoint>
+                <siri:StopPointRef>ch:1:sloid:218:3:4</siri:StopPointRef>
+                <StopPointName>
+                  <Text xml:lang="en">Olten</Text>
+                </StopPointName>
+                <PrivateCode>
+                  <System>EFA</System>
+                  <Value>106652:0:4</Value>
+                </PrivateCode>
+                <ParentRef>8500218</ParentRef>
+                <TopographicPlaceRef>23019581:1</TopographicPlaceRef>
+              </StopPoint>
+              <Name>
+                <Text xml:lang="en">Olten</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>7.90744</siri:Longitude>
+                <siri:Latitude>47.35206</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <TopographicPlace>
+                <TopographicPlaceCode>23019581:1</TopographicPlaceCode>
+                <TopographicPlaceName>
+                  <Text xml:lang="en">Olten</Text>
+                </TopographicPlaceName>
+              </TopographicPlace>
+              <Name>
+                <Text xml:lang="en">Olten</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>7.90744</siri:Longitude>
+                <siri:Latitude>47.35206</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <StopPlace>
+                <StopPlaceRef>8503001</StopPlaceRef>
+                <StopPlaceName>
+                  <Text xml:lang="en">Zürich Altstetten</Text>
+                </StopPlaceName>
+                <PrivateCode>
+                  <System>EFA</System>
+                  <Value>108277:0:6</Value>
+                </PrivateCode>
+                <TopographicPlaceRef>23026261:27</TopographicPlaceRef>
+              </StopPlace>
+              <Name>
+                <Text xml:lang="en">Zürich Altstetten</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>8.48942</siri:Longitude>
+                <siri:Latitude>47.39173</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <StopPoint>
+                <siri:StopPointRef>ch:1:sloid:3001:4:6</siri:StopPointRef>
+                <StopPointName>
+                  <Text xml:lang="en">Zürich Altstetten</Text>
+                </StopPointName>
+                <PrivateCode>
+                  <System>EFA</System>
+                  <Value>108277:0:6</Value>
+                </PrivateCode>
+                <ParentRef>8503001</ParentRef>
+                <TopographicPlaceRef>23026261:27</TopographicPlaceRef>
+              </StopPoint>
+              <Name>
+                <Text xml:lang="en">Zürich Altstetten</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>8.48942</siri:Longitude>
+                <siri:Latitude>47.39173</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <TopographicPlace>
+                <TopographicPlaceCode>23026261:27</TopographicPlaceCode>
+                <TopographicPlaceName>
+                  <Text xml:lang="en">Zürich</Text>
+                </TopographicPlaceName>
+              </TopographicPlace>
+              <Name>
+                <Text xml:lang="en">Zürich Altstetten</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>8.48942</siri:Longitude>
+                <siri:Latitude>47.39173</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <StopPlace>
+                <StopPlaceRef>8503000</StopPlaceRef>
+                <StopPlaceName>
+                  <Text xml:lang="en">Zürich HB</Text>
+                </StopPlaceName>
+                <PrivateCode>
+                  <System>EFA</System>
+                  <Value>108276:0:5</Value>
+                </PrivateCode>
+                <TopographicPlaceRef>23026261:27</TopographicPlaceRef>
+              </StopPlace>
+              <Name>
+                <Text xml:lang="en">Zürich HB</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>8.53631</siri:Longitude>
+                <siri:Latitude>47.37848</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <StopPoint>
+                <siri:StopPointRef>ch:1:sloid:3000:3:5</siri:StopPointRef>
+                <StopPointName>
+                  <Text xml:lang="en">Zürich HB</Text>
+                </StopPointName>
+                <PrivateCode>
+                  <System>EFA</System>
+                  <Value>108276:0:5</Value>
+                </PrivateCode>
+                <ParentRef>8503000</ParentRef>
+                <TopographicPlaceRef>23026261:27</TopographicPlaceRef>
+              </StopPoint>
+              <Name>
+                <Text xml:lang="en">Zürich HB</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>8.53631</siri:Longitude>
+                <siri:Latitude>47.37848</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <StopPlace>
+                <StopPlaceRef>8503202</StopPlaceRef>
+                <StopPlaceName>
+                  <Text xml:lang="en">Thalwil</Text>
+                </StopPlaceName>
+                <PrivateCode>
+                  <System>EFA</System>
+                  <Value>108423:0:4</Value>
+                </PrivateCode>
+                <TopographicPlaceRef>23026141:2</TopographicPlaceRef>
+              </StopPlace>
+              <Name>
+                <Text xml:lang="en">Thalwil</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>8.56439</siri:Longitude>
+                <siri:Latitude>47.29599</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <StopPoint>
+                <siri:StopPointRef>ch:1:sloid:3202:2:4</siri:StopPointRef>
+                <StopPointName>
+                  <Text xml:lang="en">Thalwil</Text>
+                </StopPointName>
+                <PrivateCode>
+                  <System>EFA</System>
+                  <Value>108423:0:4</Value>
+                </PrivateCode>
+                <ParentRef>8503202</ParentRef>
+                <TopographicPlaceRef>23026141:2</TopographicPlaceRef>
+              </StopPoint>
+              <Name>
+                <Text xml:lang="en">Thalwil</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>8.56439</siri:Longitude>
+                <siri:Latitude>47.29599</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <TopographicPlace>
+                <TopographicPlaceCode>23026141:2</TopographicPlaceCode>
+                <TopographicPlaceName>
+                  <Text xml:lang="en">Thalwil</Text>
+                </TopographicPlaceName>
+              </TopographicPlace>
+              <Name>
+                <Text xml:lang="en">Thalwil</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>8.56439</siri:Longitude>
+                <siri:Latitude>47.29599</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <StopPlace>
+                <StopPlaceRef>8503206</StopPlaceRef>
+                <StopPlaceName>
+                  <Text xml:lang="en">Wädenswil</Text>
+                </StopPlaceName>
+                <PrivateCode>
+                  <System>EFA</System>
+                  <Value>108427:0:3</Value>
+                </PrivateCode>
+                <TopographicPlaceRef>23026142:8</TopographicPlaceRef>
+              </StopPlace>
+              <Name>
+                <Text xml:lang="en">Wädenswil</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>8.6756</siri:Longitude>
+                <siri:Latitude>47.22914</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <StopPoint>
+                <siri:StopPointRef>ch:1:sloid:3206:2:3</siri:StopPointRef>
+                <StopPointName>
+                  <Text xml:lang="en">Wädenswil</Text>
+                </StopPointName>
+                <PrivateCode>
+                  <System>EFA</System>
+                  <Value>108427:0:3</Value>
+                </PrivateCode>
+                <ParentRef>8503206</ParentRef>
+                <TopographicPlaceRef>23026142:8</TopographicPlaceRef>
+              </StopPoint>
+              <Name>
+                <Text xml:lang="en">Wädenswil</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>8.6756</siri:Longitude>
+                <siri:Latitude>47.22914</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <TopographicPlace>
+                <TopographicPlaceCode>23026142:8</TopographicPlaceCode>
+                <TopographicPlaceName>
+                  <Text xml:lang="en">Wädenswil</Text>
+                </TopographicPlaceName>
+              </TopographicPlace>
+              <Name>
+                <Text xml:lang="en">Wädenswil</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>8.6756</siri:Longitude>
+                <siri:Latitude>47.22914</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <StopPlace>
+                <StopPlaceRef>8503209</StopPlaceRef>
+                <StopPlaceName>
+                  <Text xml:lang="en">Pfäffikon SZ</Text>
+                </StopPlaceName>
+                <PrivateCode>
+                  <System>EFA</System>
+                  <Value>108430:0:5</Value>
+                </PrivateCode>
+                <TopographicPlaceRef>23018322:8</TopographicPlaceRef>
+              </StopPlace>
+              <Name>
+                <Text xml:lang="en">Pfäffikon SZ</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>8.77906</siri:Longitude>
+                <siri:Latitude>47.20323</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <StopPoint>
+                <siri:StopPointRef>ch:1:sloid:3209:3:5</siri:StopPointRef>
+                <StopPointName>
+                  <Text xml:lang="en">Pfäffikon SZ</Text>
+                </StopPointName>
+                <PrivateCode>
+                  <System>EFA</System>
+                  <Value>108430:0:5</Value>
+                </PrivateCode>
+                <ParentRef>8503209</ParentRef>
+                <TopographicPlaceRef>23018322:8</TopographicPlaceRef>
+              </StopPoint>
+              <Name>
+                <Text xml:lang="en">Pfäffikon SZ</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>8.77906</siri:Longitude>
+                <siri:Latitude>47.20323</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <TopographicPlace>
+                <TopographicPlaceCode>23018322:8</TopographicPlaceCode>
+                <TopographicPlaceName>
+                  <Text xml:lang="en">Pfäffikon SZ</Text>
+                </TopographicPlaceName>
+              </TopographicPlace>
+              <Name>
+                <Text xml:lang="en">Pfäffikon SZ</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>8.77906</siri:Longitude>
+                <siri:Latitude>47.20323</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <StopPlace>
+                <StopPlaceRef>8503221</StopPlaceRef>
+                <StopPlaceName>
+                  <Text xml:lang="en">Siebnen-Wangen</Text>
+                </StopPlaceName>
+                <PrivateCode>
+                  <System>EFA</System>
+                  <Value>108437:0:4</Value>
+                </PrivateCode>
+                <TopographicPlaceRef>23018349:2</TopographicPlaceRef>
+              </StopPlace>
+              <Name>
+                <Text xml:lang="en">Siebnen-Wangen</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>8.90107</siri:Longitude>
+                <siri:Latitude>47.18288</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <StopPoint>
+                <siri:StopPointRef>ch:1:sloid:3221:2:4</siri:StopPointRef>
+                <StopPointName>
+                  <Text xml:lang="en">Siebnen-Wangen</Text>
+                </StopPointName>
+                <PrivateCode>
+                  <System>EFA</System>
+                  <Value>108437:0:4</Value>
+                </PrivateCode>
+                <ParentRef>8503221</ParentRef>
+                <TopographicPlaceRef>23018349:2</TopographicPlaceRef>
+              </StopPoint>
+              <Name>
+                <Text xml:lang="en">Siebnen-Wangen</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>8.90107</siri:Longitude>
+                <siri:Latitude>47.18288</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <TopographicPlace>
+                <TopographicPlaceCode>23018349:2</TopographicPlaceCode>
+                <TopographicPlaceName>
+                  <Text xml:lang="en">Siebnen (Wangen SZ)</Text>
+                </TopographicPlaceName>
+              </TopographicPlace>
+              <Name>
+                <Text xml:lang="en">Siebnen-Wangen</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>8.90107</siri:Longitude>
+                <siri:Latitude>47.18288</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <StopPlace>
+                <StopPlaceRef>8503225</StopPlaceRef>
+                <StopPlaceName>
+                  <Text xml:lang="en">Ziegelbrücke</Text>
+                </StopPlaceName>
+                <PrivateCode>
+                  <System>EFA</System>
+                  <Value>108441:0:9</Value>
+                </PrivateCode>
+                <TopographicPlaceRef>23016315:8</TopographicPlaceRef>
+              </StopPlace>
+              <Name>
+                <Text xml:lang="en">Ziegelbrücke</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>9.05999</siri:Longitude>
+                <siri:Latitude>47.13681</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <StopPoint>
+                <siri:StopPointRef>ch:1:sloid:3225:4:9</siri:StopPointRef>
+                <StopPointName>
+                  <Text xml:lang="en">Ziegelbrücke</Text>
+                </StopPointName>
+                <PrivateCode>
+                  <System>EFA</System>
+                  <Value>108441:0:9</Value>
+                </PrivateCode>
+                <ParentRef>8503225</ParentRef>
+                <TopographicPlaceRef>23016315:8</TopographicPlaceRef>
+              </StopPoint>
+              <Name>
+                <Text xml:lang="en">Ziegelbrücke</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>9.05999</siri:Longitude>
+                <siri:Latitude>47.13681</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <TopographicPlace>
+                <TopographicPlaceCode>23016315:8</TopographicPlaceCode>
+                <TopographicPlaceName>
+                  <Text xml:lang="en">Ziegelbrücke</Text>
+                </TopographicPlaceName>
+              </TopographicPlace>
+              <Name>
+                <Text xml:lang="en">Ziegelbrücke</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>9.05999</siri:Longitude>
+                <siri:Latitude>47.13681</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <StopPlace>
+                <StopPlaceRef>8509416</StopPlaceRef>
+                <StopPlaceName>
+                  <Text xml:lang="en">Unterterzen</Text>
+                </StopPlaceName>
+                <PrivateCode>
+                  <System>EFA</System>
+                  <Value>112406:0:2</Value>
+                </PrivateCode>
+                <TopographicPlaceRef>23016295:8</TopographicPlaceRef>
+              </StopPlace>
+              <Name>
+                <Text xml:lang="en">Unterterzen</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>9.25613</siri:Longitude>
+                <siri:Latitude>47.11422</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <StopPoint>
+                <siri:StopPointRef>ch:1:sloid:9416:1:2</siri:StopPointRef>
+                <StopPointName>
+                  <Text xml:lang="en">Unterterzen</Text>
+                </StopPointName>
+                <PrivateCode>
+                  <System>EFA</System>
+                  <Value>112406:0:2</Value>
+                </PrivateCode>
+                <ParentRef>8509416</ParentRef>
+                <TopographicPlaceRef>23016295:8</TopographicPlaceRef>
+              </StopPoint>
+              <Name>
+                <Text xml:lang="en">Unterterzen</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>9.25613</siri:Longitude>
+                <siri:Latitude>47.11422</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <TopographicPlace>
+                <TopographicPlaceCode>23016295:8</TopographicPlaceCode>
+                <TopographicPlaceName>
+                  <Text xml:lang="en">Unterterzen</Text>
+                </TopographicPlaceName>
+              </TopographicPlace>
+              <Name>
+                <Text xml:lang="en">Unterterzen</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>9.25613</siri:Longitude>
+                <siri:Latitude>47.11422</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <StopPlace>
+                <StopPlaceRef>8509414</StopPlaceRef>
+                <StopPlaceName>
+                  <Text xml:lang="en">Walenstadt</Text>
+                </StopPlaceName>
+                <PrivateCode>
+                  <System>EFA</System>
+                  <Value>112404:0:3</Value>
+                </PrivateCode>
+                <TopographicPlaceRef>23016298:4</TopographicPlaceRef>
+              </StopPlace>
+              <Name>
+                <Text xml:lang="en">Walenstadt</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>9.31252</siri:Longitude>
+                <siri:Latitude>47.11972</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <StopPoint>
+                <siri:StopPointRef>ch:1:sloid:9414:2:3</siri:StopPointRef>
+                <StopPointName>
+                  <Text xml:lang="en">Walenstadt</Text>
+                </StopPointName>
+                <PrivateCode>
+                  <System>EFA</System>
+                  <Value>112404:0:3</Value>
+                </PrivateCode>
+                <ParentRef>8509414</ParentRef>
+                <TopographicPlaceRef>23016298:4</TopographicPlaceRef>
+              </StopPoint>
+              <Name>
+                <Text xml:lang="en">Walenstadt</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>9.31252</siri:Longitude>
+                <siri:Latitude>47.11972</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <TopographicPlace>
+                <TopographicPlaceCode>23016298:4</TopographicPlaceCode>
+                <TopographicPlaceName>
+                  <Text xml:lang="en">Walenstadt</Text>
+                </TopographicPlaceName>
+              </TopographicPlace>
+              <Name>
+                <Text xml:lang="en">Walenstadt</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>9.31252</siri:Longitude>
+                <siri:Latitude>47.11972</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <StopPlace>
+                <StopPlaceRef>8509411</StopPlaceRef>
+                <StopPlaceName>
+                  <Text xml:lang="en">Sargans</Text>
+                </StopPlaceName>
+                <PrivateCode>
+                  <System>EFA</System>
+                  <Value>112401:0:5</Value>
+                </PrivateCode>
+                <TopographicPlaceRef>23016296:2</TopographicPlaceRef>
+              </StopPlace>
+              <Name>
+                <Text xml:lang="en">Sargans</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>9.44461</siri:Longitude>
+                <siri:Latitude>47.04521</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <StopPoint>
+                <siri:StopPointRef>ch:1:sloid:9411:3:5</siri:StopPointRef>
+                <StopPointName>
+                  <Text xml:lang="en">Sargans</Text>
+                </StopPointName>
+                <PrivateCode>
+                  <System>EFA</System>
+                  <Value>112401:0:5</Value>
+                </PrivateCode>
+                <ParentRef>8509411</ParentRef>
+                <TopographicPlaceRef>23016296:2</TopographicPlaceRef>
+              </StopPoint>
+              <Name>
+                <Text xml:lang="en">Sargans</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>9.44461</siri:Longitude>
+                <siri:Latitude>47.04521</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <TopographicPlace>
+                <TopographicPlaceCode>23016296:2</TopographicPlaceCode>
+                <TopographicPlaceName>
+                  <Text xml:lang="en">Sargans</Text>
+                </TopographicPlaceName>
+              </TopographicPlace>
+              <Name>
+                <Text xml:lang="en">Sargans</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>9.44461</siri:Longitude>
+                <siri:Latitude>47.04521</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <StopPlace>
+                <StopPlaceRef>8509004</StopPlaceRef>
+                <StopPlaceName>
+                  <Text xml:lang="en">Bad Ragaz</Text>
+                </StopPlaceName>
+                <PrivateCode>
+                  <System>EFA</System>
+                  <Value>112216:0:4</Value>
+                </PrivateCode>
+                <TopographicPlaceRef>23016291:1</TopographicPlaceRef>
+              </StopPlace>
+              <Name>
+                <Text xml:lang="en">Bad Ragaz</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>9.50414</siri:Longitude>
+                <siri:Latitude>47.01071</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <StopPoint>
+                <siri:StopPointRef>ch:1:sloid:9004:2:4</siri:StopPointRef>
+                <StopPointName>
+                  <Text xml:lang="en">Bad Ragaz</Text>
+                </StopPointName>
+                <PrivateCode>
+                  <System>EFA</System>
+                  <Value>112216:0:4</Value>
+                </PrivateCode>
+                <ParentRef>8509004</ParentRef>
+                <TopographicPlaceRef>23016291:1</TopographicPlaceRef>
+              </StopPoint>
+              <Name>
+                <Text xml:lang="en">Bad Ragaz</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>9.50414</siri:Longitude>
+                <siri:Latitude>47.01071</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <TopographicPlace>
+                <TopographicPlaceCode>23016291:1</TopographicPlaceCode>
+                <TopographicPlaceName>
+                  <Text xml:lang="en">Bad Ragaz</Text>
+                </TopographicPlaceName>
+              </TopographicPlace>
+              <Name>
+                <Text xml:lang="en">Bad Ragaz</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>9.50414</siri:Longitude>
+                <siri:Latitude>47.01071</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <StopPlace>
+                <StopPlaceRef>8509003</StopPlaceRef>
+                <StopPlaceName>
+                  <Text xml:lang="en">Maienfeld</Text>
+                </StopPlaceName>
+                <PrivateCode>
+                  <System>EFA</System>
+                  <Value>112215:0:1</Value>
+                </PrivateCode>
+                <TopographicPlaceRef>23011953:2</TopographicPlaceRef>
+              </StopPlace>
+              <Name>
+                <Text xml:lang="en">Maienfeld</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>9.52856</siri:Longitude>
+                <siri:Latitude>47.00418</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <StopPoint>
+                <siri:StopPointRef>ch:1:sloid:9003:1:1</siri:StopPointRef>
+                <StopPointName>
+                  <Text xml:lang="en">Maienfeld</Text>
+                </StopPointName>
+                <PrivateCode>
+                  <System>EFA</System>
+                  <Value>112215:0:1</Value>
+                </PrivateCode>
+                <ParentRef>8509003</ParentRef>
+                <TopographicPlaceRef>23011953:2</TopographicPlaceRef>
+              </StopPoint>
+              <Name>
+                <Text xml:lang="en">Maienfeld</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>9.52856</siri:Longitude>
+                <siri:Latitude>47.00418</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <TopographicPlace>
+                <TopographicPlaceCode>23011953:2</TopographicPlaceCode>
+                <TopographicPlaceName>
+                  <Text xml:lang="en">Maienfeld (CH)</Text>
+                </TopographicPlaceName>
+              </TopographicPlace>
+              <Name>
+                <Text xml:lang="en">Maienfeld</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>9.52856</siri:Longitude>
+                <siri:Latitude>47.00418</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <StopPlace>
+                <StopPlaceRef>8509002</StopPlaceRef>
+                <StopPlaceName>
+                  <Text xml:lang="en">Landquart</Text>
+                </StopPlaceName>
+                <PrivateCode>
+                  <System>EFA</System>
+                  <Value>112214:0:3</Value>
+                </PrivateCode>
+                <TopographicPlaceRef>23011955:2</TopographicPlaceRef>
+              </StopPlace>
+              <Name>
+                <Text xml:lang="en">Landquart</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>9.55393</siri:Longitude>
+                <siri:Latitude>46.96648</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <StopPoint>
+                <siri:StopPointRef>ch:1:sloid:9002:2:3</siri:StopPointRef>
+                <StopPointName>
+                  <Text xml:lang="en">Landquart</Text>
+                </StopPointName>
+                <PrivateCode>
+                  <System>EFA</System>
+                  <Value>112214:0:3</Value>
+                </PrivateCode>
+                <ParentRef>8509002</ParentRef>
+                <TopographicPlaceRef>23011955:2</TopographicPlaceRef>
+              </StopPoint>
+              <Name>
+                <Text xml:lang="en">Landquart</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>9.55393</siri:Longitude>
+                <siri:Latitude>46.96648</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <TopographicPlace>
+                <TopographicPlaceCode>23011955:2</TopographicPlaceCode>
+                <TopographicPlaceName>
+                  <Text xml:lang="en">Landquart</Text>
+                </TopographicPlaceName>
+              </TopographicPlace>
+              <Name>
+                <Text xml:lang="en">Landquart</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>9.55393</siri:Longitude>
+                <siri:Latitude>46.96648</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <StopPlace>
+                <StopPlaceRef>8509000</StopPlaceRef>
+                <StopPlaceName>
+                  <Text xml:lang="en">Chur</Text>
+                </StopPlaceName>
+                <PrivateCode>
+                  <System>EFA</System>
+                  <Value>112213:0:7</Value>
+                </PrivateCode>
+                <TopographicPlaceRef>23011901:2</TopographicPlaceRef>
+              </StopPlace>
+              <Name>
+                <Text xml:lang="en">Chur</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>9.52943</siri:Longitude>
+                <siri:Latitude>46.85377</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <StopPoint>
+                <siri:StopPointRef>ch:1:sloid:9000:4:7</siri:StopPointRef>
+                <StopPointName>
+                  <Text xml:lang="en">Chur</Text>
+                </StopPointName>
+                <PrivateCode>
+                  <System>EFA</System>
+                  <Value>112213:0:7</Value>
+                </PrivateCode>
+                <ParentRef>8509000</ParentRef>
+                <TopographicPlaceRef>23011901:2</TopographicPlaceRef>
+              </StopPoint>
+              <Name>
+                <Text xml:lang="en">Chur</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>9.52943</siri:Longitude>
+                <siri:Latitude>46.85377</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <TopographicPlace>
+                <TopographicPlaceCode>23011901:2</TopographicPlaceCode>
+                <TopographicPlaceName>
+                  <Text xml:lang="en">Chur</Text>
+                </TopographicPlaceName>
+              </TopographicPlace>
+              <Name>
+                <Text xml:lang="en">Chur</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>9.52943</siri:Longitude>
+                <siri:Latitude>46.85377</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <StopPoint>
+                <siri:StopPointRef>8509000</siri:StopPointRef>
+                <StopPointName>
+                  <Text xml:lang="en">Chur</Text>
+                </StopPointName>
+                <PrivateCode>
+                  <System>EFA</System>
+                  <Value>112213:0:10</Value>
+                </PrivateCode>
+                <ParentRef>8509000</ParentRef>
+                <TopographicPlaceRef>23011901:2</TopographicPlaceRef>
+              </StopPoint>
+              <Name>
+                <Text xml:lang="en">Chur</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>9.52893</siri:Longitude>
+                <siri:Latitude>46.85309</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <StopPlace>
+                <StopPlaceRef>8509183</StopPlaceRef>
+                <StopPlaceName>
+                  <Text xml:lang="en">Reichenau-Tamins</Text>
+                </StopPlaceName>
+                <PrivateCode>
+                  <System>EFA</System>
+                  <Value>112289:0:3</Value>
+                </PrivateCode>
+                <TopographicPlaceRef>23011722:1</TopographicPlaceRef>
+              </StopPlace>
+              <Name>
+                <Text xml:lang="en">Reichenau-Tamins</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>9.41255</siri:Longitude>
+                <siri:Latitude>46.82366</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <StopPoint>
+                <siri:StopPointRef>8509183</siri:StopPointRef>
+                <StopPointName>
+                  <Text xml:lang="en">Reichenau-Tamins</Text>
+                </StopPointName>
+                <PrivateCode>
+                  <System>EFA</System>
+                  <Value>112289:0:3</Value>
+                </PrivateCode>
+                <ParentRef>8509183</ParentRef>
+                <TopographicPlaceRef>23011722:1</TopographicPlaceRef>
+              </StopPoint>
+              <Name>
+                <Text xml:lang="en">Reichenau-Tamins</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>9.41255</siri:Longitude>
+                <siri:Latitude>46.82366</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <TopographicPlace>
+                <TopographicPlaceCode>23011722:1</TopographicPlaceCode>
+                <TopographicPlaceName>
+                  <Text xml:lang="en">Domat/Ems</Text>
+                </TopographicPlaceName>
+              </TopographicPlace>
+              <Name>
+                <Text xml:lang="en">Reichenau-Tamins</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>9.41255</siri:Longitude>
+                <siri:Latitude>46.82366</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <StopPlace>
+                <StopPlaceRef>8509189</StopPlaceRef>
+                <StopPlaceName>
+                  <Text xml:lang="en">Thusis</Text>
+                </StopPlaceName>
+                <PrivateCode>
+                  <System>EFA</System>
+                  <Value>112295:0:3</Value>
+                </PrivateCode>
+                <TopographicPlaceRef>23011668:1</TopographicPlaceRef>
+              </StopPlace>
+              <Name>
+                <Text xml:lang="en">Thusis</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>9.4405</siri:Longitude>
+                <siri:Latitude>46.6982</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <StopPoint>
+                <siri:StopPointRef>8509189</siri:StopPointRef>
+                <StopPointName>
+                  <Text xml:lang="en">Thusis</Text>
+                </StopPointName>
+                <PrivateCode>
+                  <System>EFA</System>
+                  <Value>112295:0:3</Value>
+                </PrivateCode>
+                <ParentRef>8509189</ParentRef>
+                <TopographicPlaceRef>23011668:1</TopographicPlaceRef>
+              </StopPoint>
+              <Name>
+                <Text xml:lang="en">Thusis</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>9.4405</siri:Longitude>
+                <siri:Latitude>46.6982</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <TopographicPlace>
+                <TopographicPlaceCode>23011668:1</TopographicPlaceCode>
+                <TopographicPlaceName>
+                  <Text xml:lang="en">Thusis</Text>
+                </TopographicPlaceName>
+              </TopographicPlace>
+              <Name>
+                <Text xml:lang="en">Thusis</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>9.4405</siri:Longitude>
+                <siri:Latitude>46.6982</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <StopPlace>
+                <StopPlaceRef>8509192</StopPlaceRef>
+                <StopPlaceName>
+                  <Text xml:lang="en">Tiefencastel</Text>
+                </StopPlaceName>
+                <PrivateCode>
+                  <System>EFA</System>
+                  <Value>112296</Value>
+                </PrivateCode>
+                <TopographicPlaceRef>23011542:9</TopographicPlaceRef>
+              </StopPlace>
+              <Name>
+                <Text xml:lang="en">Tiefencastel</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>9.57286</siri:Longitude>
+                <siri:Latitude>46.66388</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <StopPoint>
+                <siri:StopPointRef>8509192</siri:StopPointRef>
+                <StopPointName>
+                  <Text xml:lang="en">Tiefencastel</Text>
+                </StopPointName>
+                <PrivateCode>
+                  <System>EFA</System>
+                  <Value>112296</Value>
+                </PrivateCode>
+                <ParentRef>8509192</ParentRef>
+                <TopographicPlaceRef>23011542:9</TopographicPlaceRef>
+              </StopPoint>
+              <Name>
+                <Text xml:lang="en">Tiefencastel</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>9.57286</siri:Longitude>
+                <siri:Latitude>46.66388</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <TopographicPlace>
+                <TopographicPlaceCode>23011542:9</TopographicPlaceCode>
+                <TopographicPlaceName>
+                  <Text xml:lang="en">Tiefencastel</Text>
+                </TopographicPlaceName>
+              </TopographicPlace>
+              <Name>
+                <Text xml:lang="en">Tiefencastel</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>9.57286</siri:Longitude>
+                <siri:Latitude>46.66388</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <StopPlace>
+                <StopPlaceRef>8509195</StopPlaceRef>
+                <StopPlaceName>
+                  <Text xml:lang="en">Filisur</Text>
+                </StopPlaceName>
+                <PrivateCode>
+                  <System>EFA</System>
+                  <Value>112299:0:2</Value>
+                </PrivateCode>
+                <TopographicPlaceRef>23011544:3</TopographicPlaceRef>
+              </StopPlace>
+              <Name>
+                <Text xml:lang="en">Filisur</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>9.68228</siri:Longitude>
+                <siri:Latitude>46.67533</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <StopPoint>
+                <siri:StopPointRef>8509195</siri:StopPointRef>
+                <StopPointName>
+                  <Text xml:lang="en">Filisur</Text>
+                </StopPointName>
+                <PrivateCode>
+                  <System>EFA</System>
+                  <Value>112299:0:2</Value>
+                </PrivateCode>
+                <ParentRef>8509195</ParentRef>
+                <TopographicPlaceRef>23011544:3</TopographicPlaceRef>
+              </StopPoint>
+              <Name>
+                <Text xml:lang="en">Filisur</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>9.68228</siri:Longitude>
+                <siri:Latitude>46.67533</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <TopographicPlace>
+                <TopographicPlaceCode>23011544:3</TopographicPlaceCode>
+                <TopographicPlaceName>
+                  <Text xml:lang="en">Filisur</Text>
+                </TopographicPlaceName>
+              </TopographicPlace>
+              <Name>
+                <Text xml:lang="en">Filisur</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>9.68228</siri:Longitude>
+                <siri:Latitude>46.67533</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <StopPlace>
+                <StopPlaceRef>8509197</StopPlaceRef>
+                <StopPlaceName>
+                  <Text xml:lang="en">Bergün/Bravuogn</Text>
+                </StopPlaceName>
+                <PrivateCode>
+                  <System>EFA</System>
+                  <Value>112300</Value>
+                </PrivateCode>
+                <TopographicPlaceRef>23011544:2</TopographicPlaceRef>
+              </StopPlace>
+              <Name>
+                <Text xml:lang="en">Bergün/Bravuogn</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>9.74675</siri:Longitude>
+                <siri:Latitude>46.63107</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <StopPoint>
+                <siri:StopPointRef>8509197</siri:StopPointRef>
+                <StopPointName>
+                  <Text xml:lang="en">Bergün/Bravuogn</Text>
+                </StopPointName>
+                <PrivateCode>
+                  <System>EFA</System>
+                  <Value>112300</Value>
+                </PrivateCode>
+                <ParentRef>8509197</ParentRef>
+                <TopographicPlaceRef>23011544:2</TopographicPlaceRef>
+              </StopPoint>
+              <Name>
+                <Text xml:lang="en">Bergün/Bravuogn</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>9.74675</siri:Longitude>
+                <siri:Latitude>46.63107</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <TopographicPlace>
+                <TopographicPlaceCode>23011544:2</TopographicPlaceCode>
+                <TopographicPlaceName>
+                  <Text xml:lang="en">Bergün/Bravuogn</Text>
+                </TopographicPlaceName>
+              </TopographicPlace>
+              <Name>
+                <Text xml:lang="en">Bergün/Bravuogn</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>9.74675</siri:Longitude>
+                <siri:Latitude>46.63107</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <StopPlace>
+                <StopPlaceRef>8509198</StopPlaceRef>
+                <StopPlaceName>
+                  <Text xml:lang="en">Preda</Text>
+                </StopPlaceName>
+                <PrivateCode>
+                  <System>EFA</System>
+                  <Value>112301:0:2</Value>
+                </PrivateCode>
+                <TopographicPlaceRef>23011544:6</TopographicPlaceRef>
+              </StopPlace>
+              <Name>
+                <Text xml:lang="en">Preda</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>9.77731</siri:Longitude>
+                <siri:Latitude>46.58815</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <StopPoint>
+                <siri:StopPointRef>8509198</siri:StopPointRef>
+                <StopPointName>
+                  <Text xml:lang="en">Preda</Text>
+                </StopPointName>
+                <PrivateCode>
+                  <System>EFA</System>
+                  <Value>112301:0:2</Value>
+                </PrivateCode>
+                <ParentRef>8509198</ParentRef>
+                <TopographicPlaceRef>23011544:6</TopographicPlaceRef>
+              </StopPoint>
+              <Name>
+                <Text xml:lang="en">Preda</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>9.77731</siri:Longitude>
+                <siri:Latitude>46.58815</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <TopographicPlace>
+                <TopographicPlaceCode>23011544:6</TopographicPlaceCode>
+                <TopographicPlaceName>
+                  <Text xml:lang="en">Preda</Text>
+                </TopographicPlaceName>
+              </TopographicPlace>
+              <Name>
+                <Text xml:lang="en">Preda</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>9.77731</siri:Longitude>
+                <siri:Latitude>46.58815</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <StopPlace>
+                <StopPlaceRef>8509199</StopPlaceRef>
+                <StopPlaceName>
+                  <Text xml:lang="en">Spinas</Text>
+                </StopPlaceName>
+                <PrivateCode>
+                  <System>EFA</System>
+                  <Value>112302:0:1</Value>
+                </PrivateCode>
+                <TopographicPlaceRef>23011781:1</TopographicPlaceRef>
+              </StopPlace>
+              <Name>
+                <Text xml:lang="en">Spinas</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>9.84533</siri:Longitude>
+                <siri:Latitude>46.55984</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <StopPoint>
+                <siri:StopPointRef>8509199</siri:StopPointRef>
+                <StopPointName>
+                  <Text xml:lang="en">Spinas</Text>
+                </StopPointName>
+                <PrivateCode>
+                  <System>EFA</System>
+                  <Value>112302:0:1</Value>
+                </PrivateCode>
+                <ParentRef>8509199</ParentRef>
+                <TopographicPlaceRef>23011781:1</TopographicPlaceRef>
+              </StopPoint>
+              <Name>
+                <Text xml:lang="en">Spinas</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>9.84533</siri:Longitude>
+                <siri:Latitude>46.55984</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <TopographicPlace>
+                <TopographicPlaceCode>23011781:1</TopographicPlaceCode>
+                <TopographicPlaceName>
+                  <Text xml:lang="en">Bever (CH)</Text>
+                </TopographicPlaceName>
+              </TopographicPlace>
+              <Name>
+                <Text xml:lang="en">Spinas</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>9.84533</siri:Longitude>
+                <siri:Latitude>46.55984</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <StopPlace>
+                <StopPlaceRef>8509251</StopPlaceRef>
+                <StopPlaceName>
+                  <Text xml:lang="en">Samedan</Text>
+                </StopPlaceName>
+                <PrivateCode>
+                  <System>EFA</System>
+                  <Value>112316:0:2</Value>
+                </PrivateCode>
+                <TopographicPlaceRef>23011786:2</TopographicPlaceRef>
+              </StopPlace>
+              <Name>
+                <Text xml:lang="en">Samedan</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>9.87363</siri:Longitude>
+                <siri:Latitude>46.53376</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <StopPoint>
+                <siri:StopPointRef>8509251</siri:StopPointRef>
+                <StopPointName>
+                  <Text xml:lang="en">Samedan</Text>
+                </StopPointName>
+                <PrivateCode>
+                  <System>EFA</System>
+                  <Value>112316:0:2</Value>
+                </PrivateCode>
+                <ParentRef>8509251</ParentRef>
+                <TopographicPlaceRef>23011786:2</TopographicPlaceRef>
+              </StopPoint>
+              <Name>
+                <Text xml:lang="en">Samedan</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>9.87363</siri:Longitude>
+                <siri:Latitude>46.53376</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <TopographicPlace>
+                <TopographicPlaceCode>23011786:2</TopographicPlaceCode>
+                <TopographicPlaceName>
+                  <Text xml:lang="en">Samedan</Text>
+                </TopographicPlaceName>
+              </TopographicPlace>
+              <Name>
+                <Text xml:lang="en">Samedan</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>9.87363</siri:Longitude>
+                <siri:Latitude>46.53376</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <StopPlace>
+                <StopPlaceRef>8509252</StopPlaceRef>
+                <StopPlaceName>
+                  <Text xml:lang="en">Celerina</Text>
+                </StopPlaceName>
+                <PrivateCode>
+                  <System>EFA</System>
+                  <Value>112317</Value>
+                </PrivateCode>
+                <TopographicPlaceRef>23011782:1</TopographicPlaceRef>
+              </StopPlace>
+              <Name>
+                <Text xml:lang="en">Celerina</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>9.85844</siri:Longitude>
+                <siri:Latitude>46.51398</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <StopPoint>
+                <siri:StopPointRef>8509252</siri:StopPointRef>
+                <StopPointName>
+                  <Text xml:lang="en">Celerina</Text>
+                </StopPointName>
+                <PrivateCode>
+                  <System>EFA</System>
+                  <Value>112317</Value>
+                </PrivateCode>
+                <ParentRef>8509252</ParentRef>
+                <TopographicPlaceRef>23011782:1</TopographicPlaceRef>
+              </StopPoint>
+              <Name>
+                <Text xml:lang="en">Celerina</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>9.85844</siri:Longitude>
+                <siri:Latitude>46.51398</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <TopographicPlace>
+                <TopographicPlaceCode>23011782:1</TopographicPlaceCode>
+                <TopographicPlaceName>
+                  <Text xml:lang="en">Celerina/Schlarigna</Text>
+                </TopographicPlaceName>
+              </TopographicPlace>
+              <Name>
+                <Text xml:lang="en">Celerina</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>9.85844</siri:Longitude>
+                <siri:Latitude>46.51398</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <StopPlace>
+                <StopPlaceRef>8509253</StopPlaceRef>
+                <StopPlaceName>
+                  <Text xml:lang="en">St. Moritz</Text>
+                </StopPlaceName>
+                <PrivateCode>
+                  <System>EFA</System>
+                  <Value>112318:0:1</Value>
+                </PrivateCode>
+                <TopographicPlaceRef>23011787:2</TopographicPlaceRef>
+              </StopPlace>
+              <Name>
+                <Text xml:lang="en">St. Moritz</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>9.84639</siri:Longitude>
+                <siri:Latitude>46.49797</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <StopPoint>
+                <siri:StopPointRef>8509253</siri:StopPointRef>
+                <StopPointName>
+                  <Text xml:lang="en">St. Moritz</Text>
+                </StopPointName>
+                <PrivateCode>
+                  <System>EFA</System>
+                  <Value>112318:0:1</Value>
+                </PrivateCode>
+                <ParentRef>8509253</ParentRef>
+                <TopographicPlaceRef>23011787:2</TopographicPlaceRef>
+              </StopPoint>
+              <Name>
+                <Text xml:lang="en">St. Moritz</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>9.84639</siri:Longitude>
+                <siri:Latitude>46.49797</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <TopographicPlace>
+                <TopographicPlaceCode>23011787:2</TopographicPlaceCode>
+                <TopographicPlaceName>
+                  <Text xml:lang="en">St. Moritz</Text>
+                </TopographicPlaceName>
+              </TopographicPlace>
+              <Name>
+                <Text xml:lang="en">St. Moritz</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>9.84639</siri:Longitude>
+                <siri:Latitude>46.49797</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <StopPoint>
+                <siri:StopPointRef>8509002</siri:StopPointRef>
+                <StopPointName>
+                  <Text xml:lang="en">Landquart</Text>
+                </StopPointName>
+                <PrivateCode>
+                  <System>EFA</System>
+                  <Value>112214:0:6</Value>
+                </PrivateCode>
+                <ParentRef>8509002</ParentRef>
+                <TopographicPlaceRef>23011955:2</TopographicPlaceRef>
+              </StopPoint>
+              <Name>
+                <Text xml:lang="en">Landquart</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>9.55404</siri:Longitude>
+                <siri:Latitude>46.96744</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <StopPlace>
+                <StopPlaceRef>8509060</StopPlaceRef>
+                <StopPlaceName>
+                  <Text xml:lang="en">Schiers</Text>
+                </StopPlaceName>
+                <PrivateCode>
+                  <System>EFA</System>
+                  <Value>112230:0:2</Value>
+                </PrivateCode>
+                <TopographicPlaceRef>23011962:6</TopographicPlaceRef>
+              </StopPlace>
+              <Name>
+                <Text xml:lang="en">Schiers</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>9.68836</siri:Longitude>
+                <siri:Latitude>46.96799</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <StopPoint>
+                <siri:StopPointRef>8509060</siri:StopPointRef>
+                <StopPointName>
+                  <Text xml:lang="en">Schiers</Text>
+                </StopPointName>
+                <PrivateCode>
+                  <System>EFA</System>
+                  <Value>112230:0:2</Value>
+                </PrivateCode>
+                <ParentRef>8509060</ParentRef>
+                <TopographicPlaceRef>23011962:6</TopographicPlaceRef>
+              </StopPoint>
+              <Name>
+                <Text xml:lang="en">Schiers</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>9.68836</siri:Longitude>
+                <siri:Latitude>46.96799</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <TopographicPlace>
+                <TopographicPlaceCode>23011962:6</TopographicPlaceCode>
+                <TopographicPlaceName>
+                  <Text xml:lang="en">Schiers</Text>
+                </TopographicPlaceName>
+              </TopographicPlace>
+              <Name>
+                <Text xml:lang="en">Schiers</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>9.68836</siri:Longitude>
+                <siri:Latitude>46.96799</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <StopPlace>
+                <StopPlaceRef>8509064</StopPlaceRef>
+                <StopPlaceName>
+                  <Text xml:lang="en">Küblis</Text>
+                </StopPlaceName>
+                <PrivateCode>
+                  <System>EFA</System>
+                  <Value>112234:0:1</Value>
+                </PrivateCode>
+                <TopographicPlaceRef>23011882:1</TopographicPlaceRef>
+              </StopPlace>
+              <Name>
+                <Text xml:lang="en">Küblis</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>9.77184</siri:Longitude>
+                <siri:Latitude>46.91428</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <StopPoint>
+                <siri:StopPointRef>8509064</siri:StopPointRef>
+                <StopPointName>
+                  <Text xml:lang="en">Küblis</Text>
+                </StopPointName>
+                <PrivateCode>
+                  <System>EFA</System>
+                  <Value>112234:0:1</Value>
+                </PrivateCode>
+                <ParentRef>8509064</ParentRef>
+                <TopographicPlaceRef>23011882:1</TopographicPlaceRef>
+              </StopPoint>
+              <Name>
+                <Text xml:lang="en">Küblis</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>9.77184</siri:Longitude>
+                <siri:Latitude>46.91428</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <TopographicPlace>
+                <TopographicPlaceCode>23011882:1</TopographicPlaceCode>
+                <TopographicPlaceName>
+                  <Text xml:lang="en">Küblis</Text>
+                </TopographicPlaceName>
+              </TopographicPlace>
+              <Name>
+                <Text xml:lang="en">Küblis</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>9.77184</siri:Longitude>
+                <siri:Latitude>46.91428</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <StopPlace>
+                <StopPlaceRef>8509065</StopPlaceRef>
+                <StopPlaceName>
+                  <Text xml:lang="en">Saas im Prättigau</Text>
+                </StopPlaceName>
+                <PrivateCode>
+                  <System>EFA</System>
+                  <Value>112235:0:1</Value>
+                </PrivateCode>
+                <TopographicPlaceRef>23011871:10</TopographicPlaceRef>
+              </StopPlace>
+              <Name>
+                <Text xml:lang="en">Saas im Prättigau</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>9.80995</siri:Longitude>
+                <siri:Latitude>46.90765</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <StopPoint>
+                <siri:StopPointRef>8509065</siri:StopPointRef>
+                <StopPointName>
+                  <Text xml:lang="en">Saas im Prättigau</Text>
+                </StopPointName>
+                <PrivateCode>
+                  <System>EFA</System>
+                  <Value>112235:0:1</Value>
+                </PrivateCode>
+                <ParentRef>8509065</ParentRef>
+                <TopographicPlaceRef>23011871:10</TopographicPlaceRef>
+              </StopPoint>
+              <Name>
+                <Text xml:lang="en">Saas im Prättigau</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>9.80995</siri:Longitude>
+                <siri:Latitude>46.90765</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <TopographicPlace>
+                <TopographicPlaceCode>23011871:10</TopographicPlaceCode>
+                <TopographicPlaceName>
+                  <Text xml:lang="en">Saas im Prättigau</Text>
+                </TopographicPlaceName>
+              </TopographicPlace>
+              <Name>
+                <Text xml:lang="en">Saas im Prättigau</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>9.80995</siri:Longitude>
+                <siri:Latitude>46.90765</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <StopPlace>
+                <StopPlaceRef>8509068</StopPlaceRef>
+                <StopPlaceName>
+                  <Text xml:lang="en">Klosters Platz</Text>
+                </StopPlaceName>
+                <PrivateCode>
+                  <System>EFA</System>
+                  <Value>112237:0:3</Value>
+                </PrivateCode>
+                <TopographicPlaceRef>23011871:8</TopographicPlaceRef>
+              </StopPlace>
+              <Name>
+                <Text xml:lang="en">Klosters Platz</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>9.88094</siri:Longitude>
+                <siri:Latitude>46.86921</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <StopPoint>
+                <siri:StopPointRef>8509068</siri:StopPointRef>
+                <StopPointName>
+                  <Text xml:lang="en">Klosters Platz</Text>
+                </StopPointName>
+                <PrivateCode>
+                  <System>EFA</System>
+                  <Value>112237:0:3</Value>
+                </PrivateCode>
+                <ParentRef>8509068</ParentRef>
+                <TopographicPlaceRef>23011871:8</TopographicPlaceRef>
+              </StopPoint>
+              <Name>
+                <Text xml:lang="en">Klosters Platz</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>9.88094</siri:Longitude>
+                <siri:Latitude>46.86921</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <TopographicPlace>
+                <TopographicPlaceCode>23011871:8</TopographicPlaceCode>
+                <TopographicPlaceName>
+                  <Text xml:lang="en">Klosters</Text>
+                </TopographicPlaceName>
+              </TopographicPlace>
+              <Name>
+                <Text xml:lang="en">Klosters Platz</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>9.88094</siri:Longitude>
+                <siri:Latitude>46.86921</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <StopPlace>
+                <StopPlaceRef>8509262</StopPlaceRef>
+                <StopPlaceName>
+                  <Text xml:lang="en">Zernez</Text>
+                </StopPlaceName>
+                <PrivateCode>
+                  <System>EFA</System>
+                  <Value>112326:0:1</Value>
+                </PrivateCode>
+                <TopographicPlaceRef>23011746:4</TopographicPlaceRef>
+              </StopPlace>
+              <Name>
+                <Text xml:lang="en">Zernez</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>10.08994</siri:Longitude>
+                <siri:Latitude>46.69767</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <StopPoint>
+                <siri:StopPointRef>8509262</siri:StopPointRef>
+                <StopPointName>
+                  <Text xml:lang="en">Zernez</Text>
+                </StopPointName>
+                <PrivateCode>
+                  <System>EFA</System>
+                  <Value>112326:0:1</Value>
+                </PrivateCode>
+                <ParentRef>8509262</ParentRef>
+                <TopographicPlaceRef>23011746:4</TopographicPlaceRef>
+              </StopPoint>
+              <Name>
+                <Text xml:lang="en">Zernez</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>10.08994</siri:Longitude>
+                <siri:Latitude>46.69767</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <TopographicPlace>
+                <TopographicPlaceCode>23011746:4</TopographicPlaceCode>
+                <TopographicPlaceName>
+                  <Text xml:lang="en">Zernez</Text>
+                </TopographicPlaceName>
+              </TopographicPlace>
+              <Name>
+                <Text xml:lang="en">Zernez</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>10.08994</siri:Longitude>
+                <siri:Latitude>46.69767</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <StopPlace>
+                <StopPlaceRef>8509259</StopPlaceRef>
+                <StopPlaceName>
+                  <Text xml:lang="en">S-chanf</Text>
+                </StopPlaceName>
+                <PrivateCode>
+                  <System>EFA</System>
+                  <Value>112324</Value>
+                </PrivateCode>
+                <TopographicPlaceRef>23011788:2</TopographicPlaceRef>
+              </StopPlace>
+              <Name>
+                <Text xml:lang="en">S-chanf</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>9.98182</siri:Longitude>
+                <siri:Latitude>46.61194</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <StopPoint>
+                <siri:StopPointRef>8509259</siri:StopPointRef>
+                <StopPointName>
+                  <Text xml:lang="en">S-chanf</Text>
+                </StopPointName>
+                <PrivateCode>
+                  <System>EFA</System>
+                  <Value>112324</Value>
+                </PrivateCode>
+                <ParentRef>8509259</ParentRef>
+                <TopographicPlaceRef>23011788:2</TopographicPlaceRef>
+              </StopPoint>
+              <Name>
+                <Text xml:lang="en">S-chanf</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>9.98182</siri:Longitude>
+                <siri:Latitude>46.61194</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <TopographicPlace>
+                <TopographicPlaceCode>23011788:2</TopographicPlaceCode>
+                <TopographicPlaceName>
+                  <Text xml:lang="en">S-chanf</Text>
+                </TopographicPlaceName>
+              </TopographicPlace>
+              <Name>
+                <Text xml:lang="en">S-chanf</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>9.98182</siri:Longitude>
+                <siri:Latitude>46.61194</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <StopPlace>
+                <StopPlaceRef>8509258</StopPlaceRef>
+                <StopPlaceName>
+                  <Text xml:lang="en">Zuoz</Text>
+                </StopPlaceName>
+                <PrivateCode>
+                  <System>EFA</System>
+                  <Value>112323</Value>
+                </PrivateCode>
+                <TopographicPlaceRef>23011791:1</TopographicPlaceRef>
+              </StopPlace>
+              <Name>
+                <Text xml:lang="en">Zuoz</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>9.96146</siri:Longitude>
+                <siri:Latitude>46.59995</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <StopPoint>
+                <siri:StopPointRef>8509258</siri:StopPointRef>
+                <StopPointName>
+                  <Text xml:lang="en">Zuoz</Text>
+                </StopPointName>
+                <PrivateCode>
+                  <System>EFA</System>
+                  <Value>112323</Value>
+                </PrivateCode>
+                <ParentRef>8509258</ParentRef>
+                <TopographicPlaceRef>23011791:1</TopographicPlaceRef>
+              </StopPoint>
+              <Name>
+                <Text xml:lang="en">Zuoz</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>9.96146</siri:Longitude>
+                <siri:Latitude>46.59995</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <TopographicPlace>
+                <TopographicPlaceCode>23011791:1</TopographicPlaceCode>
+                <TopographicPlaceName>
+                  <Text xml:lang="en">Zuoz</Text>
+                </TopographicPlaceName>
+              </TopographicPlace>
+              <Name>
+                <Text xml:lang="en">Zuoz</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>9.96146</siri:Longitude>
+                <siri:Latitude>46.59995</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <StopPoint>
+                <siri:StopPointRef>ch:1:sloid:7000:4:8</siri:StopPointRef>
+                <StopPointName>
+                  <Text xml:lang="en">Bern</Text>
+                </StopPointName>
+                <PrivateCode>
+                  <System>EFA</System>
+                  <Value>111055:0:8</Value>
+                </PrivateCode>
+                <ParentRef>8507000</ParentRef>
+                <TopographicPlaceRef>23006351:1</TopographicPlaceRef>
+              </StopPoint>
+              <Name>
+                <Text xml:lang="en">Bern</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>7.43677</siri:Longitude>
+                <siri:Latitude>46.94864</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <StopPoint>
+                <siri:StopPointRef>ch:1:sloid:3000:501:33</siri:StopPointRef>
+                <StopPointName>
+                  <Text xml:lang="en">Zürich HB</Text>
+                </StopPointName>
+                <PrivateCode>
+                  <System>EFA</System>
+                  <Value>108276:0:33</Value>
+                </PrivateCode>
+                <ParentRef>8503000</ParentRef>
+                <TopographicPlaceRef>23026261:27</TopographicPlaceRef>
+              </StopPoint>
+              <Name>
+                <Text xml:lang="en">Zürich HB</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>8.53675</siri:Longitude>
+                <siri:Latitude>47.37852</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <StopPoint>
+                <siri:StopPointRef>ch:1:sloid:3000:4:6</siri:StopPointRef>
+                <StopPointName>
+                  <Text xml:lang="en">Zürich HB</Text>
+                </StopPointName>
+                <PrivateCode>
+                  <System>EFA</System>
+                  <Value>108276:0:6</Value>
+                </PrivateCode>
+                <ParentRef>8503000</ParentRef>
+                <TopographicPlaceRef>23026261:27</TopographicPlaceRef>
+              </StopPoint>
+              <Name>
+                <Text xml:lang="en">Zürich HB</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>8.53633</siri:Longitude>
+                <siri:Latitude>47.37855</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <StopPoint>
+                <siri:StopPointRef>ch:1:sloid:9002:0:793932</siri:StopPointRef>
+                <StopPointName>
+                  <Text xml:lang="en">Landquart</Text>
+                </StopPointName>
+                <PrivateCode>
+                  <System>EFA</System>
+                  <Value>112214:0:2</Value>
+                </PrivateCode>
+                <ParentRef>8509002</ParentRef>
+                <TopographicPlaceRef>23011955:2</TopographicPlaceRef>
+              </StopPoint>
+              <Name>
+                <Text xml:lang="en">Landquart</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>9.55422</siri:Longitude>
+                <siri:Latitude>46.96559</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <StopPoint>
+                <siri:StopPointRef>ch:1:sloid:9000:5:9</siri:StopPointRef>
+                <StopPointName>
+                  <Text xml:lang="en">Chur</Text>
+                </StopPointName>
+                <PrivateCode>
+                  <System>EFA</System>
+                  <Value>112213:0:9</Value>
+                </PrivateCode>
+                <ParentRef>8509000</ParentRef>
+                <TopographicPlaceRef>23011901:2</TopographicPlaceRef>
+              </StopPoint>
+              <Name>
+                <Text xml:lang="en">Chur</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>9.52866</siri:Longitude>
+                <siri:Latitude>46.85354</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <StopPoint>
+                <siri:StopPointRef>ch:1:sloid:3000:5:9</siri:StopPointRef>
+                <StopPointName>
+                  <Text xml:lang="en">Zürich HB</Text>
+                </StopPointName>
+                <PrivateCode>
+                  <System>EFA</System>
+                  <Value>108276:0:9</Value>
+                </PrivateCode>
+                <ParentRef>8503000</ParentRef>
+                <TopographicPlaceRef>23026261:27</TopographicPlaceRef>
+              </StopPoint>
+              <Name>
+                <Text xml:lang="en">Zürich HB</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>8.53648</siri:Longitude>
+                <siri:Latitude>47.37877</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <StopPoint>
+                <siri:StopPointRef>ch:1:sloid:9000:4:8</siri:StopPointRef>
+                <StopPointName>
+                  <Text xml:lang="en">Chur</Text>
+                </StopPointName>
+                <PrivateCode>
+                  <System>EFA</System>
+                  <Value>112213:0:8</Value>
+                </PrivateCode>
+                <ParentRef>8509000</ParentRef>
+                <TopographicPlaceRef>23011901:2</TopographicPlaceRef>
+              </StopPoint>
+              <Name>
+                <Text xml:lang="en">Chur</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>9.52942</siri:Longitude>
+                <siri:Latitude>46.85385</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <StopPoint>
+                <siri:StopPointRef>ch:1:sloid:7000:1:2</siri:StopPointRef>
+                <StopPointName>
+                  <Text xml:lang="en">Bern</Text>
+                </StopPointName>
+                <PrivateCode>
+                  <System>EFA</System>
+                  <Value>111055:0:2</Value>
+                </PrivateCode>
+                <ParentRef>8507000</ParentRef>
+                <TopographicPlaceRef>23006351:1</TopographicPlaceRef>
+              </StopPoint>
+              <Name>
+                <Text xml:lang="en">Bern</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>7.43783</siri:Longitude>
+                <siri:Latitude>46.94846</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <StopPoint>
+                <siri:StopPointRef>ch:1:sloid:3000:501:34</siri:StopPointRef>
+                <StopPointName>
+                  <Text xml:lang="en">Zürich HB</Text>
+                </StopPointName>
+                <PrivateCode>
+                  <System>EFA</System>
+                  <Value>108276:0:34</Value>
+                </PrivateCode>
+                <ParentRef>8503000</ParentRef>
+                <TopographicPlaceRef>23026261:27</TopographicPlaceRef>
+              </StopPoint>
+              <Name>
+                <Text xml:lang="en">Zürich HB</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>8.53682</siri:Longitude>
+                <siri:Latitude>47.37864</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <StopPoint>
+                <siri:StopPointRef>ch:1:sloid:3000:5:8</siri:StopPointRef>
+                <StopPointName>
+                  <Text xml:lang="en">Zürich HB</Text>
+                </StopPointName>
+                <PrivateCode>
+                  <System>EFA</System>
+                  <Value>108276:0:8</Value>
+                </PrivateCode>
+                <ParentRef>8503000</ParentRef>
+                <TopographicPlaceRef>23026261:27</TopographicPlaceRef>
+              </StopPoint>
+              <Name>
+                <Text xml:lang="en">Zürich HB</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>8.53643</siri:Longitude>
+                <siri:Latitude>47.37869</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <StopPoint>
+                <siri:StopPointRef>ch:1:sloid:9411:2:3</siri:StopPointRef>
+                <StopPointName>
+                  <Text xml:lang="en">Sargans</Text>
+                </StopPointName>
+                <PrivateCode>
+                  <System>EFA</System>
+                  <Value>112401:0:3</Value>
+                </PrivateCode>
+                <ParentRef>8509411</ParentRef>
+                <TopographicPlaceRef>23016296:2</TopographicPlaceRef>
+              </StopPoint>
+              <Name>
+                <Text xml:lang="en">Sargans</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>9.44531</siri:Longitude>
+                <siri:Latitude>47.04484</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <StopPoint>
+                <siri:StopPointRef>ch:1:sloid:7000:2:3</siri:StopPointRef>
+                <StopPointName>
+                  <Text xml:lang="en">Bern</Text>
+                </StopPointName>
+                <PrivateCode>
+                  <System>EFA</System>
+                  <Value>111055:0:3</Value>
+                </PrivateCode>
+                <ParentRef>8507000</ParentRef>
+                <TopographicPlaceRef>23006351:1</TopographicPlaceRef>
+              </StopPoint>
+              <Name>
+                <Text xml:lang="en">Bern</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>7.43729</siri:Longitude>
+                <siri:Latitude>46.9484</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <StopPoint>
+                <siri:StopPointRef>ch:1:sloid:3000:6:10</siri:StopPointRef>
+                <StopPointName>
+                  <Text xml:lang="en">Zürich HB</Text>
+                </StopPointName>
+                <PrivateCode>
+                  <System>EFA</System>
+                  <Value>108276:0:10</Value>
+                </PrivateCode>
+                <ParentRef>8503000</ParentRef>
+                <TopographicPlaceRef>23026261:27</TopographicPlaceRef>
+              </StopPoint>
+              <Name>
+                <Text xml:lang="en">Zürich HB</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>8.53653</siri:Longitude>
+                <siri:Latitude>47.37883</siri:Latitude>
+              </GeoPosition>
+            </Place>
+            <Place>
+              <StopPoint>
+                <siri:StopPointRef>ch:1:sloid:7000:4:7</siri:StopPointRef>
+                <StopPointName>
+                  <Text xml:lang="en">Bern</Text>
+                </StopPointName>
+                <PrivateCode>
+                  <System>EFA</System>
+                  <Value>111055:0:7</Value>
+                </PrivateCode>
+                <ParentRef>8507000</ParentRef>
+                <TopographicPlaceRef>23006351:1</TopographicPlaceRef>
+              </StopPoint>
+              <Name>
+                <Text xml:lang="en">Bern</Text>
+              </Name>
+              <GeoPosition>
+                <siri:Longitude>7.43683</siri:Longitude>
+                <siri:Latitude>46.94857</siri:Latitude>
+              </GeoPosition>
+            </Place>
+          </Places>
+          <Situations/>
+        </TripResponseContext>
+
+        <TripResult>
+          <Id>ID-EF7A703D-D7B1-4CCB-90F4-27B2F5C5261E</Id>
+          <Trip>
+            <Id>ID-EF7A703D-D7B1-4CCB-90F4-27B2F5C5261E</Id>
+            <Duration>PT5H16M12S</Duration>
+            <StartTime>2025-04-10T07:36:48Z</StartTime>
+            <EndTime>2025-04-10T12:53:00Z</EndTime>
+            <Transfers>1</Transfers>
+            <Leg>
+              <Id>1</Id>
+              <Duration>PT3H11M36S</Duration>
+              <TimedLeg>
+                <LegBoard>
+                  <siri:StopPointRef>ch:1:sloid:7000:55:50</siri:StopPointRef>
+                  <StopPointName>
+                    <Text xml:lang="en">Bern</Text>
+                  </StopPointName>
+                  <NameSuffix>
+                    <Text xml:lang="en">PLATFORM_ACCESS_WITHOUT_ASSISTANCE</Text>
+                  </NameSuffix>
+                  <PlannedQuay>
+                    <Text xml:lang="en">50</Text>
+                  </PlannedQuay>
+                  <EstimatedQuay>
+                    <Text xml:lang="en">50</Text>
+                  </EstimatedQuay>
+                  <ServiceDeparture>
+                    <TimetabledTime>2025-04-10T07:36:00Z</TimetabledTime>
+                    <EstimatedTime>2025-04-10T07:36:48Z</EstimatedTime>
+                  </ServiceDeparture>
+                  <Order>1</Order>
+                </LegBoard>
+                <LegIntermediate>
+                  <siri:StopPointRef>ch:1:sloid:8005:2:3</siri:StopPointRef>
+                  <StopPointName>
+                    <Text xml:lang="en">Burgdorf</Text>
+                  </StopPointName>
+                  <NameSuffix>
+                    <Text xml:lang="en">PLATFORM_NOT_WHEELCHAIR_ACCESSIBLE</Text>
+                  </NameSuffix>
+                  <PlannedQuay>
+                    <Text xml:lang="en">3</Text>
+                  </PlannedQuay>
+                  <EstimatedQuay>
+                    <Text xml:lang="en">3</Text>
+                  </EstimatedQuay>
+                  <ServiceArrival>
+                    <TimetabledTime>2025-04-10T07:49:00Z</TimetabledTime>
+                    <EstimatedTime>2025-04-10T07:49:12Z</EstimatedTime>
+                  </ServiceArrival>
+                  <ServiceDeparture>
+                    <TimetabledTime>2025-04-10T07:51:00Z</TimetabledTime>
+                    <EstimatedTime>2025-04-10T07:53:06Z</EstimatedTime>
+                  </ServiceDeparture>
+                  <Order>2</Order>
+                </LegIntermediate>
+                <LegIntermediate>
+                  <siri:StopPointRef>ch:1:sloid:8008:2:2</siri:StopPointRef>
+                  <StopPointName>
+                    <Text xml:lang="en">Herzogenbuchsee</Text>
+                  </StopPointName>
+                  <NameSuffix>
+                    <Text xml:lang="en">NO_DATA</Text>
+                  </NameSuffix>
+                  <PlannedQuay>
+                    <Text xml:lang="en">2</Text>
+                  </PlannedQuay>
+                  <EstimatedQuay>
+                    <Text xml:lang="en">2</Text>
+                  </EstimatedQuay>
+                  <ServiceArrival>
+                    <TimetabledTime>2025-04-10T08:01:00Z</TimetabledTime>
+                    <EstimatedTime>2025-04-10T08:02:18Z</EstimatedTime>
+                  </ServiceArrival>
+                  <ServiceDeparture>
+                    <TimetabledTime>2025-04-10T08:02:00Z</TimetabledTime>
+                    <EstimatedTime>2025-04-10T08:03:06Z</EstimatedTime>
+                  </ServiceDeparture>
+                  <Order>3</Order>
+                </LegIntermediate>
+                <LegIntermediate>
+                  <siri:StopPointRef>ch:1:sloid:8100:2:2</siri:StopPointRef>
+                  <StopPointName>
+                    <Text xml:lang="en">Langenthal</Text>
+                  </StopPointName>
+                  <NameSuffix>
+                    <Text xml:lang="en">PLATFORM_NOT_WHEELCHAIR_ACCESSIBLE</Text>
+                  </NameSuffix>
+                  <PlannedQuay>
+                    <Text xml:lang="en">2</Text>
+                  </PlannedQuay>
+                  <EstimatedQuay>
+                    <Text xml:lang="en">2</Text>
+                  </EstimatedQuay>
+                  <ServiceArrival>
+                    <TimetabledTime>2025-04-10T08:08:00Z</TimetabledTime>
+                    <EstimatedTime>2025-04-10T08:07:36Z</EstimatedTime>
+                  </ServiceArrival>
+                  <ServiceDeparture>
+                    <TimetabledTime>2025-04-10T08:09:00Z</TimetabledTime>
+                    <EstimatedTime>2025-04-10T08:09:48Z</EstimatedTime>
+                  </ServiceDeparture>
+                  <Order>4</Order>
+                </LegIntermediate>
+                <LegIntermediate>
+                  <siri:StopPointRef>ch:1:sloid:218:3:4</siri:StopPointRef>
+                  <StopPointName>
+                    <Text xml:lang="en">Olten</Text>
+                  </StopPointName>
+                  <NameSuffix>
+                    <Text xml:lang="en">PLATFORM_ACCESS_WITH_ASSISTANCE_WHEN_NOTIFIED</Text>
+                  </NameSuffix>
+                  <PlannedQuay>
+                    <Text xml:lang="en">4</Text>
+                  </PlannedQuay>
+                  <EstimatedQuay>
+                    <Text xml:lang="en">4</Text>
+                  </EstimatedQuay>
+                  <ServiceArrival>
+                    <TimetabledTime>2025-04-10T08:24:00Z</TimetabledTime>
+                    <EstimatedTime>2025-04-10T08:22:36Z</EstimatedTime>
+                  </ServiceArrival>
+                  <ServiceDeparture>
+                    <TimetabledTime>2025-04-10T08:30:00Z</TimetabledTime>
+                    <EstimatedTime>2025-04-10T08:31:24Z</EstimatedTime>
+                  </ServiceDeparture>
+                  <Order>5</Order>
+                </LegIntermediate>
+                <LegIntermediate>
+                  <siri:StopPointRef>ch:1:sloid:3001:4:6</siri:StopPointRef>
+                  <StopPointName>
+                    <Text xml:lang="en">Zürich Altstetten</Text>
+                  </StopPointName>
+                  <NameSuffix>
+                    <Text xml:lang="en">PLATFORM_ACCESS_WITH_ASSISTANCE_WHEN_NOTIFIED</Text>
+                  </NameSuffix>
+                  <PlannedQuay>
+                    <Text xml:lang="en">6</Text>
+                  </PlannedQuay>
+                  <EstimatedQuay>
+                    <Text xml:lang="en">6</Text>
+                  </EstimatedQuay>
+                  <ServiceArrival>
+                    <TimetabledTime>2025-04-10T09:00:00Z</TimetabledTime>
+                    <EstimatedTime>2025-04-10T08:59:06Z</EstimatedTime>
+                  </ServiceArrival>
+                  <ServiceDeparture>
+                    <TimetabledTime>2025-04-10T09:00:00Z</TimetabledTime>
+                    <EstimatedTime>2025-04-10T09:00:54Z</EstimatedTime>
+                  </ServiceDeparture>
+                  <Order>6</Order>
+                </LegIntermediate>
+                <LegIntermediate>
+                  <siri:StopPointRef>ch:1:sloid:3000:3:5</siri:StopPointRef>
+                  <StopPointName>
+                    <Text xml:lang="en">Zürich HB</Text>
+                  </StopPointName>
+                  <NameSuffix>
+                    <Text xml:lang="en">PLATFORM_ACCESS_WITHOUT_ASSISTANCE</Text>
+                  </NameSuffix>
+                  <PlannedQuay>
+                    <Text xml:lang="en">5</Text>
+                  </PlannedQuay>
+                  <EstimatedQuay>
+                    <Text xml:lang="en">5</Text>
+                  </EstimatedQuay>
+                  <ServiceArrival>
+                    <TimetabledTime>2025-04-10T09:06:00Z</TimetabledTime>
+                    <EstimatedTime>2025-04-10T09:06:00Z</EstimatedTime>
+                  </ServiceArrival>
+                  <ServiceDeparture>
+                    <TimetabledTime>2025-04-10T09:12:00Z</TimetabledTime>
+                    <EstimatedTime>2025-04-10T09:13:00Z</EstimatedTime>
+                  </ServiceDeparture>
+                  <Order>7</Order>
+                </LegIntermediate>
+                <LegIntermediate>
+                  <siri:StopPointRef>ch:1:sloid:3202:2:4</siri:StopPointRef>
+                  <StopPointName>
+                    <Text xml:lang="en">Thalwil</Text>
+                  </StopPointName>
+                  <NameSuffix>
+                    <Text xml:lang="en">PLATFORM_ACCESS_WITH_ASSISTANCE_WHEN_NOTIFIED</Text>
+                  </NameSuffix>
+                  <PlannedQuay>
+                    <Text xml:lang="en">4</Text>
+                  </PlannedQuay>
+                  <EstimatedQuay>
+                    <Text xml:lang="en">4</Text>
+                  </EstimatedQuay>
+                  <ServiceArrival>
+                    <TimetabledTime>2025-04-10T09:21:00Z</TimetabledTime>
+                    <EstimatedTime>2025-04-10T09:20:42Z</EstimatedTime>
+                  </ServiceArrival>
+                  <ServiceDeparture>
+                    <TimetabledTime>2025-04-10T09:21:00Z</TimetabledTime>
+                    <EstimatedTime>2025-04-10T09:22:00Z</EstimatedTime>
+                  </ServiceDeparture>
+                  <Order>8</Order>
+                </LegIntermediate>
+                <LegIntermediate>
+                  <siri:StopPointRef>ch:1:sloid:3206:2:3</siri:StopPointRef>
+                  <StopPointName>
+                    <Text xml:lang="en">Wädenswil</Text>
+                  </StopPointName>
+                  <NameSuffix>
+                    <Text xml:lang="en">ALTERNATIVE_TRANSPORT</Text>
+                  </NameSuffix>
+                  <PlannedQuay>
+                    <Text xml:lang="en">3</Text>
+                  </PlannedQuay>
+                  <EstimatedQuay>
+                    <Text xml:lang="en">3</Text>
+                  </EstimatedQuay>
+                  <ServiceArrival>
+                    <TimetabledTime>2025-04-10T09:31:00Z</TimetabledTime>
+                    <EstimatedTime>2025-04-10T09:30:42Z</EstimatedTime>
+                  </ServiceArrival>
+                  <ServiceDeparture>
+                    <TimetabledTime>2025-04-10T09:31:00Z</TimetabledTime>
+                    <EstimatedTime>2025-04-10T09:32:12Z</EstimatedTime>
+                  </ServiceDeparture>
+                  <Order>9</Order>
+                </LegIntermediate>
+                <LegIntermediate>
+                  <siri:StopPointRef>ch:1:sloid:3209:3:5</siri:StopPointRef>
+                  <StopPointName>
+                    <Text xml:lang="en">Pfäffikon SZ</Text>
+                  </StopPointName>
+                  <NameSuffix>
+                    <Text xml:lang="en">PLATFORM_ACCESS_WITH_ASSISTANCE_WHEN_NOTIFIED</Text>
+                  </NameSuffix>
+                  <PlannedQuay>
+                    <Text xml:lang="en">5</Text>
+                  </PlannedQuay>
+                  <EstimatedQuay>
+                    <Text xml:lang="en">5</Text>
+                  </EstimatedQuay>
+                  <ServiceArrival>
+                    <TimetabledTime>2025-04-10T09:39:00Z</TimetabledTime>
+                    <EstimatedTime>2025-04-10T09:39:06Z</EstimatedTime>
+                  </ServiceArrival>
+                  <ServiceDeparture>
+                    <TimetabledTime>2025-04-10T09:41:00Z</TimetabledTime>
+                    <EstimatedTime>2025-04-10T09:41:24Z</EstimatedTime>
+                  </ServiceDeparture>
+                  <Order>10</Order>
+                </LegIntermediate>
+                <LegIntermediate>
+                  <siri:StopPointRef>ch:1:sloid:3221:2:4</siri:StopPointRef>
+                  <StopPointName>
+                    <Text xml:lang="en">Siebnen-Wangen</Text>
+                  </StopPointName>
+                  <NameSuffix>
+                    <Text xml:lang="en">ALTERNATIVE_TRANSPORT</Text>
+                  </NameSuffix>
+                  <PlannedQuay>
+                    <Text xml:lang="en">4</Text>
+                  </PlannedQuay>
+                  <EstimatedQuay>
+                    <Text xml:lang="en">4</Text>
+                  </EstimatedQuay>
+                  <ServiceArrival>
+                    <TimetabledTime>2025-04-10T09:48:00Z</TimetabledTime>
+                    <EstimatedTime>2025-04-10T09:48:12Z</EstimatedTime>
+                  </ServiceArrival>
+                  <ServiceDeparture>
+                    <TimetabledTime>2025-04-10T09:48:00Z</TimetabledTime>
+                    <EstimatedTime>2025-04-10T09:49:18Z</EstimatedTime>
+                  </ServiceDeparture>
+                  <Order>11</Order>
+                </LegIntermediate>
+                <LegIntermediate>
+                  <siri:StopPointRef>ch:1:sloid:3225:4:9</siri:StopPointRef>
+                  <StopPointName>
+                    <Text xml:lang="en">Ziegelbrücke</Text>
+                  </StopPointName>
+                  <NameSuffix>
+                    <Text xml:lang="en">PLATFORM_ACCESS_WITH_ASSISTANCE_WHEN_NOTIFIED</Text>
+                  </NameSuffix>
+                  <PlannedQuay>
+                    <Text xml:lang="en">9</Text>
+                  </PlannedQuay>
+                  <EstimatedQuay>
+                    <Text xml:lang="en">9</Text>
+                  </EstimatedQuay>
+                  <ServiceArrival>
+                    <TimetabledTime>2025-04-10T09:58:00Z</TimetabledTime>
+                    <EstimatedTime>2025-04-10T09:58:00Z</EstimatedTime>
+                  </ServiceArrival>
+                  <ServiceDeparture>
+                    <TimetabledTime>2025-04-10T10:00:00Z</TimetabledTime>
+                    <EstimatedTime>2025-04-10T10:00:12Z</EstimatedTime>
+                  </ServiceDeparture>
+                  <Order>12</Order>
+                </LegIntermediate>
+                <LegIntermediate>
+                  <siri:StopPointRef>ch:1:sloid:9416:1:2</siri:StopPointRef>
+                  <StopPointName>
+                    <Text xml:lang="en">Unterterzen</Text>
+                  </StopPointName>
+                  <NameSuffix>
+                    <Text xml:lang="en">PLATFORM_ACCESS_WITHOUT_ASSISTANCE</Text>
+                  </NameSuffix>
+                  <PlannedQuay>
+                    <Text xml:lang="en">2</Text>
+                  </PlannedQuay>
+                  <EstimatedQuay>
+                    <Text xml:lang="en">2</Text>
+                  </EstimatedQuay>
+                  <ServiceArrival>
+                    <TimetabledTime>2025-04-10T10:10:00Z</TimetabledTime>
+                    <EstimatedTime>2025-04-10T10:10:06Z</EstimatedTime>
+                  </ServiceArrival>
+                  <ServiceDeparture>
+                    <TimetabledTime>2025-04-10T10:11:00Z</TimetabledTime>
+                    <EstimatedTime>2025-04-10T10:11:12Z</EstimatedTime>
+                  </ServiceDeparture>
+                  <Order>13</Order>
+                </LegIntermediate>
+                <LegIntermediate>
+                  <siri:StopPointRef>ch:1:sloid:9414:2:3</siri:StopPointRef>
+                  <StopPointName>
+                    <Text xml:lang="en">Walenstadt</Text>
+                  </StopPointName>
+                  <NameSuffix>
+                    <Text xml:lang="en">PLATFORM_ACCESS_WITH_ASSISTANCE_WHEN_NOTIFIED</Text>
+                  </NameSuffix>
+                  <PlannedQuay>
+                    <Text xml:lang="en">3</Text>
+                  </PlannedQuay>
+                  <EstimatedQuay>
+                    <Text xml:lang="en">3</Text>
+                  </EstimatedQuay>
+                  <ServiceArrival>
+                    <TimetabledTime>2025-04-10T10:15:00Z</TimetabledTime>
+                    <EstimatedTime>2025-04-10T10:14:48Z</EstimatedTime>
+                  </ServiceArrival>
+                  <ServiceDeparture>
+                    <TimetabledTime>2025-04-10T10:15:00Z</TimetabledTime>
+                    <EstimatedTime>2025-04-10T10:16:00Z</EstimatedTime>
+                  </ServiceDeparture>
+                  <Order>14</Order>
+                </LegIntermediate>
+                <LegIntermediate>
+                  <siri:StopPointRef>ch:1:sloid:9411:3:5</siri:StopPointRef>
+                  <StopPointName>
+                    <Text xml:lang="en">Sargans</Text>
+                  </StopPointName>
+                  <NameSuffix>
+                    <Text xml:lang="en">PLATFORM_ACCESS_WITH_ASSISTANCE_WHEN_NOTIFIED</Text>
+                  </NameSuffix>
+                  <PlannedQuay>
+                    <Text xml:lang="en">5</Text>
+                  </PlannedQuay>
+                  <EstimatedQuay>
+                    <Text xml:lang="en">5</Text>
+                  </EstimatedQuay>
+                  <ServiceArrival>
+                    <TimetabledTime>2025-04-10T10:25:00Z</TimetabledTime>
+                    <EstimatedTime>2025-04-10T10:24:54Z</EstimatedTime>
+                  </ServiceArrival>
+                  <ServiceDeparture>
+                    <TimetabledTime>2025-04-10T10:26:00Z</TimetabledTime>
+                    <EstimatedTime>2025-04-10T10:26:18Z</EstimatedTime>
+                  </ServiceDeparture>
+                  <Order>15</Order>
+                </LegIntermediate>
+                <LegIntermediate>
+                  <siri:StopPointRef>ch:1:sloid:9004:2:4</siri:StopPointRef>
+                  <StopPointName>
+                    <Text xml:lang="en">Bad Ragaz</Text>
+                  </StopPointName>
+                  <NameSuffix>
+                    <Text xml:lang="en">PLATFORM_ACCESS_WITH_ASSISTANCE_WHEN_NOTIFIED</Text>
+                  </NameSuffix>
+                  <PlannedQuay>
+                    <Text xml:lang="en">4</Text>
+                  </PlannedQuay>
+                  <EstimatedQuay>
+                    <Text xml:lang="en">4</Text>
+                  </EstimatedQuay>
+                  <ServiceArrival>
+                    <TimetabledTime>2025-04-10T10:30:00Z</TimetabledTime>
+                    <EstimatedTime>2025-04-10T10:30:18Z</EstimatedTime>
+                  </ServiceArrival>
+                  <ServiceDeparture>
+                    <TimetabledTime>2025-04-10T10:30:00Z</TimetabledTime>
+                    <EstimatedTime>2025-04-10T10:31:24Z</EstimatedTime>
+                  </ServiceDeparture>
+                  <Order>16</Order>
+                </LegIntermediate>
+                <LegIntermediate>
+                  <siri:StopPointRef>ch:1:sloid:9003:1:1</siri:StopPointRef>
+                  <StopPointName>
+                    <Text xml:lang="en">Maienfeld</Text>
+                  </StopPointName>
+                  <NameSuffix>
+                    <Text xml:lang="en">PLATFORM_ACCESS_WITH_ASSISTANCE_WHEN_NOTIFIED</Text>
+                  </NameSuffix>
+                  <PlannedQuay>
+                    <Text xml:lang="en">1</Text>
+                  </PlannedQuay>
+                  <EstimatedQuay>
+                    <Text xml:lang="en">1</Text>
+                  </EstimatedQuay>
+                  <ServiceArrival>
+                    <TimetabledTime>2025-04-10T10:33:00Z</TimetabledTime>
+                    <EstimatedTime>2025-04-10T10:33:36Z</EstimatedTime>
+                  </ServiceArrival>
+                  <ServiceDeparture>
+                    <TimetabledTime>2025-04-10T10:33:00Z</TimetabledTime>
+                    <EstimatedTime>2025-04-10T10:34:42Z</EstimatedTime>
+                  </ServiceDeparture>
+                  <Order>17</Order>
+                </LegIntermediate>
+                <LegIntermediate>
+                  <siri:StopPointRef>ch:1:sloid:9002:2:3</siri:StopPointRef>
+                  <StopPointName>
+                    <Text xml:lang="en">Landquart</Text>
+                  </StopPointName>
+                  <NameSuffix>
+                    <Text xml:lang="en">PLATFORM_ACCESS_WITHOUT_ASSISTANCE</Text>
+                  </NameSuffix>
+                  <PlannedQuay>
+                    <Text xml:lang="en">3</Text>
+                  </PlannedQuay>
+                  <EstimatedQuay>
+                    <Text xml:lang="en">3</Text>
+                  </EstimatedQuay>
+                  <ServiceArrival>
+                    <TimetabledTime>2025-04-10T10:38:00Z</TimetabledTime>
+                    <EstimatedTime>2025-04-10T10:38:12Z</EstimatedTime>
+                  </ServiceArrival>
+                  <ServiceDeparture>
+                    <TimetabledTime>2025-04-10T10:38:00Z</TimetabledTime>
+                    <EstimatedTime>2025-04-10T10:39:48Z</EstimatedTime>
+                  </ServiceDeparture>
+                  <Order>18</Order>
+                </LegIntermediate>
+                <LegAlight>
+                  <siri:StopPointRef>ch:1:sloid:9000:4:7</siri:StopPointRef>
+                  <StopPointName>
+                    <Text xml:lang="en">Chur</Text>
+                  </StopPointName>
+                  <NameSuffix>
+                    <Text xml:lang="en">PLATFORM_ACCESS_WITH_ASSISTANCE_WHEN_NOTIFIED</Text>
+                  </NameSuffix>
+                  <PlannedQuay>
+                    <Text xml:lang="en">7</Text>
+                  </PlannedQuay>
+                  <EstimatedQuay>
+                    <Text xml:lang="en">7</Text>
+                  </EstimatedQuay>
+                  <ServiceArrival>
+                    <TimetabledTime>2025-04-10T10:48:00Z</TimetabledTime>
+                    <EstimatedTime>2025-04-10T10:48:24Z</EstimatedTime>
+                  </ServiceArrival>
+                  <Order>20</Order>
+                </LegAlight>
+                <Service>
+                  <OperatingDayRef>2025-04-10</OperatingDayRef>
+                  <JourneyRef>ch:1:sjyid:100001:2365-004</JourneyRef>
+                  <PublicCode>InterRegio</PublicCode>
+                  <siri:LineRef>ojp:91035:B</siri:LineRef>
+                  <siri:DirectionRef>H</siri:DirectionRef>
+                  <Mode>
+                    <PtMode>rail</PtMode>
+                    <siri:RailSubmode>regionalRail</siri:RailSubmode>
+                    <Name>
+                      <Text xml:lang="en">Train</Text>
+                    </Name>
+                    <ShortName>
+                      <Text xml:lang="en">IR</Text>
+                    </ShortName>
+                  </Mode>
+                  <ProductCategory>
+                    <Name>
+                      <Text xml:lang="en">Train</Text>
+                    </Name>
+                    <ShortName>
+                      <Text xml:lang="en">IR</Text>
+                    </ShortName>
+                    <ProductCategoryRef>1</ProductCategoryRef>
+                  </ProductCategory>
+                  <PublishedServiceName>
+                    <Text xml:lang="en">IR35</Text>
+                  </PublishedServiceName>
+                  <TrainNumber>2365</TrainNumber>
+                  <Attribute>
+                    <UserText>
+                      <Text xml:lang="en">Free Internet with the SBB FreeSurf app</Text>
+                    </UserText>
+                    <Code>A__FS</Code>
+                  </Attribute>
+                  <Attribute>
+                    <UserText>
+                      <Text xml:lang="en">Low-floor access</Text>
+                    </UserText>
+                    <Code>A__NF</Code>
+                  </Attribute>
+                  <Attribute>
+                    <UserText>
+                      <Text xml:lang="en">Aussteigeseite: Rechts</Text>
+                    </UserText>
+                    <Code>ojp91035BH_InfoCall268_112213_1</Code>
+                  </Attribute>
+                  <OriginText>
+                    <Text xml:lang="en">n/a</Text>
+                  </OriginText>
+                  <siri:OperatorRef>11</siri:OperatorRef>
+                  <DestinationStopPointRef>8509000</DestinationStopPointRef>
+                  <DestinationText>
+                    <Text xml:lang="en">Chur</Text>
+                  </DestinationText>
+                </Service>
+              </TimedLeg>
+            </Leg>
+            <Leg>
+              <Id>2</Id>
+              <Duration>PT3M</Duration>
+              <TransferLeg>
+                <TransferType>walk</TransferType>
+                <LegStart>
+                  <siri:StopPointRef>8509000</siri:StopPointRef>
+                  <Name>
+                    <Text xml:lang="en">Chur</Text>
+                  </Name>
+                </LegStart>
+                <LegEnd>
+                  <siri:StopPointRef>8509000</siri:StopPointRef>
+                  <Name>
+                    <Text xml:lang="en">Chur</Text>
+                  </Name>
+                </LegEnd>
+                <Duration>PT3M</Duration>
+              </TransferLeg>
+            </Leg>
+            <Leg>
+              <Id>3</Id>
+              <Duration>PT1H55M</Duration>
+              <TimedLeg>
+                <LegBoard>
+                  <siri:StopPointRef>8509000</siri:StopPointRef>
+                  <StopPointName>
+                    <Text xml:lang="en">Chur</Text>
+                  </StopPointName>
+                  <NameSuffix>
+                    <Text xml:lang="en">PLATFORM_NOT_WHEELCHAIR_ACCESSIBLE</Text>
+                  </NameSuffix>
+                  <PlannedQuay>
+                    <Text xml:lang="en">10</Text>
+                  </PlannedQuay>
+                  <EstimatedQuay>
+                    <Text xml:lang="en">10</Text>
+                  </EstimatedQuay>
+                  <ServiceDeparture>
+                    <TimetabledTime>2025-04-10T10:58:00Z</TimetabledTime>
+                    <EstimatedTime>2025-04-10T10:58:00Z</EstimatedTime>
+                  </ServiceDeparture>
+                  <Order>1</Order>
+                </LegBoard>
+                <LegIntermediate>
+                  <siri:StopPointRef>8509183</siri:StopPointRef>
+                  <StopPointName>
+                    <Text xml:lang="en">Reichenau-Tamins</Text>
+                  </StopPointName>
+                  <NameSuffix>
+                    <Text xml:lang="en">PLATFORM_NOT_WHEELCHAIR_ACCESSIBLE</Text>
+                  </NameSuffix>
+                  <PlannedQuay>
+                    <Text xml:lang="en">3</Text>
+                  </PlannedQuay>
+                  <EstimatedQuay>
+                    <Text xml:lang="en">3</Text>
+                  </EstimatedQuay>
+                  <ServiceArrival>
+                    <TimetabledTime>2025-04-10T11:08:00Z</TimetabledTime>
+                    <EstimatedTime>2025-04-10T11:08:00Z</EstimatedTime>
+                  </ServiceArrival>
+                  <ServiceDeparture>
+                    <TimetabledTime>2025-04-10T11:08:00Z</TimetabledTime>
+                    <EstimatedTime>2025-04-10T11:08:00Z</EstimatedTime>
+                  </ServiceDeparture>
+                  <Order>2</Order>
+                </LegIntermediate>
+                <LegIntermediate>
+                  <siri:StopPointRef>8509189</siri:StopPointRef>
+                  <StopPointName>
+                    <Text xml:lang="en">Thusis</Text>
+                  </StopPointName>
+                  <NameSuffix>
+                    <Text xml:lang="en">PLATFORM_NOT_WHEELCHAIR_ACCESSIBLE</Text>
+                  </NameSuffix>
+                  <PlannedQuay>
+                    <Text xml:lang="en">3</Text>
+                  </PlannedQuay>
+                  <EstimatedQuay>
+                    <Text xml:lang="en">3</Text>
+                  </EstimatedQuay>
+                  <ServiceArrival>
+                    <TimetabledTime>2025-04-10T11:26:00Z</TimetabledTime>
+                    <EstimatedTime>2025-04-10T11:26:00Z</EstimatedTime>
+                  </ServiceArrival>
+                  <ServiceDeparture>
+                    <TimetabledTime>2025-04-10T11:28:00Z</TimetabledTime>
+                    <EstimatedTime>2025-04-10T11:28:00Z</EstimatedTime>
+                  </ServiceDeparture>
+                  <Order>3</Order>
+                </LegIntermediate>
+                <LegIntermediate>
+                  <siri:StopPointRef>8509192</siri:StopPointRef>
+                  <StopPointName>
+                    <Text xml:lang="en">Tiefencastel</Text>
+                  </StopPointName>
+                  <NameSuffix>
+                    <Text xml:lang="en">PLATFORM_NOT_WHEELCHAIR_ACCESSIBLE</Text>
+                  </NameSuffix>
+                  <ServiceArrival>
+                    <TimetabledTime>2025-04-10T11:43:00Z</TimetabledTime>
+                    <EstimatedTime>2025-04-10T11:43:00Z</EstimatedTime>
+                  </ServiceArrival>
+                  <ServiceDeparture>
+                    <TimetabledTime>2025-04-10T11:44:00Z</TimetabledTime>
+                    <EstimatedTime>2025-04-10T11:44:00Z</EstimatedTime>
+                  </ServiceDeparture>
+                  <Order>4</Order>
+                </LegIntermediate>
+                <LegIntermediate>
+                  <siri:StopPointRef>8509195</siri:StopPointRef>
+                  <StopPointName>
+                    <Text xml:lang="en">Filisur</Text>
+                  </StopPointName>
+                  <NameSuffix>
+                    <Text xml:lang="en">PLATFORM_NOT_WHEELCHAIR_ACCESSIBLE</Text>
+                  </NameSuffix>
+                  <PlannedQuay>
+                    <Text xml:lang="en">2</Text>
+                  </PlannedQuay>
+                  <EstimatedQuay>
+                    <Text xml:lang="en">2</Text>
+                  </EstimatedQuay>
+                  <ServiceArrival>
+                    <TimetabledTime>2025-04-10T11:59:00Z</TimetabledTime>
+                    <EstimatedTime>2025-04-10T11:59:00Z</EstimatedTime>
+                  </ServiceArrival>
+                  <ServiceDeparture>
+                    <TimetabledTime>2025-04-10T12:00:00Z</TimetabledTime>
+                    <EstimatedTime>2025-04-10T12:00:00Z</EstimatedTime>
+                  </ServiceDeparture>
+                  <Order>5</Order>
+                </LegIntermediate>
+                <LegIntermediate>
+                  <siri:StopPointRef>8509197</siri:StopPointRef>
+                  <StopPointName>
+                    <Text xml:lang="en">Bergün/Bravuogn</Text>
+                  </StopPointName>
+                  <NameSuffix>
+                    <Text xml:lang="en">PLATFORM_NOT_WHEELCHAIR_ACCESSIBLE</Text>
+                  </NameSuffix>
+                  <ServiceArrival>
+                    <TimetabledTime>2025-04-10T12:12:00Z</TimetabledTime>
+                    <EstimatedTime>2025-04-10T12:12:00Z</EstimatedTime>
+                  </ServiceArrival>
+                  <ServiceDeparture>
+                    <TimetabledTime>2025-04-10T12:13:00Z</TimetabledTime>
+                    <EstimatedTime>2025-04-10T12:13:00Z</EstimatedTime>
+                  </ServiceDeparture>
+                  <Order>6</Order>
+                </LegIntermediate>
+                <LegIntermediate>
+                  <siri:StopPointRef>8509198</siri:StopPointRef>
+                  <StopPointName>
+                    <Text xml:lang="en">Preda</Text>
+                  </StopPointName>
+                  <NameSuffix>
+                    <Text xml:lang="en">PLATFORM_NOT_WHEELCHAIR_ACCESSIBLE</Text>
+                  </NameSuffix>
+                  <PlannedQuay>
+                    <Text xml:lang="en">2</Text>
+                  </PlannedQuay>
+                  <EstimatedQuay>
+                    <Text xml:lang="en">2</Text>
+                  </EstimatedQuay>
+                  <ServiceArrival>
+                    <TimetabledTime>2025-04-10T12:30:00Z</TimetabledTime>
+                    <EstimatedTime>2025-04-10T12:30:00Z</EstimatedTime>
+                  </ServiceArrival>
+                  <ServiceDeparture>
+                    <TimetabledTime>2025-04-10T12:31:00Z</TimetabledTime>
+                    <EstimatedTime>2025-04-10T12:31:00Z</EstimatedTime>
+                  </ServiceDeparture>
+                  <Order>7</Order>
+                </LegIntermediate>
+                <LegIntermediate>
+                  <siri:StopPointRef>8509199</siri:StopPointRef>
+                  <StopPointName>
+                    <Text xml:lang="en">Spinas</Text>
+                  </StopPointName>
+                  <NameSuffix>
+                    <Text xml:lang="en">PLATFORM_NOT_WHEELCHAIR_ACCESSIBLE</Text>
+                  </NameSuffix>
+                  <PlannedQuay>
+                    <Text xml:lang="en">1</Text>
+                  </PlannedQuay>
+                  <EstimatedQuay>
+                    <Text xml:lang="en">1</Text>
+                  </EstimatedQuay>
+                  <ServiceArrival>
+                    <TimetabledTime>2025-04-10T12:36:00Z</TimetabledTime>
+                    <EstimatedTime>2025-04-10T12:36:00Z</EstimatedTime>
+                  </ServiceArrival>
+                  <ServiceDeparture>
+                    <TimetabledTime>2025-04-10T12:36:00Z</TimetabledTime>
+                    <EstimatedTime>2025-04-10T12:36:00Z</EstimatedTime>
+                  </ServiceDeparture>
+                  <Order>8</Order>
+                  <RequestStop>true</RequestStop>
+                </LegIntermediate>
+                <LegIntermediate>
+                  <siri:StopPointRef>8509251</siri:StopPointRef>
+                  <StopPointName>
+                    <Text xml:lang="en">Samedan</Text>
+                  </StopPointName>
+                  <NameSuffix>
+                    <Text xml:lang="en">PLATFORM_NOT_WHEELCHAIR_ACCESSIBLE</Text>
+                  </NameSuffix>
+                  <PlannedQuay>
+                    <Text xml:lang="en">2</Text>
+                  </PlannedQuay>
+                  <EstimatedQuay>
+                    <Text xml:lang="en">2</Text>
+                  </EstimatedQuay>
+                  <ServiceArrival>
+                    <TimetabledTime>2025-04-10T12:43:00Z</TimetabledTime>
+                    <EstimatedTime>2025-04-10T12:43:00Z</EstimatedTime>
+                  </ServiceArrival>
+                  <ServiceDeparture>
+                    <TimetabledTime>2025-04-10T12:45:00Z</TimetabledTime>
+                    <EstimatedTime>2025-04-10T12:45:00Z</EstimatedTime>
+                  </ServiceDeparture>
+                  <Order>9</Order>
+                </LegIntermediate>
+                <LegIntermediate>
+                  <siri:StopPointRef>8509252</siri:StopPointRef>
+                  <StopPointName>
+                    <Text xml:lang="en">Celerina</Text>
+                  </StopPointName>
+                  <NameSuffix>
+                    <Text xml:lang="en">ALTERNATIVE_TRANSPORT</Text>
+                  </NameSuffix>
+                  <ServiceArrival>
+                    <TimetabledTime>2025-04-10T12:48:00Z</TimetabledTime>
+                    <EstimatedTime>2025-04-10T12:48:00Z</EstimatedTime>
+                  </ServiceArrival>
+                  <ServiceDeparture>
+                    <TimetabledTime>2025-04-10T12:49:00Z</TimetabledTime>
+                    <EstimatedTime>2025-04-10T12:49:00Z</EstimatedTime>
+                  </ServiceDeparture>
+                  <Order>10</Order>
+                </LegIntermediate>
+                <LegAlight>
+                  <siri:StopPointRef>8509253</siri:StopPointRef>
+                  <StopPointName>
+                    <Text xml:lang="en">St. Moritz</Text>
+                  </StopPointName>
+                  <NameSuffix>
+                    <Text xml:lang="en">PLATFORM_NOT_WHEELCHAIR_ACCESSIBLE</Text>
+                  </NameSuffix>
+                  <PlannedQuay>
+                    <Text xml:lang="en">1</Text>
+                  </PlannedQuay>
+                  <EstimatedQuay>
+                    <Text xml:lang="en">1</Text>
+                  </EstimatedQuay>
+                  <ServiceArrival>
+                    <TimetabledTime>2025-04-10T12:53:00Z</TimetabledTime>
+                    <EstimatedTime>2025-04-10T12:53:00Z</EstimatedTime>
+                  </ServiceArrival>
+                  <Order>12</Order>
+                </LegAlight>
+                <Service>
+                  <OperatingDayRef>2025-04-10</OperatingDayRef>
+                  <JourneyRef>ojp-91-38-_-j25-1-52-TA</JourneyRef>
+                  <PublicCode>InterRegio</PublicCode>
+                  <siri:LineRef>ojp:91038:_x0020_</siri:LineRef>
+                  <siri:DirectionRef>H</siri:DirectionRef>
+                  <Mode>
+                    <PtMode>rail</PtMode>
+                    <siri:RailSubmode>regionalRail</siri:RailSubmode>
+                    <Name>
+                      <Text xml:lang="en">Train</Text>
+                    </Name>
+                    <ShortName>
+                      <Text xml:lang="en">IR</Text>
+                    </ShortName>
+                  </Mode>
+                  <ProductCategory>
+                    <Name>
+                      <Text xml:lang="en">Train</Text>
+                    </Name>
+                    <ShortName>
+                      <Text xml:lang="en">IR</Text>
+                    </ShortName>
+                    <ProductCategoryRef>1</ProductCategoryRef>
+                  </ProductCategory>
+                  <PublishedServiceName>
+                    <Text xml:lang="en">IR38</Text>
+                  </PublishedServiceName>
+                  <TrainNumber>1141</TrainNumber>
+                  <Attribute>
+                    <UserText>
+                      <Text xml:lang="en">GROUPS: reservation compulsory</Text>
+                    </UserText>
+                    <Code>A__GR</Code>
+                  </Attribute>
+                  <Attribute>
+                    <UserText>
+                      <Text xml:lang="en">Photo compartment with lowerable windows for outdoor shots</Text>
+                    </UserText>
+                    <Code>A__FW</Code>
+                  </Attribute>
+                  <Attribute>
+                    <UserText>
+                      <Text xml:lang="en">Family Coach with play area</Text>
+                    </UserText>
+                    <Code>A__FA</Code>
+                  </Attribute>
+                  <Attribute>
+                    <UserText>
+                      <Text xml:lang="en">Minibar / Snack</Text>
+                    </UserText>
+                    <Code>A__MP</Code>
+                  </Attribute>
+                  <Attribute>
+                    <UserText>
+                      <Text xml:lang="en">Access with step</Text>
+                    </UserText>
+                    <Code>A__PH</Code>
+                  </Attribute>
+                  <OriginText>
+                    <Text xml:lang="en">n/a</Text>
+                  </OriginText>
+                  <siri:OperatorRef>72</siri:OperatorRef>
+                  <DestinationStopPointRef>8509253</DestinationStopPointRef>
+                  <DestinationText>
+                    <Text xml:lang="en">St. Moritz</Text>
+                  </DestinationText>
+                </Service>
+              </TimedLeg>
+            </Leg>
+            <Infeasible>true</Infeasible>
+          </Trip>
+        </TripResult>
+      </OJPTripRefineDelivery>
+    </siri:ServiceDelivery>
+  </OJPResponse>
+</OJP>
