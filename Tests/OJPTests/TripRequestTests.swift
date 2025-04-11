@@ -270,7 +270,7 @@ final class TripRequestTests: XCTestCase {
             }
 
             let infeasibleTrip = tripDelivery.tripResults.first
-            XCTAssertEqual(infeasibleTrip?.trip?.tripStatus.infeasible, true)
+            XCTAssertEqual(infeasibleTrip?.trip?.tripStatus?.infeasible, true)
         }
     }
 
@@ -282,7 +282,7 @@ final class TripRequestTests: XCTestCase {
             }
 
             let cancelledTrip = try XCTUnwrap(tripDelivery.tripResults[1].trip)
-            XCTAssertEqual(cancelledTrip.tripStatus.cancelled, true)
+            XCTAssertEqual(cancelledTrip.tripStatus?.cancelled, true)
         }
     }
 
@@ -295,7 +295,7 @@ final class TripRequestTests: XCTestCase {
 
             let cancelledTrip = try XCTUnwrap(tripDelivery.tripResults[1].trip)
             let firstLeg = try XCTUnwrap(cancelledTrip.timedLegs.first)
-            XCTAssertEqual(firstLeg.service.serviceStatus.cancelled, true)
+            XCTAssertEqual(firstLeg.service.serviceStatus?.cancelled, true)
         }
     }
 
@@ -307,7 +307,7 @@ final class TripRequestTests: XCTestCase {
             }
 
             let cancelledTrip = try XCTUnwrap(tripDelivery.tripResults[1].trip)
-            XCTAssertEqual(cancelledTrip.tripStatus.deviation, true)
+            XCTAssertEqual(cancelledTrip.tripStatus?.deviation, true)
         }
     }
 
@@ -321,7 +321,7 @@ final class TripRequestTests: XCTestCase {
             let firstTrip = try XCTUnwrap(tripDelivery.tripResults.first?.trip)
             if case let .timed(legWithNotServicedStop) = firstTrip.legs[1].legType {
                 for leg in legWithNotServicedStop.legsIntermediate {
-                    XCTAssertEqual(leg.stopCallStatus.notServicedStop, leg.stopPointName.text == "Neuchâtel, Gouttes d'or")
+                    XCTAssertEqual(leg.stopCallStatus?.notServicedStop, leg.stopPointName.text == "Neuchâtel, Gouttes d'or")
                 }
             } else {
                 XCTFail()
@@ -340,8 +340,8 @@ final class TripRequestTests: XCTestCase {
             if case let .timed(legWithNotServicedStop) = firstTrip.legs[2].legType {
                 let legBoard = legWithNotServicedStop.legBoard
                 let legAlight = legWithNotServicedStop.legAlight
-                XCTAssertEqual(legBoard.stopCallStatus.notServicedStop, true)
-                XCTAssertEqual(legAlight.stopCallStatus.notServicedStop, true)
+                XCTAssertEqual(legBoard.stopCallStatus?.notServicedStop, true)
+                XCTAssertEqual(legAlight.stopCallStatus?.notServicedStop, true)
             } else {
                 XCTFail()
             }

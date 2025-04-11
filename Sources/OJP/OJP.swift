@@ -32,6 +32,7 @@ public final class OJP: Sendable {
     let tripRequest: OJPHelpers.TripRequest
     let tripInfoRequest: OJPHelpers.TripInfoRequest
     let stopEventRequest: OJPHelpers.StopEventRequest
+    let tripRefineRequest: OJPHelpers.TripRefineRequest
 
     /// Constructor of the OJP class
     /// - Parameter loadingStrategy: Pass a real loader with an API Configuration or a Mock for test purpuse
@@ -59,6 +60,7 @@ public final class OJP: Sendable {
         tripRequest = .init(requestConfiguration)
         tripInfoRequest = .init(requestConfiguration)
         stopEventRequest = .init(requestConfiguration)
+        tripRefineRequest = .init(requestConfiguration)
     }
 
     private var encoder: XMLEncoder {
@@ -142,6 +144,19 @@ public final class OJP: Sendable {
             throw OJPSDKError.unexpectedEmpty
         }
         return tripInfo
+    }
+
+    public func requestTripRefinement(
+        tripResult: OJPv2.TripResult,
+        params: OJPv2.TripRefineParams = .defaultTripRefineParams
+    ) async throws -> OJPv2.TripRefineDelivery {
+        let ojp = tripRefineRequest.refineTrip(tripResult, params: params)
+        let serviceDelivery = try await request(with: ojp).serviceDelivery
+
+        guard case let .tripRefinement(tripRefinement) = serviceDelivery.delivery else {
+            throw OJPSDKError.unexpectedEmpty
+        }
+        return tripRefinement
     }
 
     public func requestStopEvent(

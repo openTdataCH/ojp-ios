@@ -106,6 +106,16 @@ let tripDelivery = try await ojp.requestTrips(
 )
 ```
 
+#### Update an existing Trip
+
+``` swift
+// in order to update a trip, you need to keep around the "original" `OJPv2.TripResult` (or better, the `.minimalTripResult`) or a `OJPv2.Trip`.
+
+// example using `OJPv2.Trip`
+let tripResult = OJPv2.TripResult(trip: trip).minimalTripResult
+let tripRefineDelivery = try await OJP.configured.requestTripRefinement(tripResult: tripResult)
+```
+
 For a more detailed introduction head over to the [Getting Started](https://opentdatach.github.io/ojp-ios/documentation/ojp/gettingstarted) article in the documentation.
 
 ## Sample App

@@ -5,6 +5,8 @@
 //  Created by Lehnherr Reto on 03.04.2024.
 //
 
+import OJP
+@testable import OJPSampleApp
 import XCTest
 
 final class OJPSampleAppTests: XCTestCase {
@@ -16,18 +18,57 @@ final class OJPSampleAppTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
+    @MainActor
+    func testMinimalTRR_Bern_Brig_StMoritz() async throws {
+        _ = OJPHelper(environment: .int)
+        let ojp = OJPHelper.ojp
+        let trips = try await ojp.requestTrips(
+            from: .stopPlaceRef(
+                .init(stopPlaceRef: "8507000", name: .init("Bern"))),
+            to: .stopPlaceRef(.init(stopPlaceRef: "8509253", name: .init("St. Moritz"))),
+            via: [.stopPlaceRef(.init(stopPlaceRef: "8501609", name: .init("Brig")))],
+            params: .init(
+                includeIntermediateStops: true,
+                includeAllRestrictedLines: true,
+                useRealtimeData: .explanatory
+            )
+        )
+        XCTAssertTrue(trips.tripResults.count > 0)
+        let tripResult = try XCTUnwrap(trips.tripResults.first)
+
+        // assert triprefinement with full request
+        let refinedTripFromFullTripResult = try await ojp.requestTripRefinement(tripResult: tripResult)
+        _ = try XCTUnwrap(refinedTripFromFullTripResult.tripResults.first)
+
+        // assert triprefinement with full request
+        let refinedTripFromMinmalTripResult = try await ojp.requestTripRefinement(tripResult: tripResult.minimalTripResult)
+        _ = try XCTUnwrap(refinedTripFromMinmalTripResult.tripResults.first)
     }
 
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        measure {
-            // Put the code you want to measure the time of here.
-        }
+    @MainActor
+    func testMinimalTRR_KoenizGeoPosition_Brig() async throws {
+        // CURRENTLY FAILING. Reported issue here: https://github.com/openTdataCH/ojp-sdk/issues/227#issuecomment-2778012964
+        _ = OJPHelper(environment: .test)
+
+        let ojp = OJPHelper.ojp
+        let trips = try await ojp.requestTrips(
+            from: .geoPosition(.init(geoPosition: .init(longitude: 7.416315, latitude: 46.926739), name: .init("Köniz"))),
+            to: .stopPlaceRef(.init(stopPlaceRef: "8503000", name: .init("Zürich"))),
+            params: .init(
+                includeIntermediateStops: true,
+                includeAllRestrictedLines: true,
+                useRealtimeData: .explanatory
+            )
+        )
+        XCTAssertTrue(trips.tripResults.count > 0)
+        let tripResult = try XCTUnwrap(trips.tripResults.first)
+
+        // assert triprefinement with full request
+        let refinedTripFromFullTripResult = try await ojp.requestTripRefinement(tripResult: tripResult)
+        _ = try XCTUnwrap(refinedTripFromFullTripResult.tripResults.first)
+
+        // assert triprefinement with full request
+        let refinedTripFromMinmalTripResult = try await ojp.requestTripRefinement(tripResult: tripResult.minimalTripResult)
+        _ = try XCTUnwrap(refinedTripFromMinmalTripResult.tripResults.first)
     }
 }

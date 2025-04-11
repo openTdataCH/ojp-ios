@@ -43,7 +43,7 @@ extension OJPv2.ServiceDeparture {
     }
 }
 
-extension OJPv2.LegIntermediate: Identifiable {
+extension OJPv2.LegIntermediate: @retroactive Identifiable {
     public var id: String {
         stopPointRef
     }
@@ -159,8 +159,14 @@ extension OJPv2.Trip {
     }
 }
 
-extension OJPv2.TripInfoResult: Identifiable {
+extension OJPv2.TripInfoResult: @retroactive Identifiable {
     public var id: Int {
         service?.journeyRef.hashValue ?? (previousCalls.hashValue + onwardCalls.hashValue)
+    }
+}
+
+extension OJPv2.TripRefineDelivery: @retroactive Identifiable {
+    public var id: Int {
+        tripResults.map(\.id).hashValue
     }
 }
