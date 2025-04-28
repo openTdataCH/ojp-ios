@@ -87,7 +87,7 @@ extension OJPv2.DatedJourney {
             journeyRef: journeyRef,
 //            publicCode: publicCode,
             lineRef: lineRef,
-//            directionRef: directionRef,
+            directionRef: directionRef,
             mode: mode,
             productCategory: productCategory,
             publishedServiceName: publishedServiceName,
