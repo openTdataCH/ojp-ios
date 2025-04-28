@@ -93,7 +93,7 @@ extension OJPv2.DatedJourney {
             publishedServiceName: publishedServiceName,
 //            trainNumber: trainNumber,
 //            vehicleRef: vehicleRef,
-            attributes: attributes,
+//            attributes: attributes,
 //            operatorRef: operatorRef,
             originText: originText
 //            originStopPointRef: originStopPointRef,
