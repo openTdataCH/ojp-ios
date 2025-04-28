@@ -175,7 +175,7 @@ public struct OJPv2: Codable, Sendable {
     }
 
     /// https://vdvde.github.io/OJP/develop/documentation-tables/siri.html#type_siri__LocationStructure
-    public struct GeoPosition: Codable, Sendable {
+    public struct GeoPosition: Codable, Sendable, Hashable {
         public let longitude: Double
         public let latitude: Double
 
@@ -191,7 +191,7 @@ public struct OJPv2: Codable, Sendable {
     }
 
     /// https://vdvde.github.io/OJP/develop/documentation-tables/ojp.html#type_ojp__ModeStructure
-    public struct Mode: Codable, Sendable {
+    public struct Mode: Codable, Sendable, Hashable {
         public let ptMode: PtMode
 
         // https://vdvde.github.io/OJP/develop/documentation-tables/ojp.html#group_ojp__ModeGroup
