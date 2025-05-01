@@ -573,7 +573,7 @@ public extension OJPv2 {
         public let duration: Duration?
         public let legType: LegTypeChoice
 
-        enum CodingKeys: String, CodingKey {
+        public enum CodingKeys: String, CodingKey {
             case id = "Id"
             case duration = "Duration"
             case _0 = ""
