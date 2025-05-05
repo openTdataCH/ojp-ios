@@ -92,6 +92,7 @@ public actor PaginatedTripLoader {
     private func load(request: TripRequest, numberOfResults: OJPv2.NumberOfResults) async throws -> OJPv2.TripDelivery {
         let updatedParams = OJPv2.TripParams(
             numberOfResults: numberOfResults,
+            includeTrackSections: request.params.includeTrackSections,
             includeLegProjection: request.params.includeLegProjection,
             includeTurnDescription: request.params.includeTurnDescription,
             includeIntermediateStops: request.params.includeIntermediateStops,
