@@ -13,9 +13,9 @@ final class TripRefineRequestTests: XCTestCase {
 
         guard case let .tripRefinement(tripRefineDelivery) = tripDelivery else { return XCTFail() }
         let responseContext = try XCTUnwrap(tripRefineDelivery.tripResponseContext)
-        XCTAssertEqual(responseContext.places.count, 123)
+        XCTAssertEqual(responseContext.places.count, 64)
 
         XCTAssertEqual(tripRefineDelivery.tripResults.count, 1)
-        XCTAssertEqual(tripRefineDelivery.tripResults.first?.trip?.legs.count, 3)
+        XCTAssertEqual(tripRefineDelivery.tripResults.first?.trip?.legs.count, 7)
     }
 }

@@ -671,25 +671,32 @@ public extension OJPv2 {
         case other
     }
 
-    /// https://vdvde.github.io/OJP/develop/documentation-tables/ojp.html#type_ojp__TransferLegStructure
+    /// [Schema documentation on vdvde.github.io](https://vdvde.github.io/OJP/develop/documentation-tables/ojp.html#type_ojp__TransferLegStructure)
     struct TransferLeg: Codable, Sendable {
         public let transferTypes: [TransferType]
         public let legStart: PlaceRefChoice
         public let legEnd: PlaceRefChoice
         public let duration: Duration
+        /// Distance (metres) as defined by http://www.ordnancesurvey.co.uk/xml/resource/units.xml#metres. Alternative units may be specifed by context.
+        public let length: Int?
+        public let pathGuidance: PathGuidance?
 
         enum CodingKeys: String, CodingKey {
             case transferTypes = "TransferType"
             case duration = "Duration"
             case legStart = "LegStart"
             case legEnd = "LegEnd"
+            case length = "Length"
+            case pathGuidance = "PathGuidance"
         }
 
-        public init(transferTypes: [TransferType], legStart: PlaceRefChoice, legEnd: PlaceRefChoice, duration: Duration) {
+        public init(transferTypes: [TransferType], legStart: PlaceRefChoice, legEnd: PlaceRefChoice, duration: Duration, length: Int? = nil, pathGuidance: PathGuidance? = nil) {
             self.transferTypes = transferTypes
             self.legStart = legStart
             self.legEnd = legEnd
             self.duration = duration
+            self.length = length
+            self.pathGuidance = pathGuidance
         }
     }
 
@@ -1139,16 +1146,40 @@ public extension OJPv2 {
         }
     }
 
+    /// [Schema documentation on vdvde.github.io](https://vdvde.github.io/OJP/develop/documentation-tables/ojp.html#type_ojp__PathGuidanceSectionStructure)
+    struct PathGuidanceSection: Codable, Sendable {
+        public let trackSections: [TrackSection]
+
+        public enum CodingKeys: String, CodingKey {
+            case trackSections = "TrackSection"
+        }
+    }
+
+    /// [Schema documentation on vdvde.github.io](https://vdvde.github.io/OJP/develop/documentation-tables/ojp.html#type_ojp__PathGuidanceStructure)
+    struct PathGuidance: Codable, Sendable {
+        public let pathGuidanceSection: [PathGuidanceSection]
+
+        public enum CodingKeys: String, CodingKey {
+            case pathGuidanceSection = "PathGuidanceSection"
+        }
+    }
+
     /// https://vdvde.github.io/OJP/develop/documentation-tables/ojp.html#type_ojp__TrackSectionStructure
     struct TrackSection: Codable, Sendable {
         public let trackSectionStart: PlaceRefChoice?
         public let trackSectionEnd: PlaceRefChoice?
         public let linkProjection: LinearShape?
+        /// Duration the passenger needs to travel through this track section.
+        public let duration: Duration?
+        /// Distance (metres) as defined by http://www.ordnancesurvey.co.uk/xml/resource/units.xml#metres. Alternative units may be specifed by context.
+        public let length: Int?
 
         public enum CodingKeys: String, CodingKey {
             case trackSectionStart = "TrackSectionStart"
             case trackSectionEnd = "TrackSectionEnd"
             case linkProjection = "LinkProjection"
+            case duration = "Duration"
+            case length = "Length"
         }
     }
 
@@ -1267,8 +1298,8 @@ public extension OJPv2 {
     }
 
     struct StopPlaceRef: Codable, Sendable {
-        let stopPlaceRef: String
-        let name: InternationalText
+        public let stopPlaceRef: String
+        public let name: InternationalText
 
         public init(stopPlaceRef: String, name: InternationalText) {
             self.stopPlaceRef = stopPlaceRef
@@ -1282,8 +1313,8 @@ public extension OJPv2 {
     }
 
     struct StopPointRef: Codable, Sendable {
-        let stopPointRef: String
-        let name: InternationalText
+        public let stopPointRef: String
+        public let name: InternationalText
 
         public init(stopPointRef: String, name: InternationalText) {
             self.stopPointRef = stopPointRef

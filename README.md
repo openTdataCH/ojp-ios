@@ -109,10 +109,10 @@ let tripDelivery = try await ojp.requestTrips(
 #### Update an existing Trip
 
 ``` swift
-// in order to update a trip, you need to keep around the "original" `OJPv2.TripResult` (or better, the `.minimalTripResult`) or a `OJPv2.Trip`.
+// in order to update a trip, you need to keep around the "original" `OJPv2.TripResult` or a `OJPv2.Trip`.
 
 // example using `OJPv2.Trip`
-let tripResult = OJPv2.TripResult(trip: trip).minimalTripResult
+let tripResult = OJPv2.TripResult(trip: trip)
 let tripRefineDelivery = try await OJP.configured.requestTripRefinement(tripResult: tripResult)
 ```
 

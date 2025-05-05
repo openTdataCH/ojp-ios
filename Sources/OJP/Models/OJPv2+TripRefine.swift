@@ -10,14 +10,13 @@ import Foundation
 public extension OJPv2 {
     struct TripRefineRequest: Codable, Sendable {
         public let requestTimestamp: Date
-        public let params: TripRefineParams
-
+        public let refineParams: TripRefineParams
         public let tripResult: OJPv2.TripResult
 
         public enum CodingKeys: String, CodingKey {
             case requestTimestamp = "siri:RequestTimestamp"
+            case refineParams = "RefineParams"
             case tripResult = "TripResult"
-            case params = "Params"
         }
     }
 

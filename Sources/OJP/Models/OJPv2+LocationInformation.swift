@@ -37,7 +37,7 @@ public extension OJPv2 {
         }
     }
 
-    enum PlaceTypeChoice: Codable, Sendable {
+    enum PlaceTypeChoice: Codable, Sendable, Hashable {
         case stopPoint(OJPv2.StopPoint)
         case stopPlace(OJPv2.StopPlace)
         case address(OJPv2.Address)
@@ -67,7 +67,7 @@ public extension OJPv2 {
     }
 
     /// [Schema documentation on vdvde.github.io](https://vdvde.github.io/OJP/develop/documentation-tables/ojp.html#type_ojp__PlaceStructure)
-    struct Place: Codable, Sendable {
+    struct Place: Codable, Sendable, Hashable {
         public let place: PlaceTypeChoice
 
         public let name: InternationalText
@@ -90,7 +90,7 @@ public extension OJPv2 {
     }
 
     /// [Schema documentation on vdvde.github.io](https://vdvde.github.io/OJP/develop/documentation-tables/ojp.html#type_ojp__TopographicPlaceStructure)
-    struct TopographicPlace: Codable, Sendable {
+    struct TopographicPlace: Codable, Sendable, Hashable {
         public let topographicPlaceCode: String
         public let topographicPlaceName: InternationalText
 
@@ -101,7 +101,7 @@ public extension OJPv2 {
     }
 
     /// [Schema documentation on vdvde.github.io](https://vdvde.github.io/OJP/develop/documentation-tables/ojp.html#type_ojp__StopPointStructure)
-    struct StopPoint: Codable, Sendable {
+    struct StopPoint: Codable, Sendable, Hashable {
         public let stopPointRef: String
         public let stopPointName: InternationalText
         public let parentRef: String?
@@ -115,7 +115,7 @@ public extension OJPv2 {
         }
     }
 
-    struct StopPlace: Codable, Sendable {
+    struct StopPlace: Codable, Sendable, Hashable {
         public let stopPlaceRef: String
         public let stopPlaceName: InternationalText
         public let privateCodes: [PrivateCode]
@@ -129,7 +129,7 @@ public extension OJPv2 {
         }
     }
 
-    struct Address: Codable, Sendable {
+    struct Address: Codable, Sendable, Hashable {
         public let publicCode: String
         public let topographicPlaceRef: String?
         public let topographicPlaceName: String?
@@ -153,7 +153,7 @@ public extension OJPv2 {
         }
     }
 
-    struct PrivateCode: Codable, Sendable {
+    struct PrivateCode: Codable, Sendable, Hashable {
         public let system: String
         public let value: String
 

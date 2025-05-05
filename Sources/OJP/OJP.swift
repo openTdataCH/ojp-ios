@@ -146,11 +146,17 @@ public final class OJP: Sendable {
         return tripInfo
     }
 
+    /// Request an updated Trip from an existing ``OJPv2/Trip``
+    /// - Parameter tripResult: the existing ``OJPv2/TripResult`` you got before
+    /// - Parameter useMinimalRequest: not all elements of a trip are needed, when refining a trip. If this is set to `true` the SDK just sends the minimal required fields, you can disable this by setting `useMinimalRequest` to `false` if you need all fields
+    /// - Parameter refineParams: the parameters for the request
+    /// - Returns: a ``OJPv2/TripRefineDelivery`` containing the refined trip
     public func requestTripRefinement(
         tripResult: OJPv2.TripResult,
-        params: OJPv2.TripRefineParams = .defaultTripRefineParams
+        useMinimalRequest: Bool = true,
+        refineParams: OJPv2.TripRefineParams = .defaultTripRefineParams
     ) async throws -> OJPv2.TripRefineDelivery {
-        let ojp = tripRefineRequest.refineTrip(tripResult, params: params)
+        let ojp = tripRefineRequest.refineTrip(useMinimalRequest ? tripResult.minimalTripResult : tripResult, refineParams: refineParams)
         let serviceDelivery = try await request(with: ojp).serviceDelivery
 
         guard case let .tripRefinement(tripRefinement) = serviceDelivery.delivery else {
