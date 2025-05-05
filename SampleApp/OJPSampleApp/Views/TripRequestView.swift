@@ -77,8 +77,8 @@ struct TripRequestView: View {
                                                 via: via != nil ? [via!.placeRef] : nil,
                                                 at: .departure(departureDateTime),
                                                 params: .init(
-                                                    includeTrackSections: true,
-                                                    includeLegProjection: true,
+                                                    includeTrackSections: false,
+                                                    includeLegProjection: false,
                                                     includeIntermediateStops: true,
                                                     useRealtimeData: .explanatory
                                                 )),
