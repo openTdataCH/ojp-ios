@@ -78,6 +78,7 @@ struct TripRequestView: View {
                                                 at: .departure(departureDateTime),
                                                 params: .init(
                                                     includeTrackSections: true,
+                                                    includeLegProjection: true,
                                                     includeIntermediateStops: true,
                                                     useRealtimeData: .explanatory
                                                 )),
