@@ -37,11 +37,11 @@ final class OJPSampleAppTests: XCTestCase {
         let tripResult = try XCTUnwrap(trips.tripResults.first)
 
         // assert triprefinement with full request
-        let refinedTripFromFullTripResult = try await ojp.requestTripRefinement(tripResult: tripResult)
+        let refinedTripFromFullTripResult = try await ojp.requestTripRefinement(tripResult: tripResult, useMinimalRequest: false)
         _ = try XCTUnwrap(refinedTripFromFullTripResult.tripResults.first)
 
-        // assert triprefinement with full request
-        let refinedTripFromMinmalTripResult = try await ojp.requestTripRefinement(tripResult: tripResult.minimalTripResult)
+        // assert triprefinement with minimal request
+        let refinedTripFromMinmalTripResult = try await ojp.requestTripRefinement(tripResult: tripResult)
         _ = try XCTUnwrap(refinedTripFromMinmalTripResult.tripResults.first)
     }
 
@@ -64,11 +64,11 @@ final class OJPSampleAppTests: XCTestCase {
         let tripResult = try XCTUnwrap(trips.tripResults.first)
 
         // assert triprefinement with full request
-        let refinedTripFromFullTripResult = try await ojp.requestTripRefinement(tripResult: tripResult)
+        let refinedTripFromFullTripResult = try await ojp.requestTripRefinement(tripResult: tripResult, useMinimalRequest: false)
         _ = try XCTUnwrap(refinedTripFromFullTripResult.tripResults.first)
 
-        // assert triprefinement with full request
-        let refinedTripFromMinmalTripResult = try await ojp.requestTripRefinement(tripResult: tripResult.minimalTripResult)
+        // assert triprefinement with minimal request
+        let refinedTripFromMinmalTripResult = try await ojp.requestTripRefinement(tripResult: tripResult)
         _ = try XCTUnwrap(refinedTripFromMinmalTripResult.tripResults.first)
     }
 }

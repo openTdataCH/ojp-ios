@@ -24,7 +24,7 @@ struct TripDetailView: View {
                 Button("Refine Trip") {
                     Task {
                         do {
-                            let tripResult = OJPv2.TripResult(trip: trip).minimalTripResult
+                            let tripResult = OJPv2.TripResult(trip: trip)
                             let tripRefineDelivery = try await OJP.configured.requestTripRefinement(tripResult: tripResult)
 
                             guard let newTrip = tripRefineDelivery.tripResults.first?.trip else {
