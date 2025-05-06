@@ -37,7 +37,7 @@ jobs:
           --output-path docs;
         echo "<script>window.location.href += \"/documentation/ojp\"</script>" > docs/index.html
     - name: artifact
-      uses: actions/upload-pages-artifact@v1
+      uses: actions/upload-pages-artifact@v3
       with:
         path: 'docs'
     - name: GitHub Pages
