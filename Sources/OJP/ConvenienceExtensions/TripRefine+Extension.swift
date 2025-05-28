@@ -17,7 +17,7 @@ public extension OJPv2.TripResult {
     }
 }
 
-extension OJPv2.Trip {
+public extension OJPv2.Trip {
     var minimalCopy: Self {
         .init(id: id,
               duration: duration,
@@ -91,7 +91,7 @@ extension OJPv2.DatedJourney {
             mode: mode,
             productCategory: productCategory,
             publishedServiceName: publishedServiceName,
-//            trainNumber: trainNumber,
+            trainNumber: trainNumber,
 //            vehicleRef: vehicleRef,
 //            attributes: attributes,
 //            operatorRef: operatorRef,
