@@ -851,6 +851,17 @@ public extension OJPv2 {
             serviceDeparture = try container.decode(ServiceDeparture?.self, forKey: .serviceDeparture)
             stopCallStatus = try StopCallStatus(from: decoder)
         }
+
+        public init(stopPointRef: String, stopPointName: OJPv2.InternationalText, nameSuffix: OJPv2.InternationalText? = nil, plannedQuay: OJPv2.InternationalText? = nil, estimatedQuay: OJPv2.InternationalText? = nil, serviceArrival: OJPv2.ServiceArrival? = nil, serviceDeparture: OJPv2.ServiceDeparture? = nil, stopCallStatus: OJPv2.StopCallStatus? = nil) {
+            self.stopPointRef = stopPointRef
+            self.stopPointName = stopPointName
+            self.nameSuffix = nameSuffix
+            self.plannedQuay = plannedQuay
+            self.estimatedQuay = estimatedQuay
+            self.serviceArrival = serviceArrival
+            self.serviceDeparture = serviceDeparture
+            self.stopCallStatus = stopCallStatus
+        }
     }
 
     /// https://vdvde.github.io/OJP/develop/documentation-tables/ojp.html#type_ojp__LegAlightStructure
