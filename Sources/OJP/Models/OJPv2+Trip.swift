@@ -824,8 +824,8 @@ public extension OJPv2 {
         public let plannedQuay: InternationalText?
         public let estimatedQuay: InternationalText?
 
-        public let serviceArrival: ServiceArrival? // Set as optional until https://github.com/openTdataCH/ojp-sdk/issues/42 is fixed
-        public let serviceDeparture: ServiceDeparture? // Set as optional until https://github.com/openTdataCH/ojp-sdk/issues/42 is fixed
+        public let serviceArrival: ServiceArrival
+        public let serviceDeparture: ServiceDeparture
 
         public let stopCallStatus: StopCallStatus?
 
@@ -847,12 +847,12 @@ public extension OJPv2 {
             nameSuffix = try container.decode(InternationalText?.self, forKey: .nameSuffix)
             plannedQuay = try container.decode(InternationalText?.self, forKey: .plannedQuay)
             estimatedQuay = try container.decode(InternationalText?.self, forKey: .estimatedQuay)
-            serviceArrival = try container.decode(ServiceArrival?.self, forKey: .serviceArrival)
-            serviceDeparture = try container.decode(ServiceDeparture?.self, forKey: .serviceDeparture)
+            serviceArrival = try container.decode(ServiceArrival.self, forKey: .serviceArrival)
+            serviceDeparture = try container.decode(ServiceDeparture.self, forKey: .serviceDeparture)
             stopCallStatus = try StopCallStatus(from: decoder)
         }
 
-        public init(stopPointRef: String, stopPointName: OJPv2.InternationalText, nameSuffix: OJPv2.InternationalText? = nil, plannedQuay: OJPv2.InternationalText? = nil, estimatedQuay: OJPv2.InternationalText? = nil, serviceArrival: OJPv2.ServiceArrival? = nil, serviceDeparture: OJPv2.ServiceDeparture? = nil, stopCallStatus: OJPv2.StopCallStatus? = nil) {
+        public init(stopPointRef: String, stopPointName: OJPv2.InternationalText, nameSuffix: OJPv2.InternationalText? = nil, plannedQuay: OJPv2.InternationalText? = nil, estimatedQuay: OJPv2.InternationalText? = nil, serviceArrival: OJPv2.ServiceArrival, serviceDeparture: OJPv2.ServiceDeparture, stopCallStatus: OJPv2.StopCallStatus? = nil) {
             self.stopPointRef = stopPointRef
             self.stopPointName = stopPointName
             self.nameSuffix = nameSuffix

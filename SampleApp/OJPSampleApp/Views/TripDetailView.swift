@@ -94,21 +94,21 @@ struct TripDetailView: View {
                             VStack(spacing: 4) {
                                 ForEach(timedLeg.legsIntermediate) { legIntermediate in
                                     VStack(spacing: 0) {
-                                        if let arrivalTime = legIntermediate.serviceArrival?.arrivalTime {
-                                            HStack {
-                                                Text(arrivalTime.timetabled.formatted(date: .omitted, time: .shortened))
-                                                Text(arrivalTime.hasDelay ? arrivalTime.delay.formattedDelay : "").foregroundStyle(.red)
-                                                Spacer()
-                                            }
-                                            .offset(x: 10)
+                                        let arrivalTime = legIntermediate.serviceArrival.arrivalTime
+                                        HStack {
+                                            Text(arrivalTime.timetabled.formatted(date: .omitted, time: .shortened))
+                                            Text(arrivalTime.hasDelay ? arrivalTime.delay.formattedDelay : "").foregroundStyle(.red)
+                                            Spacer()
                                         }
+                                        .offset(x: 10)
+
                                         HStack(spacing: 4) {
                                             Circle()
                                                 .frame(width: 6, height: 6)
-                                            if let departureTime = legIntermediate.serviceDeparture?.departureTime {
-                                                Text(departureTime.timetabled.formatted(date: .omitted, time: .shortened))
-                                                Text(departureTime.hasDelay ? departureTime.delay.formattedDelay : "").foregroundStyle(.red)
-                                            }
+                                            let departureTime = legIntermediate.serviceDeparture.departureTime
+                                            Text(departureTime.timetabled.formatted(date: .omitted, time: .shortened))
+                                            Text(departureTime.hasDelay ? departureTime.delay.formattedDelay : "").foregroundStyle(.red)
+
                                             Text(legIntermediate.stopPointName.text)
                                             Spacer()
                                         }
