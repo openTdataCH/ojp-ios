@@ -1241,10 +1241,6 @@ public extension OJPv2 {
         case personalService(PersonalService)
         case datedJourney(DatedJourney)
 
-        public enum CodingKeys: String, CodingKey {
-            case _0 = ""
-        }
-
         public init(from decoder: any Decoder) throws {
             do {
                 self = try .personalService(PersonalService(from: decoder))
@@ -1254,12 +1250,12 @@ public extension OJPv2 {
         }
 
         public func encode(to encoder: any Encoder) throws {
-            var container = encoder.container(keyedBy: CodingKeys.self)
+            var svc = encoder.singleValueContainer()
             switch self {
             case let .personalService(personalService):
-                try container.encode(personalService, forKey: ._0)
+                try svc.encode(personalService)
             case let .datedJourney(datedJourney):
-                try container.encode(datedJourney, forKey: ._0)
+                try svc.encode(datedJourney)
             }
         }
     }
@@ -1269,12 +1265,21 @@ public extension OJPv2 {
         public let type: ContinuousServiceTypeChoice
         // TODO: add SituationFullRefs!
 
+        public enum CodingKeys: String, CodingKey {
+                case _0 = ""
+        }
+
         public init(from decoder: any Decoder) throws {
             type = try ContinuousServiceTypeChoice(from: decoder)
         }
 
         public init(type: ContinuousServiceTypeChoice) {
             self.type = type
+        }
+
+        public func encode(to encoder: any Encoder) throws {
+            var container = encoder.container(keyedBy: CodingKeys.self)
+            try container.encode(type, forKey: ._0)
         }
     }
 
