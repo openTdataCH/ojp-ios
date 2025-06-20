@@ -1241,11 +1241,25 @@ public extension OJPv2 {
         case personalService(PersonalService)
         case datedJourney(DatedJourney)
 
+        public enum CodingKeys: String, CodingKey {
+            case _0 = ""
+        }
+
         public init(from decoder: any Decoder) throws {
             do {
                 self = try .personalService(PersonalService(from: decoder))
             } catch {
                 self = try .datedJourney(DatedJourney(from: decoder))
+            }
+        }
+
+        public func encode(to encoder: any Encoder) throws {
+            var container = encoder.container(keyedBy: CodingKeys.self)
+            switch self {
+            case let .personalService(personalService):
+                try container.encode(personalService, forKey: ._0)
+            case let .datedJourney(datedJourney):
+                try container.encode(datedJourney, forKey: ._0)
             }
         }
     }
