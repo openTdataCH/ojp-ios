@@ -1248,6 +1248,16 @@ public extension OJPv2 {
                 self = try .datedJourney(DatedJourney(from: decoder))
             }
         }
+
+        public func encode(to encoder: any Encoder) throws {
+            var svc = encoder.singleValueContainer()
+            switch self {
+            case let .personalService(personalService):
+                try svc.encode(personalService)
+            case let .datedJourney(datedJourney):
+                try svc.encode(datedJourney)
+            }
+        }
     }
 
     /// https://vdvde.github.io/OJP/develop/documentation-tables/ojp.html#type_ojp__ContinuousServiceStructure
@@ -1255,12 +1265,21 @@ public extension OJPv2 {
         public let type: ContinuousServiceTypeChoice
         // TODO: add SituationFullRefs!
 
+        public enum CodingKeys: String, CodingKey {
+                case _0 = ""
+        }
+
         public init(from decoder: any Decoder) throws {
             type = try ContinuousServiceTypeChoice(from: decoder)
         }
 
         public init(type: ContinuousServiceTypeChoice) {
             self.type = type
+        }
+
+        public func encode(to encoder: any Encoder) throws {
+            var container = encoder.container(keyedBy: CodingKeys.self)
+            try container.encode(type, forKey: ._0)
         }
     }
 
