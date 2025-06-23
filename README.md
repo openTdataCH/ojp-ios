@@ -131,7 +131,15 @@ There is an experimental [Sample App](./SamplApp) to showcase and test the SDK. 
 
 See [Releases](https://github.com/openTdataCH/ojp-ios/releases) for the history of all current releases.
 
-A new release can be prepared using [`./create-version.sh`](./create-version.sh).
+### How To Release A New Version
+
+A new release can be prepared by creating and pushing a `release/X.X.X` branch. Where `X.X.X` is the semantic version of the release. As soon as this is pushed the [prepare_release.yml](https://github.com/openTdataCH/ojp-ios/actions/workflows/prepare_release.yml) workflow will:
+
+1. update the `Version.swift` file
+1. tag the release
+1. open a new PR for this release
+
+After this PR is approved and merged the [draft_release.yml](https://github.com/openTdataCH/ojp-ios/blob/main/.github/workflows/draft_release.yml) workflow will draft a Github release. 
 
 ### Used Standards
 
