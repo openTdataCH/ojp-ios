@@ -735,7 +735,7 @@ public extension OJPv2 {
             case estimatedTime = "EstimatedTime"
         }
 
-        init(timetabledTime: Date, estimatedTime: Date? = nil) {
+        public init(timetabledTime: Date, estimatedTime: Date? = nil) {
             self.timetabledTime = timetabledTime
             self.estimatedTime = estimatedTime
         }
@@ -751,7 +751,7 @@ public extension OJPv2 {
             case estimatedTime = "EstimatedTime"
         }
 
-        init(timetabledTime: Date, estimatedTime: Date? = nil) {
+        public init(timetabledTime: Date, estimatedTime: Date? = nil) {
             self.timetabledTime = timetabledTime
             self.estimatedTime = estimatedTime
         }
