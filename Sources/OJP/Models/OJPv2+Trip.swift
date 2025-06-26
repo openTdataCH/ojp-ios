@@ -930,6 +930,7 @@ public extension OJPv2 {
         public let notServicedStop: Bool
         public let noBoardingAtStop: Bool
         public let noAlightingAtStop: Bool
+        public let expectedDepartureOccupancy: [VehicleOccupancyStructure]
 
         enum CodingKeys: String, CodingKey {
             case order = "Order"
@@ -938,6 +939,7 @@ public extension OJPv2 {
             case notServicedStop = "NotServicedStop"
             case noBoardingAtStop = "NoBoardingAtStop"
             case noAlightingAtStop = "NoAlightingAtStop"
+            case expectedDepartureOccupancy = "siri:ExpectedDepartureOccupancy"
         }
 
         public init(from decoder: any Decoder) throws {
@@ -948,10 +950,50 @@ public extension OJPv2 {
             notServicedStop = try container.decodeIfPresent(Bool.self, forKey: .notServicedStop) ?? false
             noBoardingAtStop = try container.decodeIfPresent(Bool.self, forKey: .noBoardingAtStop) ?? false
             noAlightingAtStop = try container.decodeIfPresent(Bool.self, forKey: .noAlightingAtStop) ?? false
+            expectedDepartureOccupancy = try container.decodeIfPresent([VehicleOccupancyStructure].self, forKey: .expectedDepartureOccupancy) ?? []
         }
     }
 
-    /// https://vdvde.github.io/OJP/develop/documentation-tables/ojp.html#type_ojp__ProductCategoryStructure
+    /// [Schema documentation on vdvde.github.io](https://vdvde.github.io/OJP/develop/documentation-tables/siri.html#type_siri__VehicleOccupancyStructure)
+    struct VehicleOccupancyStructure: Codable, Sendable, Hashable {
+        public let fareClass: FareClass?
+        public let occupancyLevel: OccupancyLevel?
+
+        enum CodingKeys: String, CodingKey {
+            case fareClass = "siri:FareClass"
+            case occupancyLevel = "siri:OccupancyLevel"
+        }
+    }
+
+    /// [Schema documentation on vdvde.github.io](https://vdvde.github.io/OJP/develop/documentation-tables/siri.html#type_siri__FareClassEnumeration)
+    enum FareClass: String, Codable, Sendable {
+        case unknown
+        case firstClass
+        case secondClass
+        case thirdClass
+        case preferente
+        case premiumClass
+        case businessClass
+        case standardClass
+        case turista
+        case economyClass
+        case any
+    }
+
+    // [Schema documentation on vdvde.github.io](https://vdvde.github.io/OJP/develop/documentation-tables/siri.html#type_siri__OccupancyEnumeration)
+    enum OccupancyLevel: String, Codable, Sendable {
+        case unknown
+        case empty
+        case manySeatsAvailable
+        case fewSeatsAvailable
+        case standingRoomOnly
+        case crushedStandingRoomOnly
+        case full
+        case notAcceptingPassengers
+        case undefined
+    }
+
+    /// [Schema documentation on vdvde.github.io](https://vdvde.github.io/OJP/develop/documentation-tables/ojp.html#type_ojp__ProductCategoryStructure)
     struct ProductCategory: Codable, Sendable {
         public let name: InternationalText?
         public let shortName: InternationalText?
@@ -1266,7 +1308,7 @@ public extension OJPv2 {
         // TODO: add SituationFullRefs!
 
         public enum CodingKeys: String, CodingKey {
-                case _0 = ""
+            case _0 = ""
         }
 
         public init(from decoder: any Decoder) throws {

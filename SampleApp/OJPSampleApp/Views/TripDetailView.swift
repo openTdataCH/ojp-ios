@@ -5,6 +5,7 @@
 //  Created by Terence Alberti on 01.07.2024.
 //
 
+import OEVIcons
 import OJP
 import SwiftUI
 
@@ -61,6 +62,7 @@ struct TripDetailView: View {
                                 if let destination = timedLeg.service.destinationText?.text {
                                     Text("→ \(destination)")
                                 }
+                                Spacer()
                                 Button("Load TripInfo") {
                                     Task {
                                         do {
@@ -76,6 +78,9 @@ struct TripDetailView: View {
                                 }
                             }
                             .bold()
+                            if let occupancy = timedLeg.legBoard.stopCallStatus?.expectedDepartureOccupancy {
+                                OccupancyView(expectedOccupancy: occupancy.expectedOccupancy)
+                            }
                             Divider()
                             HStack {
                                 let legBoard = timedLeg.legBoard

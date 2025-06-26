@@ -6,13 +6,11 @@
 //
 
 @testable import OJP
-import XMLCoder
 import Testing
+import XMLCoder
 
 struct PersistanceTest {
-
     @Test func testPersistingTripResponseForChangeInPersonalService() async throws {
-
         let xmlData = try TestHelpers.loadXML(xmlFilename: "tr-continuous-leg-walk")
         let delivery = try await #require(OJPDecoder.parseXML(xmlData).response?.serviceDelivery.delivery)
 
@@ -34,7 +32,7 @@ struct PersistanceTest {
         let decoded = try decoder.decode(OJPv2.Trip.self, from: encoded)
 
         #expect(decoded.tripHash == firstTrip.tripHash)
-        guard case .continous(let continouousLeg) = decoded.legs.first?.legType else {
+        guard case let .continous(continouousLeg) = decoded.legs.first?.legType else {
             Issue.record("expected a continuous leg")
             return
         }
@@ -46,5 +44,4 @@ struct PersistanceTest {
 
         #expect(personalService.personalMode == "foot")
     }
-
 }
