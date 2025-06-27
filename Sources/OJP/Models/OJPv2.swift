@@ -193,6 +193,14 @@ public struct OJPv2: Codable, Sendable {
     /// https://vdvde.github.io/OJP/develop/documentation-tables/ojp.html#type_ojp__ModeStructure
     public struct Mode: Codable, Sendable, Hashable {
         public let ptMode: PtMode
+        
+        public init(ptMode: PtMode, busSubmode: String?, railSubmode: String?, name: InternationalText?, shortName: InternationalText?) {
+            self.ptMode = ptMode
+            self.busSubmode = busSubmode
+            self.railSubmode = railSubmode
+            self.name = name
+            self.shortName = shortName
+        }
 
         // https://vdvde.github.io/OJP/develop/documentation-tables/ojp.html#group_ojp__ModeGroup
         // siri:PtModeChoiceGroup
