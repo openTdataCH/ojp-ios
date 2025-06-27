@@ -1230,6 +1230,10 @@ public extension OJPv2 {
 
     struct PersonalService: Codable, Sendable {
         let personalMode: String
+        
+        public init(personalMode: String) {
+            self.personalMode = personalMode
+        }
 
         enum CodingKeys: String, CodingKey {
             case personalMode = "PersonalMode"
