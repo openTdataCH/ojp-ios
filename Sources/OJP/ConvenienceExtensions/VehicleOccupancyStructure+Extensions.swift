@@ -24,4 +24,8 @@ public extension [OJPv2.VehicleOccupancyStructure] {
 public struct ExpectedOccupancy: Sendable {
     public let expectedFirstClassOccupancy: OJPv2.OccupancyLevel?
     public let expectedSecondClassOccupancy: OJPv2.OccupancyLevel?
+
+    public var hasOccupancy: Bool {
+        expectedFirstClassOccupancy != nil || expectedSecondClassOccupancy != nil
+    }
 }
