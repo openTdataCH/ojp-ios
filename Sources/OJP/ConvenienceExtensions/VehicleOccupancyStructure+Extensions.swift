@@ -10,7 +10,7 @@ public extension [OJPv2.VehicleOccupancyStructure] {
     /// Property to create a convenience type to display the exected occupancy
     var expectedOccupancy: ExpectedOccupancy {
         let firstClass = first(where: { $0.fareClass == .firstClass })
-        let secondClass = first(where: { $0.fareClass == .firstClass })
+        let secondClass = first(where: { $0.fareClass == .secondClass })
         return .init(
             expectedFirstClassOccupancy: firstClass?.occupancyLevel,
             expectedSecondClassOccupancy: secondClass?.occupancyLevel
