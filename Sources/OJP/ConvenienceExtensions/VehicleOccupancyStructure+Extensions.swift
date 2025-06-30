@@ -21,7 +21,7 @@ public extension [OJPv2.VehicleOccupancyStructure] {
 /// Convenience type to work with expected occupancies.
 ///
 /// Use `expectedOccuppancy` on ``OJP/Swift/Array``
-public struct ExpectedOccupancy: Sendable {
+public struct ExpectedOccupancy: Codable, Sendable {
     public let expectedFirstClassOccupancy: OJPv2.OccupancyLevel?
     public let expectedSecondClassOccupancy: OJPv2.OccupancyLevel?
 
