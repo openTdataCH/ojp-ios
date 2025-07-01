@@ -29,3 +29,23 @@ public struct ExpectedOccupancy: Codable, Sendable {
         expectedFirstClassOccupancy != nil || expectedSecondClassOccupancy != nil
     }
 }
+
+extension OJPv2.OccupancyLevel: Comparable {
+    public static func < (lhs: OJPv2.OccupancyLevel, rhs: OJPv2.OccupancyLevel) -> Bool {
+        lhs.weight < rhs.weight
+    }
+
+    private var weight: Int {
+        switch self {
+        case .unknown, .empty, .undefined:
+            0
+        case .manySeatsAvailable:
+            1
+        case .fewSeatsAvailable:
+            2
+        case .crushedStandingRoomOnly, .standingRoomOnly, .full, .notAcceptingPassengers:
+            3
+        }
+    }
+
+}
