@@ -25,6 +25,11 @@ public struct ExpectedOccupancy: Codable, Sendable {
     public let expectedFirstClassOccupancy: OJPv2.OccupancyLevel?
     public let expectedSecondClassOccupancy: OJPv2.OccupancyLevel?
 
+    public init(expectedFirstClassOccupancy: OJPv2.OccupancyLevel? = nil, expectedSecondClassOccupancy: OJPv2.OccupancyLevel? = nil) {
+        self.expectedFirstClassOccupancy = expectedFirstClassOccupancy
+        self.expectedSecondClassOccupancy = expectedSecondClassOccupancy
+    }
+
     public var hasOccupancy: Bool {
         expectedFirstClassOccupancy != nil || expectedSecondClassOccupancy != nil
     }
