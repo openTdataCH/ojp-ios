@@ -1001,6 +1001,13 @@ public extension OJPv2 {
         public let cancelled: Bool
         public let deviation: Bool
         public let undefinedDelay: Bool
+        
+        public init (unplanned: Bool = false, cancelled: Bool = false, deviation: Bool = false, undefinedDelay: Bool = false) {
+            self.unplanned = unplanned
+            self.cancelled = cancelled
+            self.deviation = deviation
+            self.undefinedDelay = undefinedDelay
+        }
 
         public enum CodingKeys: String, CodingKey {
             case unplanned = "Unplanned"
