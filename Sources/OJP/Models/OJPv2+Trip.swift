@@ -735,7 +735,7 @@ public extension OJPv2 {
             case estimatedTime = "EstimatedTime"
         }
 
-        init(timetabledTime: Date, estimatedTime: Date? = nil) {
+        public init(timetabledTime: Date, estimatedTime: Date? = nil) {
             self.timetabledTime = timetabledTime
             self.estimatedTime = estimatedTime
         }
@@ -751,7 +751,7 @@ public extension OJPv2 {
             case estimatedTime = "EstimatedTime"
         }
 
-        init(timetabledTime: Date, estimatedTime: Date? = nil) {
+        public init(timetabledTime: Date, estimatedTime: Date? = nil) {
             self.timetabledTime = timetabledTime
             self.estimatedTime = estimatedTime
         }
@@ -1043,6 +1043,13 @@ public extension OJPv2 {
         public let cancelled: Bool
         public let deviation: Bool
         public let undefinedDelay: Bool
+        
+        public init (unplanned: Bool = false, cancelled: Bool = false, deviation: Bool = false, undefinedDelay: Bool = false) {
+            self.unplanned = unplanned
+            self.cancelled = cancelled
+            self.deviation = deviation
+            self.undefinedDelay = undefinedDelay
+        }
 
         public enum CodingKeys: String, CodingKey {
             case unplanned = "Unplanned"
@@ -1272,6 +1279,10 @@ public extension OJPv2 {
 
     struct PersonalService: Codable, Sendable {
         let personalMode: String
+        
+        public init(personalMode: String) {
+            self.personalMode = personalMode
+        }
 
         enum CodingKeys: String, CodingKey {
             case personalMode = "PersonalMode"
