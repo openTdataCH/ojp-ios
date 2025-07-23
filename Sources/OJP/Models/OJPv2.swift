@@ -194,7 +194,7 @@ public struct OJPv2: Codable, Sendable {
     public struct Mode: Codable, Sendable, Hashable {
         public let ptMode: PtMode
         
-        public init(ptMode: PtMode, busSubmode: String?, railSubmode: String?, funicularSubmode: String?, name: InternationalText?, shortName: InternationalText?) {
+        public init(ptMode: PtMode, busSubmode: String? = nil, railSubmode: String? = nil, funicularSubmode: String? = nil, name: InternationalText? = nil, shortName: InternationalText?) {
             self.ptMode = ptMode
             self.busSubmode = busSubmode
             self.railSubmode = railSubmode
