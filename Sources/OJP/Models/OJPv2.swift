@@ -194,10 +194,11 @@ public struct OJPv2: Codable, Sendable {
     public struct Mode: Codable, Sendable, Hashable {
         public let ptMode: PtMode
         
-        public init(ptMode: PtMode, busSubmode: String?, railSubmode: String?, name: InternationalText?, shortName: InternationalText?) {
+        public init(ptMode: PtMode, busSubmode: String?, railSubmode: String?, funicularSubmode: String?, name: InternationalText?, shortName: InternationalText?) {
             self.ptMode = ptMode
             self.busSubmode = busSubmode
             self.railSubmode = railSubmode
+            self.funicularSubmode = funicularSubmode
             self.name = name
             self.shortName = shortName
         }
@@ -207,6 +208,7 @@ public struct OJPv2: Codable, Sendable {
         // keep busSubmode, railSubmode for now
         public let busSubmode: String?
         public let railSubmode: String?
+        public let funicularSubmode: String?
 
         public let name: InternationalText?
         public let shortName: InternationalText?
@@ -215,17 +217,27 @@ public struct OJPv2: Codable, Sendable {
             case ptMode = "PtMode"
             case busSubmode = "siri:BusSubmode"
             case railSubmode = "siri:RailSubmode"
+            case funicularSubmode = "siri:FunicularSubmode"
             case name = "Name"
             case shortName = "ShortName"
         }
 
         public enum PtMode: String, Codable, Sendable {
-            case rail
+            case air
             case bus
+            case coach
+            case ferry
+            case metro
+            case rail
+            case trolleyBus
             case tram
             case water
+            case cableway
             case telecabin
-            case underground
+            case taxi
+            case funicular
+            case lift
+            case snowAndIce
             case unknown
 
             public init(from decoder: Decoder) throws {
