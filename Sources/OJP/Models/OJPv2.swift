@@ -234,6 +234,7 @@ public struct OJPv2: Codable, Sendable {
             case water
             case cableway
             case telecabin
+            case underground
             case taxi
             case funicular
             case lift

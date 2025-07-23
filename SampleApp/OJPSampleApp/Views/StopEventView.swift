@@ -162,6 +162,8 @@ extension Pictograms {
             Pictograms.jetty_right_framed
         case .cableway:
             Pictograms.cableway_right_framed
+        case .underground:
+            Pictograms.metro_right_de_framed
         case .funicular:
             Pictograms.funicular_railway_right_framed
         case .lift:
