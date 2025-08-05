@@ -68,7 +68,7 @@ public actor PaginatedTripLoader {
             throw OJPSDKError.notImplemented()
         }
         let amount = count > 0 ? count : pageSize
-        request.at = .departure(minDate)
+        request.at = .arrival(minDate)
         return try await load(request: request, numberOfResults: .numbers(before: amount, after: 0))
     }
 
@@ -123,7 +123,7 @@ public actor PaginatedTripLoader {
                 existingTripHashes.insert(hash)
 
                 if maxDate == nil || trip.startTime > maxDate! { maxDate = trip.startTime }
-                if minDate == nil || trip.startTime < minDate! { minDate = trip.startTime }
+                if minDate == nil || trip.endTime < minDate! { minDate = trip.endTime }
 
                 return tripResult
             }
