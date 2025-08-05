@@ -138,18 +138,38 @@ struct StopEventView: View {
 extension Pictograms {
     static func picto(mode: OJPv2.Mode) -> Image {
         switch mode.ptMode {
+        case .air:
+            Pictograms.aeroplane_right_framed
+        case .bus:
+            Pictograms.bus_right_framed
+        case .coach:
+            Pictograms.remote_bus_right_framed
+        case .ferry:
+            Pictograms.car_ferry_right_framed
+        case .metro:
+            Pictograms.metro_left_de_framed
         case .rail:
             Pictograms.train_right_framed
-        case .bus:
+        case .taxi:
+            Pictograms.taxi_right_framed
+        case .telecabin:
+            Pictograms.gondola_lift_right_framed
+        case .trolleyBus:
             Pictograms.bus_right_framed
         case .tram:
             Pictograms.tram_right_framed
         case .water:
             Pictograms.jetty_right_framed
-        case .telecabin:
+        case .cableway:
             Pictograms.cableway_right_framed
         case .underground:
             Pictograms.metro_right_de_framed
+        case .funicular:
+            Pictograms.funicular_railway_right_framed
+        case .lift:
+            Pictograms.lift
+        case .snowAndIce:
+            Pictograms.ski_lift_right_framed
         case .unknown:
             Pictograms.information_framed
         }
