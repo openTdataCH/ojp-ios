@@ -1258,22 +1258,29 @@ public extension OJPv2 {
         public let legEnd: PlaceRefChoice
         public let duration: Duration
         public let service: ContinuousService
+        /// Distance (metres) as defined by http://www.ordnancesurvey.co.uk/xml/resource/units.xml#metres. Alternative units may be specifed by context.
+        public let length: Int?
         public let legTrack: LegTrack?
+        public let pathGuidance: PathGuidance?
 
         enum CodingKeys: String, CodingKey {
             case legStart = "LegStart"
             case legEnd = "LegEnd"
             case duration = "Duration"
             case service = "Service"
+            case length = "Length"
             case legTrack = "LegTrack"
+            case pathGuidance = "PathGuidance"
         }
 
-        public init(legStart: PlaceRefChoice, legEnd: PlaceRefChoice, duration: Duration, service: ContinuousService, legTrack: LegTrack? = nil) {
+        public init(legStart: PlaceRefChoice, legEnd: PlaceRefChoice, duration: Duration, legTrack: LegTrack? = nil, service: ContinuousService,  length: Int? = nil, pathGuidance: PathGuidance? = nil) {
             self.legStart = legStart
             self.legEnd = legEnd
             self.duration = duration
             self.service = service
+            self.length = length
             self.legTrack = legTrack
+            self.pathGuidance = pathGuidance
         }
     }
 
