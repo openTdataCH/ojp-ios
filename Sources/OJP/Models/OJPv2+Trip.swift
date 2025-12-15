@@ -552,11 +552,11 @@ public extension OJPv2 {
                     h.combine(continuousLeg.legEnd)
                 case let .timed(timedLeg):
                     h.combine(timedLeg.service.publishedServiceName.text)
-                    h.combine(timedLeg.service.destinationText?.text)
-                    h.combine(timedLeg.legBoard.stopPointName.text)
+                    h.combine(timedLeg.service.destinationStopPointRef)
+                    h.combine(timedLeg.legBoard.stopPointRef)
                     h.combine(timedLeg.legBoard.serviceDeparture.timetabledTime)
                     h.combine(timedLeg.legAlight.serviceArrival.timetabledTime)
-                    h.combine(timedLeg.legAlight.stopPointName.text)
+                    h.combine(timedLeg.legAlight.stopPointRef)
                     h.combine(timedLeg.service.trainNumber)
                 case let .transfer(transferLeg):
                     h.combine(transferLeg.transferTypes.hashValue)
