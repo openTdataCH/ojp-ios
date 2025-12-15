@@ -552,7 +552,7 @@ public extension OJPv2 {
                     h.combine(continuousLeg.legEnd)
                 case let .timed(timedLeg):
                     h.combine(timedLeg.service.publishedServiceName.text)
-                    //h.combine(timedLeg.service.destinationText?.text)     // ignore this until this bug is fixed: https://github.com/openTdataCH/ojp-sdk/issues/198
+                    h.combine(timedLeg.service.destinationStopPointRef)
                     h.combine(timedLeg.legBoard.stopPointRef)
                     h.combine(timedLeg.legBoard.serviceDeparture.timetabledTime)
                     h.combine(timedLeg.legAlight.serviceArrival.timetabledTime)
