@@ -42,6 +42,7 @@
 		CFE465ED2C76092200E5CADB /* OJP+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE465EC2C76092200E5CADB /* OJP+Extensions.swift */; };
 		CFF227B32BBD63AC00D3EADF /* OJP in Frameworks */ = {isa = PBXBuildFile; productRef = CFF227B22BBD63AC00D3EADF /* OJP */; };
 		CFF227B82BBDA10800D3EADF /* PlaceDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF227B72BBDA10800D3EADF /* PlaceDetailView.swift */; };
+		CFF5DCF22F4DFE39001B6BE2 /* TripFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF5DCF12F4DFE39001B6BE2 /* TripFilterView.swift */; };
 		CFFB00A62CFDE60D007D3ED2 /* OEVIcons in Frameworks */ = {isa = PBXBuildFile; productRef = CFFB00A52CFDE60D007D3ED2 /* OEVIcons */; };
 		CFFB00A92CFDEED9007D3ED2 /* OEVIcons in Frameworks */ = {isa = PBXBuildFile; productRef = CFFB00A82CFDEED9007D3ED2 /* OEVIcons */; };
 /* End PBXBuildFile section */
@@ -101,6 +102,7 @@
 		CFF227B02BBD639000D3EADF /* OJP */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = OJP; path = ..; sourceTree = "<group>"; };
 		CFF227B42BBD95CF00D3EADF /* LocationSearchByNameView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationSearchByNameView.swift; sourceTree = "<group>"; };
 		CFF227B72BBDA10800D3EADF /* PlaceDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceDetailView.swift; sourceTree = "<group>"; };
+		CFF5DCF12F4DFE39001B6BE2 /* TripFilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripFilterView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,6 +156,7 @@
 				CFF227B72BBDA10800D3EADF /* PlaceDetailView.swift */,
 				CF564A312C2D83D600424D91 /* TripRequestResultView.swift */,
 				CF3CD8FD2C2EA0B200D25994 /* TripRequestView.swift */,
+				CFF5DCF12F4DFE39001B6BE2 /* TripFilterView.swift */,
 				CF8F0C8C2C6672AC008BABC6 /* PTSituationDetailView.swift */,
 				CF3CD8FF2C2EA4A800D25994 /* InlineLocationSerachView.swift */,
 				92AEB24F2C328DCF00D5828E /* TripDetailView.swift */,
@@ -400,6 +403,7 @@
 				92AEB2502C328DCF00D5828E /* TripDetailView.swift in Sources */,
 				CF0D36BE2CF661F300AF5C0F /* StopEventResultsView.swift in Sources */,
 				CF8982BF2C8EE1AE001895AC /* TripInfoDetailView.swift in Sources */,
+				CFF5DCF22F4DFE39001B6BE2 /* TripFilterView.swift in Sources */,
 				CF564A322C2D83D600424D91 /* TripRequestResultView.swift in Sources */,
 				CFF227B82BBDA10800D3EADF /* PlaceDetailView.swift in Sources */,
 				CF564A342C2D8CFE00424D91 /* LocationSearchByNameView.swift in Sources */,

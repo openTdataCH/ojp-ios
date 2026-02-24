@@ -1488,14 +1488,29 @@ public extension OJPv2 {
         }
     }
 
+//    enum ModeAndModeOfOperationFilterChoice: Codable, Sendable {
+//        case ptMode(ModeAndModeOfOperationFilterPTMode)
+//        case railSubmode(ModeAndModeOfOperationFilterRailSubmode) // TODO: Implement others
+//
+//        public func encode(to encoder: any Encoder) throws {
+//            var svc = encoder.singleValueContainer()
+//            switch self {
+//            case let .ptMode(ptModeFilters):
+//                try svc.encode(ptModeFilters)
+//            case let .railSubmode(railSubmode):
+//                try svc.encode(railSubmode)
+//            }
+//        }
+//    }
+
     /// [Schema documentation on vdvde.github.io](https://vdvde.github.io/OJP/develop/documentation-tables/ojp.html#type_ojp__ModeAndModeOfOperationFilterStructure)
-    struct ModeAndModeOfOperationFilter: Codable, Sendable {
-        public init(ptMode: [Mode.PtMode]?, exclude: Bool?) {
+    struct ModeAndModeOfOperationFilterPTMode: Codable, Sendable {
+        public init(ptMode: [Mode.PtMode], exclude: Bool?) {
             self.ptMode = ptMode
             self.exclude = exclude
         }
 
-        let ptMode: [Mode.PtMode]?
+        let ptMode: [Mode.PtMode]
         let exclude: Bool?
 
         public enum CodingKeys: String, CodingKey {
@@ -1503,6 +1518,70 @@ public extension OJPv2 {
             case ptMode = "PtMode"
         }
     }
+
+
+    enum ModeAndModeOfOperationFilterChoice: Codable, Sendable {
+        case ptModes([Mode.PtMode])
+        case railSubmode(RailSubmode)
+
+        public enum CodingKeys: String, CodingKey {
+            case ptModes = "PtMode"
+            case railSubmode = "siri:RailSubmode"
+        }
+
+        public func encode(to encoder: any Encoder) throws {
+            var container = encoder.container(keyedBy: CodingKeys.self)
+            switch self {
+            case .ptModes(let array):
+                try container.encode(array, forKey: .ptModes)
+            case .railSubmode(let railSubmode):
+                try container.encode(railSubmode, forKey: .railSubmode)
+            }
+        }
+    }
+
+    /// [Schema documentation on vdvde.github.io](https://vdvde.github.io/OJP/develop/documentation-tables/ojp.html#type_ojp__ModeAndModeOfOperationFilterStructure)
+    struct ModeAndModeOfOperationFilter: Codable, Sendable {
+        public init(mode: ModeAndModeOfOperationFilterChoice, exclude: Bool?) {
+            self.mode = mode
+            self.exclude = exclude
+        }
+
+        let mode: ModeAndModeOfOperationFilterChoice
+        let exclude: Bool?
+
+        public init(from decoder: any Decoder) throws {
+            fatalError()
+        }
+
+        public func encode(to encoder: any Encoder) throws {
+            var container = encoder.container(keyedBy: CodingKeys.self)
+            try container.encode(exclude, forKey: .exclude)
+            try container.encode(mode, forKey: ._0)
+        }
+
+        public enum CodingKeys: String, CodingKey {
+            case exclude = "Exclude"
+//            case ptMode = "PtMode"
+            case _0 = ""
+        }
+    }
+
+    struct ModeAndModeOfOperationFilterRailSubmode: Codable, Sendable {
+        public init(submode: RailSubmode, exclude: Bool?) {
+            self.submode = submode
+            self.exclude = exclude
+        }
+
+        let submode: RailSubmode
+        let exclude: Bool?
+
+        public enum CodingKeys: String, CodingKey {
+            case exclude = "Exclude"
+            case submode = "siri:RailSubmode"
+        }
+    }
+
 
     /// [Schema documentation on vdvde.github.io](https://vdvde.github.io/OJP/develop/documentation-tables/ojp.html#type_ojp__UseRealtimeDataEnumeration)
     enum UseRealtimeData: String, Sendable, Codable {
@@ -1521,8 +1600,7 @@ public extension OJPv2 {
             includeIntermediateStops: Bool? = nil,
             includeAllRestrictedLines: Bool? = nil,
             useRealtimeData: UseRealtimeData? = nil,
-            modeAndModeOfOperationFilter: ModeAndModeOfOperationFilter? = nil
-
+            modeAndModeOfOperationFilter: [ModeAndModeOfOperationFilter]? = nil
         ) {
             switch numberOfResults {
             case let .numbers(before: before, after: after):
@@ -1551,7 +1629,7 @@ public extension OJPv2 {
         let includeIntermediateStops: Bool?
         let includeAllRestrictedLines: Bool?
         let useRealtimeData: UseRealtimeData?
-        let modeAndModeOfOperationFilter: ModeAndModeOfOperationFilter?
+        public var modeAndModeOfOperationFilter: [ModeAndModeOfOperationFilter]?
 
         var numberOfResults: NumberOfResults {
             if numberOfResultsAfter != nil || numberOfResultsBefore != nil {

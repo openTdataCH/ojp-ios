@@ -190,11 +190,64 @@ public struct OJPv2: Codable, Sendable {
         }
     }
 
-    /// https://vdvde.github.io/OJP/develop/documentation-tables/ojp.html#type_ojp__ModeStructure
+//    /// [Schema documentation on vdvde.github.io](https://vdvde.github.io/OJP/develop/documentation-tables/siri.html#group_siri__PtModeChoiceGroup)
+//    public enum PtModeChoice: Codable, Sendable {
+//        case railSubmode(RailSubmode)
+//        case telecabinSubmode(TelecabinSubmode)
+//
+//        public enum CodingKeys: String, CodingKey {
+//            case railSubmode = "siri:RailSubmode"
+//            case telecabinSubmode = "siri:TelecabinSubmode"
+//        }
+//
+//        public init(from decoder: any Decoder) throws {
+//            do {
+//                self = try .railSubmode(RailSubmode(from: decoder))
+//            } catch {
+//                self = try .telecabinSubmode(TelecabinSubmode(from: decoder))
+//            }
+//        }
+//
+//        public func encode(to encoder: any Encoder) throws {
+//            var svc = encoder.singleValueContainer()
+//            switch self {
+//            case let .railSubmode(railSubmode):
+//                try svc.encode(railSubmode)
+//            case let .telecabinSubmode(telecabinSubmode):
+//                try svc.encode(telecabinSubmode)
+//            }
+//        }
+//    }
+
+    public enum RailSubmode: String, Codable, Sendable {
+        case unknown
+        /// ICE, TGV, EC, RJX, NJ, EN
+        case international
+        /// IC
+        case highSpeedRail
+        ///  IR, IRN, IRE
+        case interregionalRail
+        ///  ATZ, PE
+        case railShuttle
+        ///  S, SN, RB, RE,
+        case local
+
+        public init(from decoder: Decoder) throws {
+            self = try Self(rawValue: decoder.singleValueContainer().decode(RawValue.self)) ?? .unknown
+        }
+    }
+
+    public enum TelecabinSubmode: String, Codable, Sendable {
+        case funicular
+    }
+
+    // TODO: maybe adjust
+
+    /// [Schema documentation on vdvde.github.io](https://vdvde.github.io/OJP/develop/documentation-tables/ojp.html#type_ojp__ModeStructure
     public struct Mode: Codable, Sendable, Hashable {
         public let ptMode: PtMode
-        
-        public init(ptMode: PtMode, busSubmode: String? = nil, railSubmode: String? = nil, funicularSubmode: String? = nil, name: InternationalText? = nil, shortName: InternationalText?) {
+
+        public init(ptMode: PtMode, busSubmode: String? = nil, railSubmode: RailSubmode? = nil, funicularSubmode: String? = nil, name: InternationalText? = nil, shortName: InternationalText?) {
             self.ptMode = ptMode
             self.busSubmode = busSubmode
             self.railSubmode = railSubmode
@@ -207,7 +260,7 @@ public struct OJPv2: Codable, Sendable {
         // siri:PtModeChoiceGroup
         // keep busSubmode, railSubmode for now
         public let busSubmode: String?
-        public let railSubmode: String?
+        public let railSubmode: RailSubmode?
         public let funicularSubmode: String?
 
         public let name: InternationalText?
@@ -242,7 +295,7 @@ public struct OJPv2: Codable, Sendable {
             case unknown
 
             public init(from decoder: Decoder) throws {
-                self = try PtMode(rawValue: decoder.singleValueContainer().decode(RawValue.self)) ?? .unknown
+                self = try Self(rawValue: decoder.singleValueContainer().decode(RawValue.self)) ?? .unknown
             }
         }
     }
