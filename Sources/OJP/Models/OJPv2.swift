@@ -285,7 +285,7 @@ public struct OJPv2: Codable, Sendable {
     public struct Mode: Codable, Sendable, Hashable {
         public let ptMode: PtMode
 
-        public init(ptMode: PtMode, submode: PtModeChoice? = nil, name: InternationalText? = nil, shortName: InternationalText?) {
+        public init(ptMode: PtMode, submode: PtModeChoice? = nil, name: InternationalText? = nil, shortName: InternationalText? = nil) {
             self.ptMode = ptMode
             self.submode = submode
             self.name = name
@@ -354,10 +354,6 @@ public struct OJPv2: Codable, Sendable {
         public let maxDuration: Duration?
         public let minDistance: Int?
         public let minDuration: Duration?
-
-//        public enum CodingKeys: String, CodingKey {
-//            case <#FirstProperty#> = "<#Name in XSD#>"
-//        }
     }
 
     /// [Schema documentation on vdvde.github.io](https://vdvde.github.io/OJP/develop/documentation-tables/ojp.html#type_ojp__ItModesStructure)
