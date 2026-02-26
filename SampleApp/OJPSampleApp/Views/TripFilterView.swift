@@ -81,36 +81,122 @@ struct ModeFilterState: Equatable {
 
 struct TripFilterView: View {
 
-    @State var modeFilters: ModeFilterState = .init()
+    enum TransferLimit: String, CaseIterable {
+        case none
+        case noTransfer
+        case oneTransfer
 
+        var ojpValue: Int? {
+            switch self {
+            case .none:
+                nil
+            case .noTransfer:
+                0
+            case .oneTransfer:
+                1
+            }
+        }
+        var title: String {
+            switch self {
+            case .none:
+                "No Limit"
+            case .noTransfer:
+                "0 Transfers"
+            case .oneTransfer:
+                "1 Transfer"
+            }
+        }
+    }
+
+    enum WalkSpeed: Int, CaseIterable {
+        case veryFast = 400
+        case fast = 200
+        case aBitFaster = 150
+        case normal = 100
+        case slower = 75
+        case slowest = 50
+
+        var title: String {
+            "\(rawValue)%"
+        }
+    }
+
+
+    @State var modeFilters: ModeFilterState = .init()
+    @State var optimisationMethod: OJPv2.OptimisationMethod? = nil
+    @State var transferLimit: TransferLimit = .none
+    @State var bikeTransport: Bool = false
+    @State var walkSpeed: WalkSpeed?
     @Binding var ojpTripParams: OJPv2.TripParams
 
     var body: some View {
-        Form {
-            Toggle("Rail", isOn: $modeFilters.railMode)
-            Section {
-                Text("Rail Submodes")
-                Toggle("International", isOn: $modeFilters.internationalSubmode)
+        HStack(alignment: .top) {
+            Form {
+                Toggle("Rail", isOn: $modeFilters.railMode)
+                Section {
+                    Divider()
+                    Text("Rail Submodes")
+                    // TODO: implement other submodes
+                    Toggle("International", isOn: $modeFilters.internationalSubmode)
+                    Divider()
 
-            }.disabled(!modeFilters.railMode)
-            Toggle("Water", isOn: $modeFilters.waterMode)
-            Toggle("Bus", isOn: $modeFilters.busMode)
-            Toggle("Tram", isOn: $modeFilters.tramMode)
-//            Toggle("Rail", isOn: $modeFilters.railMode)
-//            Toggle("Rail", isOn: $modeFilters.railMode)
-//            Toggle("Rail", isOn: $modeFilters.railMode)
-        }.toggleStyle(.switch)
+                }.disabled(!modeFilters.railMode)
+                Toggle("Water", isOn: $modeFilters.waterMode)
+                Toggle("Bus", isOn: $modeFilters.busMode)
+                Toggle("Tram", isOn: $modeFilters.tramMode)
+            }
+            Form {
+                Section {
+                    Picker(selection: $optimisationMethod) {
+                        Text("Default (nil)").tag(nil as OJPv2.OptimisationMethod?, includeOptional: true)
+                        Text("Fastest Connection").tag(OJPv2.OptimisationMethod.fastest)
+                        Text("Minimal Changes").tag(OJPv2.OptimisationMethod.minChanges)
+                    } label: {
+                        Text("Optimisation")
+                    }
+
+                    Picker(selection: $transferLimit) {
+                        ForEach(TransferLimit.allCases, id: \.rawValue) {
+                            Text($0.title)
+                                .tag($0)
+                        }
+                    }
+                     label: {
+                        Text("TransferLimit")
+                    }
+
+                    Toggle("Bike Transport", isOn: $bikeTransport)
+
+                    Picker(selection: $walkSpeed) {
+                        Text("Default (nil)").tag(nil as WalkSpeed?, includeOptional: true)
+                        ForEach(WalkSpeed.allCases, id: \.rawValue) {
+                            Text($0.title)
+                                .tag($0)
+                        }
+                    }
+                     label: {
+                        Text("TransferLimit")
+                    }
+
+                }
+            }
+        }.toggleStyle(.automatic)
             .onChange(of: modeFilters) { _, _ in
-                print("internal state")
-                print(modeFilters)
-                print("isRailSubmodeExcluded")
-                print(modeFilters.isRailSubmodeExcluded)
-                print("ojp filters")
-                print(modeFilters.modeFilters)
                 ojpTripParams.modeAndModeOfOperationFilter = modeFilters.modeFilters
             }
+            .onChange(of: optimisationMethod) { _, _ in
+                ojpTripParams.optimisationMethod = optimisationMethod
+            }
+            .onChange(of: transferLimit) {_,_ in
+                ojpTripParams.transferLimit = transferLimit.ojpValue
+            }
+            .onChange(of: bikeTransport) { _, _ in
+                ojpTripParams.bikeTransport = bikeTransport ? true : nil
+            }
+            .onChange(of: walkSpeed) { _, _ in
+                ojpTripParams.walkSpeed = walkSpeed?.rawValue
+            }
     }
-
 }
 
 #Preview {

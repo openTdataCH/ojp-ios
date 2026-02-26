@@ -1577,7 +1577,11 @@ public extension OJPv2 {
             includeIntermediateStops: Bool? = nil,
             includeAllRestrictedLines: Bool? = nil,
             useRealtimeData: UseRealtimeData? = nil,
-            modeAndModeOfOperationFilter: [ModeAndModeOfOperationFilter]? = nil
+            modeAndModeOfOperationFilter: [ModeAndModeOfOperationFilter]? = nil,
+            transferLimit: Int? = nil,
+            optimisationMethod: OptimisationMethod? = nil,
+            bikeTransport: Bool? = nil,
+            walkSpeed: Int? = nil
         ) {
             numberOfResultsBefore = nil
             numberOfResultsAfter = nil
@@ -1590,6 +1594,10 @@ public extension OJPv2 {
             self.includeAllRestrictedLines = includeAllRestrictedLines
             self.useRealtimeData = useRealtimeData
             self.modeAndModeOfOperationFilter = modeAndModeOfOperationFilter
+            self.optimisationMethod = optimisationMethod
+            self.bikeTransport = bikeTransport
+            self.walkSpeed = walkSpeed
+
             update(numberOfResults: numberOfResults)
         }
 
@@ -1603,7 +1611,13 @@ public extension OJPv2 {
         let includeIntermediateStops: Bool?
         let includeAllRestrictedLines: Bool?
         let useRealtimeData: UseRealtimeData?
+
         public var modeAndModeOfOperationFilter: [ModeAndModeOfOperationFilter]?
+        public var transferLimit: Int?
+        public var optimisationMethod: OptimisationMethod?
+        public var bikeTransport: Bool?
+        public var walkSpeed: Int?
+
         mutating func update(numberOfResults: NumberOfResults) {
             switch numberOfResults {
             case let .numbers(before: before, after: after):
@@ -1635,6 +1649,10 @@ public extension OJPv2 {
             case includeAllRestrictedLines = "IncludeAllRestrictedLines"
             case useRealtimeData = "UseRealtimeData"
             case modeAndModeOfOperationFilter = "ModeAndModeOfOperationFilter"
+            case transferLimit = "TransferLimit"
+            case optimisationMethod = "OptimisationMethod"
+            case bikeTransport = "BikeTransport"
+            case walkSpeed = "WalkSpeed"
         }
     }
 
@@ -1642,6 +1660,12 @@ public extension OJPv2 {
     enum NumberOfResults: Codable, Sendable {
         case numbers(before: Int, after: Int)
         case standard(Int)
+    }
+
+    /// [Schema documentation on vdvde.github.io](https://vdvde.github.io/OJP/develop/documentation-tables/ojp.html#type_ojp__OptimisationMethodEnumeration)
+    enum OptimisationMethod: String, Codable, Sendable {
+        case fastest
+        case minChanges
     }
 }
 

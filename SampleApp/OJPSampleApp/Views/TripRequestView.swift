@@ -21,13 +21,19 @@ struct TripRequestView: View {
     @State var paginatedActor: PaginatedTripLoader?
     @State var pageSize: Int = 6
 
+    @State var showFilters: Bool = false
 
-    @State var tripParams: OJPv2.TripParams = .init(
+    @State var tripParams: OJPv2.TripParams
+
+    init(ojp: OJP, tripParams: OJPv2.TripParams = .init(
         includeTrackSections: false,
         includeLegProjection: false,
         includeIntermediateStops: true,
         useRealtimeData: .explanatory,
-        modeAndModeOfOperationFilter: nil)
+        modeAndModeOfOperationFilter: nil)) {
+        self.ojp = ojp
+        self.tripParams = tripParams
+    }
 
     var body: some View {
         VStack {
@@ -104,8 +110,20 @@ struct TripRequestView: View {
                     TextField("Page Size", value: $pageSize, formatter: NumberFormatter())
                         .frame(maxWidth: 30)
                 }
+            }
+            Button("Filter") {
+                showFilters.toggle()
+            }
+            if showFilters {
+                VStack {
+                    HStack {
+                        Text("Filter").font(.title)
+                        Spacer()
 
-                TripFilterView(ojpTripParams: $tripParams)
+                    }
+                    TripFilterView(ojpTripParams: $tripParams)
+                    Divider()
+                }
             }
             TripRequestResultView(
                 ptSituations: Array(ptSituations),
