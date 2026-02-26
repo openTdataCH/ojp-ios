@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Duration
 
 let OJP_SDK_Name = "IOS_SDK"
 
