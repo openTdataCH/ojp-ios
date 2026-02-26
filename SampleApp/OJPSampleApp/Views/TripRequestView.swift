@@ -22,6 +22,8 @@ struct TripRequestView: View {
     @State var pageSize: Int = 6
 
     @State var showFilters: Bool = false
+    @State var editOriginIndividualOptions: Bool = false
+    @State var originIndividualOptions: OJPv2.IndividualTransportOption = .init(itModeAndModeOfOperation: .init(personalMode: .foot))
 
     @State var tripParams: OJPv2.TripParams
 
@@ -119,12 +121,20 @@ struct TripRequestView: View {
                     HStack {
                         Text("Filter").font(.title)
                         Spacer()
-
                     }
                     TripFilterView(ojpTripParams: $tripParams)
                     Divider()
                 }
             }
+
+            Button("Edit Origin Options") {
+                editOriginIndividualOptions.toggle()
+            }.disabled(origin == nil)
+
+            if editOriginIndividualOptions {
+                IndividualTransportOptionView(individualTransportOption: $originIndividualOptions)
+            }
+
             TripRequestResultView(
                 ptSituations: Array(ptSituations),
                 isLoading: isLoading,

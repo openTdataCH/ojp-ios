@@ -354,11 +354,23 @@ public struct OJPv2: Codable, Sendable {
         public let maxDuration: Duration?
         public let minDistance: Int?
         public let minDuration: Duration?
+
+        public init(itModeAndModeOfOperation: ItModeAndModeOfOperation, maxDistance: Int? = nil, maxDuration: Duration? = nil, minDistance: Int? = nil, minDuration: Duration? = nil) {
+            self.itModeAndModeOfOperation = itModeAndModeOfOperation
+            self.maxDistance = maxDistance
+            self.maxDuration = maxDuration
+            self.minDistance = minDistance
+            self.minDuration = minDuration
+        }
     }
 
     /// [Schema documentation on vdvde.github.io](https://vdvde.github.io/OJP/develop/documentation-tables/ojp.html#type_ojp__ItModesStructure)
     public struct ItModeAndModeOfOperation: Codable, Sendable {
         public let personalMode: PersonalMode
+
+        public init(personalMode: PersonalMode) {
+            self.personalMode = personalMode
+        }
 
     }
 
