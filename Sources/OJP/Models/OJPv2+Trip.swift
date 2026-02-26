@@ -1579,13 +1579,9 @@ public extension OJPv2 {
             useRealtimeData: UseRealtimeData? = nil,
             modeAndModeOfOperationFilter: [ModeAndModeOfOperationFilter]? = nil
         ) {
-            switch numberOfResults {
-            case let .numbers(before: before, after: after):
-                numberOfResultsBefore = before > 0 ? before : nil
-                numberOfResultsAfter = after > 0 ? after : nil
-            case let .standard(count):
-                _numberOfResults = count
-            }
+            numberOfResultsBefore = nil
+            numberOfResultsAfter = nil
+            _numberOfResults = nil
 
             self.includeTrackSections = includeTrackSections
             self.includeLegProjection = includeLegProjection
@@ -1594,6 +1590,7 @@ public extension OJPv2 {
             self.includeAllRestrictedLines = includeAllRestrictedLines
             self.useRealtimeData = useRealtimeData
             self.modeAndModeOfOperationFilter = modeAndModeOfOperationFilter
+            update(numberOfResults: numberOfResults)
         }
 
         private var numberOfResultsBefore: Int? = nil
@@ -1607,6 +1604,15 @@ public extension OJPv2 {
         let includeAllRestrictedLines: Bool?
         let useRealtimeData: UseRealtimeData?
         public var modeAndModeOfOperationFilter: [ModeAndModeOfOperationFilter]?
+        mutating func update(numberOfResults: NumberOfResults) {
+            switch numberOfResults {
+            case let .numbers(before: before, after: after):
+                numberOfResultsBefore = before > 0 ? before : nil
+                numberOfResultsAfter = after > 0 ? after : nil
+            case let .standard(count):
+                _numberOfResults = count
+            }
+        }
 
         var numberOfResults: NumberOfResults {
             if numberOfResultsAfter != nil || numberOfResultsBefore != nil {
