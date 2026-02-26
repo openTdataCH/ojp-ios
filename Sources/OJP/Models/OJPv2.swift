@@ -190,24 +190,63 @@ public struct OJPv2: Codable, Sendable {
         }
     }
 
-//    /// [Schema documentation on vdvde.github.io](https://vdvde.github.io/OJP/develop/documentation-tables/siri.html#group_siri__PtModeChoiceGroup)
-//    public enum PtModeChoice: Codable, Sendable {
-//        case railSubmode(RailSubmode)
-//        case telecabinSubmode(TelecabinSubmode)
-//
-//        public enum CodingKeys: String, CodingKey {
-//            case railSubmode = "siri:RailSubmode"
-//            case telecabinSubmode = "siri:TelecabinSubmode"
-//        }
-//
-//        public init(from decoder: any Decoder) throws {
-//            do {
-//                self = try .railSubmode(RailSubmode(from: decoder))
-//            } catch {
-//                self = try .telecabinSubmode(TelecabinSubmode(from: decoder))
-//            }
-//        }
-//
+    /// [Schema documentation on vdvde.github.io](https://vdvde.github.io/OJP/develop/documentation-tables/siri.html#group_siri__PtModeChoiceGroup)
+    /// Used to specify submodes
+    public enum PtModeChoice: Codable, Sendable, Hashable {
+        case railSubmode(RailSubmode)
+        case telecabinSubmode(TelecabinSubmode)
+        case busSubmode(String)
+        case funicularSubmode(String)
+        case waterSubmode(String)
+        case tramSubmode(String)
+
+        public enum CodingKeys: String, CodingKey {
+            case railSubmode = "siri:RailSubmode"
+            case telecabinSubmode = "siri:TelecabinSubmode"
+            case busSubmode = "siri:BusSubmode"
+            case funicularSubmode = "siri:FunicularSubmode"
+            case waterSubmode = "siri:WaterSubmode"
+            case tramSubmode = "siri:TramSubmode"
+        }
+
+        public init(from decoder: any Decoder) throws {
+            let container = try decoder.container(keyedBy: CodingKeys.self)
+            if container.contains(.busSubmode) {
+                self = .busSubmode(try container.decode(String.self, forKey: .busSubmode))
+            } else if container.contains(.railSubmode) {
+                self = .railSubmode(try container.decode(RailSubmode.self, forKey: .railSubmode))
+            } else if container.contains(.telecabinSubmode) {
+                self = .telecabinSubmode(try container.decode(TelecabinSubmode.self, forKey: .telecabinSubmode))
+            } else if container.contains(.funicularSubmode) {
+                self = .funicularSubmode(try container.decode(String.self, forKey: .funicularSubmode))
+            } else if container.contains(.waterSubmode) {
+                self = .waterSubmode(try container.decode(String.self, forKey: .waterSubmode))
+            } else if container.contains(.tramSubmode) {
+                self = .tramSubmode(try container.decode(String.self, forKey: .tramSubmode))
+            } else {
+                throw OJPSDKError.notImplemented()
+            }
+        }
+
+        public func encode(to encoder: any Encoder) throws {
+            var container = encoder.container(keyedBy: CodingKeys.self)
+
+            switch self {
+            case .railSubmode(let railSubmode):
+                try container.encode(railSubmode, forKey: .railSubmode)
+            case .telecabinSubmode(let telecabinSubmode):
+                try container.encode(telecabinSubmode, forKey: .telecabinSubmode)
+            case .busSubmode(let string):
+                try container.encode(string, forKey: .busSubmode)
+            case .funicularSubmode(let string):
+                try container.encode(string, forKey: .busSubmode)
+            case .waterSubmode(let string):
+                try container.encode(string, forKey: .waterSubmode)
+            case .tramSubmode(let string):
+                try container.encode(string, forKey: .tramSubmode)
+            }
+        }
+
 //        public func encode(to encoder: any Encoder) throws {
 //            var svc = encoder.singleValueContainer()
 //            switch self {
@@ -217,7 +256,7 @@ public struct OJPv2: Codable, Sendable {
 //                try svc.encode(telecabinSubmode)
 //            }
 //        }
-//    }
+    }
 
     public enum RailSubmode: String, Codable, Sendable {
         case unknown
@@ -241,40 +280,48 @@ public struct OJPv2: Codable, Sendable {
         case funicular
     }
 
-    // TODO: maybe adjust
-
     /// [Schema documentation on vdvde.github.io](https://vdvde.github.io/OJP/develop/documentation-tables/ojp.html#type_ojp__ModeStructure
     public struct Mode: Codable, Sendable, Hashable {
         public let ptMode: PtMode
 
-        public init(ptMode: PtMode, busSubmode: String? = nil, railSubmode: RailSubmode? = nil, funicularSubmode: String? = nil, name: InternationalText? = nil, shortName: InternationalText?) {
+        public init(ptMode: PtMode, submode: PtModeChoice? = nil, name: InternationalText? = nil, shortName: InternationalText?) {
             self.ptMode = ptMode
-            self.busSubmode = busSubmode
-            self.railSubmode = railSubmode
-            self.funicularSubmode = funicularSubmode
+            self.submode = submode
             self.name = name
             self.shortName = shortName
         }
 
         // https://vdvde.github.io/OJP/develop/documentation-tables/ojp.html#group_ojp__ModeGroup
         // siri:PtModeChoiceGroup
-        // keep busSubmode, railSubmode for now
-        public let busSubmode: String?
-        public let railSubmode: RailSubmode?
-        public let funicularSubmode: String?
+         public let submode: PtModeChoice?
 
         public let name: InternationalText?
         public let shortName: InternationalText?
 
         public enum CodingKeys: String, CodingKey {
             case ptMode = "PtMode"
-            case busSubmode = "siri:BusSubmode"
-            case railSubmode = "siri:RailSubmode"
-            case funicularSubmode = "siri:FunicularSubmode"
+            case _0 = ""
             case name = "Name"
             case shortName = "ShortName"
         }
 
+        public init(from decoder: any Decoder) throws {
+            submode = try? PtModeChoice(from: decoder)
+
+            let container = try decoder.container(keyedBy: CodingKeys.self)
+            ptMode = try container.decode(PtMode.self, forKey: .ptMode)
+            name = try? container.decode(InternationalText.self, forKey: .name)
+            shortName = try? container.decode(InternationalText.self, forKey: .ptMode)
+        }
+
+        public func encode(to encoder: any Encoder) throws {
+            var container = encoder.container(keyedBy: CodingKeys.self)
+            try container.encode(ptMode, forKey: .ptMode)
+            try container.encode(submode, forKey: ._0)
+            try container.encode(name, forKey: .name)
+            try container.encode(shortName, forKey: .shortName)
+        }
+        
         public enum PtMode: String, Codable, Sendable {
             case air
             case bus

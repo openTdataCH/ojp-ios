@@ -1488,45 +1488,18 @@ public extension OJPv2 {
         }
     }
 
-//    enum ModeAndModeOfOperationFilterChoice: Codable, Sendable {
-//        case ptMode(ModeAndModeOfOperationFilterPTMode)
-//        case railSubmode(ModeAndModeOfOperationFilterRailSubmode) // TODO: Implement others
-//
-//        public func encode(to encoder: any Encoder) throws {
-//            var svc = encoder.singleValueContainer()
-//            switch self {
-//            case let .ptMode(ptModeFilters):
-//                try svc.encode(ptModeFilters)
-//            case let .railSubmode(railSubmode):
-//                try svc.encode(railSubmode)
-//            }
-//        }
-//    }
-
     /// [Schema documentation on vdvde.github.io](https://vdvde.github.io/OJP/develop/documentation-tables/ojp.html#type_ojp__ModeAndModeOfOperationFilterStructure)
-    struct ModeAndModeOfOperationFilterPTMode: Codable, Sendable {
-        public init(ptMode: [Mode.PtMode], exclude: Bool?) {
-            self.ptMode = ptMode
-            self.exclude = exclude
-        }
-
-        let ptMode: [Mode.PtMode]
-        let exclude: Bool?
-
-        public enum CodingKeys: String, CodingKey {
-            case exclude = "Exclude"
-            case ptMode = "PtMode"
-        }
-    }
-
-
     enum ModeAndModeOfOperationFilterChoice: Codable, Sendable {
         case ptModes([Mode.PtMode])
         case railSubmode(RailSubmode)
+        case busSubmode(String)
+        case funicularSubmode(String)
 
         public enum CodingKeys: String, CodingKey {
             case ptModes = "PtMode"
             case railSubmode = "siri:RailSubmode"
+            case busSubmode = "siri:BusSubmode"
+            case funicularSubmode = "siri:FunicularSubmode"
         }
 
         public func encode(to encoder: any Encoder) throws {
@@ -1536,6 +1509,10 @@ public extension OJPv2 {
                 try container.encode(array, forKey: .ptModes)
             case .railSubmode(let railSubmode):
                 try container.encode(railSubmode, forKey: .railSubmode)
+            case .busSubmode(let busSubmode):
+                try container.encode(busSubmode, forKey: .busSubmode)
+            case .funicularSubmode(let funicularSubmode):
+                try container.encode(funicularSubmode, forKey: .funicularSubmode)
             }
         }
     }
@@ -1551,7 +1528,7 @@ public extension OJPv2 {
         let exclude: Bool?
 
         public init(from decoder: any Decoder) throws {
-            fatalError()
+            throw OJPSDKError.notImplemented()
         }
 
         public func encode(to encoder: any Encoder) throws {
