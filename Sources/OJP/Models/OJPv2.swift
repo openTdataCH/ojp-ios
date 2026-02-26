@@ -346,4 +346,34 @@ public struct OJPv2: Codable, Sendable {
             }
         }
     }
+    /// [Schema documentation on vdvde.github.io](https://vdvde.github.io/OJP/develop/documentation-tables/ojp.html#type_ojp__IndividualTransportOptionStructure)
+    public struct IndividualTransportOption: Codable, Sendable {
+        public let itModeAndModeOfOperation: ItModeAndModeOfOperation
+        public let maxDistance: Int?
+        public let maxDuration: Duration?
+        public let minDistance: Int?
+        public let minDuration: Duration?
+
+//        public enum CodingKeys: String, CodingKey {
+//            case <#FirstProperty#> = "<#Name in XSD#>"
+//        }
+    }
+
+    /// [Schema documentation on vdvde.github.io](https://vdvde.github.io/OJP/develop/documentation-tables/ojp.html#type_ojp__ItModesStructure)
+    public struct ItModeAndModeOfOperation: Codable, Sendable {
+        public let personalMode: PersonalMode
+
+    }
+
+    /// [Schema documentation on vdvde.github.io](https://vdvde.github.io/OJP/develop/documentation-tables/ojp.html#type_ojp__PersonalModesEnumeration)
+    public enum PersonalMode: String, Codable, Sendable {
+        case foot
+        case bicyle
+        case car
+        case motorcycle
+        case truck
+        case scooter
+        case other
+    }
+
 }

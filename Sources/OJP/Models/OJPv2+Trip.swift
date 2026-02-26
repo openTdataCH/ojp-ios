@@ -1278,9 +1278,9 @@ public extension OJPv2 {
     }
 
     struct PersonalService: Codable, Sendable {
-        let personalMode: String
-        
-        public init(personalMode: String) {
+        let personalMode: PersonalMode
+
+        public init(personalMode: OJPv2.PersonalMode) {
             self.personalMode = personalMode
         }
 
@@ -1360,15 +1360,18 @@ public extension OJPv2 {
     struct PlaceContext: Codable, Sendable {
         public let placeRef: PlaceRefChoice
         public let depArrTime: Date?
+        public let individualTransportOption: [IndividualTransportOption]?
 
-        public init(placeRef: PlaceRefChoice, depArrTime: Date?) {
+        public init(placeRef: PlaceRefChoice, depArrTime: Date? = nil, individualTransportOption: [IndividualTransportOption]? = nil) {
             self.placeRef = placeRef
             self.depArrTime = depArrTime
+            self.individualTransportOption = individualTransportOption
         }
 
         public enum CodingKeys: String, CodingKey {
             case placeRef = "PlaceRef"
             case depArrTime = "DepArrTime"
+            case individualTransportOption = "IndividualTransportOption"
         }
     }
 
