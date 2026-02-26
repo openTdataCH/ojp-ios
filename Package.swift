@@ -17,7 +17,7 @@ let package = Package(
             targets: ["OJP"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/CoreOffice/XMLCoder.git", from: "0.17.1"),
+        .package(url: "https://github.com/CoreOffice/XMLCoder.git", from: "0.18.0"),
         .package(url: "https://github.com/nicklockwood/SwiftFormat", from: "0.50.4"),
         .package(url: "https://github.com/longinius/swift-duration.git", .upToNextMajor(from: "1.0.0")),
         .package(url: "https://github.com/swiftlang/swift-testing.git", branch: "main")
