@@ -247,16 +247,6 @@ public struct OJPv2: Codable, Sendable {
                 try container.encode(string, forKey: .tramSubmode)
             }
         }
-
-//        public func encode(to encoder: any Encoder) throws {
-//            var svc = encoder.singleValueContainer()
-//            switch self {
-//            case let .railSubmode(railSubmode):
-//                try svc.encode(railSubmode)
-//            case let .telecabinSubmode(telecabinSubmode):
-//                try svc.encode(telecabinSubmode)
-//            }
-//        }
     }
 
     public enum RailSubmode: String, Codable, Sendable {
@@ -350,10 +340,10 @@ public struct OJPv2: Codable, Sendable {
     /// [Schema documentation on vdvde.github.io](https://vdvde.github.io/OJP/develop/documentation-tables/ojp.html#type_ojp__IndividualTransportOptionStructure)
     public struct IndividualTransportOption: Codable, Sendable {
         public let itModeAndModeOfOperation: ItModeAndModeOfOperation
-        public let maxDistance: Int?
-        public let maxDuration: Duration?
-        public let minDistance: Int?
-        public let minDuration: Duration?
+        public var maxDistance: Int?
+        public var maxDuration: Duration?
+        public var minDistance: Int?
+        public var minDuration: Duration?
 
         public init(itModeAndModeOfOperation: ItModeAndModeOfOperation, maxDistance: Int? = nil, maxDuration: Duration? = nil, minDistance: Int? = nil, minDuration: Duration? = nil) {
             self.itModeAndModeOfOperation = itModeAndModeOfOperation
@@ -361,6 +351,14 @@ public struct OJPv2: Codable, Sendable {
             self.maxDuration = maxDuration
             self.minDistance = minDistance
             self.minDuration = minDuration
+        }
+
+        enum CodingKeys: String, CodingKey {
+            case itModeAndModeOfOperation = "ItModeAndModeOfOperation"
+            case maxDistance = "MaxDistance"
+            case maxDuration = "MaxDuration"
+            case minDistance = "MinDistance"
+            case minDuration = "MinDuration"
         }
     }
 

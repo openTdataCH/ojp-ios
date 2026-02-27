@@ -15,12 +15,17 @@ public struct TripRequest: Codable, Sendable {
     public internal(set) var at: DepArrTime
     public internal(set) var params: OJPv2.TripParams
 
-    public init(from: OJPv2.PlaceRefChoice, to: OJPv2.PlaceRefChoice, via: [OJPv2.PlaceRefChoice]? = nil, at: DepArrTime, params: OJPv2.TripParams) {
+    public let originTransportOptions: [OJPv2.IndividualTransportOption]?
+    public let destinationTransportOptions: [OJPv2.IndividualTransportOption]?
+
+    public init(from: OJPv2.PlaceRefChoice, to: OJPv2.PlaceRefChoice, via: [OJPv2.PlaceRefChoice]? = nil, at: DepArrTime, params: OJPv2.TripParams, originTransportOptions: [OJPv2.IndividualTransportOption]? = nil, destinationTransportOptions: [OJPv2.IndividualTransportOption]? = nil) {
         self.from = from
         self.to = to
         self.via = via
         self.at = at
         self.params = params
+        self.originTransportOptions = originTransportOptions
+        self.destinationTransportOptions = destinationTransportOptions
     }
 }
 
@@ -97,7 +102,9 @@ public actor PaginatedTripLoader {
             to: request.to,
             via: request.via,
             at: request.at,
-            params: updatedParams
+            params: updatedParams,
+            originTransportOptions: request.originTransportOptions,
+            destinationTransportOptions: request.destinationTransportOptions
         )
 
         try Task.checkCancellation()

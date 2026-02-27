@@ -119,9 +119,11 @@ public final class OJP: Sendable {
         to: OJPv2.PlaceRefChoice,
         via: [OJPv2.PlaceRefChoice]? = nil,
         at: DepArrTime = .departure(Date()),
-        params: OJPv2.TripParams
+        params: OJPv2.TripParams,
+        originTransportOptions: [OJPv2.IndividualTransportOption]? = nil,
+        destinationTransportOptions: [OJPv2.IndividualTransportOption]? = nil
     ) async throws -> OJPv2.TripDelivery {
-        let ojp = tripRequest.requestTrips(from: from, to: to, via: via, at: at, params: params)
+        let ojp = tripRequest.requestTrips(from: from, to: to, via: via, at: at, params: params, originTransportOptions: originTransportOptions, destinationTransportOptions: destinationTransportOptions)
 
         let serviceDelivery = try await request(with: ojp).serviceDelivery
 

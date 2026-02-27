@@ -55,6 +55,7 @@ struct IndividualTransportOptionView: View {
     @State var maxDistance: Int?
 
     @Binding var individualTransportOption: OJPv2.IndividualTransportOption
+    @State var isExpanded: Bool = false
 
     init(individualTransportOption: Binding<OJPv2.IndividualTransportOption>) {
         // Note: personal mode currently not configurable
@@ -67,42 +68,56 @@ struct IndividualTransportOptionView: View {
     }
 
     var body: some View {
-        Form {
-            Picker(selection: $minDuration) {
-                Text("-- empty --").tag(nil as DurationSelection?, includeOptional: true)
-                ForEach(DurationSelection.allCases, id: \.self) {
-                    Text($0.title).tag($0)
-                }
-            } label: {
-                Text("Min Duration")
+        VStack(alignment: .leading) {
+            HStack {
+                Button(
+                    "Show Individual Transport Options",
+                    systemImage: isExpanded ? "chevron.down.circle" : "chevron.right.circle") {
+                        isExpanded.toggle()
+                    }
+                    .buttonStyle(.plain)
+                Spacer()
             }
-            TextField("Min Distance [m]", value: $minDistance, formatter: NumberFormatter())
-            Divider()
-            Picker(selection: $maxDuration) {
-                Text("-- empty --").tag(nil as DurationSelection?, includeOptional: true)
-                ForEach(DurationSelection.allCases, id: \.self) {
-                    Text($0.title).tag($0)
+            if isExpanded {
+                Form {
+                    Picker(selection: $minDuration) {
+                        Text("-- empty --").tag(nil as DurationSelection?, includeOptional: true)
+                        ForEach(DurationSelection.allCases, id: \.self) {
+                            Text($0.title).tag($0)
+                        }
+                    } label: {
+                        Text("Min Duration")
+                    }
+                    TextField("Min Distance [m]", value: $minDistance, formatter: NumberFormatter())
+                    Divider()
+                    Picker(selection: $maxDuration) {
+                        Text("-- empty --").tag(nil as DurationSelection?, includeOptional: true)
+                        ForEach(DurationSelection.allCases, id: \.self) {
+                            Text($0.title).tag($0)
+                        }
+                    } label: {
+                        Text("Max Duration")
+                    }
+                    TextField("Max Distance [m]", value: $maxDistance, formatter: NumberFormatter())
                 }
-            } label: {
-                Text("Max Duration")
             }
-            TextField("Max Distance [m]", value: $maxDistance, formatter: NumberFormatter())
+            Spacer()
         }
         .onChange(of: minDistance) { _, _ in
             individualTransportOption.minDistance = minDistance
         }
         .onChange(of: maxDistance) { _, _ in
-            individualTransportOption.minDistance = maxDistance
+            individualTransportOption.maxDistance = maxDistance
         }
         .onChange(of: minDuration) { _, _ in
-            individualTransportOption.minDistance = minDuration?.duration
+            individualTransportOption.minDuration = minDuration?.duration
         }
         .onChange(of: maxDuration) { _, _ in
-            individualTransportOption.minDistance = maxDuration?.duration
+            individualTransportOption.maxDuration = maxDuration?.duration
         }
     }
 }
 
 #Preview {
-    IndividualTransportOptionView(individualTransportOption: .constant(.init(itModeAndModeOfOperation: .init(personalMode: .foot))))
+    IndividualTransportOptionView(individualTransportOption: .constant(.init(itModeAndModeOfOperation: .init(personalMode: .foot)))).frame(width: 250, height: 300)
 }
