@@ -15,12 +15,17 @@ public struct TripRequest: Codable, Sendable {
     public internal(set) var at: DepArrTime
     public internal(set) var params: OJPv2.TripParams
 
-    public init(from: OJPv2.PlaceRefChoice, to: OJPv2.PlaceRefChoice, via: [OJPv2.PlaceRefChoice]? = nil, at: DepArrTime, params: OJPv2.TripParams) {
+    public let originTransportOptions: [OJPv2.IndividualTransportOption]?
+    public let destinationTransportOptions: [OJPv2.IndividualTransportOption]?
+
+    public init(from: OJPv2.PlaceRefChoice, to: OJPv2.PlaceRefChoice, via: [OJPv2.PlaceRefChoice]? = nil, at: DepArrTime, params: OJPv2.TripParams, originTransportOptions: [OJPv2.IndividualTransportOption]? = nil, destinationTransportOptions: [OJPv2.IndividualTransportOption]? = nil) {
         self.from = from
         self.to = to
         self.via = via
         self.at = at
         self.params = params
+        self.originTransportOptions = originTransportOptions
+        self.destinationTransportOptions = destinationTransportOptions
     }
 }
 
@@ -90,23 +95,16 @@ public actor PaginatedTripLoader {
     }
 
     private func load(request: TripRequest, numberOfResults: OJPv2.NumberOfResults) async throws -> OJPv2.TripDelivery {
-        let updatedParams = OJPv2.TripParams(
-            numberOfResults: numberOfResults,
-            includeTrackSections: request.params.includeTrackSections,
-            includeLegProjection: request.params.includeLegProjection,
-            includeTurnDescription: request.params.includeTurnDescription,
-            includeIntermediateStops: request.params.includeIntermediateStops,
-            includeAllRestrictedLines: request.params.includeAllRestrictedLines,
-            useRealtimeData: request.params.useRealtimeData,
-            modeAndModeOfOperationFilter: request.params.modeAndModeOfOperationFilter
-        )
-
+        var updatedParams = request.params
+        updatedParams.update(numberOfResults: numberOfResults)
         var tripDelivery = try await ojp.requestTrips(
             from: request.from,
             to: request.to,
             via: request.via,
             at: request.at,
-            params: updatedParams
+            params: updatedParams,
+            originTransportOptions: request.originTransportOptions,
+            destinationTransportOptions: request.destinationTransportOptions
         )
 
         try Task.checkCancellation()

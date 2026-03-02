@@ -47,7 +47,7 @@ enum OJPHelpers {
         let requestContext: OJPv2.ServiceRequestContext
         let requesterReference: String
 
-        public func requestTrips(from: OJPv2.PlaceRefChoice, to: OJPv2.PlaceRefChoice, via: [OJPv2.PlaceRefChoice]?, at: DepArrTime, params: OJPv2.TripParams) -> OJPv2 {
+        public func requestTrips(from: OJPv2.PlaceRefChoice, to: OJPv2.PlaceRefChoice, via: [OJPv2.PlaceRefChoice]?, at: DepArrTime, params: OJPv2.TripParams, originTransportOptions: [OJPv2.IndividualTransportOption]? = nil, destinationTransportOptions: [OJPv2.IndividualTransportOption]? = nil) -> OJPv2 {
             let requestTimestamp = Date()
             let origin: OJPv2.PlaceContext
             let destination: OJPv2.PlaceContext
@@ -55,11 +55,11 @@ enum OJPHelpers {
 
             switch at {
             case let .departure(date):
-                origin = OJPv2.PlaceContext(placeRef: from, depArrTime: date)
-                destination = OJPv2.PlaceContext(placeRef: to, depArrTime: nil)
+                origin = OJPv2.PlaceContext(placeRef: from, depArrTime: date, individualTransportOption: originTransportOptions)
+                destination = OJPv2.PlaceContext(placeRef: to, depArrTime: nil, individualTransportOption: destinationTransportOptions)
             case let .arrival(date):
-                origin = OJPv2.PlaceContext(placeRef: from, depArrTime: nil)
-                destination = OJPv2.PlaceContext(placeRef: to, depArrTime: date)
+                origin = OJPv2.PlaceContext(placeRef: from, depArrTime: nil, individualTransportOption: originTransportOptions)
+                destination = OJPv2.PlaceContext(placeRef: to, depArrTime: date, individualTransportOption: destinationTransportOptions)
             }
 
             if let via {

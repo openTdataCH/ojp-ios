@@ -21,23 +21,48 @@ struct TripRequestView: View {
     @State var paginatedActor: PaginatedTripLoader?
     @State var pageSize: Int = 6
 
+    @State var showFilters: Bool = false
+    @State var editOriginIndividualOptions: Bool = false
+    @State var originIndividualOptions: OJPv2.IndividualTransportOption = .init(itModeAndModeOfOperation: .init(personalMode: .foot))
+
+    @State var editDestinationIndividualOptions: Bool = false
+    @State var destinationIndividualOptions: OJPv2.IndividualTransportOption = .init(itModeAndModeOfOperation: .init(personalMode: .foot))
+
+    @State var tripParams: OJPv2.TripParams
+
+    init(ojp: OJP, tripParams: OJPv2.TripParams = .init(
+        includeTrackSections: false,
+        includeLegProjection: false,
+        includeIntermediateStops: true,
+        useRealtimeData: .explanatory,
+        modeAndModeOfOperationFilter: nil)) {
+            self.ojp = ojp
+            self.tripParams = tripParams
+        }
+
     var body: some View {
         VStack {
             HStack(alignment: .top) {
-                if let origin {
-                    HStack {
-                        Text("From")
-                        Text(origin.title).fontWeight(.bold)
-                        Button {
-                            self.origin = nil
-                        } label: {
-                            Image(systemName: "x.circle.fill")
+                VStack(alignment: .leading) {
+                    if let origin {
+                        HStack {
+                            Text("From")
+                            Text(origin.title).fontWeight(.bold)
+                            Button {
+                                self.origin = nil
+                            } label: {
+                                Image(systemName: "x.circle.fill")
+                            }
                         }
-                    }
-                } else {
-                    InlineLocationSerachView(ojp: ojp, textLabel: "From", selectedPlace: $origin)
-                }
+                        Toggle(isOn: $editOriginIndividualOptions) {
+                            Text("Edit Origin Options")
+                        }
+                        IndividualTransportOptionView(individualTransportOption: $originIndividualOptions)
 
+                    } else {
+                        InlineLocationSerachView(ojp: ojp, textLabel: "From", selectedPlace: $origin)
+                    }
+                }
                 if let via {
                     HStack {
                         Text("Via")
@@ -51,37 +76,45 @@ struct TripRequestView: View {
                 } else {
                     InlineLocationSerachView(ojp: ojp, textLabel: "Via", selectedPlace: $via)
                 }
-
-                if let destination {
-                    HStack {
-                        Text("To")
-                        Text(destination.title).fontWeight(.bold)
-                        Button {
-                            self.destination = nil
-                        } label: {
-                            Image(systemName: "x.circle.fill")
+                VStack(alignment: .leading) {
+                    if let destination {
+                        HStack {
+                            Text("To")
+                            Text(destination.title).fontWeight(.bold)
+                            Button {
+                                self.destination = nil
+                            } label: {
+                                Image(systemName: "x.circle.fill")
+                            }
                         }
-                    }
-                } else {
-                    InlineLocationSerachView(ojp: ojp, textLabel: "Destination", selectedPlace: $destination)
-                }
+                        Toggle(isOn: $editDestinationIndividualOptions) {
+                            Text("Edit Destination Options")
+                        }
+                        IndividualTransportOptionView(individualTransportOption: $destinationIndividualOptions)
 
+                    } else {
+                        InlineLocationSerachView(ojp: ojp, textLabel: "Destination", selectedPlace: $destination)
+                    }
+                }
                 Button {
                     if let origin, let destination {
                         Task {
                             do {
+                                let originTransportOptions = editOriginIndividualOptions ? [originIndividualOptions].compactMap(\.self) : nil
+                                let destinationTransportOptions = editDestinationIndividualOptions ? [destinationIndividualOptions].compactMap(\.self) : nil
+
                                 paginatedActor = PaginatedTripLoader(ojp: ojp)
-                                let tripDelivery = try await paginatedActor!.loadTrips(for:
-                                    TripRequest(from: origin.placeRef,
-                                                to: destination.placeRef,
-                                                via: via != nil ? [via!.placeRef] : nil,
-                                                at: .departure(departureDateTime),
-                                                params: .init(
-                                                    includeTrackSections: false,
-                                                    includeLegProjection: false,
-                                                    includeIntermediateStops: true,
-                                                    useRealtimeData: .explanatory
-                                                )),
+                                let tripDelivery = try await paginatedActor!.loadTrips(
+                                    for:
+                                        TripRequest(
+                                            from: origin.placeRef,
+                                            to: destination.placeRef,
+                                            via: via != nil ? [via!.placeRef] : nil,
+                                            at: .departure(departureDateTime),
+                                            params: tripParams,
+                                            originTransportOptions: originTransportOptions,
+                                            destinationTransportOptions: destinationTransportOptions
+                                        ),
                                     numberOfResults: .standard(pageSize))
                                 tripResults = tripDelivery.tripResults
                                 ptSituations = Set(tripDelivery.ptSituations)
@@ -102,6 +135,20 @@ struct TripRequestView: View {
                         .frame(maxWidth: 30)
                 }
             }
+            Button("Filter") {
+                showFilters.toggle()
+            }
+            if showFilters {
+                VStack {
+                    HStack {
+                        Text("Filter").font(.title)
+                        Spacer()
+                    }
+                    TripFilterView(ojpTripParams: $tripParams)
+                    Divider()
+                }
+            }
+
             TripRequestResultView(
                 ptSituations: Array(ptSituations),
                 isLoading: isLoading,

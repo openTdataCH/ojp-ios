@@ -16,13 +16,6 @@ import XMLCoder
     extension Duration: @unchecked Sendable {}
 #endif
 
-// TODO: can be removed as soon as XMLCoder conforms to Sendable
-#if swift(>=6.0)
-    extension XMLEncoder.OutputFormatting: @unchecked @retroactive Sendable {}
-#else
-    extension XMLEncoder.OutputFormatting: @unchecked Sendable {}
-#endif
-
 public extension OJPv2 {
     /// [Schema documentation on vdvde.github.io](https://vdvde.github.io/OJP/develop/documentation-tables/ojp.html#type_ojp__OJPTripDeliveryStructure)
     struct TripDelivery: Codable, Sendable {
@@ -1278,9 +1271,9 @@ public extension OJPv2 {
     }
 
     struct PersonalService: Codable, Sendable {
-        let personalMode: String
-        
-        public init(personalMode: String) {
+        let personalMode: PersonalMode
+
+        public init(personalMode: OJPv2.PersonalMode) {
             self.personalMode = personalMode
         }
 
@@ -1360,15 +1353,18 @@ public extension OJPv2 {
     struct PlaceContext: Codable, Sendable {
         public let placeRef: PlaceRefChoice
         public let depArrTime: Date?
+        public let individualTransportOption: [IndividualTransportOption]?
 
-        public init(placeRef: PlaceRefChoice, depArrTime: Date?) {
+        public init(placeRef: PlaceRefChoice, depArrTime: Date? = nil, individualTransportOption: [IndividualTransportOption]? = nil) {
             self.placeRef = placeRef
             self.depArrTime = depArrTime
+            self.individualTransportOption = individualTransportOption
         }
 
         public enum CodingKeys: String, CodingKey {
             case placeRef = "PlaceRef"
             case depArrTime = "DepArrTime"
+            case individualTransportOption = "IndividualTransportOption"
         }
     }
 
@@ -1489,20 +1485,75 @@ public extension OJPv2 {
     }
 
     /// [Schema documentation on vdvde.github.io](https://vdvde.github.io/OJP/develop/documentation-tables/ojp.html#type_ojp__ModeAndModeOfOperationFilterStructure)
+    enum ModeAndModeOfOperationFilterChoice: Codable, Sendable {
+        case ptModes([Mode.PtMode])
+        case railSubmode(RailSubmode)
+        case busSubmode(String)
+        case funicularSubmode(String)
+
+        public enum CodingKeys: String, CodingKey {
+            case ptModes = "PtMode"
+            case railSubmode = "siri:RailSubmode"
+            case busSubmode = "siri:BusSubmode"
+            case funicularSubmode = "siri:FunicularSubmode"
+        }
+
+        public func encode(to encoder: any Encoder) throws {
+            var container = encoder.container(keyedBy: CodingKeys.self)
+            switch self {
+            case .ptModes(let array):
+                try container.encode(array, forKey: .ptModes)
+            case .railSubmode(let railSubmode):
+                try container.encode(railSubmode, forKey: .railSubmode)
+            case .busSubmode(let busSubmode):
+                try container.encode(busSubmode, forKey: .busSubmode)
+            case .funicularSubmode(let funicularSubmode):
+                try container.encode(funicularSubmode, forKey: .funicularSubmode)
+            }
+        }
+    }
+
+    /// [Schema documentation on vdvde.github.io](https://vdvde.github.io/OJP/develop/documentation-tables/ojp.html#type_ojp__ModeAndModeOfOperationFilterStructure)
     struct ModeAndModeOfOperationFilter: Codable, Sendable {
-        public init(ptMode: [Mode.PtMode]?, exclude: Bool?) {
-            self.ptMode = ptMode
+        public init(mode: ModeAndModeOfOperationFilterChoice, exclude: Bool?) {
+            self.mode = mode
             self.exclude = exclude
         }
 
-        let ptMode: [Mode.PtMode]?
+        let mode: ModeAndModeOfOperationFilterChoice
+        let exclude: Bool?
+
+        public init(from decoder: any Decoder) throws {
+            throw OJPSDKError.notImplemented()
+        }
+
+        public func encode(to encoder: any Encoder) throws {
+            var container = encoder.container(keyedBy: CodingKeys.self)
+            try container.encode(exclude, forKey: .exclude)
+            try container.encode(mode, forKey: ._0)
+        }
+
+        public enum CodingKeys: String, CodingKey {
+            case exclude = "Exclude"
+            case _0 = ""
+        }
+    }
+
+    struct ModeAndModeOfOperationFilterRailSubmode: Codable, Sendable {
+        public init(submode: RailSubmode, exclude: Bool?) {
+            self.submode = submode
+            self.exclude = exclude
+        }
+
+        let submode: RailSubmode
         let exclude: Bool?
 
         public enum CodingKeys: String, CodingKey {
             case exclude = "Exclude"
-            case ptMode = "PtMode"
+            case submode = "siri:RailSubmode"
         }
     }
+
 
     /// [Schema documentation on vdvde.github.io](https://vdvde.github.io/OJP/develop/documentation-tables/ojp.html#type_ojp__UseRealtimeDataEnumeration)
     enum UseRealtimeData: String, Sendable, Codable {
@@ -1521,16 +1572,15 @@ public extension OJPv2 {
             includeIntermediateStops: Bool? = nil,
             includeAllRestrictedLines: Bool? = nil,
             useRealtimeData: UseRealtimeData? = nil,
-            modeAndModeOfOperationFilter: ModeAndModeOfOperationFilter? = nil
-
+            modeAndModeOfOperationFilter: [ModeAndModeOfOperationFilter]? = nil,
+            transferLimit: Int? = nil,
+            optimisationMethod: OptimisationMethod? = nil,
+            bikeTransport: Bool? = nil,
+            walkSpeed: Int? = nil
         ) {
-            switch numberOfResults {
-            case let .numbers(before: before, after: after):
-                numberOfResultsBefore = before > 0 ? before : nil
-                numberOfResultsAfter = after > 0 ? after : nil
-            case let .standard(count):
-                _numberOfResults = count
-            }
+            numberOfResultsBefore = nil
+            numberOfResultsAfter = nil
+            _numberOfResults = nil
 
             self.includeTrackSections = includeTrackSections
             self.includeLegProjection = includeLegProjection
@@ -1539,6 +1589,12 @@ public extension OJPv2 {
             self.includeAllRestrictedLines = includeAllRestrictedLines
             self.useRealtimeData = useRealtimeData
             self.modeAndModeOfOperationFilter = modeAndModeOfOperationFilter
+            self.transferLimit = transferLimit
+            self.optimisationMethod = optimisationMethod
+            self.bikeTransport = bikeTransport
+            self.walkSpeed = walkSpeed
+
+            update(numberOfResults: numberOfResults)
         }
 
         private var numberOfResultsBefore: Int? = nil
@@ -1551,7 +1607,22 @@ public extension OJPv2 {
         let includeIntermediateStops: Bool?
         let includeAllRestrictedLines: Bool?
         let useRealtimeData: UseRealtimeData?
-        let modeAndModeOfOperationFilter: ModeAndModeOfOperationFilter?
+
+        public var modeAndModeOfOperationFilter: [ModeAndModeOfOperationFilter]?
+        public var transferLimit: Int?
+        public var optimisationMethod: OptimisationMethod?
+        public var bikeTransport: Bool?
+        public var walkSpeed: Int?
+
+        mutating func update(numberOfResults: NumberOfResults) {
+            switch numberOfResults {
+            case let .numbers(before: before, after: after):
+                numberOfResultsBefore = before > 0 ? before : nil
+                numberOfResultsAfter = after > 0 ? after : nil
+            case let .standard(count):
+                _numberOfResults = count
+            }
+        }
 
         var numberOfResults: NumberOfResults {
             if numberOfResultsAfter != nil || numberOfResultsBefore != nil {
@@ -1574,6 +1645,10 @@ public extension OJPv2 {
             case includeAllRestrictedLines = "IncludeAllRestrictedLines"
             case useRealtimeData = "UseRealtimeData"
             case modeAndModeOfOperationFilter = "ModeAndModeOfOperationFilter"
+            case transferLimit = "TransferLimit"
+            case optimisationMethod = "OptimisationMethod"
+            case bikeTransport = "BikeTransport"
+            case walkSpeed = "WalkSpeed"
         }
     }
 
@@ -1581,6 +1656,12 @@ public extension OJPv2 {
     enum NumberOfResults: Codable, Sendable {
         case numbers(before: Int, after: Int)
         case standard(Int)
+    }
+
+    /// [Schema documentation on vdvde.github.io](https://vdvde.github.io/OJP/develop/documentation-tables/ojp.html#type_ojp__OptimisationMethodEnumeration)
+    enum OptimisationMethod: String, Codable, Sendable {
+        case fastest
+        case minChanges
     }
 }
 
