@@ -249,6 +249,7 @@ public struct OJPv2: Codable, Sendable {
         }
     }
 
+    /// [Schema documentation on vdvde.github.io](https://vdvde.github.io/OJP/develop/documentation-tables/siri.html#type_siri__RailSubmodesOfTransportEnumeration)
     public enum RailSubmode: String, Codable, Sendable {
         case unknown
         /// ICE, TGV, EC, RJX, NJ, EN
@@ -267,11 +268,20 @@ public struct OJPv2: Codable, Sendable {
         }
     }
 
+
+    /// [Schema documentation on vdvde.github.io](https://vdvde.github.io/OJP/develop/documentation-tables/siri.html#type_siri__TelecabinSubmodesOfTransportEnumeration)
     public enum TelecabinSubmode: String, Codable, Sendable {
+        case unknown
         case funicular
+        case cableCar
+        case lift
+
+        public init(from decoder: Decoder) throws {
+            self = try Self(rawValue: decoder.singleValueContainer().decode(RawValue.self)) ?? .unknown
+        }
     }
 
-    /// [Schema documentation on vdvde.github.io](https://vdvde.github.io/OJP/develop/documentation-tables/ojp.html#type_ojp__ModeStructure
+    /// [Schema documentation on vdvde.github.io](https://vdvde.github.io/OJP/develop/documentation-tables/ojp.html#type_ojp__ModeStructure)
     public struct Mode: Codable, Sendable, Hashable {
         public let ptMode: PtMode
 

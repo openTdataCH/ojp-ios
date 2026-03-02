@@ -9,6 +9,12 @@ import SwiftUI
 import OJP
 
 
+struct RailSubmodeFilterState: Equatable {
+    let title: String
+    let railSubmode: OJPv2.RailSubmode
+    var isOn: Bool = true
+}
+
 struct ModeFilterState: Equatable {
     var railMode: Bool = true
     var highspeedRail: Bool = true
@@ -18,33 +24,21 @@ struct ModeFilterState: Equatable {
     var busMode: Bool = true
     var tramMode: Bool = true
 
+    var railSubmodes: [RailSubmodeFilterState] = [
+        .init(title: "International", railSubmode: .international),
+        .init(title: "High Speed Rail", railSubmode: .highSpeedRail),
+        .init(title: "Interregional Rail", railSubmode: .interregionalRail),
+        .init(title: "Rail Shuttle", railSubmode: .railShuttle),
+        .init(title: "Local", railSubmode: .local),
+    ]
+
     var isRailSubmodeExcluded: Bool {
-        railMode && !(internationalSubmode && localSubmode)
+        railMode && railSubmodes.contains(where: {$0.isOn == false})
     }
 
     var allPTModesEnabled: Bool {
         !isRailSubmodeExcluded && (railMode && waterMode && busMode && tramMode)
     }
-
-    var railSubmodes: [OJPv2.ModeAndModeOfOperationFilter]? {
-        guard isRailSubmodeExcluded && railMode else { return nil }
-        var submodes = [OJPv2.ModeAndModeOfOperationFilter]()
-
-        if highspeedRail {
-            submodes.append(.init(mode: .railSubmode(.highSpeedRail), exclude: false))
-        }
-
-        if internationalSubmode {
-            submodes.append(.init(mode: .railSubmode(.international), exclude: false))
-        }
-
-        if localSubmode {
-            submodes.append(.init(mode: .railSubmode(.local), exclude: false))
-        }
-
-        return submodes
-    }
-
 
     var modeFilters: [OJPv2.ModeAndModeOfOperationFilter]? {
         guard !allPTModesEnabled else {
@@ -55,9 +49,12 @@ struct ModeFilterState: Equatable {
         var ptModes: [OJPv2.Mode.PtMode] = []
 
         if isRailSubmodeExcluded {
-            if let railsubmodes = railSubmodes {
-                modeFilters.append(contentsOf: railsubmodes)
-            }
+            let submodeFilters = railSubmodes
+                .filter({$0.isOn})
+                .map {
+                    OJPv2.ModeAndModeOfOperationFilter(mode: .railSubmode($0.railSubmode), exclude: false)
+                }
+            modeFilters.append(contentsOf: submodeFilters)
         } else if railMode {
             ptModes.append(.rail)
         }
@@ -70,14 +67,18 @@ struct ModeFilterState: Equatable {
             ptModes.append(.bus)
         }
 
+        if tramMode {
+            ptModes.append(.tram)
+        }
+
         if !ptModes.isEmpty {
             let ptModeFilters = OJPv2.ModeAndModeOfOperationFilter(mode: .ptModes(ptModes), exclude: false)
             modeFilters.append(ptModeFilters)
         }
         return modeFilters
     }
-
 }
+
 
 struct TripFilterView: View {
 
@@ -136,8 +137,11 @@ struct TripFilterView: View {
                 Section {
                     Divider()
                     Text("Rail Submodes")
-                    // TODO: implement other submodes
-                    Toggle("International", isOn: $modeFilters.internationalSubmode)
+                    ForEach($modeFilters.railSubmodes, id: \.railSubmode.rawValue) { $submode in
+                        Toggle(isOn: $submode.isOn) {
+                            Text(submode.title)
+                        }
+                    }
                     Divider()
 
                 }.disabled(!modeFilters.railMode)
