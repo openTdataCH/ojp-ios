@@ -1535,7 +1535,6 @@ public extension OJPv2 {
 
         public enum CodingKeys: String, CodingKey {
             case exclude = "Exclude"
-//            case ptMode = "PtMode"
             case _0 = ""
         }
     }
@@ -1590,6 +1589,7 @@ public extension OJPv2 {
             self.includeAllRestrictedLines = includeAllRestrictedLines
             self.useRealtimeData = useRealtimeData
             self.modeAndModeOfOperationFilter = modeAndModeOfOperationFilter
+            self.transferLimit = transferLimit
             self.optimisationMethod = optimisationMethod
             self.bikeTransport = bikeTransport
             self.walkSpeed = walkSpeed
