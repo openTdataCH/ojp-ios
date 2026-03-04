@@ -42,6 +42,6 @@ struct PersistanceTest {
             return
         }
 
-        #expect(personalService.personalMode == "foot")
+        #expect(personalService.personalMode == .foot)
     }
 }

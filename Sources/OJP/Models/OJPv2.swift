@@ -312,7 +312,7 @@ public struct OJPv2: Codable, Sendable {
             let container = try decoder.container(keyedBy: CodingKeys.self)
             ptMode = try container.decode(PtMode.self, forKey: .ptMode)
             name = try? container.decode(InternationalText.self, forKey: .name)
-            shortName = try? container.decode(InternationalText.self, forKey: .ptMode)
+            shortName = try? container.decode(InternationalText.self, forKey: .shortName)
         }
 
         public func encode(to encoder: any Encoder) throws {

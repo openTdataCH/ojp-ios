@@ -70,6 +70,12 @@ final class TripRequestTests: XCTestCase {
         switch tripDelivery {
         case let .trip(trip):
             XCTAssertEqual(trip.tripResults.count, 10)
+
+            let serviceOfFirstTimedLeg = trip.tripResults.first?.trip?.timedLegs.first?.service
+            XCTAssertEqual(serviceOfFirstTimedLeg?.mode.shortName?.text, "IR")
+            XCTAssertEqual(serviceOfFirstTimedLeg?.mode.ptMode, .rail)
+            XCTAssertEqual(serviceOfFirstTimedLeg?.mode.name?.text, "Zug")
+
         default:
             XCTFail()
         }
