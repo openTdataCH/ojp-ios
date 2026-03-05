@@ -1520,7 +1520,7 @@ public extension OJPv2 {
             self.exclude = exclude
         }
 
-        let mode: ModeAndModeOfOperationFilterChoice
+        public let mode: ModeAndModeOfOperationFilterChoice
         let exclude: Bool?
 
         public init(from decoder: any Decoder) throws {
@@ -1545,7 +1545,7 @@ public extension OJPv2 {
             self.exclude = exclude
         }
 
-        let submode: RailSubmode
+        public let submode: RailSubmode
         let exclude: Bool?
 
         public enum CodingKeys: String, CodingKey {
