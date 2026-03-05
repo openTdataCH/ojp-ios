@@ -23,8 +23,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/r3to/swift-duration.git",
       "state" : {
-        "branch" : "main",
-        "revision" : "58b5127c26bff7264e53670c48702a932d6bd858"
+        "revision" : "58b5127c26bff7264e53670c48702a932d6bd858",
+        "version" : "1.0.1"
       }
     },
     {
