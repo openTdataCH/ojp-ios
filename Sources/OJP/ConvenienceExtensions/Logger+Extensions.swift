@@ -14,4 +14,7 @@ extension Logger {
     }
 
     static let networkLogging = Logger(subsystem: subsystem, category: "Network")
+
+    static let codableLogging = Logger(subsystem: subsystem, category: "Codable")
+
 }

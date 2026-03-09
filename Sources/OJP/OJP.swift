@@ -3,6 +3,7 @@
 
 import Foundation
 import XMLCoder
+import OSLog
 
 public typealias Loader = @Sendable (Data) async throws -> (Data, URLResponse)
 
@@ -34,12 +35,16 @@ public final class OJP: Sendable {
     let stopEventRequest: OJPHelpers.StopEventRequest
     let tripRefineRequest: OJPHelpers.TripRefineRequest
 
+    let shouldLogCompleteXML: Bool
+
     /// Constructor of the OJP class
     /// - Parameter loadingStrategy: Pass a real loader with an API Configuration or a Mock for test purpuse
     /// - Parameter language: ISO language code. Defaults to the first current preferred localization according to the bundle.
+    /// - Parameter shouldLogCompleteXML: if set to true, the complete XML request and response bodies are logged. This can be handy when developing or debugging.
     public init(
         loadingStrategy: LoadingStrategy,
-        language: String = Bundle.main.preferredLocalizations.first ?? "de"
+        language: String = Bundle.main.preferredLocalizations.first ?? "de",
+        shouldLogCompleteXML: Bool = false
     ) {
         let requestConfiguration: OJPHelpers.RequestConfiguration
 
@@ -61,6 +66,8 @@ public final class OJP: Sendable {
         tripInfoRequest = .init(requestConfiguration)
         stopEventRequest = .init(requestConfiguration)
         tripRefineRequest = .init(requestConfiguration)
+
+        self.shouldLogCompleteXML = shouldLogCompleteXML
     }
 
     private var encoder: XMLEncoder {
@@ -186,28 +193,35 @@ public final class OJP: Sendable {
             throw OJPSDKError.encodingFailed
         }
 
+        if shouldLogCompleteXML {
+            Logger.networkLogging.debug("Request XML:\n\(xmlString, privacy: .public)")
+        }
+
         let (data, response): (Data, URLResponse)
         do {
             (data, response) = try await loader(ojpXMLData)
-            debugPrint("--- Request ----")
-            debugPrint(xmlString)
-            if let _ = response as? HTTPURLResponse {
-                debugPrint("--- Response ----")
-                if let xmlResponse = String(data: data, encoding: .utf8) {
-                    debugPrint(xmlResponse)
+            if shouldLogCompleteXML {
+                if let _ = response as? HTTPURLResponse {
+                    if let xmlResponse = String(data: data, encoding: .utf8) {
+                        Logger.networkLogging.debug("Response XML:\n\(xmlResponse, privacy: .public)")
+                    }
                 }
-                debugPrint("---")
+            } else {
+                Logger.networkLogging.debug("received a response (\(response.expectedContentLength / 1024)KB) from \(response.url?.absoluteString ?? "")")
             }
         } catch let error as URLError {
+            Logger.networkLogging.error("URL Error: \(error, privacy: .auto)")
             throw OJPSDKError.loadingFailed(error)
         }
 
         if let httpResponse = response as? HTTPURLResponse {
             guard httpResponse.statusCode == 200 else {
+                Logger.networkLogging.error("Unexpected Status Code: \(httpResponse.statusCode, privacy: .public)")
                 throw OJPSDKError.unexpectedHTTPStatus(httpResponse.statusCode)
             }
             return try await OJPDecoder.response(data)
         } else {
+            Logger.networkLogging.error("Unexpected empty")
             throw OJPSDKError.unexpectedEmpty
         }
     }
