@@ -30,7 +30,7 @@ public struct TripRequest: Codable, Sendable {
 }
 
 /// When executing a TripRequest a common use case is to load previous or next trips.
-/// While OJP is stateless, this convience actor keeps track of the already loaded TripResults by remembering the highest and lowest ``OJPv2/Trip/startTime`` and a `et` of  ``OJPv2/Trip/tripHash``.
+/// While OJP is stateless, this convience actor keeps track of the already loaded TripResults by remembering the highest and lowest start and end times and a `Set` of  ``OJPv2/Trip/tripHash``.
 ///
 /// Execute an initital ``TripRequest`` using ``loadTrips(for:numberOfResults:)``.
 /// To retrieve previous trips use ``loadPrevious()`` and ``loadNext()`` to get future trips. The `Set` of trip hashes is used to avoid duplicates. Each call only returns new results.
@@ -120,8 +120,8 @@ public actor PaginatedTripLoader {
                 }
                 existingTripHashes.insert(hash)
 
-                if maxDate == nil || trip.startTime > maxDate! { maxDate = trip.startTime }
-                if minDate == nil || trip.endTime < minDate! { minDate = trip.endTime }
+                if maxDate == nil || trip.timetabledStartTime > maxDate! { maxDate = trip.timetabledStartTime }
+                if minDate == nil || trip.timetabledEndTime < minDate! { minDate = trip.timetabledEndTime }
 
                 return tripResult
             }
