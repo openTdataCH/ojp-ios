@@ -20,7 +20,7 @@ let package = Package(
         .package(url: "https://github.com/CoreOffice/XMLCoder.git", from: "0.18.0"),
         .package(url: "https://github.com/nicklockwood/SwiftFormat", from: "0.50.4"),
         .package(url: "https://github.com/longinius/swift-duration.git", from: "1.0.1"),
-        .package(url: "https://github.com/swiftlang/swift-testing.git", branch: "main")
+        .package(url: "https://github.com/swiftlang/swift-testing.git", from: "6.0.0")
     ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.

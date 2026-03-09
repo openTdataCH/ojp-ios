@@ -8,6 +8,7 @@
 import Duration
 import Foundation
 import XMLCoder
+import OSLog
 
 // TODO: can be removed as soon as Duration conforms to Sendable
 #if swift(>=6.0)
@@ -59,7 +60,7 @@ public extension OJPv2 {
             do {
                 places = try container.decode(Places.self, forKey: OJPv2.ResponseContext.CodingKeys.places).places
             } catch {
-                debugPrint(error)
+                Logger.codableLogging.error("Error while Decoding ResponseContext: \(error, privacy: .auto)")
                 places = []
             }
         }

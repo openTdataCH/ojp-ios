@@ -32,8 +32,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/swiftlang/swift-syntax.git",
       "state" : {
-        "revision" : "0687f71944021d616d34d922343dcef086855920",
-        "version" : "600.0.1"
+        "revision" : "4799286537280063c85a32f09884cfbca301b1a1",
+        "version" : "602.0.0"
       }
     },
     {
@@ -41,8 +41,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/swiftlang/swift-testing.git",
       "state" : {
-        "branch" : "main",
-        "revision" : "8fb3f68a522e9d6dc00dcc90828bf39224327e8c"
+        "revision" : "5ee435b15ad40ec1f644b5eb9d247f263ccd2170",
+        "version" : "6.2.4"
       }
     },
     {
