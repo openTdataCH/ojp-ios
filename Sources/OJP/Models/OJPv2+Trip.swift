@@ -484,6 +484,38 @@ public extension OJPv2 {
         public let legs: [Leg]
         public let tripStatus: TripStatus?
 
+
+        /// Alternative to ``startTime``. This takes timeTabledTime into account and substracts an initial walking leg
+        internal var timetabledStartTime: Date {
+            guard let firstLeg = legs.first,
+                  let firstTimedLeg = timedLegs.first else {
+                return startTime
+            }
+            switch firstLeg.legType {
+            case .continous(let continuousLeg):
+                return firstTimedLeg.legBoard.serviceDeparture.timetabledTime - continuousLeg.duration.timeinterval
+            case .timed(let timedLeg):
+                return timedLeg.legBoard.serviceDeparture.timetabledTime
+            case .transfer(let transferLeg):
+                return firstTimedLeg.legBoard.serviceDeparture.timetabledTime - transferLeg.duration.timeinterval
+            }
+        }
+
+        internal var timetabledEndTime: Date {
+            guard let lastLeg = legs.last,
+                  let lastTimedLeg = timedLegs.last else {
+                return startTime
+            }
+            switch lastLeg.legType {
+            case .continous(let continuousLeg):
+                return lastTimedLeg.legAlight.serviceArrival.timetabledTime + continuousLeg.duration.timeinterval
+            case .timed(let timedLeg):
+                return timedLeg.legAlight.serviceArrival.timetabledTime
+            case .transfer(let transferLeg):
+                return lastTimedLeg.legAlight.serviceArrival.timetabledTime + transferLeg.duration.timeinterval
+            }
+        }
+
         enum CodingKeys: String, CodingKey {
             case id = "Id"
             case duration = "Duration"

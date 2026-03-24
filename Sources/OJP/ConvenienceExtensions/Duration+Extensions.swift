@@ -21,3 +21,23 @@ import Foundation
         }
     }
 #endif
+
+extension Duration {
+
+    /// Creates a `TimeInterval` from the duration.
+    ///
+    /// ⚠️ use with caution: **Will only take hours, minutes and seconds into account**
+    internal var timeinterval: TimeInterval {
+        var accu: TimeInterval = 0.0
+        if let second {
+            accu += Double(second)
+        }
+        if let minute {
+            accu += Double(minute * 60)
+        }
+        if let hour {
+            accu += Double(hour * 3600)
+        }
+        return accu
+    }
+}
