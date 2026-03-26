@@ -14,15 +14,16 @@ For a general introduction to `OJP`, consult the [Cookbook](https://opentranspor
 
 #### Available APIs
 
-- [Location Information Request](https://opentransportdata.swiss/en/cookbook/location-information-service/)
-- [Trip Request](https://opentransportdata.swiss/en/cookbook/ojptriprequest/)
-- [TripInfo Request](https://opentransportdata.swiss/en/cookbook/ojptripinforequest/)
-- [Stop Event Request](https://opentransportdata.swiss/en/cookbook/ojp-stopeventservice/)
+- [Location Information Request](https://opentransportdata.swiss/de/cookbook/open-journey-planner-ojp/ojptripinforequest-2-0/)
+- [Trip Request](https://opentransportdata.swiss/en/cookbook/open-journey-planner-ojp/ojptriprequest-2-0/)
+- [Trip Refine Request](https://opentransportdata.swiss/de/cookbook/open-journey-planner-ojp/ojptriprefinerequest-2-0/)
+- [TripInfo Request](https://opentransportdata.swiss/en/cookbook/open-journey-planner-ojp/ojptripinforequest-2-0/)
+- [Stop Event Request](https://opentransportdata.swiss/de/cookbook/open-journey-planner-ojp/ojpstopeventrequest-2-0/)
 
 ## Requirements
 
 - Compatible with: iOS 15+ and macOS 14+
-- A valid API token for [OJP 2.0 on opentransportdata.swiss](https://opentransportdata.swiss/de/dataset/ojp2-0)
+- A valid API token for [OJP 2.0 on opentransportdata.swiss](https://api-manager.opentransportdata.swiss/portal/catalogue-products/tedp_ojp20-1)
 
 ## Installation
 

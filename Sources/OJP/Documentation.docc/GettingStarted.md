@@ -4,7 +4,7 @@ A basic introduction in how to use the APIs exposed by the SDK.
 
 ## Sample App
 
-There is an experimental [Sample App](./SamplApp) to showcase and test the SDK. Currently intended to be run as a macOS app.
+There is an experimental (and really hacky) [Sample App](./SamplApp) to showcase and test the SDK. Currently intended to be run as a macOS app.
 
 ## Initializing
 
