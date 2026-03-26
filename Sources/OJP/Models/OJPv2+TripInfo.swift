@@ -33,7 +33,7 @@ public extension OJPv2 {
         let includeSituationsContext: Bool
 
 
-        public init(useRealTimeData: OJPv2.UseRealtimeData? = nil, includeCalls: Bool = true, includeService: Bool = true, includeTrackSections: Bool = true, includeTrackProjection: Bool = false, includePlacesContext: Bool = true, includeSituationsContext: Bool = true) {
+        public init(useRealTimeData: OJPv2.UseRealtimeData? = nil, includeCalls: Bool = true, includeService: Bool = true, includeTrackSections: Bool = false, includeTrackProjection: Bool = false, includePlacesContext: Bool = false, includeSituationsContext: Bool = true) {
             self.useRealTimeData = useRealTimeData
             self.includeCalls = includeCalls
             self.includeService = includeService
@@ -113,6 +113,8 @@ public extension OJPv2 {
         public let estimatedQuay: InternationalText?
         public let serviceArrival: ServiceArrival?
         public let serviceDeparture: ServiceDeparture?
+        /// currently contains accessibility Information of the StopPoint
+        public let nameSuffix: InternationalText?
 
         public enum CodingKeys: String, CodingKey {
             case stopPointRef = "siri:StopPointRef"
@@ -121,6 +123,7 @@ public extension OJPv2 {
             case estimatedQuay = "EstimatedQuay"
             case serviceArrival = "ServiceArrival"
             case serviceDeparture = "ServiceDeparture"
+            case nameSuffix = "NameSuffix"
         }
 
         public init(from decoder: any Decoder) throws {
@@ -132,6 +135,7 @@ public extension OJPv2 {
             serviceArrival = try container.decodeIfPresent(ServiceArrival.self, forKey: .serviceArrival)
             serviceDeparture = try container.decodeIfPresent(ServiceDeparture.self, forKey: .serviceDeparture)
             stopCallStatus = try StopCallStatus(from: decoder)
+            nameSuffix = try container.decode(InternationalText?.self, forKey: .nameSuffix)
         }
     }
 }

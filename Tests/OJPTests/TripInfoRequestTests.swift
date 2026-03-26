@@ -15,4 +15,22 @@ final class TripInfoRequestTests: XCTestCase {
         XCTAssertEqual(tripInfoDelivery.tripInfoResult?.previousCalls.count, 4)
         XCTAssertEqual(tripInfoDelivery.tripInfoResult?.onwardCalls.count, 8)
     }
+
+    func testTripInfoRequestWithBehig() async throws {
+        let xmlData = try TestHelpers.loadXML(xmlFilename: "tir-with-behig")
+        guard let tripDelivery = try await OJPDecoder.parseXML(xmlData).response?.serviceDelivery.delivery else {
+            return XCTFail("unexpected empty")
+        }
+
+        guard case let .tripInfo(tripInfoDelivery) = tripDelivery else { return XCTFail() }
+        let responseContext = try XCTUnwrap(tripInfoDelivery.tripInfoResponseContext)
+        XCTAssertEqual(responseContext.places.count, 35)
+
+        XCTAssertEqual(tripInfoDelivery.tripInfoResult?.previousCalls.count, 4)
+        XCTAssertEqual(tripInfoDelivery.tripInfoResult?.onwardCalls.count, 8)
+
+        let firstCall = try XCTUnwrap(tripInfoDelivery.tripInfoResult?.previousCalls.first)
+        XCTAssertEqual(firstCall.nameSuffix?.text, "PLATFORM_ACCESS_WITHOUT_ASSISTANCE")
+
+    }
 }
