@@ -54,7 +54,7 @@ let nearbyStops = try await ojpSdk.requestPlaceResults(
 )
 ```
 
-## TripInformationRequest 
+## TripRequest 
 
 #### Get a List of Trips between two Places
 
@@ -121,7 +121,7 @@ let nextTripResults = try await paginatedActor
     .tripResults
 ```
 
-#### Load informations to a trip using `TripInformationRequest`
+#### Get all previous and onward StopPoints serviced by a Journey using `TripInformationRequest`
 
 ``` swift
 let journeyRef = timedLeg.service.journeyRef
@@ -130,9 +130,20 @@ let operatingDayRef = timedLeg.service.operatingDayRef
 let tripInfo = try await OJP.configured.requestTripInfo(
     journeyRef: journeyRef,
     operatingDayRef: operatingDayRef,
-    params: .init(useRealTimeData: .explanatory)
+    params: .init(
+        useRealTimeData: .explanatory,
+        includeCalls: true, 
+        includeService: true, 
+        includeTrackSections: false, 
+        includeTrackProjection: false, 
+        includePlacesContext: false, 
+        includeSituationsContext:  true
+    )
 )
 ```
+
+Note: the accessibilty information of a StopPoint is listed in `nameSuffix`.
+
 
 #### Load current departures using `StopEventRequest`
 
