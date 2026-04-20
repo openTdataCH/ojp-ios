@@ -125,6 +125,7 @@ let tripInfo = try await OJP.configured.requestTripInfo(
         includeSituationsContext:  true
     )
 )
+```
 
 #### Update an existing Trip
 
