@@ -613,7 +613,7 @@
 			repositoryURL = "https://github.com/kean/Pulse";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 4.0.5;
+				minimumVersion = 4.2.7;
 			};
 		};
 		CFFB00A72CFDEED9007D3ED2 /* XCRemoteSwiftPackageReference "oev-icons-swift" */ = {
