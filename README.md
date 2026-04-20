@@ -107,6 +107,25 @@ let tripDelivery = try await ojp.requestTrips(
 )
 ```
 
+#### Get all previous and onward Stops called by a Journey
+
+``` swift
+let journeyRef = timedLeg.service.journeyRef
+let tripInfo = try await OJP.configured.requestTripInfo(
+    journeyRef: journeyRef,
+    operatingDayRef: operatingDayRef,
+    params: .init(useRealTimeData: .explanatory)
+    params: .init(
+        useRealTimeData: .explanatory,
+        includeCalls: true, 
+        includeService: true, 
+        includeTrackSections: false, 
+        includeTrackProjection: false, 
+        includePlacesContext: false, 
+        includeSituationsContext:  true
+    )
+)
+
 #### Update an existing Trip
 
 ``` swift
