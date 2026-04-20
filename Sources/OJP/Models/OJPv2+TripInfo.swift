@@ -12,7 +12,7 @@ import XMLCoder
 public extension OJPv2 {
     struct TripInfoRequest: Codable, Sendable {
         let journeyRef: String
-        let operatingDayRef: String // ???
+        let operatingDayRef: String
         let params: TripInfoParam
 
         public enum CodingKeys: String, CodingKey {
@@ -26,30 +26,31 @@ public extension OJPv2 {
     struct TripInfoParam: Codable, Sendable {
         let useRealTimeData: UseRealtimeData?
         let includeCalls: Bool
-        let includePosition: Bool
         let includeService: Bool
         let includeTrackSections: Bool
         let includeTrackProjection: Bool
         let includePlacesContext: Bool
+        let includeSituationsContext: Bool
 
-        public init(useRealTimeData: OJPv2.UseRealtimeData? = nil, includeCalls: Bool = true, includePosition: Bool = true, includeService: Bool = true, includeTrackSections: Bool = true, includeTrackProjection: Bool = false, includePlacesContext: Bool = true) {
+
+        public init(useRealTimeData: OJPv2.UseRealtimeData? = nil, includeCalls: Bool = true, includeService: Bool = true, includeTrackSections: Bool = false, includeTrackProjection: Bool = false, includePlacesContext: Bool = false, includeSituationsContext: Bool = true) {
             self.useRealTimeData = useRealTimeData
             self.includeCalls = includeCalls
-            self.includePosition = includePosition
             self.includeService = includeService
             self.includeTrackSections = includeTrackSections
             self.includeTrackProjection = includeTrackProjection
             self.includePlacesContext = includePlacesContext
+            self.includeSituationsContext = includeSituationsContext
         }
 
         public enum CodingKeys: String, CodingKey {
             case useRealTimeData = "UseRealTimeData"
             case includeCalls = "IncludeCalls"
-            case includePosition = "IncludePosition"
             case includeService = "IncludeService"
             case includeTrackSections = "IncludeTrackSections"
             case includeTrackProjection = "IncludeTrackProjection"
             case includePlacesContext = "IncludePlacesContext"
+            case includeSituationsContext = "IncludeSituationsContext"
         }
     }
 
@@ -84,8 +85,10 @@ public extension OJPv2 {
         public let previousCalls: [CallAtStop]
         public let onwardCalls: [CallAtStop]
         public let service: DatedJourney?
+        public let tripInfoResponseContext: ResponseContext?
 
         public enum CodingKeys: String, CodingKey {
+            case tripInfoResponseContext = "TripInfoResponseContext"
             case previousCalls = "PreviousCall"
             case onwardCalls = "OnwardCall"
             case service = "Service"
@@ -96,6 +99,8 @@ public extension OJPv2 {
             previousCalls = (try? container.decode([OJPv2.CallAtStop].self, forKey: .previousCalls)) ?? []
             onwardCalls = (try? container.decode([OJPv2.CallAtStop].self, forKey: .onwardCalls)) ?? []
             service = try container.decodeIfPresent(OJPv2.DatedJourney.self, forKey: .service)
+            tripInfoResponseContext = try container.decodeIfPresent(ResponseContext.self, forKey: .tripInfoResponseContext)
+
         }
     }
 
@@ -108,6 +113,8 @@ public extension OJPv2 {
         public let estimatedQuay: InternationalText?
         public let serviceArrival: ServiceArrival?
         public let serviceDeparture: ServiceDeparture?
+        /// currently contains accessibility Information of the StopPoint
+        public let nameSuffix: InternationalText?
 
         public enum CodingKeys: String, CodingKey {
             case stopPointRef = "siri:StopPointRef"
@@ -116,6 +123,7 @@ public extension OJPv2 {
             case estimatedQuay = "EstimatedQuay"
             case serviceArrival = "ServiceArrival"
             case serviceDeparture = "ServiceDeparture"
+            case nameSuffix = "NameSuffix"
         }
 
         public init(from decoder: any Decoder) throws {
@@ -127,6 +135,7 @@ public extension OJPv2 {
             serviceArrival = try container.decodeIfPresent(ServiceArrival.self, forKey: .serviceArrival)
             serviceDeparture = try container.decodeIfPresent(ServiceDeparture.self, forKey: .serviceDeparture)
             stopCallStatus = try StopCallStatus(from: decoder)
+            nameSuffix = try container.decode(InternationalText?.self, forKey: .nameSuffix)
         }
     }
 }

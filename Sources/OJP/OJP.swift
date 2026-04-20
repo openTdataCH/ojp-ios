@@ -1,6 +1,3 @@
-// The Swift Programming Language
-// https://docs.swift.org/swift-book
-
 import Foundation
 import XMLCoder
 
@@ -134,6 +131,12 @@ public final class OJP: Sendable {
         return tripDelivery
     }
 
+
+    /// Request a TripInformation with a `journeyRef` and `operatingDayRef`. Used to show all stops called by a service.
+    /// - Parameter journeyRef: Reference of the journey as listed in ``OJPv2/Trip``
+    /// - Parameter operatingDayRef: Reference of the operating day as listed in ``OJPv2/Trip``
+    /// - Parameter params: the parameters for the request
+    /// - Returns: a ``OJPv2.TripInfoDelivery`` of the service
     public func requestTripInfo(
         journeyRef: String,
         operatingDayRef: String,

@@ -293,15 +293,15 @@ enum OJPHelpers {
 
             let tripInfoRequest = OJPv2.TripInfoRequest(journeyRef: journeyRef, operatingDayRef: operatingDayRef, params: params)
 
-            // TODO: - avoid duplication (share this block with "requestWith(bbox: Geo.Bbox")
-            let ojp = OJPv2(request: OJPv2.Request(
-                serviceRequest: OJPv2.ServiceRequest(
-                    requestContext: requestContext,
-                    requestTimestamp: requestTimestamp,
-                    requestorRef: requesterReference,
-                    tripInfoRequest: tripInfoRequest
-                )
-            ),
+            let ojp = OJPv2(
+                request: OJPv2.Request(
+                    serviceRequest: OJPv2.ServiceRequest(
+                        requestContext: requestContext,
+                        requestTimestamp: requestTimestamp,
+                        requestorRef: requesterReference,
+                        tripInfoRequest: tripInfoRequest
+                    )
+                ),
             response: nil)
 
             return ojp
