@@ -85,13 +85,6 @@ extension OJPv2.PlaceResult: @retroactive Equatable {
     }
 }
 
-extension OJPv2.StopEventResult: @retroactive Identifiable {
-    public var id: String {
-        // 😱 https://github.com/openTdataCH/ojp-sdk/issues/173
-        stopEvent.service.journeyRef
-    }
-}
-
 #Preview {
     StopEventResultsView(ojp: OJP(loadingStrategy: .http(.int)))
 }

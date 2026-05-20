@@ -74,13 +74,12 @@ public extension OJPv2 {
     }
 
     /// [Schema documentation on vdvde.github.io](https://vdvde.github.io/OJP/develop/documentation-tables/ojp.html#type_ojp__StopEventResultStructure
-    struct StopEventResult: Codable, Sendable {
-        // 😱 https://github.com/openTdataCH/ojp-sdk/issues/173
-        // public let id: String
+    struct StopEventResult: Codable, Sendable, Identifiable {
+        public let id: String
         public let stopEvent: StopEvent
 
         public enum CodingKeys: String, CodingKey {
-//            case id = "Id"
+            case id = "Id"
             case stopEvent = "StopEvent"
         }
     }
