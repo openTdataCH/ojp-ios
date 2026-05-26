@@ -21,7 +21,7 @@ struct StopEventResultsView: View {
             HStack(alignment: .top) {
                 InlineLocationSerachView(
                     ojp: ojp,
-                    textLabel: "Station",
+                    textLabel: "Station / Address",
                     selectedPlace: $origin
                 )
                 Picker("Mode", selection: $mode) {
@@ -70,8 +70,9 @@ struct StopEventResultsView: View {
                 depArrTime: nil
             ),
             params: .init(
-                stopEventType: mode.ojpType,
-                numberOfResults: nil
+                numberOfResults: nil,
+
+                stopEventType: mode.ojpType
             )
         )
         stopEventResults = stopEventDelivery.stopEventsGroupedByStation
