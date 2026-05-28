@@ -98,8 +98,9 @@ public extension OJPv2 {
     }
 
     /// [Schema documentation on vdvde.github.io](https://vdvde.github.io/OJP/develop/documentation-tables/ojp.html#type_ojp__StopEventResultStructure
-    struct StopEventResult: Codable, Sendable, Identifiable {
-        public let id: String
+    struct StopEventResult: Codable, Sendable {
+        /// This ID is only uniquie within ONE single StopEventRequest. Use a ID made by combining `service.journeyRef` and `thisCall.stopPoint.stopPointRef` in order to update a `StopEventResult`
+        var id: String
         public let stopEvent: StopEvent
 
         public enum CodingKeys: String, CodingKey {
