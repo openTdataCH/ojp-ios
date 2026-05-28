@@ -1,0 +1,50 @@
+{
+  "pins" : [
+    {
+      "identity" : "swift-duration",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/longinius/swift-duration.git",
+      "state" : {
+        "revision" : "7c1852d0e5756200ee1c7e9935cc00589a513654",
+        "version" : "1.0.1"
+      }
+    },
+    {
+      "identity" : "swift-syntax",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/swiftlang/swift-syntax.git",
+      "state" : {
+        "revision" : "9de99a78f099e59caf2b2beec65a4c45d54b2081",
+        "version" : "603.0.1"
+      }
+    },
+    {
+      "identity" : "swift-testing",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/swiftlang/swift-testing.git",
+      "state" : {
+        "revision" : "70eff261d7f462cad1fff51e05bcc74aa0b0f420",
+        "version" : "6.3.2"
+      }
+    },
+    {
+      "identity" : "swiftformat",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/nicklockwood/SwiftFormat",
+      "state" : {
+        "revision" : "a5fa7a6a57abeb834df1b3fa43ea9133137d5ade",
+        "version" : "0.61.1"
+      }
+    },
+    {
+      "identity" : "xmlcoder",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/CoreOffice/XMLCoder.git",
+      "state" : {
+        "revision" : "42f62383dbcd074440cb1f6a750b9c02df9e7325",
+        "version" : "0.18.2"
+      }
+    }
+  ],
+  "version" : 2
+}
