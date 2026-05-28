@@ -52,7 +52,7 @@ extension OJPv2.LegIntermediate: @retroactive Identifiable {
 
 extension OJPv2.StopEventResult: @retroactive Identifiable {
     public var id: String {
-        stopEvent.service.journeyRef + stopEvent.thisCall.stopPoint.stopPointRef
+        stopEvent.service.journeyRef + stopEvent.thisCall.stopPoint.stopPointRef + stopEvent.service.operatingDayRef
     }
 }
 
