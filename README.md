@@ -137,6 +137,39 @@ let tripResult = OJPv2.TripResult(trip: trip)
 let tripRefineDelivery = try await OJP.configured.requestTripRefinement(tripResult: tripResult)
 ```
 
+#### Get Upcoming Departures From A StopPlace
+
+``` swift
+let stopEventDelivery = try await ojp.requestStopEvent(
+    location: .init(
+        placeRef: someStopPlace.placeRef
+    ),
+    params: .init(
+        stopEventType: .departure
+    )
+)
+``` 
+
+#### Get Upcoming Departures Nearby
+
+``` swift
+// when placeRef is a GeoPosition, use `IndividualTransportOption` to restrict the Stops returned in the request
+
+let stopEventDelivery = try await ojp.requestStopEvent(
+    location: .init(
+        placeRef: someLocation.placeRef,
+        individualTransportOption: [
+            .init(itModeAndModeOfOperation: .init(personalMode: .foot),
+                  maxDistance: 200)
+        ]
+    ),
+    params: .init(
+        numberOfResults: 20,
+        stopEventType: .departure
+    )
+)
+``` 
+
 For a more detailed introduction head over to the [Getting Started](https://opentdatach.github.io/ojp-ios/documentation/ojp/gettingstarted) article in the documentation.
 
 ## Sample App
