@@ -24,33 +24,58 @@ public extension OJPv2 {
 
     /// [Schema documentation on vdvde.github.io](https://vdvde.github.io/OJP/develop/documentation-tables/ojp.html#type_ojp__StopEventParamStructure)
     struct StopEventParam: Codable, Sendable {
-//        public let modeFilter: ModeFilter
+        public let modeFilter: ModeFilter?
+        public let lineFilter: LineDirectionFilter?
+        public let operatorFilter: OperatorFilter?
         public let includeAllRestrictedLines: Bool?
-        public let includeRealtimeData: Bool?
-        public let includeOnwardCalls: Bool?
-        public let includePreviousCalls: Bool?
-        public let useRealtimeData: UseRealtimeData?
-        public let stopEventType: StopEventType?
         public let numberOfResults: Int?
+        public let stopEventType: StopEventType?
+        public let includePreviousCalls: Bool?
+        public let includeOnwardCalls: Bool?
+        public let includeOperatingDays: Bool?
+        public let useRealtimeData: UseRealtimeData?
+        public let includePlacesContext: Bool?
+        public let includeSituationsContext: Bool?
 
         public enum CodingKeys: String, CodingKey {
+            case modeFilter = "ModeFilter"
+            case lineFilter = "LineFilter"
+            case operatorFilter = "OperatorFilter"
             case includeAllRestrictedLines = "IncludeAllRestrictedLines"
-            case includeRealtimeData = "IncludeRealtimeData"
-            case includeOnwardCalls = "IncludeOnwardCalls"
-            case includePreviousCalls = "IncludePreviousCalls"
-//            case modeFilter = "ModeFilter"
-            case useRealtimeData = "UseRealtimeData"
-            case stopEventType = "StopEventType"
             case numberOfResults = "NumberOfResults"
+            case stopEventType = "StopEventType"
+            case includePreviousCalls = "IncludePreviousCalls"
+            case includeOnwardCalls = "IncludeOnwardCalls"
+            case includeOperatingDays = "IncludeOperatingDays"
+            case useRealtimeData = "UseRealtimeData"
+            case includePlacesContext = "IincludePlacesContext"
+            case includeSituationsContext = "IncludeSituationsContext"
         }
 
-        public init(includeAllRestrictedLines: Bool? = true, includeRealtimeData: Bool? = true, includeOnwardCalls: Bool? = false, includePreviousCalls: Bool? = false, useRealtimeData: UseRealtimeData? = .explanatory, stopEventType: StopEventType?, numberOfResults: Int?) {
+        public init(modeFilter: ModeFilter? = nil,
+                    lineFilter: LineDirectionFilter? = nil,
+                    operatorFilter: OperatorFilter? = nil,
+                    includeAllRestrictedLines: Bool? = true,
+                    numberOfResults: Int?,
+                    stopEventType: StopEventType?,
+                    includePreviousCalls: Bool? = nil,
+                    includeOnwardCalls: Bool? = nil,
+                    includeOperatingDays: Bool? = nil,
+                    useRealtimeData: UseRealtimeData? = .explanatory,
+                    includePlacesContext: Bool? = false,
+                    includeSituationsContext: Bool? = nil,
+        ) {
+            self.modeFilter = modeFilter
+            self.lineFilter = lineFilter
+            self.operatorFilter = operatorFilter
             self.includeAllRestrictedLines = includeAllRestrictedLines
-            self.includeRealtimeData = includeRealtimeData
             self.includeOnwardCalls = includeOnwardCalls
             self.includePreviousCalls = includePreviousCalls
+            self.includeOperatingDays = includeOperatingDays
             self.useRealtimeData = useRealtimeData
             self.stopEventType = stopEventType
+            self.includePlacesContext = includePlacesContext
+            self.includeSituationsContext = includeSituationsContext
             self.numberOfResults = numberOfResults
         }
     }
@@ -74,12 +99,12 @@ public extension OJPv2 {
 
     /// [Schema documentation on vdvde.github.io](https://vdvde.github.io/OJP/develop/documentation-tables/ojp.html#type_ojp__StopEventResultStructure
     struct StopEventResult: Codable, Sendable {
-        // 😱 https://github.com/openTdataCH/ojp-sdk/issues/173
-        // public let id: String
+        /// This ID is only uniquie within ONE single StopEventRequest. Use an ID made by combining `service.journeyRef`, `service.operatingDayRef` and `thisCall.stopPoint.stopPointRef` in order to reference a `StopEventResult`
+        var id: String
         public let stopEvent: StopEvent
 
         public enum CodingKeys: String, CodingKey {
-//            case id = "Id"
+            case id = "Id"
             case stopEvent = "StopEvent"
         }
     }
@@ -114,6 +139,73 @@ public extension OJPv2 {
         public enum CodingKeys: String, CodingKey {
             case callAtStop = "CallAtStop"
             case walkDistance = "WalkDistance"
+        }
+    }
+
+    /// [Schema documentation on vdvde.github.io](https://vdvde.github.io/OJP/develop/documentation-tables/ojp.html#type_ojp__OperatorFilterStructure)
+    struct OperatorFilter: Codable, Sendable {
+        public let operatorRef: String?
+        public let exclude: Bool?
+
+        public enum CodingKeys: String, CodingKey {
+            case operatorRef = "OperatorRef"
+            case exclude = "Exclude"
+        }
+    }
+
+
+    /// [Schema documentation on vdvde.github.io](https://vdvde.github.io/OJP/develop/documentation-tables/ojp.html#type_ojp__LineDirectionFilterStructure)
+    struct LineDirectionFilter: Codable, Sendable {
+        public let line: [LineRef]
+        public let exclude: Bool?
+
+        public enum CodingKeys: String, CodingKey {
+            case line = "Line"
+            case exclude = "Exclude"
+        }
+    }
+
+    /// [Schema documentation on vdvde.github.io](https://vdvde.github.io/OJP/develop/documentation-tables/siri.html#type_siri__LineDirectionStructure)
+    struct LineRef: Codable, Sendable {
+        public let lineRef: String
+        public let directionRef: String?
+
+        public enum CodingKeys: String, CodingKey {
+            case lineRef = "siri:LineRef"
+            case directionRef = "siri:DirectionRef"
+        }
+    }
+
+    /// [Schema documentation on vdvde.github.io](https://vdvde.github.io/OJP/develop/documentation-tables/ojp.html#type_ojp__ModeFilterStructure)
+    struct ModeFilter: Codable, Sendable {
+        public let exclude: Bool?
+        public let ptMode: [Mode.PtMode]?
+        public let submodes: [PtModeChoice]?
+
+        public enum CodingKeys: String, CodingKey {
+            case exclude = "Exclude"
+            case ptMode = "PtMode"
+            case _0 = ""
+        }
+
+        public init(exclude: Bool?, ptMode: [Mode.PtMode]?, submodes: [PtModeChoice]? = nil) {
+            self.exclude = exclude
+            self.ptMode = ptMode
+            self.submodes = submodes
+        }
+
+        public init(from decoder: any Decoder) throws {
+            let container = try decoder.container(keyedBy: CodingKeys.self)
+            exclude = try container.decode(Bool.self, forKey: .exclude)
+            ptMode = try container.decode([Mode.PtMode]?.self, forKey: .ptMode)
+            submodes = try container.decode([PtModeChoice]?.self, forKey: ._0)
+        }
+
+        public func encode(to encoder: any Encoder) throws {
+            var container = encoder.container(keyedBy: CodingKeys.self)
+            try container.encode(exclude, forKey: .exclude)
+            try container.encodeIfPresent(ptMode, forKey: .ptMode)
+            try container.encodeIfPresent(submodes, forKey: ._0)
         }
     }
 }
