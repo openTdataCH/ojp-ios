@@ -5,3 +5,4 @@ DerivedData
 ## User settings
 xcuserdata/
 docs
+.swiftpm
