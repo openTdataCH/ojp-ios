@@ -25,6 +25,8 @@ struct LocationSearchByNameView: View {
     @State var stopRestriction = true
     @State var includePTModes = false
 
+    @Environment(\.ojp) var ojp: OJP
+
     let availableRange: [Int] = [5, 10, 20, 50, 100]
 
     private var placeParam: OJPv2.PlaceParam {
@@ -110,7 +112,6 @@ struct LocationSearchByNameView: View {
                 guard oldValue != newValue else { return }
                 currentTask?.cancel()
 
-                let ojp = OJP.configured
                 let t = Task {
                     do {
                         results = try await ojp.requestPlaceResults(from: inputName, restrictions: placeParam)

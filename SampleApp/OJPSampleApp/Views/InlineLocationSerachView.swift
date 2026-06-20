@@ -9,7 +9,7 @@ import OJP
 import SwiftUI
 
 struct InlineLocationSerachView: View {
-    let ojp: OJP
+    @Environment(\.ojp) var ojp: OJP
 
     @State private var searchText: String = ""
     @State private var results: [OJPv2.PlaceResult] = []
@@ -69,6 +69,16 @@ struct InlineLocationSerachView: View {
                             .onTapGesture {
                                 handleTap(selectedPlace: stop)
                             }
+                        case let .pointOfInterest(pointOfInterest):
+                            HStack {
+                                Image(systemName: "mappin.circle.fill")
+                                Text(pointOfInterest.name.text)
+                                Spacer()
+                            }
+                            .background(Color.listBackground)
+                            .onTapGesture {
+                                handleTap(selectedPlace: stop)
+                            }
                         }
                     }
                 }
@@ -100,5 +110,8 @@ struct InlineLocationSerachView: View {
 }
 
 #Preview {
-    InlineLocationSerachView(ojp: OJP(loadingStrategy: .http(.int)), textLabel: "From", selectedPlace: .constant(nil))
+    VStack {
+        InlineLocationSerachView(textLabel: "From", selectedPlace: .constant(nil))
+        Spacer()
+    }.frame(minHeight: 200)
 }
