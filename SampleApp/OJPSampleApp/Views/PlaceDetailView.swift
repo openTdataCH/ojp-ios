@@ -10,23 +10,21 @@ import SwiftUI
 
 struct PlaceDetailView: View {
     // quick and dirty data flow, just for hacking purpose
-    @Binding var place: OJPv2.PlaceResult?
+    let placeResult: OJPv2.PlaceResult
     var body: some View {
         ZStack(alignment: .topLeading) {
-            if let place {
-                List {
-                    Text("Place").font(.headline)
-                    Text("Name: \(place.place.name.text)")
-                    let geoPosition = place.place.geoPosition
-                    Text("GeoPosition: (\(geoPosition.latitude), \(geoPosition.longitude))")
+            List {
+                Text("Place").font(.headline)
+                Text("Name: \(placeResult.place.name.text)")
+                let geoPosition = placeResult.place.geoPosition
+                Text("GeoPosition: (\(geoPosition.latitude), \(geoPosition.longitude))")
+
+                if case .pointOfInterest(let poi) = placeResult.place.place, let poiAdditionalInformation = poi.poiAdditionalInformation {
+                    Text("\(poiAdditionalInformation.map({ "\($0): \($1)" }).joined(separator: "\n"))")
                 }
-                .cornerRadius(10.0)
             }
+            .cornerRadius(10.0)
         }
         .padding()
     }
-}
-
-#Preview {
-    PlaceDetailView(place: .constant(nil))
 }

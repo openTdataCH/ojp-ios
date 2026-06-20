@@ -96,6 +96,14 @@ struct LocationSearchByNameView: View {
                         .onTapGesture {
                             selectetedPlace = stop
                         }
+                    case .pointOfInterest(let pointOfInterest):
+                        HStack {
+                            Image(systemName: "mappin.circle.fill")
+                            Text(pointOfInterest.name.text)
+                        }
+                        .onTapGesture {
+                            selectetedPlace = stop
+                        }
                     }
                 }
                 Map {
@@ -123,8 +131,8 @@ struct LocationSearchByNameView: View {
                 currentTask = t
             }
 
-            if selectetedPlace != nil {
-                PlaceDetailView(place: $selectetedPlace)
+            if let selectetedPlace {
+                PlaceDetailView(placeResult: selectetedPlace)
                     .frame(maxWidth: 200)
             }
         }.padding()
