@@ -25,7 +25,7 @@ public extension OJPv2 {
         }
     }
 
-    struct PlaceResult: Codable, Sendable {
+    struct PlaceResult: Codable, Sendable, Hashable {
         public let place: Place
         public let complete: Bool
         public let probability: Float?
@@ -42,12 +42,14 @@ public extension OJPv2 {
         case stopPlace(OJPv2.StopPlace)
         case address(OJPv2.Address)
         case topographicPlace(OJPv2.TopographicPlace)
+        case pointOfInterest(OJPv2.PointOfInterest)
 
         enum CodingKeys: String, CodingKey {
             case stopPlace = "StopPlace"
             case address = "Address"
             case stopPoint = "StopPoint"
             case topographicPlace = "TopographicPlace"
+            case pointOfInterest = "PointOfInterest"
         }
 
         public init(from decoder: any Decoder) throws {
@@ -61,7 +63,7 @@ public extension OJPv2 {
             } else if container.contains(.address) {
                 self = try .address(container.decode(Address.self, forKey: .address))
             } else {
-                throw OJPSDKError.notImplemented()
+                self = try .pointOfInterest(container.decode(PointOfInterest.self, forKey: .pointOfInterest))
             }
         }
     }
@@ -97,6 +99,138 @@ public extension OJPv2 {
         public enum CodingKeys: String, CodingKey {
             case topographicPlaceCode = "TopographicPlaceCode"
             case topographicPlaceName = "TopographicPlaceName"
+        }
+    }
+
+    /// [Schema documentation on vdvde.github.io](https://vdvde.github.io/OJP/release/2.0/documentation-tables/ojp.html#type_ojp__PointOfInterestStructure)
+    struct PointOfInterest: Codable, Sendable, Hashable {
+
+        public let publicCode: String
+        public let name: InternationalText
+        public let nameSuffix: InternationalText?
+
+        public let pointOfInterestCategory: [PointOfInterestCategory]?
+        internal let _poiAdditionalInformation: PointOfInteressAdditionalInformation?
+
+        /// Note: this is a convenience dictionary for the  ``OJPv2/PointOfInteressAdditionalInformation`
+        public let poiAdditionalInformation: [String: String]?
+
+
+        public enum CodingKeys: String, CodingKey {
+            case publicCode = "PublicCode"
+            case name = "Name"
+            case nameSuffix = "NameSuffix"
+            case pointOfInterestCategory = "PointOfInterestCategory"
+            case _poiAdditionalInformation = "POIAdditionalInformation"
+        }
+
+        public init(from decoder: any Decoder) throws {
+            let container = try decoder.container(keyedBy: CodingKeys.self)
+            self.publicCode = try container.decode(String.self, forKey: .publicCode)
+            self.name = try container.decode(InternationalText.self, forKey: .name)
+            self.nameSuffix = try container.decode(InternationalText?.self, forKey: .nameSuffix)
+            self.pointOfInterestCategory = try container.decodeIfPresent([PointOfInterestCategory].self, forKey: .pointOfInterestCategory)
+            self._poiAdditionalInformation = try container.decodeIfPresent(PointOfInteressAdditionalInformation.self, forKey: ._poiAdditionalInformation)
+            self.poiAdditionalInformation = _poiAdditionalInformation?.poiAdditionalInformation.reduce(into: [:], { partialResult, keyValue in
+                partialResult[keyValue.key] = keyValue.value
+            })
+        }
+    }
+
+    /// [Schema documentation on vdvde.github.io](https://vdvde.github.io/OJP/release/2.0/documentation-tables/ojp.html#type_ojp__PointOfInterestAdditionalInformationStructure)
+    struct PointOfInteressAdditionalInformation: Codable, Sendable, Hashable {
+        internal let poiAdditionalInformation: [CategoryKeyValue]
+
+        public enum CodingKeys: String, CodingKey {
+            case poiAdditionalInformation = "POIAdditionalInformation"
+        }
+    }
+
+
+    /// [Schema documentation on vdvde.github.io](https://vdvde.github.io/OJP/release/2.0/documentation-tables/ojp.html#type_ojp__CategoryKeyValueType)
+    struct CategoryKeyValue: Codable, Sendable, Hashable {
+        public let key: String
+        public let value: String
+
+        public enum CodingKeys: String, CodingKey {
+            case key = "Key"
+            case value = "Value"
+        }
+    }
+
+
+    /// [Schema documentation on vdvde.github.io](https://vdvde.github.io/OJP/release/2.0/documentation-tables/ojp.html#type_ojp__PointOfInterestFilterStructure)
+    struct PointOfInterestFilter: Codable, Sendable {
+        /// Whether categories in list are to include or exclude from search. Default is FALSE.
+        public let exclude: Bool?
+        /// These POI categories can be used to filter POIs. If more than one is given the filtering is by logical "OR" (when Exclude=FALSE) and logical "AND" (when Exclude=TRUE).
+        public let pointOfInterestCategory: [PointOfInterestCategory]?
+
+        public init(exclude: Bool? = false, pointOfInterestCategory: [PointOfInterestCategory]) {
+            self.exclude = exclude
+            self.pointOfInterestCategory = pointOfInterestCategory
+        }
+
+        public enum CodingKeys: String, CodingKey {
+            case exclude = "Exclude"
+            case pointOfInterestCategory = "PointOfInterestCategory"
+        }
+    }
+
+    /// [Schema documentation on vdvde.github.io](https://vdvde.github.io/OJP/release/2.0/documentation-tables/ojp.html#type_ojp__PointOfInterestCategoryStructure)
+    enum PointOfInterestCategory: Codable, Sendable, Hashable {
+        case osmTag(OSMTag)
+        case pointOfInterestClassification(String)
+
+        public init(from decoder: any Decoder) throws {
+            let container = try decoder.container(keyedBy: CodingKeys.self)
+            if container.contains(.osmTag) {
+                self = try .osmTag(container.decode(OSMTag.self, forKey: .osmTag))
+            } else {
+                self = try .pointOfInterestClassification(container.decode(String.self, forKey: .pointOfInterestClassification))
+            }
+        }
+
+        public func encode(to encoder: Encoder) throws {
+            var svc = encoder.container(keyedBy: CodingKeys.self)
+            switch self {
+            case let .osmTag(osmTag):
+                try svc.encode(osmTag, forKey: .osmTag)
+            case let .pointOfInterestClassification(string):
+                try svc.encode(string, forKey: .pointOfInterestClassification)
+            }
+        }
+
+        public enum CodingKeys: String, CodingKey {
+            case osmTag = "OsmTag"
+            case pointOfInterestClassification = "PointOfInterestClassification"
+        }
+
+        /// convenience property
+        public var value: String {
+            switch self {
+            case .osmTag(let osmTag):
+                osmTag.value
+            case .pointOfInterestClassification(let value):
+                value
+            }
+        }
+    }
+
+    /// [Schema documentation on vdvde.github.io](https://vdvde.github.io/OJP/release/2.0/documentation-tables/ojp.html#type_ojp__OsmTagStructure)
+    struct OSMTag: Codable, Sendable, Hashable {
+        /// For Sharing POIs, this vill always be "amenity"
+        public let tag: String
+        public let value: String
+
+        public init(tag: String = "amenity", value: String) {
+            self.tag = tag
+            self.value = value
+        }
+
+        public enum CodingKeys: String, CodingKey {
+            case tag = "Tag"
+            case value = "Value"
         }
     }
 
@@ -249,6 +383,11 @@ public extension OJPv2 {
         public let upperLeft: GeoPosition
         public let lowerRight: GeoPosition
 
+        public init(upperLeft: GeoPosition, lowerRight: GeoPosition) {
+            self.upperLeft = upperLeft
+            self.lowerRight = lowerRight
+        }
+
         public enum CodingKeys: String, CodingKey {
             case upperLeft = "UpperLeft"
             case lowerRight = "LowerRight"
@@ -256,20 +395,26 @@ public extension OJPv2 {
     }
 
     struct PlaceParam: Codable, Sendable {
-        public init(type: [PlaceType], numberOfResults: Int = 10, includePtModes: Bool = true) {
+        public init(type: [PlaceType], numberOfResults: Int = 10, includePtModes: Bool = true, modeFilter: ModeFilter? = nil, pointOfInterestFilter: PointOfInterestFilter? = nil) {
             self.type = type
             self.numberOfResults = numberOfResults
             self.includePtModes = includePtModes
+            self.modes = modeFilter
+            self.pointOfInterestFilter = pointOfInterestFilter
         }
 
         public let type: [PlaceType]
         public let numberOfResults: Int
         let includePtModes: Bool
+        public let modes: ModeFilter?
+        public let pointOfInterestFilter: PointOfInterestFilter?
 
         public enum CodingKeys: String, CodingKey {
             case type = "Type"
             case numberOfResults = "NumberOfResults"
             case includePtModes = "IncludePtModes"
+            case modes = "Modes"
+            case pointOfInterestFilter = "PointOfInterestFilter"
         }
     }
 }
@@ -285,10 +430,24 @@ extension OJPv2.PlaceTypeChoice: Identifiable {
             address.publicCode
         case let .topographicPlace(topographicPlace):
             topographicPlace.topographicPlaceCode
+        case let .pointOfInterest(pointOfInterest):
+            pointOfInterest.publicCode
         }
     }
 }
 
 extension OJPv2.PlaceResult: Identifiable {
     public var id: String { place.place.id }
+}
+
+
+
+/// TODO: move to helpers
+public enum SharingCategoryHelper: String {
+    case escooter = "escooter_rental"
+    case bike = "bicycle_rental"
+    case car = "car_sharing"
+    case chargingStation = "charging_station"
+
+
 }

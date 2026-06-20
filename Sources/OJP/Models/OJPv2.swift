@@ -385,7 +385,7 @@ public struct OJPv2: Codable, Sendable {
     /// [Schema documentation on vdvde.github.io](https://vdvde.github.io/OJP/develop/documentation-tables/ojp.html#type_ojp__PersonalModesEnumeration)
     public enum PersonalMode: String, Codable, Sendable {
         case foot
-        case bicyle
+        case bicycle
         case car
         case motorcycle
         case truck

@@ -9,6 +9,7 @@ import Foundation
 
 public typealias Point = (long: Double, lat: Double)
 
+
 public struct Geo: Sendable {
     public struct Bbox {
         public let minX: Double

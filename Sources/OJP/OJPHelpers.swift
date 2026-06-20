@@ -200,6 +200,36 @@ enum OJPHelpers {
             return ojp
         }
 
+
+        public func requestWith(rectangle: OJPv2.Rectangle, restrictions: OJPv2.PlaceParam) -> OJPv2 {
+            let geoRestriction = OJPv2.GeoRestriction(rectangle: rectangle)
+            let locationInformationRequest = OJPv2.LocationInformationRequest(
+                requestTimestamp: Date(),
+                input: .initialInput(
+                    OJPv2.InitialInput(
+                        geoRestriction: geoRestriction,
+                        name: nil
+                    )
+                ),
+                restrictions: restrictions
+            )
+
+            let ojp = OJPv2(request:
+                OJPv2.Request(
+                    serviceRequest: OJPv2.ServiceRequest(
+                        requestContext: requestContext,
+                        requestTimestamp: Date(),
+                        requestorRef: requesterReference,
+                        locationInformationRequest: locationInformationRequest,
+                        tripRequest: nil
+                    )
+                ),
+                response: nil)
+
+            return ojp
+        }
+
+
         public func request(with placeRef: OJPv2.PlaceRefChoice, restrictions: OJPv2.PlaceParam) -> OJPv2 {
             let lir = OJPv2.LocationInformationRequest(
                 requestTimestamp: Date(),

@@ -14,6 +14,7 @@ public enum LoadingStrategy {
 public enum PlaceType: String, Codable, Sendable {
     case stop
     case address
+    case poi
 }
 
 let requestXMLRootAttributes = [
@@ -88,6 +89,19 @@ public final class OJP: Sendable {
 
         let nearbyObjects = GeoHelpers.sort(geoAwareObjects: locationInformationDelivery.placeResults, from: coordinates)
         return nearbyObjects
+    }
+
+    public func requestPlaceResults(in rectangle: OJPv2.Rectangle, restrictions: OJPv2.PlaceParam)  async throws -> [OJPv2.PlaceResult] {
+
+        let ojp = locationInformationRequest.requestWith(rectangle: rectangle, restrictions: restrictions)
+
+        let serviceDelivery = try await request(with: ojp).serviceDelivery
+
+        guard case let .locationInformation(locationInformationDelivery) = serviceDelivery.delivery else {
+            throw OJPSDKError.unexpectedEmpty
+        }
+
+        return locationInformationDelivery.placeResults
     }
 
     /// Request a list of PlaceResults based on the given search term

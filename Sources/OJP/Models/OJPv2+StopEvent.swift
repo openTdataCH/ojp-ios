@@ -181,23 +181,27 @@ public extension OJPv2 {
         public let exclude: Bool?
         public let ptMode: [Mode.PtMode]?
         public let submodes: [PtModeChoice]?
+        public let personalModes: [PersonalMode]?
 
         public enum CodingKeys: String, CodingKey {
             case exclude = "Exclude"
             case ptMode = "PtMode"
+            case personalModes = "PersonalMode"
             case _0 = ""
         }
 
-        public init(exclude: Bool?, ptMode: [Mode.PtMode]?, submodes: [PtModeChoice]? = nil) {
+        public init(exclude: Bool? = false, ptMode: [Mode.PtMode]? = nil, submodes: [PtModeChoice]? = nil, personalModes: [PersonalMode]? = nil) {
             self.exclude = exclude
             self.ptMode = ptMode
             self.submodes = submodes
+            self.personalModes = personalModes
         }
 
         public init(from decoder: any Decoder) throws {
             let container = try decoder.container(keyedBy: CodingKeys.self)
             exclude = try container.decode(Bool.self, forKey: .exclude)
             ptMode = try container.decode([Mode.PtMode]?.self, forKey: .ptMode)
+            personalModes = try container.decode([PersonalMode]?.self, forKey: .personalModes)
             submodes = try container.decode([PtModeChoice]?.self, forKey: ._0)
         }
 
@@ -205,6 +209,7 @@ public extension OJPv2 {
             var container = encoder.container(keyedBy: CodingKeys.self)
             try container.encode(exclude, forKey: .exclude)
             try container.encodeIfPresent(ptMode, forKey: .ptMode)
+            try container.encodeIfPresent(personalModes, forKey: .personalModes)
             try container.encodeIfPresent(submodes, forKey: ._0)
         }
     }

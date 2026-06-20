@@ -18,6 +18,8 @@ public extension OJPv2.PlaceRefChoice {
             ref.name.text
         case let .topographicPlaceRef(topographicPlaceRef):
             topographicPlaceRef
+        case let .pointOfInterestRef(pointOfInterestRef):
+            pointOfInterestRef
         }
     }
 }
@@ -38,6 +40,8 @@ extension OJPv2.PlaceRefChoice: Hashable {
             hasher.combine(stopPointRef.stopPointRef)
         case let .topographicPlaceRef(topographicPlaceRef):
             hasher.combine(topographicPlaceRef)
+        case let .pointOfInterestRef(pointOfInterestRef):
+            hasher.combine(pointOfInterestRef)
         }
     }
 }
@@ -53,6 +57,8 @@ public extension OJPv2.PlaceResult {
             address.name.text
         case let .topographicPlace(topographicPlace):
             topographicPlace.topographicPlaceName.text
+        case let .pointOfInterest(pointOfInterest):
+            pointOfInterest.name.text
         }
     }
 
@@ -76,6 +82,8 @@ public extension OJPv2.PlaceResult {
             )
         case let .topographicPlace(topographicPlace):
             .topographicPlaceRef(topographicPlace.topographicPlaceCode)
+        case let .pointOfInterest(pointOfinterest):
+            .pointOfInterestRef("pointOfinterest.publicCode")
         }
     }
 }
