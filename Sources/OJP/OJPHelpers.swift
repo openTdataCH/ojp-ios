@@ -165,14 +165,14 @@ enum OJPHelpers {
         ///   - bbox: Bounding box used as ``OJPv2/GeoRestriction``
         ///   - limit: results limit
         /// - Returns: OJPv2 containing a request
-        public func requestWith(bbox: Geo.Bbox, numberOfResults: Int = 10) -> OJPv2 {
+        public func requestWith(bbox: Geo.Bbox, numberOfResults: Int = 10, restrictions: OJPv2.PlaceParam? = nil) -> OJPv2 {
             let requestTimestamp = Date()
 
             let upperLeft = OJPv2.GeoPosition(longitude: bbox.minX, latitude: bbox.maxY)
             let lowerRight = OJPv2.GeoPosition(longitude: bbox.maxX, latitude: bbox.minY)
             let rectangle = OJPv2.Rectangle(upperLeft: upperLeft, lowerRight: lowerRight)
             let geoRestriction = OJPv2.GeoRestriction(rectangle: rectangle)
-            let restrictions = OJPv2.PlaceParam(type: [.stop], numberOfResults: numberOfResults, includePtModes: true)
+            let restrictions = restrictions ?? OJPv2.PlaceParam(type: [.stop], numberOfResults: numberOfResults, includePtModes: true)
 
             let locationInformationRequest = OJPv2.LocationInformationRequest(
                 requestTimestamp: requestTimestamp,
@@ -228,7 +228,7 @@ enum OJPHelpers {
         ///   - boxHeight: bounding box  height in meters
         ///   - limit: results limit
         /// - Returns: OJPv2 containing a request
-        public func requestWithBox(centerLongitude: Double, centerLatitude: Double, boxWidth: Double, boxHeight: Double? = nil, numberOfResults: Int = 10) -> OJPv2 {
+        public func requestWithBox(centerLongitude: Double, centerLatitude: Double, boxWidth: Double, boxHeight: Double? = nil, numberOfResults: Int = 10, restrictions: OJPv2.PlaceParam? = nil) -> OJPv2 {
             let boxHeight = boxHeight ?? boxWidth
 
             let point2Longitude = centerLongitude + 1
@@ -249,7 +249,7 @@ enum OJPHelpers {
 
             let bbox = Geo.Bbox(minLongitude: minLongitude, minLatitude: minLatitude, maxLongitude: maxLongitude, maxLatitude: maxLatitude)
 
-            let ojp = requestWith(bbox: bbox, numberOfResults: numberOfResults)
+            let ojp = requestWith(bbox: bbox, numberOfResults: numberOfResults, restrictions: restrictions)
 
             return ojp
         }

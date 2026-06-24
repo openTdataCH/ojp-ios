@@ -53,6 +53,8 @@ public extension OJPv2.PlaceResult {
             address.name.text
         case let .topographicPlace(topographicPlace):
             topographicPlace.topographicPlaceName.text
+        case let .pointOfInterest(pointOfInterest):
+            pointOfInterest.name.text
         }
     }
 
@@ -76,6 +78,13 @@ public extension OJPv2.PlaceResult {
             )
         case let .topographicPlace(topographicPlace):
             .topographicPlaceRef(topographicPlace.topographicPlaceCode)
+        case let .pointOfInterest(pointOfInterest):
+            .geoPosition(
+                .init(
+                    geoPosition: place.geoPosition,
+                    name: pointOfInterest.name
+                )
+            )
         }
     }
 }

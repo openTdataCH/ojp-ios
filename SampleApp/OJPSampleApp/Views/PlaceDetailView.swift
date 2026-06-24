@@ -19,6 +19,20 @@ struct PlaceDetailView: View {
                     Text("Name: \(place.place.name.text)")
                     let geoPosition = place.place.geoPosition
                     Text("GeoPosition: (\(geoPosition.latitude), \(geoPosition.longitude))")
+
+                    if let poi = place.pointOfInterest {
+                        Section {
+                            if !poi.classifications.isEmpty {
+                                Text("Category: \(poi.classifications.joined(separator: ", "))")
+                            }
+                            Text("Code: \(poi.publicCode)")
+                            ForEach(poi.additionalInformationItems, id: \.key) { item in
+                                Text("\(item.key): \(item.value)")
+                            }
+                        } header: {
+                            Text("Point of Interest")
+                        }
+                    }
                 }
                 .cornerRadius(10.0)
             }

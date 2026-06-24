@@ -15,6 +15,7 @@ enum AppSection: CaseIterable, Identifiable {
     case locationInformationRequest
     case tripRequest
     case stopEventRequest
+    case map
 
     var id: Self { self }
 
@@ -26,6 +27,8 @@ enum AppSection: CaseIterable, Identifiable {
             "TripRequest"
         case .stopEventRequest:
             "StopEventRequest"
+        case .map:
+            "Map"
         }
     }
 
@@ -37,6 +40,8 @@ enum AppSection: CaseIterable, Identifiable {
             Pictograms.stands_t_en_small
         case .stopEventRequest:
             Pictograms.stands_s_en_small
+        case .map:
+            Image(systemName: "map")
         }
     }
 }
@@ -86,6 +91,8 @@ struct OJPSampleApp: App {
                         TripRequestView(ojp: OJP.configured)
                     case .stopEventRequest:
                         StopEventResultsView(ojp: OJP.configured)
+                    case .map:
+                        MapView(ojp: OJP.configured)
                     }
                 }
             }).toolbar {

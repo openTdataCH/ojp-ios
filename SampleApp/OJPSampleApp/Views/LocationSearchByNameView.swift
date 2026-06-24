@@ -94,6 +94,14 @@ struct LocationSearchByNameView: View {
                         .onTapGesture {
                             selectetedPlace = stop
                         }
+                    case let .pointOfInterest(poi):
+                        HStack {
+                            Image(systemName: "mappin.and.ellipse")
+                            Text(poi.name.text)
+                        }
+                        .onTapGesture {
+                            selectetedPlace = stop
+                        }
                     }
                 }
                 Map {

@@ -69,6 +69,16 @@ struct InlineLocationSerachView: View {
                             .onTapGesture {
                                 handleTap(selectedPlace: stop)
                             }
+                        case let .pointOfInterest(poi):
+                            HStack {
+                                Image(systemName: "mappin.and.ellipse")
+                                Text(poi.name.text)
+                                Spacer()
+                            }
+                            .background(Color.listBackground)
+                            .onTapGesture {
+                                handleTap(selectedPlace: stop)
+                            }
                         }
                     }
                 }

@@ -42,12 +42,14 @@ public extension OJPv2 {
         case stopPlace(OJPv2.StopPlace)
         case address(OJPv2.Address)
         case topographicPlace(OJPv2.TopographicPlace)
+        case pointOfInterest(OJPv2.PointOfInterest)
 
         enum CodingKeys: String, CodingKey {
             case stopPlace = "StopPlace"
             case address = "Address"
             case stopPoint = "StopPoint"
             case topographicPlace = "TopographicPlace"
+            case pointOfInterest = "PointOfInterest"
         }
 
         public init(from decoder: any Decoder) throws {
@@ -60,6 +62,8 @@ public extension OJPv2 {
                 self = try .topographicPlace(container.decode(TopographicPlace.self, forKey: .topographicPlace))
             } else if container.contains(.address) {
                 self = try .address(container.decode(Address.self, forKey: .address))
+            } else if container.contains(.pointOfInterest) {
+                self = try .pointOfInterest(container.decode(PointOfInterest.self, forKey: .pointOfInterest))
             } else {
                 throw OJPSDKError.notImplemented()
             }
@@ -85,7 +89,8 @@ public extension OJPv2 {
             let container = try decoder.container(keyedBy: CodingKeys.self)
             name = try container.decode(InternationalText.self, forKey: .name)
             geoPosition = try container.decode(GeoPosition.self, forKey: .geoPosition)
-            modes = try container.decode([Mode].self, forKey: .modes)
+            // PointOfInterest results (e.g. shared mobility) don't carry a `Mode` element.
+            modes = (try? container.decode([Mode].self, forKey: .modes)) ?? []
         }
     }
 
@@ -159,6 +164,80 @@ public extension OJPv2 {
 
         public enum CodingKeys: String, CodingKey {
             case system = "System"
+            case value = "Value"
+        }
+    }
+
+    /// A Point of Interest. In OJP-CH this is used among others for shared mobility (shared cars, bicycles and scooters),
+    /// requested via a ``OJPv2/ModeFilter`` with a personal mode.
+    /// [Schema documentation on vdvde.github.io](https://vdvde.github.io/OJP/develop/documentation-tables/ojp.html#type_ojp__PointOfInterestStructure)
+    struct PointOfInterest: Codable, Sendable, Hashable {
+        public let publicCode: String
+        public let name: InternationalText
+        public let categories: [PointOfInterestCategory]
+        public let privateCodes: [PrivateCode]?
+        public let additionalInformation: POIAdditionalInformation?
+
+        public enum CodingKeys: String, CodingKey {
+            case publicCode = "PublicCode"
+            case name = "Name"
+            case categories = "PointOfInterestCategory"
+            case privateCodes = "PrivateCode"
+            case additionalInformation = "POIAdditionalInformation"
+        }
+
+        /// The OSM tag values and classifications describing this POI, e.g. `bicycle_rental`, `car_sharing`, `escooter_rental`.
+        public var classifications: [String] {
+            categories.flatMap { category in
+                (category.classifications ?? []) + (category.osmTags?.map(\.value) ?? [])
+            }
+        }
+
+        /// Convenience accessor for the key/value pairs in `POIAdditionalInformation` (e.g. `OPERATOR_NAME`, `num_vehicles_available`).
+        public var additionalInformationItems: [CategoryKeyValue] {
+            additionalInformation?.items ?? []
+        }
+
+        public func additionalInformationValue(forKey key: String) -> String? {
+            additionalInformationItems.first { $0.key == key }?.value
+        }
+    }
+
+    struct PointOfInterestCategory: Codable, Sendable, Hashable {
+        public let osmTags: [OsmTag]?
+        public let classifications: [String]?
+
+        public enum CodingKeys: String, CodingKey {
+            case osmTags = "OsmTag"
+            case classifications = "PointOfInterestClassification"
+        }
+    }
+
+    struct OsmTag: Codable, Sendable, Hashable {
+        public let tag: String
+        public let value: String
+
+        public enum CodingKeys: String, CodingKey {
+            case tag = "Tag"
+            case value = "Value"
+        }
+    }
+
+    /// Wrapper around the repeated `POIAdditionalInformation` key/value elements.
+    struct POIAdditionalInformation: Codable, Sendable, Hashable {
+        public let items: [CategoryKeyValue]
+
+        public enum CodingKeys: String, CodingKey {
+            case items = "POIAdditionalInformation"
+        }
+    }
+
+    struct CategoryKeyValue: Codable, Sendable, Hashable {
+        public let key: String
+        public let value: String
+
+        public enum CodingKeys: String, CodingKey {
+            case key = "Key"
             case value = "Value"
         }
     }
@@ -256,20 +335,39 @@ public extension OJPv2 {
     }
 
     struct PlaceParam: Codable, Sendable {
-        public init(type: [PlaceType], numberOfResults: Int = 10, includePtModes: Bool = true) {
+        public init(type: [PlaceType], numberOfResults: Int = 10, includePtModes: Bool = true, modes: PersonalModeFilter? = nil) {
             self.type = type
+            self.modes = modes
             self.numberOfResults = numberOfResults
             self.includePtModes = includePtModes
         }
 
         public let type: [PlaceType]
+        // Order matters: the service expects Type, Modes, NumberOfResults, IncludePtModes.
+        public let modes: PersonalModeFilter?
         public let numberOfResults: Int
         let includePtModes: Bool
 
         public enum CodingKeys: String, CodingKey {
             case type = "Type"
+            case modes = "Modes"
             case numberOfResults = "NumberOfResults"
             case includePtModes = "IncludePtModes"
+        }
+    }
+
+    /// Restricts a ``OJPv2/PlaceParam`` to specific personal modes. In OJP-CH shared mobility (shared cars, bicycles, scooters)
+    /// is requested by passing the matching ``OJPv2/PersonalMode`` here.
+    /// [Schema documentation on vdvde.github.io](https://vdvde.github.io/OJP/develop/documentation-tables/ojp.html#type_ojp__ModeFilterStructure)
+    struct PersonalModeFilter: Codable, Sendable {
+        public init(personalModes: [PersonalMode]) {
+            self.personalModes = personalModes
+        }
+
+        public let personalModes: [PersonalMode]
+
+        public enum CodingKeys: String, CodingKey {
+            case personalModes = "PersonalMode"
         }
     }
 }
@@ -285,6 +383,8 @@ extension OJPv2.PlaceTypeChoice: Identifiable {
             address.publicCode
         case let .topographicPlace(topographicPlace):
             topographicPlace.topographicPlaceCode
+        case let .pointOfInterest(pointOfInterest):
+            pointOfInterest.publicCode
         }
     }
 }

@@ -14,6 +14,7 @@ public enum LoadingStrategy {
 public enum PlaceType: String, Codable, Sendable {
     case stop
     case address
+    case poi
 }
 
 let requestXMLRootAttributes = [
@@ -88,6 +89,25 @@ public final class OJP: Sendable {
 
         let nearbyObjects = GeoHelpers.sort(geoAwareObjects: locationInformationDelivery.placeResults, from: coordinates)
         return nearbyObjects
+    }
+
+    /// Request a list of PlaceResults contained in the given bounding box.
+    ///
+    /// Use the `restrictions` to control what is returned, e.g. `type: [.stop]` for public transport stations
+    /// or a ``OJPv2/ModeFilter`` with a personal mode (car, bicycle, scooter) for shared mobility.
+    /// - Parameter bbox: the geographical bounding box to search in
+    /// - Parameter restrictions: filter with a place param
+    /// - Returns: List of PlaceResults contained in the bounding box
+    public func requestPlaceResults(bbox: Geo.Bbox, restrictions: OJPv2.PlaceParam) async throws -> [OJPv2.PlaceResult] {
+        let ojp = locationInformationRequest.requestWith(bbox: bbox, numberOfResults: restrictions.numberOfResults, restrictions: restrictions)
+
+        let serviceDelivery = try await request(with: ojp).serviceDelivery
+
+        guard case let .locationInformation(locationInformationDelivery) = serviceDelivery.delivery else {
+            throw OJPSDKError.unexpectedEmpty
+        }
+
+        return locationInformationDelivery.placeResults
     }
 
     /// Request a list of PlaceResults based on the given search term
