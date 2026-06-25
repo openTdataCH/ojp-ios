@@ -69,7 +69,6 @@ struct SharedMobilityMapView: View {
         }
     }
 
-
     func load(in region: MKCoordinateRegion) {
         currentTask?.cancel()
         currentTask = Task {
@@ -86,10 +85,8 @@ struct SharedMobilityMapView: View {
                     )
                 )
                 var set = Set(results)
-                print(results.count)
                 set.formUnion(try await ojp.requestPlaceResults(in: rectangle, restrictions: placeParam))
                 results = set.map(\.self)
-                print(results.count)
             } catch {
                 print(error)
             }
