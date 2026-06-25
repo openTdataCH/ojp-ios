@@ -26,9 +26,33 @@ struct SharedMobilityMapView: View {
     @State var selectetedPlace: OJPv2.PlaceResult?
     @State var currentTask: Task<Void, Never>?
 
+    @State var currentRegion: MKCoordinateRegion?
+
+    @State private var tooZoomedOut = false
+
+    @State private var showCars = true
+    @State private var showBicycles = true
+    @State private var showScooters = true
+
+    private let maxQueryableSpan = 0.25
+
+
+    private var modes: [OJPv2.PersonalMode] {
+        var modes: [OJPv2.PersonalMode] = []
+        if showBicycles {
+            modes.append(.bicycle)
+        }
+        if showScooters {
+            modes.append(.scooter)
+        }
+        if showCars {
+            modes.append(.car)
+        }
+        return modes
+    }
+
     private var placeParam: OJPv2.PlaceParam {
-        let placeType: [PlaceType] = []
-        return OJPv2.PlaceParam(type: placeType, numberOfResults: 300, includePtModes: true, modeFilter: .init(personalModes: [.bicycle, .car]))
+        return OJPv2.PlaceParam(type: [], numberOfResults: 300, includePtModes: true, modeFilter: .init(personalModes: modes))
     }
 
     var body: some View {
@@ -37,39 +61,49 @@ struct SharedMobilityMapView: View {
                 ForEach($results) { $result in
                     Annotation(result.place.name.text, coordinate: result.geoPosition.coordinates) {
                         marker(for: result)
-                        .onTapGesture {
-                            selectetedPlace = result
-                        }
+                            .onTapGesture {
+                                selectetedPlace = result
+                            }
                     }
                 }
             }
             .onMapCameraChange(frequency: .onEnd) { context in
-                if context.camera.distance < 10000 {
-                    load(in: context.region)
-                }
+                currentRegion = context.region
+                load(in: context.region)
             }
             .onAppear {
                 position = .camera(.init(centerCoordinate: .bärn, distance: 1000))
             }
-            .sheet(item: $selectetedPlace,
-                   onDismiss: {
-                selectetedPlace = nil
-            }
-            ) { place in
-                VStack(alignment: .leading) {
-                    Button(action: { selectetedPlace = nil }) {
-                        Image(systemName: "xmark")
-                        Text("Close")
-                    }
-                    .padding([.top, .horizontal])
-                    PlaceDetailView(placeResult: place)
+            .onChange(of: [showCars, showBicycles, showScooters]) {
+                if let currentRegion {
+                    load(in: currentRegion)
                 }
-                .frame(minHeight: 360)
+            }
+            .overlay(alignment: .topTrailing) { filterMenu.padding() }
+            .overlay(alignment: .bottomLeading) {
+                if let selectetedPlace {
+                    VStack(alignment: .leading) {
+                        Button(action: { self.selectetedPlace = nil }) {
+                            Image(systemName: "xmark")
+                            Text("Close")
+                        }
+                        .padding([.top, .horizontal])
+                        PlaceDetailView(placeResult: selectetedPlace)
+                    }
+                    .frame(maxWidth: 300, maxHeight: 360)
+                    .background(.regularMaterial, in: RoundedRectangle(cornerRadius: 12))
+                }
             }
         }
     }
 
     func load(in region: MKCoordinateRegion) {
+        guard region.span.latitudeDelta <= maxQueryableSpan, region.span.longitudeDelta <= maxQueryableSpan else {
+            tooZoomedOut = true
+            results = []
+            return
+        }
+        tooZoomedOut = false
         currentTask?.cancel()
         currentTask = Task {
             do {
@@ -105,6 +139,25 @@ struct SharedMobilityMapView: View {
             .background(category.color, in: Circle())
             .overlay(Circle().stroke(.white, lineWidth: 1.5))
             .shadow(radius: 1)
+    }
+
+    private var filterMenu: some View {
+        Menu {
+            Toggle("Shared Cars", isOn: $showCars)
+            Toggle("Shared Bicycles", isOn: $showBicycles)
+            Toggle("Shared Scooters", isOn: $showScooters)
+        } label: {
+            Image(systemName: "line.3.horizontal.decrease.circle.fill")
+                .font(.title2)
+                .padding(8)
+                .background(.regularMaterial, in: Circle())
+            if modes.isEmpty {
+                Text("No Categories selected")
+            } else {
+                Text(modes.map(\.rawValue).joined(separator: ", "))
+            }
+        }
+        .menuStyle(.button)
     }
 }
 
