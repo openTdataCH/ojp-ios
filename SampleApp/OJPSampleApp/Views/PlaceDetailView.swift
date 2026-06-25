@@ -11,6 +11,15 @@ import SwiftUI
 struct PlaceDetailView: View {
     // quick and dirty data flow, just for hacking purpose
     let placeResult: OJPv2.PlaceResult
+
+    var sortedKeys: [String] {
+        if case .pointOfInterest(let poi) = placeResult.place.place,
+           let poiAdditionalInformation = poi.poiAdditionalInformation {
+            return poiAdditionalInformation.keys.sorted()
+        }
+        return []
+    }
+
     var body: some View {
         ZStack(alignment: .topLeading) {
             List {
@@ -18,9 +27,18 @@ struct PlaceDetailView: View {
                 Text("Name: \(placeResult.place.name.text)")
                 let geoPosition = placeResult.place.geoPosition
                 Text("GeoPosition: (\(geoPosition.latitude), \(geoPosition.longitude))")
+                if case .pointOfInterest(let poi) = placeResult.place.place {
+                    Section {
+                        ForEach(sortedKeys, id: \.self) { k in
+                            HStack {
+                                Text("\(k):")
+                                Text("\(poi.poiAdditionalInformation?[k] ?? "")")
+                            }
+                        }
 
-                if case .pointOfInterest(let poi) = placeResult.place.place, let poiAdditionalInformation = poi.poiAdditionalInformation {
-                    Text("\(poiAdditionalInformation.map({ "\($0): \($1)" }).joined(separator: "\n"))")
+                    } header: {
+                        Text("Sharing POI Details")
+                    }
                 }
             }
             .cornerRadius(10.0)
