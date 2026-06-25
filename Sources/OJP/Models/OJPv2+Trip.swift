@@ -1460,7 +1460,7 @@ public extension OJPv2 {
         case geoPosition(GeoPositionRef)
         case stopPointRef(StopPointRef)
         case topographicPlaceRef(String)
-case pointOfInterestRef(String)
+        case pointOfInterestRef(String)
 
         enum CodingKeys: String, CodingKey {
 //            case stopPlaceRef = "StopPlaceRef"
