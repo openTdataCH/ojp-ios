@@ -110,9 +110,9 @@ public extension OJPv2 {
         public let nameSuffix: InternationalText?
 
         public let pointOfInterestCategory: [PointOfInterestCategory]?
-        internal let _poiAdditionalInformation: PointOfInteressAdditionalInformation?
+        internal let _poiAdditionalInformation: PointOfInterestAdditionalInformation?
 
-        /// Note: this is a convenience dictionary for the  ``OJPv2/PointOfInteressAdditionalInformation`
+        /// Note: this is a convenience dictionary for the  ``OJPv2/PointOfInterestAdditionalInformation`
         public let poiAdditionalInformation: [String: String]?
 
 
@@ -130,7 +130,7 @@ public extension OJPv2 {
             self.name = try container.decode(InternationalText.self, forKey: .name)
             self.nameSuffix = try container.decode(InternationalText?.self, forKey: .nameSuffix)
             self.pointOfInterestCategory = try container.decodeIfPresent([PointOfInterestCategory].self, forKey: .pointOfInterestCategory)
-            self._poiAdditionalInformation = try container.decodeIfPresent(PointOfInteressAdditionalInformation.self, forKey: ._poiAdditionalInformation)
+            self._poiAdditionalInformation = try container.decodeIfPresent(PointOfInterestAdditionalInformation.self, forKey: ._poiAdditionalInformation)
             self.poiAdditionalInformation = _poiAdditionalInformation?.poiAdditionalInformation.reduce(into: [:], { partialResult, keyValue in
                 partialResult[keyValue.key] = keyValue.value
             })
@@ -138,7 +138,7 @@ public extension OJPv2 {
     }
 
     /// [Schema documentation on vdvde.github.io](https://vdvde.github.io/OJP/release/2.0/documentation-tables/ojp.html#type_ojp__PointOfInterestAdditionalInformationStructure)
-    struct PointOfInteressAdditionalInformation: Codable, Sendable, Hashable {
+    struct PointOfInterestAdditionalInformation: Codable, Sendable, Hashable {
         internal let poiAdditionalInformation: [CategoryKeyValue]
 
         public enum CodingKeys: String, CodingKey {

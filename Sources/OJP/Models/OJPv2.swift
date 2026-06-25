@@ -240,7 +240,7 @@ public struct OJPv2: Codable, Sendable {
             case .busSubmode(let string):
                 try container.encode(string, forKey: .busSubmode)
             case .funicularSubmode(let string):
-                try container.encode(string, forKey: .busSubmode)
+                try container.encode(string, forKey: .funicularSubmode)
             case .waterSubmode(let string):
                 try container.encode(string, forKey: .waterSubmode)
             case .tramSubmode(let string):
