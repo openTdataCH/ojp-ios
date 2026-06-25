@@ -439,15 +439,3 @@ extension OJPv2.PlaceTypeChoice: Identifiable {
 extension OJPv2.PlaceResult: Identifiable {
     public var id: String { place.place.id }
 }
-
-
-
-/// TODO: move to helpers
-public enum SharingCategoryHelper: String {
-    case escooter = "escooter_rental"
-    case bike = "bicycle_rental"
-    case car = "car_sharing"
-    case chargingStation = "charging_station"
-
-
-}

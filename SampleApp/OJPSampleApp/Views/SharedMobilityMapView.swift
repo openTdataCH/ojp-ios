@@ -27,7 +27,6 @@ struct SharedMobilityMapView: View {
     @State var currentTask: Task<Void, Never>?
 
     private var placeParam: OJPv2.PlaceParam {
-        // turns out, placeType POI is not needed.
         let placeType: [PlaceType] = []
         return OJPv2.PlaceParam(type: placeType, numberOfResults: 300, includePtModes: true, modeFilter: .init(personalModes: [.bicycle, .car]))
     }
@@ -36,7 +35,12 @@ struct SharedMobilityMapView: View {
         MapReader { proxy in
             Map(position: $position) {
                 ForEach($results) { $result in
-                    annotation(for: result)
+                    Annotation(result.place.name.text, coordinate: result.geoPosition.coordinates) {
+                        marker(for: result)
+                        .onTapGesture {
+                            selectetedPlace = result
+                        }
+                    }
                 }
             }
             .onMapCameraChange(frequency: .onEnd) { context in
@@ -92,23 +96,62 @@ struct SharedMobilityMapView: View {
         }
     }
 
-    func annotation(for result: OJPv2.PlaceResult) -> Annotation<some View, some View> {
-        switch result.place.place {
-        case .stopPoint, .stopPlace, .address, .topographicPlace:
-            return Annotation(result.place.name.text, coordinate: result.geoPosition.coordinates) {
-                Circle().onTapGesture {
-                    selectetedPlace = result
-                }
-            }
+    @ViewBuilder
+    private func marker(for result: OJPv2.PlaceResult) -> some View {
+        let category = MapCategory(result.place)
+        category
+            .image
+            .font(.caption2)
+            .fontWeight(.bold)
+            .foregroundStyle(.white)
+            .padding(6)
+            .background(category.color, in: Circle())
+            .overlay(Circle().stroke(.white, lineWidth: 1.5))
+            .shadow(radius: 1)
+    }
+}
 
+enum MapCategory {
+    case sharing(SharingCategory)
+    case other
 
+    init(_ place: OJPv2.Place) {
+        switch place.place {
         case .pointOfInterest(let pointOfInterest):
-            dump(pointOfInterest)
-            return Annotation(result.place.name.text, coordinate: result.geoPosition.coordinates) {
-                return Circle().onTapGesture {
-                    selectetedPlace = result
-                }
+            if let category = pointOfInterest.sharingCategories.first {
+                self = .sharing(category)
+            } else {
+                fallthrough
             }
+        default:
+            self = .other
+        }
+    }
+
+    @ViewBuilder var image: some View {
+        switch self {
+        case .sharing(let sharingCategory):
+            sharingCategory.image
+        case .other:
+            Image(systemName: "mappin")
+        }
+    }
+
+    var color: Color {
+        switch self {
+        case .sharing(let sharingCategory):
+            switch sharingCategory {
+            case .escooter:
+               .red
+            case .bike:
+               .blue
+            case .car:
+               .black
+            case .chargingStation:
+               .yellow
+            }
+        case .other:
+            .blue
         }
     }
 }
