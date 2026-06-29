@@ -83,7 +83,7 @@ public extension OJPv2.PlaceResult {
         case let .topographicPlace(topographicPlace):
             .topographicPlaceRef(topographicPlace.topographicPlaceCode)
         case let .pointOfInterest(pointOfinterest):
-            .pointOfInterestRef("pointOfinterest.publicCode")
+            .pointOfInterestRef(pointOfinterest.publicCode)
         }
     }
 }
