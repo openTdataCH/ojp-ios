@@ -1,5 +1,5 @@
 //
-//  Test.swift
+//  PersistenceTests.swift
 //  OJP
 //
 //  Created by Lehnherr Reto on 20.06.2025.
@@ -9,7 +9,7 @@
 import Testing
 import XMLCoder
 
-struct PersistanceTest {
+struct PersistenceTests {
     @Test func testPersistingTripResponseForChangeInPersonalService() async throws {
         let xmlData = try TestHelpers.loadXML(xmlFilename: "tr-continuous-leg-walk")
         let delivery = try await #require(OJPDecoder.parseXML(xmlData).response?.serviceDelivery.delivery)

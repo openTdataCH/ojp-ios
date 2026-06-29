@@ -9,7 +9,7 @@ import OJP
 import SwiftUI
 
 struct StopEventResultsView: View {
-    let ojp: OJP
+    @Environment(\.ojp) var ojp: OJP
 
     @State var origin: OJPv2.PlaceResult?
     @State var stopEventResults: [String: [OJPv2.StopEventResult]]?
@@ -20,7 +20,6 @@ struct StopEventResultsView: View {
         VStack {
             HStack(alignment: .top) {
                 InlineLocationSerachView(
-                    ojp: ojp,
                     textLabel: "Station / Address",
                     selectedPlace: $origin
                 )
@@ -87,5 +86,5 @@ extension OJPv2.PlaceResult: @retroactive Equatable {
 }
 
 #Preview {
-    StopEventResultsView(ojp: OJP(loadingStrategy: .http(.int)))
+    StopEventResultsView()
 }

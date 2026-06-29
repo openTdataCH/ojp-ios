@@ -1460,12 +1460,14 @@ public extension OJPv2 {
         case geoPosition(GeoPositionRef)
         case stopPointRef(StopPointRef)
         case topographicPlaceRef(String)
+        case pointOfInterestRef(String)
 
         enum CodingKeys: String, CodingKey {
 //            case stopPlaceRef = "StopPlaceRef"
 //            case stopPointRef = "siri:StopPointRef"
 //            case name = "Name"
             case topographicPlaceRef = "TopographicPlaceRef"
+            case pointOfInterestRef = "PointOfInterestRef"
         }
 
         public func encode(to encoder: Encoder) throws {
@@ -1479,6 +1481,8 @@ public extension OJPv2 {
                 try svc.encode(geoPositionRef)
             case let .topographicPlaceRef(topographicPlaceRef):
                 try svc.encode(topographicPlaceRef)
+            case let .pointOfInterestRef(pointOfInterest):
+                try svc.encode(pointOfInterest)
             }
         }
 
@@ -1504,15 +1508,15 @@ public extension OJPv2 {
                 self = try .geoPosition(
                     svc.decode(GeoPositionRef.self)
                 )
-            } else if try decoder.container(keyedBy: PlaceRefChoice.CodingKeys.self)
-                .contains(.topographicPlaceRef)
-            {
-                self = try .topographicPlaceRef(
-                    svc.decode(String.self)
-                )
-
             } else {
-                throw OJPSDKError.notImplemented()
+                let container = try decoder.container(keyedBy: PlaceRefChoice.CodingKeys.self)
+                if container.contains(.topographicPlaceRef) {
+                    self = try .topographicPlaceRef(svc.decode(String.self))
+                } else if container.contains(.pointOfInterestRef) {
+                    self = try .pointOfInterestRef(svc.decode(String.self))
+                } else {
+                    throw OJPSDKError.notImplemented()
+                }
             }
         }
     }

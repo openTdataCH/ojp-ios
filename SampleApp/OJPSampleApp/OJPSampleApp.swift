@@ -15,6 +15,7 @@ enum AppSection: CaseIterable, Identifiable {
     case locationInformationRequest
     case tripRequest
     case stopEventRequest
+    case sharingPOIs
 
     var id: Self { self }
 
@@ -26,6 +27,8 @@ enum AppSection: CaseIterable, Identifiable {
             "TripRequest"
         case .stopEventRequest:
             "StopEventRequest"
+        case .sharingPOIs:
+            "Shared Mobility"
         }
     }
 
@@ -37,6 +40,8 @@ enum AppSection: CaseIterable, Identifiable {
             Pictograms.stands_t_en_small
         case .stopEventRequest:
             Pictograms.stands_s_en_small
+        case .sharingPOIs:
+            Pictograms.bicycle_park_left_framed
         }
     }
 }
@@ -83,9 +88,11 @@ struct OJPSampleApp: App {
                     case .locationInformationRequest:
                         LocationSearchByNameView()
                     case .tripRequest:
-                        TripRequestView(ojp: OJP.configured)
+                        TripRequestView()
                     case .stopEventRequest:
-                        StopEventResultsView(ojp: OJP.configured)
+                        StopEventResultsView()
+                    case .sharingPOIs:
+                        SharedMobilityMapView()
                     }
                 }
             }).toolbar {
@@ -107,6 +114,7 @@ struct OJPSampleApp: App {
                 }
             }.navigationSplitViewStyle(.balanced)
         }
+        .environment(\.ojp, OJP.configured)
 
         WindowGroup(id: "Console") {
             DebuggerView(isShown: isShowingConsole)

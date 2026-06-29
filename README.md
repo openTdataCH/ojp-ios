@@ -78,6 +78,30 @@ let nearbyStops = try await ojpSdk.requestPlaceResults(
 )
 ```
 
+#### Get a List of Sharing POIs within a bounding box
+
+``` swift
+let modes: [OJPv2.PersonalMode] = [.bicycle, .scooter, .car]
+let placeParam = OJPv2.PlaceParam(type: [], numberOfResults: 300, includePtModes: true, modeFilter: .init(personalModes: modes))
+
+let rectangle = OJPv2.Rectangle(
+    upperLeft: OJPv2.GeoPosition(
+        longitude: ul.long,
+        latitude: ul.lat
+    ),
+    lowerRight: OJPv2.GeoPosition(
+        longitude: lr.long,
+        latitude: lr.lat
+    )
+)
+
+let sharingPOIs = try await ojp.requestPlaceResults(
+    in: rectangle,
+    restrictions: placeParam
+    )
+)
+```
+
 #### Get a List of Trips between two Places
 
 ``` swift

@@ -240,7 +240,7 @@ public struct OJPv2: Codable, Sendable {
             case .busSubmode(let string):
                 try container.encode(string, forKey: .busSubmode)
             case .funicularSubmode(let string):
-                try container.encode(string, forKey: .busSubmode)
+                try container.encode(string, forKey: .funicularSubmode)
             case .waterSubmode(let string):
                 try container.encode(string, forKey: .waterSubmode)
             case .tramSubmode(let string):
@@ -385,7 +385,7 @@ public struct OJPv2: Codable, Sendable {
     /// [Schema documentation on vdvde.github.io](https://vdvde.github.io/OJP/develop/documentation-tables/ojp.html#type_ojp__PersonalModesEnumeration)
     public enum PersonalMode: String, Codable, Sendable {
         case foot
-        case bicyle
+        case bicycle
         case car
         case motorcycle
         case truck
@@ -393,4 +393,75 @@ public struct OJPv2: Codable, Sendable {
         case other
     }
 
+    /// [Schema documentation on vdvde.github.io](https://vdvde.github.io/OJP/develop/documentation-tables/ojp.html#type_ojp__OperatorFilterStructure)
+    public struct OperatorFilter: Codable, Sendable {
+        public let operatorRef: String?
+        public let exclude: Bool?
+
+        public enum CodingKeys: String, CodingKey {
+            case operatorRef = "OperatorRef"
+            case exclude = "Exclude"
+        }
+    }
+
+
+    /// [Schema documentation on vdvde.github.io](https://vdvde.github.io/OJP/develop/documentation-tables/ojp.html#type_ojp__LineDirectionFilterStructure)
+    public struct LineDirectionFilter: Codable, Sendable {
+        public let line: [LineRef]
+        public let exclude: Bool?
+
+        public enum CodingKeys: String, CodingKey {
+            case line = "Line"
+            case exclude = "Exclude"
+        }
+    }
+
+    /// [Schema documentation on vdvde.github.io](https://vdvde.github.io/OJP/develop/documentation-tables/siri.html#type_siri__LineDirectionStructure)
+    public struct LineRef: Codable, Sendable {
+        public let lineRef: String
+        public let directionRef: String?
+
+        public enum CodingKeys: String, CodingKey {
+            case lineRef = "siri:LineRef"
+            case directionRef = "siri:DirectionRef"
+        }
+    }
+
+    /// [Schema documentation on vdvde.github.io](https://vdvde.github.io/OJP/develop/documentation-tables/ojp.html#type_ojp__ModeFilterStructure)
+    public struct ModeFilter: Codable, Sendable {
+        public let exclude: Bool?
+        public let ptMode: [Mode.PtMode]?
+        public let submodes: [PtModeChoice]?
+        public let personalModes: [PersonalMode]?
+
+        public enum CodingKeys: String, CodingKey {
+            case exclude = "Exclude"
+            case ptMode = "PtMode"
+            case personalModes = "PersonalMode"
+            case _0 = ""
+        }
+
+        public init(exclude: Bool? = false, ptMode: [Mode.PtMode]? = nil, submodes: [PtModeChoice]? = nil, personalModes: [PersonalMode]? = nil) {
+            self.exclude = exclude
+            self.ptMode = ptMode
+            self.submodes = submodes
+            self.personalModes = personalModes
+        }
+
+        public init(from decoder: any Decoder) throws {
+            let container = try decoder.container(keyedBy: CodingKeys.self)
+            exclude = try container.decode(Bool.self, forKey: .exclude)
+            ptMode = try container.decode([Mode.PtMode]?.self, forKey: .ptMode)
+            personalModes = try container.decode([PersonalMode]?.self, forKey: .personalModes)
+            submodes = try container.decode([PtModeChoice]?.self, forKey: ._0)
+        }
+
+        public func encode(to encoder: any Encoder) throws {
+            var container = encoder.container(keyedBy: CodingKeys.self)
+            try container.encode(exclude, forKey: .exclude)
+            try container.encodeIfPresent(ptMode, forKey: .ptMode)
+            try container.encodeIfPresent(personalModes, forKey: .personalModes)
+            try container.encodeIfPresent(submodes, forKey: ._0)
+        }
+    }
 }

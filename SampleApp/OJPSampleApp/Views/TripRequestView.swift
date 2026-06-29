@@ -9,7 +9,7 @@ import OJP
 import SwiftUI
 
 struct TripRequestView: View {
-    let ojp: OJP
+    @Environment(\.ojp) var ojp: OJP
 
     @State var tripResults: [OJPv2.TripResult] = []
     @State var ptSituations: Set<OJPv2.PTSituation> = []
@@ -30,13 +30,12 @@ struct TripRequestView: View {
 
     @State var tripParams: OJPv2.TripParams
 
-    init(ojp: OJP, tripParams: OJPv2.TripParams = .init(
+    init(tripParams: OJPv2.TripParams = .init(
         includeTrackSections: false,
         includeLegProjection: false,
         includeIntermediateStops: true,
         useRealtimeData: .explanatory,
         modeAndModeOfOperationFilter: nil)) {
-            self.ojp = ojp
             self.tripParams = tripParams
         }
 
@@ -60,7 +59,7 @@ struct TripRequestView: View {
                         IndividualTransportOptionView(individualTransportOption: $originIndividualOptions)
 
                     } else {
-                        InlineLocationSerachView(ojp: ojp, textLabel: "From", selectedPlace: $origin)
+                        InlineLocationSerachView(textLabel: "From", selectedPlace: $origin)
                     }
                 }
                 if let via {
@@ -74,7 +73,7 @@ struct TripRequestView: View {
                         }
                     }
                 } else {
-                    InlineLocationSerachView(ojp: ojp, textLabel: "Via", selectedPlace: $via)
+                    InlineLocationSerachView(textLabel: "Via", selectedPlace: $via)
                 }
                 VStack(alignment: .leading) {
                     if let destination {
@@ -93,7 +92,7 @@ struct TripRequestView: View {
                         IndividualTransportOptionView(individualTransportOption: $destinationIndividualOptions)
 
                     } else {
-                        InlineLocationSerachView(ojp: ojp, textLabel: "Destination", selectedPlace: $destination)
+                        InlineLocationSerachView(textLabel: "Destination", selectedPlace: $destination)
                     }
                 }
                 Button {
@@ -181,5 +180,5 @@ struct TripRequestView: View {
 }
 
 #Preview {
-    TripRequestView(ojp: OJP(loadingStrategy: .http(.int)))
+    TripRequestView()
 }

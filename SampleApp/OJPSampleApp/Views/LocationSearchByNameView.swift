@@ -25,6 +25,8 @@ struct LocationSearchByNameView: View {
     @State var stopRestriction = true
     @State var includePTModes = false
 
+    @Environment(\.ojp) var ojp: OJP
+
     let availableRange: [Int] = [5, 10, 20, 50, 100]
 
     private var placeParam: OJPv2.PlaceParam {
@@ -94,6 +96,14 @@ struct LocationSearchByNameView: View {
                         .onTapGesture {
                             selectetedPlace = stop
                         }
+                    case .pointOfInterest(let pointOfInterest):
+                        HStack {
+                            Image(systemName: "mappin.circle.fill")
+                            Text(pointOfInterest.name.text)
+                        }
+                        .onTapGesture {
+                            selectetedPlace = stop
+                        }
                     }
                 }
                 Map {
@@ -110,7 +120,6 @@ struct LocationSearchByNameView: View {
                 guard oldValue != newValue else { return }
                 currentTask?.cancel()
 
-                let ojp = OJP.configured
                 let t = Task {
                     do {
                         results = try await ojp.requestPlaceResults(from: inputName, restrictions: placeParam)
@@ -122,8 +131,8 @@ struct LocationSearchByNameView: View {
                 currentTask = t
             }
 
-            if selectetedPlace != nil {
-                PlaceDetailView(place: $selectetedPlace)
+            if let selectetedPlace {
+                PlaceDetailView(placeResult: selectetedPlace)
                     .frame(maxWidth: 200)
             }
         }.padding()
