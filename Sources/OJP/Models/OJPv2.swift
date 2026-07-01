@@ -407,6 +407,12 @@ public struct OJPv2: Codable, Sendable {
 
     /// [Schema documentation on vdvde.github.io](https://vdvde.github.io/OJP/develop/documentation-tables/ojp.html#type_ojp__LineDirectionFilterStructure)
     public struct LineDirectionFilter: Codable, Sendable {
+        
+        init(line: [LineRef], exclude: Bool?) {
+            self.line = line
+            self.exclude = exclude
+        }
+        
         public let line: [LineRef]
         public let exclude: Bool?
 
@@ -418,6 +424,12 @@ public struct OJPv2: Codable, Sendable {
 
     /// [Schema documentation on vdvde.github.io](https://vdvde.github.io/OJP/develop/documentation-tables/siri.html#type_siri__LineDirectionStructure)
     public struct LineRef: Codable, Sendable {
+        
+        init(lineRef: String, directionRef: String?) {
+            self.lineRef = lineRef
+            self.directionRef = directionRef
+        }
+        
         public let lineRef: String
         public let directionRef: String?
 
