@@ -110,18 +110,14 @@ public extension OJPv2 {
         public let nameSuffix: InternationalText?
 
         public let pointOfInterestCategory: [PointOfInterestCategory]?
-        internal let _poiAdditionalInformation: PointOfInterestAdditionalInformation?
-
-        /// Note: this is a convenience dictionary for the  ``OJPv2/PointOfInterestAdditionalInformation`
-        public let poiAdditionalInformation: [String: String]?
-
+        public let poiAdditionalInformation: [CategoryKeyValue]?
 
         public enum CodingKeys: String, CodingKey {
             case publicCode = "PublicCode"
             case name = "Name"
             case nameSuffix = "NameSuffix"
             case pointOfInterestCategory = "PointOfInterestCategory"
-            case _poiAdditionalInformation = "POIAdditionalInformation"
+            case poiAdditionalInformation = "POIAdditionalInformation"
         }
 
         public init(from decoder: any Decoder) throws {
@@ -130,10 +126,7 @@ public extension OJPv2 {
             self.name = try container.decode(InternationalText.self, forKey: .name)
             self.nameSuffix = try container.decode(InternationalText?.self, forKey: .nameSuffix)
             self.pointOfInterestCategory = try container.decodeIfPresent([PointOfInterestCategory].self, forKey: .pointOfInterestCategory)
-            self._poiAdditionalInformation = try container.decodeIfPresent(PointOfInterestAdditionalInformation.self, forKey: ._poiAdditionalInformation)
-            self.poiAdditionalInformation = _poiAdditionalInformation?.poiAdditionalInformation.reduce(into: [:], { partialResult, keyValue in
-                partialResult[keyValue.key] = keyValue.value
-            })
+            self.poiAdditionalInformation = try container.decodeIfPresent(PointOfInterestAdditionalInformation.self, forKey: .poiAdditionalInformation)?.poiAdditionalInformation // directly forward to [CategoryKeyValue]
         }
     }
 
@@ -149,10 +142,12 @@ public extension OJPv2 {
 
     /// [Schema documentation on vdvde.github.io](https://vdvde.github.io/OJP/release/2.0/documentation-tables/ojp.html#type_ojp__CategoryKeyValueType)
     struct CategoryKeyValue: Codable, Sendable, Hashable {
+        public let category: String?
         public let key: String
         public let value: String
 
         public enum CodingKeys: String, CodingKey {
+            case category = "Category"
             case key = "Key"
             case value = "Value"
         }
