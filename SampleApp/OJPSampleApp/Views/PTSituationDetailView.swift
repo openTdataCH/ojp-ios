@@ -8,6 +8,21 @@
 import OJP
 import SwiftUI
 
+
+struct ConsequenceView: View {
+    
+    let consequenceContents: [OJPv2.ConsequenceContent]
+    
+    var body: some View {
+        ForEach(consequenceContents, id: \.self) { consequenceContent in
+            ForEach(consequenceContent.consequenceText, id: \.self) { consequenceText in
+                Text(consequenceText)
+            }
+        }
+    }
+}
+
+
 struct PTSituationDetailView: View {
     let ptSituation: OJPv2.PTSituation
 
@@ -63,12 +78,7 @@ struct PTSituationDetailView: View {
                             Text("Consequence Content")
                             Text("#\(tc.consequenceContents.count)")
                         }
-                        ForEach(tc.consequenceContents, id: \.self) { dc in
-                            GridRow {
-                                Text("Consequences Text")
-                                Text(dc.consequenceText)
-                            }
-                        }
+                        ConsequenceView(consequenceContents: tc.consequenceContents)
                         GridRow {
                             Text("Remark Contents")
                             Text("#\(tc.remarkContents.count)")

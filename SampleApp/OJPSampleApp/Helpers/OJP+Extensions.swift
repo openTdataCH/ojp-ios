@@ -70,7 +70,9 @@ extension OJPv2.PTSituation {
                     }
 
                     for consequenceContent in textualContent.consequenceContents {
-                        infos.append(consequenceContent.consequenceText)
+                        for consequenceText in consequenceContent.consequenceText {
+                            infos.append(consequenceText)
+                        }
                     }
 
                     for recommendationContent in textualContent.recommendationContents {
