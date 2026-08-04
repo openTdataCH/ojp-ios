@@ -109,7 +109,7 @@ public extension OJPv2 {
     }
 
     struct ConsequenceContent: Codable, Sendable {
-        public let consequenceText: String
+        public let consequenceText: [String]
 
         public enum CodingKeys: String, CodingKey {
             case consequenceText = "siri:ConsequenceText"

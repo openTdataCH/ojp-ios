@@ -265,6 +265,24 @@ final class TripRequestTests: XCTestCase {
             throw error
         }
     }
+    
+    func testSituationParsingWithMultipleConsequenceText() async throws {
+        let xmlData = try TestHelpers.loadXML(xmlFilename: "tr-multipleConsequence")
+        do {
+            guard case let .trip(tripDelivery) = try await OJPDecoder.parseXML(xmlData).response?.serviceDelivery.delivery else {
+                return XCTFail("unexpected empty")
+            }
+            guard let responseContext = tripDelivery.tripResponseContext else {
+                return XCTFail("expected to have a tripResponseContext")
+            }
+            XCTAssertEqual(4, responseContext.situations?.ptSituations?.first?.publishingActions?.publishingActions.first?.passengerInformationActions.first?.textualContents.first?.consequenceContents.first?.consequenceText.count)
+            XCTAssertEqual(1, responseContext.situations?.ptSituations?.count)
+            dump(responseContext)
+        } catch {
+            print(error)
+            throw error
+        }
+    }
 
     // MARK: - TripStatus
 
