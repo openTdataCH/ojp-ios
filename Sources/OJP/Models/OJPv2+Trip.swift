@@ -316,6 +316,8 @@ public extension OJPv2 {
         }
     }
 
+    /// [Schema documentation on vdvde.github.io](https://vdvde.github.io/OJP/release/2.0/documentation-tables/siri.html#type_siri__AlertCauseEnumeration)
+    /// - Important: not all AlertCauses are actually used. See current "realization guide siri-sx" on [oev-info.ch](https://www.oev-info.ch/de/branchenstandard/technische-standards/ereignisdaten) for a list of the currently used values in Switzerland.
     enum AlertCause: String, Codable, Sendable {
         case undefinedAlertCause
         case unknown
