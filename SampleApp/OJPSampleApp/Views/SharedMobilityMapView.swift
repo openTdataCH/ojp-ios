@@ -76,6 +76,7 @@ struct SharedMobilityMapView: View {
             }
             .onChange(of: [showCars, showBicycles, showScooters]) {
                 if let currentRegion {
+                    results = []
                     load(in: currentRegion)
                 }
             }
@@ -90,7 +91,7 @@ struct SharedMobilityMapView: View {
                         .padding([.top, .horizontal])
                         PlaceDetailView(placeResult: selectetedPlace)
                     }
-                    .frame(maxWidth: 300, maxHeight: 360)
+                    .frame(maxWidth: 400, maxHeight: 360)
                     .background(.regularMaterial, in: RoundedRectangle(cornerRadius: 12))
                 }
             }

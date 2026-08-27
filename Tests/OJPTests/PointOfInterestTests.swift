@@ -23,7 +23,7 @@ struct PointOfInterestTests {
         let firstResult = try #require(placeResults.first)
         #expect(firstResult.place.name.text == "Voi")
         if case let .pointOfInterest(voiPoi) = firstResult.place.place {
-            let url = try #require(voiPoi.poiAdditionalInformation?["rental_uris.ios"])
+            let url = try #require(voiPoi.poiAdditionalInformation?.first(where: { $0.key == "rental_uris.ios" })).value
             #expect(URL(string: url) != nil)
             let poiClassification = try #require(voiPoi.pointOfInterestCategory?.first)
             #expect(poiClassification == .pointOfInterestClassification("escooter_rental"))
@@ -42,7 +42,7 @@ struct PointOfInterestTests {
 
             let sharingCategory = try #require(mobilityPoi.sharingCategories.first)
             #expect(sharingCategory == .car)
-            #expect(mobilityPoi.poiAdditionalInformation?["num_vehicles_available"] == "1")
+            #expect(mobilityPoi.poiAdditionalInformation?.first(where: { $0.key == "num_vehicles_available" })?.value == "1")
         }
 
 
@@ -56,7 +56,7 @@ struct PointOfInterestTests {
 
             let sharingCategory = try #require(velospotPoi.sharingCategories.first)
             #expect(sharingCategory == .bike)
-            #expect(velospotPoi.poiAdditionalInformation?["num_vehicles_available"] == "15")
+            #expect(velospotPoi.poiAdditionalInformation?.first(where: { $0.key == "num_vehicles_available" })?.value == "15")
         }
     }
 }
