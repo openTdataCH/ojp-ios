@@ -114,34 +114,293 @@ extension OJPv2.TripStatus {
 }
 
 extension OJPv2.AlertCause {
+
     var title: String {
         switch self {
         case .undefinedAlertCause:
             "Undefiniert"
-        case .constructionWork:
-            "Baustelle"
-        case .serviceDisruption:
-            "Unterbruch"
-        case .emergencyServicesCall:
-            "Notfall-Einsatz"
-        case .vehicleFailure:
-            "Fahrzeugstörung"
-        case .poorWeather:
-            "Unwetter"
-        case .routeBlockage:
-            "Blockierte Strecke"
-        case .technicalProblem:
-            "Technisches Problem"
         case .unknown:
             "Unbekannt"
-        case .accident:
-            "Unfall"
-        case .specialEvent:
-            "Special Event"
-        case .congestion:
-            "Stau"
+        case .securityAlert:
+            "Sicherheitsalarm"
+        case .emergencyServicesCall:
+            "Notfall-Einsatz"
+        case .policeActivity:
+            "Polizeieinsatz"
+        case .policeOrder:
+            "Polizeiliche Anordnung"
+        case .fire:
+            "Brand"
+        case .cableFire:
+            "Kabelbrand"
+        case .smokeDetectedOnVehicle:
+            "Rauchentwicklung im Fahrzeug"
+        case .fireAtTheStation:
+            "Brand am Bahnhof"
+        case .fireRun:
+            "Feuerwehreinsatz"
+        case .fireBrigadeOrder:
+            "Anordnung der Feuerwehr"
+        case .explosion:
+            "Explosion"
+        case .explosionHazard:
+            "Explosionsgefahr"
+        case .bombDisposal:
+            "Bombenentschärfung"
+        case .emergencyMedicalServices:
+            "Rettungseinsatz"
+        case .emergencyBrake:
+            "Notbremsung"
+        case .vandalism:
+            "Vandalismus"
+        case .cableTheft:
+            "Kabeldiebstahl"
+        case .signalPassedAtDanger:
+            "Signal überfahren"
+        case .stationOverrun:
+            "Bahnhof überfahren"
+        case .passengersBlockingDoors:
+            "Türen durch Fahrgäste blockiert"
+        case .defectiveSecuritySystem:
+            "Defektes Sicherheitssystem"
+        case .overcrowded:
+            "Überfüllung"
+        case .borderControl:
+            "Grenzkontrolle"
+        case .unattendedBag:
+            "Unbeaufsichtigtes Gepäck"
+        case .telephonedThreat:
+            "Telefonische Drohung"
+        case .suspectVehicle:
+            "Verdächtiges Fahrzeug"
+        case .evacuation:
+            "Evakuierung"
+        case .terroristIncident:
+            "Terroristischer Vorfall"
+        case .publicDisturbance:
+            "Öffentliche Unruhen"
+        case .technicalProblem:
+            "Technisches Problem"
+        case .vehicleFailure:
+            "Fahrzeugstörung"
+        case .serviceDisruption:
+            "Unterbruch"
+        case .doorFailure:
+            "Türstörung"
+        case .lightingFailure:
+            "Beleuchtungsstörung"
+        case .pointsProblem:
+            "Weichenproblem"
+        case .pointsFailure:
+            "Weichenstörung"
+        case .signalProblem:
+            "Signalproblem"
+        case .signalFailure:
+            "Signalstörung"
+        case .overheadWireFailure:
+            "Fahrleitungsstörung"
+        case .levelCrossingFailure:
+            "Bahnübergangsstörung"
+        case .trafficManagementSystemFailure:
+            "Störung des Verkehrsmanagementsystems"
+        case .engineFailure:
+            "Motorstörung"
+        case .breakdown:
+            "Panne"
+        case .repairWork:
+            "Reparaturarbeiten"
+        case .constructionWork:
+            "Baustelle"
         case .maintenanceWork:
             "Unterhaltsarbeiten"
+        case .powerProblem:
+            "Stromproblem"
+        case .trackCircuitProblem:
+            "Gleisstromkreisproblem"
+        case .swingBridgeFailure:
+            "Störung der Klappbrücke"
+        case .escalatorFailure:
+            "Rolltreppenstörung"
+        case .liftFailure:
+            "Liftstörung"
+        case .gangwayProblem:
+            "Problem mit dem Übergang"
+        case .defectiveVehicle:
+            "Defektes Fahrzeug"
+        case .brokenRail:
+            "Schienenbruch"
+        case .poorRailConditions:
+            "Schlechter Gleiszustand"
+        case .deicingWork:
+            "Enteisungsarbeiten"
+        case .wheelProblem:
+            "Radproblem"
+        case .routeBlockage:
+            "Blockierte Strecke"
+        case .congestion:
+            "Stau"
+        case .heavyTraffic:
+            "Starker Verkehr"
+        case .routeDiversion:
+            "Umleitung"
+        case .roadworks:
+            "Strassenarbeiten"
+        case .unscheduledConstructionWork:
+            "Ungeplante Bauarbeiten"
+        case .levelCrossingIncident:
+            "Vorfall am Bahnübergang"
+        case .sewerageMaintenance:
+            "Unterhaltsarbeiten an der Kanalisation"
+        case .roadClosed:
+            "Strasse gesperrt"
+        case .roadwayDamage:
+            "Fahrbahnschaden"
+        case .bridgeDamage:
+            "Brückenschaden"
+        case .personOnTheLine:
+            "Person auf der Strecke"
+        case .objectOnTheLine:
+            "Gegenstand auf der Strecke"
+        case .vehicleOnTheLine:
+            "Fahrzeug auf der Strecke"
+        case .animalOnTheLine:
+            "Tier auf der Strecke"
+        case .fallenTreeOnTheLine:
+            "Umgestürzter Baum auf der Strecke"
+        case .vegetation:
+            "Vegetation"
+        case .speedRestrictions:
+            "Geschwindigkeitsbeschränkung"
+        case .precedingVehicle:
+            "Vorausfahrendes Fahrzeug"
+        case .accident:
+            "Unfall"
+        case .nearMiss:
+            "Beinaheunfall"
+        case .personHitByVehicle:
+            "Person von Fahrzeug erfasst"
+        case .vehicleStruckObject:
+            "Fahrzeug kollidiert mit Gegenstand"
+        case .vehicleStruckAnimal:
+            "Fahrzeug kollidiert mit Tier"
+        case .derailment:
+            "Entgleisung"
+        case .collision:
+            "Kollision"
+        case .levelCrossingAccident:
+            "Unfall am Bahnübergang"
+        case .poorWeather:
+            "Unwetter"
+        case .fog:
+            "Nebel"
+        case .heavySnowFall:
+            "Starker Schneefall"
+        case .heavyRain:
+            "Starker Regen"
+        case .strongWinds:
+            "Starker Wind"
+        case .ice:
+            "Glatteis"
+        case .hail:
+            "Hagel"
+        case .highTemperatures:
+            "Hohe Temperaturen"
+        case .flooding:
+            "Überschwemmung"
+        case .lowWaterLevel:
+            "Niedriger Wasserstand"
+        case .riskOfFlooding:
+            "Hochwassergefahr"
+        case .highWaterLevel:
+            "Hoher Wasserstand"
+        case .fallenLeaves:
+            "Laub"
+        case .fallenTree:
+            "Umgestürzter Baum"
+        case .landslide:
+            "Erdrutsch"
+        case .riskOfLandslide:
+            "Erdrutschgefahr"
+        case .driftingSnow:
+            "Schneeverwehungen"
+        case .blizzardConditions:
+            "Schneesturm"
+        case .stormDamage:
+            "Sturmschäden"
+        case .lightningStrike:
+            "Blitzeinschlag"
+        case .roughSea:
+            "Starker Seegang"
+        case .highTide:
+            "Flut"
+        case .lowTide:
+            "Ebbe"
+        case .iceDrift:
+            "Eisgang"
+        case .avalanches:
+            "Lawinen"
+        case .riskOfAvalanches:
+            "Lawinengefahr"
+        case .flashFloods:
+            "Sturzfluten"
+        case .mudslide:
+            "Murgang"
+        case .rockfalls:
+            "Steinschlag"
+        case .subsidence:
+            "Bodensenkung"
+        case .earthquakeDamage:
+            "Erdbebenschäden"
+        case .grassFire:
+            "Grasbrand"
+        case .wildlandFire:
+            "Wald- und Flächenbrand"
+        case .iceOnRailway:
+            "Eis auf der Bahnstrecke"
+        case .iceOnCarriages:
+            "Eis auf den Fahrzeugen"
+        case .specialEvent:
+            "Special Event"
+        case .procession:
+            "Prozession"
+        case .demonstration:
+            "Demonstration"
+        case .industrialAction:
+            "Arbeitskampf"
+        case .staffSickness:
+            "Personal krank"
+        case .staffAbsence:
+            "Personalausfall"
+        case .operatorCeasedTrading:
+            "Betrieb eingestellt"
+        case .previousDisturbances:
+            "Vorherige Störungen"
+        case .vehicleBlockingTrack:
+            "Fahrzeug blockiert Strecke"
+        case .foreignDisturbances:
+            "Störungen im Ausland"
+        case .awaitingShuttle:
+            "Warten auf Shuttle"
+        case .changeInCarriages:
+            "Änderung der Wagenreihung"
+        case .trainCoupling:
+            "Zugzusammenführung"
+        case .boardingDelay:
+            "Verzögerung beim Einsteigen"
+        case .awaitingApproach:
+            "Warten auf Annäherung"
+        case .overtaking:
+            "Überholung"
+        case .provisionDelay:
+            "Bereitstellungsverzögerung"
+        case .miscellaneous:
+            "Sonstiges"
+        case .levelCrossingBlocked:
+            "Bahnübergang blockiert"
+        case .waitingForTransferPassengers:
+            "Warten auf Umsteigefahrgäste"
+        case .awaitingOncomingVehicle:
+            "Warten auf entgegenkommendes Fahrzeug"
         }
     }
 }
