@@ -95,7 +95,7 @@ struct StopEventView: View {
                 Text(stopEvent.thisCall.callAtStop.plannedQuay?.text ?? "").font(.title)
             }
 
-            if let selectedPtSituation, let publishingAction = selectedPtSituation.publishingActions?.publishingActions.first {
+            if let selectedPtSituation, let publishingAction = selectedPtSituation.publishingActions?.first {
                 ZStack {
                     Color.disturbation
                     HStack {

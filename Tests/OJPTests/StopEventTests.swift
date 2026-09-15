@@ -40,7 +40,7 @@ struct StopEventTests {
         }
         let ptSituations = try #require(delivery.stopEventResponseContext?.situations?.ptSituations)
         #expect(ptSituations.count == 1)
-        let action = try #require(ptSituations.first?.publishingActions?.publishingActions.first) // TODO: maybe we can flatten that...
+        let action = try #require(ptSituations.first?.publishingActions?.first)
         #expect(action.passengerInformationActions.count == 1)
         let passengerInformationAction = try #require(action.passengerInformationActions.first)
         let textualContent = try #require(passengerInformationAction.textualContents.first)
