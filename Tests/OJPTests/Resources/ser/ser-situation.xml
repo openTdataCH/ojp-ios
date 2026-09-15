@@ -1,0 +1,146 @@
+<OJP xmlns:siri="http://www.siri.org.uk/siri" xmlns="http://www.vdv.de/ojp" version="2.0">
+    <OJPResponse>
+        <siri:ServiceDelivery>
+            <siri:ResponseTimestamp>2026-09-15T14:20:06.2244122+02:00</siri:ResponseTimestamp>
+            <siri:ProducerRef>MENTZ-int-asg_1.1.22.564_i-02f320b21a</siri:ProducerRef>
+            <siri:ResponseMessageIdentifier>00-9426af0556880223188b3</siri:ResponseMessageIdentifier>
+            <OJPStopEventDelivery>
+                <siri:ResponseTimestamp>2026-09-15T14:20:06.2220028+02:00</siri:ResponseTimestamp>
+                <siri:DefaultLanguage>de</siri:DefaultLanguage>
+                <CalcTime>20</CalcTime>
+                <StopEventResponseContext>
+                    <Places />
+                    <Situations>
+                        <PtSituation>
+                            <siri:CreationTime>2026-05-20T11:06:50Z</siri:CreationTime>
+                            <siri:ParticipantRef>ski-ems-out-sx_int</siri:ParticipantRef>
+                            <siri:SituationNumber>ch:1:sstid:100001:900343c0-d0aa-49be-bdd7-28fb5f262bb9-2</siri:SituationNumber>
+                            <siri:Version>1</siri:Version>
+                            <siri:References>
+                                <siri:RelatedToRef>
+                                    <siri:CreationTime>2026-05-20T11:06:50Z</siri:CreationTime>
+                                    <siri:ParticipantRef>ski-ems-out-sx_int</siri:ParticipantRef>
+                                    <siri:SituationNumber>ch:1:sstid:100001:900343c0-d0aa-49be-bdd7-28fb5f262bb9</siri:SituationNumber>
+                                </siri:RelatedToRef>
+                            </siri:References>
+                            <siri:Source>
+                                <siri:SourceType>directReport</siri:SourceType>
+                            </siri:Source>
+                            <siri:ValidityPeriod>
+                                <siri:StartTime>2026-10-02T21:30:00Z</siri:StartTime>
+                                <siri:EndTime>2026-10-03T00:55:00Z</siri:EndTime>
+                            </siri:ValidityPeriod>
+                            <siri:ValidityPeriod>
+                                <siri:StartTime>2026-10-03T21:30:00Z</siri:StartTime>
+                                <siri:EndTime>2026-10-04T00:55:00Z</siri:EndTime>
+                            </siri:ValidityPeriod>
+                            <siri:ValidityPeriod>
+                                <siri:StartTime>2026-10-23T21:30:00Z</siri:StartTime>
+                                <siri:EndTime>2026-10-24T00:55:00Z</siri:EndTime>
+                            </siri:ValidityPeriod>
+                            <siri:ValidityPeriod>
+                                <siri:StartTime>2026-10-24T21:30:00Z</siri:StartTime>
+                                <siri:EndTime>2026-10-25T00:55:00Z</siri:EndTime>
+                            </siri:ValidityPeriod>
+                            <siri:PublicationWindow>
+                                <siri:StartTime>2026-05-29T21:30:00Z</siri:StartTime>
+                                <siri:EndTime>2026-10-25T00:55:00Z</siri:EndTime>
+                            </siri:PublicationWindow>
+                            <siri:AlertCause>undefinedAlertCause</siri:AlertCause>
+                            <siri:Severity>normal</siri:Severity>
+                            <siri:Priority>3</siri:Priority>
+                            <siri:ScopeType>vehicleJourney</siri:ScopeType>
+                            <siri:Planned>true</siri:Planned>
+                            <siri:Language>DE</siri:Language>
+                            <siri:PublishingActions>
+                                <siri:PublishingAction>
+                                    <siri:PublishAtScope>
+                                        <siri:ScopeType>vehicleJourney</siri:ScopeType>
+                                        <siri:Affects>
+                                            <siri:StopPlaces>
+                                                <siri:AffectedStopPlace>
+                                                    <siri:StopPlaceRef>ch:1:sloid:2007</siri:StopPlaceRef>
+                                                    <siri:PlaceName>Sursee</siri:PlaceName>
+                                                </siri:AffectedStopPlace>
+                                                <siri:AffectedStopPlace>
+                                                    <siri:StopPlaceRef>ch:1:sloid:2011</siri:StopPlaceRef>
+                                                    <siri:PlaceName>Oberkirch LU</siri:PlaceName>
+                                                </siri:AffectedStopPlace>
+                                                <siri:AffectedStopPlace>
+                                                    <siri:StopPlaceRef>ch:1:sloid:2008</siri:StopPlaceRef>
+                                                    <siri:PlaceName>Nottwil</siri:PlaceName>
+                                                </siri:AffectedStopPlace>
+                                                <siri:AffectedStopPlace>
+                                                    <siri:StopPlaceRef>ch:1:sloid:2009</siri:StopPlaceRef>
+                                                    <siri:PlaceName>Sempach-Neuenkirch</siri:PlaceName>
+                                                </siri:AffectedStopPlace>
+                                                <siri:AffectedStopPlace>
+                                                    <siri:StopPlaceRef>ch:1:sloid:2020</siri:StopPlaceRef>
+                                                    <siri:PlaceName>Rothenburg Station</siri:PlaceName>
+                                                </siri:AffectedStopPlace>
+                                                <siri:AffectedStopPlace>
+                                                    <siri:StopPlaceRef>ch:1:sloid:2012</siri:StopPlaceRef>
+                                                    <siri:PlaceName>Emmenbrücke Kapf</siri:PlaceName>
+                                                </siri:AffectedStopPlace>
+                                                <siri:AffectedStopPlace>
+                                                    <siri:StopPlaceRef>ch:1:sloid:2028</siri:StopPlaceRef>
+                                                    <siri:PlaceName>Emmenbrücke Gersag</siri:PlaceName>
+                                                </siri:AffectedStopPlace>
+                                                <siri:AffectedStopPlace>
+                                                    <siri:StopPlaceRef>ch:1:sloid:2021</siri:StopPlaceRef>
+                                                    <siri:PlaceName>Emmenbrücke</siri:PlaceName>
+                                                </siri:AffectedStopPlace>
+                                                <siri:AffectedStopPlace>
+                                                    <siri:StopPlaceRef>ch:1:sloid:5000</siri:StopPlaceRef>
+                                                    <siri:PlaceName>Luzern</siri:PlaceName>
+                                                </siri:AffectedStopPlace>
+                                            </siri:StopPlaces>
+                                        </siri:Affects>
+                                    </siri:PublishAtScope>
+                                    <siri:PassengerInformationAction>
+                                        <siri:ActionRef>2</siri:ActionRef>
+                                        <siri:RecordedAtTime>2026-08-15T02:34:14Z</siri:RecordedAtTime>
+                                        <siri:Perspective>stopPoint</siri:Perspective>
+                                        <siri:TextualContent>
+                                            <siri:SummaryContent>
+                                                <siri:SummaryText xml:lang="DE">Information</siri:SummaryText>
+                                            </siri:SummaryContent>
+                                            <siri:DescriptionContent>
+                                                <siri:DescriptionText xml:lang="DE">Die Busanschlüsse in Luzern warten bis 02:35 Uhr.</siri:DescriptionText>
+                                            </siri:DescriptionContent>
+                                            <siri:ConsequenceContent>
+                                                <siri:ConsequenceText xml:lang="DE">Konsequenz 1</siri:ConsequenceText>
+                                            </siri:ConsequenceContent>
+                                            <siri:ConsequenceContent>
+                                                <siri:ConsequenceText xml:lang="DE">Konsequenz 2</siri:ConsequenceText>
+                                            </siri:ConsequenceContent>
+                                            <siri:RecommendationContent>
+                                                <siri:RecommendationText xml:lang="DE">Die Reisenden benützen das Ersatzangebot.</siri:RecommendationText>
+                                            </siri:RecommendationContent>
+                                            <siri:RecommendationContent>
+                                                <siri:RecommendationText xml:lang="DE">Wir empfehlen, kurz vor jeder Fahrt den Online-Fahrplan zu konsultieren.</siri:RecommendationText>
+                                            </siri:RecommendationContent>
+                                            <siri:DurationContent>
+                                                <siri:DurationText xml:lang="DE">Die Einschränkung dauert von 29.05.2026 bis 31.05.2026, jeweils von 23:30 bis 02:55. Die Einschränkung dauert von 31.07.2026 bis 02.08.2026, jeweils von 23:30 bis 02:55. Die Einschränkung dauert von 02.10.2026 bis 04.10.2026, jeweils von 23:30 bis 02:55. Die Einschränkung dauert von 23.10.2026 bis 25.10.2026, jeweils von 23:30 bis 02:55.</siri:DurationText>
+                                            </siri:DurationContent>
+                                            <siri:RemarkContent>
+                                                <siri:Remark xml:lang="DE">Anmerkung 1
+                                                </siri:Remark>
+                                            </siri:RemarkContent>
+                                            <siri:RemarkContent>
+                                                <siri:Remark xml:lang="DE">Anmerkung 2
+                                                </siri:Remark>
+                                            </siri:RemarkContent>
+                                        </siri:TextualContent>
+                                    </siri:PassengerInformationAction>
+                                </siri:PublishingAction>
+                            </siri:PublishingActions>
+                        </PtSituation>
+                    </Situations>
+                </StopEventResponseContext>
+                <!-- no Events, just to test ResponseContext -->
+                <StopEventResult />
+            </OJPStopEventDelivery>
+        </siri:ServiceDelivery>
+    </OJPResponse>
+</OJP>

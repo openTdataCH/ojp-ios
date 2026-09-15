@@ -30,4 +30,22 @@ struct StopEventTests {
         }
         #expect(delivery.isSameStop)
     }
+    
+    @Test func testSituationMultipleContentElements() async throws {
+        let xmlData = try TestHelpers.loadXML(xmlFilename: "ser-situation")
+        let ser = try await OJPDecoder.parseXML(xmlData)
+
+        guard case let .stopEvent(delivery) = ser.response?.serviceDelivery.delivery else {
+            return #expect(Bool(false))
+        }
+        let ptSituations = try #require(delivery.stopEventResponseContext?.situations?.ptSituations)
+        #expect(ptSituations.count == 1)
+        let action = try #require(ptSituations.first?.publishingActions?.publishingActions.first) // TODO: maybe we can flatten that...
+        #expect(action.passengerInformationActions.count == 1)
+        let passengerInformationAction = try #require(action.passengerInformationActions.first)
+        let textualContent = try #require(passengerInformationAction.textualContents.first)
+        #expect(textualContent.consequenceContents.count == 2)
+        #expect(textualContent.recommendationContents.count == 2)
+        #expect(textualContent.remarkContents.count == 2)
+    }
 }
