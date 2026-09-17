@@ -282,7 +282,11 @@ public extension OJPv2 {
         public let priority: Int
 
         /// Optional according to siri-sx, but mandatory according to [Realisierungsvorgabe Profil CH SIRI-SX/VDV736](https://www.oev-info.ch/de/branchenstandard/technische-standards/ereignisdaten)
-        public let publishingActions: PublishingActions?
+        public var publishingActions: [PublishingAction]? {
+            _publishingActions?.publishingActions
+        }
+        private let _publishingActions: PublishingActions?
+        
         public private(set) var planned: Bool? = false
 
         public enum CodingKeys: String, CodingKey {
@@ -290,7 +294,7 @@ public extension OJPv2 {
             case creationTime = "siri:CreationTime"
             case participantRef = "siri:ParticipantRef"
             case validityPeriod = "siri:ValidityPeriod"
-            case publishingActions = "siri:PublishingActions"
+            case _publishingActions = "siri:PublishingActions"
             case alertCause = "siri:AlertCause"
             case version = "siri:Version"
             case priority = "siri:Priority"
