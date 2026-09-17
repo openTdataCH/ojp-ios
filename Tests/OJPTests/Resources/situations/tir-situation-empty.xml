@@ -1,0 +1,88 @@
+<OJP xmlns:siri="http://www.siri.org.uk/siri" xmlns="http://www.vdv.de/ojp" version="2.0">
+    <OJPResponse>
+        <siri:ServiceDelivery>
+            <siri:ResponseTimestamp>2026-09-17T17:08:58.5675753+02:00</siri:ResponseTimestamp>
+            <siri:ProducerRef>MENTZ-int-asg_1.1.32.21171_i-0425d5d7e3</siri:ProducerRef>
+            <siri:ResponseMessageIdentifier>00-220b94334efbbdec8404d</siri:ResponseMessageIdentifier>
+            <OJPTripInfoDelivery>
+                <siri:ResponseTimestamp>2026-09-17T17:08:58.565782+02:00</siri:ResponseTimestamp>
+                <siri:RequestMessageRef/>
+                <siri:DefaultLanguage>de</siri:DefaultLanguage>
+                <CalcTime>81</CalcTime>
+                <TripInfoResponseContext>
+                    <Places/>
+                    <Situations>
+                        <PtSituation>
+                            <siri:CreationTime>2026-07-22T09:15:44Z</siri:CreationTime>
+                            <siri:ParticipantRef>ski-ems-out-sx_int</siri:ParticipantRef>
+                            <siri:SituationNumber>ch:1:sstid:100411:mediator-ums-prod-IMPORTED_HIM_FREETEXT_25348-1</siri:SituationNumber>
+                            <siri:Version>1</siri:Version>
+                            <siri:References>
+                                <siri:RelatedToRef>
+                                    <siri:CreationTime>2026-07-22T09:15:44Z</siri:CreationTime>
+                                    <siri:ParticipantRef>ski-ems-out-sx_int</siri:ParticipantRef>
+                                    <siri:SituationNumber>ch:1:sstid:100411:mediator-ums-prod-IMPORTED_HIM_FREETEXT_25348</siri:SituationNumber>
+                                </siri:RelatedToRef>
+                            </siri:References>
+                            <siri:Source>
+                                <siri:SourceType>directReport</siri:SourceType>
+                            </siri:Source>
+                            <siri:ValidityPeriod>
+                                <siri:StartTime>2026-08-19T08:00:00Z</siri:StartTime>
+                                <siri:EndTime>2026-11-15T22:59:00Z</siri:EndTime>
+                            </siri:ValidityPeriod>
+                            <siri:PublicationWindow>
+                                <siri:StartTime>2026-07-22T09:15:44Z</siri:StartTime>
+                                <siri:EndTime>2026-11-15T22:59:00Z</siri:EndTime>
+                            </siri:PublicationWindow>
+                            <siri:AlertCause>constructionWork</siri:AlertCause>
+                            <siri:Severity>normal</siri:Severity>
+                            <siri:Priority>3</siri:Priority>
+                            <siri:ScopeType>stopPlace</siri:ScopeType>
+                            <siri:Planned>true</siri:Planned>
+                            <siri:Language>DE</siri:Language>
+                            <siri:PublishingActions>
+                                <siri:PublishingAction>
+                                    <siri:PublishAtScope>
+                                        <siri:ScopeType>stopPlace</siri:ScopeType>
+                                        <siri:Affects>
+                                            <siri:StopPlaces>
+                                                <siri:AffectedStopPlace>
+                                                    <siri:StopPlaceRef>ch:1:sloid:91392</siri:StopPlaceRef>
+                                                    <siri:PlaceName>Zürich, Thujastrasse</siri:PlaceName>
+                                                </siri:AffectedStopPlace>
+                                            </siri:StopPlaces>
+                                        </siri:Affects>
+                                    </siri:PublishAtScope>
+                                    <siri:PassengerInformationAction>
+                                        <siri:ActionRef>1</siri:ActionRef>
+                                        <siri:RecordedAtTime>2026-08-21T09:16:02Z</siri:RecordedAtTime>
+                                        <siri:Perspective>general</siri:Perspective>
+                                        <siri:Perspective>stopPoint</siri:Perspective>
+                                        <siri:Perspective>vehicleJourney</siri:Perspective>
+                                        <siri:TextualContent>
+                                            <siri:SummaryContent>
+                                                <siri:SummaryText xml:lang="DE">Haltestelle Zürich, Thujastrasse der Linien 66, 72, N15 und N18 in beiden Richtungen verschoben.</siri:SummaryText>
+                                            </siri:SummaryContent>
+                                            <siri:ReasonContent>
+                                                <siri:ReasonText xml:lang="DE">Grund sind Bauarbeiten.</siri:ReasonText>
+                                            </siri:ReasonContent>
+                                            <siri:ConsequenceContent>
+                                                <siri:ConsequenceText xml:lang="DE">Richtung Morgental: Gegen die Fahrtrichtung verschoben, auf Höhe Mutschellenstrasse Nr. 60. Richtung Bhf. Enge / Milchbuck: Gegen die Fahrtrichtung verschoben, auf Höhe Mutschellenstrasse Nr. 83.</siri:ConsequenceText>
+                                            </siri:ConsequenceContent>
+                                            <siri:RecommendationContent/>
+                                            <siri:DurationContent>
+                                                <siri:DurationText xml:lang="DE">Einschränkungsdauer: 19.08.2026, 10:00 - Mitte November 2026.</siri:DurationText>
+                                            </siri:DurationContent>
+                                        </siri:TextualContent>
+                                    </siri:PassengerInformationAction>
+                                </siri:PublishingAction>
+                            </siri:PublishingActions>
+                        </PtSituation>
+                    </Situations>
+                </TripInfoResponseContext>
+                <TripInfoResult />
+            </OJPTripInfoDelivery>
+        </siri:ServiceDelivery>
+    </OJPResponse>
+</OJP>
