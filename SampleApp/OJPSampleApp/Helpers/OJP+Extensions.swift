@@ -60,7 +60,7 @@ extension OJPv2.PTSituation {
     var allInfos: [String] {
         var infos: [String] = []
         guard let publishingActions else { return [] }
-        for publishingAction in publishingActions.publishingActions {
+        for publishingAction in publishingActions {
             for passengerInformationAction in publishingAction.passengerInformationActions {
                 for textualContent in passengerInformationAction.textualContents {
                     infos.append(textualContent.summaryContent.summaryText)
