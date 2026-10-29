@@ -47,4 +47,15 @@ struct SituationTests {
         #expect(textualContent.remarkContents.isEmpty)
     }
 
+    
+    @Test func testSituationEmptySummaryContent() async throws {
+        let xmlData = try TestHelpers.loadXML(xmlFilename: "ser-situation-empty-summaryContent")
+        let ser = try await OJPDecoder.parseXML(xmlData)
+
+        guard case let .stopEvent(delivery) = ser.response?.serviceDelivery.delivery else {
+            return #expect(Bool(false))
+        }
+        let ptSituations = try #require(delivery.stopEventResponseContext?.situations?.ptSituations)
+        #expect(ptSituations.count == 2)
+    }
 }
