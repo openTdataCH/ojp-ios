@@ -60,7 +60,7 @@ public extension OJPv2 {
             do {
                 places = try container.decode(Places.self, forKey: OJPv2.ResponseContext.CodingKeys.places).places
             } catch {
-                Logger.codableLogging.error("Error while Decoding ResponseContext: \(error, privacy: .auto)")
+                Logger.codableLogging.warning("Error while Decoding ResponseContext: \(error, privacy: .auto)")
                 places = []
             }
         }
@@ -72,18 +72,36 @@ public extension OJPv2 {
             }
         }
     }
-
+    
     /// [Schema documentation on vdvde.github.io](https://vdvde.github.io/OJP/develop/documentation-tables/ojp.html#type_ojp__SituationsStructure)
     struct Situation: Codable, Sendable {
+        
         public let ptSituations: [PTSituation]?
-        public let roadSituations: [RoadSituation]?
-
+        
         enum CodingKeys: String, CodingKey {
             case ptSituations = "PtSituation"
-            case roadSituations = "RoadSituation"
+        }
+        
+        public init(from decoder: any Decoder) throws {
+            guard var container = try? decoder.unkeyedContainer() else {
+                Logger.codableLogging.info("<Situations> is probably empty")
+                ptSituations = []
+                return
+            }
+            var ptSituations: [PTSituation] = []
+            
+            while !container.isAtEnd {
+                do {
+                    ptSituations.append(try container.decode(PTSituation.self))
+                } catch {
+                    Logger.codableLogging.warning("can't decode element in list because of: \(error, privacy: .public)")
+                    _ = try? container.decode(AnyDecodable.self)
+                }
+            }
+            self.ptSituations = ptSituations
         }
     }
-
+    
     struct SummaryContent: Codable, Sendable {
         public let summaryText: String
 
